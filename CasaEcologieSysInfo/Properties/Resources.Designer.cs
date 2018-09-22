@@ -63,9 +63,29 @@ namespace CasaEcologieSysInfo.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Collapse_Arrow_20px {
+            get {
+                object obj = ResourceManager.GetObject("Collapse Arrow_20px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Exit_32px {
             get {
                 object obj = ResourceManager.GetObject("Exit_32px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Expand_Arrow_20px {
+            get {
+                object obj = ResourceManager.GetObject("Expand Arrow_20px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
