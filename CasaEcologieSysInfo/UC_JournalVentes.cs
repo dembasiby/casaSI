@@ -28,7 +28,7 @@ namespace CasaEcologieSysInfo
             DataTable dt = new DataTable();
             sda.Fill(dt);
             dgv.DataSource = dt;
-            dgv.Columns["Montant"].DefaultCellStyle.Format = "C";           
+            dgv.Columns["Montant"].DefaultCellStyle.Format = "C0";           
         }
 
         private void UC_JournalVentes_Load(object sender, EventArgs e)
