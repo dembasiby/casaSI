@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="CasaDBDataSet" targetNamespace="http://tempuri.org/CasaDBDataSet.xsd" xmlns:mstns="http://tempuri.org/CasaDBDataSet.xsd" xmlns="http://tempuri.org/CasaDBDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="CasaDBConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="CasaDBConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.CasaEcologieSysInfo.Properties.Settings.GlobalReference.Default.CasaDBConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ResStockProduitsFinisTableAdapter" GeneratorDataComponentClassName="ResStockProduitsFinisTableAdapter" Name="ResStockProduitsFinis" UserDataComponentName="ResStockProduitsFinisTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="CasaDBConnectionString (Settings)" DbObjectName="CasaDB.dbo.ResStockProduitsFinis" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT NomProduit, PrixDeVenteStandard FROM dbo.ResStockProduitsFinis</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="NomProduit" DataSetColumn="NomProduit" />
+              <Mapping SourceColumn="PrixDeVenteStandard" DataSetColumn="PrixDeVenteStandard" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="CasaDBDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="CasaDBDataSet" msprop:Generator_UserDSName="CasaDBDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="ResStockProduitsFinis" msprop:Generator_TableClassName="ResStockProduitsFinisDataTable" msprop:Generator_TableVarName="tableResStockProduitsFinis" msprop:Generator_TablePropName="ResStockProduitsFinis" msprop:Generator_RowDeletingName="ResStockProduitsFinisRowDeleting" msprop:Generator_RowChangingName="ResStockProduitsFinisRowChanging" msprop:Generator_RowEvHandlerName="ResStockProduitsFinisRowChangeEventHandler" msprop:Generator_RowDeletedName="ResStockProduitsFinisRowDeleted" msprop:Generator_UserTableName="ResStockProduitsFinis" msprop:Generator_RowChangedName="ResStockProduitsFinisRowChanged" msprop:Generator_RowEvArgName="ResStockProduitsFinisRowChangeEvent" msprop:Generator_RowClassName="ResStockProduitsFinisRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="NomProduit" msprop:Generator_ColumnVarNameInTable="columnNomProduit" msprop:Generator_ColumnPropNameInRow="NomProduit" msprop:Generator_ColumnPropNameInTable="NomProduitColumn" msprop:Generator_UserColumnName="NomProduit">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PrixDeVenteStandard" msprop:Generator_ColumnVarNameInTable="columnPrixDeVenteStandard" msprop:Generator_ColumnPropNameInRow="PrixDeVenteStandard" msprop:Generator_ColumnPropNameInTable="PrixDeVenteStandardColumn" msprop:Generator_UserColumnName="PrixDeVenteStandard" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

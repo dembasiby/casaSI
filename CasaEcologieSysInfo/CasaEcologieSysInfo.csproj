@@ -33,8 +33,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AdvancedDataGridView, Version=0.1.0.10, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ADGV.0.1.0.10\lib\net40\AdvancedDataGridView.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -52,19 +64,233 @@
     <Compile Include="Accueil.Designer.cs">
       <DependentUpon>Accueil.cs</DependentUpon>
     </Compile>
+    <Compile Include="AgeAutreFournisseur.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AgeClient.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AgeEmploye.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AgeFournisseursMatieresPremiere.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AgeFournisseursServicesFourniture.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CasaDBDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CasaDBDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="CasaDBDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CasaDBDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="CasaDBDataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CasaDBDataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="CasaDBDataSet3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CasaDBDataSet3.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="CasaDBDataSet4.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CasaDBDataSet4.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="CasaDBDataSet5.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CasaDBDataSet5.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="CasaDBDataSetAll.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CasaDBDataSetAll.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Connexion.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Connexion.Designer.cs">
       <DependentUpon>Connexion.cs</DependentUpon>
     </Compile>
+    <Compile Include="DragControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="EmployesDataSet3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EmployesDataSet3.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="EveAcquisitionServicesFourniture.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EveDecaissement.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EveEncaissement.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EveEncaissementsVente.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EvePresenceEmploye.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EveProduction.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EveProductionProduitsSemiFini.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EveProductionStockProduitsFini.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EveReceptionEquipementsInfrastructure.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EveReceptionMatieresPremiere.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EveUtilisationMatieresPremiere.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EveUtilisationProduitsSemiFini.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EveUtilisationRessource.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EveVente.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EveVenteStockProduitsFini.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model3.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model3.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model3.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model3.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="NouveauProduitFiniOuSemiFini.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NouveauProduitFiniOuSemiFini.Designer.cs">
+      <DependentUpon>NouveauProduitFiniOuSemiFini.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResComptesTresorerie.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ResEquipementsInfrastructure.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ResServicesFourniture.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ResStockMatieresPremiere.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ResStockProduitsFini.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ResStockProduitsSemiFini.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagrams_Result.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UC_StockMatieresPremieres.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_StockMatieresPremieres.Designer.cs">
+      <DependentUpon>UC_StockMatieresPremieres.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_TableauDeBord.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_TableauDeBord.Designer.cs">
+      <DependentUpon>UC_TableauDeBord.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_AchatEquipementInfrastructure.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_AchatEquipementInfrastructure.Designer.cs">
+      <DependentUpon>UC_AchatEquipementInfrastructure.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_AchatMatierePremiere.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_AchatMatierePremiere.Designer.cs">
+      <DependentUpon>UC_AchatMatierePremiere.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_AcquisitionServicesFournitures.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_AcquisitionServicesFournitures.Designer.cs">
+      <DependentUpon>UC_AcquisitionServicesFournitures.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_JournalDepenses.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_JournalDepenses.Designer.cs">
+      <DependentUpon>UC_JournalDepenses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_JournalVentes.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_JournalVentes.Designer.cs">
+      <DependentUpon>UC_JournalVentes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_NouvelEncaissement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_NouvelEncaissement.Designer.cs">
+      <DependentUpon>UC_NouvelEncaissement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_NouvelleVente.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_NouvelleVente.Designer.cs">
+      <DependentUpon>UC_NouvelleVente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_Production.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_Production.Designer.cs">
+      <DependentUpon>UC_Production.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Accueil.resx">
       <DependentUpon>Accueil.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Connexion.resx">
       <DependentUpon>Connexion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NouveauProduitFiniOuSemiFini.resx">
+      <DependentUpon>NouveauProduitFiniOuSemiFini.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -76,6 +302,168 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UC_StockMatieresPremieres.resx">
+      <DependentUpon>UC_StockMatieresPremieres.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_TableauDeBord.resx">
+      <DependentUpon>UC_TableauDeBord.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_AchatEquipementInfrastructure.resx">
+      <DependentUpon>UC_AchatEquipementInfrastructure.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_AchatMatierePremiere.resx">
+      <DependentUpon>UC_AchatMatierePremiere.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_AcquisitionServicesFournitures.resx">
+      <DependentUpon>UC_AcquisitionServicesFournitures.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_JournalDepenses.resx">
+      <DependentUpon>UC_JournalDepenses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_JournalVentes.resx">
+      <DependentUpon>UC_JournalVentes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_NouvelEncaissement.resx">
+      <DependentUpon>UC_NouvelEncaissement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_NouvelleVente.resx">
+      <DependentUpon>UC_NouvelleVente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_Production.resx">
+      <DependentUpon>UC_Production.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="CasaDBDataSet.xsc">
+      <DependentUpon>CasaDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="CasaDBDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CasaDBDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CasaDBDataSet.xss">
+      <DependentUpon>CasaDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="CasaDBDataSet1.xsc">
+      <DependentUpon>CasaDBDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="CasaDBDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CasaDBDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CasaDBDataSet1.xss">
+      <DependentUpon>CasaDBDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="CasaDBDataSet2.xsc">
+      <DependentUpon>CasaDBDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="CasaDBDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CasaDBDataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CasaDBDataSet2.xss">
+      <DependentUpon>CasaDBDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="CasaDBDataSet3.xsc">
+      <DependentUpon>CasaDBDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="CasaDBDataSet3.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CasaDBDataSet3.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CasaDBDataSet3.xss">
+      <DependentUpon>CasaDBDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="CasaDBDataSet4.xsc">
+      <DependentUpon>CasaDBDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="CasaDBDataSet4.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CasaDBDataSet4.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CasaDBDataSet4.xss">
+      <DependentUpon>CasaDBDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="CasaDBDataSet5.xsc">
+      <DependentUpon>CasaDBDataSet5.xsd</DependentUpon>
+    </None>
+    <None Include="CasaDBDataSet5.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CasaDBDataSet5.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CasaDBDataSet5.xss">
+      <DependentUpon>CasaDBDataSet5.xsd</DependentUpon>
+    </None>
+    <None Include="CasaDBDataSetAll.xsc">
+      <DependentUpon>CasaDBDataSetAll.xsd</DependentUpon>
+    </None>
+    <None Include="CasaDBDataSetAll.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CasaDBDataSetAll.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CasaDBDataSetAll.xss">
+      <DependentUpon>CasaDBDataSetAll.xsd</DependentUpon>
+    </None>
+    <None Include="EmployesDataSet3.xsc">
+      <DependentUpon>EmployesDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="EmployesDataSet3.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EmployesDataSet3.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="EmployesDataSet3.xss">
+      <DependentUpon>EmployesDataSet3.xsd</DependentUpon>
+    </None>
+    <EntityDeploy Include="Model3.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model3.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model3.edmx.diagram">
+      <DependentUpon>Model3.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\AgeClient.datasource" />
+    <None Include="Properties\DataSources\AgeEmploye.datasource" />
+    <None Include="Properties\DataSources\CasaDBDataSet5.AgeEmployesDataTable.datasource" />
+    <None Include="Properties\DataSources\CasaDBDataSet5.AgeEmployesRow.datasource" />
+    <None Include="Properties\DataSources\CasaDBDataSet5.datasource" />
+    <None Include="Properties\DataSources\CasaDBDataSet5.EveAcquisitionServicesFournituresDataTable.datasource" />
+    <None Include="Properties\DataSources\CasaDBDataSet5.EveAcquisitionServicesFournituresRow.datasource" />
+    <None Include="Properties\DataSources\CasaDBDataSet5.EvePresenceEmployesDataTable.datasource" />
+    <None Include="Properties\DataSources\CasaDBDataSet5.EvePresenceEmployesRow.datasource" />
+    <None Include="Properties\DataSources\CasaDBDataSet5.EveReceptionMatieresPremieresDataTable.datasource" />
+    <None Include="Properties\DataSources\CasaDBDataSet5.EveReceptionMatieresPremieresRow.datasource" />
+    <None Include="Properties\DataSources\CasaDBDataSet5.ResEquipementsInfrastructuresDataTable.datasource" />
+    <None Include="Properties\DataSources\CasaDBDataSet5.ResEquipementsInfrastructuresRow.datasource" />
+    <None Include="Properties\DataSources\CasaDBDataSet5.ResServicesFournituresDataTable.datasource" />
+    <None Include="Properties\DataSources\CasaDBDataSet5.ResServicesFournituresRow.datasource" />
+    <None Include="Properties\DataSources\CasaDBDataSet5.ResStockMatieresPremieresDataTable.datasource" />
+    <None Include="Properties\DataSources\CasaDBDataSet5.ResStockMatieresPremieresRow.datasource" />
+    <None Include="Properties\DataSources\CasaDBDataSetAll.datasource" />
+    <None Include="Properties\DataSources\CasaEcologieSysInfo.CasaDBDataSetAllTableAdapters.EveAcquisitionServicesFournituresTableAdapter.datasource" />
+    <None Include="Properties\DataSources\CasaEcologieSysInfo.CasaDBDataSetAllTableAdapters.EvePresenceEmployesTableAdapter.datasource" />
+    <None Include="Properties\DataSources\CasaEcologieSysInfo.CasaDBDataSetAllTableAdapters.EveReceptionEquipementsInfrastructuresTableAdapter.datasource" />
+    <None Include="Properties\DataSources\CasaEcologieSysInfo.CasaDBDataSetAllTableAdapters.EveReceptionMatieresPremieresTableAdapter.datasource" />
+    <None Include="Properties\DataSources\CasaEcologieSysInfo.CasaDBDataSetAllTableAdapters.ResEquipementsInfrastructuresTableAdapter.datasource" />
+    <None Include="Properties\DataSources\CasaEcologieSysInfo.CasaDBDataSetAllTableAdapters.ResServicesFournituresTableAdapter.datasource" />
+    <None Include="Properties\DataSources\CasaEcologieSysInfo.CasaDBDataSetAllTableAdapters.ResStockMatieresPremieresTableAdapter.datasource" />
+    <None Include="Properties\DataSources\EveAcquisitionServicesFourniture.datasource" />
+    <None Include="Properties\DataSources\EveDecaissement.datasource" />
+    <None Include="Properties\DataSources\EvePresenceEmploye.datasource" />
+    <None Include="Properties\DataSources\EveReceptionEquipementsInfrastructure.datasource" />
+    <None Include="Properties\DataSources\EveReceptionMatieresPremiere.datasource" />
+    <None Include="Properties\DataSources\ResComptesTresorerie.datasource" />
+    <None Include="Properties\DataSources\ResEquipementsInfrastructure.datasource" />
+    <None Include="Properties\DataSources\ResServicesFourniture.datasource" />
+    <None Include="Properties\DataSources\ResStockMatieresPremiere.datasource" />
+    <None Include="Properties\DataSources\ResStockProduitsFini.datasource" />
+    <None Include="Properties\DataSources\ResStockProduitsSemiFini.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -120,9 +508,22 @@
     <None Include="Resources\Expand Arrow_20px.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Model3.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model3.edmx</DependentUpon>
+      <LastGenOutput>Model3.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model3.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model3.edmx</DependentUpon>
+      <LastGenOutput>Model3.cs</LastGenOutput>
+    </Content>
     <Content Include="Resources\Collapse Arrow_20px.png" />
     <None Include="Resources\Expand Arrow_20px1.png" />
     <None Include="Resources\Collapse Arrow_20px1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

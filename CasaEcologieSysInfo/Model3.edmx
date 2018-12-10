@@ -1,0 +1,2435 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CasaDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AgeAutreFournisseurs">
+          <Key>
+            <PropertyRef Name="CodeAutreFournisseur" />
+          </Key>
+          <Property Name="CodeAutreFournisseur" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NomAutreFournisseur" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Localite" Type="nvarchar" MaxLength="50" />
+          <Property Name="SoldeInitialDetteFournisseur" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AgeClients">
+          <Key>
+            <PropertyRef Name="CodeClient" />
+          </Key>
+          <Property Name="CodeClient" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NomClient" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Localite" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SoldeInitialeCreance" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AgeEmployes">
+          <Key>
+            <PropertyRef Name="CodeEmploye" />
+          </Key>
+          <Property Name="CodeEmploye" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PrenomNom" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Poste" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AgeFournisseursMatieresPremieres">
+          <Key>
+            <PropertyRef Name="CodeFournisseurMatierePremiere" />
+          </Key>
+          <Property Name="CodeFournisseurMatierePremiere" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nom" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Localite" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SoldeDette" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AgeFournisseursServicesFournitures">
+          <Key>
+            <PropertyRef Name="CodeFournisseurServiceFourniture" />
+          </Key>
+          <Property Name="CodeFournisseurServiceFourniture" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NomFournisseurServiceFourniture" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Localite" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SoldeDette" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EveAcquisitionServicesFournitures">
+          <Key>
+            <PropertyRef Name="CodeAcquisitionServiceFourniture" />
+          </Key>
+          <Property Name="CodeAcquisitionServiceFourniture" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="Montant" Type="money" Nullable="false" />
+          <Property Name="CodeServiceFourniture" Type="int" Nullable="false" />
+          <Property Name="CodeFournisseurServiceFourniture" Type="int" Nullable="false" />
+          <Property Name="CodeEmploye" Type="int" />
+        </EntityType>
+        <EntityType Name="EveDecaissements">
+          <Key>
+            <PropertyRef Name="CodeDecaissement" />
+          </Key>
+          <Property Name="CodeDecaissement" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CodeFournisseurMatierePremiere" Type="int" />
+          <Property Name="CodeFournisseurService" Type="int" />
+          <Property Name="CodeAutreFournisseur" Type="int" />
+          <Property Name="CodeEmploye" Type="int" Nullable="false" />
+          <Property Name="CodeAcquisitionServiceFourniture" Type="int" />
+          <Property Name="CodeReceptionEquipementInfrastructure" Type="int" />
+          <Property Name="CodeReceptionMatierePremiere" Type="int" />
+          <Property Name="CodeCompte" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="DateDecaissement" Type="date" Nullable="false" />
+          <Property Name="Montant" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EveEncaissements">
+          <Key>
+            <PropertyRef Name="CodeEncaissement" />
+          </Key>
+          <Property Name="CodeEncaissement" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CodeClient" Type="int" Nullable="false" />
+          <Property Name="CodeEmploye" Type="int" Nullable="false" />
+          <Property Name="CodeCompte" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EveEncaissementsVentes">
+          <Key>
+            <PropertyRef Name="CodeEncaissement" />
+            <PropertyRef Name="CodeVente" />
+          </Key>
+          <Property Name="CodeEncaissement" Type="int" Nullable="false" />
+          <Property Name="CodeVente" Type="int" Nullable="false" />
+          <Property Name="MontantEncaisse" Type="money" Nullable="false" />
+          <Property Name="DateEncaissement" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EvePresenceEmployes">
+          <Key>
+            <PropertyRef Name="CodePresence" />
+          </Key>
+          <Property Name="CodePresence" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CodeEmploye" Type="int" Nullable="false" />
+          <Property Name="CodeUtilisationDesRessources" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EveProductionProduitsSemiFinis">
+          <Key>
+            <PropertyRef Name="CodeProduction" />
+            <PropertyRef Name="CodeProduitSemiFini" />
+          </Key>
+          <Property Name="CodeProduction" Type="int" Nullable="false" />
+          <Property Name="CodeProduitSemiFini" Type="int" Nullable="false" />
+          <Property Name="QuantiteProduitSemiFini" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EveProductions">
+          <Key>
+            <PropertyRef Name="CodeProduction" />
+          </Key>
+          <Property Name="CodeProduction" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CodeUtilisationRessources" Type="int" Nullable="false" />
+          <Property Name="CodeEmploye(Resp stock produits finis" Type="int" />
+          <Property Name="Date" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EveProductionStockProduitsFinis">
+          <Key>
+            <PropertyRef Name="CodeProduction" />
+            <PropertyRef Name="CodeProduitFini" />
+          </Key>
+          <Property Name="CodeProduction" Type="int" Nullable="false" />
+          <Property Name="CodeProduitFini" Type="int" Nullable="false" />
+          <Property Name="QuantiteProduitFini" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EveReceptionEquipementsInfrastructures">
+          <Key>
+            <PropertyRef Name="CodeReceptionEquipementInfrastructure" />
+          </Key>
+          <Property Name="CodeReceptionEquipementInfrastructure" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CodeEquipementInfrastructure" Type="int" Nullable="false" />
+          <Property Name="DateReception" Type="date" Nullable="false" />
+          <Property Name="CodeEmploye" Type="int" Nullable="false" />
+          <Property Name="CodeAutreFournisseur" Type="int" Nullable="false" />
+          <Property Name="Quantite" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EveReceptionMatieresPremieres">
+          <Key>
+            <PropertyRef Name="CodeReceptionMatierePremiere" />
+          </Key>
+          <Property Name="CodeReceptionMatierePremiere" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CodeMatierePremiere" Type="int" Nullable="false" />
+          <Property Name="DateReception" Type="date" Nullable="false" />
+          <Property Name="Quantite" Type="int" Nullable="false" />
+          <Property Name="Montant" Type="money" Nullable="false" />
+          <Property Name="CodeFournisseurMatierePremiere" Type="int" Nullable="false" />
+          <Property Name="CodeEmploye" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EveUtilisationEquipementInfrastructures">
+          <Key>
+            <PropertyRef Name="CodeUtilisationRessource" />
+            <PropertyRef Name="CodeEquipementInfrastructure" />
+          </Key>
+          <Property Name="CodeUtilisationRessource" Type="int" Nullable="false" />
+          <Property Name="CodeEquipementInfrastructure" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EveUtilisationMatieresPremieres">
+          <Key>
+            <PropertyRef Name="CodeUtilisationRessource" />
+            <PropertyRef Name="CodeMatierePremiere" />
+          </Key>
+          <Property Name="CodeUtilisationRessource" Type="int" Nullable="false" />
+          <Property Name="CodeMatierePremiere" Type="int" Nullable="false" />
+          <Property Name="QuantiteMatierePremiere" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EveUtilisationProduitsSemiFinis">
+          <Key>
+            <PropertyRef Name="CodeUtilisationRessource" />
+            <PropertyRef Name="CodeProduitSemiFini" />
+          </Key>
+          <Property Name="CodeUtilisationRessource" Type="int" Nullable="false" />
+          <Property Name="CodeProduitSemiFini" Type="int" Nullable="false" />
+          <Property Name="QuantiteProduitSemiFini" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EveUtilisationRessources">
+          <Key>
+            <PropertyRef Name="CodeUtilisationRessources" />
+          </Key>
+          <Property Name="CodeEmploye(Resp production)" Type="int" Nullable="false" />
+          <Property Name="CodeEmploye(Resp stock matiere premiere)" Type="int" Nullable="false" />
+          <Property Name="CodeUtilisationRessources" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EveVentes">
+          <Key>
+            <PropertyRef Name="CodeVente" />
+          </Key>
+          <Property Name="CodeVente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CodeClient" Type="int" Nullable="false" />
+          <Property Name="CodeEmploye" Type="int" Nullable="false" />
+          <Property Name="DateVente" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EveVenteStockProduitsFinis">
+          <Key>
+            <PropertyRef Name="CodeVente" />
+            <PropertyRef Name="CodeProduitFini" />
+          </Key>
+          <Property Name="CodeVente" Type="int" Nullable="false" />
+          <Property Name="CodeProduitFini" Type="int" Nullable="false" />
+          <Property Name="QuantiteProduitFini" Type="int" Nullable="false" />
+          <Property Name="Montant" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ResComptesTresorerie">
+          <Key>
+            <PropertyRef Name="CodeCompte" />
+          </Key>
+          <Property Name="CodeCompte" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NomCompte" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SoldeCompte" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ResEquipementsInfrastructures">
+          <Key>
+            <PropertyRef Name="CodeEquipementInfrastructure" />
+          </Key>
+          <Property Name="CodeEquipementInfrastructure" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nom" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AmortissementCumule" Type="int" Nullable="false" />
+          <Property Name="DateAcquisition" Type="date" Nullable="false" />
+          <Property Name="DureeDeVie" Type="int" Nullable="false" />
+          <Property Name="Cout" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ResServicesFournitures">
+          <Key>
+            <PropertyRef Name="CodeServiceFourniture" />
+          </Key>
+          <Property Name="CodeServiceFourniture" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NomServiceFourniture" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ResStockMatieresPremieres">
+          <Key>
+            <PropertyRef Name="CodeMatierePremiere" />
+          </Key>
+          <Property Name="CodeMatierePremiere" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NomMatiere" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="StockMatiere" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ResStockProduitsFinis">
+          <Key>
+            <PropertyRef Name="CodeProduit" />
+          </Key>
+          <Property Name="CodeProduit" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NomProduit" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="StockProduit" Type="int" Nullable="false" />
+          <Property Name="PrixDeVenteStandard" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ResStockProduitsSemiFinis">
+          <Key>
+            <PropertyRef Name="CodeProduitSemiFini" />
+          </Key>
+          <Property Name="CodeProduitSemiFini" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CodeMatierePremiere" Type="int" Nullable="false" />
+          <Property Name="Quantite" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_EveAcquisitionServicesFournitures_AgeEmployes">
+          <End Role="AgeEmployes" Type="Self.AgeEmployes" Multiplicity="0..1" />
+          <End Role="EveAcquisitionServicesFournitures" Type="Self.EveAcquisitionServicesFournitures" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgeEmployes">
+              <PropertyRef Name="CodeEmploye" />
+            </Principal>
+            <Dependent Role="EveAcquisitionServicesFournitures">
+              <PropertyRef Name="CodeEmploye" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveAcquisitionServicesFournitures_AgeFournisseursServicesFournitures">
+          <End Role="AgeFournisseursServicesFournitures" Type="Self.AgeFournisseursServicesFournitures" Multiplicity="1" />
+          <End Role="EveAcquisitionServicesFournitures" Type="Self.EveAcquisitionServicesFournitures" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgeFournisseursServicesFournitures">
+              <PropertyRef Name="CodeFournisseurServiceFourniture" />
+            </Principal>
+            <Dependent Role="EveAcquisitionServicesFournitures">
+              <PropertyRef Name="CodeFournisseurServiceFourniture" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveAcquisitionServicesFournitures_ResServicesFournitures">
+          <End Role="ResServicesFournitures" Type="Self.ResServicesFournitures" Multiplicity="1" />
+          <End Role="EveAcquisitionServicesFournitures" Type="Self.EveAcquisitionServicesFournitures" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ResServicesFournitures">
+              <PropertyRef Name="CodeServiceFourniture" />
+            </Principal>
+            <Dependent Role="EveAcquisitionServicesFournitures">
+              <PropertyRef Name="CodeServiceFourniture" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveDecaissements_AgeAutreFournisseurs">
+          <End Role="AgeAutreFournisseurs" Type="Self.AgeAutreFournisseurs" Multiplicity="0..1" />
+          <End Role="EveDecaissements" Type="Self.EveDecaissements" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgeAutreFournisseurs">
+              <PropertyRef Name="CodeAutreFournisseur" />
+            </Principal>
+            <Dependent Role="EveDecaissements">
+              <PropertyRef Name="CodeAutreFournisseur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveDecaissements_AgeEmployes">
+          <End Role="AgeEmployes" Type="Self.AgeEmployes" Multiplicity="1" />
+          <End Role="EveDecaissements" Type="Self.EveDecaissements" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgeEmployes">
+              <PropertyRef Name="CodeEmploye" />
+            </Principal>
+            <Dependent Role="EveDecaissements">
+              <PropertyRef Name="CodeEmploye" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveDecaissements_AgeFournisseursMatieresPremieres">
+          <End Role="AgeFournisseursMatieresPremieres" Type="Self.AgeFournisseursMatieresPremieres" Multiplicity="0..1" />
+          <End Role="EveDecaissements" Type="Self.EveDecaissements" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgeFournisseursMatieresPremieres">
+              <PropertyRef Name="CodeFournisseurMatierePremiere" />
+            </Principal>
+            <Dependent Role="EveDecaissements">
+              <PropertyRef Name="CodeFournisseurMatierePremiere" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveDecaissements_AgeFournisseursServicesFournitures">
+          <End Role="AgeFournisseursServicesFournitures" Type="Self.AgeFournisseursServicesFournitures" Multiplicity="0..1" />
+          <End Role="EveDecaissements" Type="Self.EveDecaissements" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgeFournisseursServicesFournitures">
+              <PropertyRef Name="CodeFournisseurServiceFourniture" />
+            </Principal>
+            <Dependent Role="EveDecaissements">
+              <PropertyRef Name="CodeFournisseurService" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveDecaissements_EveAcquisitionServicesFournitures">
+          <End Role="EveAcquisitionServicesFournitures" Type="Self.EveAcquisitionServicesFournitures" Multiplicity="0..1" />
+          <End Role="EveDecaissements" Type="Self.EveDecaissements" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EveAcquisitionServicesFournitures">
+              <PropertyRef Name="CodeAcquisitionServiceFourniture" />
+            </Principal>
+            <Dependent Role="EveDecaissements">
+              <PropertyRef Name="CodeAcquisitionServiceFourniture" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveDecaissements_EveReceptionEquipementsInfrastructures">
+          <End Role="EveReceptionEquipementsInfrastructures" Type="Self.EveReceptionEquipementsInfrastructures" Multiplicity="0..1" />
+          <End Role="EveDecaissements" Type="Self.EveDecaissements" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EveReceptionEquipementsInfrastructures">
+              <PropertyRef Name="CodeReceptionEquipementInfrastructure" />
+            </Principal>
+            <Dependent Role="EveDecaissements">
+              <PropertyRef Name="CodeReceptionEquipementInfrastructure" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveDecaissements_EveReceptionMatieresPremieres">
+          <End Role="EveReceptionMatieresPremieres" Type="Self.EveReceptionMatieresPremieres" Multiplicity="0..1" />
+          <End Role="EveDecaissements" Type="Self.EveDecaissements" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EveReceptionMatieresPremieres">
+              <PropertyRef Name="CodeReceptionMatierePremiere" />
+            </Principal>
+            <Dependent Role="EveDecaissements">
+              <PropertyRef Name="CodeReceptionMatierePremiere" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveDecaissements_ResComptesTresorerie">
+          <End Role="ResComptesTresorerie" Type="Self.ResComptesTresorerie" Multiplicity="1" />
+          <End Role="EveDecaissements" Type="Self.EveDecaissements" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ResComptesTresorerie">
+              <PropertyRef Name="CodeCompte" />
+            </Principal>
+            <Dependent Role="EveDecaissements">
+              <PropertyRef Name="CodeCompte" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveEncaissements_AgeClients">
+          <End Role="AgeClients" Type="Self.AgeClients" Multiplicity="1" />
+          <End Role="EveEncaissements" Type="Self.EveEncaissements" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgeClients">
+              <PropertyRef Name="CodeClient" />
+            </Principal>
+            <Dependent Role="EveEncaissements">
+              <PropertyRef Name="CodeClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveEncaissements_AgeEmployes">
+          <End Role="AgeEmployes" Type="Self.AgeEmployes" Multiplicity="1" />
+          <End Role="EveEncaissements" Type="Self.EveEncaissements" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgeEmployes">
+              <PropertyRef Name="CodeEmploye" />
+            </Principal>
+            <Dependent Role="EveEncaissements">
+              <PropertyRef Name="CodeEmploye" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveEncaissements_ResComptesTresorerie">
+          <End Role="ResComptesTresorerie" Type="Self.ResComptesTresorerie" Multiplicity="1" />
+          <End Role="EveEncaissements" Type="Self.EveEncaissements" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ResComptesTresorerie">
+              <PropertyRef Name="CodeCompte" />
+            </Principal>
+            <Dependent Role="EveEncaissements">
+              <PropertyRef Name="CodeCompte" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveEncaissementsVentes_EveEncaissements">
+          <End Role="EveEncaissements" Type="Self.EveEncaissements" Multiplicity="1" />
+          <End Role="EveEncaissementsVentes" Type="Self.EveEncaissementsVentes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EveEncaissements">
+              <PropertyRef Name="CodeEncaissement" />
+            </Principal>
+            <Dependent Role="EveEncaissementsVentes">
+              <PropertyRef Name="CodeEncaissement" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveEncaissementsVentes_EveVentes">
+          <End Role="EveVentes" Type="Self.EveVentes" Multiplicity="1" />
+          <End Role="EveEncaissementsVentes" Type="Self.EveEncaissementsVentes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EveVentes">
+              <PropertyRef Name="CodeVente" />
+            </Principal>
+            <Dependent Role="EveEncaissementsVentes">
+              <PropertyRef Name="CodeVente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EvePresenceEmployes_AgeEmployes">
+          <End Role="AgeEmployes" Type="Self.AgeEmployes" Multiplicity="1" />
+          <End Role="EvePresenceEmployes" Type="Self.EvePresenceEmployes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgeEmployes">
+              <PropertyRef Name="CodeEmploye" />
+            </Principal>
+            <Dependent Role="EvePresenceEmployes">
+              <PropertyRef Name="CodeEmploye" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveProductionProduitsSemiFinis_EveProductions">
+          <End Role="EveProductions" Type="Self.EveProductions" Multiplicity="1" />
+          <End Role="EveProductionProduitsSemiFinis" Type="Self.EveProductionProduitsSemiFinis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EveProductions">
+              <PropertyRef Name="CodeProduction" />
+            </Principal>
+            <Dependent Role="EveProductionProduitsSemiFinis">
+              <PropertyRef Name="CodeProduction" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveProductionProduitsSemiFinis_ResStockProduitsSemiFinis">
+          <End Role="ResStockProduitsSemiFinis" Type="Self.ResStockProduitsSemiFinis" Multiplicity="1" />
+          <End Role="EveProductionProduitsSemiFinis" Type="Self.EveProductionProduitsSemiFinis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ResStockProduitsSemiFinis">
+              <PropertyRef Name="CodeProduitSemiFini" />
+            </Principal>
+            <Dependent Role="EveProductionProduitsSemiFinis">
+              <PropertyRef Name="CodeProduitSemiFini" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveProductions_AgeEmployes1">
+          <End Role="AgeEmployes" Type="Self.AgeEmployes" Multiplicity="0..1" />
+          <End Role="EveProductions" Type="Self.EveProductions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgeEmployes">
+              <PropertyRef Name="CodeEmploye" />
+            </Principal>
+            <Dependent Role="EveProductions">
+              <PropertyRef Name="CodeEmploye(Resp stock produits finis" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveProductions_EveUtilisationRessources">
+          <End Role="EveUtilisationRessources" Type="Self.EveUtilisationRessources" Multiplicity="1" />
+          <End Role="EveProductions" Type="Self.EveProductions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EveUtilisationRessources">
+              <PropertyRef Name="CodeUtilisationRessources" />
+            </Principal>
+            <Dependent Role="EveProductions">
+              <PropertyRef Name="CodeUtilisationRessources" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveProductionStockProduitsFinis_EveProductions">
+          <End Role="EveProductions" Type="Self.EveProductions" Multiplicity="1" />
+          <End Role="EveProductionStockProduitsFinis" Type="Self.EveProductionStockProduitsFinis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EveProductions">
+              <PropertyRef Name="CodeProduction" />
+            </Principal>
+            <Dependent Role="EveProductionStockProduitsFinis">
+              <PropertyRef Name="CodeProduction" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveProductionStockProduitsFinis_ResStockProduitsFinis">
+          <End Role="ResStockProduitsFinis" Type="Self.ResStockProduitsFinis" Multiplicity="1" />
+          <End Role="EveProductionStockProduitsFinis" Type="Self.EveProductionStockProduitsFinis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ResStockProduitsFinis">
+              <PropertyRef Name="CodeProduit" />
+            </Principal>
+            <Dependent Role="EveProductionStockProduitsFinis">
+              <PropertyRef Name="CodeProduitFini" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveReceptionEquipementsInfrastructures_AgeAutreFournisseurs">
+          <End Role="AgeAutreFournisseurs" Type="Self.AgeAutreFournisseurs" Multiplicity="1" />
+          <End Role="EveReceptionEquipementsInfrastructures" Type="Self.EveReceptionEquipementsInfrastructures" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgeAutreFournisseurs">
+              <PropertyRef Name="CodeAutreFournisseur" />
+            </Principal>
+            <Dependent Role="EveReceptionEquipementsInfrastructures">
+              <PropertyRef Name="CodeAutreFournisseur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveReceptionEquipementsInfrastructures_AgeEmployes">
+          <End Role="AgeEmployes" Type="Self.AgeEmployes" Multiplicity="1" />
+          <End Role="EveReceptionEquipementsInfrastructures" Type="Self.EveReceptionEquipementsInfrastructures" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgeEmployes">
+              <PropertyRef Name="CodeEmploye" />
+            </Principal>
+            <Dependent Role="EveReceptionEquipementsInfrastructures">
+              <PropertyRef Name="CodeEmploye" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveReceptionEquipementsInfrastructures_ResEquipementsInfrastructures">
+          <End Role="ResEquipementsInfrastructures" Type="Self.ResEquipementsInfrastructures" Multiplicity="1" />
+          <End Role="EveReceptionEquipementsInfrastructures" Type="Self.EveReceptionEquipementsInfrastructures" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ResEquipementsInfrastructures">
+              <PropertyRef Name="CodeEquipementInfrastructure" />
+            </Principal>
+            <Dependent Role="EveReceptionEquipementsInfrastructures">
+              <PropertyRef Name="CodeEquipementInfrastructure" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveReceptionMatieresPremieres_AgeEmployes">
+          <End Role="AgeEmployes" Type="Self.AgeEmployes" Multiplicity="1" />
+          <End Role="EveReceptionMatieresPremieres" Type="Self.EveReceptionMatieresPremieres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgeEmployes">
+              <PropertyRef Name="CodeEmploye" />
+            </Principal>
+            <Dependent Role="EveReceptionMatieresPremieres">
+              <PropertyRef Name="CodeEmploye" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveReceptionMatieresPremieres_AgeFournisseursMatieresPremieres">
+          <End Role="AgeFournisseursMatieresPremieres" Type="Self.AgeFournisseursMatieresPremieres" Multiplicity="1" />
+          <End Role="EveReceptionMatieresPremieres" Type="Self.EveReceptionMatieresPremieres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgeFournisseursMatieresPremieres">
+              <PropertyRef Name="CodeFournisseurMatierePremiere" />
+            </Principal>
+            <Dependent Role="EveReceptionMatieresPremieres">
+              <PropertyRef Name="CodeFournisseurMatierePremiere" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveReceptionMatieresPremieres_ResStockMatieresPremieres">
+          <End Role="ResStockMatieresPremieres" Type="Self.ResStockMatieresPremieres" Multiplicity="1" />
+          <End Role="EveReceptionMatieresPremieres" Type="Self.EveReceptionMatieresPremieres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ResStockMatieresPremieres">
+              <PropertyRef Name="CodeMatierePremiere" />
+            </Principal>
+            <Dependent Role="EveReceptionMatieresPremieres">
+              <PropertyRef Name="CodeMatierePremiere" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveUtilisationEquipementInfrastructures_EveUtilisationRessources">
+          <End Role="EveUtilisationRessources" Type="Self.EveUtilisationRessources" Multiplicity="1" />
+          <End Role="EveUtilisationEquipementInfrastructures" Type="Self.EveUtilisationEquipementInfrastructures" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EveUtilisationRessources">
+              <PropertyRef Name="CodeUtilisationRessources" />
+            </Principal>
+            <Dependent Role="EveUtilisationEquipementInfrastructures">
+              <PropertyRef Name="CodeUtilisationRessource" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveUtilisationEquipementInfrastructures_ResEquipementsInfrastructures">
+          <End Role="ResEquipementsInfrastructures" Type="Self.ResEquipementsInfrastructures" Multiplicity="1" />
+          <End Role="EveUtilisationEquipementInfrastructures" Type="Self.EveUtilisationEquipementInfrastructures" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ResEquipementsInfrastructures">
+              <PropertyRef Name="CodeEquipementInfrastructure" />
+            </Principal>
+            <Dependent Role="EveUtilisationEquipementInfrastructures">
+              <PropertyRef Name="CodeEquipementInfrastructure" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveUtilisationMatieresPremieres_EveUtilisationRessources">
+          <End Role="EveUtilisationRessources" Type="Self.EveUtilisationRessources" Multiplicity="1" />
+          <End Role="EveUtilisationMatieresPremieres" Type="Self.EveUtilisationMatieresPremieres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EveUtilisationRessources">
+              <PropertyRef Name="CodeUtilisationRessources" />
+            </Principal>
+            <Dependent Role="EveUtilisationMatieresPremieres">
+              <PropertyRef Name="CodeUtilisationRessource" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveUtilisationMatieresPremieres_ResStockMatieresPremieres">
+          <End Role="ResStockMatieresPremieres" Type="Self.ResStockMatieresPremieres" Multiplicity="1" />
+          <End Role="EveUtilisationMatieresPremieres" Type="Self.EveUtilisationMatieresPremieres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ResStockMatieresPremieres">
+              <PropertyRef Name="CodeMatierePremiere" />
+            </Principal>
+            <Dependent Role="EveUtilisationMatieresPremieres">
+              <PropertyRef Name="CodeMatierePremiere" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveUtilisationProduitsSemiFinis_EveUtilisationRessources">
+          <End Role="EveUtilisationRessources" Type="Self.EveUtilisationRessources" Multiplicity="1" />
+          <End Role="EveUtilisationProduitsSemiFinis" Type="Self.EveUtilisationProduitsSemiFinis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EveUtilisationRessources">
+              <PropertyRef Name="CodeUtilisationRessources" />
+            </Principal>
+            <Dependent Role="EveUtilisationProduitsSemiFinis">
+              <PropertyRef Name="CodeUtilisationRessource" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveUtilisationProduitsSemiFinis_ResStockProduitsSemiFinis">
+          <End Role="ResStockProduitsSemiFinis" Type="Self.ResStockProduitsSemiFinis" Multiplicity="1" />
+          <End Role="EveUtilisationProduitsSemiFinis" Type="Self.EveUtilisationProduitsSemiFinis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ResStockProduitsSemiFinis">
+              <PropertyRef Name="CodeProduitSemiFini" />
+            </Principal>
+            <Dependent Role="EveUtilisationProduitsSemiFinis">
+              <PropertyRef Name="CodeProduitSemiFini" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveUtilisationRessources_AgeEmployes">
+          <End Role="AgeEmployes" Type="Self.AgeEmployes" Multiplicity="1" />
+          <End Role="EveUtilisationRessources" Type="Self.EveUtilisationRessources" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgeEmployes">
+              <PropertyRef Name="CodeEmploye" />
+            </Principal>
+            <Dependent Role="EveUtilisationRessources">
+              <PropertyRef Name="CodeEmploye(Resp production)" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveUtilisationRessources_AgeEmployes1">
+          <End Role="AgeEmployes" Type="Self.AgeEmployes" Multiplicity="1" />
+          <End Role="EveUtilisationRessources" Type="Self.EveUtilisationRessources" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgeEmployes">
+              <PropertyRef Name="CodeEmploye" />
+            </Principal>
+            <Dependent Role="EveUtilisationRessources">
+              <PropertyRef Name="CodeEmploye(Resp stock matiere premiere)" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveVentes_AgeClients">
+          <End Role="AgeClients" Type="Self.AgeClients" Multiplicity="1" />
+          <End Role="EveVentes" Type="Self.EveVentes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgeClients">
+              <PropertyRef Name="CodeClient" />
+            </Principal>
+            <Dependent Role="EveVentes">
+              <PropertyRef Name="CodeClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveVentes_AgeEmployes">
+          <End Role="AgeEmployes" Type="Self.AgeEmployes" Multiplicity="1" />
+          <End Role="EveVentes" Type="Self.EveVentes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgeEmployes">
+              <PropertyRef Name="CodeEmploye" />
+            </Principal>
+            <Dependent Role="EveVentes">
+              <PropertyRef Name="CodeEmploye" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveVenteStockProduitsFinis_EveVentes">
+          <End Role="EveVentes" Type="Self.EveVentes" Multiplicity="1" />
+          <End Role="EveVenteStockProduitsFinis" Type="Self.EveVenteStockProduitsFinis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EveVentes">
+              <PropertyRef Name="CodeVente" />
+            </Principal>
+            <Dependent Role="EveVenteStockProduitsFinis">
+              <PropertyRef Name="CodeVente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveVenteStockProduitsFinis_ResStockProduitsFinis">
+          <End Role="ResStockProduitsFinis" Type="Self.ResStockProduitsFinis" Multiplicity="1" />
+          <End Role="EveVenteStockProduitsFinis" Type="Self.EveVenteStockProduitsFinis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ResStockProduitsFinis">
+              <PropertyRef Name="CodeProduit" />
+            </Principal>
+            <Dependent Role="EveVenteStockProduitsFinis">
+              <PropertyRef Name="CodeProduitFini" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResStockProduitsSemiFinis_ResStockMatieresPremieres">
+          <End Role="ResStockMatieresPremieres" Type="Self.ResStockMatieresPremieres" Multiplicity="1" />
+          <End Role="ResStockProduitsSemiFinis" Type="Self.ResStockProduitsSemiFinis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ResStockMatieresPremieres">
+              <PropertyRef Name="CodeMatierePremiere" />
+            </Principal>
+            <Dependent Role="ResStockProduitsSemiFinis">
+              <PropertyRef Name="CodeMatierePremiere" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResStockProduitsSemiFinis_ResStockProduitsSemiFinis">
+          <End Role="ResStockProduitsSemiFinis" Type="Self.ResStockProduitsSemiFinis" Multiplicity="1" />
+          <End Role="ResStockProduitsSemiFinis1" Type="Self.ResStockProduitsSemiFinis" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ResStockProduitsSemiFinis">
+              <PropertyRef Name="CodeProduitSemiFini" />
+            </Principal>
+            <Dependent Role="ResStockProduitsSemiFinis1">
+              <PropertyRef Name="CodeProduitSemiFini" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="CasaDBModelStoreContainer">
+          <EntitySet Name="AgeAutreFournisseurs" EntityType="Self.AgeAutreFournisseurs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AgeClients" EntityType="Self.AgeClients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AgeEmployes" EntityType="Self.AgeEmployes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AgeFournisseursMatieresPremieres" EntityType="Self.AgeFournisseursMatieresPremieres" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AgeFournisseursServicesFournitures" EntityType="Self.AgeFournisseursServicesFournitures" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EveAcquisitionServicesFournitures" EntityType="Self.EveAcquisitionServicesFournitures" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EveDecaissements" EntityType="Self.EveDecaissements" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EveEncaissements" EntityType="Self.EveEncaissements" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EveEncaissementsVentes" EntityType="Self.EveEncaissementsVentes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EvePresenceEmployes" EntityType="Self.EvePresenceEmployes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EveProductionProduitsSemiFinis" EntityType="Self.EveProductionProduitsSemiFinis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EveProductions" EntityType="Self.EveProductions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EveProductionStockProduitsFinis" EntityType="Self.EveProductionStockProduitsFinis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EveReceptionEquipementsInfrastructures" EntityType="Self.EveReceptionEquipementsInfrastructures" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EveReceptionMatieresPremieres" EntityType="Self.EveReceptionMatieresPremieres" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EveUtilisationEquipementInfrastructures" EntityType="Self.EveUtilisationEquipementInfrastructures" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EveUtilisationMatieresPremieres" EntityType="Self.EveUtilisationMatieresPremieres" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EveUtilisationProduitsSemiFinis" EntityType="Self.EveUtilisationProduitsSemiFinis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EveUtilisationRessources" EntityType="Self.EveUtilisationRessources" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EveVentes" EntityType="Self.EveVentes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EveVenteStockProduitsFinis" EntityType="Self.EveVenteStockProduitsFinis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ResComptesTresorerie" EntityType="Self.ResComptesTresorerie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ResEquipementsInfrastructures" EntityType="Self.ResEquipementsInfrastructures" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ResServicesFournitures" EntityType="Self.ResServicesFournitures" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ResStockMatieresPremieres" EntityType="Self.ResStockMatieresPremieres" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ResStockProduitsFinis" EntityType="Self.ResStockProduitsFinis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ResStockProduitsSemiFinis" EntityType="Self.ResStockProduitsSemiFinis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_EveAcquisitionServicesFournitures_AgeEmployes" Association="Self.FK_EveAcquisitionServicesFournitures_AgeEmployes">
+            <End Role="AgeEmployes" EntitySet="AgeEmployes" />
+            <End Role="EveAcquisitionServicesFournitures" EntitySet="EveAcquisitionServicesFournitures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveAcquisitionServicesFournitures_AgeFournisseursServicesFournitures" Association="Self.FK_EveAcquisitionServicesFournitures_AgeFournisseursServicesFournitures">
+            <End Role="AgeFournisseursServicesFournitures" EntitySet="AgeFournisseursServicesFournitures" />
+            <End Role="EveAcquisitionServicesFournitures" EntitySet="EveAcquisitionServicesFournitures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveAcquisitionServicesFournitures_ResServicesFournitures" Association="Self.FK_EveAcquisitionServicesFournitures_ResServicesFournitures">
+            <End Role="ResServicesFournitures" EntitySet="ResServicesFournitures" />
+            <End Role="EveAcquisitionServicesFournitures" EntitySet="EveAcquisitionServicesFournitures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveDecaissements_AgeAutreFournisseurs" Association="Self.FK_EveDecaissements_AgeAutreFournisseurs">
+            <End Role="AgeAutreFournisseurs" EntitySet="AgeAutreFournisseurs" />
+            <End Role="EveDecaissements" EntitySet="EveDecaissements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveDecaissements_AgeEmployes" Association="Self.FK_EveDecaissements_AgeEmployes">
+            <End Role="AgeEmployes" EntitySet="AgeEmployes" />
+            <End Role="EveDecaissements" EntitySet="EveDecaissements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveDecaissements_AgeFournisseursMatieresPremieres" Association="Self.FK_EveDecaissements_AgeFournisseursMatieresPremieres">
+            <End Role="AgeFournisseursMatieresPremieres" EntitySet="AgeFournisseursMatieresPremieres" />
+            <End Role="EveDecaissements" EntitySet="EveDecaissements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveDecaissements_AgeFournisseursServicesFournitures" Association="Self.FK_EveDecaissements_AgeFournisseursServicesFournitures">
+            <End Role="AgeFournisseursServicesFournitures" EntitySet="AgeFournisseursServicesFournitures" />
+            <End Role="EveDecaissements" EntitySet="EveDecaissements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveDecaissements_EveAcquisitionServicesFournitures" Association="Self.FK_EveDecaissements_EveAcquisitionServicesFournitures">
+            <End Role="EveAcquisitionServicesFournitures" EntitySet="EveAcquisitionServicesFournitures" />
+            <End Role="EveDecaissements" EntitySet="EveDecaissements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveDecaissements_EveReceptionEquipementsInfrastructures" Association="Self.FK_EveDecaissements_EveReceptionEquipementsInfrastructures">
+            <End Role="EveReceptionEquipementsInfrastructures" EntitySet="EveReceptionEquipementsInfrastructures" />
+            <End Role="EveDecaissements" EntitySet="EveDecaissements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveDecaissements_EveReceptionMatieresPremieres" Association="Self.FK_EveDecaissements_EveReceptionMatieresPremieres">
+            <End Role="EveReceptionMatieresPremieres" EntitySet="EveReceptionMatieresPremieres" />
+            <End Role="EveDecaissements" EntitySet="EveDecaissements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveDecaissements_ResComptesTresorerie" Association="Self.FK_EveDecaissements_ResComptesTresorerie">
+            <End Role="ResComptesTresorerie" EntitySet="ResComptesTresorerie" />
+            <End Role="EveDecaissements" EntitySet="EveDecaissements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveEncaissements_AgeClients" Association="Self.FK_EveEncaissements_AgeClients">
+            <End Role="AgeClients" EntitySet="AgeClients" />
+            <End Role="EveEncaissements" EntitySet="EveEncaissements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveEncaissements_AgeEmployes" Association="Self.FK_EveEncaissements_AgeEmployes">
+            <End Role="AgeEmployes" EntitySet="AgeEmployes" />
+            <End Role="EveEncaissements" EntitySet="EveEncaissements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveEncaissements_ResComptesTresorerie" Association="Self.FK_EveEncaissements_ResComptesTresorerie">
+            <End Role="ResComptesTresorerie" EntitySet="ResComptesTresorerie" />
+            <End Role="EveEncaissements" EntitySet="EveEncaissements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveEncaissementsVentes_EveEncaissements" Association="Self.FK_EveEncaissementsVentes_EveEncaissements">
+            <End Role="EveEncaissements" EntitySet="EveEncaissements" />
+            <End Role="EveEncaissementsVentes" EntitySet="EveEncaissementsVentes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveEncaissementsVentes_EveVentes" Association="Self.FK_EveEncaissementsVentes_EveVentes">
+            <End Role="EveVentes" EntitySet="EveVentes" />
+            <End Role="EveEncaissementsVentes" EntitySet="EveEncaissementsVentes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EvePresenceEmployes_AgeEmployes" Association="Self.FK_EvePresenceEmployes_AgeEmployes">
+            <End Role="AgeEmployes" EntitySet="AgeEmployes" />
+            <End Role="EvePresenceEmployes" EntitySet="EvePresenceEmployes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveProductionProduitsSemiFinis_EveProductions" Association="Self.FK_EveProductionProduitsSemiFinis_EveProductions">
+            <End Role="EveProductions" EntitySet="EveProductions" />
+            <End Role="EveProductionProduitsSemiFinis" EntitySet="EveProductionProduitsSemiFinis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveProductionProduitsSemiFinis_ResStockProduitsSemiFinis" Association="Self.FK_EveProductionProduitsSemiFinis_ResStockProduitsSemiFinis">
+            <End Role="ResStockProduitsSemiFinis" EntitySet="ResStockProduitsSemiFinis" />
+            <End Role="EveProductionProduitsSemiFinis" EntitySet="EveProductionProduitsSemiFinis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveProductions_AgeEmployes1" Association="Self.FK_EveProductions_AgeEmployes1">
+            <End Role="AgeEmployes" EntitySet="AgeEmployes" />
+            <End Role="EveProductions" EntitySet="EveProductions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveProductions_EveUtilisationRessources" Association="Self.FK_EveProductions_EveUtilisationRessources">
+            <End Role="EveUtilisationRessources" EntitySet="EveUtilisationRessources" />
+            <End Role="EveProductions" EntitySet="EveProductions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveProductionStockProduitsFinis_EveProductions" Association="Self.FK_EveProductionStockProduitsFinis_EveProductions">
+            <End Role="EveProductions" EntitySet="EveProductions" />
+            <End Role="EveProductionStockProduitsFinis" EntitySet="EveProductionStockProduitsFinis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveProductionStockProduitsFinis_ResStockProduitsFinis" Association="Self.FK_EveProductionStockProduitsFinis_ResStockProduitsFinis">
+            <End Role="ResStockProduitsFinis" EntitySet="ResStockProduitsFinis" />
+            <End Role="EveProductionStockProduitsFinis" EntitySet="EveProductionStockProduitsFinis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveReceptionEquipementsInfrastructures_AgeAutreFournisseurs" Association="Self.FK_EveReceptionEquipementsInfrastructures_AgeAutreFournisseurs">
+            <End Role="AgeAutreFournisseurs" EntitySet="AgeAutreFournisseurs" />
+            <End Role="EveReceptionEquipementsInfrastructures" EntitySet="EveReceptionEquipementsInfrastructures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveReceptionEquipementsInfrastructures_AgeEmployes" Association="Self.FK_EveReceptionEquipementsInfrastructures_AgeEmployes">
+            <End Role="AgeEmployes" EntitySet="AgeEmployes" />
+            <End Role="EveReceptionEquipementsInfrastructures" EntitySet="EveReceptionEquipementsInfrastructures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveReceptionEquipementsInfrastructures_ResEquipementsInfrastructures" Association="Self.FK_EveReceptionEquipementsInfrastructures_ResEquipementsInfrastructures">
+            <End Role="ResEquipementsInfrastructures" EntitySet="ResEquipementsInfrastructures" />
+            <End Role="EveReceptionEquipementsInfrastructures" EntitySet="EveReceptionEquipementsInfrastructures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveReceptionMatieresPremieres_AgeEmployes" Association="Self.FK_EveReceptionMatieresPremieres_AgeEmployes">
+            <End Role="AgeEmployes" EntitySet="AgeEmployes" />
+            <End Role="EveReceptionMatieresPremieres" EntitySet="EveReceptionMatieresPremieres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveReceptionMatieresPremieres_AgeFournisseursMatieresPremieres" Association="Self.FK_EveReceptionMatieresPremieres_AgeFournisseursMatieresPremieres">
+            <End Role="AgeFournisseursMatieresPremieres" EntitySet="AgeFournisseursMatieresPremieres" />
+            <End Role="EveReceptionMatieresPremieres" EntitySet="EveReceptionMatieresPremieres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveReceptionMatieresPremieres_ResStockMatieresPremieres" Association="Self.FK_EveReceptionMatieresPremieres_ResStockMatieresPremieres">
+            <End Role="ResStockMatieresPremieres" EntitySet="ResStockMatieresPremieres" />
+            <End Role="EveReceptionMatieresPremieres" EntitySet="EveReceptionMatieresPremieres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveUtilisationEquipementInfrastructures_EveUtilisationRessources" Association="Self.FK_EveUtilisationEquipementInfrastructures_EveUtilisationRessources">
+            <End Role="EveUtilisationRessources" EntitySet="EveUtilisationRessources" />
+            <End Role="EveUtilisationEquipementInfrastructures" EntitySet="EveUtilisationEquipementInfrastructures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveUtilisationEquipementInfrastructures_ResEquipementsInfrastructures" Association="Self.FK_EveUtilisationEquipementInfrastructures_ResEquipementsInfrastructures">
+            <End Role="ResEquipementsInfrastructures" EntitySet="ResEquipementsInfrastructures" />
+            <End Role="EveUtilisationEquipementInfrastructures" EntitySet="EveUtilisationEquipementInfrastructures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveUtilisationMatieresPremieres_EveUtilisationRessources" Association="Self.FK_EveUtilisationMatieresPremieres_EveUtilisationRessources">
+            <End Role="EveUtilisationRessources" EntitySet="EveUtilisationRessources" />
+            <End Role="EveUtilisationMatieresPremieres" EntitySet="EveUtilisationMatieresPremieres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveUtilisationMatieresPremieres_ResStockMatieresPremieres" Association="Self.FK_EveUtilisationMatieresPremieres_ResStockMatieresPremieres">
+            <End Role="ResStockMatieresPremieres" EntitySet="ResStockMatieresPremieres" />
+            <End Role="EveUtilisationMatieresPremieres" EntitySet="EveUtilisationMatieresPremieres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveUtilisationProduitsSemiFinis_EveUtilisationRessources" Association="Self.FK_EveUtilisationProduitsSemiFinis_EveUtilisationRessources">
+            <End Role="EveUtilisationRessources" EntitySet="EveUtilisationRessources" />
+            <End Role="EveUtilisationProduitsSemiFinis" EntitySet="EveUtilisationProduitsSemiFinis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveUtilisationProduitsSemiFinis_ResStockProduitsSemiFinis" Association="Self.FK_EveUtilisationProduitsSemiFinis_ResStockProduitsSemiFinis">
+            <End Role="ResStockProduitsSemiFinis" EntitySet="ResStockProduitsSemiFinis" />
+            <End Role="EveUtilisationProduitsSemiFinis" EntitySet="EveUtilisationProduitsSemiFinis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveUtilisationRessources_AgeEmployes" Association="Self.FK_EveUtilisationRessources_AgeEmployes">
+            <End Role="AgeEmployes" EntitySet="AgeEmployes" />
+            <End Role="EveUtilisationRessources" EntitySet="EveUtilisationRessources" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveUtilisationRessources_AgeEmployes1" Association="Self.FK_EveUtilisationRessources_AgeEmployes1">
+            <End Role="AgeEmployes" EntitySet="AgeEmployes" />
+            <End Role="EveUtilisationRessources" EntitySet="EveUtilisationRessources" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveVentes_AgeClients" Association="Self.FK_EveVentes_AgeClients">
+            <End Role="AgeClients" EntitySet="AgeClients" />
+            <End Role="EveVentes" EntitySet="EveVentes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveVentes_AgeEmployes" Association="Self.FK_EveVentes_AgeEmployes">
+            <End Role="AgeEmployes" EntitySet="AgeEmployes" />
+            <End Role="EveVentes" EntitySet="EveVentes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveVenteStockProduitsFinis_EveVentes" Association="Self.FK_EveVenteStockProduitsFinis_EveVentes">
+            <End Role="EveVentes" EntitySet="EveVentes" />
+            <End Role="EveVenteStockProduitsFinis" EntitySet="EveVenteStockProduitsFinis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveVenteStockProduitsFinis_ResStockProduitsFinis" Association="Self.FK_EveVenteStockProduitsFinis_ResStockProduitsFinis">
+            <End Role="ResStockProduitsFinis" EntitySet="ResStockProduitsFinis" />
+            <End Role="EveVenteStockProduitsFinis" EntitySet="EveVenteStockProduitsFinis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResStockProduitsSemiFinis_ResStockMatieresPremieres" Association="Self.FK_ResStockProduitsSemiFinis_ResStockMatieresPremieres">
+            <End Role="ResStockMatieresPremieres" EntitySet="ResStockMatieresPremieres" />
+            <End Role="ResStockProduitsSemiFinis" EntitySet="ResStockProduitsSemiFinis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResStockProduitsSemiFinis_ResStockProduitsSemiFinis" Association="Self.FK_ResStockProduitsSemiFinis_ResStockProduitsSemiFinis">
+            <End Role="ResStockProduitsSemiFinis" EntitySet="ResStockProduitsSemiFinis" />
+            <End Role="ResStockProduitsSemiFinis1" EntitySet="ResStockProduitsSemiFinis" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CasaDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AgeAutreFournisseur">
+          <Key>
+            <PropertyRef Name="CodeAutreFournisseur" />
+          </Key>
+          <Property Name="CodeAutreFournisseur" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NomAutreFournisseur" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Localite" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SoldeInitialDetteFournisseur" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="EveDecaissements" Relationship="Self.FK_EveDecaissements_AgeAutreFournisseurs" FromRole="AgeAutreFournisseurs" ToRole="EveDecaissements" />
+          <NavigationProperty Name="EveReceptionEquipementsInfrastructures" Relationship="Self.FK_EveReceptionEquipementsInfrastructures_AgeAutreFournisseurs" FromRole="AgeAutreFournisseurs" ToRole="EveReceptionEquipementsInfrastructures" />
+        </EntityType>
+        <EntityType Name="AgeClient">
+          <Key>
+            <PropertyRef Name="CodeClient" />
+          </Key>
+          <Property Name="CodeClient" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NomClient" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Localite" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SoldeInitialeCreance" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="EveEncaissements" Relationship="Self.FK_EveEncaissements_AgeClients" FromRole="AgeClients" ToRole="EveEncaissements" />
+          <NavigationProperty Name="EveVentes" Relationship="Self.FK_EveVentes_AgeClients" FromRole="AgeClients" ToRole="EveVentes" />
+        </EntityType>
+        <EntityType Name="AgeEmploye">
+          <Key>
+            <PropertyRef Name="CodeEmploye" />
+          </Key>
+          <Property Name="CodeEmploye" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PrenomNom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Poste" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="EveAcquisitionServicesFournitures" Relationship="Self.FK_EveAcquisitionServicesFournitures_AgeEmployes" FromRole="AgeEmployes" ToRole="EveAcquisitionServicesFournitures" />
+          <NavigationProperty Name="EveDecaissements" Relationship="Self.FK_EveDecaissements_AgeEmployes" FromRole="AgeEmployes" ToRole="EveDecaissements" />
+          <NavigationProperty Name="EveEncaissements" Relationship="Self.FK_EveEncaissements_AgeEmployes" FromRole="AgeEmployes" ToRole="EveEncaissements" />
+          <NavigationProperty Name="EvePresenceEmployes" Relationship="Self.FK_EvePresenceEmployes_AgeEmployes" FromRole="AgeEmployes" ToRole="EvePresenceEmployes" />
+          <NavigationProperty Name="EveProductions" Relationship="Self.FK_EveProductions_AgeEmployes1" FromRole="AgeEmployes" ToRole="EveProductions" />
+          <NavigationProperty Name="EveReceptionEquipementsInfrastructures" Relationship="Self.FK_EveReceptionEquipementsInfrastructures_AgeEmployes" FromRole="AgeEmployes" ToRole="EveReceptionEquipementsInfrastructures" />
+          <NavigationProperty Name="EveReceptionMatieresPremieres" Relationship="Self.FK_EveReceptionMatieresPremieres_AgeEmployes" FromRole="AgeEmployes" ToRole="EveReceptionMatieresPremieres" />
+          <NavigationProperty Name="EveUtilisationRessources" Relationship="Self.FK_EveUtilisationRessources_AgeEmployes" FromRole="AgeEmployes" ToRole="EveUtilisationRessources" />
+          <NavigationProperty Name="EveUtilisationRessources1" Relationship="Self.FK_EveUtilisationRessources_AgeEmployes1" FromRole="AgeEmployes" ToRole="EveUtilisationRessources" />
+          <NavigationProperty Name="EveVentes" Relationship="Self.FK_EveVentes_AgeEmployes" FromRole="AgeEmployes" ToRole="EveVentes" />
+        </EntityType>
+        <EntityType Name="AgeFournisseursMatieresPremiere">
+          <Key>
+            <PropertyRef Name="CodeFournisseurMatierePremiere" />
+          </Key>
+          <Property Name="CodeFournisseurMatierePremiere" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Localite" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SoldeDette" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="EveDecaissements" Relationship="Self.FK_EveDecaissements_AgeFournisseursMatieresPremieres" FromRole="AgeFournisseursMatieresPremieres" ToRole="EveDecaissements" />
+          <NavigationProperty Name="EveReceptionMatieresPremieres" Relationship="Self.FK_EveReceptionMatieresPremieres_AgeFournisseursMatieresPremieres" FromRole="AgeFournisseursMatieresPremieres" ToRole="EveReceptionMatieresPremieres" />
+        </EntityType>
+        <EntityType Name="AgeFournisseursServicesFourniture">
+          <Key>
+            <PropertyRef Name="CodeFournisseurServiceFourniture" />
+          </Key>
+          <Property Name="CodeFournisseurServiceFourniture" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NomFournisseurServiceFourniture" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Localite" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SoldeDette" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="EveAcquisitionServicesFournitures" Relationship="Self.FK_EveAcquisitionServicesFournitures_AgeFournisseursServicesFournitures" FromRole="AgeFournisseursServicesFournitures" ToRole="EveAcquisitionServicesFournitures" />
+          <NavigationProperty Name="EveDecaissements" Relationship="Self.FK_EveDecaissements_AgeFournisseursServicesFournitures" FromRole="AgeFournisseursServicesFournitures" ToRole="EveDecaissements" />
+        </EntityType>
+        <EntityType Name="EveAcquisitionServicesFourniture">
+          <Key>
+            <PropertyRef Name="CodeAcquisitionServiceFourniture" />
+          </Key>
+          <Property Name="CodeAcquisitionServiceFourniture" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Montant" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="CodeServiceFourniture" Type="Int32" Nullable="false" />
+          <Property Name="CodeFournisseurServiceFourniture" Type="Int32" Nullable="false" />
+          <Property Name="CodeEmploye" Type="Int32" />
+          <NavigationProperty Name="AgeEmploye" Relationship="Self.FK_EveAcquisitionServicesFournitures_AgeEmployes" FromRole="EveAcquisitionServicesFournitures" ToRole="AgeEmployes" />
+          <NavigationProperty Name="AgeFournisseursServicesFourniture" Relationship="Self.FK_EveAcquisitionServicesFournitures_AgeFournisseursServicesFournitures" FromRole="EveAcquisitionServicesFournitures" ToRole="AgeFournisseursServicesFournitures" />
+          <NavigationProperty Name="ResServicesFourniture" Relationship="Self.FK_EveAcquisitionServicesFournitures_ResServicesFournitures" FromRole="EveAcquisitionServicesFournitures" ToRole="ResServicesFournitures" />
+          <NavigationProperty Name="EveDecaissements" Relationship="Self.FK_EveDecaissements_EveAcquisitionServicesFournitures" FromRole="EveAcquisitionServicesFournitures" ToRole="EveDecaissements" />
+        </EntityType>
+        <EntityType Name="EveDecaissement">
+          <Key>
+            <PropertyRef Name="CodeDecaissement" />
+          </Key>
+          <Property Name="CodeDecaissement" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CodeFournisseurMatierePremiere" Type="Int32" />
+          <Property Name="CodeFournisseurService" Type="Int32" />
+          <Property Name="CodeAutreFournisseur" Type="Int32" />
+          <Property Name="CodeEmploye" Type="Int32" Nullable="false" />
+          <Property Name="CodeAcquisitionServiceFourniture" Type="Int32" />
+          <Property Name="CodeReceptionEquipementInfrastructure" Type="Int32" />
+          <Property Name="CodeReceptionMatierePremiere" Type="Int32" />
+          <Property Name="CodeCompte" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateDecaissement" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Montant" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="AgeAutreFournisseur" Relationship="Self.FK_EveDecaissements_AgeAutreFournisseurs" FromRole="EveDecaissements" ToRole="AgeAutreFournisseurs" />
+          <NavigationProperty Name="AgeEmploye" Relationship="Self.FK_EveDecaissements_AgeEmployes" FromRole="EveDecaissements" ToRole="AgeEmployes" />
+          <NavigationProperty Name="AgeFournisseursMatieresPremiere" Relationship="Self.FK_EveDecaissements_AgeFournisseursMatieresPremieres" FromRole="EveDecaissements" ToRole="AgeFournisseursMatieresPremieres" />
+          <NavigationProperty Name="AgeFournisseursServicesFourniture" Relationship="Self.FK_EveDecaissements_AgeFournisseursServicesFournitures" FromRole="EveDecaissements" ToRole="AgeFournisseursServicesFournitures" />
+          <NavigationProperty Name="EveAcquisitionServicesFourniture" Relationship="Self.FK_EveDecaissements_EveAcquisitionServicesFournitures" FromRole="EveDecaissements" ToRole="EveAcquisitionServicesFournitures" />
+          <NavigationProperty Name="EveReceptionEquipementsInfrastructure" Relationship="Self.FK_EveDecaissements_EveReceptionEquipementsInfrastructures" FromRole="EveDecaissements" ToRole="EveReceptionEquipementsInfrastructures" />
+          <NavigationProperty Name="EveReceptionMatieresPremiere" Relationship="Self.FK_EveDecaissements_EveReceptionMatieresPremieres" FromRole="EveDecaissements" ToRole="EveReceptionMatieresPremieres" />
+          <NavigationProperty Name="ResComptesTresorerie" Relationship="Self.FK_EveDecaissements_ResComptesTresorerie" FromRole="EveDecaissements" ToRole="ResComptesTresorerie" />
+        </EntityType>
+        <EntityType Name="EveEncaissement">
+          <Key>
+            <PropertyRef Name="CodeEncaissement" />
+          </Key>
+          <Property Name="CodeEncaissement" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CodeClient" Type="Int32" Nullable="false" />
+          <Property Name="CodeEmploye" Type="Int32" Nullable="false" />
+          <Property Name="CodeCompte" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AgeClient" Relationship="Self.FK_EveEncaissements_AgeClients" FromRole="EveEncaissements" ToRole="AgeClients" />
+          <NavigationProperty Name="AgeEmploye" Relationship="Self.FK_EveEncaissements_AgeEmployes" FromRole="EveEncaissements" ToRole="AgeEmployes" />
+          <NavigationProperty Name="ResComptesTresorerie" Relationship="Self.FK_EveEncaissements_ResComptesTresorerie" FromRole="EveEncaissements" ToRole="ResComptesTresorerie" />
+          <NavigationProperty Name="EveEncaissementsVentes" Relationship="Self.FK_EveEncaissementsVentes_EveEncaissements" FromRole="EveEncaissements" ToRole="EveEncaissementsVentes" />
+        </EntityType>
+        <EntityType Name="EveEncaissementsVente">
+          <Key>
+            <PropertyRef Name="CodeEncaissement" />
+            <PropertyRef Name="CodeVente" />
+          </Key>
+          <Property Name="CodeEncaissement" Type="Int32" Nullable="false" />
+          <Property Name="CodeVente" Type="Int32" Nullable="false" />
+          <Property Name="MontantEncaisse" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="DateEncaissement" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="EveEncaissement" Relationship="Self.FK_EveEncaissementsVentes_EveEncaissements" FromRole="EveEncaissementsVentes" ToRole="EveEncaissements" />
+          <NavigationProperty Name="EveVente" Relationship="Self.FK_EveEncaissementsVentes_EveVentes" FromRole="EveEncaissementsVentes" ToRole="EveVentes" />
+        </EntityType>
+        <EntityType Name="EvePresenceEmploye">
+          <Key>
+            <PropertyRef Name="CodePresence" />
+          </Key>
+          <Property Name="CodePresence" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CodeEmploye" Type="Int32" Nullable="false" />
+          <Property Name="CodeUtilisationDesRessources" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AgeEmploye" Relationship="Self.FK_EvePresenceEmployes_AgeEmployes" FromRole="EvePresenceEmployes" ToRole="AgeEmployes" />
+        </EntityType>
+        <EntityType Name="EveProductionProduitsSemiFini">
+          <Key>
+            <PropertyRef Name="CodeProduction" />
+            <PropertyRef Name="CodeProduitSemiFini" />
+          </Key>
+          <Property Name="CodeProduction" Type="Int32" Nullable="false" />
+          <Property Name="CodeProduitSemiFini" Type="Int32" Nullable="false" />
+          <Property Name="QuantiteProduitSemiFini" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="EveProduction" Relationship="Self.FK_EveProductionProduitsSemiFinis_EveProductions" FromRole="EveProductionProduitsSemiFinis" ToRole="EveProductions" />
+          <NavigationProperty Name="ResStockProduitsSemiFini" Relationship="Self.FK_EveProductionProduitsSemiFinis_ResStockProduitsSemiFinis" FromRole="EveProductionProduitsSemiFinis" ToRole="ResStockProduitsSemiFinis" />
+        </EntityType>
+        <EntityType Name="EveProduction">
+          <Key>
+            <PropertyRef Name="CodeProduction" />
+          </Key>
+          <Property Name="CodeProduction" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CodeUtilisationRessources" Type="Int32" Nullable="false" />
+          <Property Name="CodeEmploye_Resp_stock_produits_finis" Type="Int32" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="AgeEmploye" Relationship="Self.FK_EveProductions_AgeEmployes1" FromRole="EveProductions" ToRole="AgeEmployes" />
+          <NavigationProperty Name="EveProductionProduitsSemiFinis" Relationship="Self.FK_EveProductionProduitsSemiFinis_EveProductions" FromRole="EveProductions" ToRole="EveProductionProduitsSemiFinis" />
+          <NavigationProperty Name="EveUtilisationRessource" Relationship="Self.FK_EveProductions_EveUtilisationRessources" FromRole="EveProductions" ToRole="EveUtilisationRessources" />
+          <NavigationProperty Name="EveProductionStockProduitsFinis" Relationship="Self.FK_EveProductionStockProduitsFinis_EveProductions" FromRole="EveProductions" ToRole="EveProductionStockProduitsFinis" />
+        </EntityType>
+        <EntityType Name="EveProductionStockProduitsFini">
+          <Key>
+            <PropertyRef Name="CodeProduction" />
+            <PropertyRef Name="CodeProduitFini" />
+          </Key>
+          <Property Name="CodeProduction" Type="Int32" Nullable="false" />
+          <Property Name="CodeProduitFini" Type="Int32" Nullable="false" />
+          <Property Name="QuantiteProduitFini" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="EveProduction" Relationship="Self.FK_EveProductionStockProduitsFinis_EveProductions" FromRole="EveProductionStockProduitsFinis" ToRole="EveProductions" />
+          <NavigationProperty Name="ResStockProduitsFini" Relationship="Self.FK_EveProductionStockProduitsFinis_ResStockProduitsFinis" FromRole="EveProductionStockProduitsFinis" ToRole="ResStockProduitsFinis" />
+        </EntityType>
+        <EntityType Name="EveReceptionEquipementsInfrastructure">
+          <Key>
+            <PropertyRef Name="CodeReceptionEquipementInfrastructure" />
+          </Key>
+          <Property Name="CodeReceptionEquipementInfrastructure" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CodeEquipementInfrastructure" Type="Int32" Nullable="false" />
+          <Property Name="DateReception" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CodeEmploye" Type="Int32" Nullable="false" />
+          <Property Name="CodeAutreFournisseur" Type="Int32" Nullable="false" />
+          <Property Name="Quantite" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AgeAutreFournisseur" Relationship="Self.FK_EveReceptionEquipementsInfrastructures_AgeAutreFournisseurs" FromRole="EveReceptionEquipementsInfrastructures" ToRole="AgeAutreFournisseurs" />
+          <NavigationProperty Name="AgeEmploye" Relationship="Self.FK_EveReceptionEquipementsInfrastructures_AgeEmployes" FromRole="EveReceptionEquipementsInfrastructures" ToRole="AgeEmployes" />
+          <NavigationProperty Name="EveDecaissements" Relationship="Self.FK_EveDecaissements_EveReceptionEquipementsInfrastructures" FromRole="EveReceptionEquipementsInfrastructures" ToRole="EveDecaissements" />
+          <NavigationProperty Name="ResEquipementsInfrastructure" Relationship="Self.FK_EveReceptionEquipementsInfrastructures_ResEquipementsInfrastructures" FromRole="EveReceptionEquipementsInfrastructures" ToRole="ResEquipementsInfrastructures" />
+        </EntityType>
+        <EntityType Name="EveReceptionMatieresPremiere">
+          <Key>
+            <PropertyRef Name="CodeReceptionMatierePremiere" />
+          </Key>
+          <Property Name="CodeReceptionMatierePremiere" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CodeMatierePremiere" Type="Int32" Nullable="false" />
+          <Property Name="DateReception" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Quantite" Type="Int32" Nullable="false" />
+          <Property Name="Montant" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="CodeFournisseurMatierePremiere" Type="Int32" Nullable="false" />
+          <Property Name="CodeEmploye" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AgeEmploye" Relationship="Self.FK_EveReceptionMatieresPremieres_AgeEmployes" FromRole="EveReceptionMatieresPremieres" ToRole="AgeEmployes" />
+          <NavigationProperty Name="AgeFournisseursMatieresPremiere" Relationship="Self.FK_EveReceptionMatieresPremieres_AgeFournisseursMatieresPremieres" FromRole="EveReceptionMatieresPremieres" ToRole="AgeFournisseursMatieresPremieres" />
+          <NavigationProperty Name="EveDecaissements" Relationship="Self.FK_EveDecaissements_EveReceptionMatieresPremieres" FromRole="EveReceptionMatieresPremieres" ToRole="EveDecaissements" />
+          <NavigationProperty Name="ResStockMatieresPremiere" Relationship="Self.FK_EveReceptionMatieresPremieres_ResStockMatieresPremieres" FromRole="EveReceptionMatieresPremieres" ToRole="ResStockMatieresPremieres" />
+        </EntityType>
+        <EntityType Name="EveUtilisationMatieresPremiere">
+          <Key>
+            <PropertyRef Name="CodeUtilisationRessource" />
+            <PropertyRef Name="CodeMatierePremiere" />
+          </Key>
+          <Property Name="CodeUtilisationRessource" Type="Int32" Nullable="false" />
+          <Property Name="CodeMatierePremiere" Type="Int32" Nullable="false" />
+          <Property Name="QuantiteMatierePremiere" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="EveUtilisationRessource" Relationship="Self.FK_EveUtilisationMatieresPremieres_EveUtilisationRessources" FromRole="EveUtilisationMatieresPremieres" ToRole="EveUtilisationRessources" />
+          <NavigationProperty Name="ResStockMatieresPremiere" Relationship="Self.FK_EveUtilisationMatieresPremieres_ResStockMatieresPremieres" FromRole="EveUtilisationMatieresPremieres" ToRole="ResStockMatieresPremieres" />
+        </EntityType>
+        <EntityType Name="EveUtilisationProduitsSemiFini">
+          <Key>
+            <PropertyRef Name="CodeUtilisationRessource" />
+            <PropertyRef Name="CodeProduitSemiFini" />
+          </Key>
+          <Property Name="CodeUtilisationRessource" Type="Int32" Nullable="false" />
+          <Property Name="CodeProduitSemiFini" Type="Int32" Nullable="false" />
+          <Property Name="QuantiteProduitSemiFini" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="EveUtilisationRessource" Relationship="Self.FK_EveUtilisationProduitsSemiFinis_EveUtilisationRessources" FromRole="EveUtilisationProduitsSemiFinis" ToRole="EveUtilisationRessources" />
+          <NavigationProperty Name="ResStockProduitsSemiFini" Relationship="Self.FK_EveUtilisationProduitsSemiFinis_ResStockProduitsSemiFinis" FromRole="EveUtilisationProduitsSemiFinis" ToRole="ResStockProduitsSemiFinis" />
+        </EntityType>
+        <EntityType Name="EveUtilisationRessource">
+          <Key>
+            <PropertyRef Name="CodeUtilisationRessources" />
+          </Key>
+          <Property Name="CodeEmploye_Resp_production_" Type="Int32" Nullable="false" />
+          <Property Name="CodeEmploye_Resp_stock_matiere_premiere_" Type="Int32" Nullable="false" />
+          <Property Name="CodeUtilisationRessources" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="AgeEmploye" Relationship="Self.FK_EveUtilisationRessources_AgeEmployes" FromRole="EveUtilisationRessources" ToRole="AgeEmployes" />
+          <NavigationProperty Name="AgeEmploye1" Relationship="Self.FK_EveUtilisationRessources_AgeEmployes1" FromRole="EveUtilisationRessources" ToRole="AgeEmployes" />
+          <NavigationProperty Name="EveProductions" Relationship="Self.FK_EveProductions_EveUtilisationRessources" FromRole="EveUtilisationRessources" ToRole="EveProductions" />
+          <NavigationProperty Name="EveUtilisationMatieresPremieres" Relationship="Self.FK_EveUtilisationMatieresPremieres_EveUtilisationRessources" FromRole="EveUtilisationRessources" ToRole="EveUtilisationMatieresPremieres" />
+          <NavigationProperty Name="EveUtilisationProduitsSemiFinis" Relationship="Self.FK_EveUtilisationProduitsSemiFinis_EveUtilisationRessources" FromRole="EveUtilisationRessources" ToRole="EveUtilisationProduitsSemiFinis" />
+          <NavigationProperty Name="ResEquipementsInfrastructures" Relationship="Self.EveUtilisationEquipementInfrastructures" FromRole="EveUtilisationRessources" ToRole="ResEquipementsInfrastructures" />
+        </EntityType>
+        <EntityType Name="EveVente">
+          <Key>
+            <PropertyRef Name="CodeVente" />
+          </Key>
+          <Property Name="CodeVente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CodeClient" Type="Int32" Nullable="false" />
+          <Property Name="CodeEmploye" Type="Int32" Nullable="false" />
+          <Property Name="DateVente" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="AgeClient" Relationship="Self.FK_EveVentes_AgeClients" FromRole="EveVentes" ToRole="AgeClients" />
+          <NavigationProperty Name="AgeEmploye" Relationship="Self.FK_EveVentes_AgeEmployes" FromRole="EveVentes" ToRole="AgeEmployes" />
+          <NavigationProperty Name="EveEncaissementsVentes" Relationship="Self.FK_EveEncaissementsVentes_EveVentes" FromRole="EveVentes" ToRole="EveEncaissementsVentes" />
+          <NavigationProperty Name="EveVenteStockProduitsFinis" Relationship="Self.FK_EveVenteStockProduitsFinis_EveVentes" FromRole="EveVentes" ToRole="EveVenteStockProduitsFinis" />
+        </EntityType>
+        <EntityType Name="EveVenteStockProduitsFini">
+          <Key>
+            <PropertyRef Name="CodeVente" />
+            <PropertyRef Name="CodeProduitFini" />
+          </Key>
+          <Property Name="CodeVente" Type="Int32" Nullable="false" />
+          <Property Name="CodeProduitFini" Type="Int32" Nullable="false" />
+          <Property Name="QuantiteProduitFini" Type="Int32" Nullable="false" />
+          <Property Name="Montant" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="EveVente" Relationship="Self.FK_EveVenteStockProduitsFinis_EveVentes" FromRole="EveVenteStockProduitsFinis" ToRole="EveVentes" />
+          <NavigationProperty Name="ResStockProduitsFini" Relationship="Self.FK_EveVenteStockProduitsFinis_ResStockProduitsFinis" FromRole="EveVenteStockProduitsFinis" ToRole="ResStockProduitsFinis" />
+        </EntityType>
+        <EntityType Name="ResComptesTresorerie">
+          <Key>
+            <PropertyRef Name="CodeCompte" />
+          </Key>
+          <Property Name="CodeCompte" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NomCompte" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SoldeCompte" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="EveDecaissements" Relationship="Self.FK_EveDecaissements_ResComptesTresorerie" FromRole="ResComptesTresorerie" ToRole="EveDecaissements" />
+          <NavigationProperty Name="EveEncaissements" Relationship="Self.FK_EveEncaissements_ResComptesTresorerie" FromRole="ResComptesTresorerie" ToRole="EveEncaissements" />
+        </EntityType>
+        <EntityType Name="ResEquipementsInfrastructure">
+          <Key>
+            <PropertyRef Name="CodeEquipementInfrastructure" />
+          </Key>
+          <Property Name="CodeEquipementInfrastructure" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AmortissementCumule" Type="Int32" Nullable="false" />
+          <Property Name="DateAcquisition" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DureeDeVie" Type="Int32" Nullable="false" />
+          <Property Name="Cout" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="EveReceptionEquipementsInfrastructures" Relationship="Self.FK_EveReceptionEquipementsInfrastructures_ResEquipementsInfrastructures" FromRole="ResEquipementsInfrastructures" ToRole="EveReceptionEquipementsInfrastructures" />
+          <NavigationProperty Name="EveUtilisationRessources" Relationship="Self.EveUtilisationEquipementInfrastructures" FromRole="ResEquipementsInfrastructures" ToRole="EveUtilisationRessources" />
+        </EntityType>
+        <EntityType Name="ResServicesFourniture">
+          <Key>
+            <PropertyRef Name="CodeServiceFourniture" />
+          </Key>
+          <Property Name="CodeServiceFourniture" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NomServiceFourniture" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="EveAcquisitionServicesFournitures" Relationship="Self.FK_EveAcquisitionServicesFournitures_ResServicesFournitures" FromRole="ResServicesFournitures" ToRole="EveAcquisitionServicesFournitures" />
+        </EntityType>
+        <EntityType Name="ResStockMatieresPremiere">
+          <Key>
+            <PropertyRef Name="CodeMatierePremiere" />
+          </Key>
+          <Property Name="CodeMatierePremiere" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NomMatiere" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StockMatiere" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="EveReceptionMatieresPremieres" Relationship="Self.FK_EveReceptionMatieresPremieres_ResStockMatieresPremieres" FromRole="ResStockMatieresPremieres" ToRole="EveReceptionMatieresPremieres" />
+          <NavigationProperty Name="EveUtilisationMatieresPremieres" Relationship="Self.FK_EveUtilisationMatieresPremieres_ResStockMatieresPremieres" FromRole="ResStockMatieresPremieres" ToRole="EveUtilisationMatieresPremieres" />
+          <NavigationProperty Name="ResStockProduitsSemiFinis" Relationship="Self.FK_ResStockProduitsSemiFinis_ResStockMatieresPremieres" FromRole="ResStockMatieresPremieres" ToRole="ResStockProduitsSemiFinis" />
+        </EntityType>
+        <EntityType Name="ResStockProduitsFini">
+          <Key>
+            <PropertyRef Name="CodeProduit" />
+          </Key>
+          <Property Name="CodeProduit" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NomProduit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StockProduit" Type="Int32" Nullable="false" />
+          <Property Name="PrixDeVenteStandard" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="EveProductionStockProduitsFinis" Relationship="Self.FK_EveProductionStockProduitsFinis_ResStockProduitsFinis" FromRole="ResStockProduitsFinis" ToRole="EveProductionStockProduitsFinis" />
+          <NavigationProperty Name="EveVenteStockProduitsFinis" Relationship="Self.FK_EveVenteStockProduitsFinis_ResStockProduitsFinis" FromRole="ResStockProduitsFinis" ToRole="EveVenteStockProduitsFinis" />
+        </EntityType>
+        <EntityType Name="ResStockProduitsSemiFini">
+          <Key>
+            <PropertyRef Name="CodeProduitSemiFini" />
+          </Key>
+          <Property Name="CodeProduitSemiFini" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CodeMatierePremiere" Type="Int32" Nullable="false" />
+          <Property Name="Quantite" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="EveProductionProduitsSemiFinis" Relationship="Self.FK_EveProductionProduitsSemiFinis_ResStockProduitsSemiFinis" FromRole="ResStockProduitsSemiFinis" ToRole="EveProductionProduitsSemiFinis" />
+          <NavigationProperty Name="EveUtilisationProduitsSemiFinis" Relationship="Self.FK_EveUtilisationProduitsSemiFinis_ResStockProduitsSemiFinis" FromRole="ResStockProduitsSemiFinis" ToRole="EveUtilisationProduitsSemiFinis" />
+          <NavigationProperty Name="ResStockMatieresPremiere" Relationship="Self.FK_ResStockProduitsSemiFinis_ResStockMatieresPremieres" FromRole="ResStockProduitsSemiFinis" ToRole="ResStockMatieresPremieres" />
+          <NavigationProperty Name="ResStockProduitsSemiFinis1" Relationship="Self.FK_ResStockProduitsSemiFinis_ResStockProduitsSemiFinis" FromRole="ResStockProduitsSemiFinis" ToRole="ResStockProduitsSemiFinis1" />
+          <NavigationProperty Name="ResStockProduitsSemiFini1" Relationship="Self.FK_ResStockProduitsSemiFinis_ResStockProduitsSemiFinis" FromRole="ResStockProduitsSemiFinis1" ToRole="ResStockProduitsSemiFinis" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_EveDecaissements_AgeAutreFournisseurs">
+          <End Role="AgeAutreFournisseurs" Type="Self.AgeAutreFournisseur" Multiplicity="0..1" />
+          <End Role="EveDecaissements" Type="Self.EveDecaissement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgeAutreFournisseurs">
+              <PropertyRef Name="CodeAutreFournisseur" />
+            </Principal>
+            <Dependent Role="EveDecaissements">
+              <PropertyRef Name="CodeAutreFournisseur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveReceptionEquipementsInfrastructures_AgeAutreFournisseurs">
+          <End Role="AgeAutreFournisseurs" Type="Self.AgeAutreFournisseur" Multiplicity="1" />
+          <End Role="EveReceptionEquipementsInfrastructures" Type="Self.EveReceptionEquipementsInfrastructure" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgeAutreFournisseurs">
+              <PropertyRef Name="CodeAutreFournisseur" />
+            </Principal>
+            <Dependent Role="EveReceptionEquipementsInfrastructures">
+              <PropertyRef Name="CodeAutreFournisseur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveEncaissements_AgeClients">
+          <End Role="AgeClients" Type="Self.AgeClient" Multiplicity="1" />
+          <End Role="EveEncaissements" Type="Self.EveEncaissement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgeClients">
+              <PropertyRef Name="CodeClient" />
+            </Principal>
+            <Dependent Role="EveEncaissements">
+              <PropertyRef Name="CodeClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveVentes_AgeClients">
+          <End Role="AgeClients" Type="Self.AgeClient" Multiplicity="1" />
+          <End Role="EveVentes" Type="Self.EveVente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgeClients">
+              <PropertyRef Name="CodeClient" />
+            </Principal>
+            <Dependent Role="EveVentes">
+              <PropertyRef Name="CodeClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveAcquisitionServicesFournitures_AgeEmployes">
+          <End Role="AgeEmployes" Type="Self.AgeEmploye" Multiplicity="0..1" />
+          <End Role="EveAcquisitionServicesFournitures" Type="Self.EveAcquisitionServicesFourniture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgeEmployes">
+              <PropertyRef Name="CodeEmploye" />
+            </Principal>
+            <Dependent Role="EveAcquisitionServicesFournitures">
+              <PropertyRef Name="CodeEmploye" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveDecaissements_AgeEmployes">
+          <End Role="AgeEmployes" Type="Self.AgeEmploye" Multiplicity="1" />
+          <End Role="EveDecaissements" Type="Self.EveDecaissement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgeEmployes">
+              <PropertyRef Name="CodeEmploye" />
+            </Principal>
+            <Dependent Role="EveDecaissements">
+              <PropertyRef Name="CodeEmploye" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveEncaissements_AgeEmployes">
+          <End Role="AgeEmployes" Type="Self.AgeEmploye" Multiplicity="1" />
+          <End Role="EveEncaissements" Type="Self.EveEncaissement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgeEmployes">
+              <PropertyRef Name="CodeEmploye" />
+            </Principal>
+            <Dependent Role="EveEncaissements">
+              <PropertyRef Name="CodeEmploye" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EvePresenceEmployes_AgeEmployes">
+          <End Role="AgeEmployes" Type="Self.AgeEmploye" Multiplicity="1" />
+          <End Role="EvePresenceEmployes" Type="Self.EvePresenceEmploye" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgeEmployes">
+              <PropertyRef Name="CodeEmploye" />
+            </Principal>
+            <Dependent Role="EvePresenceEmployes">
+              <PropertyRef Name="CodeEmploye" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveProductions_AgeEmployes1">
+          <End Role="AgeEmployes" Type="Self.AgeEmploye" Multiplicity="0..1" />
+          <End Role="EveProductions" Type="Self.EveProduction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgeEmployes">
+              <PropertyRef Name="CodeEmploye" />
+            </Principal>
+            <Dependent Role="EveProductions">
+              <PropertyRef Name="CodeEmploye_Resp_stock_produits_finis" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveReceptionEquipementsInfrastructures_AgeEmployes">
+          <End Role="AgeEmployes" Type="Self.AgeEmploye" Multiplicity="1" />
+          <End Role="EveReceptionEquipementsInfrastructures" Type="Self.EveReceptionEquipementsInfrastructure" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgeEmployes">
+              <PropertyRef Name="CodeEmploye" />
+            </Principal>
+            <Dependent Role="EveReceptionEquipementsInfrastructures">
+              <PropertyRef Name="CodeEmploye" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveReceptionMatieresPremieres_AgeEmployes">
+          <End Role="AgeEmployes" Type="Self.AgeEmploye" Multiplicity="1" />
+          <End Role="EveReceptionMatieresPremieres" Type="Self.EveReceptionMatieresPremiere" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgeEmployes">
+              <PropertyRef Name="CodeEmploye" />
+            </Principal>
+            <Dependent Role="EveReceptionMatieresPremieres">
+              <PropertyRef Name="CodeEmploye" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveUtilisationRessources_AgeEmployes">
+          <End Role="AgeEmployes" Type="Self.AgeEmploye" Multiplicity="1" />
+          <End Role="EveUtilisationRessources" Type="Self.EveUtilisationRessource" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgeEmployes">
+              <PropertyRef Name="CodeEmploye" />
+            </Principal>
+            <Dependent Role="EveUtilisationRessources">
+              <PropertyRef Name="CodeEmploye_Resp_production_" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveUtilisationRessources_AgeEmployes1">
+          <End Role="AgeEmployes" Type="Self.AgeEmploye" Multiplicity="1" />
+          <End Role="EveUtilisationRessources" Type="Self.EveUtilisationRessource" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgeEmployes">
+              <PropertyRef Name="CodeEmploye" />
+            </Principal>
+            <Dependent Role="EveUtilisationRessources">
+              <PropertyRef Name="CodeEmploye_Resp_stock_matiere_premiere_" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveVentes_AgeEmployes">
+          <End Role="AgeEmployes" Type="Self.AgeEmploye" Multiplicity="1" />
+          <End Role="EveVentes" Type="Self.EveVente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgeEmployes">
+              <PropertyRef Name="CodeEmploye" />
+            </Principal>
+            <Dependent Role="EveVentes">
+              <PropertyRef Name="CodeEmploye" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveDecaissements_AgeFournisseursMatieresPremieres">
+          <End Role="AgeFournisseursMatieresPremieres" Type="Self.AgeFournisseursMatieresPremiere" Multiplicity="0..1" />
+          <End Role="EveDecaissements" Type="Self.EveDecaissement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgeFournisseursMatieresPremieres">
+              <PropertyRef Name="CodeFournisseurMatierePremiere" />
+            </Principal>
+            <Dependent Role="EveDecaissements">
+              <PropertyRef Name="CodeFournisseurMatierePremiere" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveReceptionMatieresPremieres_AgeFournisseursMatieresPremieres">
+          <End Role="AgeFournisseursMatieresPremieres" Type="Self.AgeFournisseursMatieresPremiere" Multiplicity="1" />
+          <End Role="EveReceptionMatieresPremieres" Type="Self.EveReceptionMatieresPremiere" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgeFournisseursMatieresPremieres">
+              <PropertyRef Name="CodeFournisseurMatierePremiere" />
+            </Principal>
+            <Dependent Role="EveReceptionMatieresPremieres">
+              <PropertyRef Name="CodeFournisseurMatierePremiere" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveAcquisitionServicesFournitures_AgeFournisseursServicesFournitures">
+          <End Role="AgeFournisseursServicesFournitures" Type="Self.AgeFournisseursServicesFourniture" Multiplicity="1" />
+          <End Role="EveAcquisitionServicesFournitures" Type="Self.EveAcquisitionServicesFourniture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgeFournisseursServicesFournitures">
+              <PropertyRef Name="CodeFournisseurServiceFourniture" />
+            </Principal>
+            <Dependent Role="EveAcquisitionServicesFournitures">
+              <PropertyRef Name="CodeFournisseurServiceFourniture" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveDecaissements_AgeFournisseursServicesFournitures">
+          <End Role="AgeFournisseursServicesFournitures" Type="Self.AgeFournisseursServicesFourniture" Multiplicity="0..1" />
+          <End Role="EveDecaissements" Type="Self.EveDecaissement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgeFournisseursServicesFournitures">
+              <PropertyRef Name="CodeFournisseurServiceFourniture" />
+            </Principal>
+            <Dependent Role="EveDecaissements">
+              <PropertyRef Name="CodeFournisseurService" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveAcquisitionServicesFournitures_ResServicesFournitures">
+          <End Role="ResServicesFournitures" Type="Self.ResServicesFourniture" Multiplicity="1" />
+          <End Role="EveAcquisitionServicesFournitures" Type="Self.EveAcquisitionServicesFourniture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ResServicesFournitures">
+              <PropertyRef Name="CodeServiceFourniture" />
+            </Principal>
+            <Dependent Role="EveAcquisitionServicesFournitures">
+              <PropertyRef Name="CodeServiceFourniture" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveDecaissements_EveAcquisitionServicesFournitures">
+          <End Role="EveAcquisitionServicesFournitures" Type="Self.EveAcquisitionServicesFourniture" Multiplicity="0..1" />
+          <End Role="EveDecaissements" Type="Self.EveDecaissement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EveAcquisitionServicesFournitures">
+              <PropertyRef Name="CodeAcquisitionServiceFourniture" />
+            </Principal>
+            <Dependent Role="EveDecaissements">
+              <PropertyRef Name="CodeAcquisitionServiceFourniture" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveDecaissements_EveReceptionEquipementsInfrastructures">
+          <End Role="EveReceptionEquipementsInfrastructures" Type="Self.EveReceptionEquipementsInfrastructure" Multiplicity="0..1" />
+          <End Role="EveDecaissements" Type="Self.EveDecaissement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EveReceptionEquipementsInfrastructures">
+              <PropertyRef Name="CodeReceptionEquipementInfrastructure" />
+            </Principal>
+            <Dependent Role="EveDecaissements">
+              <PropertyRef Name="CodeReceptionEquipementInfrastructure" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveDecaissements_EveReceptionMatieresPremieres">
+          <End Role="EveReceptionMatieresPremieres" Type="Self.EveReceptionMatieresPremiere" Multiplicity="0..1" />
+          <End Role="EveDecaissements" Type="Self.EveDecaissement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EveReceptionMatieresPremieres">
+              <PropertyRef Name="CodeReceptionMatierePremiere" />
+            </Principal>
+            <Dependent Role="EveDecaissements">
+              <PropertyRef Name="CodeReceptionMatierePremiere" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveDecaissements_ResComptesTresorerie">
+          <End Role="ResComptesTresorerie" Type="Self.ResComptesTresorerie" Multiplicity="1" />
+          <End Role="EveDecaissements" Type="Self.EveDecaissement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ResComptesTresorerie">
+              <PropertyRef Name="CodeCompte" />
+            </Principal>
+            <Dependent Role="EveDecaissements">
+              <PropertyRef Name="CodeCompte" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveEncaissements_ResComptesTresorerie">
+          <End Role="ResComptesTresorerie" Type="Self.ResComptesTresorerie" Multiplicity="1" />
+          <End Role="EveEncaissements" Type="Self.EveEncaissement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ResComptesTresorerie">
+              <PropertyRef Name="CodeCompte" />
+            </Principal>
+            <Dependent Role="EveEncaissements">
+              <PropertyRef Name="CodeCompte" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveEncaissementsVentes_EveEncaissements">
+          <End Role="EveEncaissements" Type="Self.EveEncaissement" Multiplicity="1" />
+          <End Role="EveEncaissementsVentes" Type="Self.EveEncaissementsVente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EveEncaissements">
+              <PropertyRef Name="CodeEncaissement" />
+            </Principal>
+            <Dependent Role="EveEncaissementsVentes">
+              <PropertyRef Name="CodeEncaissement" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveEncaissementsVentes_EveVentes">
+          <End Role="EveVentes" Type="Self.EveVente" Multiplicity="1" />
+          <End Role="EveEncaissementsVentes" Type="Self.EveEncaissementsVente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EveVentes">
+              <PropertyRef Name="CodeVente" />
+            </Principal>
+            <Dependent Role="EveEncaissementsVentes">
+              <PropertyRef Name="CodeVente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveProductionProduitsSemiFinis_EveProductions">
+          <End Role="EveProductions" Type="Self.EveProduction" Multiplicity="1" />
+          <End Role="EveProductionProduitsSemiFinis" Type="Self.EveProductionProduitsSemiFini" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EveProductions">
+              <PropertyRef Name="CodeProduction" />
+            </Principal>
+            <Dependent Role="EveProductionProduitsSemiFinis">
+              <PropertyRef Name="CodeProduction" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveProductionProduitsSemiFinis_ResStockProduitsSemiFinis">
+          <End Role="ResStockProduitsSemiFinis" Type="Self.ResStockProduitsSemiFini" Multiplicity="1" />
+          <End Role="EveProductionProduitsSemiFinis" Type="Self.EveProductionProduitsSemiFini" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ResStockProduitsSemiFinis">
+              <PropertyRef Name="CodeProduitSemiFini" />
+            </Principal>
+            <Dependent Role="EveProductionProduitsSemiFinis">
+              <PropertyRef Name="CodeProduitSemiFini" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveProductions_EveUtilisationRessources">
+          <End Role="EveUtilisationRessources" Type="Self.EveUtilisationRessource" Multiplicity="1" />
+          <End Role="EveProductions" Type="Self.EveProduction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EveUtilisationRessources">
+              <PropertyRef Name="CodeUtilisationRessources" />
+            </Principal>
+            <Dependent Role="EveProductions">
+              <PropertyRef Name="CodeUtilisationRessources" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveProductionStockProduitsFinis_EveProductions">
+          <End Role="EveProductions" Type="Self.EveProduction" Multiplicity="1" />
+          <End Role="EveProductionStockProduitsFinis" Type="Self.EveProductionStockProduitsFini" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EveProductions">
+              <PropertyRef Name="CodeProduction" />
+            </Principal>
+            <Dependent Role="EveProductionStockProduitsFinis">
+              <PropertyRef Name="CodeProduction" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveProductionStockProduitsFinis_ResStockProduitsFinis">
+          <End Role="ResStockProduitsFinis" Type="Self.ResStockProduitsFini" Multiplicity="1" />
+          <End Role="EveProductionStockProduitsFinis" Type="Self.EveProductionStockProduitsFini" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ResStockProduitsFinis">
+              <PropertyRef Name="CodeProduit" />
+            </Principal>
+            <Dependent Role="EveProductionStockProduitsFinis">
+              <PropertyRef Name="CodeProduitFini" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveReceptionEquipementsInfrastructures_ResEquipementsInfrastructures">
+          <End Role="ResEquipementsInfrastructures" Type="Self.ResEquipementsInfrastructure" Multiplicity="1" />
+          <End Role="EveReceptionEquipementsInfrastructures" Type="Self.EveReceptionEquipementsInfrastructure" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ResEquipementsInfrastructures">
+              <PropertyRef Name="CodeEquipementInfrastructure" />
+            </Principal>
+            <Dependent Role="EveReceptionEquipementsInfrastructures">
+              <PropertyRef Name="CodeEquipementInfrastructure" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveReceptionMatieresPremieres_ResStockMatieresPremieres">
+          <End Role="ResStockMatieresPremieres" Type="Self.ResStockMatieresPremiere" Multiplicity="1" />
+          <End Role="EveReceptionMatieresPremieres" Type="Self.EveReceptionMatieresPremiere" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ResStockMatieresPremieres">
+              <PropertyRef Name="CodeMatierePremiere" />
+            </Principal>
+            <Dependent Role="EveReceptionMatieresPremieres">
+              <PropertyRef Name="CodeMatierePremiere" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveUtilisationMatieresPremieres_EveUtilisationRessources">
+          <End Role="EveUtilisationRessources" Type="Self.EveUtilisationRessource" Multiplicity="1" />
+          <End Role="EveUtilisationMatieresPremieres" Type="Self.EveUtilisationMatieresPremiere" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EveUtilisationRessources">
+              <PropertyRef Name="CodeUtilisationRessources" />
+            </Principal>
+            <Dependent Role="EveUtilisationMatieresPremieres">
+              <PropertyRef Name="CodeUtilisationRessource" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveUtilisationMatieresPremieres_ResStockMatieresPremieres">
+          <End Role="ResStockMatieresPremieres" Type="Self.ResStockMatieresPremiere" Multiplicity="1" />
+          <End Role="EveUtilisationMatieresPremieres" Type="Self.EveUtilisationMatieresPremiere" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ResStockMatieresPremieres">
+              <PropertyRef Name="CodeMatierePremiere" />
+            </Principal>
+            <Dependent Role="EveUtilisationMatieresPremieres">
+              <PropertyRef Name="CodeMatierePremiere" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveUtilisationProduitsSemiFinis_EveUtilisationRessources">
+          <End Role="EveUtilisationRessources" Type="Self.EveUtilisationRessource" Multiplicity="1" />
+          <End Role="EveUtilisationProduitsSemiFinis" Type="Self.EveUtilisationProduitsSemiFini" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EveUtilisationRessources">
+              <PropertyRef Name="CodeUtilisationRessources" />
+            </Principal>
+            <Dependent Role="EveUtilisationProduitsSemiFinis">
+              <PropertyRef Name="CodeUtilisationRessource" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveUtilisationProduitsSemiFinis_ResStockProduitsSemiFinis">
+          <End Role="ResStockProduitsSemiFinis" Type="Self.ResStockProduitsSemiFini" Multiplicity="1" />
+          <End Role="EveUtilisationProduitsSemiFinis" Type="Self.EveUtilisationProduitsSemiFini" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ResStockProduitsSemiFinis">
+              <PropertyRef Name="CodeProduitSemiFini" />
+            </Principal>
+            <Dependent Role="EveUtilisationProduitsSemiFinis">
+              <PropertyRef Name="CodeProduitSemiFini" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveVenteStockProduitsFinis_EveVentes">
+          <End Role="EveVentes" Type="Self.EveVente" Multiplicity="1" />
+          <End Role="EveVenteStockProduitsFinis" Type="Self.EveVenteStockProduitsFini" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EveVentes">
+              <PropertyRef Name="CodeVente" />
+            </Principal>
+            <Dependent Role="EveVenteStockProduitsFinis">
+              <PropertyRef Name="CodeVente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveVenteStockProduitsFinis_ResStockProduitsFinis">
+          <End Role="ResStockProduitsFinis" Type="Self.ResStockProduitsFini" Multiplicity="1" />
+          <End Role="EveVenteStockProduitsFinis" Type="Self.EveVenteStockProduitsFini" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ResStockProduitsFinis">
+              <PropertyRef Name="CodeProduit" />
+            </Principal>
+            <Dependent Role="EveVenteStockProduitsFinis">
+              <PropertyRef Name="CodeProduitFini" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResStockProduitsSemiFinis_ResStockMatieresPremieres">
+          <End Role="ResStockMatieresPremieres" Type="Self.ResStockMatieresPremiere" Multiplicity="1" />
+          <End Role="ResStockProduitsSemiFinis" Type="Self.ResStockProduitsSemiFini" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ResStockMatieresPremieres">
+              <PropertyRef Name="CodeMatierePremiere" />
+            </Principal>
+            <Dependent Role="ResStockProduitsSemiFinis">
+              <PropertyRef Name="CodeMatierePremiere" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResStockProduitsSemiFinis_ResStockProduitsSemiFinis">
+          <End Role="ResStockProduitsSemiFinis" Type="Self.ResStockProduitsSemiFini" Multiplicity="1" />
+          <End Role="ResStockProduitsSemiFinis1" Type="Self.ResStockProduitsSemiFini" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ResStockProduitsSemiFinis">
+              <PropertyRef Name="CodeProduitSemiFini" />
+            </Principal>
+            <Dependent Role="ResStockProduitsSemiFinis1">
+              <PropertyRef Name="CodeProduitSemiFini" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="EveUtilisationEquipementInfrastructures">
+          <End Role="EveUtilisationRessources" Type="Self.EveUtilisationRessource" Multiplicity="*" />
+          <End Role="ResEquipementsInfrastructures" Type="Self.ResEquipementsInfrastructure" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="CasaDBEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AgeAutreFournisseurs" EntityType="Self.AgeAutreFournisseur" />
+          <EntitySet Name="AgeClients" EntityType="Self.AgeClient" />
+          <EntitySet Name="AgeEmployes" EntityType="Self.AgeEmploye" />
+          <EntitySet Name="AgeFournisseursMatieresPremieres" EntityType="Self.AgeFournisseursMatieresPremiere" />
+          <EntitySet Name="AgeFournisseursServicesFournitures" EntityType="Self.AgeFournisseursServicesFourniture" />
+          <EntitySet Name="EveAcquisitionServicesFournitures" EntityType="Self.EveAcquisitionServicesFourniture" />
+          <EntitySet Name="EveDecaissements" EntityType="Self.EveDecaissement" />
+          <EntitySet Name="EveEncaissements" EntityType="Self.EveEncaissement" />
+          <EntitySet Name="EveEncaissementsVentes" EntityType="Self.EveEncaissementsVente" />
+          <EntitySet Name="EvePresenceEmployes" EntityType="Self.EvePresenceEmploye" />
+          <EntitySet Name="EveProductionProduitsSemiFinis" EntityType="Self.EveProductionProduitsSemiFini" />
+          <EntitySet Name="EveProductions" EntityType="Self.EveProduction" />
+          <EntitySet Name="EveProductionStockProduitsFinis" EntityType="Self.EveProductionStockProduitsFini" />
+          <EntitySet Name="EveReceptionEquipementsInfrastructures" EntityType="Self.EveReceptionEquipementsInfrastructure" />
+          <EntitySet Name="EveReceptionMatieresPremieres" EntityType="Self.EveReceptionMatieresPremiere" />
+          <EntitySet Name="EveUtilisationMatieresPremieres" EntityType="Self.EveUtilisationMatieresPremiere" />
+          <EntitySet Name="EveUtilisationProduitsSemiFinis" EntityType="Self.EveUtilisationProduitsSemiFini" />
+          <EntitySet Name="EveUtilisationRessources" EntityType="Self.EveUtilisationRessource" />
+          <EntitySet Name="EveVentes" EntityType="Self.EveVente" />
+          <EntitySet Name="EveVenteStockProduitsFinis" EntityType="Self.EveVenteStockProduitsFini" />
+          <EntitySet Name="ResComptesTresoreries" EntityType="Self.ResComptesTresorerie" />
+          <EntitySet Name="ResEquipementsInfrastructures" EntityType="Self.ResEquipementsInfrastructure" />
+          <EntitySet Name="ResServicesFournitures" EntityType="Self.ResServicesFourniture" />
+          <EntitySet Name="ResStockMatieresPremieres" EntityType="Self.ResStockMatieresPremiere" />
+          <EntitySet Name="ResStockProduitsFinis" EntityType="Self.ResStockProduitsFini" />
+          <EntitySet Name="ResStockProduitsSemiFinis" EntityType="Self.ResStockProduitsSemiFini" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <AssociationSet Name="FK_EveDecaissements_AgeAutreFournisseurs" Association="Self.FK_EveDecaissements_AgeAutreFournisseurs">
+            <End Role="AgeAutreFournisseurs" EntitySet="AgeAutreFournisseurs" />
+            <End Role="EveDecaissements" EntitySet="EveDecaissements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveReceptionEquipementsInfrastructures_AgeAutreFournisseurs" Association="Self.FK_EveReceptionEquipementsInfrastructures_AgeAutreFournisseurs">
+            <End Role="AgeAutreFournisseurs" EntitySet="AgeAutreFournisseurs" />
+            <End Role="EveReceptionEquipementsInfrastructures" EntitySet="EveReceptionEquipementsInfrastructures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveEncaissements_AgeClients" Association="Self.FK_EveEncaissements_AgeClients">
+            <End Role="AgeClients" EntitySet="AgeClients" />
+            <End Role="EveEncaissements" EntitySet="EveEncaissements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveVentes_AgeClients" Association="Self.FK_EveVentes_AgeClients">
+            <End Role="AgeClients" EntitySet="AgeClients" />
+            <End Role="EveVentes" EntitySet="EveVentes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveAcquisitionServicesFournitures_AgeEmployes" Association="Self.FK_EveAcquisitionServicesFournitures_AgeEmployes">
+            <End Role="AgeEmployes" EntitySet="AgeEmployes" />
+            <End Role="EveAcquisitionServicesFournitures" EntitySet="EveAcquisitionServicesFournitures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveDecaissements_AgeEmployes" Association="Self.FK_EveDecaissements_AgeEmployes">
+            <End Role="AgeEmployes" EntitySet="AgeEmployes" />
+            <End Role="EveDecaissements" EntitySet="EveDecaissements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveEncaissements_AgeEmployes" Association="Self.FK_EveEncaissements_AgeEmployes">
+            <End Role="AgeEmployes" EntitySet="AgeEmployes" />
+            <End Role="EveEncaissements" EntitySet="EveEncaissements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EvePresenceEmployes_AgeEmployes" Association="Self.FK_EvePresenceEmployes_AgeEmployes">
+            <End Role="AgeEmployes" EntitySet="AgeEmployes" />
+            <End Role="EvePresenceEmployes" EntitySet="EvePresenceEmployes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveProductions_AgeEmployes1" Association="Self.FK_EveProductions_AgeEmployes1">
+            <End Role="AgeEmployes" EntitySet="AgeEmployes" />
+            <End Role="EveProductions" EntitySet="EveProductions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveReceptionEquipementsInfrastructures_AgeEmployes" Association="Self.FK_EveReceptionEquipementsInfrastructures_AgeEmployes">
+            <End Role="AgeEmployes" EntitySet="AgeEmployes" />
+            <End Role="EveReceptionEquipementsInfrastructures" EntitySet="EveReceptionEquipementsInfrastructures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveReceptionMatieresPremieres_AgeEmployes" Association="Self.FK_EveReceptionMatieresPremieres_AgeEmployes">
+            <End Role="AgeEmployes" EntitySet="AgeEmployes" />
+            <End Role="EveReceptionMatieresPremieres" EntitySet="EveReceptionMatieresPremieres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveUtilisationRessources_AgeEmployes" Association="Self.FK_EveUtilisationRessources_AgeEmployes">
+            <End Role="AgeEmployes" EntitySet="AgeEmployes" />
+            <End Role="EveUtilisationRessources" EntitySet="EveUtilisationRessources" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveUtilisationRessources_AgeEmployes1" Association="Self.FK_EveUtilisationRessources_AgeEmployes1">
+            <End Role="AgeEmployes" EntitySet="AgeEmployes" />
+            <End Role="EveUtilisationRessources" EntitySet="EveUtilisationRessources" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveVentes_AgeEmployes" Association="Self.FK_EveVentes_AgeEmployes">
+            <End Role="AgeEmployes" EntitySet="AgeEmployes" />
+            <End Role="EveVentes" EntitySet="EveVentes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveDecaissements_AgeFournisseursMatieresPremieres" Association="Self.FK_EveDecaissements_AgeFournisseursMatieresPremieres">
+            <End Role="AgeFournisseursMatieresPremieres" EntitySet="AgeFournisseursMatieresPremieres" />
+            <End Role="EveDecaissements" EntitySet="EveDecaissements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveReceptionMatieresPremieres_AgeFournisseursMatieresPremieres" Association="Self.FK_EveReceptionMatieresPremieres_AgeFournisseursMatieresPremieres">
+            <End Role="AgeFournisseursMatieresPremieres" EntitySet="AgeFournisseursMatieresPremieres" />
+            <End Role="EveReceptionMatieresPremieres" EntitySet="EveReceptionMatieresPremieres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveAcquisitionServicesFournitures_AgeFournisseursServicesFournitures" Association="Self.FK_EveAcquisitionServicesFournitures_AgeFournisseursServicesFournitures">
+            <End Role="AgeFournisseursServicesFournitures" EntitySet="AgeFournisseursServicesFournitures" />
+            <End Role="EveAcquisitionServicesFournitures" EntitySet="EveAcquisitionServicesFournitures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveDecaissements_AgeFournisseursServicesFournitures" Association="Self.FK_EveDecaissements_AgeFournisseursServicesFournitures">
+            <End Role="AgeFournisseursServicesFournitures" EntitySet="AgeFournisseursServicesFournitures" />
+            <End Role="EveDecaissements" EntitySet="EveDecaissements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveAcquisitionServicesFournitures_ResServicesFournitures" Association="Self.FK_EveAcquisitionServicesFournitures_ResServicesFournitures">
+            <End Role="ResServicesFournitures" EntitySet="ResServicesFournitures" />
+            <End Role="EveAcquisitionServicesFournitures" EntitySet="EveAcquisitionServicesFournitures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveDecaissements_EveAcquisitionServicesFournitures" Association="Self.FK_EveDecaissements_EveAcquisitionServicesFournitures">
+            <End Role="EveAcquisitionServicesFournitures" EntitySet="EveAcquisitionServicesFournitures" />
+            <End Role="EveDecaissements" EntitySet="EveDecaissements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveDecaissements_EveReceptionEquipementsInfrastructures" Association="Self.FK_EveDecaissements_EveReceptionEquipementsInfrastructures">
+            <End Role="EveReceptionEquipementsInfrastructures" EntitySet="EveReceptionEquipementsInfrastructures" />
+            <End Role="EveDecaissements" EntitySet="EveDecaissements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveDecaissements_EveReceptionMatieresPremieres" Association="Self.FK_EveDecaissements_EveReceptionMatieresPremieres">
+            <End Role="EveReceptionMatieresPremieres" EntitySet="EveReceptionMatieresPremieres" />
+            <End Role="EveDecaissements" EntitySet="EveDecaissements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveDecaissements_ResComptesTresorerie" Association="Self.FK_EveDecaissements_ResComptesTresorerie">
+            <End Role="ResComptesTresorerie" EntitySet="ResComptesTresoreries" />
+            <End Role="EveDecaissements" EntitySet="EveDecaissements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveEncaissements_ResComptesTresorerie" Association="Self.FK_EveEncaissements_ResComptesTresorerie">
+            <End Role="ResComptesTresorerie" EntitySet="ResComptesTresoreries" />
+            <End Role="EveEncaissements" EntitySet="EveEncaissements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveEncaissementsVentes_EveEncaissements" Association="Self.FK_EveEncaissementsVentes_EveEncaissements">
+            <End Role="EveEncaissements" EntitySet="EveEncaissements" />
+            <End Role="EveEncaissementsVentes" EntitySet="EveEncaissementsVentes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveEncaissementsVentes_EveVentes" Association="Self.FK_EveEncaissementsVentes_EveVentes">
+            <End Role="EveVentes" EntitySet="EveVentes" />
+            <End Role="EveEncaissementsVentes" EntitySet="EveEncaissementsVentes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveProductionProduitsSemiFinis_EveProductions" Association="Self.FK_EveProductionProduitsSemiFinis_EveProductions">
+            <End Role="EveProductions" EntitySet="EveProductions" />
+            <End Role="EveProductionProduitsSemiFinis" EntitySet="EveProductionProduitsSemiFinis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveProductionProduitsSemiFinis_ResStockProduitsSemiFinis" Association="Self.FK_EveProductionProduitsSemiFinis_ResStockProduitsSemiFinis">
+            <End Role="ResStockProduitsSemiFinis" EntitySet="ResStockProduitsSemiFinis" />
+            <End Role="EveProductionProduitsSemiFinis" EntitySet="EveProductionProduitsSemiFinis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveProductions_EveUtilisationRessources" Association="Self.FK_EveProductions_EveUtilisationRessources">
+            <End Role="EveUtilisationRessources" EntitySet="EveUtilisationRessources" />
+            <End Role="EveProductions" EntitySet="EveProductions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveProductionStockProduitsFinis_EveProductions" Association="Self.FK_EveProductionStockProduitsFinis_EveProductions">
+            <End Role="EveProductions" EntitySet="EveProductions" />
+            <End Role="EveProductionStockProduitsFinis" EntitySet="EveProductionStockProduitsFinis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveProductionStockProduitsFinis_ResStockProduitsFinis" Association="Self.FK_EveProductionStockProduitsFinis_ResStockProduitsFinis">
+            <End Role="ResStockProduitsFinis" EntitySet="ResStockProduitsFinis" />
+            <End Role="EveProductionStockProduitsFinis" EntitySet="EveProductionStockProduitsFinis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveReceptionEquipementsInfrastructures_ResEquipementsInfrastructures" Association="Self.FK_EveReceptionEquipementsInfrastructures_ResEquipementsInfrastructures">
+            <End Role="ResEquipementsInfrastructures" EntitySet="ResEquipementsInfrastructures" />
+            <End Role="EveReceptionEquipementsInfrastructures" EntitySet="EveReceptionEquipementsInfrastructures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveReceptionMatieresPremieres_ResStockMatieresPremieres" Association="Self.FK_EveReceptionMatieresPremieres_ResStockMatieresPremieres">
+            <End Role="ResStockMatieresPremieres" EntitySet="ResStockMatieresPremieres" />
+            <End Role="EveReceptionMatieresPremieres" EntitySet="EveReceptionMatieresPremieres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveUtilisationMatieresPremieres_EveUtilisationRessources" Association="Self.FK_EveUtilisationMatieresPremieres_EveUtilisationRessources">
+            <End Role="EveUtilisationRessources" EntitySet="EveUtilisationRessources" />
+            <End Role="EveUtilisationMatieresPremieres" EntitySet="EveUtilisationMatieresPremieres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveUtilisationMatieresPremieres_ResStockMatieresPremieres" Association="Self.FK_EveUtilisationMatieresPremieres_ResStockMatieresPremieres">
+            <End Role="ResStockMatieresPremieres" EntitySet="ResStockMatieresPremieres" />
+            <End Role="EveUtilisationMatieresPremieres" EntitySet="EveUtilisationMatieresPremieres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveUtilisationProduitsSemiFinis_EveUtilisationRessources" Association="Self.FK_EveUtilisationProduitsSemiFinis_EveUtilisationRessources">
+            <End Role="EveUtilisationRessources" EntitySet="EveUtilisationRessources" />
+            <End Role="EveUtilisationProduitsSemiFinis" EntitySet="EveUtilisationProduitsSemiFinis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveUtilisationProduitsSemiFinis_ResStockProduitsSemiFinis" Association="Self.FK_EveUtilisationProduitsSemiFinis_ResStockProduitsSemiFinis">
+            <End Role="ResStockProduitsSemiFinis" EntitySet="ResStockProduitsSemiFinis" />
+            <End Role="EveUtilisationProduitsSemiFinis" EntitySet="EveUtilisationProduitsSemiFinis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveVenteStockProduitsFinis_EveVentes" Association="Self.FK_EveVenteStockProduitsFinis_EveVentes">
+            <End Role="EveVentes" EntitySet="EveVentes" />
+            <End Role="EveVenteStockProduitsFinis" EntitySet="EveVenteStockProduitsFinis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveVenteStockProduitsFinis_ResStockProduitsFinis" Association="Self.FK_EveVenteStockProduitsFinis_ResStockProduitsFinis">
+            <End Role="ResStockProduitsFinis" EntitySet="ResStockProduitsFinis" />
+            <End Role="EveVenteStockProduitsFinis" EntitySet="EveVenteStockProduitsFinis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResStockProduitsSemiFinis_ResStockMatieresPremieres" Association="Self.FK_ResStockProduitsSemiFinis_ResStockMatieresPremieres">
+            <End Role="ResStockMatieresPremieres" EntitySet="ResStockMatieresPremieres" />
+            <End Role="ResStockProduitsSemiFinis" EntitySet="ResStockProduitsSemiFinis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResStockProduitsSemiFinis_ResStockProduitsSemiFinis" Association="Self.FK_ResStockProduitsSemiFinis_ResStockProduitsSemiFinis">
+            <End Role="ResStockProduitsSemiFinis" EntitySet="ResStockProduitsSemiFinis" />
+            <End Role="ResStockProduitsSemiFinis1" EntitySet="ResStockProduitsSemiFinis" />
+          </AssociationSet>
+          <AssociationSet Name="EveUtilisationEquipementInfrastructures" Association="Self.EveUtilisationEquipementInfrastructures">
+            <End Role="EveUtilisationRessources" EntitySet="EveUtilisationRessources" />
+            <End Role="ResEquipementsInfrastructures" EntitySet="ResEquipementsInfrastructures" />
+          </AssociationSet>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(CasaDBModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(CasaDBModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+        </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CasaDBModelStoreContainer" CdmEntityContainer="CasaDBEntities2">
+          <EntitySetMapping Name="AgeAutreFournisseurs">
+            <EntityTypeMapping TypeName="CasaDBModel.AgeAutreFournisseur">
+              <MappingFragment StoreEntitySet="AgeAutreFournisseurs">
+                <ScalarProperty Name="CodeAutreFournisseur" ColumnName="CodeAutreFournisseur" />
+                <ScalarProperty Name="NomAutreFournisseur" ColumnName="NomAutreFournisseur" />
+                <ScalarProperty Name="Localite" ColumnName="Localite" />
+                <ScalarProperty Name="SoldeInitialDetteFournisseur" ColumnName="SoldeInitialDetteFournisseur" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AgeClients">
+            <EntityTypeMapping TypeName="CasaDBModel.AgeClient">
+              <MappingFragment StoreEntitySet="AgeClients">
+                <ScalarProperty Name="CodeClient" ColumnName="CodeClient" />
+                <ScalarProperty Name="NomClient" ColumnName="NomClient" />
+                <ScalarProperty Name="Localite" ColumnName="Localite" />
+                <ScalarProperty Name="SoldeInitialeCreance" ColumnName="SoldeInitialeCreance" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AgeEmployes">
+            <EntityTypeMapping TypeName="CasaDBModel.AgeEmploye">
+              <MappingFragment StoreEntitySet="AgeEmployes">
+                <ScalarProperty Name="CodeEmploye" ColumnName="CodeEmploye" />
+                <ScalarProperty Name="PrenomNom" ColumnName="PrenomNom" />
+                <ScalarProperty Name="Poste" ColumnName="Poste" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AgeFournisseursMatieresPremieres">
+            <EntityTypeMapping TypeName="CasaDBModel.AgeFournisseursMatieresPremiere">
+              <MappingFragment StoreEntitySet="AgeFournisseursMatieresPremieres">
+                <ScalarProperty Name="CodeFournisseurMatierePremiere" ColumnName="CodeFournisseurMatierePremiere" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="Localite" ColumnName="Localite" />
+                <ScalarProperty Name="SoldeDette" ColumnName="SoldeDette" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AgeFournisseursServicesFournitures">
+            <EntityTypeMapping TypeName="CasaDBModel.AgeFournisseursServicesFourniture">
+              <MappingFragment StoreEntitySet="AgeFournisseursServicesFournitures">
+                <ScalarProperty Name="CodeFournisseurServiceFourniture" ColumnName="CodeFournisseurServiceFourniture" />
+                <ScalarProperty Name="NomFournisseurServiceFourniture" ColumnName="NomFournisseurServiceFourniture" />
+                <ScalarProperty Name="Localite" ColumnName="Localite" />
+                <ScalarProperty Name="SoldeDette" ColumnName="SoldeDette" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EveAcquisitionServicesFournitures">
+            <EntityTypeMapping TypeName="CasaDBModel.EveAcquisitionServicesFourniture">
+              <MappingFragment StoreEntitySet="EveAcquisitionServicesFournitures">
+                <ScalarProperty Name="CodeAcquisitionServiceFourniture" ColumnName="CodeAcquisitionServiceFourniture" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Montant" ColumnName="Montant" />
+                <ScalarProperty Name="CodeServiceFourniture" ColumnName="CodeServiceFourniture" />
+                <ScalarProperty Name="CodeFournisseurServiceFourniture" ColumnName="CodeFournisseurServiceFourniture" />
+                <ScalarProperty Name="CodeEmploye" ColumnName="CodeEmploye" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EveDecaissements">
+            <EntityTypeMapping TypeName="CasaDBModel.EveDecaissement">
+              <MappingFragment StoreEntitySet="EveDecaissements">
+                <ScalarProperty Name="CodeDecaissement" ColumnName="CodeDecaissement" />
+                <ScalarProperty Name="CodeFournisseurMatierePremiere" ColumnName="CodeFournisseurMatierePremiere" />
+                <ScalarProperty Name="CodeFournisseurService" ColumnName="CodeFournisseurService" />
+                <ScalarProperty Name="CodeAutreFournisseur" ColumnName="CodeAutreFournisseur" />
+                <ScalarProperty Name="CodeEmploye" ColumnName="CodeEmploye" />
+                <ScalarProperty Name="CodeAcquisitionServiceFourniture" ColumnName="CodeAcquisitionServiceFourniture" />
+                <ScalarProperty Name="CodeReceptionEquipementInfrastructure" ColumnName="CodeReceptionEquipementInfrastructure" />
+                <ScalarProperty Name="CodeReceptionMatierePremiere" ColumnName="CodeReceptionMatierePremiere" />
+                <ScalarProperty Name="CodeCompte" ColumnName="CodeCompte" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="DateDecaissement" ColumnName="DateDecaissement" />
+                <ScalarProperty Name="Montant" ColumnName="Montant" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EveEncaissements">
+            <EntityTypeMapping TypeName="CasaDBModel.EveEncaissement">
+              <MappingFragment StoreEntitySet="EveEncaissements">
+                <ScalarProperty Name="CodeEncaissement" ColumnName="CodeEncaissement" />
+                <ScalarProperty Name="CodeClient" ColumnName="CodeClient" />
+                <ScalarProperty Name="CodeEmploye" ColumnName="CodeEmploye" />
+                <ScalarProperty Name="CodeCompte" ColumnName="CodeCompte" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EveEncaissementsVentes">
+            <EntityTypeMapping TypeName="CasaDBModel.EveEncaissementsVente">
+              <MappingFragment StoreEntitySet="EveEncaissementsVentes">
+                <ScalarProperty Name="CodeEncaissement" ColumnName="CodeEncaissement" />
+                <ScalarProperty Name="CodeVente" ColumnName="CodeVente" />
+                <ScalarProperty Name="MontantEncaisse" ColumnName="MontantEncaisse" />
+                <ScalarProperty Name="DateEncaissement" ColumnName="DateEncaissement" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EvePresenceEmployes">
+            <EntityTypeMapping TypeName="CasaDBModel.EvePresenceEmploye">
+              <MappingFragment StoreEntitySet="EvePresenceEmployes">
+                <ScalarProperty Name="CodePresence" ColumnName="CodePresence" />
+                <ScalarProperty Name="CodeEmploye" ColumnName="CodeEmploye" />
+                <ScalarProperty Name="CodeUtilisationDesRessources" ColumnName="CodeUtilisationDesRessources" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EveProductionProduitsSemiFinis">
+            <EntityTypeMapping TypeName="CasaDBModel.EveProductionProduitsSemiFini">
+              <MappingFragment StoreEntitySet="EveProductionProduitsSemiFinis">
+                <ScalarProperty Name="CodeProduction" ColumnName="CodeProduction" />
+                <ScalarProperty Name="CodeProduitSemiFini" ColumnName="CodeProduitSemiFini" />
+                <ScalarProperty Name="QuantiteProduitSemiFini" ColumnName="QuantiteProduitSemiFini" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EveProductions">
+            <EntityTypeMapping TypeName="CasaDBModel.EveProduction">
+              <MappingFragment StoreEntitySet="EveProductions">
+                <ScalarProperty Name="CodeProduction" ColumnName="CodeProduction" />
+                <ScalarProperty Name="CodeUtilisationRessources" ColumnName="CodeUtilisationRessources" />
+                <ScalarProperty Name="CodeEmploye_Resp_stock_produits_finis" ColumnName="CodeEmploye(Resp stock produits finis" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EveProductionStockProduitsFinis">
+            <EntityTypeMapping TypeName="CasaDBModel.EveProductionStockProduitsFini">
+              <MappingFragment StoreEntitySet="EveProductionStockProduitsFinis">
+                <ScalarProperty Name="CodeProduction" ColumnName="CodeProduction" />
+                <ScalarProperty Name="CodeProduitFini" ColumnName="CodeProduitFini" />
+                <ScalarProperty Name="QuantiteProduitFini" ColumnName="QuantiteProduitFini" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EveReceptionEquipementsInfrastructures">
+            <EntityTypeMapping TypeName="CasaDBModel.EveReceptionEquipementsInfrastructure">
+              <MappingFragment StoreEntitySet="EveReceptionEquipementsInfrastructures">
+                <ScalarProperty Name="CodeReceptionEquipementInfrastructure" ColumnName="CodeReceptionEquipementInfrastructure" />
+                <ScalarProperty Name="CodeEquipementInfrastructure" ColumnName="CodeEquipementInfrastructure" />
+                <ScalarProperty Name="DateReception" ColumnName="DateReception" />
+                <ScalarProperty Name="CodeEmploye" ColumnName="CodeEmploye" />
+                <ScalarProperty Name="CodeAutreFournisseur" ColumnName="CodeAutreFournisseur" />
+                <ScalarProperty Name="Quantite" ColumnName="Quantite" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EveReceptionMatieresPremieres">
+            <EntityTypeMapping TypeName="CasaDBModel.EveReceptionMatieresPremiere">
+              <MappingFragment StoreEntitySet="EveReceptionMatieresPremieres">
+                <ScalarProperty Name="CodeReceptionMatierePremiere" ColumnName="CodeReceptionMatierePremiere" />
+                <ScalarProperty Name="CodeMatierePremiere" ColumnName="CodeMatierePremiere" />
+                <ScalarProperty Name="DateReception" ColumnName="DateReception" />
+                <ScalarProperty Name="Quantite" ColumnName="Quantite" />
+                <ScalarProperty Name="Montant" ColumnName="Montant" />
+                <ScalarProperty Name="CodeFournisseurMatierePremiere" ColumnName="CodeFournisseurMatierePremiere" />
+                <ScalarProperty Name="CodeEmploye" ColumnName="CodeEmploye" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EveUtilisationMatieresPremieres">
+            <EntityTypeMapping TypeName="CasaDBModel.EveUtilisationMatieresPremiere">
+              <MappingFragment StoreEntitySet="EveUtilisationMatieresPremieres">
+                <ScalarProperty Name="CodeUtilisationRessource" ColumnName="CodeUtilisationRessource" />
+                <ScalarProperty Name="CodeMatierePremiere" ColumnName="CodeMatierePremiere" />
+                <ScalarProperty Name="QuantiteMatierePremiere" ColumnName="QuantiteMatierePremiere" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EveUtilisationProduitsSemiFinis">
+            <EntityTypeMapping TypeName="CasaDBModel.EveUtilisationProduitsSemiFini">
+              <MappingFragment StoreEntitySet="EveUtilisationProduitsSemiFinis">
+                <ScalarProperty Name="CodeUtilisationRessource" ColumnName="CodeUtilisationRessource" />
+                <ScalarProperty Name="CodeProduitSemiFini" ColumnName="CodeProduitSemiFini" />
+                <ScalarProperty Name="QuantiteProduitSemiFini" ColumnName="QuantiteProduitSemiFini" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EveUtilisationRessources">
+            <EntityTypeMapping TypeName="CasaDBModel.EveUtilisationRessource">
+              <MappingFragment StoreEntitySet="EveUtilisationRessources">
+                <ScalarProperty Name="CodeEmploye_Resp_production_" ColumnName="CodeEmploye(Resp production)" />
+                <ScalarProperty Name="CodeEmploye_Resp_stock_matiere_premiere_" ColumnName="CodeEmploye(Resp stock matiere premiere)" />
+                <ScalarProperty Name="CodeUtilisationRessources" ColumnName="CodeUtilisationRessources" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EveVentes">
+            <EntityTypeMapping TypeName="CasaDBModel.EveVente">
+              <MappingFragment StoreEntitySet="EveVentes">
+                <ScalarProperty Name="CodeVente" ColumnName="CodeVente" />
+                <ScalarProperty Name="CodeClient" ColumnName="CodeClient" />
+                <ScalarProperty Name="CodeEmploye" ColumnName="CodeEmploye" />
+                <ScalarProperty Name="DateVente" ColumnName="DateVente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EveVenteStockProduitsFinis">
+            <EntityTypeMapping TypeName="CasaDBModel.EveVenteStockProduitsFini">
+              <MappingFragment StoreEntitySet="EveVenteStockProduitsFinis">
+                <ScalarProperty Name="CodeVente" ColumnName="CodeVente" />
+                <ScalarProperty Name="CodeProduitFini" ColumnName="CodeProduitFini" />
+                <ScalarProperty Name="QuantiteProduitFini" ColumnName="QuantiteProduitFini" />
+                <ScalarProperty Name="Montant" ColumnName="Montant" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ResComptesTresoreries">
+            <EntityTypeMapping TypeName="CasaDBModel.ResComptesTresorerie">
+              <MappingFragment StoreEntitySet="ResComptesTresorerie">
+                <ScalarProperty Name="CodeCompte" ColumnName="CodeCompte" />
+                <ScalarProperty Name="NomCompte" ColumnName="NomCompte" />
+                <ScalarProperty Name="SoldeCompte" ColumnName="SoldeCompte" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ResEquipementsInfrastructures">
+            <EntityTypeMapping TypeName="CasaDBModel.ResEquipementsInfrastructure">
+              <MappingFragment StoreEntitySet="ResEquipementsInfrastructures">
+                <ScalarProperty Name="CodeEquipementInfrastructure" ColumnName="CodeEquipementInfrastructure" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="AmortissementCumule" ColumnName="AmortissementCumule" />
+                <ScalarProperty Name="DateAcquisition" ColumnName="DateAcquisition" />
+                <ScalarProperty Name="DureeDeVie" ColumnName="DureeDeVie" />
+                <ScalarProperty Name="Cout" ColumnName="Cout" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ResServicesFournitures">
+            <EntityTypeMapping TypeName="CasaDBModel.ResServicesFourniture">
+              <MappingFragment StoreEntitySet="ResServicesFournitures">
+                <ScalarProperty Name="CodeServiceFourniture" ColumnName="CodeServiceFourniture" />
+                <ScalarProperty Name="NomServiceFourniture" ColumnName="NomServiceFourniture" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ResStockMatieresPremieres">
+            <EntityTypeMapping TypeName="CasaDBModel.ResStockMatieresPremiere">
+              <MappingFragment StoreEntitySet="ResStockMatieresPremieres">
+                <ScalarProperty Name="CodeMatierePremiere" ColumnName="CodeMatierePremiere" />
+                <ScalarProperty Name="NomMatiere" ColumnName="NomMatiere" />
+                <ScalarProperty Name="StockMatiere" ColumnName="StockMatiere" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ResStockProduitsFinis">
+            <EntityTypeMapping TypeName="CasaDBModel.ResStockProduitsFini">
+              <MappingFragment StoreEntitySet="ResStockProduitsFinis">
+                <ScalarProperty Name="CodeProduit" ColumnName="CodeProduit" />
+                <ScalarProperty Name="NomProduit" ColumnName="NomProduit" />
+                <ScalarProperty Name="StockProduit" ColumnName="StockProduit" />
+                <ScalarProperty Name="PrixDeVenteStandard" ColumnName="PrixDeVenteStandard" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ResStockProduitsSemiFinis">
+            <EntityTypeMapping TypeName="CasaDBModel.ResStockProduitsSemiFini">
+              <MappingFragment StoreEntitySet="ResStockProduitsSemiFinis">
+                <ScalarProperty Name="CodeProduitSemiFini" ColumnName="CodeProduitSemiFini" />
+                <ScalarProperty Name="CodeMatierePremiere" ColumnName="CodeMatierePremiere" />
+                <ScalarProperty Name="Quantite" ColumnName="Quantite" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="CasaDBModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="EveUtilisationEquipementInfrastructures" TypeName="CasaDBModel.EveUtilisationEquipementInfrastructures" StoreEntitySet="EveUtilisationEquipementInfrastructures">
+            <EndProperty Name="EveUtilisationRessources">
+              <ScalarProperty Name="CodeUtilisationRessources" ColumnName="CodeUtilisationRessource" />
+            </EndProperty>
+            <EndProperty Name="ResEquipementsInfrastructures">
+              <ScalarProperty Name="CodeEquipementInfrastructure" ColumnName="CodeEquipementInfrastructure" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="CasaDBModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="CasaDBModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="CasaDBModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="CasaDBModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CasaDBModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="CasaDBModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CasaDBModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="CasaDBModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="CasaDBModel.Store.sp_upgraddiagrams" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
