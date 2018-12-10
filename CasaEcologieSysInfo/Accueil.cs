@@ -20,9 +20,9 @@ namespace CasaEcologieSysInfo
             UC_TableauDeBord tb = new UC_TableauDeBord();
             AddControlsToPanel(tb);
         } 
+ 
         private void AddControlsToPanel(Control c)
         {
-            // c.Dock = DockStyle.Fill;
             pnlPrincipal.Controls.Clear();
             pnlPrincipal.Controls.Add(c);
         }
@@ -170,7 +170,8 @@ namespace CasaEcologieSysInfo
 
         private void BtnStockMatierePremiere_Click(object sender, EventArgs e)
         {
-
+            UC_StockMatieresPremieres smp = new UC_StockMatieresPremieres();
+            AddControlsToPanel(smp);
         }
     }
 }

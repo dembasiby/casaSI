@@ -90,7 +90,7 @@
             this.btnAjouterNouveauProduitFiniOuSFini.TabIndex = 4;
             this.btnAjouterNouveauProduitFiniOuSFini.Text = "Ajouter le produit";
             this.btnAjouterNouveauProduitFiniOuSFini.UseVisualStyleBackColor = false;
-            this.btnAjouterNouveauProduitFiniOuSFini.Click += new System.EventHandler(this.btnAjouterNouveauProduitFiniOuSFini_Click);
+            this.btnAjouterNouveauProduitFiniOuSFini.Click += new System.EventHandler(this.BtnAjouterNouveauProduitFiniOuSFini_Click);
             // 
             // txtPrixDeVente
             // 

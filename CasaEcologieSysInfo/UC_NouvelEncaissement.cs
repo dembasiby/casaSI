@@ -26,13 +26,8 @@ namespace CasaEcologieSysInfo
             resComptesTresorerieBindingSource.DataSource = db.ResComptesTresoreries.ToList();
         }
 
-        private void BtnEnregistrerEncaissement_Click(object sender, EventArgs e)
+        private void VerifierChampsMontantEncaisse()
         {
-            AgeClient client = db.AgeClients.FirstOrDefault(c => c.NomClient == cbxNomClient.Text);
-            AgeEmploye tres = db.AgeEmployes.FirstOrDefault(rv => rv.PrenomNom == cbxTres.Text);
-            ResComptesTresorerie cpte = db.ResComptesTresoreries.FirstOrDefault(cte => cte.NomCompte == cbxCompte.Text);
-           
-
             if (string.IsNullOrEmpty(txtMontantEncaisse.Text))
             {
                 MessageBox.Show("Ce champs doit être renseigné.");
@@ -48,7 +43,16 @@ namespace CasaEcologieSysInfo
                 MessageBox.Show("Ce champs doit contenir uniquement des nombres.");
                 return;
             }
+        }
 
+        private void BtnEnregistrerEncaissement_Click(object sender, EventArgs e)
+        {
+            AgeClient client = db.AgeClients.FirstOrDefault(c => c.NomClient == cbxNomClient.Text);
+            AgeEmploye tres = db.AgeEmployes.FirstOrDefault(rv => rv.PrenomNom == cbxTres.Text);
+            ResComptesTresorerie cpte = db.ResComptesTresoreries.FirstOrDefault(cte => cte.NomCompte == cbxCompte.Text);
+
+            VerifierChampsMontantEncaisse();
+            
             if (int.Parse(txtMontantEncaisse.Text) > 0)
             {
                 EveEncaissement enc = new EveEncaissement

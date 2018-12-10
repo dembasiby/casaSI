@@ -20,7 +20,7 @@ namespace CasaEcologieSysInfo
             InitializeComponent();
         }
 
-        private void btnAjouterNouveauProduitFiniOuSFini_Click(object sender, EventArgs e)
+        private void BtnAjouterNouveauProduitFiniOuSFini_Click(object sender, EventArgs e)
         {
             prod.VerifierChampsQuantite(txtStockInitialProduitFini.Text);
            

@@ -236,8 +236,6 @@
             // 
             // comboBox2
             // 
-            this.comboBox2.DataSource = this.ageClientBindingSource;
-            this.comboBox2.DisplayMember = "SoldeInitialeCreance";
             this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.Enabled = false;
             this.comboBox2.FormattingEnabled = true;
@@ -245,7 +243,6 @@
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(125, 29);
             this.comboBox2.TabIndex = 21;
-            this.comboBox2.ValueMember = "CodeClient";
             // 
             // UC_NouvelEncaissement
             // 
