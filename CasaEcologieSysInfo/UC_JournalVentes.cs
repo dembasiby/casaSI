@@ -15,27 +15,30 @@ namespace CasaEcologieSysInfo
     {
         CasaDBEntities2 db = new CasaDBEntities2();
 
-        SqlConnection conn = new SqlConnection("Data Source=.\\SQLEXPRESS;Initial Catalog=CasaDB;Integrated Security=True");
-
         public UC_JournalVentes()
         {
             InitializeComponent();
-        }  
-
-        private void LoadJournalData(String query, DataGridView dgv)
-        {
-            SqlDataAdapter sda = new SqlDataAdapter(query, conn);
-            DataTable dt = new DataTable();
-            sda.Fill(dt);
-            dgv.DataSource = dt;
-            dgv.Columns["Montant"].DefaultCellStyle.Format = "C0";           
         }
 
         private void UC_JournalVentes_Load(object sender, EventArgs e)
-        {           
-            String query = "SELECT EveVentes.DateVente as Date, ResStockProduitsFinis.NomProduit as Description, AgeClients.NomClient as Clients, EveVenteStockProduitsFinis.Montant as Montant FROM AgeClients INNER JOIN EveVentes ON AgeClients.CodeClient = EveVentes.CodeClient INNER JOIN EveVenteStockProduitsFinis ON EveVentes.CodeVente = EveVenteStockProduitsFinis.CodeVente INNER JOIN ResStockProduitsFinis ON EveVenteStockProduitsFinis.CodeProduitFini = ResStockProduitsFinis.CodeProduit ORDER BY EveVentes.DateVente DESC";
+        {
+            var ventes = (from v in db.EveVentes
+                          join vpf in db.EveVenteStockProduitsFinis on v.CodeVente equals vpf.CodeVente
+                          join pf in db.ResStockProduitsFinis on vpf.CodeProduitFini equals pf.CodeProduit
+                          join c in db.AgeClients on v.CodeClient equals c.CodeClient
 
-            LoadJournalData(query, adgvJournalVentes);
+                          select new
+                          {
+                              Date = v.DateVente,
+                              Description = pf.NomProduit,
+                              Quantité = vpf.QuantiteProduitFini + " unités",
+                              Client = c.NomClient,
+                              Montant = vpf.Montant
+                          }).ToList();
+
+            DataTable dt = Conversion.ConvertToDataTable(ventes);            
+            adgvJournalVentes.DataSource = dt;
+            adgvJournalVentes.Columns["Montant"].DefaultCellStyle.Format = "c0";
         }
 
         private void AdgvJournalVentes_FilterStringChanged(object sender, EventArgs e)

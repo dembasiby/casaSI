@@ -70,16 +70,14 @@ namespace CasaEcologieSysInfo
                                Sortie = ump.QuantiteMatierePremiere,
                                Solde = 0
                            });
-
-            
+          
             var result = Entrees.Union(Sorties)
                 .OrderByDescending(d => d.DateOperation)
-                .ToList();  
-            
-            adgvJournalStockMatieresPremieres.DataSource = result;
+                .ToList();
 
-            // 
+            DataTable dt = Conversion.ConvertToDataTable(result);
 
+            adgvJournalStockMatieresPremieres.DataSource = dt;
         }
 
 

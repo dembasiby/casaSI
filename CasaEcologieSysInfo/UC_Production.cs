@@ -344,7 +344,6 @@ namespace CasaEcologieSysInfo
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show("Il n'y a pas encore de données dans la liste des produits semi-finis.", ex.Message);
             }
         }

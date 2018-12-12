@@ -120,6 +120,7 @@
     <Compile Include="Connexion.Designer.cs">
       <DependentUpon>Connexion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Conversion.cs" />
     <Compile Include="DragControl.cs">
       <SubType>Component</SubType>
     </Compile>

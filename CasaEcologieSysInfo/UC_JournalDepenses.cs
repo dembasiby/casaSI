@@ -7,13 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
 
 namespace CasaEcologieSysInfo
 {
     public partial class UC_JournalDepenses : UserControl
     {
-        SqlConnection conn = new SqlConnection("Data Source=.\\SQLEXPRESS;Initial Catalog=CasaDB;Integrated Security=True");
+        CasaDBEntities2 db = new CasaDBEntities2();
 
         public UC_JournalDepenses()
         {
@@ -21,41 +20,62 @@ namespace CasaEcologieSysInfo
             
         }
 
-        private void LoadJournalData(String query, DataGridView dgv)
+        private void FormatColumn(string column, string frmt)
         {
-            SqlDataAdapter sda = new SqlDataAdapter(query, conn);
-            DataTable dt = new DataTable();
-            sda.Fill(dt);
-            dgv.DataSource = dt;
-            dgv.Columns["Montant"].DefaultCellStyle.Format = "C0";
-        }
-
-        private void LoadJournalDepensesMP()
-        {
-            String query = "SELECT EveReceptionMatieresPremieres.DateReception as Date, ResStockMatieresPremieres.NomMatiere as Description, EveReceptionMatieresPremieres.Montant as Montant FROM EveReceptionMatieresPremieres JOIN ResStockMatieresPremieres ON ResStockMatieresPremieres.CodeMatierePremiere = EveReceptionMatieresPremieres.CodeMatierePremiere ORDER BY EveReceptionMatieresPremieres.DateReception DESC";
-
-            LoadJournalData(query, adgvDepensesMatPrem);
-        }
-
-        private void LoadJournalDepensesSF()
-        {
-            String query = "SELECT EveAcquisitionServicesFournitures.Date as Date, ResServicesFournitures.NomServiceFourniture as Description, EveAcquisitionServicesFournitures.Montant as Montant FROM EveAcquisitionServicesFournitures JOIN ResServicesFournitures ON EveAcquisitionServicesFournitures.CodeServiceFourniture = ResServicesFournitures.CodeServiceFourniture ORDER BY EveAcquisitionServicesFournitures.Date DESC";
-
-            LoadJournalData(query, dataGridView2);
-        }
-
-        private void LoadJournalDepensesIM()
-        {
-            String query = "SELECT EveReceptionEquipementsInfrastructures.DateReception as Date, ResEquipementsInfrastructures.Nom as Description, ResEquipementsInfrastructures.Cout as Montant FROM ResEquipementsInfrastructures JOIN EveReceptionEquipementsInfrastructures ON ResEquipementsInfrastructures.CodeEquipementInfrastructure = EveReceptionEquipementsInfrastructures.CodeEquipementInfrastructure ORDER BY EveReceptionEquipementsInfrastructures.DateReception DESC";
-
-            LoadJournalData(query, dataGridView3);
+            adgvJournalDepenses.Columns[column].DefaultCellStyle.Format = frmt;
         }
 
         private void UC_JournalDepenses_Load(object sender, EventArgs e)
         {
-            LoadJournalDepensesMP();
-            LoadJournalDepensesSF();
-            LoadJournalDepensesIM();
+            var matP = (from rmp in db.EveReceptionMatieresPremieres
+                        join mp in db.ResStockMatieresPremieres on rmp.CodeMatierePremiere equals mp.CodeMatierePremiere
+
+                        select new
+                        {
+                            Date = rmp.DateReception,
+                            Description = mp.NomMatiere,
+                            Matiere_Premiere = rmp.Montant,
+                            Services_et_fournitures = 0m,
+                            Infrastructures_et_equipements = 0m,
+                            Personnel = 0m
+                        });
+
+            var sF = (from asf in db.EveAcquisitionServicesFournitures
+                      join sf in db.ResServicesFournitures on asf.CodeServiceFourniture equals sf.CodeServiceFourniture
+
+                      select new
+                      {
+                          Date = asf.Date,
+                          Description = sf.NomServiceFourniture,
+                          Matiere_Premiere = 0m,
+                          Services_et_fournitures = asf.Montant,
+                          Infrastructures_et_equipements = 0m,
+                          Personnel = 0m
+                      });
+
+            var eInf = (from rei in db.EveReceptionEquipementsInfrastructures
+                        join ie in db.ResEquipementsInfrastructures on rei.CodeEquipementInfrastructure equals ie.CodeEquipementInfrastructure
+
+                        select new
+                        {
+                            Date = rei.DateReception,
+                            Description = ie.Nom,
+                            Matiere_Premiere = 0m,
+                            Services_et_fournitures = 0m,
+                            Infrastructures_et_equipements = ie.Cout,
+                            Personnel = 0m
+                        });
+
+            var resultat = matP.Union(sF).Union(eInf)
+                .OrderByDescending(d => d.Date)
+                .ToList();
+
+            DataTable dt = Conversion.ConvertToDataTable(resultat);
+            adgvJournalDepenses.DataSource = dt;
+            FormatColumn("Matiere_Premiere", "c0");
+            FormatColumn("Services_et_fournitures", "c0");
+            FormatColumn("Infrastructures_et_equipements", "c0");
+            FormatColumn("Personnel", "c0");
         }
 
         private void AdgvDepensesMatPrem_FilterStringChanged(object sender, EventArgs e)
