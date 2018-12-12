@@ -224,70 +224,70 @@
     <Compile Include="sysdiagram.cs">
       <DependentUpon>Model3.tt</DependentUpon>
     </Compile>
-    <Compile Include="UC_StockMatieresPremieres.cs">
+    <Compile Include="Pages\UC_StockMatieresPremieres.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UC_StockMatieresPremieres.Designer.cs">
+    <Compile Include="Pages\UC_StockMatieresPremieres.Designer.cs">
       <DependentUpon>UC_StockMatieresPremieres.cs</DependentUpon>
     </Compile>
-    <Compile Include="UC_StocksProduitsFinis.cs">
+    <Compile Include="Pages\UC_StocksProduitsFinis.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UC_StocksProduitsFinis.Designer.cs">
+    <Compile Include="Pages\UC_StocksProduitsFinis.Designer.cs">
       <DependentUpon>UC_StocksProduitsFinis.cs</DependentUpon>
     </Compile>
-    <Compile Include="UC_TableauDeBord.cs">
+    <Compile Include="Pages\UC_TableauDeBord.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UC_TableauDeBord.Designer.cs">
+    <Compile Include="Pages\UC_TableauDeBord.Designer.cs">
       <DependentUpon>UC_TableauDeBord.cs</DependentUpon>
     </Compile>
-    <Compile Include="UC_AchatEquipementInfrastructure.cs">
+    <Compile Include="Pages\UC_AchatEquipementInfrastructure.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UC_AchatEquipementInfrastructure.Designer.cs">
+    <Compile Include="Pages\UC_AchatEquipementInfrastructure.Designer.cs">
       <DependentUpon>UC_AchatEquipementInfrastructure.cs</DependentUpon>
     </Compile>
-    <Compile Include="UC_AchatMatierePremiere.cs">
+    <Compile Include="Pages\UC_AchatMatierePremiere.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UC_AchatMatierePremiere.Designer.cs">
+    <Compile Include="Pages\UC_AchatMatierePremiere.Designer.cs">
       <DependentUpon>UC_AchatMatierePremiere.cs</DependentUpon>
     </Compile>
-    <Compile Include="UC_AcquisitionServicesFournitures.cs">
+    <Compile Include="Pages\UC_AcquisitionServicesFournitures.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UC_AcquisitionServicesFournitures.Designer.cs">
+    <Compile Include="Pages\UC_AcquisitionServicesFournitures.Designer.cs">
       <DependentUpon>UC_AcquisitionServicesFournitures.cs</DependentUpon>
     </Compile>
-    <Compile Include="UC_JournalDepenses.cs">
+    <Compile Include="Pages\UC_JournalDepenses.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UC_JournalDepenses.Designer.cs">
+    <Compile Include="Pages\UC_JournalDepenses.Designer.cs">
       <DependentUpon>UC_JournalDepenses.cs</DependentUpon>
     </Compile>
-    <Compile Include="UC_JournalVentes.cs">
+    <Compile Include="Pages\UC_JournalVentes.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UC_JournalVentes.Designer.cs">
+    <Compile Include="Pages\UC_JournalVentes.Designer.cs">
       <DependentUpon>UC_JournalVentes.cs</DependentUpon>
     </Compile>
-    <Compile Include="UC_NouvelEncaissement.cs">
+    <Compile Include="Pages\UC_NouvelEncaissement.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UC_NouvelEncaissement.Designer.cs">
+    <Compile Include="Pages\UC_NouvelEncaissement.Designer.cs">
       <DependentUpon>UC_NouvelEncaissement.cs</DependentUpon>
     </Compile>
-    <Compile Include="UC_NouvelleVente.cs">
+    <Compile Include="Pages\UC_NouvelleVente.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UC_NouvelleVente.Designer.cs">
+    <Compile Include="Pages\UC_NouvelleVente.Designer.cs">
       <DependentUpon>UC_NouvelleVente.cs</DependentUpon>
     </Compile>
-    <Compile Include="UC_Production.cs">
+    <Compile Include="Pages\UC_Production.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UC_Production.Designer.cs">
+    <Compile Include="Pages\UC_Production.Designer.cs">
       <DependentUpon>UC_Production.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Accueil.resx">
@@ -309,37 +309,37 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="UC_StockMatieresPremieres.resx">
+    <EmbeddedResource Include="Pages\UC_StockMatieresPremieres.resx">
       <DependentUpon>UC_StockMatieresPremieres.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UC_StocksProduitsFinis.resx">
+    <EmbeddedResource Include="Pages\UC_StocksProduitsFinis.resx">
       <DependentUpon>UC_StocksProduitsFinis.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UC_TableauDeBord.resx">
+    <EmbeddedResource Include="Pages\UC_TableauDeBord.resx">
       <DependentUpon>UC_TableauDeBord.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UC_AchatEquipementInfrastructure.resx">
+    <EmbeddedResource Include="Pages\UC_AchatEquipementInfrastructure.resx">
       <DependentUpon>UC_AchatEquipementInfrastructure.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UC_AchatMatierePremiere.resx">
+    <EmbeddedResource Include="Pages\UC_AchatMatierePremiere.resx">
       <DependentUpon>UC_AchatMatierePremiere.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UC_AcquisitionServicesFournitures.resx">
+    <EmbeddedResource Include="Pages\UC_AcquisitionServicesFournitures.resx">
       <DependentUpon>UC_AcquisitionServicesFournitures.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UC_JournalDepenses.resx">
+    <EmbeddedResource Include="Pages\UC_JournalDepenses.resx">
       <DependentUpon>UC_JournalDepenses.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UC_JournalVentes.resx">
+    <EmbeddedResource Include="Pages\UC_JournalVentes.resx">
       <DependentUpon>UC_JournalVentes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UC_NouvelEncaissement.resx">
+    <EmbeddedResource Include="Pages\UC_NouvelEncaissement.resx">
       <DependentUpon>UC_NouvelEncaissement.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UC_NouvelleVente.resx">
+    <EmbeddedResource Include="Pages\UC_NouvelleVente.resx">
       <DependentUpon>UC_NouvelleVente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UC_Production.resx">
+    <EmbeddedResource Include="Pages\UC_Production.resx">
       <DependentUpon>UC_Production.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="CasaDBDataSet.xsc">
