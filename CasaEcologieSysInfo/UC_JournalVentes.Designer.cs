@@ -53,11 +53,11 @@
             this.adgvJournalVentes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.adgvJournalVentes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.adgvJournalVentes.DateWithTime = false;
-            this.adgvJournalVentes.Location = new System.Drawing.Point(6, 58);
+            this.adgvJournalVentes.Location = new System.Drawing.Point(13, 58);
             this.adgvJournalVentes.Name = "adgvJournalVentes";
             this.adgvJournalVentes.ReadOnly = true;
             this.adgvJournalVentes.RowHeadersVisible = false;
-            this.adgvJournalVentes.Size = new System.Drawing.Size(974, 515);
+            this.adgvJournalVentes.Size = new System.Drawing.Size(952, 574);
             this.adgvJournalVentes.TabIndex = 13;
             this.adgvJournalVentes.TimeFilter = true;
             this.adgvJournalVentes.VirtualMode = true;
