@@ -173,5 +173,11 @@ namespace CasaEcologieSysInfo
             UC_StockMatieresPremieres smp = new UC_StockMatieresPremieres();
             AddControlsToPanel(smp);
         }
+
+        private void BtnStockProduitsFinis_Click(object sender, EventArgs e)
+        {
+            UC_StocksProduitsFinis spf = new UC_StocksProduitsFinis();
+            AddControlsToPanel(spf);
+        }
     }
 }
