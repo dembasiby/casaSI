@@ -27,7 +27,7 @@ namespace CasaEcologieSysInfo
                            
                            select new
                            {
-                               Date = prod.Date,
+                               prod.Date,
                                Description = pf.NomProduit,
                                Entree = ppf.QuantiteProduitFini,
                                Sortie = 0,
@@ -51,8 +51,18 @@ namespace CasaEcologieSysInfo
                 .OrderByDescending(d => d.Date)
                 .ToList();
 
-            DataTable dt = Conversion.ConvertToDataTable(resultat);
+            DataTable dt = Conversion.ConvertirEnTableDeDonnees(resultat);
             adgvJournalStocksProduitsFinis.DataSource = dt;
+        }
+
+        private void AdgvJournalStocksProduitsFinis_FilterStringChanged(object sender, EventArgs e)
+        {
+            Conversion.FiltrerTableau(sender, e);
+        }
+
+        private void AdgvJournalStocksProduitsFinis_SortStringChanged(object sender, EventArgs e)
+        {
+            Conversion.TrierTableau(sender, e);
         }
     }
 }

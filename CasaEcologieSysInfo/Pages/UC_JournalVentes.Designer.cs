@@ -49,6 +49,8 @@
             // 
             this.adgvJournalVentes.AllowUserToAddRows = false;
             this.adgvJournalVentes.AllowUserToDeleteRows = false;
+            this.adgvJournalVentes.AllowUserToResizeColumns = false;
+            this.adgvJournalVentes.AllowUserToResizeRows = false;
             this.adgvJournalVentes.AutoGenerateContextFilters = true;
             this.adgvJournalVentes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.adgvJournalVentes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;

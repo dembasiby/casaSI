@@ -75,20 +75,21 @@ namespace CasaEcologieSysInfo
                 .OrderByDescending(d => d.DateOperation)
                 .ToList();
 
-            DataTable dt = Conversion.ConvertToDataTable(result);
+            DataTable dt = Conversion.ConvertirEnTableDeDonnees(result);
 
             adgvJournalStockMatieresPremieres.DataSource = dt;
         }
 
+        private void AdgvJournalStockMatieresPremieres_FilterStringChanged(object sender, EventArgs e)
+        {
+            Conversion.FiltrerTableau(sender, e);
+        }
 
+        private void AdgvJournalStockMatieresPremieres_SortStringChanged(object sender, EventArgs e)
+        {
+            Conversion.TrierTableau(sender, e);
+        }
     }
 }
 
-    public class StockMatierePremiereViewModel
-    {
-        public DateTime Date { get; set; }
-        public string NomMatiere { get; set; }
-        public decimal Entree { get; set; }
-        public decimal Sortie { get; set; }
-        public int Solde { get; set; }       
-    }
+ 

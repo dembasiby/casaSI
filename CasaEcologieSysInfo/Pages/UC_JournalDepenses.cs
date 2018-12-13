@@ -70,7 +70,7 @@ namespace CasaEcologieSysInfo
                 .OrderByDescending(d => d.Date)
                 .ToList();
 
-            DataTable dt = Conversion.ConvertToDataTable(resultat);
+            DataTable dt = Conversion.ConvertirEnTableDeDonnees(resultat);
             adgvJournalDepenses.DataSource = dt;
             FormatColumn("Matiere_Premiere", "c0");
             FormatColumn("Services_et_fournitures", "c0");

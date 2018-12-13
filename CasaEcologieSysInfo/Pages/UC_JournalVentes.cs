@@ -36,21 +36,19 @@ namespace CasaEcologieSysInfo
                               Montant = vpf.Montant
                           }).ToList();
 
-            DataTable dt = Conversion.ConvertToDataTable(ventes);            
+            DataTable dt = Conversion.ConvertirEnTableDeDonnees(ventes);            
             adgvJournalVentes.DataSource = dt;
             adgvJournalVentes.Columns["Montant"].DefaultCellStyle.Format = "c0";
         }
 
         private void AdgvJournalVentes_FilterStringChanged(object sender, EventArgs e)
         {
-            var myDataGrid = sender as ADGV.AdvancedDataGridView;
-            (myDataGrid.DataSource as DataTable).DefaultView.RowFilter = myDataGrid.FilterString;
+            Conversion.FiltrerTableau(sender, e);
         }
 
         private void AdgvJournalVentes_SortStringChanged(object sender, EventArgs e)
         {
-            var myDataGrid = sender as ADGV.AdvancedDataGridView;
-            (myDataGrid.DataSource as DataTable).DefaultView.Sort = myDataGrid.SortString;
+            Conversion.TrierTableau(sender, e);
         }
     }
 }

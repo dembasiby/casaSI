@@ -45,6 +45,8 @@
             this.adgvJournalStocksProduitsFinis.Size = new System.Drawing.Size(950, 571);
             this.adgvJournalStocksProduitsFinis.TabIndex = 0;
             this.adgvJournalStocksProduitsFinis.TimeFilter = false;
+            this.adgvJournalStocksProduitsFinis.SortStringChanged += new System.EventHandler(this.AdgvJournalStocksProduitsFinis_SortStringChanged);
+            this.adgvJournalStocksProduitsFinis.FilterStringChanged += new System.EventHandler(this.AdgvJournalStocksProduitsFinis_FilterStringChanged);
             // 
             // label4
             // 
@@ -65,7 +67,7 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.adgvJournalStocksProduitsFinis);
             this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "UC_StocksProduitsFinis";
             this.Size = new System.Drawing.Size(983, 635);
             this.Load += new System.EventHandler(this.UC_StocksProduitsFinis_Load);

@@ -195,6 +195,12 @@
     <Compile Include="NouveauProduitFiniOuSemiFini.Designer.cs">
       <DependentUpon>NouveauProduitFiniOuSemiFini.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pages\UC_StockProduitsSemiFinis.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\UC_StockProduitsSemiFinis.Designer.cs">
+      <DependentUpon>UC_StockProduitsSemiFinis.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResComptesTresorerie.cs">
@@ -298,6 +304,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NouveauProduitFiniOuSemiFini.resx">
       <DependentUpon>NouveauProduitFiniOuSemiFini.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\UC_StockProduitsSemiFinis.resx">
+      <DependentUpon>UC_StockProduitsSemiFinis.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

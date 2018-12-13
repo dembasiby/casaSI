@@ -182,7 +182,8 @@ namespace CasaEcologieSysInfo
 
         private void BtnStockProduitsSemiFinis_Click(object sender, EventArgs e)
         {
-
+            Pages.UC_StockProduitsSemiFinis spsf = new Pages.UC_StockProduitsSemiFinis();
+            AddControlsToPanel(spsf);
         }
     }
 }

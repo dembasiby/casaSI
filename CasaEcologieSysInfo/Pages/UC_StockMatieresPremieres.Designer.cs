@@ -39,7 +39,7 @@
             this.adgvJournalStockMatieresPremieres.AllowUserToDeleteRows = false;
             this.adgvJournalStockMatieresPremieres.AllowUserToResizeColumns = false;
             this.adgvJournalStockMatieresPremieres.AllowUserToResizeRows = false;
-            this.adgvJournalStockMatieresPremieres.AutoGenerateContextFilters = false;
+            this.adgvJournalStockMatieresPremieres.AutoGenerateContextFilters = true;
             this.adgvJournalStockMatieresPremieres.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.adgvJournalStockMatieresPremieres.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.adgvJournalStockMatieresPremieres.DateWithTime = false;
@@ -47,8 +47,11 @@
             this.adgvJournalStockMatieresPremieres.Name = "adgvJournalStockMatieresPremieres";
             this.adgvJournalStockMatieresPremieres.ReadOnly = true;
             this.adgvJournalStockMatieresPremieres.Size = new System.Drawing.Size(957, 580);
+            this.adgvJournalStockMatieresPremieres.StandardTab = true;
             this.adgvJournalStockMatieresPremieres.TabIndex = 0;
             this.adgvJournalStockMatieresPremieres.TimeFilter = false;
+            this.adgvJournalStockMatieresPremieres.SortStringChanged += new System.EventHandler(this.AdgvJournalStockMatieresPremieres_SortStringChanged);
+            this.adgvJournalStockMatieresPremieres.FilterStringChanged += new System.EventHandler(this.AdgvJournalStockMatieresPremieres_FilterStringChanged);
             // 
             // label4
             // 
