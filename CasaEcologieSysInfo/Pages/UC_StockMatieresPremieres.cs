@@ -19,7 +19,7 @@ namespace CasaEcologieSysInfo
             InitializeComponent();
         }
 
-        public static int CalculerSoldeStocks(int id)
+        public static decimal CalculerSoldeStocks(int id)
         {
             CasaDBEntities2 db = new CasaDBEntities2();
 
@@ -35,7 +35,7 @@ namespace CasaEcologieSysInfo
                 .Where(e => e.CodeMatierePremiere == id)
                 .Sum(q => q.QuantiteMatierePremiere);
 
-            return init + entrees - sorties;
+            return Convert.ToDecimal(init + entrees - sorties);
         }
 
         private void UC_StockMatieresPremieres_Load(object sender, EventArgs e)
@@ -52,7 +52,7 @@ namespace CasaEcologieSysInfo
                           Sortie = 0,
                           Solde = 0
                                  
-                      });
+                      });       
 
             var Sorties = (from smp in db.ResStockMatieresPremieres
                            from ump in db.EveUtilisationMatieresPremieres
@@ -61,7 +61,7 @@ namespace CasaEcologieSysInfo
                            where ump.CodeMatierePremiere == smp.CodeMatierePremiere
                            where p.CodeUtilisationRessources == ur.CodeUtilisationRessources
                            where ump.CodeUtilisationRessource == p.CodeUtilisationRessources
-
+                           
                            select new
                            {
                                DateOperation = p.Date,
@@ -78,7 +78,25 @@ namespace CasaEcologieSysInfo
             DataTable dt = Conversion.ConvertirEnTableDeDonnees(result);
 
             adgvJournalStockMatieresPremieres.DataSource = dt;
+
+            /*
+            for (int i = adgvJournalStockMatieresPremieres.Rows.Count - 1; i >= 0; i--)
+            {
+                if (i == adgvJournalStockMatieresPremieres.Rows.Count - 1)
+                {
+                    adgvJournalStockMatieresPremieres.Rows[i].Cells[4].Value = (int)adgvJournalStockMatieresPremieres.Rows[i].Cells[2].Value - (int)adgvJournalStockMatieresPremieres.Rows[i].Cells[3].Value;
+                }
+                else
+                {
+                    adgvJournalStockMatieresPremieres.Rows[i].Cells[4].Value = (int)adgvJournalStockMatieresPremieres.Rows[i+1].Cells[4].Value + (int)adgvJournalStockMatieresPremieres.Rows[i].Cells[2].Value - (int)adgvJournalStockMatieresPremieres.Rows[i].Cells[3].Value;
+                }
+                
+            }
+            */
+
         }
+
+        
 
         private void AdgvJournalStockMatieresPremieres_FilterStringChanged(object sender, EventArgs e)
         {

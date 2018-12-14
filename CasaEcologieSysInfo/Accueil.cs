@@ -185,5 +185,11 @@ namespace CasaEcologieSysInfo
             Pages.UC_StockProduitsSemiFinis spsf = new Pages.UC_StockProduitsSemiFinis();
             AddControlsToPanel(spsf);
         }
+
+        private void BtnJournalTresorerie_Click(object sender, EventArgs e)
+        {
+            Pages.UC_JournalTresorerie jt = new Pages.UC_JournalTresorerie();
+            AddControlsToPanel(jt);
+        }
     }
 }

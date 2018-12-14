@@ -77,9 +77,9 @@ namespace CasaEcologieSysInfo
                 CodeEmploye = resStocks.CodeEmploye,
             };
 
-            matPrem.StockMatiere += int.Parse(txtQuantite.Text);
-            fournMp.SoldeDette += int.Parse(txtMontant.Text);
-            fournMp.SoldeDette -= int.Parse(txtMontantPaye.Text);
+            //matPrem.StockMatiere += int.Parse(txtQuantite.Text);
+            //fournMp.SoldeDette += int.Parse(txtMontant.Text);
+           //fournMp.SoldeDette -= int.Parse(txtMontantPaye.Text);
             // txtLocaliteFournisseur.Text = fournMp.Localite; 
  
             if (int.Parse(txtMontantPaye.Text) > 0)

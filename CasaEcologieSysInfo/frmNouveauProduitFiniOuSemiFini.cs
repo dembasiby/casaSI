@@ -10,12 +10,12 @@ using System.Windows.Forms;
 
 namespace CasaEcologieSysInfo
 {
-    public partial class NouveauProduitFiniOuSemiFini : Form
+    public partial class frmNouveauProduitFiniOuSemiFini : Form
     {
         CasaDBEntities2 db = new CasaDBEntities2();
         UC_Production prod = new UC_Production();
 
-        public NouveauProduitFiniOuSemiFini()
+        public frmNouveauProduitFiniOuSemiFini()
         {
             InitializeComponent();
         }

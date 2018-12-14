@@ -33,7 +33,7 @@ namespace CasaEcologieSysInfo
                               Description = pf.NomProduit,
                               Quantité = vpf.QuantiteProduitFini + " unités",
                               Client = c.NomClient,
-                              Montant = vpf.Montant
+                              vpf.Montant
                           }).ToList();
 
             DataTable dt = Conversion.ConvertirEnTableDeDonnees(ventes);            

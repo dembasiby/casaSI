@@ -350,7 +350,7 @@ namespace CasaEcologieSysInfo
 
         private void BtnOuvrirFormNouveauProduit_Click(object sender, EventArgs e)
         {
-            using (NouveauProduitFiniOuSemiFini np = new NouveauProduitFiniOuSemiFini())
+            using (frmNouveauProduitFiniOuSemiFini np = new frmNouveauProduitFiniOuSemiFini())
             {
                 np.ShowDialog();
             }

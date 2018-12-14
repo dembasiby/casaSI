@@ -1,6 +1,6 @@
 ﻿namespace CasaEcologieSysInfo
 {
-    partial class NouveauProduitFiniOuSemiFini
+    partial class frmNouveauProduitFiniOuSemiFini
     {
         /// <summary>
         /// Required designer variable.

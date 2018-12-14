@@ -189,11 +189,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model3.edmx</DependentUpon>
     </Compile>
-    <Compile Include="NouveauProduitFiniOuSemiFini.cs">
+    <Compile Include="frmNouveauProduitFiniOuSemiFini.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NouveauProduitFiniOuSemiFini.Designer.cs">
-      <DependentUpon>NouveauProduitFiniOuSemiFini.cs</DependentUpon>
+    <Compile Include="frmNouveauProduitFiniOuSemiFini.Designer.cs">
+      <DependentUpon>frmNouveauProduitFiniOuSemiFini.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\UC_JournalTresorerie.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\UC_JournalTresorerie.Designer.cs">
+      <DependentUpon>UC_JournalTresorerie.cs</DependentUpon>
     </Compile>
     <Compile Include="Pages\UC_StockProduitsSemiFinis.cs">
       <SubType>UserControl</SubType>
@@ -302,8 +308,11 @@
     <EmbeddedResource Include="Connexion.resx">
       <DependentUpon>Connexion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NouveauProduitFiniOuSemiFini.resx">
-      <DependentUpon>NouveauProduitFiniOuSemiFini.cs</DependentUpon>
+    <EmbeddedResource Include="frmNouveauProduitFiniOuSemiFini.resx">
+      <DependentUpon>frmNouveauProduitFiniOuSemiFini.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\UC_JournalTresorerie.resx">
+      <DependentUpon>UC_JournalTresorerie.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\UC_StockProduitsSemiFinis.resx">
       <DependentUpon>UC_StockProduitsSemiFinis.cs</DependentUpon>

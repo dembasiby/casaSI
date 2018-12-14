@@ -159,7 +159,7 @@ namespace CasaEcologieSysInfo
 
                 db.EveEncaissementsVentes.Add(encV);
                 db.SaveChanges();
-                cpte.SoldeCompte += int.Parse(txtMontantEncaisse.Text);
+                //cpte.SoldeCompte += int.Parse(txtMontantEncaisse.Text);
             }
 
             listView1.Items.Clear();

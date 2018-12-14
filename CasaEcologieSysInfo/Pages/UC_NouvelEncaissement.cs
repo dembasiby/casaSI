@@ -75,8 +75,8 @@ namespace CasaEcologieSysInfo
                 };
 
                 db.EveEncaissementsVentes.Add(encV);
-                cpte.SoldeCompte += int.Parse(txtMontantEncaisse.Text);
-                client.SoldeInitialeCreance -= int.Parse(txtMontantEncaisse.Text);
+                //cpte.SoldeCompte += int.Parse(txtMontantEncaisse.Text);
+                //client.SoldeInitialeCreance -= int.Parse(txtMontantEncaisse.Text);
                 db.SaveChanges();
                 LoadData();
 
