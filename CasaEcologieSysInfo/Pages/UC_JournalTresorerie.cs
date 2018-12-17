@@ -45,16 +45,7 @@ namespace CasaEcologieSysInfo.Pages
                                Date = env.DateEncaissement,
                                Entree = env.MontantEncaisse,
                                Sortie = 0m,
-                               Solde = (from ce in db.ResComptesTresoreries
-                                     where ce.CodeCompte == c.CodeCompte
-                                     select ce.SoldeCompte).FirstOrDefault() 
-                                     + env.MontantEncaisse
-                                     - (from ce in db.ResComptesTresoreries
-                                        where ce.CodeCompte == c.CodeCompte
-                                        from d in db.EveDecaissements
-                                        where ce.CodeCompte == d.CodeCompte
-                                       
-                                        select d).Sum(d => (decimal?) d.Montant) ?? 0m
+                               Solde = 0m
                          });
 
             var sorties = (from c in db.ResComptesTresoreries 
@@ -83,7 +74,11 @@ namespace CasaEcologieSysInfo.Pages
 
             DataTable dt = Conversion.ConvertirEnTableDeDonnees(resultats);
             adgvJournalTresorerieDetails.DataSource = dt;
-            
+
+            dt.Rows.Add(DateTime.Now, Conversion.CalculerTotal(0, adgvJournalTresorerieDetails, "Entree"), 
+                Conversion.CalculerTotal(0, adgvJournalTresorerieDetails, "Sortie"), 
+                Conversion.CalculerTotal(0, adgvJournalTresorerieDetails, "Solde"));
+
             adgvJournalTresorerieDetails.Columns["Entree"].DefaultCellStyle.Format = "c0";
             adgvJournalTresorerieDetails.Columns["Sortie"].DefaultCellStyle.Format = "c0";
             adgvJournalTresorerieDetails.Columns["Solde"].DefaultCellStyle.Format = "c0";
@@ -91,28 +86,3 @@ namespace CasaEcologieSysInfo.Pages
     }
 }
 
-
-/*
- * 
- *  //where (new DateTime(d.DateDecaissement.Year, d.DateDecaissement.Month, d.DateDecaissement.Day) <= new DateTime(env.DateEncaissement.Year, env.DateEncaissement.Month, env.DateEncaissement.Day))
- *  
- *  
- *  
- *  
- *  //where (new DateTime(env.DateEncaissement.Year, env.DateEncaissement.Month, env.DateEncaissement.Day) <= new DateTime(dec.DateDecaissement.Year, dec.DateDecaissement.Month, dec.DateDecaissement.Day))  //env.DateEncaissement <= dec.DateDecaissement
- *  
- *  
- *  
- *  
- *  
- *  (from ce in db.ResComptesTresoreries
-                                    where ce.CodeCompte == c.CodeCompte
-                                    select ce.SoldeCompte).FirstOrDefault() - dec.Montant + 
-                                    (from ce in db.ResComptesTresoreries
-                                        where ce.CodeCompte == c.CodeCompte
-                                        from en in db.EveEncaissements
-                                        from env in db.EveEncaissementsVentes
-                                        where en.CodeEncaissement == env.CodeEncaissement
-
-                                        select env).Sum(n => (decimal?) n.MontantEncaisse) ?? 0m
-*/

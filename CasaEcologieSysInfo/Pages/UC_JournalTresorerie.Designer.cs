@@ -61,10 +61,10 @@
             this.adgvJournalTresorerieDetails.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.adgvJournalTresorerieDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.adgvJournalTresorerieDetails.DateWithTime = false;
-            this.adgvJournalTresorerieDetails.Location = new System.Drawing.Point(396, 131);
+            this.adgvJournalTresorerieDetails.Location = new System.Drawing.Point(249, 131);
             this.adgvJournalTresorerieDetails.Name = "adgvJournalTresorerieDetails";
             this.adgvJournalTresorerieDetails.ReadOnly = true;
-            this.adgvJournalTresorerieDetails.Size = new System.Drawing.Size(571, 493);
+            this.adgvJournalTresorerieDetails.Size = new System.Drawing.Size(718, 493);
             this.adgvJournalTresorerieDetails.TabIndex = 14;
             this.adgvJournalTresorerieDetails.TimeFilter = false;
             // 
@@ -84,7 +84,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(97, 76);
+            this.label2.Location = new System.Drawing.Point(39, 103);
             this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(176, 23);
@@ -102,9 +102,9 @@
             this.listBox1.DisplayMember = "NomCompte";
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 21;
-            this.listBox1.Location = new System.Drawing.Point(19, 111);
+            this.listBox1.Location = new System.Drawing.Point(15, 131);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(313, 382);
+            this.listBox1.Size = new System.Drawing.Size(228, 277);
             this.listBox1.TabIndex = 15;
             this.listBox1.ValueMember = "CodeCompte";
             this.listBox1.SelectedValueChanged += new System.EventHandler(this.ListBox1_SelectedValueChanged);
