@@ -57,7 +57,7 @@ namespace CasaEcologieSysInfo.Pages
                                         select d).Sum(d => (decimal?) d.Montant) ?? 0m
                          });
 
-            var sorties = (from c in db.ResComptesTresoreries
+            var sorties = (from c in db.ResComptesTresoreries 
                            where c.NomCompte == nomCompte
                            from dec in db.EveDecaissements
                            where c.CodeCompte == dec.CodeCompte
@@ -67,17 +67,10 @@ namespace CasaEcologieSysInfo.Pages
                                Date = dec.DateDecaissement,
                                Entree = 0m,
                                Sortie = dec.Montant,
-                               Solde = (from ce in db.ResComptesTresoreries
-                                    where ce.CodeCompte == c.CodeCompte
-                                    select ce.SoldeCompte).FirstOrDefault() - dec.Montant + 
-                                    (from ce in db.ResComptesTresoreries
-                                        where ce.CodeCompte == c.CodeCompte
-                                        from en in db.EveEncaissements
-                                        from env in db.EveEncaissementsVentes
-                                        where en.CodeEncaissement == env.CodeEncaissement
-
-                                        select env).Sum(n => (decimal?) n.MontantEncaisse) ?? 0m
+                               Solde = 0m
                            });
+
+
 
             var resultats = entrees.Union(sorties)
                 .OrderByDescending(d => d.Date)
@@ -107,4 +100,19 @@ namespace CasaEcologieSysInfo.Pages
  *  
  *  
  *  //where (new DateTime(env.DateEncaissement.Year, env.DateEncaissement.Month, env.DateEncaissement.Day) <= new DateTime(dec.DateDecaissement.Year, dec.DateDecaissement.Month, dec.DateDecaissement.Day))  //env.DateEncaissement <= dec.DateDecaissement
+ *  
+ *  
+ *  
+ *  
+ *  
+ *  (from ce in db.ResComptesTresoreries
+                                    where ce.CodeCompte == c.CodeCompte
+                                    select ce.SoldeCompte).FirstOrDefault() - dec.Montant + 
+                                    (from ce in db.ResComptesTresoreries
+                                        where ce.CodeCompte == c.CodeCompte
+                                        from en in db.EveEncaissements
+                                        from env in db.EveEncaissementsVentes
+                                        where en.CodeEncaissement == env.CodeEncaissement
+
+                                        select env).Sum(n => (decimal?) n.MontantEncaisse) ?? 0m
 */

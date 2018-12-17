@@ -27,6 +27,7 @@ namespace CasaEcologieSysInfo
                     row[prop.Name] = prop.GetValue(item) ?? DBNull.Value;
                 table.Rows.Add(row);
             }
+
             return table;
         }
 
@@ -41,5 +42,6 @@ namespace CasaEcologieSysInfo
             var myDataGrid = sender as ADGV.AdvancedDataGridView;
             (myDataGrid.DataSource as DataTable).DefaultView.Sort = myDataGrid.SortString;
         }
+
     }
 }
