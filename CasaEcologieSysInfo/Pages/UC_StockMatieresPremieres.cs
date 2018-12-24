@@ -7,105 +7,81 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace CasaEcologieSysInfo
 {
     public partial class UC_StockMatieresPremieres : UserControl
     {
         CasaDBEntities2 db = new CasaDBEntities2();
+        string connectionString = "Data Source=HP\\SQLEXPRESS;Initial Catalog=CasaDB;Integrated Security=True";
 
         public UC_StockMatieresPremieres()
         {
             InitializeComponent();
         }
 
-        public static decimal CalculerSoldeStocks(int id)
-        {
-            CasaDBEntities2 db = new CasaDBEntities2();
-
-            int init = db.ResStockMatieresPremieres
-                .Where(s => s.CodeMatierePremiere == id)
-                .Select(m => m.StockMatiere).SingleOrDefault();
-
-            int entrees = db.EveReceptionMatieresPremieres
-                .Where(e => e.CodeMatierePremiere == id)
-                .Sum(q => q.Quantite);
-
-            int sorties = db.EveUtilisationMatieresPremieres
-                .Where(e => e.CodeMatierePremiere == id)
-                .Sum(q => q.QuantiteMatierePremiere);
-
-            return Convert.ToDecimal(init + entrees - sorties);
-        }
-
         private void UC_StockMatieresPremieres_Load(object sender, EventArgs e)
         {
-            var Entrees = (from smp in db.ResStockMatieresPremieres
-                      from rmp in db.EveReceptionMatieresPremieres                     
-                      where smp.CodeMatierePremiere == rmp.CodeMatierePremiere
+            resStockMatieresPremiereBindingSource.DataSource = db.ResStockMatieresPremieres.ToList();
+            string nomCompte = listBox1.GetItemText(listBox1.SelectedItem);
 
-                      select new 
-                      {
-                          DateOperation = rmp.DateReception,
-                          Description = smp.NomMatiere,
-                          Entree = rmp.Quantite,
-                          Sortie = 0,
-                          Solde = 0
-                                 
-                      });       
+            AfficherJournalCorrespondant(nomCompte);
 
-            var Sorties = (from smp in db.ResStockMatieresPremieres
-                           from ump in db.EveUtilisationMatieresPremieres
-                           from ur in db.EveUtilisationRessources
-                           from p in db.EveProductions
-                           where ump.CodeMatierePremiere == smp.CodeMatierePremiere
-                           where p.CodeUtilisationRessources == ur.CodeUtilisationRessources
-                           where ump.CodeUtilisationRessource == p.CodeUtilisationRessources
-                           
-                           select new
-                           {
-                               DateOperation = p.Date,
-                               Description = smp.NomMatiere,
-                               Entree = 0,
-                               Sortie = ump.QuantiteMatierePremiere,
-                               Solde = 0
-                           });
-          
-            var result = Entrees.Union(Sorties)
-                .OrderByDescending(d => d.DateOperation)
-                .ToList();
+        }
 
-            DataTable dt = Conversion.ConvertirEnTableDeDonnees(result);
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string nomCompte = listBox1.GetItemText(listBox1.SelectedItem);
 
-            adgvJournalStockMatieresPremieres.DataSource = dt;
+            AfficherJournalCorrespondant(nomCompte);
+        }
 
-            /*
-            for (int i = adgvJournalStockMatieresPremieres.Rows.Count - 1; i >= 0; i--)
+        private void AfficherJournalCorrespondant(string nomMatiere)
+        {
+
+            string query = "SELECT EveReceptionMatieresPremieres.DateReception as Date, 'Achat de ' + ResStockMatieresPremieres.NomMatiere as Description,  EveReceptionMatieresPremieres.Quantite as Entree, ' ' as Sortie FROM ResStockMatieresPremieres INNER JOIN EveReceptionMatieresPremieres ON ResStockMatieresPremieres.CodeMatierePremiere = EveReceptionMatieresPremieres.CodeMatierePremiere WHERE ResStockMatieresPremieres.NomMatiere = '" + nomMatiere + "' UNION All(SELECT EveProductions.Date as Date, 'Utilisation de ' + ResStockMatieresPremieres.NomMatiere as Description, '' as Entree, EveUtilisationMatieresPremieres.QuantiteMatierePremiere as Sortie FROM ResStockMatieresPremieres INNER JOIN EveUtilisationMatieresPremieres ON ResStockMatieresPremieres.CodeMatierePremiere = EveUtilisationMatieresPremieres.CodeMatierePremiere INNER JOIN EveUtilisationRessources ON EveUtilisationMatieresPremieres.CodeUtilisationRessource = EveUtilisationRessources.CodeUtilisationRessources INNER JOIN EveProductions ON EveUtilisationRessources.CodeUtilisationRessources = EveProductions.CodeUtilisationRessources where ResStockMatieresPremieres.NomMatiere = '" + nomMatiere +"')";
+
+            SqlConnection con = new SqlConnection(connectionString);
+
+            SqlCommand selectCommand = new SqlCommand(query, con);
+            SqlDataAdapter stockDataSdapter = new SqlDataAdapter(selectCommand);
+            
+            var stockInitial = (from mp in db.ResStockMatieresPremieres
+                                where mp.NomMatiere == nomMatiere
+                                select mp.StockMatiere).FirstOrDefault();
+         
+
+            DataTable dt = new DataTable();
+            stockDataSdapter.Fill(dt);
+
+            DataColumn dc = new DataColumn("Solde", typeof(int));
+            dt.Columns.Add(dc);
+
+            DataRow dr = dt.NewRow();
+            dt.Rows.InsertAt(dr, 0);
+            dr["Entree"] = 0;
+            dr["Sortie"] = 0;
+            dr["Description"] = "Report";
+            
+            dgvJournalStockMatPrem.DataSource = dt;
+
+            for (int i = 0; i < dgvJournalStockMatPrem.Rows.Count; i++)
             {
-                if (i == adgvJournalStockMatieresPremieres.Rows.Count - 1)
+
+                if (i > 0)
                 {
-                    adgvJournalStockMatieresPremieres.Rows[i].Cells[4].Value = (int)adgvJournalStockMatieresPremieres.Rows[i].Cells[2].Value - (int)adgvJournalStockMatieresPremieres.Rows[i].Cells[3].Value;
+                    dgvJournalStockMatPrem.Rows[i].Cells[4].Value = Convert.ToInt32(dgvJournalStockMatPrem.Rows[i-1].Cells[4].Value) 
+                    + Convert.ToInt32(dgvJournalStockMatPrem.Rows[i].Cells[2].Value) 
+                    - Convert.ToInt32(dgvJournalStockMatPrem.Rows[i].Cells[3].Value);
                 }
                 else
                 {
-                    adgvJournalStockMatieresPremieres.Rows[i].Cells[4].Value = (int)adgvJournalStockMatieresPremieres.Rows[i+1].Cells[4].Value + (int)adgvJournalStockMatieresPremieres.Rows[i].Cells[2].Value - (int)adgvJournalStockMatieresPremieres.Rows[i].Cells[3].Value;
+                    dgvJournalStockMatPrem.Rows[i].Cells[4].Value = stockInitial + Convert.ToInt32(dgvJournalStockMatPrem.Rows[i].Cells[2].Value)
+                    - Convert.ToInt32(dgvJournalStockMatPrem.Rows[i].Cells[3].Value);
                 }
                 
             }
-            */
-
-        }
-
-        
-
-        private void AdgvJournalStockMatieresPremieres_FilterStringChanged(object sender, EventArgs e)
-        {
-            Conversion.FiltrerTableau(sender, e);
-        }
-
-        private void AdgvJournalStockMatieresPremieres_SortStringChanged(object sender, EventArgs e)
-        {
-            Conversion.TrierTableau(sender, e);
         }
     }
 }

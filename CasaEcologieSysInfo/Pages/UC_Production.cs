@@ -265,7 +265,7 @@ namespace CasaEcologieSysInfo
 
         private void VerifierPresenceEmployesDansLaProduction()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         private void ProductionProduitFini(int codeProduction, string nomProduit, int quantite)
