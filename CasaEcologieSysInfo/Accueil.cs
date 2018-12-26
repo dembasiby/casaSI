@@ -191,5 +191,11 @@ namespace CasaEcologieSysInfo
             Pages.txtEquipmentsInfr jt = new Pages.txtEquipmentsInfr();
             AddControlsToPanel(jt);
         }
+
+        private void btnCreancesClients_Click(object sender, EventArgs e)
+        {
+            Pages.UC_CreancesClients cc = new Pages.UC_CreancesClients();
+            AddControlsToPanel(cc);
+        }
     }
 }

@@ -195,6 +195,12 @@
     <Compile Include="frmNouveauProduitFiniOuSemiFini.Designer.cs">
       <DependentUpon>frmNouveauProduitFiniOuSemiFini.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pages\UC_CreancesClients.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\UC_CreancesClients.Designer.cs">
+      <DependentUpon>UC_CreancesClients.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pages\UC_JournalTresorerie.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -310,6 +316,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmNouveauProduitFiniOuSemiFini.resx">
       <DependentUpon>frmNouveauProduitFiniOuSemiFini.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\UC_CreancesClients.resx">
+      <DependentUpon>UC_CreancesClients.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\UC_JournalTresorerie.resx">
       <DependentUpon>UC_JournalTresorerie.cs</DependentUpon>
