@@ -48,7 +48,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.txtCreancesClient = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.resComptesTresorerieBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ageEmployeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ageClientBindingSource)).BeginInit();
@@ -105,6 +105,7 @@
             this.cbxNomClient.Size = new System.Drawing.Size(326, 29);
             this.cbxNomClient.TabIndex = 21;
             this.cbxNomClient.ValueMember = "CodeClient";
+            this.cbxNomClient.SelectedValueChanged += new System.EventHandler(this.cbxNomClient_SelectedValueChanged);
             // 
             // ageClientBindingSource
             // 
@@ -234,26 +235,24 @@
             this.label6.TabIndex = 15;
             this.label6.Text = "FCFA";
             // 
-            // comboBox2
+            // txtCreancesClient
             // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.Enabled = false;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(600, 131);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(125, 29);
-            this.comboBox2.TabIndex = 21;
+            this.txtCreancesClient.Enabled = false;
+            this.txtCreancesClient.Location = new System.Drawing.Point(600, 117);
+            this.txtCreancesClient.Name = "txtCreancesClient";
+            this.txtCreancesClient.Size = new System.Drawing.Size(283, 27);
+            this.txtCreancesClient.TabIndex = 25;
             // 
             // UC_NouvelEncaissement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.txtCreancesClient);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.dtpDateEncaissement);
             this.Controls.Add(this.cbxCompte);
             this.Controls.Add(this.cbxTres);
             this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.cbxNomClient);
             this.Controls.Add(this.txtMontantEncaisse);
             this.Controls.Add(this.label1);
@@ -299,6 +298,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.TextBox txtCreancesClient;
     }
 }

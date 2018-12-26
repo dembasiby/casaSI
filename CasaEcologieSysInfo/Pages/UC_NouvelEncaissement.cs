@@ -24,6 +24,31 @@ namespace CasaEcologieSysInfo
             ageEmployeBindingSource.DataSource = db.AgeEmployes.ToList();
             ageClientBindingSource.DataSource = db.AgeClients.ToList();
             resComptesTresorerieBindingSource.DataSource = db.ResComptesTresoreries.ToList();
+
+        }
+
+        private void MettreCreanceAJour()
+        {
+            var ventesClients = (from c in db.AgeClients
+                                 from vf in db.EveVenteStockProduitsFinis
+                                 from v in db.EveVentes
+                                 where v.CodeClient == c.CodeClient
+                                 where vf.CodeVente == v.CodeVente
+                                 where c.NomClient == cbxNomClient.Text
+                                 select (decimal?)vf.Montant).Sum() ?? 0m;
+
+            var totalPaiementClient = (from c in db.AgeClients
+                                           //from e in db.EveEncaissements
+                                           //where e.CodeClient 
+                                       where c.NomClient == cbxNomClient.Text
+                                       select (decimal?)c.EveEncaissements.Sum(s => s.EveEncaissementsVentes.Sum(t => t.MontantEncaisse))).Sum() ?? 0m;
+            //select (decimal?)ev.MontantEncaisse).Sum() ?? 0m;
+
+            var creanceInitialClient = (from c in db.AgeClients where c.NomClient == cbxNomClient.Text select c.SoldeInitialeCreance).FirstOrDefault();
+
+            var creancesClients = ventesClients + creanceInitialClient - totalPaiementClient;
+
+            txtCreancesClient.Text = creancesClients.ToString("c0");
         }
 
         private void VerifierChampsMontantEncaisse()
@@ -75,10 +100,9 @@ namespace CasaEcologieSysInfo
                 };
 
                 db.EveEncaissementsVentes.Add(encV);
-                //cpte.SoldeCompte += int.Parse(txtMontantEncaisse.Text);
-                //client.SoldeInitialeCreance -= int.Parse(txtMontantEncaisse.Text);
                 db.SaveChanges();
                 LoadData();
+                MettreCreanceAJour();
 
             }
 
@@ -87,6 +111,12 @@ namespace CasaEcologieSysInfo
         private void UC_NouvelEncaissement_Load(object sender, EventArgs e)
         {
             LoadData();
+            MettreCreanceAJour();
+        }
+
+        private void cbxNomClient_SelectedValueChanged(object sender, EventArgs e)
+        {
+            MettreCreanceAJour();
         }
     }
 

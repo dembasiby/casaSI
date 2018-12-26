@@ -122,7 +122,6 @@ namespace CasaEcologieSysInfo
                     CodeCompte = cpte.CodeCompte,
                     Montant = int.Parse(txtMontantPaye.Text),
                 };
-                cpte.SoldeCompte -= int.Parse(txtMontantPaye.Text);
                 db.EveDecaissements.Add(decaiss);
                 db.SaveChanges();
             }

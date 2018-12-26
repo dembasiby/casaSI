@@ -11,13 +11,11 @@ using System.Data.SqlClient;
 
 namespace CasaEcologieSysInfo.Pages
 {
-    public partial class UC_JournalTresorerie : UserControl
+    public partial class txtEquipmentsInfr : UserControl
     {
         CasaDBEntities2 db = new CasaDBEntities2();
-        string connectionString = "Data Source=HP\\SQLEXPRESS;Initial Catalog=CasaDB;Integrated Security=True";
 
-
-        public UC_JournalTresorerie()
+        public txtEquipmentsInfr()
         {
             InitializeComponent();
         }
@@ -37,13 +35,34 @@ namespace CasaEcologieSysInfo.Pages
 
         private void AfficherJournalCorrespondant(string nomCompte)
         {
-            string query = "SELECT EveEncaissementsVentes.DateEncaissement AS Date,'Vente de ' + ResStockProduitsFinis.NomProduit as Description, EveEncaissementsVentes.MontantEncaisse as Entree, '' as 'Sortie' FROM ResStockProduitsFinis INNER JOIN  EveVenteStockProduitsFinis ON ResStockProduitsFinis.CodeProduit = EveVenteStockProduitsFinis.CodeProduitFini INNER JOIN EveEncaissementsVentes ON EveEncaissementsVentes.CodeVente = EveVenteStockProduitsFinis.CodeVente INNER JOIN EveEncaissements ON EveEncaissements.CodeEncaissement = EveEncaissementsVentes.CodeEncaissement INNER JOIN ResComptesTresorerie ON ResComptesTresorerie.CodeCompte = EveEncaissements.CodeCompte WHERE ResComptesTresorerie.NomCompte = '" + nomCompte + "' UNION ALL(SELECT EveDecaissements.DateDecaissement as Date, EveDecaissements.Description as Description,'' as Entree, EveDecaissements.Montant as Sortie FROM EveDecaissements INNER JOIN ResComptesTresorerie ON EveDecaissements.CodeCompte = ResComptesTresorerie.CodeCompte WHERE ResComptesTresorerie.NomCompte = '" + nomCompte +"')";
+            
+            var query1 = (from ev in db.EveEncaissementsVentes
+                          from vpf in db.EveVenteStockProduitsFinis
+                          where vpf.CodeVente== ev.CodeVente
+                          from pf in db.ResStockProduitsFinis
+                          where pf.CodeProduit == vpf.CodeProduitFini
+                          where ev.EveEncaissement.ResComptesTresorerie.NomCompte == nomCompte
 
+                          select new
+                          {
+                              Date = ev.DateEncaissement,
+                              Description = "",//vpf.ResStockProduitsFini.NomProduit,
+                              Entree = ev.MontantEncaisse,
+                              Sortie = 0m,
+                              Solde = 0m
+                          });
 
-            SqlConnection con = new SqlConnection(connectionString);
-
-            SqlCommand selectCommand = new SqlCommand(query, con);
-            SqlDataAdapter soldeDataSdapter = new SqlDataAdapter(selectCommand);
+            var query2 = (from d in db.EveDecaissements
+                          where d.ResComptesTresorerie.NomCompte == nomCompte
+                          select new
+                          {
+                              Date = d.DateDecaissement,
+                              d.Description,
+                              Entree = 0m,
+                              Sortie = d.Montant,
+                              Solde = 0m
+                          });
+            var combinedQuery = query1.Union(query2).ToList();
 
 
             var soldeInitial = (from c in db.ResComptesTresoreries
@@ -51,11 +70,7 @@ namespace CasaEcologieSysInfo.Pages
                                              select c.SoldeCompte).FirstOrDefault();
 
 
-            DataTable dt = new DataTable();
-            soldeDataSdapter.Fill(dt);
-
-            DataColumn dc = new DataColumn("Solde", typeof(int));
-            dt.Columns.Add(dc);
+            DataTable dt = Conversion.ConvertirEnTableDeDonnees(combinedQuery);
 
             DataRow dr = dt.NewRow();
             dt.Rows.InsertAt(dr, 0);
@@ -86,6 +101,47 @@ namespace CasaEcologieSysInfo.Pages
             adgvJournalTresorerieDetails.Columns["Entree"].DefaultCellStyle.Format = "c0";
             adgvJournalTresorerieDetails.Columns["Sortie"].DefaultCellStyle.Format = "c0";
             adgvJournalTresorerieDetails.Columns["Solde"].DefaultCellStyle.Format = "c0";
+
+            // Calcul des soldes
+
+            var soldeInitiaux = (from c in db.ResComptesTresoreries
+                                 select c.SoldeCompte).Sum();
+
+            var totalEncaissements = (from c in db.EveEncaissements
+                                      from env in db.EveEncaissementsVentes
+                                      where c.CodeEncaissement == env.CodeEncaissement
+                                      select (decimal?)env.MontantEncaisse).Sum() ?? 0m;
+
+            var totalAchatMatierePrem = (from d in db.EveDecaissements
+                                         from m in db.EveReceptionMatieresPremieres
+                                         where d.CodeReceptionMatierePremiere == m.CodeReceptionMatierePremiere
+                                         select (decimal?)d.Montant).Sum() ?? 0m;
+
+            var totalEquipmentsInfrastructures = (from d in db.EveDecaissements
+                                                  from re in db.EveReceptionEquipementsInfrastructures
+                                                  where d.CodeReceptionEquipementInfrastructure == re.CodeReceptionEquipementInfrastructure
+                                                  select (decimal?)d.Montant).Sum() ?? 0m;
+
+            var totalFournituresServices = (from d in db.EveDecaissements
+                                            from fs in db.EveAcquisitionServicesFournitures
+                                            where d.CodeAcquisitionServiceFourniture == fs.CodeAcquisitionServiceFourniture
+                                            select (decimal?)d.Montant).Sum() ?? 0m;
+
+            var fondsDisponibleEnCaissesEtEnBanques = soldeInitiaux
+                + totalEncaissements
+                - totalAchatMatierePrem
+                - totalEquipmentsInfrastructures
+                - totalFournituresServices;
+
+            txtSoldesInitiaux.Text = soldeInitiaux.ToString("c0");
+            txtTotalEncaissements.Text = totalEncaissements.ToString("c0");
+            txtTotalMatPrem.Text = totalAchatMatierePrem.ToString("c0");
+            txtTotalEquipementsInfr.Text = totalEquipmentsInfrastructures.ToString("c0");
+            txtFournServ.Text = totalFournituresServices.ToString("c0");
+
+            txtSolde.Text = fondsDisponibleEnCaissesEtEnBanques.ToString("c0");
+
+            
         }
     }
 }

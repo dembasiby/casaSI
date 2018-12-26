@@ -76,12 +76,7 @@ namespace CasaEcologieSysInfo
                 CodeFournisseurMatierePremiere = fournMp.CodeFournisseurMatierePremiere,
                 CodeEmploye = resStocks.CodeEmploye,
             };
-            /*
-            matPrem.StockMatiere += int.Parse(txtQuantite.Text);
-            fournMp.SoldeDette += int.Parse(txtMontant.Text);
-            fournMp.SoldeDette -= int.Parse(txtMontantPaye.Text);
-            txtLocaliteFournisseur.Text = fournMp.Localite; 
-            */
+     
             if (int.Parse(txtMontantPaye.Text) > 0)
             {
                 EveDecaissement decaiss = new EveDecaissement
@@ -94,7 +89,7 @@ namespace CasaEcologieSysInfo
                     CodeCompte = tres.CodeCompte,
                     Montant = int.Parse(txtMontantPaye.Text),
                 };
-                tres.SoldeCompte -= int.Parse(txtMontantPaye.Text);
+
                 db.EveDecaissements.Add(decaiss);
             }
             db.EveReceptionMatieresPremieres.Add(achatMatiere);

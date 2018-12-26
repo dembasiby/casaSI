@@ -57,7 +57,7 @@
             this.listBox1.DisplayMember = "NomMatiere";
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 17;
-            this.listBox1.Location = new System.Drawing.Point(3, 76);
+            this.listBox1.Location = new System.Drawing.Point(6, 100);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(175, 225);
             this.listBox1.TabIndex = 14;
@@ -71,7 +71,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 48);
+            this.label1.Location = new System.Drawing.Point(6, 72);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(47, 17);
             this.label1.TabIndex = 15;
@@ -106,7 +106,7 @@
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.label4);
             this.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UC_StockMatieresPremieres";
             this.Size = new System.Drawing.Size(983, 635);
             this.Load += new System.EventHandler(this.UC_StockMatieresPremieres_Load);

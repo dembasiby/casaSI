@@ -50,7 +50,7 @@ namespace CasaEcologieSysInfo
             var stockInitial = (from mp in db.ResStockMatieresPremieres
                                 where mp.NomMatiere == nomMatiere
                                 select mp.StockMatiere).FirstOrDefault();
-         
+
 
             DataTable dt = new DataTable();
             stockDataSdapter.Fill(dt);
