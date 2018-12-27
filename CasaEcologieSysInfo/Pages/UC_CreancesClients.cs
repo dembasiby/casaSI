@@ -22,7 +22,9 @@ namespace CasaEcologieSysInfo.Pages
         private void UC_CreancesClients_Load(object sender, EventArgs e)
         {
             ageClientBindingSource.DataSource = db.AgeClients.ToList();
+            txtTotalCreances.Text = Conversion.CalculerTotalCreancesClients().ToString("c0");
         }
+
 
         private void MontrerDetailsCreances(string nomClient)
         {
@@ -67,7 +69,6 @@ namespace CasaEcologieSysInfo.Pages
            dt.Rows.InsertAt(dr, 0);
            dr["MontantVente"] = 0;
            dr["Encaissement"] = 0;
-            //dr["Description"] = "Report";
             dataGridView1.DataSource = dt;
 
 
@@ -101,7 +102,7 @@ namespace CasaEcologieSysInfo.Pages
 
         }
 
-        private void listBox1_SelectedValueChanged(object sender, EventArgs e)
+        private void ListBox1_SelectedValueChanged(object sender, EventArgs e)
         {
             string nomClient = listBox1.GetItemText(listBox1.SelectedItem);
             MontrerDetailsCreances(nomClient);
