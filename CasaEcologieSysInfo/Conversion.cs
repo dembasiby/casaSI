@@ -12,6 +12,7 @@ namespace CasaEcologieSysInfo
 {
     class Conversion
     {
+
         // Conversion d'une liste en tableau de données
         public static DataTable ConvertirEnTableDeDonnees<T>(IList<T> data)
         {
@@ -69,6 +70,35 @@ namespace CasaEcologieSysInfo
             }
 
             return Tot;
+        }
+
+        public static decimal CalculerTotalCreancesClients()
+        {
+            using (CasaDBEntities2 db = new CasaDBEntities2())
+            {
+                var ventesClients = (from c in db.AgeClients
+                                     from vf in db.EveVenteStockProduitsFinis
+                                     from v in db.EveVentes
+                                     where v.CodeClient == c.CodeClient
+                                     where vf.CodeVente == v.CodeVente
+                                     select (decimal?)vf.Montant).Sum() ?? 0m;
+
+                var totalPaiementClient = (from c in db.AgeClients
+                                           from e in db.EveEncaissements
+                                           where c.CodeClient == e.CodeClient
+                                           from ev in db.EveEncaissementsVentes
+                                           where ev.CodeEncaissement == e.CodeEncaissement
+                                           select (decimal?)ev.MontantEncaisse).Sum() ?? 0m;
+
+
+
+                var creanceInitialClient = (from c in db.AgeClients
+                                            select (decimal?)c.SoldeInitialeCreance).Sum() ?? 0m;
+
+                return creanceInitialClient + ventesClients - totalPaiementClient;
+            }
+
+           
         }
 
     }
