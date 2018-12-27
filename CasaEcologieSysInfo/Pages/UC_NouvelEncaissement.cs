@@ -24,7 +24,6 @@ namespace CasaEcologieSysInfo
             ageEmployeBindingSource.DataSource = db.AgeEmployes.ToList();
             ageClientBindingSource.DataSource = db.AgeClients.ToList();
             resComptesTresorerieBindingSource.DataSource = db.ResComptesTresoreries.ToList();
-
         }
 
         private void MettreCreanceAJour()
@@ -38,11 +37,8 @@ namespace CasaEcologieSysInfo
                                  select (decimal?)vf.Montant).Sum() ?? 0m;
 
             var totalPaiementClient = (from c in db.AgeClients
-                                           //from e in db.EveEncaissements
-                                           //where e.CodeClient 
                                        where c.NomClient == cbxNomClient.Text
                                        select (decimal?)c.EveEncaissements.Sum(s => s.EveEncaissementsVentes.Sum(t => t.MontantEncaisse))).Sum() ?? 0m;
-            //select (decimal?)ev.MontantEncaisse).Sum() ?? 0m;
 
             var creanceInitialClient = (from c in db.AgeClients where c.NomClient == cbxNomClient.Text select c.SoldeInitialeCreance).FirstOrDefault();
 
@@ -103,9 +99,7 @@ namespace CasaEcologieSysInfo
                 db.SaveChanges();
                 LoadData();
                 MettreCreanceAJour();
-
             }
-
         }
 
         private void UC_NouvelEncaissement_Load(object sender, EventArgs e)
