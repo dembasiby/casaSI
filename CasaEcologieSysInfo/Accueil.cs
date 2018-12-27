@@ -197,5 +197,11 @@ namespace CasaEcologieSysInfo
             Pages.UC_CreancesClients cc = new Pages.UC_CreancesClients();
             AddControlsToPanel(cc);
         }
+
+        private void btnDettesFournisseurs_Click(object sender, EventArgs e)
+        {
+            Pages.UC_DettesFournisseurs df = new Pages.UC_DettesFournisseurs();
+            AddControlsToPanel(df);
+        }
     }
 }

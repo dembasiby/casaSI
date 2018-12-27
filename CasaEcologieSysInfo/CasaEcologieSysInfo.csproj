@@ -195,6 +195,12 @@
     <Compile Include="frmNouveauProduitFiniOuSemiFini.Designer.cs">
       <DependentUpon>frmNouveauProduitFiniOuSemiFini.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pages\UC_DettesFournisseurs.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\UC_DettesFournisseurs.Designer.cs">
+      <DependentUpon>UC_DettesFournisseurs.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pages\UC_CreancesClients.cs">
       <SubType>UserControl</SubType>
     </Compile>

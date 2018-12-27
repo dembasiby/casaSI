@@ -59,12 +59,6 @@
             this.btnDepenses = new System.Windows.Forms.Button();
             this.btnEquipementInfrastructure = new System.Windows.Forms.Button();
             this.btnMatierePremiere = new System.Windows.Forms.Button();
-            this.pnlFournisseurClient = new System.Windows.Forms.Panel();
-            this.btnNouveauFournisseur = new System.Windows.Forms.Button();
-            this.btnNouveauClient = new System.Windows.Forms.Button();
-            this.btnDettesFournisseurs = new System.Windows.Forms.Button();
-            this.btnFournisseursEtClients = new System.Windows.Forms.Button();
-            this.btnCreancesClients = new System.Windows.Forms.Button();
             this.pnlUtilisateurs = new System.Windows.Forms.Panel();
             this.btnGererUtilisateurs = new System.Windows.Forms.Button();
             this.btnGererCompte = new System.Windows.Forms.Button();
@@ -73,6 +67,12 @@
             this.btnJournalTresorerie = new System.Windows.Forms.Button();
             this.btnNouveauCompteTresorerie = new System.Windows.Forms.Button();
             this.btnTresorerie = new System.Windows.Forms.Button();
+            this.pnlFournisseurClient = new System.Windows.Forms.Panel();
+            this.btnNouveauFournisseur = new System.Windows.Forms.Button();
+            this.btnNouveauClient = new System.Windows.Forms.Button();
+            this.btnDettesFournisseurs = new System.Windows.Forms.Button();
+            this.btnFournisseursEtClients = new System.Windows.Forms.Button();
+            this.btnCreancesClients = new System.Windows.Forms.Button();
             this.pnlPrincipal = new System.Windows.Forms.Panel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.tmrDepenses = new System.Windows.Forms.Timer(this.components);
@@ -90,9 +90,9 @@
             this.pnlVentes.SuspendLayout();
             this.pnlDepenses.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            this.pnlFournisseurClient.SuspendLayout();
             this.pnlUtilisateurs.SuspendLayout();
             this.pnlTresorerie.SuspendLayout();
+            this.pnlFournisseurClient.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel3
@@ -530,103 +530,6 @@
             this.btnMatierePremiere.UseVisualStyleBackColor = false;
             this.btnMatierePremiere.Click += new System.EventHandler(this.BtnMatierePremiere_Click);
             // 
-            // pnlFournisseurClient
-            // 
-            this.pnlFournisseurClient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(31)))), ((int)(((byte)(20)))));
-            this.pnlFournisseurClient.Controls.Add(this.btnNouveauFournisseur);
-            this.pnlFournisseurClient.Controls.Add(this.btnNouveauClient);
-            this.pnlFournisseurClient.Controls.Add(this.btnDettesFournisseurs);
-            this.pnlFournisseurClient.Controls.Add(this.btnFournisseursEtClients);
-            this.pnlFournisseurClient.Controls.Add(this.btnCreancesClients);
-            this.pnlFournisseurClient.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.pnlFournisseurClient.Location = new System.Drawing.Point(3, 523);
-            this.pnlFournisseurClient.MaximumSize = new System.Drawing.Size(217, 193);
-            this.pnlFournisseurClient.MinimumSize = new System.Drawing.Size(217, 40);
-            this.pnlFournisseurClient.Name = "pnlFournisseurClient";
-            this.pnlFournisseurClient.Size = new System.Drawing.Size(217, 193);
-            this.pnlFournisseurClient.TabIndex = 5;
-            // 
-            // btnNouveauFournisseur
-            // 
-            this.btnNouveauFournisseur.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.btnNouveauFournisseur.FlatAppearance.BorderSize = 0;
-            this.btnNouveauFournisseur.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNouveauFournisseur.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNouveauFournisseur.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNouveauFournisseur.Location = new System.Drawing.Point(3, 151);
-            this.btnNouveauFournisseur.Name = "btnNouveauFournisseur";
-            this.btnNouveauFournisseur.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnNouveauFournisseur.Size = new System.Drawing.Size(214, 41);
-            this.btnNouveauFournisseur.TabIndex = 6;
-            this.btnNouveauFournisseur.Text = "Nouveau fournisseur";
-            this.btnNouveauFournisseur.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNouveauFournisseur.UseVisualStyleBackColor = false;
-            // 
-            // btnNouveauClient
-            // 
-            this.btnNouveauClient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.btnNouveauClient.FlatAppearance.BorderSize = 0;
-            this.btnNouveauClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNouveauClient.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNouveauClient.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNouveauClient.Location = new System.Drawing.Point(3, 112);
-            this.btnNouveauClient.Name = "btnNouveauClient";
-            this.btnNouveauClient.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnNouveauClient.Size = new System.Drawing.Size(214, 38);
-            this.btnNouveauClient.TabIndex = 4;
-            this.btnNouveauClient.Text = "Nouveau client";
-            this.btnNouveauClient.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNouveauClient.UseVisualStyleBackColor = false;
-            // 
-            // btnDettesFournisseurs
-            // 
-            this.btnDettesFournisseurs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.btnDettesFournisseurs.FlatAppearance.BorderSize = 0;
-            this.btnDettesFournisseurs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDettesFournisseurs.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDettesFournisseurs.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDettesFournisseurs.Location = new System.Drawing.Point(3, 77);
-            this.btnDettesFournisseurs.Name = "btnDettesFournisseurs";
-            this.btnDettesFournisseurs.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnDettesFournisseurs.Size = new System.Drawing.Size(214, 34);
-            this.btnDettesFournisseurs.TabIndex = 3;
-            this.btnDettesFournisseurs.Text = "Dettes fournisseurs";
-            this.btnDettesFournisseurs.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDettesFournisseurs.UseVisualStyleBackColor = false;
-            // 
-            // btnFournisseursEtClients
-            // 
-            this.btnFournisseursEtClients.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(88)))), ((int)(((byte)(77)))));
-            this.btnFournisseursEtClients.FlatAppearance.BorderSize = 0;
-            this.btnFournisseursEtClients.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFournisseursEtClients.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFournisseursEtClients.Image = global::CasaEcologieSysInfo.Properties.Resources.Expand_Arrow_20px;
-            this.btnFournisseursEtClients.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnFournisseursEtClients.Location = new System.Drawing.Point(0, 1);
-            this.btnFournisseursEtClients.Name = "btnFournisseursEtClients";
-            this.btnFournisseursEtClients.Size = new System.Drawing.Size(214, 40);
-            this.btnFournisseursEtClients.TabIndex = 6;
-            this.btnFournisseursEtClients.Text = "Fournisseurs et clients";
-            this.btnFournisseursEtClients.UseVisualStyleBackColor = false;
-            this.btnFournisseursEtClients.Click += new System.EventHandler(this.BtnFournisseursEtClients_Click);
-            // 
-            // btnCreancesClients
-            // 
-            this.btnCreancesClients.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.btnCreancesClients.FlatAppearance.BorderSize = 0;
-            this.btnCreancesClients.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCreancesClients.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreancesClients.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCreancesClients.Location = new System.Drawing.Point(3, 35);
-            this.btnCreancesClients.Name = "btnCreancesClients";
-            this.btnCreancesClients.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnCreancesClients.Size = new System.Drawing.Size(214, 41);
-            this.btnCreancesClients.TabIndex = 2;
-            this.btnCreancesClients.Text = "Créances clients";
-            this.btnCreancesClients.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCreancesClients.UseVisualStyleBackColor = false;
-            this.btnCreancesClients.Click += new System.EventHandler(this.btnCreancesClients_Click);
-            // 
             // pnlUtilisateurs
             // 
             this.pnlUtilisateurs.Controls.Add(this.btnGererUtilisateurs);
@@ -748,6 +651,104 @@
             this.btnTresorerie.UseVisualStyleBackColor = false;
             this.btnTresorerie.Click += new System.EventHandler(this.BtnTresorerie_Click);
             // 
+            // pnlFournisseurClient
+            // 
+            this.pnlFournisseurClient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(31)))), ((int)(((byte)(20)))));
+            this.pnlFournisseurClient.Controls.Add(this.btnNouveauFournisseur);
+            this.pnlFournisseurClient.Controls.Add(this.btnNouveauClient);
+            this.pnlFournisseurClient.Controls.Add(this.btnDettesFournisseurs);
+            this.pnlFournisseurClient.Controls.Add(this.btnFournisseursEtClients);
+            this.pnlFournisseurClient.Controls.Add(this.btnCreancesClients);
+            this.pnlFournisseurClient.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.pnlFournisseurClient.Location = new System.Drawing.Point(3, 523);
+            this.pnlFournisseurClient.MaximumSize = new System.Drawing.Size(217, 193);
+            this.pnlFournisseurClient.MinimumSize = new System.Drawing.Size(217, 40);
+            this.pnlFournisseurClient.Name = "pnlFournisseurClient";
+            this.pnlFournisseurClient.Size = new System.Drawing.Size(217, 193);
+            this.pnlFournisseurClient.TabIndex = 5;
+            // 
+            // btnNouveauFournisseur
+            // 
+            this.btnNouveauFournisseur.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
+            this.btnNouveauFournisseur.FlatAppearance.BorderSize = 0;
+            this.btnNouveauFournisseur.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNouveauFournisseur.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNouveauFournisseur.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNouveauFournisseur.Location = new System.Drawing.Point(3, 151);
+            this.btnNouveauFournisseur.Name = "btnNouveauFournisseur";
+            this.btnNouveauFournisseur.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnNouveauFournisseur.Size = new System.Drawing.Size(214, 41);
+            this.btnNouveauFournisseur.TabIndex = 6;
+            this.btnNouveauFournisseur.Text = "Nouveau fournisseur";
+            this.btnNouveauFournisseur.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNouveauFournisseur.UseVisualStyleBackColor = false;
+            // 
+            // btnNouveauClient
+            // 
+            this.btnNouveauClient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
+            this.btnNouveauClient.FlatAppearance.BorderSize = 0;
+            this.btnNouveauClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNouveauClient.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNouveauClient.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNouveauClient.Location = new System.Drawing.Point(3, 112);
+            this.btnNouveauClient.Name = "btnNouveauClient";
+            this.btnNouveauClient.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnNouveauClient.Size = new System.Drawing.Size(214, 38);
+            this.btnNouveauClient.TabIndex = 4;
+            this.btnNouveauClient.Text = "Nouveau client";
+            this.btnNouveauClient.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNouveauClient.UseVisualStyleBackColor = false;
+            // 
+            // btnDettesFournisseurs
+            // 
+            this.btnDettesFournisseurs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
+            this.btnDettesFournisseurs.FlatAppearance.BorderSize = 0;
+            this.btnDettesFournisseurs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDettesFournisseurs.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDettesFournisseurs.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDettesFournisseurs.Location = new System.Drawing.Point(3, 77);
+            this.btnDettesFournisseurs.Name = "btnDettesFournisseurs";
+            this.btnDettesFournisseurs.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnDettesFournisseurs.Size = new System.Drawing.Size(214, 34);
+            this.btnDettesFournisseurs.TabIndex = 3;
+            this.btnDettesFournisseurs.Text = "Dettes fournisseurs";
+            this.btnDettesFournisseurs.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDettesFournisseurs.UseVisualStyleBackColor = false;
+            this.btnDettesFournisseurs.Click += new System.EventHandler(this.btnDettesFournisseurs_Click);
+            // 
+            // btnFournisseursEtClients
+            // 
+            this.btnFournisseursEtClients.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(88)))), ((int)(((byte)(77)))));
+            this.btnFournisseursEtClients.FlatAppearance.BorderSize = 0;
+            this.btnFournisseursEtClients.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFournisseursEtClients.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFournisseursEtClients.Image = global::CasaEcologieSysInfo.Properties.Resources.Expand_Arrow_20px;
+            this.btnFournisseursEtClients.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnFournisseursEtClients.Location = new System.Drawing.Point(0, 1);
+            this.btnFournisseursEtClients.Name = "btnFournisseursEtClients";
+            this.btnFournisseursEtClients.Size = new System.Drawing.Size(214, 40);
+            this.btnFournisseursEtClients.TabIndex = 6;
+            this.btnFournisseursEtClients.Text = "Fournisseurs et clients";
+            this.btnFournisseursEtClients.UseVisualStyleBackColor = false;
+            this.btnFournisseursEtClients.Click += new System.EventHandler(this.BtnFournisseursEtClients_Click);
+            // 
+            // btnCreancesClients
+            // 
+            this.btnCreancesClients.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
+            this.btnCreancesClients.FlatAppearance.BorderSize = 0;
+            this.btnCreancesClients.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCreancesClients.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCreancesClients.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCreancesClients.Location = new System.Drawing.Point(3, 35);
+            this.btnCreancesClients.Name = "btnCreancesClients";
+            this.btnCreancesClients.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnCreancesClients.Size = new System.Drawing.Size(214, 41);
+            this.btnCreancesClients.TabIndex = 2;
+            this.btnCreancesClients.Text = "Créances clients";
+            this.btnCreancesClients.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCreancesClients.UseVisualStyleBackColor = false;
+            this.btnCreancesClients.Click += new System.EventHandler(this.btnCreancesClients_Click);
+            // 
             // pnlPrincipal
             // 
             this.pnlPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -815,9 +816,9 @@
             this.pnlVentes.ResumeLayout(false);
             this.pnlDepenses.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            this.pnlFournisseurClient.ResumeLayout(false);
             this.pnlUtilisateurs.ResumeLayout(false);
             this.pnlTresorerie.ResumeLayout(false);
+            this.pnlFournisseurClient.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
