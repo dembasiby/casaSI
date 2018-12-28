@@ -79,6 +79,7 @@
             this.tmrTresorerie = new System.Windows.Forms.Timer(this.components);
             this.tmrUtilisateurs = new System.Windows.Forms.Timer(this.components);
             this.dragControl1 = new CasaEcologieSysInfo.DragControl();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlTop.SuspendLayout();
@@ -182,13 +183,13 @@
             this.flowLayoutPanel1.Controls.Add(this.panel3);
             this.flowLayoutPanel1.Controls.Add(this.btnTableauDeBord);
             this.flowLayoutPanel1.Controls.Add(this.btnRessourcesHumaines);
-            this.flowLayoutPanel1.Controls.Add(this.pnlVentes);
             this.flowLayoutPanel1.Controls.Add(this.pnlDepenses);
-            this.flowLayoutPanel1.Controls.Add(this.pnlTresorerie);
             this.flowLayoutPanel1.Controls.Add(this.pnlFournisseurClient);
             this.flowLayoutPanel1.Controls.Add(this.pnlProductionStocks);
-            this.flowLayoutPanel1.Controls.Add(this.button2);
             this.flowLayoutPanel1.Controls.Add(this.pnlUtilisateurs);
+            this.flowLayoutPanel1.Controls.Add(this.pnlTresorerie);
+            this.flowLayoutPanel1.Controls.Add(this.pnlVentes);
+            this.flowLayoutPanel1.Controls.Add(this.button2);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.flowLayoutPanel1.ForeColor = System.Drawing.Color.White;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
@@ -234,7 +235,7 @@
             this.pnlProductionStocks.Controls.Add(this.btnStockMatierePremiere);
             this.pnlProductionStocks.Controls.Add(this.btnStockProduitsFinis);
             this.pnlProductionStocks.Controls.Add(this.btnProductionStock);
-            this.pnlProductionStocks.Location = new System.Drawing.Point(3, 429);
+            this.pnlProductionStocks.Location = new System.Drawing.Point(3, 336);
             this.pnlProductionStocks.MaximumSize = new System.Drawing.Size(217, 210);
             this.pnlProductionStocks.MinimumSize = new System.Drawing.Size(217, 40);
             this.pnlProductionStocks.Name = "pnlProductionStocks";
@@ -325,7 +326,7 @@
             this.button2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.Image = global::CasaEcologieSysInfo.Properties.Resources.General_Ledger_32px;
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(3, 475);
+            this.button2.Location = new System.Drawing.Point(3, 681);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(214, 40);
             this.button2.TabIndex = 5;
@@ -335,16 +336,15 @@
             // pnlVentes
             // 
             this.pnlVentes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(31)))), ((int)(((byte)(20)))));
-            this.pnlVentes.Controls.Add(this.btnNouvelEncaissement);
             this.pnlVentes.Controls.Add(this.btnJournalVentes);
             this.pnlVentes.Controls.Add(this.btnNouvelleVente);
             this.pnlVentes.Controls.Add(this.btnVentes);
             this.pnlVentes.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.pnlVentes.Location = new System.Drawing.Point(3, 244);
-            this.pnlVentes.MaximumSize = new System.Drawing.Size(217, 165);
+            this.pnlVentes.Location = new System.Drawing.Point(3, 634);
+            this.pnlVentes.MaximumSize = new System.Drawing.Size(217, 124);
             this.pnlVentes.MinimumSize = new System.Drawing.Size(217, 40);
             this.pnlVentes.Name = "pnlVentes";
-            this.pnlVentes.Size = new System.Drawing.Size(217, 40);
+            this.pnlVentes.Size = new System.Drawing.Size(217, 41);
             this.pnlVentes.TabIndex = 0;
             // 
             // btnNouvelEncaissement
@@ -354,7 +354,7 @@
             this.btnNouvelEncaissement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNouvelEncaissement.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNouvelEncaissement.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNouvelEncaissement.Location = new System.Drawing.Point(0, 124);
+            this.btnNouvelEncaissement.Location = new System.Drawing.Point(-1, 122);
             this.btnNouvelEncaissement.Name = "btnNouvelEncaissement";
             this.btnNouvelEncaissement.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnNouvelEncaissement.Size = new System.Drawing.Size(217, 40);
@@ -426,7 +426,7 @@
             this.pnlDepenses.Controls.Add(this.btnMatierePremiere);
             this.pnlDepenses.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnlDepenses.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.pnlDepenses.Location = new System.Drawing.Point(3, 290);
+            this.pnlDepenses.Location = new System.Drawing.Point(3, 244);
             this.pnlDepenses.MaximumSize = new System.Drawing.Size(217, 208);
             this.pnlDepenses.MinimumSize = new System.Drawing.Size(217, 40);
             this.pnlDepenses.Name = "pnlDepenses";
@@ -533,7 +533,7 @@
             this.pnlUtilisateurs.Controls.Add(this.btnGererUtilisateurs);
             this.pnlUtilisateurs.Controls.Add(this.btnGererCompte);
             this.pnlUtilisateurs.Controls.Add(this.btnUtilisateurs);
-            this.pnlUtilisateurs.Location = new System.Drawing.Point(3, 521);
+            this.pnlUtilisateurs.Location = new System.Drawing.Point(3, 382);
             this.pnlUtilisateurs.MaximumSize = new System.Drawing.Size(217, 120);
             this.pnlUtilisateurs.MinimumSize = new System.Drawing.Size(217, 40);
             this.pnlUtilisateurs.Name = "pnlUtilisateurs";
@@ -590,14 +590,16 @@
             // 
             // pnlTresorerie
             // 
+            this.pnlTresorerie.Controls.Add(this.button1);
+            this.pnlTresorerie.Controls.Add(this.btnNouvelEncaissement);
             this.pnlTresorerie.Controls.Add(this.btnJournalTresorerie);
             this.pnlTresorerie.Controls.Add(this.btnNouveauCompteTresorerie);
             this.pnlTresorerie.Controls.Add(this.btnTresorerie);
-            this.pnlTresorerie.Location = new System.Drawing.Point(3, 336);
-            this.pnlTresorerie.MaximumSize = new System.Drawing.Size(217, 124);
+            this.pnlTresorerie.Location = new System.Drawing.Point(3, 428);
+            this.pnlTresorerie.MaximumSize = new System.Drawing.Size(217, 200);
             this.pnlTresorerie.MinimumSize = new System.Drawing.Size(217, 40);
             this.pnlTresorerie.Name = "pnlTresorerie";
-            this.pnlTresorerie.Size = new System.Drawing.Size(217, 41);
+            this.pnlTresorerie.Size = new System.Drawing.Size(217, 200);
             this.pnlTresorerie.TabIndex = 9;
             // 
             // btnJournalTresorerie
@@ -656,7 +658,7 @@
             this.pnlFournisseurClient.Controls.Add(this.btnFournisseursEtClients);
             this.pnlFournisseurClient.Controls.Add(this.btnCreancesClients);
             this.pnlFournisseurClient.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.pnlFournisseurClient.Location = new System.Drawing.Point(3, 383);
+            this.pnlFournisseurClient.Location = new System.Drawing.Point(3, 290);
             this.pnlFournisseurClient.MaximumSize = new System.Drawing.Size(217, 111);
             this.pnlFournisseurClient.MinimumSize = new System.Drawing.Size(217, 40);
             this.pnlFournisseurClient.Name = "pnlFournisseurClient";
@@ -755,6 +757,23 @@
             // 
             this.dragControl1.SelectControl = this.pnlTop;
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(-1, 163);
+            this.button1.Name = "button1";
+            this.button1.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.button1.Size = new System.Drawing.Size(217, 40);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "Nouveau décaissement";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.BtnNouvelEncaissement_Click);
+            // 
             // Accueil
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -838,5 +857,6 @@
         private System.Windows.Forms.Button btnStockProduitsSemiFinis;
         private System.Windows.Forms.Button btnNouvelEncaissement;
         private DragControl dragControl1;
+        private System.Windows.Forms.Button button1;
     }
 }
