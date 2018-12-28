@@ -63,7 +63,7 @@
             this.listBox1.Size = new System.Drawing.Size(175, 476);
             this.listBox1.TabIndex = 14;
             this.listBox1.ValueMember = "NomMatiere";
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.ListBox1_SelectedIndexChanged);
             // 
             // resStockMatieresPremiereBindingSource
             // 
