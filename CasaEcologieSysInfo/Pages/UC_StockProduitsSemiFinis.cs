@@ -64,30 +64,14 @@ namespace CasaEcologieSysInfo.Pages
             DataTable dt = Conversion.ConvertirEnTableDeDonnees(resultat);
 
             DataRow dr = dt.NewRow();
-            dt.Rows.InsertAt(dr, 0);
+            dt.Rows.InsertAt(dr, dt.Rows.Count);
             dr["Entree"] = 0;
             dr["Sortie"] = 0;
-            dr["Description"] = "Solde initial";
-
+            dr["Description"] = "Stock initial";
 
             adgvJournalStocksProduitsSemiFinis.DataSource = dt;
 
-            for (int i = 0; i < adgvJournalStocksProduitsSemiFinis.Rows.Count; i++)
-            {
-
-                if (i > 0)
-                {
-                    adgvJournalStocksProduitsSemiFinis.Rows[i].Cells[4].Value = Convert.ToInt32(adgvJournalStocksProduitsSemiFinis.Rows[i - 1].Cells[4].Value)
-                    + Convert.ToInt32(adgvJournalStocksProduitsSemiFinis.Rows[i].Cells[2].Value)
-                    - Convert.ToInt32(adgvJournalStocksProduitsSemiFinis.Rows[i].Cells[3].Value);
-                }
-                else
-                {
-                    adgvJournalStocksProduitsSemiFinis.Rows[i].Cells[4].Value = stockInitial + Convert.ToInt32(adgvJournalStocksProduitsSemiFinis.Rows[i].Cells[2].Value)
-                    - Convert.ToInt32(adgvJournalStocksProduitsSemiFinis.Rows[i].Cells[3].Value);
-                }
-
-            }
+            Conversion.CalculerSoldeStocksDeFaconProgressive(adgvJournalStocksProduitsSemiFinis, stockInitial);
         }
 
         private void UC_StockProduitsSemiFinis_Load(object sender, EventArgs e)

@@ -136,5 +136,25 @@ namespace CasaEcologieSysInfo
             }
         }
 
+        public static void CalculerSoldeStocksDeFaconProgressive(AdvancedDataGridView grid, int stockInitial)
+        {
+            for (int i = grid.Rows.Count - 1; i >= 0; i--)
+            {
+
+                if (i < grid.Rows.Count - 1)
+                {
+                    grid.Rows[i].Cells[4].Value = Convert.ToInt32(grid.Rows[i + 1].Cells[4].Value)
+                    + Convert.ToInt32(grid.Rows[i].Cells[2].Value)
+                    - Convert.ToInt32(grid.Rows[i].Cells[3].Value);
+                }
+                else
+                {
+                    grid.Rows[i].Cells[4].Value = stockInitial + Convert.ToInt32(grid.Rows[i].Cells[2].Value)
+                    - Convert.ToInt32(grid.Rows[i].Cells[3].Value);
+                }
+
+            }
+        }
+
     }
 }

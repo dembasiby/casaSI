@@ -32,11 +32,11 @@
             this.label4 = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.resStockMatieresPremiereBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dgvJournalStockMatPrem = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.adgvJournalStocksMatieresPremieres = new ADGV.AdvancedDataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.resStockMatieresPremiereBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvJournalStockMatPrem)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.adgvJournalStocksMatieresPremieres)).BeginInit();
             this.SuspendLayout();
             // 
             // label4
@@ -69,18 +69,6 @@
             // 
             this.resStockMatieresPremiereBindingSource.DataSource = typeof(CasaEcologieSysInfo.ResStockMatieresPremiere);
             // 
-            // dgvJournalStockMatPrem
-            // 
-            this.dgvJournalStockMatPrem.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvJournalStockMatPrem.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-            this.dgvJournalStockMatPrem.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvJournalStockMatPrem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvJournalStockMatPrem.Location = new System.Drawing.Point(187, 100);
-            this.dgvJournalStockMatPrem.Name = "dgvJournalStockMatPrem";
-            this.dgvJournalStockMatPrem.ReadOnly = true;
-            this.dgvJournalStockMatPrem.Size = new System.Drawing.Size(781, 476);
-            this.dgvJournalStockMatPrem.TabIndex = 16;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -101,13 +89,28 @@
             this.label2.TabIndex = 19;
             this.label2.Text = "Liste des matières premières";
             // 
+            // adgvJournalStocksMatieresPremieres
+            // 
+            this.adgvJournalStocksMatieresPremieres.AutoGenerateContextFilters = true;
+            this.adgvJournalStocksMatieresPremieres.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.adgvJournalStocksMatieresPremieres.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.adgvJournalStocksMatieresPremieres.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.adgvJournalStocksMatieresPremieres.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.adgvJournalStocksMatieresPremieres.DateWithTime = false;
+            this.adgvJournalStocksMatieresPremieres.Enabled = false;
+            this.adgvJournalStocksMatieresPremieres.Location = new System.Drawing.Point(202, 100);
+            this.adgvJournalStocksMatieresPremieres.Name = "adgvJournalStocksMatieresPremieres";
+            this.adgvJournalStocksMatieresPremieres.Size = new System.Drawing.Size(778, 476);
+            this.adgvJournalStocksMatieresPremieres.TabIndex = 20;
+            this.adgvJournalStocksMatieresPremieres.TimeFilter = false;
+            // 
             // UC_StockMatieresPremieres
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.adgvJournalStocksMatieresPremieres);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.dgvJournalStockMatPrem);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.label4);
             this.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -116,7 +119,7 @@
             this.Size = new System.Drawing.Size(983, 635);
             this.Load += new System.EventHandler(this.UC_StockMatieresPremieres_Load);
             ((System.ComponentModel.ISupportInitialize)(this.resStockMatieresPremiereBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvJournalStockMatPrem)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.adgvJournalStocksMatieresPremieres)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -126,8 +129,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.BindingSource resStockMatieresPremiereBindingSource;
-        private System.Windows.Forms.DataGridView dgvJournalStockMatPrem;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
+        private ADGV.AdvancedDataGridView adgvJournalStocksMatieresPremieres;
     }
 }

@@ -76,6 +76,7 @@
             this.lbxListeProduitsFinis.Name = "lbxListeProduitsFinis";
             this.lbxListeProduitsFinis.Size = new System.Drawing.Size(246, 476);
             this.lbxListeProduitsFinis.TabIndex = 15;
+            this.lbxListeProduitsFinis.SelectedIndexChanged += new System.EventHandler(this.LbxListeProduitsFinis_SelectedIndexChanged);
             // 
             // label1
             // 
