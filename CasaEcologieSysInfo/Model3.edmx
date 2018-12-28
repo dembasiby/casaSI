@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="CasaDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="CasaDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AgeAutreFournisseurs">
           <Key>
             <PropertyRef Name="CodeAutreFournisseur" />
@@ -141,6 +141,7 @@
           <Property Name="CodeEmploye" Type="int" Nullable="false" />
           <Property Name="CodeAutreFournisseur" Type="int" Nullable="false" />
           <Property Name="Quantite" Type="int" Nullable="false" />
+          <Property Name="Montant" Type="money" Nullable="false" />
         </EntityType>
         <EntityType Name="EveReceptionMatieresPremieres">
           <Key>
@@ -224,7 +225,6 @@
           <Property Name="AmortissementCumule" Type="int" Nullable="false" />
           <Property Name="DateAcquisition" Type="date" Nullable="false" />
           <Property Name="DureeDeVie" Type="int" Nullable="false" />
-          <Property Name="Cout" Type="money" Nullable="false" />
         </EntityType>
         <EntityType Name="ResServicesFournitures">
           <Key>
@@ -1017,8 +1017,7 @@
             <End Role="ResStockProduitsSemiFinis1" EntitySet="ResStockProduitsSemiFinis" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CasaDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1207,6 +1206,7 @@
           <NavigationProperty Name="AgeEmploye" Relationship="Self.FK_EveReceptionEquipementsInfrastructures_AgeEmployes" FromRole="EveReceptionEquipementsInfrastructures" ToRole="AgeEmployes" />
           <NavigationProperty Name="EveDecaissements" Relationship="Self.FK_EveDecaissements_EveReceptionEquipementsInfrastructures" FromRole="EveReceptionEquipementsInfrastructures" ToRole="EveDecaissements" />
           <NavigationProperty Name="ResEquipementsInfrastructure" Relationship="Self.FK_EveReceptionEquipementsInfrastructures_ResEquipementsInfrastructures" FromRole="EveReceptionEquipementsInfrastructures" ToRole="ResEquipementsInfrastructures" />
+          <Property Name="Montant" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
         </EntityType>
         <EntityType Name="EveReceptionMatieresPremiere">
           <Key>
@@ -1304,7 +1304,6 @@
           <Property Name="AmortissementCumule" Type="Int32" Nullable="false" />
           <Property Name="DateAcquisition" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="DureeDeVie" Type="Int32" Nullable="false" />
-          <Property Name="Cout" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <NavigationProperty Name="EveReceptionEquipementsInfrastructures" Relationship="Self.FK_EveReceptionEquipementsInfrastructures_ResEquipementsInfrastructures" FromRole="ResEquipementsInfrastructures" ToRole="EveReceptionEquipementsInfrastructures" />
           <NavigationProperty Name="EveUtilisationRessources" Relationship="Self.EveUtilisationEquipementInfrastructures" FromRole="ResEquipementsInfrastructures" ToRole="EveUtilisationRessources" />
         </EntityType>
@@ -2240,6 +2239,7 @@
           <EntitySetMapping Name="EveReceptionEquipementsInfrastructures">
             <EntityTypeMapping TypeName="CasaDBModel.EveReceptionEquipementsInfrastructure">
               <MappingFragment StoreEntitySet="EveReceptionEquipementsInfrastructures">
+                <ScalarProperty Name="Montant" ColumnName="Montant" />
                 <ScalarProperty Name="CodeReceptionEquipementInfrastructure" ColumnName="CodeReceptionEquipementInfrastructure" />
                 <ScalarProperty Name="CodeEquipementInfrastructure" ColumnName="CodeEquipementInfrastructure" />
                 <ScalarProperty Name="DateReception" ColumnName="DateReception" />
@@ -2326,7 +2326,6 @@
                 <ScalarProperty Name="AmortissementCumule" ColumnName="AmortissementCumule" />
                 <ScalarProperty Name="DateAcquisition" ColumnName="DateAcquisition" />
                 <ScalarProperty Name="DureeDeVie" ColumnName="DureeDeVie" />
-                <ScalarProperty Name="Cout" ColumnName="Cout" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

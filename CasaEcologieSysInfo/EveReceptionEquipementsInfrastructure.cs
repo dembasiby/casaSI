@@ -26,6 +26,7 @@ namespace CasaEcologieSysInfo
         public int CodeEmploye { get; set; }
         public int CodeAutreFournisseur { get; set; }
         public int Quantite { get; set; }
+        public decimal Montant { get; set; }
     
         public virtual AgeAutreFournisseur AgeAutreFournisseur { get; set; }
         public virtual AgeEmploye AgeEmploye { get; set; }
