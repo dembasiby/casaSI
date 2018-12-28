@@ -90,15 +90,50 @@ namespace CasaEcologieSysInfo
                                            where ev.CodeEncaissement == e.CodeEncaissement
                                            select (decimal?)ev.MontantEncaisse).Sum() ?? 0m;
 
-
-
                 var creanceInitialClient = (from c in db.AgeClients
                                             select (decimal?)c.SoldeInitialeCreance).Sum() ?? 0m;
 
                 return creanceInitialClient + ventesClients - totalPaiementClient;
-            }
+            }         
+        }
 
-           
+        public static decimal CalculerTotalDettesFournisseurs()
+        {
+            using (CasaDBEntities2 db = new CasaDBEntities2())
+            {
+                 var fournisseursMP = (from fmp in db.AgeFournisseursMatieresPremieres
+                                    select new
+                                    {
+                                        Solde = ((decimal?)fmp.SoldeDette ?? 0m)
+                                        + ((decimal?)fmp.EveReceptionMatieresPremieres.Sum(s => s.Montant) ?? 0m)
+                                        - ((decimal?)fmp.EveDecaissements.Sum(m => m.Montant) ?? 0m)
+                                    }
+                                 ).Sum(d => d.Solde);
+
+                var achatEquip = (from rei in db.EveReceptionEquipementsInfrastructures
+                                  select (decimal?)rei.Montant).Sum() ?? 0m;
+
+                var soldeInitialFournisseurEquip = (from af in db.AgeAutreFournisseurs
+                                                    select (decimal?)af.SoldeInitialDetteFournisseur).Sum() ?? 0m;
+
+                var decaissementEquip = (from rei in db.EveReceptionEquipementsInfrastructures
+                                         from d in db.EveDecaissements
+                                         where d.CodeReceptionEquipementInfrastructure == rei.CodeReceptionEquipementInfrastructure
+                                         select (decimal?)d.Montant).Sum() ?? 0m;
+
+             
+
+                var fournisseurFS = (from f in db.AgeFournisseursServicesFournitures
+                                 select new
+                                 {
+                                     Solde = (decimal?)f.SoldeDette ?? 0m + (decimal?)f.EveAcquisitionServicesFournitures.Select(d => d.Montant).Sum() ?? 0m
+                                     - (decimal?)f.EveDecaissements.Sum(m => m.Montant) ?? 0m
+                                 }).Sum(s => s.Solde);
+
+                var totalDettesFournisseurs = fournisseursMP + achatEquip + soldeInitialFournisseurEquip - decaissementEquip + fournisseurFS;
+
+                return totalDettesFournisseurs;
+            }
         }
 
     }
