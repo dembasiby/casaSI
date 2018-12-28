@@ -19,10 +19,12 @@ namespace CasaEcologieSysInfo.Pages
             InitializeComponent();
         }
 
-        private void UC_StockProduitsSemiFinis_Load(object sender, EventArgs e)
+
+        private void AfficherJournalCorrespondant(string nomProduit)
         {
             var entrees = (from mp in db.ResStockMatieresPremieres
                            join psf in db.ResStockProduitsSemiFinis on mp.CodeMatierePremiere equals psf.CodeMatierePremiere
+                           where mp.NomMatiere == nomProduit
                            join ppsf in db.EveProductionProduitsSemiFinis on psf.CodeProduitSemiFini equals ppsf.CodeProduitSemiFini
                            join prod in db.EveProductions on ppsf.CodeProduction equals prod.CodeProduction
 
@@ -39,6 +41,7 @@ namespace CasaEcologieSysInfo.Pages
                            join psf in db.ResStockProduitsSemiFinis on mp.CodeMatierePremiere equals psf.CodeMatierePremiere
                            join upsf in db.EveUtilisationProduitsSemiFinis on psf.CodeProduitSemiFini equals upsf.CodeProduitSemiFini
                            join prod in db.EveProductions on upsf.CodeUtilisationRessource equals prod.CodeUtilisationRessources
+                           where mp.NomMatiere == nomProduit
 
                            select new
                            {
@@ -53,8 +56,50 @@ namespace CasaEcologieSysInfo.Pages
                 .OrderByDescending(d => d.Date)
                 .ToList();
 
+            var stockInitial = (from mp in db.ResStockMatieresPremieres
+                                join psf in db.ResStockProduitsSemiFinis on mp.CodeMatierePremiere equals psf.CodeMatierePremiere
+                                where mp.NomMatiere == nomProduit
+                                select psf.Quantite).FirstOrDefault();
+
             DataTable dt = Conversion.ConvertirEnTableDeDonnees(resultat);
+
+            DataRow dr = dt.NewRow();
+            dt.Rows.InsertAt(dr, 0);
+            dr["Entree"] = 0;
+            dr["Sortie"] = 0;
+            dr["Description"] = "Solde initial";
+
+
             adgvJournalStocksProduitsSemiFinis.DataSource = dt;
+
+            for (int i = 0; i < adgvJournalStocksProduitsSemiFinis.Rows.Count; i++)
+            {
+
+                if (i > 0)
+                {
+                    adgvJournalStocksProduitsSemiFinis.Rows[i].Cells[4].Value = Convert.ToInt32(adgvJournalStocksProduitsSemiFinis.Rows[i - 1].Cells[4].Value)
+                    + Convert.ToInt32(adgvJournalStocksProduitsSemiFinis.Rows[i].Cells[2].Value)
+                    - Convert.ToInt32(adgvJournalStocksProduitsSemiFinis.Rows[i].Cells[3].Value);
+                }
+                else
+                {
+                    adgvJournalStocksProduitsSemiFinis.Rows[i].Cells[4].Value = stockInitial + Convert.ToInt32(adgvJournalStocksProduitsSemiFinis.Rows[i].Cells[2].Value)
+                    - Convert.ToInt32(adgvJournalStocksProduitsSemiFinis.Rows[i].Cells[3].Value);
+                }
+
+            }
+        }
+
+        private void UC_StockProduitsSemiFinis_Load(object sender, EventArgs e)
+        {
+            var listeProduitsSemiFinis = (from mp in db.ResStockMatieresPremieres
+                                          join spsf in db.ResStockProduitsSemiFinis on mp.CodeMatierePremiere equals spsf.CodeMatierePremiere
+                                          select mp.NomMatiere).ToList();
+
+            lbxListeProduitsSemiFinis.DataSource = listeProduitsSemiFinis;
+
+            var nomProduit = lbxListeProduitsSemiFinis.GetItemText(lbxListeProduitsSemiFinis.SelectedItem);
+            AfficherJournalCorrespondant(nomProduit);
         }
 
         private void AdgvJournalStocksProduitsSemiFinis_FilterStringChanged(object sender, EventArgs e)
@@ -65,6 +110,13 @@ namespace CasaEcologieSysInfo.Pages
         private void AdgvJournalStocksProduitsSemiFinis_SortStringChanged(object sender, EventArgs e)
         {
             Conversion.TrierTableau(sender, e);
+        }
+
+        private void lbxListeProduitsSemiFinis_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            var nomProduit = lbxListeProduitsSemiFinis.GetItemText(lbxListeProduitsSemiFinis.SelectedItem);
+            AfficherJournalCorrespondant(nomProduit);
         }
     }
 }
