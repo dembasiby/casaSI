@@ -60,17 +60,12 @@ namespace CasaEcologieSysInfo.Pages
                 .OrderByDescending(c => c.Solde)
                 .ToList();
             DataTable dt = Conversion.ConvertirEnTableDeDonnees(combinedQuery);
-           
-           
-
-
 
             DataRow dr = dt.NewRow();
            dt.Rows.InsertAt(dr, 0);
            dr["MontantVente"] = 0;
            dr["Encaissement"] = 0;
             dataGridView1.DataSource = dt;
-
 
             dataGridView1.Columns["MontantVente"].DefaultCellStyle.Format = "c0";
             dataGridView1.Columns["Encaissement"].DefaultCellStyle.Format = "c0";
@@ -80,8 +75,6 @@ namespace CasaEcologieSysInfo.Pages
             var creanceInitialClient = (from c in db.AgeClients
                                         where c.NomClient == nomClient
                                         select c.SoldeInitialeCreance).FirstOrDefault();
-
-
 
             for (int i = 0; i < dataGridView1.Rows.Count; i++)
             {

@@ -61,7 +61,6 @@ namespace CasaEcologieSysInfo
                 Nom = txtNomEqInfr2.Text,
                 DateAcquisition = DateTime.Parse(dtpAchatEqInfr2.Text),
                 DureeDeVie = int.Parse(txtDuree2.Text),
-                Cout = int.Parse(txtMontant2.Text),
                 AmortissementCumule = int.Parse(txtAmort2.Text),
             };
 
@@ -87,7 +86,6 @@ namespace CasaEcologieSysInfo
                 Nom = txtNomEqInfr1.Text,
                 DateAcquisition = DateTime.Parse(dtpAchatEqInfr1.Text),
                 DureeDeVie = int.Parse(txtDuree1.Text),
-                Cout = int.Parse(txtMontant1.Text),
                 AmortissementCumule = int.Parse(txtAmort1.Text),
             };
 
@@ -101,6 +99,8 @@ namespace CasaEcologieSysInfo
                 Quantite = int.Parse(txtQuantite.Text),
                 CodeAutreFournisseur = afourIm.CodeAutreFournisseur,
                 CodeEmploye = emp.CodeEmploye,
+                Montant = int.Parse(txtMontant1.Text),
+
             };
 
             db.EveReceptionEquipementsInfrastructures.Add(reinfr);

@@ -62,7 +62,7 @@ namespace CasaEcologieSysInfo
                             Description = ie.Nom,
                             Matiere_Premiere = 0m,
                             Services_et_fournitures = 0m,
-                            Infrastructures_et_equipements = ie.Cout,
+                            Infrastructures_et_equipements = rei.Montant,
                             Personnel = 0m
                         });
 

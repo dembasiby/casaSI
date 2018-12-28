@@ -326,6 +326,9 @@
     <EmbeddedResource Include="Pages\UC_CreancesClients.resx">
       <DependentUpon>UC_CreancesClients.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pages\UC_DettesFournisseurs.resx">
+      <DependentUpon>UC_DettesFournisseurs.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Pages\UC_JournalTresorerie.resx">
       <DependentUpon>UC_JournalTresorerie.cs</DependentUpon>
     </EmbeddedResource>

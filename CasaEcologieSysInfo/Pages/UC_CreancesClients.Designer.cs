@@ -55,13 +55,14 @@
             // 
             // listBox1
             // 
+            this.listBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listBox1.DataSource = this.ageClientBindingSource;
             this.listBox1.DisplayMember = "NomClient";
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 21;
             this.listBox1.Location = new System.Drawing.Point(19, 115);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(160, 298);
+            this.listBox1.Size = new System.Drawing.Size(160, 294);
             this.listBox1.TabIndex = 26;
             this.listBox1.SelectedValueChanged += new System.EventHandler(this.ListBox1_SelectedValueChanged);
             // 
