@@ -314,6 +314,12 @@
     <Compile Include="Pages\UC_Production.Designer.cs">
       <DependentUpon>UC_Production.cs</DependentUpon>
     </Compile>
+    <Compile Include="UC_NouveauDecaissement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_NouveauDecaissement.Designer.cs">
+      <DependentUpon>UC_NouveauDecaissement.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Accueil.resx">
       <DependentUpon>Accueil.cs</DependentUpon>
     </EmbeddedResource>
@@ -377,6 +383,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\UC_Production.resx">
       <DependentUpon>UC_Production.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_NouveauDecaissement.resx">
+      <DependentUpon>UC_NouveauDecaissement.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="CasaDBDataSet.xsc">
       <DependentUpon>CasaDBDataSet.xsd</DependentUpon>

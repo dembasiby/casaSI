@@ -188,20 +188,27 @@ namespace CasaEcologieSysInfo
 
         private void BtnJournalTresorerie_Click(object sender, EventArgs e)
         {
-            Pages.txtEquipmentsInfr jt = new Pages.txtEquipmentsInfr();
+            Pages.UC_JournalTresorerie jt = new Pages.UC_JournalTresorerie();
             AddControlsToPanel(jt);
         }
 
-        private void btnCreancesClients_Click(object sender, EventArgs e)
+        private void BtnCreancesClients_Click(object sender, EventArgs e)
         {
             Pages.UC_CreancesClients cc = new Pages.UC_CreancesClients();
             AddControlsToPanel(cc);
         }
 
-        private void btnDettesFournisseurs_Click(object sender, EventArgs e)
+        private void BtnDettesFournisseurs_Click(object sender, EventArgs e)
         {
+           
             Pages.UC_DettesFournisseurs df = new Pages.UC_DettesFournisseurs();
             AddControlsToPanel(df);
+        }
+
+        private void BtnNouveauDecaissement_Click(object sender, EventArgs e)
+        {
+            UC_NouveauDecaissement nd = new UC_NouveauDecaissement();
+            AddControlsToPanel(nd);
         }
     }
 }

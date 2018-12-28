@@ -40,18 +40,6 @@
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnTableauDeBord = new System.Windows.Forms.Button();
             this.btnRessourcesHumaines = new System.Windows.Forms.Button();
-            this.pnlProductionStocks = new System.Windows.Forms.Panel();
-            this.btnStockProduitsSemiFinis = new System.Windows.Forms.Button();
-            this.btnNouvelleProduction = new System.Windows.Forms.Button();
-            this.btnStockMatierePremiere = new System.Windows.Forms.Button();
-            this.btnStockProduitsFinis = new System.Windows.Forms.Button();
-            this.btnProductionStock = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.pnlVentes = new System.Windows.Forms.Panel();
-            this.btnNouvelEncaissement = new System.Windows.Forms.Button();
-            this.btnJournalVentes = new System.Windows.Forms.Button();
-            this.btnNouvelleVente = new System.Windows.Forms.Button();
-            this.btnVentes = new System.Windows.Forms.Button();
             this.pnlDepenses = new System.Windows.Forms.Panel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.btnJournalDepenses = new System.Windows.Forms.Button();
@@ -59,18 +47,31 @@
             this.btnDepenses = new System.Windows.Forms.Button();
             this.btnEquipementInfrastructure = new System.Windows.Forms.Button();
             this.btnMatierePremiere = new System.Windows.Forms.Button();
+            this.pnlFournisseurClient = new System.Windows.Forms.Panel();
+            this.btnDettesFournisseurs = new System.Windows.Forms.Button();
+            this.btnFournisseursEtClients = new System.Windows.Forms.Button();
+            this.btnCreancesClients = new System.Windows.Forms.Button();
+            this.pnlProductionStocks = new System.Windows.Forms.Panel();
+            this.btnStockProduitsSemiFinis = new System.Windows.Forms.Button();
+            this.btnNouvelleProduction = new System.Windows.Forms.Button();
+            this.btnStockMatierePremiere = new System.Windows.Forms.Button();
+            this.btnStockProduitsFinis = new System.Windows.Forms.Button();
+            this.btnProductionStock = new System.Windows.Forms.Button();
             this.pnlUtilisateurs = new System.Windows.Forms.Panel();
             this.btnGererUtilisateurs = new System.Windows.Forms.Button();
             this.btnGererCompte = new System.Windows.Forms.Button();
             this.btnUtilisateurs = new System.Windows.Forms.Button();
             this.pnlTresorerie = new System.Windows.Forms.Panel();
+            this.btnNouveauDecaissement = new System.Windows.Forms.Button();
+            this.btnNouvelEncaissement = new System.Windows.Forms.Button();
             this.btnJournalTresorerie = new System.Windows.Forms.Button();
             this.btnNouveauCompteTresorerie = new System.Windows.Forms.Button();
             this.btnTresorerie = new System.Windows.Forms.Button();
-            this.pnlFournisseurClient = new System.Windows.Forms.Panel();
-            this.btnDettesFournisseurs = new System.Windows.Forms.Button();
-            this.btnFournisseursEtClients = new System.Windows.Forms.Button();
-            this.btnCreancesClients = new System.Windows.Forms.Button();
+            this.pnlVentes = new System.Windows.Forms.Panel();
+            this.btnJournalVentes = new System.Windows.Forms.Button();
+            this.btnNouvelleVente = new System.Windows.Forms.Button();
+            this.btnVentes = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.pnlPrincipal = new System.Windows.Forms.Panel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.tmrDepenses = new System.Windows.Forms.Timer(this.components);
@@ -79,19 +80,18 @@
             this.tmrTresorerie = new System.Windows.Forms.Timer(this.components);
             this.tmrUtilisateurs = new System.Windows.Forms.Timer(this.components);
             this.dragControl1 = new CasaEcologieSysInfo.DragControl();
-            this.button1 = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
-            this.pnlProductionStocks.SuspendLayout();
-            this.pnlVentes.SuspendLayout();
             this.pnlDepenses.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            this.pnlFournisseurClient.SuspendLayout();
+            this.pnlProductionStocks.SuspendLayout();
             this.pnlUtilisateurs.SuspendLayout();
             this.pnlTresorerie.SuspendLayout();
-            this.pnlFournisseurClient.SuspendLayout();
+            this.pnlVentes.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel3
@@ -228,193 +228,6 @@
             this.btnRessourcesHumaines.Text = "Personnel";
             this.btnRessourcesHumaines.UseVisualStyleBackColor = false;
             // 
-            // pnlProductionStocks
-            // 
-            this.pnlProductionStocks.Controls.Add(this.btnStockProduitsSemiFinis);
-            this.pnlProductionStocks.Controls.Add(this.btnNouvelleProduction);
-            this.pnlProductionStocks.Controls.Add(this.btnStockMatierePremiere);
-            this.pnlProductionStocks.Controls.Add(this.btnStockProduitsFinis);
-            this.pnlProductionStocks.Controls.Add(this.btnProductionStock);
-            this.pnlProductionStocks.Location = new System.Drawing.Point(3, 336);
-            this.pnlProductionStocks.MaximumSize = new System.Drawing.Size(217, 210);
-            this.pnlProductionStocks.MinimumSize = new System.Drawing.Size(217, 40);
-            this.pnlProductionStocks.Name = "pnlProductionStocks";
-            this.pnlProductionStocks.Size = new System.Drawing.Size(217, 40);
-            this.pnlProductionStocks.TabIndex = 8;
-            // 
-            // btnStockProduitsSemiFinis
-            // 
-            this.btnStockProduitsSemiFinis.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.btnStockProduitsSemiFinis.FlatAppearance.BorderSize = 0;
-            this.btnStockProduitsSemiFinis.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStockProduitsSemiFinis.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStockProduitsSemiFinis.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnStockProduitsSemiFinis.Location = new System.Drawing.Point(0, 122);
-            this.btnStockProduitsSemiFinis.Name = "btnStockProduitsSemiFinis";
-            this.btnStockProduitsSemiFinis.Size = new System.Drawing.Size(214, 39);
-            this.btnStockProduitsSemiFinis.TabIndex = 7;
-            this.btnStockProduitsSemiFinis.Text = "Stocks produits sémi-finis";
-            this.btnStockProduitsSemiFinis.UseVisualStyleBackColor = false;
-            this.btnStockProduitsSemiFinis.Click += new System.EventHandler(this.BtnStockProduitsSemiFinis_Click);
-            // 
-            // btnNouvelleProduction
-            // 
-            this.btnNouvelleProduction.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.btnNouvelleProduction.FlatAppearance.BorderSize = 0;
-            this.btnNouvelleProduction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNouvelleProduction.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNouvelleProduction.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNouvelleProduction.Location = new System.Drawing.Point(0, 42);
-            this.btnNouvelleProduction.Name = "btnNouvelleProduction";
-            this.btnNouvelleProduction.Size = new System.Drawing.Size(214, 39);
-            this.btnNouvelleProduction.TabIndex = 4;
-            this.btnNouvelleProduction.Text = "Nouvelle production";
-            this.btnNouvelleProduction.UseVisualStyleBackColor = false;
-            this.btnNouvelleProduction.Click += new System.EventHandler(this.BtnNouvelleProduction_Click);
-            // 
-            // btnStockMatierePremiere
-            // 
-            this.btnStockMatierePremiere.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.btnStockMatierePremiere.FlatAppearance.BorderSize = 0;
-            this.btnStockMatierePremiere.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStockMatierePremiere.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStockMatierePremiere.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnStockMatierePremiere.Location = new System.Drawing.Point(0, 162);
-            this.btnStockMatierePremiere.Name = "btnStockMatierePremiere";
-            this.btnStockMatierePremiere.Size = new System.Drawing.Size(214, 45);
-            this.btnStockMatierePremiere.TabIndex = 3;
-            this.btnStockMatierePremiere.Text = "Stock matières premières";
-            this.btnStockMatierePremiere.UseVisualStyleBackColor = false;
-            this.btnStockMatierePremiere.Click += new System.EventHandler(this.BtnStockMatierePremiere_Click);
-            // 
-            // btnStockProduitsFinis
-            // 
-            this.btnStockProduitsFinis.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.btnStockProduitsFinis.FlatAppearance.BorderSize = 0;
-            this.btnStockProduitsFinis.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStockProduitsFinis.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStockProduitsFinis.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnStockProduitsFinis.Location = new System.Drawing.Point(1, 82);
-            this.btnStockProduitsFinis.Name = "btnStockProduitsFinis";
-            this.btnStockProduitsFinis.Size = new System.Drawing.Size(213, 39);
-            this.btnStockProduitsFinis.TabIndex = 2;
-            this.btnStockProduitsFinis.Text = "Stocks produits finis";
-            this.btnStockProduitsFinis.UseVisualStyleBackColor = false;
-            this.btnStockProduitsFinis.Click += new System.EventHandler(this.BtnStockProduitsFinis_Click);
-            // 
-            // btnProductionStock
-            // 
-            this.btnProductionStock.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(88)))), ((int)(((byte)(77)))));
-            this.btnProductionStock.FlatAppearance.BorderSize = 0;
-            this.btnProductionStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnProductionStock.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProductionStock.Image = global::CasaEcologieSysInfo.Properties.Resources.Expand_Arrow_20px;
-            this.btnProductionStock.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnProductionStock.Location = new System.Drawing.Point(-3, 3);
-            this.btnProductionStock.Name = "btnProductionStock";
-            this.btnProductionStock.Size = new System.Drawing.Size(217, 40);
-            this.btnProductionStock.TabIndex = 1;
-            this.btnProductionStock.Text = "Production / stocks";
-            this.btnProductionStock.UseVisualStyleBackColor = false;
-            this.btnProductionStock.Click += new System.EventHandler(this.BtnProductionStock_Click);
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(88)))), ((int)(((byte)(77)))));
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Image = global::CasaEcologieSysInfo.Properties.Resources.General_Ledger_32px;
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(3, 681);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(214, 40);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "Etats financiers";
-            this.button2.UseVisualStyleBackColor = false;
-            // 
-            // pnlVentes
-            // 
-            this.pnlVentes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(31)))), ((int)(((byte)(20)))));
-            this.pnlVentes.Controls.Add(this.btnJournalVentes);
-            this.pnlVentes.Controls.Add(this.btnNouvelleVente);
-            this.pnlVentes.Controls.Add(this.btnVentes);
-            this.pnlVentes.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.pnlVentes.Location = new System.Drawing.Point(3, 634);
-            this.pnlVentes.MaximumSize = new System.Drawing.Size(217, 124);
-            this.pnlVentes.MinimumSize = new System.Drawing.Size(217, 40);
-            this.pnlVentes.Name = "pnlVentes";
-            this.pnlVentes.Size = new System.Drawing.Size(217, 41);
-            this.pnlVentes.TabIndex = 0;
-            // 
-            // btnNouvelEncaissement
-            // 
-            this.btnNouvelEncaissement.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.btnNouvelEncaissement.FlatAppearance.BorderSize = 0;
-            this.btnNouvelEncaissement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNouvelEncaissement.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNouvelEncaissement.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNouvelEncaissement.Location = new System.Drawing.Point(-1, 122);
-            this.btnNouvelEncaissement.Name = "btnNouvelEncaissement";
-            this.btnNouvelEncaissement.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnNouvelEncaissement.Size = new System.Drawing.Size(217, 40);
-            this.btnNouvelEncaissement.TabIndex = 4;
-            this.btnNouvelEncaissement.Text = "Nouvel encaissement";
-            this.btnNouvelEncaissement.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNouvelEncaissement.UseVisualStyleBackColor = false;
-            this.btnNouvelEncaissement.Click += new System.EventHandler(this.BtnNouvelEncaissement_Click);
-            // 
-            // btnJournalVentes
-            // 
-            this.btnJournalVentes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.btnJournalVentes.FlatAppearance.BorderSize = 0;
-            this.btnJournalVentes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnJournalVentes.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnJournalVentes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnJournalVentes.Location = new System.Drawing.Point(0, 83);
-            this.btnJournalVentes.Name = "btnJournalVentes";
-            this.btnJournalVentes.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnJournalVentes.Size = new System.Drawing.Size(217, 40);
-            this.btnJournalVentes.TabIndex = 3;
-            this.btnJournalVentes.Text = "Journal des ventes";
-            this.btnJournalVentes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnJournalVentes.UseVisualStyleBackColor = false;
-            this.btnJournalVentes.Click += new System.EventHandler(this.BtnJournalVentes_Click);
-            // 
-            // btnNouvelleVente
-            // 
-            this.btnNouvelleVente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.btnNouvelleVente.FlatAppearance.BorderSize = 0;
-            this.btnNouvelleVente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNouvelleVente.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNouvelleVente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNouvelleVente.Location = new System.Drawing.Point(0, 42);
-            this.btnNouvelleVente.Name = "btnNouvelleVente";
-            this.btnNouvelleVente.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnNouvelleVente.Size = new System.Drawing.Size(217, 40);
-            this.btnNouvelleVente.TabIndex = 2;
-            this.btnNouvelleVente.Text = "Nouvelle vente";
-            this.btnNouvelleVente.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNouvelleVente.UseVisualStyleBackColor = false;
-            this.btnNouvelleVente.Click += new System.EventHandler(this.BtnNouvelleVente_Click);
-            // 
-            // btnVentes
-            // 
-            this.btnVentes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(88)))), ((int)(((byte)(77)))));
-            this.btnVentes.FlatAppearance.BorderSize = 0;
-            this.btnVentes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVentes.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVentes.Image = global::CasaEcologieSysInfo.Properties.Resources.Expand_Arrow_20px;
-            this.btnVentes.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnVentes.Location = new System.Drawing.Point(-3, 0);
-            this.btnVentes.Name = "btnVentes";
-            this.btnVentes.Size = new System.Drawing.Size(217, 40);
-            this.btnVentes.TabIndex = 1;
-            this.btnVentes.Text = "Ventes";
-            this.btnVentes.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.btnVentes.UseVisualStyleBackColor = false;
-            this.btnVentes.Click += new System.EventHandler(this.BtnVentes_Click);
-            // 
             // pnlDepenses
             // 
             this.pnlDepenses.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(31)))), ((int)(((byte)(20)))));
@@ -528,6 +341,160 @@
             this.btnMatierePremiere.UseVisualStyleBackColor = false;
             this.btnMatierePremiere.Click += new System.EventHandler(this.BtnMatierePremiere_Click);
             // 
+            // pnlFournisseurClient
+            // 
+            this.pnlFournisseurClient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(31)))), ((int)(((byte)(20)))));
+            this.pnlFournisseurClient.Controls.Add(this.btnDettesFournisseurs);
+            this.pnlFournisseurClient.Controls.Add(this.btnFournisseursEtClients);
+            this.pnlFournisseurClient.Controls.Add(this.btnCreancesClients);
+            this.pnlFournisseurClient.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.pnlFournisseurClient.Location = new System.Drawing.Point(3, 290);
+            this.pnlFournisseurClient.MaximumSize = new System.Drawing.Size(217, 111);
+            this.pnlFournisseurClient.MinimumSize = new System.Drawing.Size(217, 40);
+            this.pnlFournisseurClient.Name = "pnlFournisseurClient";
+            this.pnlFournisseurClient.Size = new System.Drawing.Size(217, 40);
+            this.pnlFournisseurClient.TabIndex = 5;
+            // 
+            // btnDettesFournisseurs
+            // 
+            this.btnDettesFournisseurs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
+            this.btnDettesFournisseurs.FlatAppearance.BorderSize = 0;
+            this.btnDettesFournisseurs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDettesFournisseurs.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDettesFournisseurs.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDettesFournisseurs.Location = new System.Drawing.Point(1, 77);
+            this.btnDettesFournisseurs.Name = "btnDettesFournisseurs";
+            this.btnDettesFournisseurs.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnDettesFournisseurs.Size = new System.Drawing.Size(214, 34);
+            this.btnDettesFournisseurs.TabIndex = 3;
+            this.btnDettesFournisseurs.Text = "Dettes fournisseurs";
+            this.btnDettesFournisseurs.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDettesFournisseurs.UseVisualStyleBackColor = false;
+            this.btnDettesFournisseurs.Click += new System.EventHandler(this.BtnDettesFournisseurs_Click);
+            // 
+            // btnFournisseursEtClients
+            // 
+            this.btnFournisseursEtClients.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(88)))), ((int)(((byte)(77)))));
+            this.btnFournisseursEtClients.FlatAppearance.BorderSize = 0;
+            this.btnFournisseursEtClients.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFournisseursEtClients.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFournisseursEtClients.Image = global::CasaEcologieSysInfo.Properties.Resources.Expand_Arrow_20px;
+            this.btnFournisseursEtClients.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnFournisseursEtClients.Location = new System.Drawing.Point(0, 1);
+            this.btnFournisseursEtClients.Name = "btnFournisseursEtClients";
+            this.btnFournisseursEtClients.Size = new System.Drawing.Size(214, 40);
+            this.btnFournisseursEtClients.TabIndex = 6;
+            this.btnFournisseursEtClients.Text = "Fournisseurs et clients";
+            this.btnFournisseursEtClients.UseVisualStyleBackColor = false;
+            this.btnFournisseursEtClients.Click += new System.EventHandler(this.BtnFournisseursEtClients_Click);
+            // 
+            // btnCreancesClients
+            // 
+            this.btnCreancesClients.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
+            this.btnCreancesClients.FlatAppearance.BorderSize = 0;
+            this.btnCreancesClients.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCreancesClients.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCreancesClients.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCreancesClients.Location = new System.Drawing.Point(0, 35);
+            this.btnCreancesClients.Name = "btnCreancesClients";
+            this.btnCreancesClients.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnCreancesClients.Size = new System.Drawing.Size(214, 41);
+            this.btnCreancesClients.TabIndex = 2;
+            this.btnCreancesClients.Text = "Créances clients";
+            this.btnCreancesClients.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCreancesClients.UseVisualStyleBackColor = false;
+            this.btnCreancesClients.Click += new System.EventHandler(this.BtnCreancesClients_Click);
+            // 
+            // pnlProductionStocks
+            // 
+            this.pnlProductionStocks.Controls.Add(this.btnStockProduitsSemiFinis);
+            this.pnlProductionStocks.Controls.Add(this.btnNouvelleProduction);
+            this.pnlProductionStocks.Controls.Add(this.btnStockMatierePremiere);
+            this.pnlProductionStocks.Controls.Add(this.btnStockProduitsFinis);
+            this.pnlProductionStocks.Controls.Add(this.btnProductionStock);
+            this.pnlProductionStocks.Location = new System.Drawing.Point(3, 336);
+            this.pnlProductionStocks.MaximumSize = new System.Drawing.Size(217, 210);
+            this.pnlProductionStocks.MinimumSize = new System.Drawing.Size(217, 40);
+            this.pnlProductionStocks.Name = "pnlProductionStocks";
+            this.pnlProductionStocks.Size = new System.Drawing.Size(217, 40);
+            this.pnlProductionStocks.TabIndex = 8;
+            // 
+            // btnStockProduitsSemiFinis
+            // 
+            this.btnStockProduitsSemiFinis.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
+            this.btnStockProduitsSemiFinis.FlatAppearance.BorderSize = 0;
+            this.btnStockProduitsSemiFinis.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStockProduitsSemiFinis.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStockProduitsSemiFinis.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnStockProduitsSemiFinis.Location = new System.Drawing.Point(0, 122);
+            this.btnStockProduitsSemiFinis.Name = "btnStockProduitsSemiFinis";
+            this.btnStockProduitsSemiFinis.Size = new System.Drawing.Size(214, 39);
+            this.btnStockProduitsSemiFinis.TabIndex = 7;
+            this.btnStockProduitsSemiFinis.Text = "Stocks produits sémi-finis";
+            this.btnStockProduitsSemiFinis.UseVisualStyleBackColor = false;
+            this.btnStockProduitsSemiFinis.Click += new System.EventHandler(this.BtnStockProduitsSemiFinis_Click);
+            // 
+            // btnNouvelleProduction
+            // 
+            this.btnNouvelleProduction.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
+            this.btnNouvelleProduction.FlatAppearance.BorderSize = 0;
+            this.btnNouvelleProduction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNouvelleProduction.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNouvelleProduction.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNouvelleProduction.Location = new System.Drawing.Point(0, 42);
+            this.btnNouvelleProduction.Name = "btnNouvelleProduction";
+            this.btnNouvelleProduction.Size = new System.Drawing.Size(214, 39);
+            this.btnNouvelleProduction.TabIndex = 4;
+            this.btnNouvelleProduction.Text = "Nouvelle production";
+            this.btnNouvelleProduction.UseVisualStyleBackColor = false;
+            this.btnNouvelleProduction.Click += new System.EventHandler(this.BtnNouvelleProduction_Click);
+            // 
+            // btnStockMatierePremiere
+            // 
+            this.btnStockMatierePremiere.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
+            this.btnStockMatierePremiere.FlatAppearance.BorderSize = 0;
+            this.btnStockMatierePremiere.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStockMatierePremiere.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStockMatierePremiere.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnStockMatierePremiere.Location = new System.Drawing.Point(0, 162);
+            this.btnStockMatierePremiere.Name = "btnStockMatierePremiere";
+            this.btnStockMatierePremiere.Size = new System.Drawing.Size(214, 45);
+            this.btnStockMatierePremiere.TabIndex = 3;
+            this.btnStockMatierePremiere.Text = "Stock matières premières";
+            this.btnStockMatierePremiere.UseVisualStyleBackColor = false;
+            this.btnStockMatierePremiere.Click += new System.EventHandler(this.BtnStockMatierePremiere_Click);
+            // 
+            // btnStockProduitsFinis
+            // 
+            this.btnStockProduitsFinis.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
+            this.btnStockProduitsFinis.FlatAppearance.BorderSize = 0;
+            this.btnStockProduitsFinis.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStockProduitsFinis.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStockProduitsFinis.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnStockProduitsFinis.Location = new System.Drawing.Point(1, 82);
+            this.btnStockProduitsFinis.Name = "btnStockProduitsFinis";
+            this.btnStockProduitsFinis.Size = new System.Drawing.Size(213, 39);
+            this.btnStockProduitsFinis.TabIndex = 2;
+            this.btnStockProduitsFinis.Text = "Stocks produits finis";
+            this.btnStockProduitsFinis.UseVisualStyleBackColor = false;
+            this.btnStockProduitsFinis.Click += new System.EventHandler(this.BtnStockProduitsFinis_Click);
+            // 
+            // btnProductionStock
+            // 
+            this.btnProductionStock.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(88)))), ((int)(((byte)(77)))));
+            this.btnProductionStock.FlatAppearance.BorderSize = 0;
+            this.btnProductionStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProductionStock.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProductionStock.Image = global::CasaEcologieSysInfo.Properties.Resources.Expand_Arrow_20px;
+            this.btnProductionStock.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnProductionStock.Location = new System.Drawing.Point(-3, 3);
+            this.btnProductionStock.Name = "btnProductionStock";
+            this.btnProductionStock.Size = new System.Drawing.Size(217, 40);
+            this.btnProductionStock.TabIndex = 1;
+            this.btnProductionStock.Text = "Production / stocks";
+            this.btnProductionStock.UseVisualStyleBackColor = false;
+            this.btnProductionStock.Click += new System.EventHandler(this.BtnProductionStock_Click);
+            // 
             // pnlUtilisateurs
             // 
             this.pnlUtilisateurs.Controls.Add(this.btnGererUtilisateurs);
@@ -590,7 +557,7 @@
             // 
             // pnlTresorerie
             // 
-            this.pnlTresorerie.Controls.Add(this.button1);
+            this.pnlTresorerie.Controls.Add(this.btnNouveauDecaissement);
             this.pnlTresorerie.Controls.Add(this.btnNouvelEncaissement);
             this.pnlTresorerie.Controls.Add(this.btnJournalTresorerie);
             this.pnlTresorerie.Controls.Add(this.btnNouveauCompteTresorerie);
@@ -601,6 +568,40 @@
             this.pnlTresorerie.Name = "pnlTresorerie";
             this.pnlTresorerie.Size = new System.Drawing.Size(217, 200);
             this.pnlTresorerie.TabIndex = 9;
+            // 
+            // btnNouveauDecaissement
+            // 
+            this.btnNouveauDecaissement.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
+            this.btnNouveauDecaissement.FlatAppearance.BorderSize = 0;
+            this.btnNouveauDecaissement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNouveauDecaissement.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNouveauDecaissement.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNouveauDecaissement.Location = new System.Drawing.Point(-1, 163);
+            this.btnNouveauDecaissement.Name = "btnNouveauDecaissement";
+            this.btnNouveauDecaissement.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnNouveauDecaissement.Size = new System.Drawing.Size(217, 37);
+            this.btnNouveauDecaissement.TabIndex = 4;
+            this.btnNouveauDecaissement.Text = "Nouveau décaissement";
+            this.btnNouveauDecaissement.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNouveauDecaissement.UseVisualStyleBackColor = false;
+            this.btnNouveauDecaissement.Click += new System.EventHandler(this.BtnNouveauDecaissement_Click);
+            // 
+            // btnNouvelEncaissement
+            // 
+            this.btnNouvelEncaissement.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
+            this.btnNouvelEncaissement.FlatAppearance.BorderSize = 0;
+            this.btnNouvelEncaissement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNouvelEncaissement.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNouvelEncaissement.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNouvelEncaissement.Location = new System.Drawing.Point(-1, 122);
+            this.btnNouvelEncaissement.Name = "btnNouvelEncaissement";
+            this.btnNouvelEncaissement.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnNouvelEncaissement.Size = new System.Drawing.Size(217, 40);
+            this.btnNouvelEncaissement.TabIndex = 4;
+            this.btnNouvelEncaissement.Text = "Nouvel encaissement";
+            this.btnNouvelEncaissement.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNouvelEncaissement.UseVisualStyleBackColor = false;
+            this.btnNouvelEncaissement.Click += new System.EventHandler(this.BtnNouvelEncaissement_Click);
             // 
             // btnJournalTresorerie
             // 
@@ -651,69 +652,85 @@
             this.btnTresorerie.UseVisualStyleBackColor = false;
             this.btnTresorerie.Click += new System.EventHandler(this.BtnTresorerie_Click);
             // 
-            // pnlFournisseurClient
+            // pnlVentes
             // 
-            this.pnlFournisseurClient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(31)))), ((int)(((byte)(20)))));
-            this.pnlFournisseurClient.Controls.Add(this.btnDettesFournisseurs);
-            this.pnlFournisseurClient.Controls.Add(this.btnFournisseursEtClients);
-            this.pnlFournisseurClient.Controls.Add(this.btnCreancesClients);
-            this.pnlFournisseurClient.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.pnlFournisseurClient.Location = new System.Drawing.Point(3, 290);
-            this.pnlFournisseurClient.MaximumSize = new System.Drawing.Size(217, 111);
-            this.pnlFournisseurClient.MinimumSize = new System.Drawing.Size(217, 40);
-            this.pnlFournisseurClient.Name = "pnlFournisseurClient";
-            this.pnlFournisseurClient.Size = new System.Drawing.Size(217, 40);
-            this.pnlFournisseurClient.TabIndex = 5;
+            this.pnlVentes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(31)))), ((int)(((byte)(20)))));
+            this.pnlVentes.Controls.Add(this.btnJournalVentes);
+            this.pnlVentes.Controls.Add(this.btnNouvelleVente);
+            this.pnlVentes.Controls.Add(this.btnVentes);
+            this.pnlVentes.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.pnlVentes.Location = new System.Drawing.Point(3, 634);
+            this.pnlVentes.MaximumSize = new System.Drawing.Size(217, 124);
+            this.pnlVentes.MinimumSize = new System.Drawing.Size(217, 40);
+            this.pnlVentes.Name = "pnlVentes";
+            this.pnlVentes.Size = new System.Drawing.Size(217, 41);
+            this.pnlVentes.TabIndex = 0;
             // 
-            // btnDettesFournisseurs
+            // btnJournalVentes
             // 
-            this.btnDettesFournisseurs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.btnDettesFournisseurs.FlatAppearance.BorderSize = 0;
-            this.btnDettesFournisseurs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDettesFournisseurs.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDettesFournisseurs.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDettesFournisseurs.Location = new System.Drawing.Point(1, 77);
-            this.btnDettesFournisseurs.Name = "btnDettesFournisseurs";
-            this.btnDettesFournisseurs.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnDettesFournisseurs.Size = new System.Drawing.Size(214, 34);
-            this.btnDettesFournisseurs.TabIndex = 3;
-            this.btnDettesFournisseurs.Text = "Dettes fournisseurs";
-            this.btnDettesFournisseurs.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDettesFournisseurs.UseVisualStyleBackColor = false;
-            this.btnDettesFournisseurs.Click += new System.EventHandler(this.btnDettesFournisseurs_Click);
+            this.btnJournalVentes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
+            this.btnJournalVentes.FlatAppearance.BorderSize = 0;
+            this.btnJournalVentes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnJournalVentes.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnJournalVentes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnJournalVentes.Location = new System.Drawing.Point(0, 83);
+            this.btnJournalVentes.Name = "btnJournalVentes";
+            this.btnJournalVentes.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnJournalVentes.Size = new System.Drawing.Size(217, 40);
+            this.btnJournalVentes.TabIndex = 3;
+            this.btnJournalVentes.Text = "Journal des ventes";
+            this.btnJournalVentes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnJournalVentes.UseVisualStyleBackColor = false;
+            this.btnJournalVentes.Click += new System.EventHandler(this.BtnJournalVentes_Click);
             // 
-            // btnFournisseursEtClients
+            // btnNouvelleVente
             // 
-            this.btnFournisseursEtClients.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(88)))), ((int)(((byte)(77)))));
-            this.btnFournisseursEtClients.FlatAppearance.BorderSize = 0;
-            this.btnFournisseursEtClients.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFournisseursEtClients.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFournisseursEtClients.Image = global::CasaEcologieSysInfo.Properties.Resources.Expand_Arrow_20px;
-            this.btnFournisseursEtClients.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnFournisseursEtClients.Location = new System.Drawing.Point(0, 1);
-            this.btnFournisseursEtClients.Name = "btnFournisseursEtClients";
-            this.btnFournisseursEtClients.Size = new System.Drawing.Size(214, 40);
-            this.btnFournisseursEtClients.TabIndex = 6;
-            this.btnFournisseursEtClients.Text = "Fournisseurs et clients";
-            this.btnFournisseursEtClients.UseVisualStyleBackColor = false;
-            this.btnFournisseursEtClients.Click += new System.EventHandler(this.BtnFournisseursEtClients_Click);
+            this.btnNouvelleVente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
+            this.btnNouvelleVente.FlatAppearance.BorderSize = 0;
+            this.btnNouvelleVente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNouvelleVente.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNouvelleVente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNouvelleVente.Location = new System.Drawing.Point(0, 42);
+            this.btnNouvelleVente.Name = "btnNouvelleVente";
+            this.btnNouvelleVente.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnNouvelleVente.Size = new System.Drawing.Size(217, 40);
+            this.btnNouvelleVente.TabIndex = 2;
+            this.btnNouvelleVente.Text = "Nouvelle vente";
+            this.btnNouvelleVente.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNouvelleVente.UseVisualStyleBackColor = false;
+            this.btnNouvelleVente.Click += new System.EventHandler(this.BtnNouvelleVente_Click);
             // 
-            // btnCreancesClients
+            // btnVentes
             // 
-            this.btnCreancesClients.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.btnCreancesClients.FlatAppearance.BorderSize = 0;
-            this.btnCreancesClients.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCreancesClients.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreancesClients.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCreancesClients.Location = new System.Drawing.Point(0, 35);
-            this.btnCreancesClients.Name = "btnCreancesClients";
-            this.btnCreancesClients.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnCreancesClients.Size = new System.Drawing.Size(214, 41);
-            this.btnCreancesClients.TabIndex = 2;
-            this.btnCreancesClients.Text = "Créances clients";
-            this.btnCreancesClients.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCreancesClients.UseVisualStyleBackColor = false;
-            this.btnCreancesClients.Click += new System.EventHandler(this.btnCreancesClients_Click);
+            this.btnVentes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(88)))), ((int)(((byte)(77)))));
+            this.btnVentes.FlatAppearance.BorderSize = 0;
+            this.btnVentes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVentes.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVentes.Image = global::CasaEcologieSysInfo.Properties.Resources.Expand_Arrow_20px;
+            this.btnVentes.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnVentes.Location = new System.Drawing.Point(-3, -3);
+            this.btnVentes.Name = "btnVentes";
+            this.btnVentes.Size = new System.Drawing.Size(217, 40);
+            this.btnVentes.TabIndex = 1;
+            this.btnVentes.Text = "Ventes";
+            this.btnVentes.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnVentes.UseVisualStyleBackColor = false;
+            this.btnVentes.Click += new System.EventHandler(this.BtnVentes_Click);
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(88)))), ((int)(((byte)(77)))));
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Image = global::CasaEcologieSysInfo.Properties.Resources.General_Ledger_32px;
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.Location = new System.Drawing.Point(3, 681);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(214, 40);
+            this.button2.TabIndex = 5;
+            this.button2.Text = "Etats financiers";
+            this.button2.UseVisualStyleBackColor = false;
             // 
             // pnlPrincipal
             // 
@@ -757,23 +774,6 @@
             // 
             this.dragControl1.SelectControl = this.pnlTop;
             // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(-1, 163);
-            this.button1.Name = "button1";
-            this.button1.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.button1.Size = new System.Drawing.Size(217, 40);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Nouveau décaissement";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.BtnNouvelEncaissement_Click);
-            // 
             // Accueil
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -795,13 +795,13 @@
             this.pnlTop.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
-            this.pnlProductionStocks.ResumeLayout(false);
-            this.pnlVentes.ResumeLayout(false);
             this.pnlDepenses.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            this.pnlFournisseurClient.ResumeLayout(false);
+            this.pnlProductionStocks.ResumeLayout(false);
             this.pnlUtilisateurs.ResumeLayout(false);
             this.pnlTresorerie.ResumeLayout(false);
-            this.pnlFournisseurClient.ResumeLayout(false);
+            this.pnlVentes.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -857,6 +857,6 @@
         private System.Windows.Forms.Button btnStockProduitsSemiFinis;
         private System.Windows.Forms.Button btnNouvelEncaissement;
         private DragControl dragControl1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnNouveauDecaissement;
     }
 }
