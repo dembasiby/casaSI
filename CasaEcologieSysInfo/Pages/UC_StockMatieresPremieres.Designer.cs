@@ -32,8 +32,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.resStockMatieresPremiereBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.label1 = new System.Windows.Forms.Label();
             this.dgvJournalStockMatPrem = new System.Windows.Forms.DataGridView();
+            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.resStockMatieresPremiereBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvJournalStockMatPrem)).BeginInit();
@@ -53,13 +53,14 @@
             // 
             // listBox1
             // 
+            this.listBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listBox1.DataSource = this.resStockMatieresPremiereBindingSource;
             this.listBox1.DisplayMember = "NomMatiere";
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 17;
             this.listBox1.Location = new System.Drawing.Point(6, 100);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(175, 225);
+            this.listBox1.Size = new System.Drawing.Size(175, 476);
             this.listBox1.TabIndex = 14;
             this.listBox1.ValueMember = "NomMatiere";
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
@@ -68,41 +69,45 @@
             // 
             this.resStockMatieresPremiereBindingSource.DataSource = typeof(CasaEcologieSysInfo.ResStockMatieresPremiere);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 72);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(47, 17);
-            this.label1.TabIndex = 15;
-            this.label1.Text = "label1";
-            // 
             // dgvJournalStockMatPrem
             // 
             this.dgvJournalStockMatPrem.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvJournalStockMatPrem.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.dgvJournalStockMatPrem.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvJournalStockMatPrem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvJournalStockMatPrem.Location = new System.Drawing.Point(187, 76);
+            this.dgvJournalStockMatPrem.Location = new System.Drawing.Point(187, 100);
             this.dgvJournalStockMatPrem.Name = "dgvJournalStockMatPrem";
             this.dgvJournalStockMatPrem.ReadOnly = true;
-            this.dgvJournalStockMatPrem.Size = new System.Drawing.Size(793, 427);
+            this.dgvJournalStockMatPrem.Size = new System.Drawing.Size(781, 476);
             this.dgvJournalStockMatPrem.TabIndex = 16;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(446, 72);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(215, 19);
+            this.label3.TabIndex = 18;
+            this.label3.Text = "Fiche de stocks par produit";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(183, 48);
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(3, 72);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(47, 17);
-            this.label2.TabIndex = 15;
-            this.label2.Text = "label1";
+            this.label2.Size = new System.Drawing.Size(192, 16);
+            this.label2.TabIndex = 19;
+            this.label2.Text = "Liste des matières premières";
             // 
             // UC_StockMatieresPremieres
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.dgvJournalStockMatPrem);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.dgvJournalStockMatPrem);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.label4);
             this.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -121,8 +126,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.BindingSource resStockMatieresPremiereBindingSource;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgvJournalStockMatPrem;
+        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
     }
 }
