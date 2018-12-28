@@ -11,11 +11,11 @@ using System.Data.SqlClient;
 
 namespace CasaEcologieSysInfo.Pages
 {
-    public partial class txtEquipmentsInfr : UserControl
+    public partial class UC_JournalTresorerie : UserControl
     {
         CasaDBEntities2 db = new CasaDBEntities2();
 
-        public txtEquipmentsInfr()
+        public UC_JournalTresorerie()
         {
             InitializeComponent();
         }

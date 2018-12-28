@@ -1,6 +1,6 @@
 ﻿namespace CasaEcologieSysInfo.Pages
 {
-    partial class txtEquipmentsInfr
+    partial class UC_JournalTresorerie
     {
         /// <summary> 
         /// Variable nécessaire au concepteur.
@@ -284,7 +284,7 @@
             this.txtSolde.Size = new System.Drawing.Size(169, 23);
             this.txtSolde.TabIndex = 19;
             // 
-            // txtEquipmentsInfr
+            // UC_JournalTresorerie
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -312,7 +312,7 @@
             this.Controls.Add(this.label4);
             this.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "txtEquipmentsInfr";
+            this.Name = "UC_JournalTresorerie";
             this.Size = new System.Drawing.Size(983, 635);
             this.Load += new System.EventHandler(this.UC_JournalTresorerie_Load);
             ((System.ComponentModel.ISupportInitialize)(this.adgvJournalTresorerieDetails)).EndInit();
