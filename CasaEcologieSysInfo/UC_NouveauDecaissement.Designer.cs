@@ -49,6 +49,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.cbxTypeFournisseur = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtSoldeCompte = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.resComptesTresorerieBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ageEmployeBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -75,7 +77,7 @@
             // dtpDateDecaissement
             // 
             this.dtpDateDecaissement.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpDateDecaissement.Location = new System.Drawing.Point(287, 294);
+            this.dtpDateDecaissement.Location = new System.Drawing.Point(287, 323);
             this.dtpDateDecaissement.Name = "dtpDateDecaissement";
             this.dtpDateDecaissement.Size = new System.Drawing.Size(264, 23);
             this.dtpDateDecaissement.TabIndex = 35;
@@ -91,6 +93,7 @@
             this.cbxCompte.Size = new System.Drawing.Size(218, 29);
             this.cbxCompte.TabIndex = 38;
             this.cbxCompte.ValueMember = "CodeEmploye";
+            this.cbxCompte.SelectedIndexChanged += new System.EventHandler(this.cbxCompte_SelectedIndexChanged);
             // 
             // resComptesTresorerieBindingSource
             // 
@@ -102,7 +105,7 @@
             this.cbxTresoriere.DisplayMember = "PrenomNom";
             this.cbxTresoriere.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxTresoriere.FormattingEnabled = true;
-            this.cbxTresoriere.Location = new System.Drawing.Point(289, 254);
+            this.cbxTresoriere.Location = new System.Drawing.Point(287, 288);
             this.cbxTresoriere.Name = "cbxTresoriere";
             this.cbxTresoriere.Size = new System.Drawing.Size(264, 29);
             this.cbxTresoriere.TabIndex = 39;
@@ -133,6 +136,7 @@
             this.cbxNomFournisseur.Size = new System.Drawing.Size(309, 29);
             this.cbxNomFournisseur.TabIndex = 37;
             this.cbxNomFournisseur.ValueMember = "CodeClient";
+            this.cbxNomFournisseur.SelectedIndexChanged += new System.EventHandler(this.CbxNomFournisseur_SelectedIndexChanged);
             // 
             // txtMontantPaye
             // 
@@ -144,7 +148,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(81, 292);
+            this.label1.Location = new System.Drawing.Point(81, 321);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(50, 21);
             this.label1.TabIndex = 26;
@@ -157,18 +161,19 @@
             this.btnEnregistrerDecaissement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEnregistrerDecaissement.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEnregistrerDecaissement.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnEnregistrerDecaissement.Location = new System.Drawing.Point(287, 327);
+            this.btnEnregistrerDecaissement.Location = new System.Drawing.Point(287, 356);
             this.btnEnregistrerDecaissement.Name = "btnEnregistrerDecaissement";
             this.btnEnregistrerDecaissement.Size = new System.Drawing.Size(264, 31);
             this.btnEnregistrerDecaissement.TabIndex = 33;
             this.btnEnregistrerDecaissement.Text = "Enregistrer le paiement";
             this.btnEnregistrerDecaissement.UseVisualStyleBackColor = false;
+            this.btnEnregistrerDecaissement.Click += new System.EventHandler(this.BtnEnregistrerDecaissement_Click);
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(79, 257);
+            this.label10.Location = new System.Drawing.Point(77, 291);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(185, 21);
             this.label10.TabIndex = 27;
@@ -248,6 +253,25 @@
             this.cbxTypeFournisseur.Size = new System.Drawing.Size(309, 29);
             this.cbxTypeFournisseur.TabIndex = 1;
             this.cbxTypeFournisseur.Tag = "Test";
+            this.cbxTypeFournisseur.SelectedIndexChanged += new System.EventHandler(this.CbxTypeFournisseur_SelectedIndexChanged);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(77, 254);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(148, 21);
+            this.label8.TabIndex = 27;
+            this.label8.Text = "Solde du compte:";
+            // 
+            // txtSoldeCompte
+            // 
+            this.txtSoldeCompte.Enabled = false;
+            this.txtSoldeCompte.Location = new System.Drawing.Point(333, 254);
+            this.txtSoldeCompte.Name = "txtSoldeCompte";
+            this.txtSoldeCompte.Size = new System.Drawing.Size(218, 27);
+            this.txtSoldeCompte.TabIndex = 34;
             // 
             // UC_NouveauDecaissement
             // 
@@ -261,8 +285,10 @@
             this.Controls.Add(this.cbxLocaliteFournisseur);
             this.Controls.Add(this.cbxTypeFournisseur);
             this.Controls.Add(this.cbxNomFournisseur);
+            this.Controls.Add(this.txtSoldeCompte);
             this.Controls.Add(this.txtMontantPaye);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.btnEnregistrerDecaissement);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label2);
@@ -275,6 +301,7 @@
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "UC_NouveauDecaissement";
             this.Size = new System.Drawing.Size(983, 635);
+            this.Load += new System.EventHandler(this.UC_NouveauDecaissement_Load);
             ((System.ComponentModel.ISupportInitialize)(this.resComptesTresorerieBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ageEmployeBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -304,5 +331,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cbxTypeFournisseur;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtSoldeCompte;
     }
 }

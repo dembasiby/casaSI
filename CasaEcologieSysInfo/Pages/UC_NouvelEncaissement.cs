@@ -97,6 +97,7 @@ namespace CasaEcologieSysInfo
 
                 db.EveEncaissementsVentes.Add(encV);
                 db.SaveChanges();
+                txtMontantEncaisse.Clear();
                 LoadData();
                 MettreCreanceAJour();
             }
