@@ -156,5 +156,48 @@ namespace CasaEcologieSysInfo
             }
         }
 
+        public static decimal SoldeDisponibleDuCompteDeTresorerie(string nomCompte)
+        {
+            using (CasaDBEntities2 db = new CasaDBEntities2())
+            {
+
+                var soldeInitial = (from c in db.ResComptesTresoreries
+                                    where c.NomCompte == nomCompte
+                                   select c.SoldeCompte).FirstOrDefault();
+
+                var totalEncaissements = (from c in db.EveEncaissements
+                                         join nc in db.ResComptesTresoreries on c.CodeCompte equals nc.CodeCompte
+                                          where nc.NomCompte == nomCompte
+                                          from env in db.EveEncaissementsVentes
+                                          where c.CodeEncaissement == env.CodeEncaissement
+                                          
+                                          select (decimal?)env.MontantEncaisse).Sum() ?? 0m;
+                
+                var totalAchatMatierePrem = (from d in db.EveDecaissements
+                                             where d.ResComptesTresorerie.NomCompte == nomCompte
+                                             from m in db.EveReceptionMatieresPremieres
+                                             where d.CodeReceptionMatierePremiere == m.CodeReceptionMatierePremiere
+                                             select (decimal?)d.Montant).Sum() ?? 0m;
+
+                var totalEquipmentsInfrastructures = (from d in db.EveDecaissements
+                                                      where d.ResComptesTresorerie.NomCompte == nomCompte
+                                                      from re in db.EveReceptionEquipementsInfrastructures
+                                                      where d.CodeReceptionEquipementInfrastructure == re.CodeReceptionEquipementInfrastructure
+                                                      select (decimal?)d.Montant).Sum() ?? 0m;
+
+                var totalFournituresServices = (from d in db.EveDecaissements
+                                                where d.ResComptesTresorerie.NomCompte == nomCompte
+                                                from fs in db.EveAcquisitionServicesFournitures
+                                                where d.CodeAcquisitionServiceFourniture == fs.CodeAcquisitionServiceFourniture
+                                                select (decimal?)d.Montant).Sum() ?? 0m;
+                
+                var fondsDisponibles = soldeInitial + totalEncaissements - totalAchatMatierePrem - totalEquipmentsInfrastructures - totalFournituresServices;
+
+                return fondsDisponibles;
+
+
+            }
+        }
+
     }
 }
