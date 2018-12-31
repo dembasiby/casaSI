@@ -80,6 +80,8 @@
             this.resComptesTresorerieTableAdapter = new CasaEcologieSysInfo.CasaDBDataSetAllTableAdapters.ResComptesTresorerieTableAdapter();
             this.lblLocaliteFournisseur = new System.Windows.Forms.Label();
             this.txtLocaliteFournisseur = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtSoldeCompte = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.resStockMatieresPremieresBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.casaDBDataSetAll)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ageFournisseursMatieresPremieresBindingSource)).BeginInit();
@@ -120,7 +122,7 @@
             this.btnEnregistrerAchatMatierePremiere.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEnregistrerAchatMatierePremiere.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEnregistrerAchatMatierePremiere.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnEnregistrerAchatMatierePremiere.Location = new System.Drawing.Point(31, 486);
+            this.btnEnregistrerAchatMatierePremiere.Location = new System.Drawing.Point(31, 532);
             this.btnEnregistrerAchatMatierePremiere.Margin = new System.Windows.Forms.Padding(5);
             this.btnEnregistrerAchatMatierePremiere.Name = "btnEnregistrerAchatMatierePremiere";
             this.btnEnregistrerAchatMatierePremiere.Size = new System.Drawing.Size(504, 34);
@@ -522,6 +524,7 @@
             this.cbxComptePaiement.Name = "cbxComptePaiement";
             this.cbxComptePaiement.Size = new System.Drawing.Size(286, 29);
             this.cbxComptePaiement.TabIndex = 16;
+            this.cbxComptePaiement.SelectedIndexChanged += new System.EventHandler(this.cbxComptePaiement_SelectedIndexChanged);
             // 
             // resComptesTresorerieBindingSource
             // 
@@ -550,6 +553,25 @@
             this.txtLocaliteFournisseur.Size = new System.Drawing.Size(286, 27);
             this.txtLocaliteFournisseur.TabIndex = 13;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(27, 490);
+            this.label5.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(212, 21);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Solde compte séléctionné";
+            // 
+            // txtSoldeCompte
+            // 
+            this.txtSoldeCompte.Enabled = false;
+            this.txtSoldeCompte.Location = new System.Drawing.Point(249, 487);
+            this.txtSoldeCompte.Margin = new System.Windows.Forms.Padding(5);
+            this.txtSoldeCompte.Name = "txtSoldeCompte";
+            this.txtSoldeCompte.Size = new System.Drawing.Size(286, 27);
+            this.txtSoldeCompte.TabIndex = 13;
+            // 
             // UC_AchatMatierePremiere
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
@@ -565,7 +587,9 @@
             this.Controls.Add(this.btnEnregistrerAchatMatierePremiere);
             this.Controls.Add(this.txtMontantPaye);
             this.Controls.Add(this.txtLocaliteFournisseur);
+            this.Controls.Add(this.txtSoldeCompte);
             this.Controls.Add(this.txtMontant);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.txtQuantite);
             this.Controls.Add(this.lblComptePaiement);
             this.Controls.Add(this.label6);
@@ -653,5 +677,7 @@
         private CasaDBDataSetAllTableAdapters.ResComptesTresorerieTableAdapter resComptesTresorerieTableAdapter;
         private System.Windows.Forms.Label lblLocaliteFournisseur;
         private System.Windows.Forms.TextBox txtLocaliteFournisseur;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtSoldeCompte;
     }
 }

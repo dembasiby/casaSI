@@ -37,6 +37,7 @@ namespace CasaEcologieSysInfo
                 Value = DateTime.Now
             };
             LoadData();
+            AfficherSoldeCompte();
             
         }
 
@@ -93,26 +94,54 @@ namespace CasaEcologieSysInfo
                 db.EveDecaissements.Add(decaiss);
             }
             db.EveReceptionMatieresPremieres.Add(achatMatiere);
-            db.SaveChanges();
-            
+            db.SaveChanges();            
         }
 
         private void BtnEnregistrerAchatMatierePremiere_Click(object sender, EventArgs e)
         {
-            try
+            if (VerifierSoldeCompteTresorerie())
             {
-                AjouterNouvelleAchatMatierePremiere();
-                MessageBox.Show("Un nouvel achat de matière première a été enregistré avec succès");
-                txtQuantite.Text = "";
-                txtMontant.Text = "";
-                txtMontantPaye.Text = "";
+                try
+                {
+                    AjouterNouvelleAchatMatierePremiere();
+                    MessageBox.Show("Un nouvel achat de matière première a été enregistré avec succès");
+                    txtQuantite.Text = "";
+                    txtMontant.Text = "";
+                    txtMontantPaye.Text = "";
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erreur {0}", ex.Message);
+                }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erreur {0}", ex.Message);
-            }           
+           
         }
 
-        
+        private void cbxComptePaiement_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            AfficherSoldeCompte();
+        }
+
+        private void AfficherSoldeCompte()
+        {
+            var compte = cbxComptePaiement.GetItemText(cbxComptePaiement.SelectedItem);
+            txtSoldeCompte.Text = Conversion.SoldeDisponibleDuCompteDeTresorerie(compte).ToString("c0");
+        }
+
+        private bool VerifierSoldeCompteTresorerie()
+        {
+            try
+            {
+                bool verif = int.Parse(txtMontantPaye.Text) < int.Parse(txtSoldeCompte.Text);
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Il n'y a pas assez de fonds dans le compte séléctionné pour effectuer ce paiement. Veuillez changer de compte ou diminuer le montant.");
+                return false;
+            }
+
+            return true;
+        }
     }
 }
