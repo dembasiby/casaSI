@@ -210,5 +210,11 @@ namespace CasaEcologieSysInfo
             UC_NouveauDecaissement nd = new UC_NouveauDecaissement();
             AddControlsToPanel(nd);
         }
+
+        private void btnNouveauCompteTresorerie_Click(object sender, EventArgs e)
+        {
+            Pages.UC_NouveauCompteTresorerie ct = new Pages.UC_NouveauCompteTresorerie();
+            AddControlsToPanel(ct);
+        }
     }
 }

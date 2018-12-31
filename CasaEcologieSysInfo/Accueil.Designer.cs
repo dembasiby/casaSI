@@ -635,6 +635,7 @@
             this.btnNouveauCompteTresorerie.Text = "Créer un nouveau compte";
             this.btnNouveauCompteTresorerie.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnNouveauCompteTresorerie.UseVisualStyleBackColor = false;
+            this.btnNouveauCompteTresorerie.Click += new System.EventHandler(this.btnNouveauCompteTresorerie_Click);
             // 
             // btnTresorerie
             // 

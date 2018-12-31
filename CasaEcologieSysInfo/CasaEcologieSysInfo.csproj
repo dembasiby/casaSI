@@ -213,6 +213,12 @@
     <Compile Include="Pages\UC_JournalTresorerie.Designer.cs">
       <DependentUpon>UC_JournalTresorerie.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pages\UC_NouveauCompteTresorerie.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\UC_NouveauCompteTresorerie.Designer.cs">
+      <DependentUpon>UC_NouveauCompteTresorerie.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pages\UC_StockProduitsSemiFinis.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -337,6 +343,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\UC_JournalTresorerie.resx">
       <DependentUpon>UC_JournalTresorerie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\UC_NouveauCompteTresorerie.resx">
+      <DependentUpon>UC_NouveauCompteTresorerie.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\UC_StockProduitsSemiFinis.resx">
       <DependentUpon>UC_StockProduitsSemiFinis.cs</DependentUpon>
