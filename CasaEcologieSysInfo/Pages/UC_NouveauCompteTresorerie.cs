@@ -15,6 +15,7 @@ namespace CasaEcologieSysInfo.Pages
         public UC_NouveauCompteTresorerie()
         {
             InitializeComponent();
+            txtSoldeCompte.Text = "00";
         }
 
         private bool VerifierChampsSoldeInitial()
@@ -56,6 +57,10 @@ namespace CasaEcologieSysInfo.Pages
                     MessageBox.Show("Le nouveau compte a été ajouté avec succès.");
                     txtNomCompte.Clear();
                     txtSoldeCompte.Clear();
+                }
+                else
+                {
+                    MessageBox.Show("Le nouveau compte n'a pas été créé. Vérifiez que tous les champs sont correctement remplis.");
                 }
             }
                 

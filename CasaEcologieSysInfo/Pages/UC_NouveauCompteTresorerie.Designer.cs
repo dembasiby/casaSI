@@ -49,7 +49,6 @@
             // 
             // txtSoldeCompte
             // 
-            this.txtSoldeCompte.Enabled = false;
             this.txtSoldeCompte.Location = new System.Drawing.Point(410, 137);
             this.txtSoldeCompte.Name = "txtSoldeCompte";
             this.txtSoldeCompte.Size = new System.Drawing.Size(250, 27);
@@ -108,7 +107,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label4);
             this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "UC_NouveauCompteTresorerie";
             this.Size = new System.Drawing.Size(983, 635);
             this.ResumeLayout(false);
