@@ -24,6 +24,7 @@ namespace CasaEcologieSysInfo
         public int CodeProduitSemiFini { get; set; }
         public int CodeMatierePremiere { get; set; }
         public int Quantite { get; set; }
+        public string Description { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EveProductionProduitsSemiFini> EveProductionProduitsSemiFinis { get; set; }
