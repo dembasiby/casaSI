@@ -32,12 +32,6 @@ namespace CasaEcologieSysInfo
             Application.Exit();
         }
 
-        private void BtnNouvelleVente_Click(object sender, EventArgs e)
-        {
-            UC_NouvelleVente nvente = new UC_NouvelleVente();
-            AddControlsToPanel(nvente);
-        }
-
         private void SetTimer(Panel p, Timer t)
         {
             if (isCollapsed)
@@ -59,6 +53,8 @@ namespace CasaEcologieSysInfo
                 }
             }
         }
+
+        
 
         private void Timer1_Tick(object sender, EventArgs e)
         {
@@ -118,6 +114,22 @@ namespace CasaEcologieSysInfo
         private void BtnUtilisateurs_Click(object sender, EventArgs e)
         {
             tmrUtilisateurs.Start();
+        }
+
+        private void TmrEtatsFinanciers_Tick(object sender, EventArgs e)
+        {
+            SetTimer(pnlEtatsFinanciers, tmrEtatsFinanciers);
+        }
+
+        private void btnEtatsFinanciers_Click(object sender, EventArgs e)
+        {
+            tmrEtatsFinanciers.Start();
+        }
+
+        private void BtnNouvelleVente_Click(object sender, EventArgs e)
+        {
+            UC_NouvelleVente nvente = new UC_NouvelleVente();
+            AddControlsToPanel(nvente);
         }
 
         private void BtnMatierePremiere_Click(object sender, EventArgs e)
@@ -215,6 +227,18 @@ namespace CasaEcologieSysInfo
         {
             Pages.UC_NouveauCompteTresorerie ct = new Pages.UC_NouveauCompteTresorerie();
             AddControlsToPanel(ct);
+        }
+
+        private void btnEtatsFinanciersMensuels_Click(object sender, EventArgs e)
+        {
+            Pages.UC_EtatsFinMensuels efm = new Pages.UC_EtatsFinMensuels();
+            AddControlsToPanel(efm);
+        }
+
+        private void btnPersonnel_Click(object sender, EventArgs e)
+        {
+            Pages.UC_Personnel p = new Pages.UC_Personnel();
+            AddControlsToPanel(p);
         }
     }
 }
