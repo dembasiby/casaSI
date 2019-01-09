@@ -45,8 +45,8 @@ namespace CasaEcologieSysInfo
                                Date = rmp.DateReception,
                                Description = "Achat de " + mp.NomMatiere,
                                Entree = rmp.Quantite,
-                               Sortie = 0,
-                               Solde = 0
+                               Sortie = 0f,
+                               Solde = 0f
                            });
 
             var sorties = (from mp in db.ResStockMatieresPremieres
@@ -58,9 +58,9 @@ namespace CasaEcologieSysInfo
                            {
                                p.Date,
                                Description = "Utilisation de " + mp.NomMatiere,
-                               Entree = 0,
+                               Entree = 0f,
                                Sortie = ump.QuantiteMatierePremiere,
-                               Solde = 0
+                               Solde = 0f
                            });
 
             var resultats = entrees.Union(sorties)

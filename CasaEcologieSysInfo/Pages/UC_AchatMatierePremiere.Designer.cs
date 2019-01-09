@@ -49,7 +49,7 @@
             this.txtSoldeInitialeDette = new System.Windows.Forms.TextBox();
             this.txtLocalite = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.txtNomClient = new System.Windows.Forms.TextBox();
+            this.txtNomFournisseurMP = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.lblNomNouveauClient = new System.Windows.Forms.Label();
@@ -242,7 +242,7 @@
             this.grbNouveauFournisseur.Controls.Add(this.txtSoldeInitialeDette);
             this.grbNouveauFournisseur.Controls.Add(this.txtLocalite);
             this.grbNouveauFournisseur.Controls.Add(this.label12);
-            this.grbNouveauFournisseur.Controls.Add(this.txtNomClient);
+            this.grbNouveauFournisseur.Controls.Add(this.txtNomFournisseurMP);
             this.grbNouveauFournisseur.Controls.Add(this.label13);
             this.grbNouveauFournisseur.Controls.Add(this.label8);
             this.grbNouveauFournisseur.Controls.Add(this.lblNomNouveauClient);
@@ -267,6 +267,7 @@
             this.btnNouveauFournisseur.TabIndex = 10;
             this.btnNouveauFournisseur.Text = "Enregistrer";
             this.btnNouveauFournisseur.UseVisualStyleBackColor = false;
+            this.btnNouveauFournisseur.Click += new System.EventHandler(this.BtnNouveauFournisseur_Click);
             // 
             // txtSoldeInitialeDette
             // 
@@ -292,12 +293,12 @@
             this.label12.TabIndex = 5;
             this.label12.Text = "Solde initiale dette";
             // 
-            // txtNomClient
+            // txtNomFournisseurMP
             // 
-            this.txtNomClient.Location = new System.Drawing.Point(5, 88);
-            this.txtNomClient.Name = "txtNomClient";
-            this.txtNomClient.Size = new System.Drawing.Size(384, 27);
-            this.txtNomClient.TabIndex = 9;
+            this.txtNomFournisseurMP.Location = new System.Drawing.Point(5, 88);
+            this.txtNomFournisseurMP.Name = "txtNomFournisseurMP";
+            this.txtNomFournisseurMP.Size = new System.Drawing.Size(384, 27);
+            this.txtNomFournisseurMP.TabIndex = 9;
             // 
             // label13
             // 
@@ -643,7 +644,7 @@
         private System.Windows.Forms.TextBox txtSoldeInitialeDette;
         private System.Windows.Forms.TextBox txtLocalite;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox txtNomClient;
+        private System.Windows.Forms.TextBox txtNomFournisseurMP;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label lblNomNouveauClient;

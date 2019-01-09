@@ -22,8 +22,10 @@ namespace CasaEcologieSysInfo
         private void LoadData()
         {
            
-            ageFournisseursMatieresPremieresBindingSource.DataSource = db.AgeFournisseursMatieresPremieres.ToList();
-            resStockMatieresPremieresBindingSource.DataSource = db.ResStockMatieresPremieres.ToList();
+            ageFournisseursMatieresPremieresBindingSource.DataSource = db.AgeFournisseursMatieresPremieres
+                .ToList()
+                .OrderBy(f => f.Nom);
+            resStockMatieresPremieresBindingSource.DataSource = db.ResStockMatieresPremieres.ToList().OrderBy(m => m.NomMatiere);
             ageEmployesBindingSource.DataSource = db.AgeEmployes.ToList();
             ageEmployesBindingSource1.DataSource = db.AgeEmployes.ToList();
             resComptesTresorerieBindingSource.DataSource = db.ResComptesTresoreries.ToList();
@@ -72,7 +74,7 @@ namespace CasaEcologieSysInfo
             {
                 CodeMatierePremiere = matPrem.CodeMatierePremiere,
                 DateReception = DateTime.Parse(dtpDateApprovisionnement.Text),
-                Quantite = int.Parse(txtQuantite.Text),
+                Quantite = float.Parse(txtQuantite.Text),
                 Montant = int.Parse(txtMontant.Text),
                 CodeFournisseurMatierePremiere = fournMp.CodeFournisseurMatierePremiere,
                 CodeEmploye = resStocks.CodeEmploye,
@@ -94,7 +96,8 @@ namespace CasaEcologieSysInfo
                 db.EveDecaissements.Add(decaiss);
             }
             db.EveReceptionMatieresPremieres.Add(achatMatiere);
-            db.SaveChanges();            
+            db.SaveChanges();
+            AfficherSoldeCompte();
         }
 
         private void BtnEnregistrerAchatMatierePremiere_Click(object sender, EventArgs e)
@@ -122,22 +125,91 @@ namespace CasaEcologieSysInfo
             AfficherSoldeCompte();
         }
 
-        private void AfficherSoldeCompte()
+        private decimal SoldeDuCompteSelectionne()
         {
             var compte = cbxComptePaiement.GetItemText(cbxComptePaiement.SelectedItem);
-            txtSoldeCompte.Text = Conversion.SoldeDisponibleDuCompteDeTresorerie(compte).ToString("c0");
+            return Conversion.SoldeDisponibleDuCompteDeTresorerie(compte);
+        }
+        private void AfficherSoldeCompte()
+        {
+            txtSoldeCompte.Text = SoldeDuCompteSelectionne().ToString("c0");
         }
 
         private bool VerifierSoldeCompteTresorerie()
         {
             try
             {
-                bool verif = int.Parse(txtMontantPaye.Text) < int.Parse(txtSoldeCompte.Text);
+                bool verif = decimal.Parse(txtMontantPaye.Text) < SoldeDuCompteSelectionne();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Il n'y a pas assez de fonds dans le compte séléctionné pour effectuer ce paiement. Veuillez changer de compte ou diminuer le montant.");
+                return false;
+            }
+
+            return true;
+        }
+
+        private void BtnNouveauFournisseur_Click(object sender, EventArgs e)
+        {
+            if (FournisseurExisteDeja(txtNomFournisseurMP.Text, txtLocalite.Text))
+            {
+                MessageBox.Show("Ce fournisseur existe déjà dans la base de données. Merci de le choisir dans la liste déroulante.");
+            }
+            else if (VerifierChampsMontant(txtSoldeInitialeDette.Text))
+           
+            {
+                AgeFournisseursMatieresPremiere fmp = new AgeFournisseursMatieresPremiere
+                {
+                    Nom = txtNomFournisseurMP.Text,
+                    Localite = txtLocalite.Text,
+                    SoldeDette = int.Parse(txtSoldeInitialeDette.Text)
+                };
+
+                db.AgeFournisseursMatieresPremieres.Add(fmp);
+                db.SaveChanges();
+                MessageBox.Show("Le nouveau fournisseur a été ajouté avec succès.");
+                LoadData();
+                txtNomFournisseurMP.Clear();
+                txtLocalite.Clear();
+                txtSoldeInitialeDette.Text = "00";
+            }
+            
+        }
+
+        private bool FournisseurExisteDeja(string nomFournisseur, string localiteFournisseur)
+        {
+            try
+            {
+                var fournisseur = (from f in db.AgeFournisseursMatieresPremieres
+                                   where f.Nom == txtNomFournisseurMP.Text
+                                   where f.Localite == txtLocalite.Text
+                                   select f).First();
+                return true;
             }
             catch (Exception)
             {
 
-                MessageBox.Show("Il n'y a pas assez de fonds dans le compte séléctionné pour effectuer ce paiement. Veuillez changer de compte ou diminuer le montant.");
+                return false;
+            }
+            
+        }
+
+        private bool VerifierChampsMontant(string nomChamps)
+        {
+            if (string.IsNullOrEmpty(nomChamps))
+            {
+                MessageBox.Show("Ce champs doit être renseigné.");
+                return false;
+            }
+
+            try
+            {
+                int temp = Convert.ToInt32(nomChamps);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ce champs doit contenir uniquement des nombres.");
                 return false;
             }
 
