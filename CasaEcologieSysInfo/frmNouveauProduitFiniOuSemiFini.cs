@@ -47,14 +47,15 @@ namespace CasaEcologieSysInfo
 
         private void CreerNouveauProduitSemiFini(string text1, string text2)
         {
-
-            ResStockMatieresPremiere mp = db.ResStockMatieresPremieres.FirstOrDefault(n => n.NomMatiere == text1);
+            var nomMatierPremiere = cbxNomMatiereP.GetItemText(cbxNomMatiereP.SelectedItem);
+            ResStockMatieresPremiere mp = db.ResStockMatieresPremieres.FirstOrDefault(n => n.NomMatiere == nomMatierPremiere);
             prod.VerifierChampsQuantite(txtStockInitialProduitFini.Text);
 
             try
             {
                 ResStockProduitsSemiFini semiF = new ResStockProduitsSemiFini
                 {
+                    Description = txtNomProduitSemiFini.Text,
                     Quantite = int.Parse(txtStockInitialProduitFini.Text),
                     CodeMatierePremiere = mp.CodeMatierePremiere,
                 };
@@ -98,6 +99,11 @@ namespace CasaEcologieSysInfo
             {
                 MessageBox.Show("Le nouveau produit fini n'a pas pu être enregistré.", ex.Message);
             }
+        }
+
+        private void frmNouveauProduitFiniOuSemiFini_Load(object sender, EventArgs e)
+        {
+            resStockMatieresPremiereBindingSource.DataSource = db.ResStockMatieresPremieres.ToList();
         }
     }
 }
