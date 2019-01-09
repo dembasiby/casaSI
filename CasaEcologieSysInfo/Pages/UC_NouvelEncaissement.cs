@@ -47,12 +47,12 @@ namespace CasaEcologieSysInfo
             txtCreancesClient.Text = creancesClients.ToString("c0");
         }
 
-        private void VerifierChampsMontantEncaisse()
+        private bool VerifierChampsMontantEncaisse()
         {
             if (string.IsNullOrEmpty(txtMontantEncaisse.Text))
             {
                 MessageBox.Show("Ce champs doit être renseigné.");
-                return;
+                return false;
             }
 
             try
@@ -62,8 +62,10 @@ namespace CasaEcologieSysInfo
             catch (Exception)
             {
                 MessageBox.Show("Ce champs doit contenir uniquement des nombres.");
-                return;
+                return false;
             }
+
+            return true;
         }
 
         private void BtnEnregistrerEncaissement_Click(object sender, EventArgs e)
@@ -72,35 +74,38 @@ namespace CasaEcologieSysInfo
             AgeEmploye tres = db.AgeEmployes.FirstOrDefault(rv => rv.PrenomNom == cbxTres.Text);
             ResComptesTresorerie cpte = db.ResComptesTresoreries.FirstOrDefault(cte => cte.NomCompte == cbxCompte.Text);
 
-            VerifierChampsMontantEncaisse();
-            
-            if (int.Parse(txtMontantEncaisse.Text) > 0)
+            if (VerifierChampsMontantEncaisse())
             {
-                EveEncaissement enc = new EveEncaissement
+                if (int.Parse(txtMontantEncaisse.Text) > 0)
                 {
-                    CodeClient = client.CodeClient,
-                    CodeEmploye = tres.CodeEmploye,
-                    CodeCompte = cpte.CodeCompte,
-                };
+                    EveEncaissement enc = new EveEncaissement
+                    {
+                        CodeClient = client.CodeClient,
+                        CodeEmploye = tres.CodeEmploye,
+                        CodeCompte = cpte.CodeCompte,
+                    };
 
-                db.EveEncaissements.Add(enc);
-                db.SaveChanges();
+                    db.EveEncaissements.Add(enc);
+                    db.SaveChanges();
 
-                EveVente vente = db.EveVentes.FirstOrDefault(nc => nc.CodeClient == client.CodeClient);
-                EveEncaissementsVente encV = new EveEncaissementsVente
-                {
-                    CodeEncaissement = enc.CodeEncaissement,
-                    CodeVente = vente.CodeVente,
-                    MontantEncaisse = int.Parse(txtMontantEncaisse.Text),
-                    DateEncaissement = DateTime.Parse(dtpDateEncaissement.Text)
-                };
+                    EveVente vente = db.EveVentes.FirstOrDefault(nc => nc.CodeClient == client.CodeClient);
+                    EveEncaissementsVente encV = new EveEncaissementsVente
+                    {
+                        CodeEncaissement = enc.CodeEncaissement,
+                        CodeVente = vente.CodeVente,
+                        MontantEncaisse = int.Parse(txtMontantEncaisse.Text),
+                        DateEncaissement = DateTime.Parse(dtpDateEncaissement.Text)
+                    };
 
-                db.EveEncaissementsVentes.Add(encV);
-                db.SaveChanges();
-                txtMontantEncaisse.Clear();
-                LoadData();
-                MettreCreanceAJour();
+                    db.EveEncaissementsVentes.Add(encV);
+                    db.SaveChanges();
+                    txtMontantEncaisse.Clear();
+                    LoadData();
+                    MettreCreanceAJour();
+                }
             }
+            
+           
         }
 
         private void UC_NouvelEncaissement_Load(object sender, EventArgs e)
