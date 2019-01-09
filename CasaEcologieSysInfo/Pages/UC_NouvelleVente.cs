@@ -22,14 +22,16 @@ namespace CasaEcologieSysInfo
         private void UC_NouvelleVente_Load_1(object sender, EventArgs e)
         {
             LoadData();
+            txtMontantEncaisse.Text = "0";
+
         }
 
         private void LoadData()
         {
             ageEmployesBindingSource.DataSource = db.AgeEmployes.ToList();
             ageEmployeBindingSource.DataSource = db.AgeEmployes.ToList();
-            ageClientBindingSource.DataSource = db.AgeClients.ToList();
-            resStockProduitsFinisBindingSource1.DataSource = db.ResStockProduitsFinis.ToList();
+            ageClientBindingSource.DataSource = db.AgeClients.ToList().OrderBy(c => c.NomClient);
+            resStockProduitsFinisBindingSource1.DataSource = db.ResStockProduitsFinis.ToList().OrderBy(p => p.NomProduit);
             resComptesTresorerieBindingSource.DataSource = db.ResComptesTresoreries.ToList();           
         }
 
@@ -112,7 +114,6 @@ namespace CasaEcologieSysInfo
 
             db.EveVenteStockProduitsFinis.Add(venteProduit);
             db.SaveChanges();
-            produit.StockProduit -= int.Parse(li.SubItems[1].Text);           
         }
 
         private void BtnEnregistrerVente_Click(object sender, EventArgs e)
@@ -137,6 +138,7 @@ namespace CasaEcologieSysInfo
                 SaveSale(vente, listView1.Items[i]);
             }
 
+
             if (int.Parse(txtMontantEncaisse.Text) > 0)
             {
                 EveEncaissement enc = new EveEncaissement
@@ -159,7 +161,6 @@ namespace CasaEcologieSysInfo
 
                 db.EveEncaissementsVentes.Add(encV);
                 db.SaveChanges();
-                //cpte.SoldeCompte += int.Parse(txtMontantEncaisse.Text);
             }
 
             listView1.Items.Clear();
