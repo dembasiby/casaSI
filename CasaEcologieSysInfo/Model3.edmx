@@ -72,6 +72,7 @@
           <Property Name="CodeAcquisitionServiceFourniture" Type="int" />
           <Property Name="CodeReceptionEquipementInfrastructure" Type="int" />
           <Property Name="CodeReceptionMatierePremiere" Type="int" />
+          <Property Name="CodePaiementEmploye" Type="int" />
           <Property Name="CodeCompte" Type="int" Nullable="false" />
           <Property Name="Description" Type="nvarchar(max)" />
           <Property Name="DateDecaissement" Type="date" Nullable="false" />
@@ -95,6 +96,13 @@
           <Property Name="CodeVente" Type="int" Nullable="false" />
           <Property Name="MontantEncaisse" Type="money" Nullable="false" />
           <Property Name="DateEncaissement" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EvePaiementEmployes">
+          <Key>
+            <PropertyRef Name="CodePaiementEmploye" />
+          </Key>
+          <Property Name="CodePaiementEmploye" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CodeEmployePaye" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="EvePresenceEmployes">
           <Key>
@@ -150,7 +158,7 @@
           <Property Name="CodeReceptionMatierePremiere" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CodeMatierePremiere" Type="int" Nullable="false" />
           <Property Name="DateReception" Type="date" Nullable="false" />
-          <Property Name="Quantite" Type="int" Nullable="false" />
+          <Property Name="Quantite" Type="float" Nullable="false" />
           <Property Name="Montant" Type="money" Nullable="false" />
           <Property Name="CodeFournisseurMatierePremiere" Type="int" Nullable="false" />
           <Property Name="CodeEmploye" Type="int" Nullable="false" />
@@ -170,7 +178,7 @@
           </Key>
           <Property Name="CodeUtilisationRessource" Type="int" Nullable="false" />
           <Property Name="CodeMatierePremiere" Type="int" Nullable="false" />
-          <Property Name="QuantiteMatierePremiere" Type="int" Nullable="false" />
+          <Property Name="QuantiteMatierePremiere" Type="float" Nullable="false" />
         </EntityType>
         <EntityType Name="EveUtilisationProduitsSemiFinis">
           <Key>
@@ -239,7 +247,7 @@
           </Key>
           <Property Name="CodeMatierePremiere" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NomMatiere" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="StockMatiere" Type="int" Nullable="false" />
+          <Property Name="StockMatiere" Type="float" Nullable="false" />
         </EntityType>
         <EntityType Name="ResStockProduitsFinis">
           <Key>
@@ -257,6 +265,7 @@
           <Property Name="CodeProduitSemiFini" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CodeMatierePremiere" Type="int" Nullable="false" />
           <Property Name="Quantite" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -267,6 +276,15 @@
           <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Utilisateurs">
+          <Key>
+            <PropertyRef Name="CodeEmploye" />
+          </Key>
+          <Property Name="CodeEmploye" Type="int" Nullable="false" />
+          <Property Name="NomUtilisateur" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MotDePasse" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Role" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <Association Name="FK_EveAcquisitionServicesFournitures_AgeEmployes">
           <End Role="AgeEmployes" Type="Self.AgeEmployes" Multiplicity="0..1" />
@@ -364,6 +382,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_EveDecaissements_EvePaiementEmployes">
+          <End Role="EvePaiementEmployes" Type="Self.EvePaiementEmployes" Multiplicity="0..1" />
+          <End Role="EveDecaissements" Type="Self.EveDecaissements" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EvePaiementEmployes">
+              <PropertyRef Name="CodePaiementEmploye" />
+            </Principal>
+            <Dependent Role="EveDecaissements">
+              <PropertyRef Name="CodePaiementEmploye" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_EveDecaissements_EveReceptionEquipementsInfrastructures">
           <End Role="EveReceptionEquipementsInfrastructures" Type="Self.EveReceptionEquipementsInfrastructures" Multiplicity="0..1" />
           <End Role="EveDecaissements" Type="Self.EveDecaissements" Multiplicity="*" />
@@ -457,6 +487,18 @@
             </Principal>
             <Dependent Role="EveEncaissementsVentes">
               <PropertyRef Name="CodeVente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EvePaiementEmployes_AgeEmployes">
+          <End Role="AgeEmployes" Type="Self.AgeEmployes" Multiplicity="1" />
+          <End Role="EvePaiementEmployes" Type="Self.EvePaiementEmployes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgeEmployes">
+              <PropertyRef Name="CodeEmploye" />
+            </Principal>
+            <Dependent Role="EvePaiementEmployes">
+              <PropertyRef Name="CodeEmployePaye" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -784,6 +826,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Utilisateurs_AgeEmployes">
+          <End Role="AgeEmployes" Type="Self.AgeEmployes" Multiplicity="1" />
+          <End Role="Utilisateurs" Type="Self.Utilisateurs" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="AgeEmployes">
+              <PropertyRef Name="CodeEmploye" />
+            </Principal>
+            <Dependent Role="Utilisateurs">
+              <PropertyRef Name="CodeEmploye" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
         <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
@@ -815,6 +869,7 @@
           <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="VentesMensuelles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="CasaDBModelStoreContainer">
           <EntitySet Name="AgeAutreFournisseurs" EntityType="Self.AgeAutreFournisseurs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AgeClients" EntityType="Self.AgeClients" Schema="dbo" store:Type="Tables" />
@@ -825,6 +880,7 @@
           <EntitySet Name="EveDecaissements" EntityType="Self.EveDecaissements" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EveEncaissements" EntityType="Self.EveEncaissements" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EveEncaissementsVentes" EntityType="Self.EveEncaissementsVentes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EvePaiementEmployes" EntityType="Self.EvePaiementEmployes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EvePresenceEmployes" EntityType="Self.EvePresenceEmployes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EveProductionProduitsSemiFinis" EntityType="Self.EveProductionProduitsSemiFinis" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EveProductions" EntityType="Self.EveProductions" Schema="dbo" store:Type="Tables" />
@@ -844,6 +900,7 @@
           <EntitySet Name="ResStockProduitsFinis" EntityType="Self.ResStockProduitsFinis" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ResStockProduitsSemiFinis" EntityType="Self.ResStockProduitsSemiFinis" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Utilisateurs" EntityType="Self.Utilisateurs" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_EveAcquisitionServicesFournitures_AgeEmployes" Association="Self.FK_EveAcquisitionServicesFournitures_AgeEmployes">
             <End Role="AgeEmployes" EntitySet="AgeEmployes" />
             <End Role="EveAcquisitionServicesFournitures" EntitySet="EveAcquisitionServicesFournitures" />
@@ -874,6 +931,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_EveDecaissements_EveAcquisitionServicesFournitures" Association="Self.FK_EveDecaissements_EveAcquisitionServicesFournitures">
             <End Role="EveAcquisitionServicesFournitures" EntitySet="EveAcquisitionServicesFournitures" />
+            <End Role="EveDecaissements" EntitySet="EveDecaissements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveDecaissements_EvePaiementEmployes" Association="Self.FK_EveDecaissements_EvePaiementEmployes">
+            <End Role="EvePaiementEmployes" EntitySet="EvePaiementEmployes" />
             <End Role="EveDecaissements" EntitySet="EveDecaissements" />
           </AssociationSet>
           <AssociationSet Name="FK_EveDecaissements_EveReceptionEquipementsInfrastructures" Association="Self.FK_EveDecaissements_EveReceptionEquipementsInfrastructures">
@@ -907,6 +968,10 @@
           <AssociationSet Name="FK_EveEncaissementsVentes_EveVentes" Association="Self.FK_EveEncaissementsVentes_EveVentes">
             <End Role="EveVentes" EntitySet="EveVentes" />
             <End Role="EveEncaissementsVentes" EntitySet="EveEncaissementsVentes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EvePaiementEmployes_AgeEmployes" Association="Self.FK_EvePaiementEmployes_AgeEmployes">
+            <End Role="AgeEmployes" EntitySet="AgeEmployes" />
+            <End Role="EvePaiementEmployes" EntitySet="EvePaiementEmployes" />
           </AssociationSet>
           <AssociationSet Name="FK_EvePresenceEmployes_AgeEmployes" Association="Self.FK_EvePresenceEmployes_AgeEmployes">
             <End Role="AgeEmployes" EntitySet="AgeEmployes" />
@@ -1016,6 +1081,10 @@
             <End Role="ResStockProduitsSemiFinis" EntitySet="ResStockProduitsSemiFinis" />
             <End Role="ResStockProduitsSemiFinis1" EntitySet="ResStockProduitsSemiFinis" />
           </AssociationSet>
+          <AssociationSet Name="FK_Utilisateurs_AgeEmployes" Association="Self.FK_Utilisateurs_AgeEmployes">
+            <End Role="AgeEmployes" EntitySet="AgeEmployes" />
+            <End Role="Utilisateurs" EntitySet="Utilisateurs" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -1060,6 +1129,8 @@
           <NavigationProperty Name="EveUtilisationRessources" Relationship="Self.FK_EveUtilisationRessources_AgeEmployes" FromRole="AgeEmployes" ToRole="EveUtilisationRessources" />
           <NavigationProperty Name="EveUtilisationRessources1" Relationship="Self.FK_EveUtilisationRessources_AgeEmployes1" FromRole="AgeEmployes" ToRole="EveUtilisationRessources" />
           <NavigationProperty Name="EveVentes" Relationship="Self.FK_EveVentes_AgeEmployes" FromRole="AgeEmployes" ToRole="EveVentes" />
+          <NavigationProperty Name="EvePaiementEmployes" Relationship="CasaDBModel.FK_EvePaiementEmployes_AgeEmployes" FromRole="AgeEmploye" ToRole="EvePaiementEmploye" />
+          <NavigationProperty Name="Utilisateur" Relationship="CasaDBModel.FK_Utilisateurs_AgeEmployes" FromRole="AgeEmploye" ToRole="Utilisateur" />
         </EntityType>
         <EntityType Name="AgeFournisseursMatieresPremiere">
           <Key>
@@ -1122,6 +1193,8 @@
           <NavigationProperty Name="EveReceptionEquipementsInfrastructure" Relationship="Self.FK_EveDecaissements_EveReceptionEquipementsInfrastructures" FromRole="EveDecaissements" ToRole="EveReceptionEquipementsInfrastructures" />
           <NavigationProperty Name="EveReceptionMatieresPremiere" Relationship="Self.FK_EveDecaissements_EveReceptionMatieresPremieres" FromRole="EveDecaissements" ToRole="EveReceptionMatieresPremieres" />
           <NavigationProperty Name="ResComptesTresorerie" Relationship="Self.FK_EveDecaissements_ResComptesTresorerie" FromRole="EveDecaissements" ToRole="ResComptesTresorerie" />
+          <Property Name="CodePaiementEmploye" Type="Int32" />
+          <NavigationProperty Name="EvePaiementEmploye" Relationship="CasaDBModel.FK_EveDecaissements_EvePaiementEmployes" FromRole="EveDecaissement" ToRole="EvePaiementEmploye" />
         </EntityType>
         <EntityType Name="EveEncaissement">
           <Key>
@@ -1215,7 +1288,7 @@
           <Property Name="CodeReceptionMatierePremiere" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CodeMatierePremiere" Type="Int32" Nullable="false" />
           <Property Name="DateReception" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Quantite" Type="Int32" Nullable="false" />
+          <Property Name="Quantite" Type="Single" Nullable="false" />
           <Property Name="Montant" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <Property Name="CodeFournisseurMatierePremiere" Type="Int32" Nullable="false" />
           <Property Name="CodeEmploye" Type="Int32" Nullable="false" />
@@ -1231,7 +1304,7 @@
           </Key>
           <Property Name="CodeUtilisationRessource" Type="Int32" Nullable="false" />
           <Property Name="CodeMatierePremiere" Type="Int32" Nullable="false" />
-          <Property Name="QuantiteMatierePremiere" Type="Int32" Nullable="false" />
+          <Property Name="QuantiteMatierePremiere" Type="Single" Nullable="false" />
           <NavigationProperty Name="EveUtilisationRessource" Relationship="Self.FK_EveUtilisationMatieresPremieres_EveUtilisationRessources" FromRole="EveUtilisationMatieresPremieres" ToRole="EveUtilisationRessources" />
           <NavigationProperty Name="ResStockMatieresPremiere" Relationship="Self.FK_EveUtilisationMatieresPremieres_ResStockMatieresPremieres" FromRole="EveUtilisationMatieresPremieres" ToRole="ResStockMatieresPremieres" />
         </EntityType>
@@ -1321,7 +1394,7 @@
           </Key>
           <Property Name="CodeMatierePremiere" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NomMatiere" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="StockMatiere" Type="Int32" Nullable="false" />
+          <Property Name="StockMatiere" Type="Single" Nullable="false" />
           <NavigationProperty Name="EveReceptionMatieresPremieres" Relationship="Self.FK_EveReceptionMatieresPremieres_ResStockMatieresPremieres" FromRole="ResStockMatieresPremieres" ToRole="EveReceptionMatieresPremieres" />
           <NavigationProperty Name="EveUtilisationMatieresPremieres" Relationship="Self.FK_EveUtilisationMatieresPremieres_ResStockMatieresPremieres" FromRole="ResStockMatieresPremieres" ToRole="EveUtilisationMatieresPremieres" />
           <NavigationProperty Name="ResStockProduitsSemiFinis" Relationship="Self.FK_ResStockProduitsSemiFinis_ResStockMatieresPremieres" FromRole="ResStockMatieresPremieres" ToRole="ResStockProduitsSemiFinis" />
@@ -1349,6 +1422,7 @@
           <NavigationProperty Name="ResStockMatieresPremiere" Relationship="Self.FK_ResStockProduitsSemiFinis_ResStockMatieresPremieres" FromRole="ResStockProduitsSemiFinis" ToRole="ResStockMatieresPremieres" />
           <NavigationProperty Name="ResStockProduitsSemiFinis1" Relationship="Self.FK_ResStockProduitsSemiFinis_ResStockProduitsSemiFinis" FromRole="ResStockProduitsSemiFinis" ToRole="ResStockProduitsSemiFinis1" />
           <NavigationProperty Name="ResStockProduitsSemiFini1" Relationship="Self.FK_ResStockProduitsSemiFinis_ResStockProduitsSemiFinis" FromRole="ResStockProduitsSemiFinis1" ToRole="ResStockProduitsSemiFinis" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -2082,6 +2156,21 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
+          <FunctionImport Name="VentesMensuelles" ReturnType="Collection(CasaDBModel.VentesMensuelles_Result)" />
+          <EntitySet Name="EvePaiementEmployes" EntityType="CasaDBModel.EvePaiementEmploye" />
+          <AssociationSet Name="FK_EvePaiementEmployes_AgeEmployes" Association="CasaDBModel.FK_EvePaiementEmployes_AgeEmployes">
+            <End Role="AgeEmploye" EntitySet="AgeEmployes" />
+            <End Role="EvePaiementEmploye" EntitySet="EvePaiementEmployes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveDecaissements_EvePaiementEmployes" Association="CasaDBModel.FK_EveDecaissements_EvePaiementEmployes">
+            <End Role="EvePaiementEmploye" EntitySet="EvePaiementEmployes" />
+            <End Role="EveDecaissement" EntitySet="EveDecaissements" />
+          </AssociationSet>
+          <EntitySet Name="Utilisateurs" EntityType="CasaDBModel.Utilisateur" />
+          <AssociationSet Name="FK_Utilisateurs_AgeEmployes" Association="CasaDBModel.FK_Utilisateurs_AgeEmployes">
+            <End Role="AgeEmploye" EntitySet="AgeEmployes" />
+            <End Role="Utilisateur" EntitySet="Utilisateurs" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -2094,6 +2183,75 @@
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
+        <ComplexType Name="VentesMensuelles_Result">
+          <Property Type="Decimal" Name="Janvier" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Février" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Mars" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Avril" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Mai" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Juin" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Juillet" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Août" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Septembre" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Octobre" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Novembre" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Décembre" Nullable="true" Precision="19" />
+        </ComplexType>
+        <EntityType Name="EvePaiementEmploye">
+          <Key>
+            <PropertyRef Name="CodePaiementEmploye" />
+          </Key>
+          <Property Name="CodePaiementEmploye" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CodeEmployePaye" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AgeEmploye" Relationship="CasaDBModel.FK_EvePaiementEmployes_AgeEmployes" FromRole="EvePaiementEmploye" ToRole="AgeEmploye" />
+          <NavigationProperty Name="EveDecaissements" Relationship="CasaDBModel.FK_EveDecaissements_EvePaiementEmployes" FromRole="EvePaiementEmploye" ToRole="EveDecaissement" />
+        </EntityType>
+        <Association Name="FK_EvePaiementEmployes_AgeEmployes">
+          <End Type="CasaDBModel.AgeEmploye" Role="AgeEmploye" Multiplicity="1" />
+          <End Type="CasaDBModel.EvePaiementEmploye" Role="EvePaiementEmploye" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgeEmploye">
+              <PropertyRef Name="CodeEmploye" />
+            </Principal>
+            <Dependent Role="EvePaiementEmploye">
+              <PropertyRef Name="CodeEmployePaye" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveDecaissements_EvePaiementEmployes">
+          <End Type="CasaDBModel.EvePaiementEmploye" Role="EvePaiementEmploye" Multiplicity="0..1" />
+          <End Type="CasaDBModel.EveDecaissement" Role="EveDecaissement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EvePaiementEmploye">
+              <PropertyRef Name="CodePaiementEmploye" />
+            </Principal>
+            <Dependent Role="EveDecaissement">
+              <PropertyRef Name="CodePaiementEmploye" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Utilisateur">
+          <Key>
+            <PropertyRef Name="CodeEmploye" />
+          </Key>
+          <Property Name="CodeEmploye" Type="Int32" Nullable="false" />
+          <Property Name="NomUtilisateur" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MotDePasse" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Role" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="AgeEmploye" Relationship="CasaDBModel.FK_Utilisateurs_AgeEmployes" FromRole="Utilisateur" ToRole="AgeEmploye" />
+        </EntityType>
+        <Association Name="FK_Utilisateurs_AgeEmployes">
+          <End Type="CasaDBModel.AgeEmploye" Role="AgeEmploye" Multiplicity="1" />
+          <End Type="CasaDBModel.Utilisateur" Role="Utilisateur" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="AgeEmploye">
+              <PropertyRef Name="CodeEmploye" />
+            </Principal>
+            <Dependent Role="Utilisateur">
+              <PropertyRef Name="CodeEmploye" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2164,6 +2322,7 @@
           <EntitySetMapping Name="EveDecaissements">
             <EntityTypeMapping TypeName="CasaDBModel.EveDecaissement">
               <MappingFragment StoreEntitySet="EveDecaissements">
+                <ScalarProperty Name="CodePaiementEmploye" ColumnName="CodePaiementEmploye" />
                 <ScalarProperty Name="CodeDecaissement" ColumnName="CodeDecaissement" />
                 <ScalarProperty Name="CodeFournisseurMatierePremiere" ColumnName="CodeFournisseurMatierePremiere" />
                 <ScalarProperty Name="CodeFournisseurService" ColumnName="CodeFournisseurService" />
@@ -2359,6 +2518,7 @@
           <EntitySetMapping Name="ResStockProduitsSemiFinis">
             <EntityTypeMapping TypeName="CasaDBModel.ResStockProduitsSemiFini">
               <MappingFragment StoreEntitySet="ResStockProduitsSemiFinis">
+                <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="CodeProduitSemiFini" ColumnName="CodeProduitSemiFini" />
                 <ScalarProperty Name="CodeMatierePremiere" ColumnName="CodeMatierePremiere" />
                 <ScalarProperty Name="Quantite" ColumnName="Quantite" />
@@ -2408,6 +2568,42 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="CasaDBModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="CasaDBModel.Store.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="VentesMensuelles" FunctionName="CasaDBModel.Store.VentesMensuelles">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CasaDBModel.VentesMensuelles_Result">
+                <ScalarProperty Name="Janvier" ColumnName="Janvier" />
+                <ScalarProperty Name="Février" ColumnName="Février" />
+                <ScalarProperty Name="Mars" ColumnName="Mars" />
+                <ScalarProperty Name="Avril" ColumnName="Avril" />
+                <ScalarProperty Name="Mai" ColumnName="Mai" />
+                <ScalarProperty Name="Juin" ColumnName="Juin" />
+                <ScalarProperty Name="Juillet" ColumnName="Juillet" />
+                <ScalarProperty Name="Août" ColumnName="Août" />
+                <ScalarProperty Name="Septembre" ColumnName="Septembre" />
+                <ScalarProperty Name="Octobre" ColumnName="Octobre" />
+                <ScalarProperty Name="Novembre" ColumnName="Novembre" />
+                <ScalarProperty Name="Décembre" ColumnName="Décembre" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="EvePaiementEmployes">
+            <EntityTypeMapping TypeName="CasaDBModel.EvePaiementEmploye">
+              <MappingFragment StoreEntitySet="EvePaiementEmployes">
+                <ScalarProperty Name="CodeEmployePaye" ColumnName="CodeEmployePaye" />
+                <ScalarProperty Name="CodePaiementEmploye" ColumnName="CodePaiementEmploye" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Utilisateurs">
+            <EntityTypeMapping TypeName="CasaDBModel.Utilisateur">
+              <MappingFragment StoreEntitySet="Utilisateurs">
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="MotDePasse" ColumnName="MotDePasse" />
+                <ScalarProperty Name="NomUtilisateur" ColumnName="NomUtilisateur" />
+                <ScalarProperty Name="CodeEmploye" ColumnName="CodeEmploye" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

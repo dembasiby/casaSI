@@ -74,6 +74,11 @@
         <AssociationConnector Association="CasaDBModel.FK_ResStockProduitsSemiFinis_ResStockMatieresPremieres" ManuallyRouted="false" />
         <AssociationConnector Association="CasaDBModel.FK_ResStockProduitsSemiFinis_ResStockProduitsSemiFinis" ManuallyRouted="false" />
         <AssociationConnector Association="CasaDBModel.EveUtilisationEquipementInfrastructures" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="CasaDBModel.EvePaiementEmploye" Width="1.5" PointX="3" PointY="27.75" />
+        <AssociationConnector Association="CasaDBModel.FK_EvePaiementEmployes_AgeEmployes" />
+        <AssociationConnector Association="CasaDBModel.FK_EveDecaissements_EvePaiementEmployes" />
+        <EntityTypeShape EntityType="CasaDBModel.Utilisateur" Width="1.5" PointX="3" PointY="30.75" />
+        <AssociationConnector Association="CasaDBModel.FK_Utilisateurs_AgeEmployes" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
