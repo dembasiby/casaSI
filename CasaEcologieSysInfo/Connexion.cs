@@ -12,9 +12,28 @@ namespace CasaEcologieSysInfo
 {
     public partial class Connexion : Form
     {
+        CasaDBEntities2 db = new CasaDBEntities2();
+
         public Connexion()
         {
             InitializeComponent();
+        }
+
+        private bool UtilisateurAutorise(string nomUtilisateur, string motDePasse)
+        {
+            /*
+            var user
+
+            if (user.Equals(null))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+            */
+            return true;
         }
 
         private void PictureBox2_Click(object sender, EventArgs e)
@@ -33,11 +52,13 @@ namespace CasaEcologieSysInfo
 
         private void Button1_Click(object sender, EventArgs e)
         {
+           
             using (Accueil fn = new Accueil())
             {
                 this.Hide();
                 fn.ShowDialog();
-            }
+            }         
+                
         }
     }
 }
