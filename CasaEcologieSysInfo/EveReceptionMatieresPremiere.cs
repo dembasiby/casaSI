@@ -23,7 +23,7 @@ namespace CasaEcologieSysInfo
         public int CodeReceptionMatierePremiere { get; set; }
         public int CodeMatierePremiere { get; set; }
         public System.DateTime DateReception { get; set; }
-        public int Quantite { get; set; }
+        public float Quantite { get; set; }
         public decimal Montant { get; set; }
         public int CodeFournisseurMatierePremiere { get; set; }
         public int CodeEmploye { get; set; }
