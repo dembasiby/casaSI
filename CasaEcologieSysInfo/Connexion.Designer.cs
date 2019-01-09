@@ -36,9 +36,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.btnSeConnecter = new System.Windows.Forms.Button();
+            this.txtNomUtilisateur = new System.Windows.Forms.TextBox();
+            this.txtMotDePasse = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.dragControl1 = new CasaEcologieSysInfo.DragControl();
@@ -126,36 +126,36 @@
             this.textBox1.Size = new System.Drawing.Size(415, 27);
             this.textBox1.TabIndex = 3;
             // 
-            // button1
+            // btnSeConnecter
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(31)))), ((int)(((byte)(20)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(406, 521);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(229, 32);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Se connecter";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.Button1_Click);
+            this.btnSeConnecter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(31)))), ((int)(((byte)(20)))));
+            this.btnSeConnecter.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSeConnecter.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSeConnecter.ForeColor = System.Drawing.Color.White;
+            this.btnSeConnecter.Location = new System.Drawing.Point(406, 521);
+            this.btnSeConnecter.Name = "btnSeConnecter";
+            this.btnSeConnecter.Size = new System.Drawing.Size(229, 32);
+            this.btnSeConnecter.TabIndex = 3;
+            this.btnSeConnecter.Text = "Se connecter";
+            this.btnSeConnecter.UseVisualStyleBackColor = false;
+            this.btnSeConnecter.Click += new System.EventHandler(this.Button1_Click);
             // 
-            // textBox2
+            // txtNomUtilisateur
             // 
-            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.textBox2.Location = new System.Drawing.Point(406, 412);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(415, 27);
-            this.textBox2.TabIndex = 0;
+            this.txtNomUtilisateur.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.txtNomUtilisateur.Location = new System.Drawing.Point(406, 412);
+            this.txtNomUtilisateur.Name = "txtNomUtilisateur";
+            this.txtNomUtilisateur.Size = new System.Drawing.Size(415, 27);
+            this.txtNomUtilisateur.TabIndex = 1;
             // 
-            // textBox3
+            // txtMotDePasse
             // 
-            this.textBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.textBox3.Location = new System.Drawing.Point(406, 477);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.PasswordChar = '*';
-            this.textBox3.Size = new System.Drawing.Size(415, 27);
-            this.textBox3.TabIndex = 1;
+            this.txtMotDePasse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.txtMotDePasse.Location = new System.Drawing.Point(406, 477);
+            this.txtMotDePasse.Name = "txtMotDePasse";
+            this.txtMotDePasse.PasswordChar = '*';
+            this.txtMotDePasse.Size = new System.Drawing.Size(415, 27);
+            this.txtMotDePasse.TabIndex = 2;
             // 
             // button2
             // 
@@ -166,7 +166,7 @@
             this.button2.Location = new System.Drawing.Point(687, 521);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(134, 32);
-            this.button2.TabIndex = 3;
+            this.button2.TabIndex = 4;
             this.button2.Text = "Quitter";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.Button2_Click);
@@ -191,9 +191,9 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1200, 720);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.btnSeConnecter);
+            this.Controls.Add(this.txtMotDePasse);
+            this.Controls.Add(this.txtNomUtilisateur);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -228,9 +228,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Button btnSeConnecter;
+        private System.Windows.Forms.TextBox txtNomUtilisateur;
+        private System.Windows.Forms.TextBox txtMotDePasse;
         private System.Windows.Forms.Button button2;
         private DragControl dragControl1;
     }

@@ -12,9 +12,28 @@ namespace CasaEcologieSysInfo
 {
     public partial class Connexion : Form
     {
+        CasaDBEntities2 db = new CasaDBEntities2();
+
         public Connexion()
         {
             InitializeComponent();
+        }
+
+        private bool UtilisateurAutorise(string nomUtilisateur, string motDePasse)
+        {
+            /*
+            var user
+
+            if (user.Equals(null))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+            */
+            return true;
         }
 
         private void PictureBox2_Click(object sender, EventArgs e)
@@ -35,9 +54,26 @@ namespace CasaEcologieSysInfo
         {
             using (Accueil fn = new Accueil())
             {
-                this.Hide();
-                fn.ShowDialog();
-            }
+                try
+                {
+                    (from u in db.Utilisateurs
+                        where txtNomUtilisateur.Text.Trim() == u.NomUtilisateur
+                        where txtMotDePasse.Text.Trim() == u.MotDePasse
+                        select u).First();
+
+                    Hide();
+                    fn.ShowDialog();
+                }
+                catch (Exception)
+                {
+
+                    MessageBox.Show("Le nom d'utilisateur ou mot de passe est incorrect.");
+                    return;
+                }
+                
+                    
+                
+            }  
         }
     }
 }

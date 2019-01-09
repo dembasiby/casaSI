@@ -37,6 +37,7 @@ namespace CasaEcologieSysInfo.Pages
                                  select new
                                  {
                                      Date = v.DateVente,
+                                     CodeOperation = vf.CodeVente + "ven",
                                      MontantVente = vf.Montant,
                                      Encaissement = 0m,
                                      Solde = 0m
@@ -51,6 +52,7 @@ namespace CasaEcologieSysInfo.Pages
                                        select new
                                        {
                                            Date = ev.DateEncaissement,
+                                           CodeOperation = ev.CodeEncaissement + "enc",
                                            MontantVente = 0m,
                                            Encaissement = ev.MontantEncaisse,
                                            Solde = 0m
@@ -81,14 +83,14 @@ namespace CasaEcologieSysInfo.Pages
 
                 if (i > 0)
                 {
-                    dataGridView1.Rows[i].Cells[3].Value = Convert.ToInt32(dataGridView1.Rows[i - 1].Cells[3].Value)
-                    + Convert.ToInt32(dataGridView1.Rows[i].Cells[1].Value)
-                    - Convert.ToInt32(dataGridView1.Rows[i].Cells[2].Value);
+                    dataGridView1.Rows[i].Cells[4].Value = Convert.ToInt32(dataGridView1.Rows[i - 1].Cells[4].Value)
+                    + Convert.ToInt32(dataGridView1.Rows[i].Cells[2].Value)
+                    - Convert.ToInt32(dataGridView1.Rows[i].Cells[3].Value);
                 }
                 else
                 {
-                    dataGridView1.Rows[i].Cells[3].Value = creanceInitialClient + Convert.ToInt32(dataGridView1.Rows[i].Cells[1].Value)
-                    - Convert.ToInt32(dataGridView1.Rows[i].Cells[2].Value);
+                    dataGridView1.Rows[i].Cells[4].Value = creanceInitialClient + Convert.ToInt32(dataGridView1.Rows[i].Cells[2].Value)
+                    - Convert.ToInt32(dataGridView1.Rows[i].Cells[3].Value);
                 }
 
             }

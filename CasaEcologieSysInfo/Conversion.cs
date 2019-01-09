@@ -108,7 +108,7 @@ namespace CasaEcologieSysInfo
                                         + ((decimal?)fmp.EveReceptionMatieresPremieres.Sum(s => s.Montant) ?? 0m)
                                         - ((decimal?)fmp.EveDecaissements.Sum(m => m.Montant) ?? 0m)
                                     }
-                                 ).Sum(d => d.Solde);
+                                 ).Sum(d => (decimal?)d.Solde) ?? 0m;
 
                 var achatEquip = (from rei in db.EveReceptionEquipementsInfrastructures
                                   select (decimal?)rei.Montant).Sum() ?? 0m;
@@ -128,7 +128,7 @@ namespace CasaEcologieSysInfo
                                  {
                                      Solde = (decimal?)f.SoldeDette ?? 0m + (decimal?)f.EveAcquisitionServicesFournitures.Select(d => d.Montant).Sum() ?? 0m
                                      - (decimal?)f.EveDecaissements.Sum(m => m.Montant) ?? 0m
-                                 }).Sum(s => s.Solde);
+                                 }).Sum(s => (decimal?)s.Solde) ?? 0m;
 
                 var totalDettesFournisseurs = fournisseursMP + achatEquip + soldeInitialFournisseurEquip - decaissementEquip + fournisseurFS;
 
@@ -160,7 +160,6 @@ namespace CasaEcologieSysInfo
         {
             using (CasaDBEntities2 db = new CasaDBEntities2())
             {
-
                 var soldeInitial = (from c in db.ResComptesTresoreries
                                     where c.NomCompte == nomCompte
                                    select c.SoldeCompte).FirstOrDefault();
@@ -172,26 +171,12 @@ namespace CasaEcologieSysInfo
                                           where c.CodeEncaissement == env.CodeEncaissement
                                           
                                           select (decimal?)env.MontantEncaisse).Sum() ?? 0m;
-                
-                var totalAchatMatierePrem = (from d in db.EveDecaissements
-                                             where d.ResComptesTresorerie.NomCompte == nomCompte
-                                             from m in db.EveReceptionMatieresPremieres
-                                             where d.CodeReceptionMatierePremiere == m.CodeReceptionMatierePremiere
-                                             select (decimal?)d.Montant).Sum() ?? 0m;
 
-                var totalEquipmentsInfrastructures = (from d in db.EveDecaissements
-                                                      where d.ResComptesTresorerie.NomCompte == nomCompte
-                                                      from re in db.EveReceptionEquipementsInfrastructures
-                                                      where d.CodeReceptionEquipementInfrastructure == re.CodeReceptionEquipementInfrastructure
-                                                      select (decimal?)d.Montant).Sum() ?? 0m;
-
-                var totalFournituresServices = (from d in db.EveDecaissements
-                                                where d.ResComptesTresorerie.NomCompte == nomCompte
-                                                from fs in db.EveAcquisitionServicesFournitures
-                                                where d.CodeAcquisitionServiceFourniture == fs.CodeAcquisitionServiceFourniture
-                                                select (decimal?)d.Montant).Sum() ?? 0m;
-                
-                var fondsDisponibles = soldeInitial + totalEncaissements - totalAchatMatierePrem - totalEquipmentsInfrastructures - totalFournituresServices;
+                var totalDecaissements = (from d in db.EveDecaissements
+                                          where d.ResComptesTresorerie.NomCompte == nomCompte
+                                          select (decimal?)d.Montant).Sum() ?? 0m;
+              
+                var fondsDisponibles = soldeInitial + totalEncaissements - totalDecaissements;
 
                 return fondsDisponibles;
             }

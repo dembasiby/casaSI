@@ -49,8 +49,8 @@ namespace CasaEcologieSysInfo
 
             cbxNomProduitSemiFini.Items.AddRange(listProduitsSemiFinis.ToArray());
             cbxProduitsSemiFinis.Items.AddRange(listProduitsSemiFinis.ToArray());
-            cbxNomProduitSemiFini.SelectedIndex = 0;
-            cbxProduitsSemiFinis.SelectedIndex = 0;
+            //cbxNomProduitSemiFini.SelectedIndex = 0;
+            //cbxProduitsSemiFinis.SelectedIndex = 0;
 
 
         }

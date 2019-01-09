@@ -54,6 +54,8 @@ namespace CasaEcologieSysInfo
         public virtual DbSet<ResStockProduitsFini> ResStockProduitsFinis { get; set; }
         public virtual DbSet<ResStockProduitsSemiFini> ResStockProduitsSemiFinis { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<EvePaiementEmploye> EvePaiementEmployes { get; set; }
+        public virtual DbSet<Utilisateur> Utilisateurs { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {
@@ -156,6 +158,11 @@ namespace CasaEcologieSysInfo
         public virtual int sp_upgraddiagrams()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
+        }
+    
+        public virtual ObjectResult<VentesMensuelles_Result> VentesMensuelles()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<VentesMensuelles_Result>("VentesMensuelles");
         }
     }
 }
