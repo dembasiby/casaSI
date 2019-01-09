@@ -41,13 +41,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.lblTotalEncaissements = new System.Windows.Forms.Label();
             this.lblTotalMatPrem = new System.Windows.Forms.Label();
-            this.lbel8 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
             this.txtTotalEncaissements = new System.Windows.Forms.TextBox();
-            this.txtTotalMatPrem = new System.Windows.Forms.TextBox();
-            this.txtTotalEquipementsInfr = new System.Windows.Forms.TextBox();
-            this.lblFour = new System.Windows.Forms.Label();
-            this.txtFournServ = new System.Windows.Forms.TextBox();
+            this.txtTotalDecaissements = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtSoldesInitiaux = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -187,27 +182,9 @@
             this.lblTotalMatPrem.AutoSize = true;
             this.lblTotalMatPrem.Location = new System.Drawing.Point(3, 431);
             this.lblTotalMatPrem.Name = "lblTotalMatPrem";
-            this.lblTotalMatPrem.Size = new System.Drawing.Size(126, 17);
+            this.lblTotalMatPrem.Size = new System.Drawing.Size(137, 17);
             this.lblTotalMatPrem.TabIndex = 18;
-            this.lblTotalMatPrem.Text = "Matieres Premieres";
-            // 
-            // lbel8
-            // 
-            this.lbel8.AutoSize = true;
-            this.lbel8.Location = new System.Drawing.Point(3, 477);
-            this.lbel8.Name = "lbel8";
-            this.lbel8.Size = new System.Drawing.Size(114, 17);
-            this.lbel8.TabIndex = 18;
-            this.lbel8.Text = "Equipements Infr";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(3, 523);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(107, 17);
-            this.label11.TabIndex = 18;
-            this.label11.Text = "Fourn / Services";
+            this.lblTotalMatPrem.Text = "Total decaissements";
             // 
             // txtTotalEncaissements
             // 
@@ -217,38 +194,13 @@
             this.txtTotalEncaissements.Size = new System.Drawing.Size(169, 23);
             this.txtTotalEncaissements.TabIndex = 19;
             // 
-            // txtTotalMatPrem
+            // txtTotalDecaissements
             // 
-            this.txtTotalMatPrem.Enabled = false;
-            this.txtTotalMatPrem.Location = new System.Drawing.Point(6, 451);
-            this.txtTotalMatPrem.Name = "txtTotalMatPrem";
-            this.txtTotalMatPrem.Size = new System.Drawing.Size(169, 23);
-            this.txtTotalMatPrem.TabIndex = 19;
-            // 
-            // txtTotalEquipementsInfr
-            // 
-            this.txtTotalEquipementsInfr.Enabled = false;
-            this.txtTotalEquipementsInfr.Location = new System.Drawing.Point(6, 497);
-            this.txtTotalEquipementsInfr.Name = "txtTotalEquipementsInfr";
-            this.txtTotalEquipementsInfr.Size = new System.Drawing.Size(169, 23);
-            this.txtTotalEquipementsInfr.TabIndex = 19;
-            // 
-            // lblFour
-            // 
-            this.lblFour.AutoSize = true;
-            this.lblFour.Location = new System.Drawing.Point(3, 523);
-            this.lblFour.Name = "lblFour";
-            this.lblFour.Size = new System.Drawing.Size(107, 17);
-            this.lblFour.TabIndex = 18;
-            this.lblFour.Text = "Fourn / Services";
-            // 
-            // txtFournServ
-            // 
-            this.txtFournServ.Enabled = false;
-            this.txtFournServ.Location = new System.Drawing.Point(6, 543);
-            this.txtFournServ.Name = "txtFournServ";
-            this.txtFournServ.Size = new System.Drawing.Size(169, 23);
-            this.txtFournServ.TabIndex = 19;
+            this.txtTotalDecaissements.Enabled = false;
+            this.txtTotalDecaissements.Location = new System.Drawing.Point(6, 451);
+            this.txtTotalDecaissements.Name = "txtTotalDecaissements";
+            this.txtTotalDecaissements.Size = new System.Drawing.Size(169, 23);
+            this.txtTotalDecaissements.TabIndex = 19;
             // 
             // label8
             // 
@@ -270,7 +222,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(3, 579);
+            this.label9.Location = new System.Drawing.Point(5, 486);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(113, 17);
             this.label9.TabIndex = 18;
@@ -279,7 +231,7 @@
             // txtSolde
             // 
             this.txtSolde.Enabled = false;
-            this.txtSolde.Location = new System.Drawing.Point(6, 599);
+            this.txtSolde.Location = new System.Drawing.Point(8, 506);
             this.txtSolde.Name = "txtSolde";
             this.txtSolde.Size = new System.Drawing.Size(169, 23);
             this.txtSolde.TabIndex = 19;
@@ -289,15 +241,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.txtSolde);
-            this.Controls.Add(this.txtFournServ);
-            this.Controls.Add(this.txtTotalEquipementsInfr);
-            this.Controls.Add(this.txtTotalMatPrem);
+            this.Controls.Add(this.txtTotalDecaissements);
             this.Controls.Add(this.txtSoldesInitiaux);
             this.Controls.Add(this.txtTotalEncaissements);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.lblFour);
-            this.Controls.Add(this.label11);
-            this.Controls.Add(this.lbel8);
             this.Controls.Add(this.lblTotalMatPrem);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.lblTotalEncaissements);
@@ -336,13 +283,8 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label lblTotalEncaissements;
         private System.Windows.Forms.Label lblTotalMatPrem;
-        private System.Windows.Forms.Label lbel8;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtTotalEncaissements;
-        private System.Windows.Forms.TextBox txtTotalMatPrem;
-        private System.Windows.Forms.TextBox txtTotalEquipementsInfr;
-        private System.Windows.Forms.Label lblFour;
-        private System.Windows.Forms.TextBox txtFournServ;
+        private System.Windows.Forms.TextBox txtTotalDecaissements;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtSoldesInitiaux;
         private System.Windows.Forms.Label label9;

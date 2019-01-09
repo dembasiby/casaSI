@@ -36,18 +36,21 @@ namespace CasaEcologieSysInfo.Pages
         private void AfficherJournalCorrespondant(string nomCompte)
         {
             
-            var query1 = (from ev in db.EveEncaissementsVentes
-                          from vpf in db.EveVenteStockProduitsFinis
-                          where vpf.CodeVente== ev.CodeVente
-                          from pf in db.ResStockProduitsFinis
-                          where pf.CodeProduit == vpf.CodeProduitFini
-                          where ev.EveEncaissement.ResComptesTresorerie.NomCompte == nomCompte
+            var query1 = (from c in db.EveEncaissements
+                          from env in db.EveEncaissementsVentes
+                          where c.CodeEncaissement == env.CodeEncaissement
+                          //from vpf in db.EveVenteStockProduitsFinis
+                          //where vpf.CodeVente== ev.CodeVente
+                          //from pf in db.ResStockProduitsFinis
+                          //where pf.CodeProduit == vpf.CodeProduitFini
+                        where c.ResComptesTresorerie.NomCompte == nomCompte
 
                           select new
                           {
-                              Date = ev.DateEncaissement,
-                              Description = "",//vpf.ResStockProduitsFini.NomProduit,
-                              Entree = ev.MontantEncaisse,
+                              Date = env.DateEncaissement,
+                              CodeOperation = c.CodeEncaissement + "enc", 
+                              Description = "Encaissement vente",//vpf.ResStockProduitsFini.NomProduit,
+                              Entree = env.MontantEncaisse,
                               Sortie = 0m,
                               Solde = 0m
                           });
@@ -57,6 +60,7 @@ namespace CasaEcologieSysInfo.Pages
                           select new
                           {
                               Date = d.DateDecaissement,
+                              CodeOperation = d.CodeDecaissement + "dec",
                               d.Description,
                               Entree = 0m,
                               Sortie = d.Montant,
@@ -86,14 +90,14 @@ namespace CasaEcologieSysInfo.Pages
 
                 if (i > 0)
                 {
-                    adgvJournalTresorerieDetails.Rows[i].Cells[4].Value = Convert.ToInt32(adgvJournalTresorerieDetails.Rows[i - 1].Cells[4].Value)
-                    + Convert.ToInt32(adgvJournalTresorerieDetails.Rows[i].Cells[2].Value)
-                    - Convert.ToInt32(adgvJournalTresorerieDetails.Rows[i].Cells[3].Value);
+                    adgvJournalTresorerieDetails.Rows[i].Cells[5].Value = Convert.ToInt32(adgvJournalTresorerieDetails.Rows[i - 1].Cells[5].Value)
+                    + Convert.ToInt32(adgvJournalTresorerieDetails.Rows[i].Cells[3].Value)
+                    - Convert.ToInt32(adgvJournalTresorerieDetails.Rows[i].Cells[4].Value);
                 }
                 else
                 {
-                    adgvJournalTresorerieDetails.Rows[i].Cells[4].Value = soldeInitial + Convert.ToInt32(adgvJournalTresorerieDetails.Rows[i].Cells[2].Value)
-                    - Convert.ToInt32(adgvJournalTresorerieDetails.Rows[i].Cells[3].Value);
+                    adgvJournalTresorerieDetails.Rows[i].Cells[5].Value = soldeInitial + Convert.ToInt32(adgvJournalTresorerieDetails.Rows[i].Cells[3].Value)
+                    - Convert.ToInt32(adgvJournalTresorerieDetails.Rows[i].Cells[4].Value);
                 }
 
             }
@@ -105,39 +109,23 @@ namespace CasaEcologieSysInfo.Pages
             // Calcul des soldes
 
             var soldeInitiaux = (from c in db.ResComptesTresoreries
-                                 select c.SoldeCompte).Sum();
+                                 select (decimal?)c.SoldeCompte).Sum() ?? 0m;
 
             var totalEncaissements = (from c in db.EveEncaissements
                                       from env in db.EveEncaissementsVentes
                                       where c.CodeEncaissement == env.CodeEncaissement
                                       select (decimal?)env.MontantEncaisse).Sum() ?? 0m;
 
-            var totalAchatMatierePrem = (from d in db.EveDecaissements
-                                         from m in db.EveReceptionMatieresPremieres
-                                         where d.CodeReceptionMatierePremiere == m.CodeReceptionMatierePremiere
-                                         select (decimal?)d.Montant).Sum() ?? 0m;
-
-            var totalEquipmentsInfrastructures = (from d in db.EveDecaissements
-                                                  from re in db.EveReceptionEquipementsInfrastructures
-                                                  where d.CodeReceptionEquipementInfrastructure == re.CodeReceptionEquipementInfrastructure
-                                                  select (decimal?)d.Montant).Sum() ?? 0m;
-
-            var totalFournituresServices = (from d in db.EveDecaissements
-                                            from fs in db.EveAcquisitionServicesFournitures
-                                            where d.CodeAcquisitionServiceFourniture == fs.CodeAcquisitionServiceFourniture
-                                            select (decimal?)d.Montant).Sum() ?? 0m;
-
+            var totalDecaissements = (from d in db.EveDecaissements
+                                      select (decimal?)d.Montant).Sum() ?? 0m;
             var fondsDisponibleEnCaissesEtEnBanques = soldeInitiaux
                 + totalEncaissements
-                - totalAchatMatierePrem
-                - totalEquipmentsInfrastructures
-                - totalFournituresServices;
+                - totalDecaissements;
 
             txtSoldesInitiaux.Text = soldeInitiaux.ToString("c0");
             txtTotalEncaissements.Text = totalEncaissements.ToString("c0");
-            txtTotalMatPrem.Text = totalAchatMatierePrem.ToString("c0");
-            txtTotalEquipementsInfr.Text = totalEquipmentsInfrastructures.ToString("c0");
-            txtFournServ.Text = totalFournituresServices.ToString("c0");
+            txtTotalDecaissements.Text = totalDecaissements.ToString("c0");
+            
 
             txtSolde.Text = fondsDisponibleEnCaissesEtEnBanques.ToString("c0");
 
