@@ -178,7 +178,7 @@ namespace CasaEcologieSysInfo
             MessageBox.Show("La vente a été enregistrée avec succès.");
         }
 
-        private void cbxNomProduit_SelectedIndexChanged(object sender, EventArgs e)
+        private void CbxNomProduit_SelectedIndexChanged(object sender, EventArgs e)
         {
             MettreAJourStockProduitFini();
         }

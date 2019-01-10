@@ -707,7 +707,7 @@
             this.cbxNomProduit.Size = new System.Drawing.Size(225, 29);
             this.cbxNomProduit.TabIndex = 1;
             this.cbxNomProduit.ValueMember = "CodeProduit";
-            this.cbxNomProduit.SelectedIndexChanged += new System.EventHandler(this.cbxNomProduit_SelectedIndexChanged);
+            this.cbxNomProduit.SelectedIndexChanged += new System.EventHandler(this.CbxNomProduit_SelectedIndexChanged);
             // 
             // resStockProduitsFinisBindingSource1
             // 
