@@ -42,7 +42,7 @@ namespace CasaEcologieSysInfo
                 CreerNouveauProduitSemiFini(txtNomProduitSemiFini.Text, txtStockInitialProduitFini.Text);
             }
 
-            prod.LoadData();
+            prod.ChargerDonneesInitiales();
         }
 
         private void CreerNouveauProduitSemiFini(string text1, string text2)

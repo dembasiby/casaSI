@@ -20,7 +20,7 @@ namespace CasaEcologieSysInfo
             InitializeComponent();
         }
 
-        public void LoadData()
+        public void ChargerDonneesInitiales()
         {
             resStockMatieresPremiereBindingSource.DataSource = db.ResStockMatieresPremieres.ToList();
             resStockProduitsFiniBindingSource.DataSource = db.ResStockProduitsFinis.ToList().OrderBy(p => p.NomProduit);
@@ -31,10 +31,10 @@ namespace CasaEcologieSysInfo
             ageEmployeBindingSource3.DataSource = db.AgeEmployes.ToList();
 
             var nomMatierePrem = cbxNomMatiereP.GetItemText(cbxNomMatiereP.SelectedItem);
-            txtStockMatierePremiereDispo.Text = LoadStockMatierePremiere(nomMatierePrem).ToString();
+            txtStockMatierePremiereDispo.Text = ChargerStockMatierePremiere(nomMatierePrem).ToString();
         }
 
-        private float LoadStockMatierePremiere(string nomMatierePrem)
+        private float ChargerStockMatierePremiere(string nomMatierePrem)
         {
             var stockInitial = (from mp in db.ResStockMatieresPremieres
                                 where mp.NomMatiere == nomMatierePrem
@@ -52,7 +52,7 @@ namespace CasaEcologieSysInfo
         }
 
         // Affiche la liste des travailleurs présent le jour de la production
-        private void LoadListeTravailleurs()
+        private void ChargerListeTravailleurs()
         {
 
             clbEmployes.Items.Clear();
@@ -66,8 +66,8 @@ namespace CasaEcologieSysInfo
 
         private void UC_Production_Load(object sender, EventArgs e)
         {
-            LoadData();
-            LoadListeTravailleurs();
+            ChargerDonneesInitiales();
+            ChargerListeTravailleurs();
 
             var listProduitsSemiFinis = from em in db.ResStockProduitsSemiFinis
                                         select em.Description;
@@ -121,7 +121,7 @@ namespace CasaEcologieSysInfo
 
             db.EveUtilisationMatieresPremieres.Add(uMatP);
             db.SaveChanges();
-            LoadStockMatierePremiere(matP.NomMatiere);
+            ChargerStockMatierePremiere(matP.NomMatiere);
         }
 
         private void AjouterRessourcesMatieresPremieres(int codeRessource)
@@ -223,7 +223,6 @@ namespace CasaEcologieSysInfo
         {
             VerifierChampsQuantite(quantite);
 
-
             try
             {
                 if (float.Parse(quantite) > 0f || int.Parse(quantite) > 0)
@@ -241,8 +240,7 @@ namespace CasaEcologieSysInfo
                     {
                         MessageBox.Show("Cet élément a déjà été ajouté une première fois.");
                         return;
-                    }
-                    
+                    }                  
                 }
             }
             catch (Exception ex)
@@ -266,7 +264,7 @@ namespace CasaEcologieSysInfo
                     
         }
 
-        private void btnAjouterPSemiFiniProduction_Click(object sender, EventArgs e)
+        private void BtnAjouterPSemiFiniProduction_Click(object sender, EventArgs e)
         {
             if (int.Parse(txtStockProduitSFini.Text) <= 0 || int.Parse(txtStockProduitSFini.Text) < int.Parse(txtQuantiteProduitSemiFiniUtilise.Text))
             {
@@ -354,12 +352,7 @@ namespace CasaEcologieSysInfo
             txtQuantiteProduitSemiFiniUtilise.Clear();
 
             var nomMatierePrem = cbxNomMatiereP.GetItemText(cbxNomMatiereP.SelectedItem);
-            txtStockMatierePremiereDispo.Text = LoadStockMatierePremiere(nomMatierePrem).ToString();
-        }
-
-        private void VerifierPresenceEmployesDansLaProduction()
-        {
-            //throw new NotImplementedException();
+            txtStockMatierePremiereDispo.Text = ChargerStockMatierePremiere(nomMatierePrem).ToString();
         }
 
         private void ProductionProduitFini(int codeProduction, string nomProduit, int quantite)
@@ -454,17 +447,15 @@ namespace CasaEcologieSysInfo
             }
         }
 
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        private void DateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-            LoadListeTravailleurs();
+            ChargerListeTravailleurs();
         }
 
-        private void cbxNomMatiereP_SelectedIndexChanged(object sender, EventArgs e)
+        private void CbxNomMatiereP_SelectedIndexChanged(object sender, EventArgs e)
         {
             var matP = cbxNomMatiereP.GetItemText(cbxNomMatiereP.SelectedItem);
-            txtStockMatierePremiereDispo.Text = LoadStockMatierePremiere(matP).ToString();
-        }
-
-        
+            txtStockMatierePremiereDispo.Text = ChargerStockMatierePremiere(matP).ToString();
+        }      
     }
 }

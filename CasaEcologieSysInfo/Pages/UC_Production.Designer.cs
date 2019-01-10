@@ -701,7 +701,7 @@
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(169, 23);
             this.dateTimePicker1.TabIndex = 33;
-            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.DateTimePicker1_ValueChanged);
             // 
             // groupBox5
             // 
@@ -776,7 +776,7 @@
             this.btnAjouterPSemiFiniProduction.TabIndex = 31;
             this.btnAjouterPSemiFiniProduction.Text = "Ajouter un produit semi-fini";
             this.btnAjouterPSemiFiniProduction.UseVisualStyleBackColor = false;
-            this.btnAjouterPSemiFiniProduction.Click += new System.EventHandler(this.btnAjouterPSemiFiniProduction_Click);
+            this.btnAjouterPSemiFiniProduction.Click += new System.EventHandler(this.BtnAjouterPSemiFiniProduction_Click);
             // 
             // txtStockProduitSFini
             // 
@@ -824,7 +824,7 @@
             this.cbxNomMatiereP.Size = new System.Drawing.Size(196, 25);
             this.cbxNomMatiereP.TabIndex = 27;
             this.cbxNomMatiereP.ValueMember = "CodeMatierePremiere";
-            this.cbxNomMatiereP.SelectedIndexChanged += new System.EventHandler(this.cbxNomMatiereP_SelectedIndexChanged);
+            this.cbxNomMatiereP.SelectedIndexChanged += new System.EventHandler(this.CbxNomMatiereP_SelectedIndexChanged);
             // 
             // resStockMatieresPremiereBindingSource
             // 
