@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -30,14 +30,23 @@ namespace CasaEcologieSysInfo
         {
             ageEmployesBindingSource.DataSource = db.AgeEmployes.ToList();
             ageEmployeBindingSource.DataSource = db.AgeEmployes.ToList();
-            ageClientBindingSource.DataSource = db.AgeClients.ToList().OrderBy(c => c.NomClient);
+            ageClientBindingSource.DataSource = db.AgeClients
+                .OrderBy(c => c.NomClient)
+                .ToList();
             resStockProduitsFinisBindingSource1.DataSource = db.ResStockProduitsFinis.ToList().OrderBy(p => p.NomProduit);
-            resComptesTresorerieBindingSource.DataSource = db.ResComptesTresoreries.ToList();           
+            resComptesTresorerieBindingSource.DataSource = db.ResComptesTresoreries.ToList();
+
+            MettreAJourStockProduitFini();
+        }
+
+        private void MettreAJourStockProduitFini()
+        {
+            var produitFini = cbxNomProduit.GetItemText(cbxNomProduit.SelectedItem);
+            txtSoldeStockProduit.Text = Conversion.CalculerSoldeStockProduitFini(produitFini).ToString();
         }
 
         private void BtnNouveauClient_Click(object sender, EventArgs e)
-        {
-            
+        {            
             AgeClient client = new AgeClient
             {
                 NomClient = txtNomClient.Text,
@@ -57,7 +66,7 @@ namespace CasaEcologieSysInfo
 
         private void BtnVente_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtQuantiteProduit.Text) || string.IsNullOrEmpty(cbxPUProduit.Text))
+            if (string.IsNullOrEmpty(txtQuantite.Text) || string.IsNullOrEmpty(cbxPUProduit.Text))
             {
                 MessageBox.Show("Ces champs doivent être renseignés.");
                 return;
@@ -65,7 +74,7 @@ namespace CasaEcologieSysInfo
 
             try
             {
-                int temp = Convert.ToInt32(txtQuantiteProduit.Text);
+                int temp = Convert.ToInt32(txtQuantite.Text);
                 int temp1 = Convert.ToInt32(cbxPUProduit.Text);
             }
             catch (Exception)
@@ -74,17 +83,17 @@ namespace CasaEcologieSysInfo
                 return;
             }            
                 
-            var montant = int.Parse(cbxPUProduit.Text) * int.Parse(txtQuantiteProduit.Text);
+            var montant = int.Parse(cbxPUProduit.Text) * int.Parse(txtQuantite.Text);
             
             ListViewItem item = new ListViewItem(cbxNomProduit.Text);
-            item.SubItems.Add(txtQuantiteProduit.Text);
+            item.SubItems.Add(txtQuantite.Text);
             item.SubItems.Add(cbxPUProduit.Text);
             item.SubItems.Add(montant.ToString());
 
             listView1.Items.Add(item);
 
             lblTotalFacture.Text = TotalFacture().ToString();
-            txtQuantiteProduit.Clear();
+            txtQuantite.Clear();
         }
 
         private decimal TotalFacture()
@@ -167,6 +176,11 @@ namespace CasaEcologieSysInfo
             lblTotalFacture.Text = "";
             txtMontantEncaisse.Clear();
             MessageBox.Show("La vente a été enregistrée avec succès.");
+        }
+
+        private void cbxNomProduit_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            MettreAJourStockProduitFini();
         }
     }
 }
