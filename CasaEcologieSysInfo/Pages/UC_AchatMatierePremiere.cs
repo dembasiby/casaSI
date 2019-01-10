@@ -21,11 +21,9 @@ namespace CasaEcologieSysInfo
 
         private void LoadData()
         {
-           
-            ageFournisseursMatieresPremieresBindingSource.DataSource = db.AgeFournisseursMatieresPremieres
-                .ToList()
-                .OrderBy(f => f.Nom);
-            resStockMatieresPremieresBindingSource.DataSource = db.ResStockMatieresPremieres.ToList().OrderBy(m => m.NomMatiere);
+
+            ageFournisseursMatieresPremieresBindingSource.DataSource = db.AgeFournisseursMatieresPremieres.OrderBy(f => f.Nom).ToList();
+            resStockMatieresPremieresBindingSource.DataSource = db.ResStockMatieresPremieres.OrderBy(m => m.NomMatiere).ToList();
             ageEmployesBindingSource.DataSource = db.AgeEmployes.ToList();
             ageEmployesBindingSource1.DataSource = db.AgeEmployes.ToList();
             resComptesTresorerieBindingSource.DataSource = db.ResComptesTresoreries.ToList();
@@ -49,7 +47,7 @@ namespace CasaEcologieSysInfo
             ResStockMatieresPremiere matierePremiere = new ResStockMatieresPremiere
             {
                 NomMatiere = txtNomMatierePremiere.Text,
-                StockMatiere = int.Parse(txtStockInitial.Text)
+                StockMatiere = float.Parse(txtStockInitial.Text)
             };
 
             db.ResStockMatieresPremieres.Add(matierePremiere);
