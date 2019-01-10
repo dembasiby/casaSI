@@ -25,6 +25,7 @@ namespace CasaEcologieSysInfo.Pages
                                   select new { Nom = p.PrenomNom, p.Poste }).ToList();
 
             dgvListePersonnel.DataSource = listePersonnel;
+            cbxTimeSheetNomEmploye.DataSource = listePersonnel.Select(p => p.Nom).ToList();
         }
 
         private void UC_Personnel_Load(object sender, EventArgs e)
@@ -53,6 +54,25 @@ namespace CasaEcologieSysInfo.Pages
             {
                 MessageBox.Show("Les champs 'Prenom et Nom' et 'Poste' ne peuvent pas être vides.");
             }
+        }
+
+        private void btnPresenceEmploye_Click(object sender, EventArgs e)
+        {
+            var employe = cbxTimeSheetNomEmploye.GetItemText(cbxTimeSheetNomEmploye.SelectedItem);
+
+            EvePresenceEmploye pe = new EvePresenceEmploye()
+            {
+                CodeEmploye = (from em in db.AgeEmployes
+                               where em.PrenomNom == employe
+                               select em.CodeEmploye).FirstOrDefault(),
+                Date = DateTime.Parse(dtpDate.Text),
+                Arrivee = dtpArrivee.Value.TimeOfDay,
+                Depart = dtpDepart.Value.TimeOfDay,
+            };
+
+            db.EvePresenceEmployes.Add(pe);
+            db.SaveChanges();
+            MessageBox.Show("La présence de l'employé a été enregistrée avec succès.");
         }
     }
 }
