@@ -261,6 +261,7 @@ namespace CasaEcologieSysInfo
 
            
             AjouterResultatProductionALaListe(txtQuantiteMatiereP.Text, cbxNomMatiereP.Text, lvwListeMatieresP);
+            txtQuantiteMatiereP.Clear();
                     
         }
 
@@ -276,16 +277,20 @@ namespace CasaEcologieSysInfo
                 txtQuantiteProduitSemiFiniUtilise.Text, 
                 cbxNomProduitSemiFini.Text, 
                 lvwListProduitsSemiFinisUtilises);
+
+            txtQuantiteProduitSemiFiniUtilise.Clear();
         }
 
         private void BtnAjouterProduitFini_Click(object sender, EventArgs e)
         {
-            AjouterResultatProductionALaListe(txtQuantiteProduitFini.Text, cbxProduitsFinis.Text, lvwListeProduitsF);          
+            AjouterResultatProductionALaListe(txtQuantiteProduitFini.Text, cbxProduitsFinis.Text, lvwListeProduitsF);
+            txtQuantiteProduitFini.Clear();
         }
 
         private void BtnAjouterProduitSemiFini_Click(object sender, EventArgs e)
         {
             AjouterResultatProductionALaListe(txtQuantiteProduitSemiFini.Text, cbxProduitsSemiFinis.Text, lvwListeProduitsSemiF);
+            txtQuantiteProduitSemiFini.Clear();
         }
 
         private void BtnNouvelleProduction_Click(object sender, EventArgs e)
@@ -315,7 +320,7 @@ namespace CasaEcologieSysInfo
             AgeEmploye respStockProduitsFinis = db.AgeEmployes.FirstOrDefault(rspf => rspf.PrenomNom == cbxResponsableStockProduitFinis.Text);
 
             VerifierInfoIntrantsEtExtrantsProduction();
-            VerifierPresenceEmployesDansLaProduction();
+            //VerifierPresenceEmployesDansLaProduction();
             // Creer une nouvelle utilisation des ressources
             EveUtilisationRessource utilisationRessource = new EveUtilisationRessource
             {
@@ -346,10 +351,6 @@ namespace CasaEcologieSysInfo
             lvwListeProduitsF.Items.Clear();
             lvwListeProduitsSemiF.Items.Clear();
             lvwListProduitsSemiFinisUtilises.Items.Clear();
-            txtQuantiteMatiereP.Clear();
-            txtQuantiteProduitFini.Clear();
-            txtQuantiteProduitSemiFini.Clear();
-            txtQuantiteProduitSemiFiniUtilise.Clear();
 
             var nomMatierePrem = cbxNomMatiereP.GetItemText(cbxNomMatiereP.SelectedItem);
             txtStockMatierePremiereDispo.Text = ChargerStockMatierePremiere(nomMatierePrem).ToString();
