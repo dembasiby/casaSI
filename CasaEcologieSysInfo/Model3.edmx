@@ -111,6 +111,9 @@
           <Property Name="CodePresence" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CodeEmploye" Type="int" Nullable="false" />
           <Property Name="CodeUtilisationDesRessources" Type="int" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="Arrivee" Type="time" Precision="7" Nullable="false" />
+          <Property Name="Depart" Type="time" Precision="7" Nullable="false" />
         </EntityType>
         <EntityType Name="EveProductionProduitsSemiFinis">
           <Key>
@@ -1229,6 +1232,9 @@
           <Property Name="CodeEmploye" Type="Int32" Nullable="false" />
           <Property Name="CodeUtilisationDesRessources" Type="Int32" Nullable="false" />
           <NavigationProperty Name="AgeEmploye" Relationship="Self.FK_EvePresenceEmployes_AgeEmployes" FromRole="EvePresenceEmployes" ToRole="AgeEmployes" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Arrivee" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="Depart" Type="Time" Nullable="false" Precision="7" />
         </EntityType>
         <EntityType Name="EveProductionProduitsSemiFini">
           <Key>
@@ -2361,6 +2367,9 @@
           <EntitySetMapping Name="EvePresenceEmployes">
             <EntityTypeMapping TypeName="CasaDBModel.EvePresenceEmploye">
               <MappingFragment StoreEntitySet="EvePresenceEmployes">
+                <ScalarProperty Name="Depart" ColumnName="Depart" />
+                <ScalarProperty Name="Arrivee" ColumnName="Arrivee" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="CodePresence" ColumnName="CodePresence" />
                 <ScalarProperty Name="CodeEmploye" ColumnName="CodeEmploye" />
                 <ScalarProperty Name="CodeUtilisationDesRessources" ColumnName="CodeUtilisationDesRessources" />

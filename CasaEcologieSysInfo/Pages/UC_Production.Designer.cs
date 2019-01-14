@@ -91,15 +91,15 @@
             this.label26 = new System.Windows.Forms.Label();
             this.btnAjouterPSemiFiniProduction = new System.Windows.Forms.Button();
             this.txtStockProduitSFini = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtQuantiteProduitSemiFiniUtilise = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cbxStock = new System.Windows.Forms.ComboBox();
-            this.resStockMatieresPremiereBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cbxNomMatiereP = new System.Windows.Forms.ComboBox();
+            this.resStockMatieresPremiereBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.p = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.btnAjouterMatierePProduction = new System.Windows.Forms.Button();
+            this.txtStockMatierePremiereDispo = new System.Windows.Forms.TextBox();
             this.txtQuantiteMatiereP = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
@@ -701,6 +701,7 @@
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(169, 23);
             this.dateTimePicker1.TabIndex = 33;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.DateTimePicker1_ValueChanged);
             // 
             // groupBox5
             // 
@@ -710,7 +711,7 @@
             this.groupBox5.Controls.Add(this.label26);
             this.groupBox5.Controls.Add(this.btnAjouterPSemiFiniProduction);
             this.groupBox5.Controls.Add(this.txtStockProduitSFini);
-            this.groupBox5.Controls.Add(this.textBox1);
+            this.groupBox5.Controls.Add(this.txtQuantiteProduitSemiFiniUtilise);
             this.groupBox5.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox5.Location = new System.Drawing.Point(22, 181);
             this.groupBox5.Name = "groupBox5";
@@ -775,7 +776,7 @@
             this.btnAjouterPSemiFiniProduction.TabIndex = 31;
             this.btnAjouterPSemiFiniProduction.Text = "Ajouter un produit semi-fini";
             this.btnAjouterPSemiFiniProduction.UseVisualStyleBackColor = false;
-            this.btnAjouterPSemiFiniProduction.Click += new System.EventHandler(this.BtnAjouterMatierePProduction_Click);
+            this.btnAjouterPSemiFiniProduction.Click += new System.EventHandler(this.BtnAjouterPSemiFiniProduction_Click);
             // 
             // txtStockProduitSFini
             // 
@@ -786,22 +787,22 @@
             this.txtStockProduitSFini.Size = new System.Drawing.Size(62, 23);
             this.txtStockProduitSFini.TabIndex = 28;
             // 
-            // textBox1
+            // txtQuantiteProduitSemiFiniUtilise
             // 
-            this.textBox1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(257, 56);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(62, 23);
-            this.textBox1.TabIndex = 28;
+            this.txtQuantiteProduitSemiFiniUtilise.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtQuantiteProduitSemiFiniUtilise.Location = new System.Drawing.Point(257, 56);
+            this.txtQuantiteProduitSemiFiniUtilise.Name = "txtQuantiteProduitSemiFiniUtilise";
+            this.txtQuantiteProduitSemiFiniUtilise.Size = new System.Drawing.Size(62, 23);
+            this.txtQuantiteProduitSemiFiniUtilise.TabIndex = 28;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.cbxStock);
             this.groupBox1.Controls.Add(this.cbxNomMatiereP);
             this.groupBox1.Controls.Add(this.p);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.btnAjouterMatierePProduction);
+            this.groupBox1.Controls.Add(this.txtStockMatierePremiereDispo);
             this.groupBox1.Controls.Add(this.txtQuantiteMatiereP);
             this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(22, 68);
@@ -810,24 +811,6 @@
             this.groupBox1.TabIndex = 33;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Matières premières utilisées";
-            // 
-            // cbxStock
-            // 
-            this.cbxStock.DataSource = this.resStockMatieresPremiereBindingSource;
-            this.cbxStock.DisplayMember = "StockMatiere";
-            this.cbxStock.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxStock.Enabled = false;
-            this.cbxStock.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxStock.FormattingEnabled = true;
-            this.cbxStock.Location = new System.Drawing.Point(122, 53);
-            this.cbxStock.Name = "cbxStock";
-            this.cbxStock.Size = new System.Drawing.Size(60, 25);
-            this.cbxStock.TabIndex = 27;
-            this.cbxStock.ValueMember = "CodeProduit";
-            // 
-            // resStockMatieresPremiereBindingSource
-            // 
-            this.resStockMatieresPremiereBindingSource.DataSource = typeof(CasaEcologieSysInfo.ResStockMatieresPremiere);
             // 
             // cbxNomMatiereP
             // 
@@ -841,6 +824,11 @@
             this.cbxNomMatiereP.Size = new System.Drawing.Size(196, 25);
             this.cbxNomMatiereP.TabIndex = 27;
             this.cbxNomMatiereP.ValueMember = "CodeMatierePremiere";
+            this.cbxNomMatiereP.SelectedIndexChanged += new System.EventHandler(this.CbxNomMatiereP_SelectedIndexChanged);
+            // 
+            // resStockMatieresPremiereBindingSource
+            // 
+            this.resStockMatieresPremiereBindingSource.DataSource = typeof(CasaEcologieSysInfo.ResStockMatieresPremiere);
             // 
             // p
             // 
@@ -886,6 +874,15 @@
             this.btnAjouterMatierePProduction.Text = "Ajouter une matière première";
             this.btnAjouterMatierePProduction.UseVisualStyleBackColor = false;
             this.btnAjouterMatierePProduction.Click += new System.EventHandler(this.BtnAjouterMatierePProduction_Click);
+            // 
+            // txtStockMatierePremiereDispo
+            // 
+            this.txtStockMatierePremiereDispo.Enabled = false;
+            this.txtStockMatierePremiereDispo.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStockMatierePremiereDispo.Location = new System.Drawing.Point(125, 53);
+            this.txtStockMatierePremiereDispo.Name = "txtStockMatierePremiereDispo";
+            this.txtStockMatierePremiereDispo.Size = new System.Drawing.Size(62, 23);
+            this.txtStockMatierePremiereDispo.TabIndex = 28;
             // 
             // txtQuantiteMatiereP
             // 
@@ -1058,7 +1055,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnAjouterMatierePProduction;
         private System.Windows.Forms.BindingSource ageEmployeBindingSource;
-        private System.Windows.Forms.ComboBox cbxStock;
         private System.Windows.Forms.BindingSource resStockMatieresPremiereBindingSource;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.GroupBox groupBox3;
@@ -1105,7 +1101,7 @@
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Button btnAjouterPSemiFiniProduction;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtQuantiteProduitSemiFiniUtilise;
         private System.Windows.Forms.ListView lvwListProduitsSemiFinisUtilises;
         private System.Windows.Forms.ColumnHeader columnHeader7;
         private System.Windows.Forms.ColumnHeader columnHeader8;
@@ -1119,5 +1115,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox txtStockMatierePremiereDispo;
     }
 }

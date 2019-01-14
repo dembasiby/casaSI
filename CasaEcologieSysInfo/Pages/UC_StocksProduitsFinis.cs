@@ -22,7 +22,10 @@ namespace CasaEcologieSysInfo
         private void ListerLesProduitsFinis()
         {
             var liste = (from pf in db.ResStockProduitsFinis
-                         select pf.NomProduit).ToList();
+                         select pf)
+                         .OrderBy(p => p.NomProduit)
+                         .Select(p => p.NomProduit)
+                         .ToList();
             lbxListeProduitsFinis.DataSource = liste;
         }
 

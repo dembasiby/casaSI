@@ -44,6 +44,7 @@
             this.cbxCompte = new System.Windows.Forms.ComboBox();
             this.resComptesTresorerieBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cbxTres = new System.Windows.Forms.ComboBox();
+            this.ageEmployeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cbxNomClient = new System.Windows.Forms.ComboBox();
             this.ageClientBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txtMontantEncaisse = new System.Windows.Forms.TextBox();
@@ -73,7 +74,7 @@
             this.resStockProduitsFinisTableAdapter = new CasaEcologieSysInfo.CasaDBDataSetTableAdapters.ResStockProduitsFinisTableAdapter();
             this.btnVente = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtQuantiteProduit = new System.Windows.Forms.TextBox();
+            this.txtSoldeStockProduit = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -98,12 +99,14 @@
             this.ageEmployesTableAdapter = new CasaEcologieSysInfo.EmployesDataSet3TableAdapters.AgeEmployesTableAdapter();
             this.resStockProduitsFinisTableAdapter1 = new CasaEcologieSysInfo.CasaDBDataSet3TableAdapters.ResStockProduitsFinisTableAdapter();
             this.cbxPUProduit = new System.Windows.Forms.ComboBox();
-            this.ageEmployeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.txtQuantite = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ageEmployesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employesDataSet3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.resComptesTresorerieBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ageEmployeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ageClientBindingSource)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.casaDBDataSet)).BeginInit();
@@ -115,7 +118,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.casaDBDataSet1BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.casaDBDataSet2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ageClientsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ageEmployeBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTitrePageNouvelleVente
@@ -262,6 +264,10 @@
             this.cbxTres.Size = new System.Drawing.Size(264, 29);
             this.cbxTres.TabIndex = 9;
             this.cbxTres.ValueMember = "CodeEmploye";
+            // 
+            // ageEmployeBindingSource
+            // 
+            this.ageEmployeBindingSource.DataSource = typeof(CasaEcologieSysInfo.AgeEmploye);
             // 
             // cbxNomClient
             // 
@@ -537,7 +543,7 @@
             this.btnVente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVente.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVente.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnVente.Location = new System.Drawing.Point(63, 177);
+            this.btnVente.Location = new System.Drawing.Point(63, 206);
             this.btnVente.Name = "btnVente";
             this.btnVente.Size = new System.Drawing.Size(338, 31);
             this.btnVente.TabIndex = 4;
@@ -554,17 +560,18 @@
             this.label5.TabIndex = 2;
             this.label5.Text = "Quantité";
             // 
-            // txtQuantiteProduit
+            // txtSoldeStockProduit
             // 
-            this.txtQuantiteProduit.Location = new System.Drawing.Point(176, 99);
-            this.txtQuantiteProduit.Name = "txtQuantiteProduit";
-            this.txtQuantiteProduit.Size = new System.Drawing.Size(225, 27);
-            this.txtQuantiteProduit.TabIndex = 2;
+            this.txtSoldeStockProduit.Enabled = false;
+            this.txtSoldeStockProduit.Location = new System.Drawing.Point(176, 131);
+            this.txtSoldeStockProduit.Name = "txtSoldeStockProduit";
+            this.txtSoldeStockProduit.Size = new System.Drawing.Size(225, 27);
+            this.txtSoldeStockProduit.TabIndex = 2;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(11, 132);
+            this.label6.Location = new System.Drawing.Point(11, 161);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(98, 21);
             this.label6.TabIndex = 2;
@@ -700,6 +707,7 @@
             this.cbxNomProduit.Size = new System.Drawing.Size(225, 29);
             this.cbxNomProduit.TabIndex = 1;
             this.cbxNomProduit.ValueMember = "CodeProduit";
+            this.cbxNomProduit.SelectedIndexChanged += new System.EventHandler(this.CbxNomProduit_SelectedIndexChanged);
             // 
             // resStockProduitsFinisBindingSource1
             // 
@@ -748,15 +756,27 @@
             this.cbxPUProduit.DataSource = this.resStockProduitsFinisBindingSource1;
             this.cbxPUProduit.DisplayMember = "PrixDeVenteStandard";
             this.cbxPUProduit.FormattingEnabled = true;
-            this.cbxPUProduit.Location = new System.Drawing.Point(176, 132);
+            this.cbxPUProduit.Location = new System.Drawing.Point(176, 161);
             this.cbxPUProduit.Name = "cbxPUProduit";
             this.cbxPUProduit.Size = new System.Drawing.Size(225, 29);
             this.cbxPUProduit.TabIndex = 9;
             this.cbxPUProduit.ValueMember = "CodeEmploye";
             // 
-            // ageEmployeBindingSource
+            // txtQuantite
             // 
-            this.ageEmployeBindingSource.DataSource = typeof(CasaEcologieSysInfo.AgeEmploye);
+            this.txtQuantite.Location = new System.Drawing.Point(176, 99);
+            this.txtQuantite.Name = "txtQuantite";
+            this.txtQuantite.Size = new System.Drawing.Size(225, 27);
+            this.txtQuantite.TabIndex = 2;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 131);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(135, 21);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Stock disponible";
             // 
             // UC_NouvelleVente
             // 
@@ -768,8 +788,10 @@
             this.Controls.Add(this.splitter1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnVente);
-            this.Controls.Add(this.txtQuantiteProduit);
+            this.Controls.Add(this.txtQuantite);
+            this.Controls.Add(this.txtSoldeStockProduit);
             this.Controls.Add(this.label6);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.p);
@@ -787,6 +809,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ageEmployesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.employesDataSet3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.resComptesTresorerieBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ageEmployeBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ageClientBindingSource)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.casaDBDataSet)).EndInit();
@@ -799,7 +822,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.casaDBDataSet1BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.casaDBDataSet2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ageClientsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ageEmployeBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -840,7 +862,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtQuantiteProduit;
+        private System.Windows.Forms.TextBox txtSoldeStockProduit;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label4;
@@ -877,5 +899,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cbxPUProduit;
         private System.Windows.Forms.BindingSource ageEmployeBindingSource;
+        private System.Windows.Forms.TextBox txtQuantite;
+        private System.Windows.Forms.Label label2;
     }
 }

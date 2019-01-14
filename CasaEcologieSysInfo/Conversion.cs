@@ -235,7 +235,27 @@ namespace CasaEcologieSysInfo
             }
         }
 
-       
+       public static int CalculerSoldeStockProduitFini(string nomProduit)
+        {
+            using (CasaDBEntities2 db = new CasaDBEntities2())
+            {
+                var stockInitial = (from pf in db.ResStockProduitsFinis
+                                    where pf.NomProduit == nomProduit
+                                    select pf.StockProduit).FirstOrDefault();
+
+                var entrees = (from pro in db.EveProductionStockProduitsFinis
+                               where pro.ResStockProduitsFini.NomProduit == nomProduit
+                               select (int?)pro.QuantiteProduitFini).Sum() ?? 0;
+
+                var sorties = (from pf in db.EveVenteStockProduitsFinis
+                               where pf.ResStockProduitsFini.NomProduit == nomProduit
+                               select (int?)pf.QuantiteProduitFini).Sum() ?? 0;
+
+
+                return stockInitial + entrees - sorties;
+            }
+
+        }
 
     }
 }

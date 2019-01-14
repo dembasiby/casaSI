@@ -20,28 +20,54 @@ namespace CasaEcologieSysInfo
             InitializeComponent();
         }
 
-        public void LoadData()
+        public void ChargerDonneesInitiales()
         {
             resStockMatieresPremiereBindingSource.DataSource = db.ResStockMatieresPremieres.ToList();
-            resStockProduitsFiniBindingSource.DataSource = db.ResStockProduitsFinis.ToList();
+            resStockProduitsFiniBindingSource.DataSource = db.ResStockProduitsFinis.ToList().OrderBy(p => p.NomProduit);
             resStockProduitsSemiFiniBindingSource2.DataSource = db.ResStockProduitsSemiFinis.ToList();
 
             ageEmployeBindingSource2.DataSource = db.AgeEmployes.ToList();
             ageEmployeBindingSource1.DataSource = db.AgeEmployes.ToList();
             ageEmployeBindingSource3.DataSource = db.AgeEmployes.ToList();
 
-            
+            var nomMatierePrem = cbxNomMatiereP.GetItemText(cbxNomMatiereP.SelectedItem);
+            txtStockMatierePremiereDispo.Text = ChargerStockMatierePremiere(nomMatierePrem).ToString();
+        }
+
+        private float ChargerStockMatierePremiere(string nomMatierePrem)
+        {
+            var stockInitial = (from mp in db.ResStockMatieresPremieres
+                                where mp.NomMatiere == nomMatierePrem
+                                select mp.StockMatiere).FirstOrDefault();
+
+            var entrees = (from rmp in db.EveReceptionMatieresPremieres
+                           where rmp.ResStockMatieresPremiere.NomMatiere == nomMatierePrem
+                           select (float?)rmp.Quantite).Sum() ?? 0f;
+
+            var sorties = (from ump in db.EveUtilisationMatieresPremieres
+                           where ump.ResStockMatieresPremiere.NomMatiere == nomMatierePrem
+                           select (float?)ump.QuantiteMatierePremiere).Sum() ?? 0f;
+
+            return stockInitial + entrees - sorties;
+        }
+
+        // Affiche la liste des travailleurs présent le jour de la production
+        private void ChargerListeTravailleurs()
+        {
+
+            clbEmployes.Items.Clear();
+
+            var listeEmployes = (from pe in db.EvePresenceEmployes
+                             where pe.Date == dateTimePicker1.Value.Date
+                             select pe.AgeEmploye.PrenomNom).ToList();
+
+            clbEmployes.Items.AddRange(listeEmployes.ToArray());
         }
 
         private void UC_Production_Load(object sender, EventArgs e)
         {
-            LoadData();
-
-            var listeEmployes = from em in db.AgeEmployes
-                                select em.PrenomNom;
-            clbEmployes.Items.AddRange(listeEmployes.ToArray());
-
-
+            ChargerDonneesInitiales();
+            ChargerListeTravailleurs();
 
             var listProduitsSemiFinis = from em in db.ResStockProduitsSemiFinis
                                         select em.Description;
@@ -72,7 +98,7 @@ namespace CasaEcologieSysInfo
 
             try
             {
-                var temp = Convert.ToInt32(quantite);
+                var item = (quantite == txtQuantiteMatiereP.Text ? Convert.ToSingle(quantite) : Convert.ToInt32(quantite));
             }
             catch (Exception)
             {
@@ -90,11 +116,12 @@ namespace CasaEcologieSysInfo
             {
                 CodeUtilisationRessource = codeURes,
                 CodeMatierePremiere = matP.CodeMatierePremiere,
-                QuantiteMatierePremiere = int.Parse(li.SubItems[1].Text),
+                QuantiteMatierePremiere = float.Parse(li.SubItems[1].Text),
             };
 
             db.EveUtilisationMatieresPremieres.Add(uMatP);
             db.SaveChanges();
+            ChargerStockMatierePremiere(matP.NomMatiere);
         }
 
         private void AjouterRessourcesMatieresPremieres(int codeRessource)
@@ -114,17 +141,50 @@ namespace CasaEcologieSysInfo
             }
         }
 
+        private void UtiliserRessourcesProduitsSemiFinis(int codeURes, ListViewItem li)
+        {
+
+            ResStockProduitsSemiFini psf = db.ResStockProduitsSemiFinis.FirstOrDefault(p => p.Description == li.Text);
+            EveUtilisationProduitsSemiFini upsf = new EveUtilisationProduitsSemiFini
+            {
+                CodeUtilisationRessource = codeURes,
+                CodeProduitSemiFini = psf.CodeProduitSemiFini,
+                QuantiteProduitSemiFini = int.Parse(li.SubItems[1].Text)
+            };
+
+            db.EveUtilisationProduitsSemiFinis.Add(upsf);
+            db.SaveChanges();
+            
+        }
+
+        private void AjouterRessourcesProduitSemiFini(int codeRessource)
+        {
+            try
+            {
+                // Ajouter ressources : produit semi fini à la liste des produits semi finis 
+                // utilisées pour la présente production         
+                for (int i = 0; i < lvwListProduitsSemiFinisUtilises.Items.Count; i++)
+                {
+                    UtiliserRessourcesProduitsSemiFinis(codeRessource, lvwListProduitsSemiFinisUtilises.Items[i]);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Le produit semi-fini n'a pas pu être ajouté: ", ex.Message);
+            }
+        }
+
         private void UtiliserTravailleur(string nomTravailleur, int codeURessources)
         {
             AgeEmploye travailleur = db.AgeEmployes.FirstOrDefault(emp => emp.PrenomNom == nomTravailleur);
 
-            EvePresenceEmploye pEmp = new EvePresenceEmploye
-            {
-                CodeEmploye = travailleur.CodeEmploye,
-                CodeUtilisationDesRessources = codeURessources
-            };
-
-            db.EvePresenceEmployes.Add(pEmp);
+            (from preE in db.EvePresenceEmployes
+             where preE.CodeEmploye == travailleur.CodeEmploye
+             where preE.Date == dateTimePicker1.Value.Date
+             select preE)
+             .ToList()
+             .ForEach(em => em.CodeUtilisationDesRessources = codeURessources);
+            
             db.SaveChanges();
         }
 
@@ -163,10 +223,9 @@ namespace CasaEcologieSysInfo
         {
             VerifierChampsQuantite(quantite);
 
-
             try
             {
-                if (int.Parse(quantite) > 0)
+                if (float.Parse(quantite) > 0f || int.Parse(quantite) > 0)
                 {
                     ListViewItem resultats = new ListViewItem(element);
                     resultats.Name = element;
@@ -181,8 +240,7 @@ namespace CasaEcologieSysInfo
                     {
                         MessageBox.Show("Cet élément a déjà été ajouté une première fois.");
                         return;
-                    }
-                    
+                    }                  
                 }
             }
             catch (Exception ex)
@@ -195,7 +253,7 @@ namespace CasaEcologieSysInfo
 
         private void BtnAjouterMatierePProduction_Click(object sender, EventArgs e)
         {                       
-            if ( int.Parse(cbxStock.Text) <= 0 || int.Parse(cbxStock.Text) < int.Parse(txtQuantiteMatiereP.Text))
+            if ( float.Parse(txtStockMatierePremiereDispo.Text) <= 0f || float.Parse(txtStockMatierePremiereDispo.Text) < float.Parse(txtQuantiteMatiereP.Text))
             {
                 MessageBox.Show("Le stock de matière première disponible est insuffisant.");
                 return;
@@ -203,17 +261,36 @@ namespace CasaEcologieSysInfo
 
            
             AjouterResultatProductionALaListe(txtQuantiteMatiereP.Text, cbxNomMatiereP.Text, lvwListeMatieresP);
+            txtQuantiteMatiereP.Clear();
                     
+        }
+
+        private void BtnAjouterPSemiFiniProduction_Click(object sender, EventArgs e)
+        {
+            if (int.Parse(txtStockProduitSFini.Text) <= 0 || int.Parse(txtStockProduitSFini.Text) < int.Parse(txtQuantiteProduitSemiFiniUtilise.Text))
+            {
+                MessageBox.Show("Le stock de matière première disponible est insuffisant.");
+                return;
+            }
+
+            AjouterResultatProductionALaListe(
+                txtQuantiteProduitSemiFiniUtilise.Text, 
+                cbxNomProduitSemiFini.Text, 
+                lvwListProduitsSemiFinisUtilises);
+
+            txtQuantiteProduitSemiFiniUtilise.Clear();
         }
 
         private void BtnAjouterProduitFini_Click(object sender, EventArgs e)
         {
-            AjouterResultatProductionALaListe(txtQuantiteProduitFini.Text, cbxProduitsFinis.Text, lvwListeProduitsF);          
+            AjouterResultatProductionALaListe(txtQuantiteProduitFini.Text, cbxProduitsFinis.Text, lvwListeProduitsF);
+            txtQuantiteProduitFini.Clear();
         }
 
         private void BtnAjouterProduitSemiFini_Click(object sender, EventArgs e)
         {
             AjouterResultatProductionALaListe(txtQuantiteProduitSemiFini.Text, cbxProduitsSemiFinis.Text, lvwListeProduitsSemiF);
+            txtQuantiteProduitSemiFini.Clear();
         }
 
         private void BtnNouvelleProduction_Click(object sender, EventArgs e)
@@ -243,7 +320,7 @@ namespace CasaEcologieSysInfo
             AgeEmploye respStockProduitsFinis = db.AgeEmployes.FirstOrDefault(rspf => rspf.PrenomNom == cbxResponsableStockProduitFinis.Text);
 
             VerifierInfoIntrantsEtExtrantsProduction();
-            VerifierPresenceEmployesDansLaProduction();
+            //VerifierPresenceEmployesDansLaProduction();
             // Creer une nouvelle utilisation des ressources
             EveUtilisationRessource utilisationRessource = new EveUtilisationRessource
             {
@@ -258,6 +335,7 @@ namespace CasaEcologieSysInfo
 
             AjouterRessourcesMatieresPremieres(codeUtilisationRessources);
             AjouterRessourcesTravailleurs(codeUtilisationRessources);
+            AjouterRessourcesProduitSemiFini(codeUtilisationRessources);
 
             // Créer production
             var creerProduction = CreerProduction(codeUtilisationRessources, respStockProduitsFinis.CodeEmploye);
@@ -268,11 +346,14 @@ namespace CasaEcologieSysInfo
 
             // Ajouter la liste des produits semi-finis produits
             EnregistrerProductionProduitSemiFini(codeProduction);
-        }
+            // Effacer les donnees deja enregistrees
+            lvwListeMatieresP.Items.Clear();
+            lvwListeProduitsF.Items.Clear();
+            lvwListeProduitsSemiF.Items.Clear();
+            lvwListProduitsSemiFinisUtilises.Items.Clear();
 
-        private void VerifierPresenceEmployesDansLaProduction()
-        {
-            //throw new NotImplementedException();
+            var nomMatierePrem = cbxNomMatiereP.GetItemText(cbxNomMatiereP.SelectedItem);
+            txtStockMatierePremiereDispo.Text = ChargerStockMatierePremiere(nomMatierePrem).ToString();
         }
 
         private void ProductionProduitFini(int codeProduction, string nomProduit, int quantite)
@@ -289,7 +370,6 @@ namespace CasaEcologieSysInfo
             db.SaveChanges();
 
             MessageBox.Show("La production a été enregistrée avec succès.");
-            lvwListeProduitsF.Items.Clear();
         }
 
         private void EnregistrerProductionProduitFini(int codeProduction)
@@ -299,11 +379,12 @@ namespace CasaEcologieSysInfo
                 var produit = lvwListeProduitsF.Items[i];
                 ProductionProduitFini(codeProduction, produit.Text, int.Parse(produit.SubItems[1].Text));
             }
+
         }
 
         private void ProductionProduitSemiFiniProduit(int codeProduction, string nomProduit, int quantite)
         {
-            ResStockProduitsSemiFini npsf = db.ResStockProduitsSemiFinis.FirstOrDefault(n => n.ResStockMatieresPremiere.NomMatiere == nomProduit);
+            ResStockProduitsSemiFini npsf = db.ResStockProduitsSemiFinis.FirstOrDefault(n => n.Description == nomProduit);
             EveProductionProduitsSemiFini prodPSFini = new EveProductionProduitsSemiFini
             {
                 CodeProduction = codeProduction,
@@ -315,7 +396,6 @@ namespace CasaEcologieSysInfo
             db.SaveChanges();
 
             MessageBox.Show("La production a été enregistrée avec succès.");
-            lvwListeProduitsSemiF.Items.Clear();
         }
 
         private void EnregistrerProductionProduitSemiFini(int codeProduction)
@@ -325,7 +405,6 @@ namespace CasaEcologieSysInfo
                 var produit = lvwListeProduitsSemiF.Items[i];
                 ProductionProduitSemiFiniProduit(codeProduction, produit.Text, int.Parse(produit.SubItems[1].Text));
             }
-
         }
 
         private void CbxNomProduitSemiFini_SelectedIndexChanged(object sender, EventArgs e)
@@ -368,5 +447,16 @@ namespace CasaEcologieSysInfo
                 np.ShowDialog();
             }
         }
+
+        private void DateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            ChargerListeTravailleurs();
+        }
+
+        private void CbxNomMatiereP_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var matP = cbxNomMatiereP.GetItemText(cbxNomMatiereP.SelectedItem);
+            txtStockMatierePremiereDispo.Text = ChargerStockMatierePremiere(matP).ToString();
+        }      
     }
 }
