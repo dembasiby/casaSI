@@ -72,6 +72,19 @@ namespace CasaEcologieSysInfo
             return Tot;
         }
 
+        public static Double CalculerTotal(DataGridView dataGrid, string columnName)
+        {
+            Double Tot = 0;
+
+            for (int i = 0; i < dataGrid.Rows.Count - 1; i++)
+            {
+                Tot += Convert.ToDouble(dataGrid.Rows[i].Cells[columnName].Value);
+
+            }
+
+            return Tot;
+        }
+
         public static decimal CalculerTotalCreancesClients()
         {
             using (CasaDBEntities2 db = new CasaDBEntities2())
