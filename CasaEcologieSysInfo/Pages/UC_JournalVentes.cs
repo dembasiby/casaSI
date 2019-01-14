@@ -24,6 +24,9 @@ namespace CasaEcologieSysInfo
 
         private void UC_JournalVentes_Load(object sender, EventArgs e)
         {
+            ageClientBindingSource.DataSource = db.AgeClients.OrderBy(c => c.NomClient).ToList();
+            resStockProduitsFiniBindingSource.DataSource = db.ResStockProduitsFinis.OrderBy(p => p.NomProduit).ToList();
+
             var ventes = (from v in db.EveVentes
                           join vpf in db.EveVenteStockProduitsFinis on v.CodeVente equals vpf.CodeVente
                           join pf in db.ResStockProduitsFinis on vpf.CodeProduitFini equals pf.CodeProduit
@@ -38,6 +41,11 @@ namespace CasaEcologieSysInfo
                               vpf.Montant
                           }).ToList();
 
+            DefinirSourceDeDonnees(ventes);
+        }
+
+        private void DefinirSourceDeDonnees<T>(List<T> ventes)
+        {
             DataTable dt = Conversion.ConvertirEnTableDeDonnees(ventes);
 
             dgvJournalVentes.DataSource = dt;
@@ -48,13 +56,45 @@ namespace CasaEcologieSysInfo
             dgvJournalVentes.Columns["Quantité"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvJournalVentes.Columns["Montant"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgvJournalVentes.Columns["Quantité"].HeaderText = "Quantité(unités)";
-           
-
         }
 
-        private void btnFiltrer_Click(object sender, EventArgs e)
+        private void FiltrerTableau(DateTime end, DateTime start=default(DateTime), string nomClient="", string produit = "")
         {
+            var ventes = (from v in db.EveVentes
+                          join vpf in db.EveVenteStockProduitsFinis on v.CodeVente equals vpf.CodeVente
+                          join pf in db.ResStockProduitsFinis on vpf.CodeProduitFini equals pf.CodeProduit
+                          join c in db.AgeClients on v.CodeClient equals c.CodeClient
+                          where (nomClient.Length > 0) ? c.NomClient == nomClient : c.NomClient != ""
+                          where (produit.Length > 0) ? pf.NomProduit == produit : pf.NomProduit != ""
+                          where v.DateVente >= start.Date
+                          where v.DateVente <= end.Date
 
+                          select new
+                          {
+                              Date = v.DateVente,
+                              Description = pf.NomProduit,
+                              Quantité = vpf.QuantiteProduitFini,
+                              Client = c.NomClient,
+                              vpf.Montant
+                          }).ToList();
+
+            DefinirSourceDeDonnees(ventes);
         }
+
+        private void AfficherResultatsFiltre()
+        {
+            var start = dtpDebut.Value.Date;
+            var end = dtpFin.Value.Date;
+            var client = cbxClients.GetItemText(cbxClients.SelectedItem);
+            var produit = cbxProduits.GetItemText(cbxProduits.SelectedItem);
+
+            FiltrerTableau(end, start, client, produit);
+        }
+
+        private void BtnFiltrer_Click(object sender, EventArgs e)
+        {
+            AfficherResultatsFiltre();
+        }
+
     }
 }

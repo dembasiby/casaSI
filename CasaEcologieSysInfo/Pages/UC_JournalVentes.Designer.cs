@@ -133,7 +133,7 @@
             this.btnFiltrer.TabIndex = 18;
             this.btnFiltrer.Text = "Filtrer";
             this.btnFiltrer.UseVisualStyleBackColor = true;
-            this.btnFiltrer.Click += new System.EventHandler(this.btnFiltrer_Click);
+            this.btnFiltrer.Click += new System.EventHandler(this.BtnFiltrer_Click);
             // 
             // cbxProduits
             // 
