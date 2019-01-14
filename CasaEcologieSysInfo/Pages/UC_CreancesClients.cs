@@ -21,7 +21,7 @@ namespace CasaEcologieSysInfo.Pages
 
         private void UC_CreancesClients_Load(object sender, EventArgs e)
         {
-            ageClientBindingSource.DataSource = db.AgeClients.ToList();
+            ageClientBindingSource.DataSource = db.AgeClients.ToList().OrderBy(c => c.NomClient);
             txtTotalCreances.Text = Conversion.CalculerTotalCreancesClients().ToString("c0");
         }
 
@@ -37,7 +37,7 @@ namespace CasaEcologieSysInfo.Pages
                                  select new
                                  {
                                      Date = v.DateVente,
-                                     CodeOperation = vf.CodeVente + "ven",
+                                     Description = vf.ResStockProduitsFini.NomProduit,
                                      MontantVente = vf.Montant,
                                      Encaissement = 0m,
                                      Solde = 0m
@@ -52,7 +52,7 @@ namespace CasaEcologieSysInfo.Pages
                                        select new
                                        {
                                            Date = ev.DateEncaissement,
-                                           CodeOperation = ev.CodeEncaissement + "enc",
+                                           Description = "Encaissement vente",
                                            MontantVente = 0m,
                                            Encaissement = ev.MontantEncaisse,
                                            Solde = 0m

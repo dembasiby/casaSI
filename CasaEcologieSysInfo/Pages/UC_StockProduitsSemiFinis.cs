@@ -20,18 +20,17 @@ namespace CasaEcologieSysInfo.Pages
         }
 
 
-        private void AfficherJournalCorrespondant(string nomProduit)
+        private void AfficherJournalCorrespondant(string description)
         {
-            var entrees = (from mp in db.ResStockMatieresPremieres
-                           join psf in db.ResStockProduitsSemiFinis on mp.CodeMatierePremiere equals psf.CodeMatierePremiere
-                           where mp.NomMatiere == nomProduit
+            var entrees = (from psf in db.ResStockProduitsSemiFinis
+                           where psf.Description == description
                            join ppsf in db.EveProductionProduitsSemiFinis on psf.CodeProduitSemiFini equals ppsf.CodeProduitSemiFini
                            join prod in db.EveProductions on ppsf.CodeProduction equals prod.CodeProduction
 
                            select new
                            {
                                prod.Date,
-                               Description = mp.NomMatiere,
+                               psf.Description,
                                Entree = ppsf.QuantiteProduitSemiFini,
                                Sortie = 0,
                                Solde = 0
@@ -41,12 +40,12 @@ namespace CasaEcologieSysInfo.Pages
                            join psf in db.ResStockProduitsSemiFinis on mp.CodeMatierePremiere equals psf.CodeMatierePremiere
                            join upsf in db.EveUtilisationProduitsSemiFinis on psf.CodeProduitSemiFini equals upsf.CodeProduitSemiFini
                            join prod in db.EveProductions on upsf.CodeUtilisationRessource equals prod.CodeUtilisationRessources
-                           where mp.NomMatiere == nomProduit
+                           where psf.Description == description
 
                            select new
                            {
                                prod.Date,
-                               Description = mp.NomMatiere,
+                               Description = "Utilisation de " + psf.Description,
                                Entree = 0,
                                Sortie = upsf.QuantiteProduitSemiFini,
                                Solde = 0
@@ -58,7 +57,7 @@ namespace CasaEcologieSysInfo.Pages
 
             var stockInitial = (from mp in db.ResStockMatieresPremieres
                                 join psf in db.ResStockProduitsSemiFinis on mp.CodeMatierePremiere equals psf.CodeMatierePremiere
-                                where mp.NomMatiere == nomProduit
+                                where psf.Description == description
                                 select psf.Quantite).FirstOrDefault();
 
             DataTable dt = Conversion.ConvertirEnTableDeDonnees(resultat);
@@ -76,14 +75,13 @@ namespace CasaEcologieSysInfo.Pages
 
         private void UC_StockProduitsSemiFinis_Load(object sender, EventArgs e)
         {
-            var listeProduitsSemiFinis = (from mp in db.ResStockMatieresPremieres
-                                          join spsf in db.ResStockProduitsSemiFinis on mp.CodeMatierePremiere equals spsf.CodeMatierePremiere
-                                          select mp.NomMatiere).ToList();
+            var listeProduitsSemiFinis = (from psf in db.ResStockProduitsSemiFinis
+                                          select psf.Description).ToList();
 
             lbxListeProduitsSemiFinis.DataSource = listeProduitsSemiFinis;
 
-            var nomProduit = lbxListeProduitsSemiFinis.GetItemText(lbxListeProduitsSemiFinis.SelectedItem);
-            AfficherJournalCorrespondant(nomProduit);
+            var description = lbxListeProduitsSemiFinis.GetItemText(lbxListeProduitsSemiFinis.SelectedItem);
+            AfficherJournalCorrespondant(description);
         }
 
         private void AdgvJournalStocksProduitsSemiFinis_FilterStringChanged(object sender, EventArgs e)

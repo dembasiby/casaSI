@@ -158,7 +158,7 @@
           <Property Name="CodeReceptionMatierePremiere" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CodeMatierePremiere" Type="int" Nullable="false" />
           <Property Name="DateReception" Type="date" Nullable="false" />
-          <Property Name="Quantite" Type="int" Nullable="false" />
+          <Property Name="Quantite" Type="float" Nullable="false" />
           <Property Name="Montant" Type="money" Nullable="false" />
           <Property Name="CodeFournisseurMatierePremiere" Type="int" Nullable="false" />
           <Property Name="CodeEmploye" Type="int" Nullable="false" />
@@ -178,7 +178,7 @@
           </Key>
           <Property Name="CodeUtilisationRessource" Type="int" Nullable="false" />
           <Property Name="CodeMatierePremiere" Type="int" Nullable="false" />
-          <Property Name="QuantiteMatierePremiere" Type="int" Nullable="false" />
+          <Property Name="QuantiteMatierePremiere" Type="float" Nullable="false" />
         </EntityType>
         <EntityType Name="EveUtilisationProduitsSemiFinis">
           <Key>
@@ -247,7 +247,7 @@
           </Key>
           <Property Name="CodeMatierePremiere" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NomMatiere" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="StockMatiere" Type="int" Nullable="false" />
+          <Property Name="StockMatiere" Type="float" Nullable="false" />
         </EntityType>
         <EntityType Name="ResStockProduitsFinis">
           <Key>
@@ -265,6 +265,7 @@
           <Property Name="CodeProduitSemiFini" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CodeMatierePremiere" Type="int" Nullable="false" />
           <Property Name="Quantite" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -1287,7 +1288,7 @@
           <Property Name="CodeReceptionMatierePremiere" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CodeMatierePremiere" Type="Int32" Nullable="false" />
           <Property Name="DateReception" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Quantite" Type="Int32" Nullable="false" />
+          <Property Name="Quantite" Type="Single" Nullable="false" />
           <Property Name="Montant" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <Property Name="CodeFournisseurMatierePremiere" Type="Int32" Nullable="false" />
           <Property Name="CodeEmploye" Type="Int32" Nullable="false" />
@@ -1303,7 +1304,7 @@
           </Key>
           <Property Name="CodeUtilisationRessource" Type="Int32" Nullable="false" />
           <Property Name="CodeMatierePremiere" Type="Int32" Nullable="false" />
-          <Property Name="QuantiteMatierePremiere" Type="Int32" Nullable="false" />
+          <Property Name="QuantiteMatierePremiere" Type="Single" Nullable="false" />
           <NavigationProperty Name="EveUtilisationRessource" Relationship="Self.FK_EveUtilisationMatieresPremieres_EveUtilisationRessources" FromRole="EveUtilisationMatieresPremieres" ToRole="EveUtilisationRessources" />
           <NavigationProperty Name="ResStockMatieresPremiere" Relationship="Self.FK_EveUtilisationMatieresPremieres_ResStockMatieresPremieres" FromRole="EveUtilisationMatieresPremieres" ToRole="ResStockMatieresPremieres" />
         </EntityType>
@@ -1393,7 +1394,7 @@
           </Key>
           <Property Name="CodeMatierePremiere" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NomMatiere" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="StockMatiere" Type="Int32" Nullable="false" />
+          <Property Name="StockMatiere" Type="Single" Nullable="false" />
           <NavigationProperty Name="EveReceptionMatieresPremieres" Relationship="Self.FK_EveReceptionMatieresPremieres_ResStockMatieresPremieres" FromRole="ResStockMatieresPremieres" ToRole="EveReceptionMatieresPremieres" />
           <NavigationProperty Name="EveUtilisationMatieresPremieres" Relationship="Self.FK_EveUtilisationMatieresPremieres_ResStockMatieresPremieres" FromRole="ResStockMatieresPremieres" ToRole="EveUtilisationMatieresPremieres" />
           <NavigationProperty Name="ResStockProduitsSemiFinis" Relationship="Self.FK_ResStockProduitsSemiFinis_ResStockMatieresPremieres" FromRole="ResStockMatieresPremieres" ToRole="ResStockProduitsSemiFinis" />
@@ -1421,6 +1422,7 @@
           <NavigationProperty Name="ResStockMatieresPremiere" Relationship="Self.FK_ResStockProduitsSemiFinis_ResStockMatieresPremieres" FromRole="ResStockProduitsSemiFinis" ToRole="ResStockMatieresPremieres" />
           <NavigationProperty Name="ResStockProduitsSemiFinis1" Relationship="Self.FK_ResStockProduitsSemiFinis_ResStockProduitsSemiFinis" FromRole="ResStockProduitsSemiFinis" ToRole="ResStockProduitsSemiFinis1" />
           <NavigationProperty Name="ResStockProduitsSemiFini1" Relationship="Self.FK_ResStockProduitsSemiFinis_ResStockProduitsSemiFinis" FromRole="ResStockProduitsSemiFinis1" ToRole="ResStockProduitsSemiFinis" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -2516,6 +2518,7 @@
           <EntitySetMapping Name="ResStockProduitsSemiFinis">
             <EntityTypeMapping TypeName="CasaDBModel.ResStockProduitsSemiFini">
               <MappingFragment StoreEntitySet="ResStockProduitsSemiFinis">
+                <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="CodeProduitSemiFini" ColumnName="CodeProduitSemiFini" />
                 <ScalarProperty Name="CodeMatierePremiere" ColumnName="CodeMatierePremiere" />
                 <ScalarProperty Name="Quantite" ColumnName="Quantite" />

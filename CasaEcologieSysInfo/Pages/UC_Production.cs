@@ -44,15 +44,22 @@ namespace CasaEcologieSysInfo
 
 
             var listProduitsSemiFinis = from em in db.ResStockProduitsSemiFinis
-                                        // where em.CodeMatierePremiere.Equals(em.ResStockMatieresPremiere.CodeMatierePremiere)
-                                        select em.ResStockMatieresPremiere.NomMatiere;
+                                        select em.Description;
 
             cbxNomProduitSemiFini.Items.AddRange(listProduitsSemiFinis.ToArray());
             cbxProduitsSemiFinis.Items.AddRange(listProduitsSemiFinis.ToArray());
-            //cbxNomProduitSemiFini.SelectedIndex = 0;
-            //cbxProduitsSemiFinis.SelectedIndex = 0;
 
+            if (cbxNomProduitSemiFini.Items.Count > 0)
+            {
+                cbxNomProduitSemiFini.SelectedIndex = 0;
+            }
 
+            if (cbxProduitsSemiFinis.Items.Count > 0)
+            {
+                cbxProduitsSemiFinis.SelectedIndex = 0;
+            }
+
+            AfficherSoldeStocksProduitsSemiFinis();
         }
 
         public void VerifierChampsQuantite (string quantite)
@@ -323,24 +330,30 @@ namespace CasaEcologieSysInfo
 
         private void CbxNomProduitSemiFini_SelectedIndexChanged(object sender, EventArgs e)
         {
+            AfficherSoldeStocksProduitsSemiFinis();
+        }
+
+        private void AfficherSoldeStocksProduitsSemiFinis()
+        {
             try
             {
-                var prodSF = cbxNomProduitSemiFini.SelectedItem.ToString();
+                var prodSF = cbxNomProduitSemiFini.GetItemText(cbxNomProduitSemiFini.SelectedItem);
 
-                var codeQuery = from st3 in db.ResStockMatieresPremieres
-                                where st3.NomMatiere == prodSF
-                                select st3;
+                var codeQuery = (from st3 in db.ResStockProduitsSemiFinis
+                                 where st3.Description == prodSF
+                                 select st3).FirstOrDefault();
 
-                var code = codeQuery.FirstOrDefault().CodeMatierePremiere;
-                var stockQuery = from st2 in db.ResStockProduitsSemiFinis
-                                 where st2.CodeMatierePremiere.Equals(code)
-                                 select st2;
+                var stockInitial = codeQuery.Quantite;
+                var entrees = (from epsf in db.EveProductionProduitsSemiFinis
+                               where epsf.ResStockProduitsSemiFini.Description == prodSF
+                               select (int?)epsf.QuantiteProduitSemiFini).Sum() ?? 0;
+                var sorties = (from ufsp in db.EveUtilisationProduitsSemiFinis
+                               where ufsp.ResStockProduitsSemiFini.Description == prodSF
+                               select (int?)ufsp.QuantiteProduitSemiFini).Sum() ?? 0;
 
-                if (stockQuery != null)
-                {
-                    var stock = stockQuery.FirstOrDefault().Quantite;
-                    txtStockProduitSFini.Text = stock.ToString();
-                }               
+                var soldeStock = stockInitial + entrees - sorties;
+                txtStockProduitSFini.Text = soldeStock.ToString();
+
             }
             catch (Exception ex)
             {
