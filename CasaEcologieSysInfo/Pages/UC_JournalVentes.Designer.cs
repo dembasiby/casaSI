@@ -28,9 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label4 = new System.Windows.Forms.Label();
             this.dgvJournalVentes = new System.Windows.Forms.DataGridView();
+            this.dtpDebut = new System.Windows.Forms.DateTimePicker();
+            this.dtpFin = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnFiltrer = new System.Windows.Forms.Button();
+            this.cbxProduits = new System.Windows.Forms.ComboBox();
+            this.cbxClients = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.resStockProduitsFiniBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ageClientBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvJournalVentes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.resStockProduitsFiniBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ageClientBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label4
@@ -49,18 +64,128 @@
             // 
             this.dgvJournalVentes.AllowUserToAddRows = false;
             this.dgvJournalVentes.AllowUserToDeleteRows = false;
-            this.dgvJournalVentes.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.dgvJournalVentes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgvJournalVentes.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dgvJournalVentes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvJournalVentes.Location = new System.Drawing.Point(26, 117);
             this.dgvJournalVentes.Name = "dgvJournalVentes";
-            this.dgvJournalVentes.Size = new System.Drawing.Size(741, 497);
+            this.dgvJournalVentes.Size = new System.Drawing.Size(868, 497);
             this.dgvJournalVentes.TabIndex = 13;
+            // 
+            // dtpDebut
+            // 
+            this.dtpDebut.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDebut.Location = new System.Drawing.Point(114, 55);
+            this.dtpDebut.Name = "dtpDebut";
+            this.dtpDebut.Size = new System.Drawing.Size(200, 23);
+            this.dtpDebut.TabIndex = 14;
+            this.dtpDebut.Value = new System.DateTime(2019, 1, 1, 0, 0, 0, 0);
+            // 
+            // dtpFin
+            // 
+            this.dtpFin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFin.Location = new System.Drawing.Point(114, 88);
+            this.dtpFin.Name = "dtpFin";
+            this.dtpFin.Size = new System.Drawing.Size(200, 23);
+            this.dtpFin.TabIndex = 15;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(360, 88);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(100, 17);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "Nom du client";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(42, 93);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(25, 17);
+            this.label2.TabIndex = 16;
+            this.label2.Text = "Fin";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(360, 57);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(76, 17);
+            this.label3.TabIndex = 16;
+            this.label3.Text = "Produit fini";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(836, 19);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(133, 23);
+            this.button1.TabIndex = 18;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // btnFiltrer
+            // 
+            this.btnFiltrer.Location = new System.Drawing.Point(731, 90);
+            this.btnFiltrer.Name = "btnFiltrer";
+            this.btnFiltrer.Size = new System.Drawing.Size(133, 23);
+            this.btnFiltrer.TabIndex = 18;
+            this.btnFiltrer.Text = "Filtrer";
+            this.btnFiltrer.UseVisualStyleBackColor = true;
+            this.btnFiltrer.Click += new System.EventHandler(this.btnFiltrer_Click);
+            // 
+            // cbxProduits
+            // 
+            this.cbxProduits.DataSource = this.resStockProduitsFiniBindingSource;
+            this.cbxProduits.DisplayMember = "NomProduit";
+            this.cbxProduits.FormattingEnabled = true;
+            this.cbxProduits.Location = new System.Drawing.Point(470, 57);
+            this.cbxProduits.Name = "cbxProduits";
+            this.cbxProduits.Size = new System.Drawing.Size(234, 25);
+            this.cbxProduits.TabIndex = 19;
+            // 
+            // cbxClients
+            // 
+            this.cbxClients.DataSource = this.ageClientBindingSource;
+            this.cbxClients.DisplayMember = "NomClient";
+            this.cbxClients.FormattingEnabled = true;
+            this.cbxClients.Location = new System.Drawing.Point(470, 90);
+            this.cbxClients.Name = "cbxClients";
+            this.cbxClients.Size = new System.Drawing.Size(234, 25);
+            this.cbxClients.TabIndex = 19;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(42, 60);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(48, 17);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "Début";
+            // 
+            // resStockProduitsFiniBindingSource
+            // 
+            this.resStockProduitsFiniBindingSource.DataSource = typeof(CasaEcologieSysInfo.ResStockProduitsFini);
+            // 
+            // ageClientBindingSource
+            // 
+            this.ageClientBindingSource.DataSource = typeof(CasaEcologieSysInfo.AgeClient);
             // 
             // UC_JournalVentes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.cbxClients);
+            this.Controls.Add(this.cbxProduits);
+            this.Controls.Add(this.btnFiltrer);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.dtpFin);
+            this.Controls.Add(this.dtpDebut);
             this.Controls.Add(this.dgvJournalVentes);
             this.Controls.Add(this.label4);
             this.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -69,6 +194,8 @@
             this.Size = new System.Drawing.Size(983, 635);
             this.Load += new System.EventHandler(this.UC_JournalVentes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvJournalVentes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.resStockProduitsFiniBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ageClientBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -78,5 +205,17 @@
 
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridView dgvJournalVentes;
+        private System.Windows.Forms.DateTimePicker dtpDebut;
+        private System.Windows.Forms.DateTimePicker dtpFin;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnFiltrer;
+        private System.Windows.Forms.ComboBox cbxProduits;
+        private System.Windows.Forms.BindingSource resStockProduitsFiniBindingSource;
+        private System.Windows.Forms.ComboBox cbxClients;
+        private System.Windows.Forms.BindingSource ageClientBindingSource;
+        private System.Windows.Forms.Label label5;
     }
 }

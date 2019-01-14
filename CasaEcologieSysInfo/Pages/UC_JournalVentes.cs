@@ -44,12 +44,17 @@ namespace CasaEcologieSysInfo
             dt.Rows.Add(DateTime.Now, "Total", 0, "", Conversion.CalculerTotal(dgvJournalVentes, "Montant"));
 
             dgvJournalVentes.Columns["Montant"].DefaultCellStyle.Format = "n0";
-            dgvJournalVentes.Columns["Montant"].HeaderText = "Montant (FCFA)";
+            dgvJournalVentes.Columns["Montant"].HeaderText = "Montant(FCFA)";
             dgvJournalVentes.Columns["Quantité"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvJournalVentes.Columns["Montant"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dgvJournalVentes.Columns["Quantité"].HeaderText = "Quantité (unités)";
+            dgvJournalVentes.Columns["Quantité"].HeaderText = "Quantité(unités)";
            
 
-        }  
+        }
+
+        private void btnFiltrer_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
