@@ -16,7 +16,7 @@ namespace CasaEcologieSysInfo
     {
         public int CodePresence { get; set; }
         public int CodeEmploye { get; set; }
-        public int CodeUtilisationDesRessources { get; set; }
+        public Nullable<int> CodeUtilisationDesRessources { get; set; }
         public System.DateTime Date { get; set; }
         public System.TimeSpan Arrivee { get; set; }
         public System.TimeSpan Depart { get; set; }

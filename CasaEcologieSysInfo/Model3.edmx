@@ -110,7 +110,7 @@
           </Key>
           <Property Name="CodePresence" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CodeEmploye" Type="int" Nullable="false" />
-          <Property Name="CodeUtilisationDesRessources" Type="int" Nullable="false" />
+          <Property Name="CodeUtilisationDesRessources" Type="int" />
           <Property Name="Date" Type="date" Nullable="false" />
           <Property Name="Arrivee" Type="time" Precision="7" Nullable="false" />
           <Property Name="Depart" Type="time" Precision="7" Nullable="false" />
@@ -1230,7 +1230,7 @@
           </Key>
           <Property Name="CodePresence" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CodeEmploye" Type="Int32" Nullable="false" />
-          <Property Name="CodeUtilisationDesRessources" Type="Int32" Nullable="false" />
+          <Property Name="CodeUtilisationDesRessources" Type="Int32" />
           <NavigationProperty Name="AgeEmploye" Relationship="Self.FK_EvePresenceEmployes_AgeEmployes" FromRole="EvePresenceEmployes" ToRole="AgeEmployes" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Arrivee" Type="Time" Nullable="false" Precision="7" />
