@@ -76,7 +76,7 @@ namespace CasaEcologieSysInfo
         {
             Double Tot = 0;
 
-            for (int i = 0; i < dataGrid.Rows.Count - 1; i++)
+            for (int i = 0; i < dataGrid.Rows.Count; i++)
             {
                 Tot += Convert.ToDouble(dataGrid.Rows[i].Cells[columnName].Value);
 
