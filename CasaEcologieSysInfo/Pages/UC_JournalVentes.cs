@@ -40,31 +40,16 @@ namespace CasaEcologieSysInfo
 
             DataTable dt = Conversion.ConvertirEnTableDeDonnees(ventes);
 
-            adgvJournalVentes.DataSource = dt;
-           // dt.Rows.Add(DateTime.Now, "Total", "", "", Conversion.CalculerTotal(dgvJournalVentes, "Montant"));
+            dgvJournalVentes.DataSource = dt;
+            dt.Rows.Add(DateTime.Now, "Total", 0, "", Conversion.CalculerTotal(dgvJournalVentes, "Montant"));
 
-            adgvJournalVentes.Columns["Montant"].DefaultCellStyle.Format = "n0";
-            adgvJournalVentes.Columns["Montant"].HeaderText = "Montant (FCFA)";
-            adgvJournalVentes.Columns["Quantité"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            adgvJournalVentes.Columns["Montant"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvJournalVentes.Columns["Montant"].DefaultCellStyle.Format = "n0";
+            dgvJournalVentes.Columns["Montant"].HeaderText = "Montant (FCFA)";
+            dgvJournalVentes.Columns["Quantité"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvJournalVentes.Columns["Montant"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvJournalVentes.Columns["Quantité"].HeaderText = "Quantité (unités)";
+           
 
-            adgvJournalVentes.Columns["Quantité"].HeaderText = "Quantité (unités)";
-
-            adgvJournalVentes.Rows[adgvJournalVentes.Rows.Count - 1].ReadOnly = true;
-        }
-
-        private void AdgvJournalVentes_FilterStringChanged(object sender, EventArgs e)
-        {
-            Conversion.FiltrerTableau(sender, e);
-            adgvJournalVentes.Rows[adgvJournalVentes.Rows.Count - 1].Cells["Montant"].Value = Conversion.CalculerTotal(1, adgvJournalVentes, "Montant");
-        }
-
-        private void AdgvJournalVentes_SortStringChanged(object sender, EventArgs e)
-        {
-            Conversion.TrierTableau(sender, e);
-        }
-
-
-        
+        }  
     }
 }

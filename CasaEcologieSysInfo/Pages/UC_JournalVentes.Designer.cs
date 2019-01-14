@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.label4 = new System.Windows.Forms.Label();
-            this.adgvJournalVentes = new ADGV.AdvancedDataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.adgvJournalVentes)).BeginInit();
+            this.dgvJournalVentes = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvJournalVentes)).BeginInit();
             this.SuspendLayout();
             // 
             // label4
@@ -45,39 +45,30 @@
             this.label4.Text = "Journal des Ventes";
             this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // adgvJournalVentes
+            // dgvJournalVentes
             // 
-            this.adgvJournalVentes.AllowUserToAddRows = false;
-            this.adgvJournalVentes.AllowUserToDeleteRows = false;
-            this.adgvJournalVentes.AllowUserToResizeColumns = false;
-            this.adgvJournalVentes.AllowUserToResizeRows = false;
-            this.adgvJournalVentes.AutoGenerateContextFilters = true;
-            this.adgvJournalVentes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.adgvJournalVentes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.adgvJournalVentes.DateWithTime = false;
-            this.adgvJournalVentes.Location = new System.Drawing.Point(13, 58);
-            this.adgvJournalVentes.Name = "adgvJournalVentes";
-            this.adgvJournalVentes.ReadOnly = true;
-            this.adgvJournalVentes.RowHeadersVisible = false;
-            this.adgvJournalVentes.Size = new System.Drawing.Size(952, 574);
-            this.adgvJournalVentes.TabIndex = 13;
-            this.adgvJournalVentes.TimeFilter = true;
-            this.adgvJournalVentes.VirtualMode = true;
-            this.adgvJournalVentes.SortStringChanged += new System.EventHandler(this.AdgvJournalVentes_SortStringChanged);
-            this.adgvJournalVentes.FilterStringChanged += new System.EventHandler(this.AdgvJournalVentes_FilterStringChanged);
+            this.dgvJournalVentes.AllowUserToAddRows = false;
+            this.dgvJournalVentes.AllowUserToDeleteRows = false;
+            this.dgvJournalVentes.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.dgvJournalVentes.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.dgvJournalVentes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvJournalVentes.Location = new System.Drawing.Point(26, 117);
+            this.dgvJournalVentes.Name = "dgvJournalVentes";
+            this.dgvJournalVentes.Size = new System.Drawing.Size(741, 497);
+            this.dgvJournalVentes.TabIndex = 13;
             // 
             // UC_JournalVentes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.adgvJournalVentes);
+            this.Controls.Add(this.dgvJournalVentes);
             this.Controls.Add(this.label4);
             this.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UC_JournalVentes";
             this.Size = new System.Drawing.Size(983, 635);
             this.Load += new System.EventHandler(this.UC_JournalVentes_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.adgvJournalVentes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvJournalVentes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -86,6 +77,6 @@
         #endregion
 
         private System.Windows.Forms.Label label4;
-        private ADGV.AdvancedDataGridView adgvJournalVentes;
+        private System.Windows.Forms.DataGridView dgvJournalVentes;
     }
 }
