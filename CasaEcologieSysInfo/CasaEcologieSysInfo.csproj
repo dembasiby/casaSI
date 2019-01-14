@@ -42,26 +42,6 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="GrapeCity.ActiveReports.ArsClient.v12, Version=12.2.13986.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff" />
-    <Reference Include="GrapeCity.ActiveReports.Chart.v12, Version=12.2.13986.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff" />
-    <Reference Include="GrapeCity.ActiveReports.Design.Win.v12, Version=12.2.13986.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL" />
-    <Reference Include="GrapeCity.ActiveReports.Diagnostics.v12, Version=12.2.13986.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff" />
-    <Reference Include="GrapeCity.ActiveReports.Document.v12, Version=12.2.13986.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff" />
-    <Reference Include="GrapeCity.ActiveReports.Extensibility.v12, Version=12.2.13986.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff" />
-    <Reference Include="GrapeCity.ActiveReports.v12, Version=12.2.13986.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff" />
-    <Reference Include="GrapeCity.ActiveReports.Viewer.Win.v12, Version=12.2.13986.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff" />
-    <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
-      <HintPath>..\packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
-    </Reference>
-    <Reference Include="LiveCharts.WinForms, Version=0.9.7.1, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
-      <HintPath>..\packages\LiveCharts.WinForms.0.9.7.1\lib\net45\LiveCharts.WinForms.dll</HintPath>
-    </Reference>
-    <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
-      <HintPath>..\packages\LiveCharts.Wpf.0.9.7\lib\net45\LiveCharts.Wpf.dll</HintPath>
-    </Reference>
-    <Reference Include="MetroFramework">
-      <HintPath>..\..\ElephantFamily\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
