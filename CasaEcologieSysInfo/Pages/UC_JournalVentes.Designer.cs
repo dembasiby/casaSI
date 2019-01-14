@@ -129,12 +129,17 @@
             // 
             // btnFiltrer
             // 
-            this.btnFiltrer.Location = new System.Drawing.Point(731, 90);
+            this.btnFiltrer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
+            this.btnFiltrer.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
+            this.btnFiltrer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFiltrer.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFiltrer.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnFiltrer.Location = new System.Drawing.Point(731, 71);
             this.btnFiltrer.Name = "btnFiltrer";
-            this.btnFiltrer.Size = new System.Drawing.Size(133, 23);
+            this.btnFiltrer.Size = new System.Drawing.Size(133, 31);
             this.btnFiltrer.TabIndex = 18;
             this.btnFiltrer.Text = "Filtrer";
-            this.btnFiltrer.UseVisualStyleBackColor = true;
+            this.btnFiltrer.UseVisualStyleBackColor = false;
             this.btnFiltrer.Click += new System.EventHandler(this.BtnFiltrer_Click);
             // 
             // cbxProduits
