@@ -33,7 +33,7 @@ namespace CasaEcologieSysInfo
                           {
                               Date = v.DateVente,
                               Description = pf.NomProduit,
-                              Quantité = vpf.QuantiteProduitFini + " unités",
+                              Quantité = vpf.QuantiteProduitFini,
                               Client = c.NomClient,
                               vpf.Montant
                           }).ToList();
@@ -41,9 +41,15 @@ namespace CasaEcologieSysInfo
             DataTable dt = Conversion.ConvertirEnTableDeDonnees(ventes);
 
             adgvJournalVentes.DataSource = dt;
-            dt.Rows.Add(DateTime.Now, "Total", "", "", Conversion.CalculerTotal(0, adgvJournalVentes, "Montant"));
+           // dt.Rows.Add(DateTime.Now, "Total", "", "", Conversion.CalculerTotal(dgvJournalVentes, "Montant"));
 
-            adgvJournalVentes.Columns["Montant"].DefaultCellStyle.Format = "c0";
+            adgvJournalVentes.Columns["Montant"].DefaultCellStyle.Format = "n0";
+            adgvJournalVentes.Columns["Montant"].HeaderText = "Montant (FCFA)";
+            adgvJournalVentes.Columns["Quantité"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            adgvJournalVentes.Columns["Montant"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+            adgvJournalVentes.Columns["Quantité"].HeaderText = "Quantité (unités)";
+
             adgvJournalVentes.Rows[adgvJournalVentes.Rows.Count - 1].ReadOnly = true;
         }
 
