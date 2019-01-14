@@ -39,10 +39,10 @@
             this.button1 = new System.Windows.Forms.Button();
             this.btnFiltrer = new System.Windows.Forms.Button();
             this.cbxProduits = new System.Windows.Forms.ComboBox();
-            this.cbxClients = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.resStockProduitsFiniBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cbxClients = new System.Windows.Forms.ComboBox();
             this.ageClientBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvJournalVentes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.resStockProduitsFiniBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ageClientBindingSource)).BeginInit();
@@ -80,6 +80,7 @@
             this.dtpDebut.Size = new System.Drawing.Size(200, 23);
             this.dtpDebut.TabIndex = 14;
             this.dtpDebut.Value = new System.DateTime(2019, 1, 1, 0, 0, 0, 0);
+            this.dtpDebut.ValueChanged += new System.EventHandler(this.DtpDebut_ValueChanged);
             // 
             // dtpFin
             // 
@@ -88,6 +89,7 @@
             this.dtpFin.Name = "dtpFin";
             this.dtpFin.Size = new System.Drawing.Size(200, 23);
             this.dtpFin.TabIndex = 15;
+            this.dtpFin.ValueChanged += new System.EventHandler(this.DtpFin_ValueChanged);
             // 
             // label1
             // 
@@ -144,6 +146,12 @@
             this.cbxProduits.Name = "cbxProduits";
             this.cbxProduits.Size = new System.Drawing.Size(234, 25);
             this.cbxProduits.TabIndex = 19;
+            this.cbxProduits.SelectedIndexChanged += new System.EventHandler(this.CbxProduits_SelectedIndexChanged);
+            this.cbxProduits.TextChanged += new System.EventHandler(this.CbxProduits_TextChanged);
+            // 
+            // resStockProduitsFiniBindingSource
+            // 
+            this.resStockProduitsFiniBindingSource.DataSource = typeof(CasaEcologieSysInfo.ResStockProduitsFini);
             // 
             // cbxClients
             // 
@@ -154,6 +162,12 @@
             this.cbxClients.Name = "cbxClients";
             this.cbxClients.Size = new System.Drawing.Size(234, 25);
             this.cbxClients.TabIndex = 19;
+            this.cbxClients.SelectedIndexChanged += new System.EventHandler(this.CbxClients_SelectedIndexChanged);
+            this.cbxClients.TextChanged += new System.EventHandler(this.CbxClients_TextChanged);
+            // 
+            // ageClientBindingSource
+            // 
+            this.ageClientBindingSource.DataSource = typeof(CasaEcologieSysInfo.AgeClient);
             // 
             // label5
             // 
@@ -163,14 +177,6 @@
             this.label5.Size = new System.Drawing.Size(48, 17);
             this.label5.TabIndex = 16;
             this.label5.Text = "Début";
-            // 
-            // resStockProduitsFiniBindingSource
-            // 
-            this.resStockProduitsFiniBindingSource.DataSource = typeof(CasaEcologieSysInfo.ResStockProduitsFini);
-            // 
-            // ageClientBindingSource
-            // 
-            this.ageClientBindingSource.DataSource = typeof(CasaEcologieSysInfo.AgeClient);
             // 
             // UC_JournalVentes
             // 

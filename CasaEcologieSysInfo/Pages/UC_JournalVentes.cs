@@ -96,5 +96,34 @@ namespace CasaEcologieSysInfo
             AfficherResultatsFiltre();
         }
 
+        private void DtpDebut_ValueChanged(object sender, EventArgs e)
+        {
+            AfficherResultatsFiltre();
+        }
+
+        private void DtpFin_ValueChanged(object sender, EventArgs e)
+        {
+            AfficherResultatsFiltre();
+        }
+
+        private void CbxProduits_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            AfficherResultatsFiltre();
+        }
+
+        private void CbxClients_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            AfficherResultatsFiltre();
+        }
+
+        private void CbxProduits_TextChanged(object sender, EventArgs e)
+        {
+            AfficherResultatsFiltre();
+        }
+
+        private void CbxClients_TextChanged(object sender, EventArgs e)
+        {
+            AfficherResultatsFiltre();
+        }
     }
 }
