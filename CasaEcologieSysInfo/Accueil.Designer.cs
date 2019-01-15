@@ -251,7 +251,7 @@
             this.pnlTresorerie.MaximumSize = new System.Drawing.Size(217, 300);
             this.pnlTresorerie.MinimumSize = new System.Drawing.Size(217, 40);
             this.pnlTresorerie.Name = "pnlTresorerie";
-            this.pnlTresorerie.Size = new System.Drawing.Size(217, 300);
+            this.pnlTresorerie.Size = new System.Drawing.Size(217, 40);
             this.pnlTresorerie.TabIndex = 9;
             // 
             // btnNouveauDecaissement
@@ -281,11 +281,12 @@
             this.btnMouvementCAC.Location = new System.Drawing.Point(1, 209);
             this.btnMouvementCAC.Name = "btnMouvementCAC";
             this.btnMouvementCAC.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnMouvementCAC.Size = new System.Drawing.Size(217, 52);
+            this.btnMouvementCAC.Size = new System.Drawing.Size(212, 52);
             this.btnMouvementCAC.TabIndex = 4;
             this.btnMouvementCAC.Text = "Mouvement compte à compte";
             this.btnMouvementCAC.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMouvementCAC.UseVisualStyleBackColor = false;
+            this.btnMouvementCAC.Click += new System.EventHandler(this.BtnMouvementCAC_Click);
             // 
             // btnAutreEncaissement
             // 
@@ -378,7 +379,7 @@
             this.pnlVentes.Controls.Add(this.btnNouvelleVente);
             this.pnlVentes.Controls.Add(this.btnVentes);
             this.pnlVentes.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.pnlVentes.Location = new System.Drawing.Point(3, 550);
+            this.pnlVentes.Location = new System.Drawing.Point(3, 290);
             this.pnlVentes.MaximumSize = new System.Drawing.Size(217, 124);
             this.pnlVentes.MinimumSize = new System.Drawing.Size(217, 40);
             this.pnlVentes.Name = "pnlVentes";
@@ -447,7 +448,7 @@
             this.pnlDepenses.Controls.Add(this.btnMatierePremiere);
             this.pnlDepenses.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnlDepenses.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.pnlDepenses.Location = new System.Drawing.Point(3, 596);
+            this.pnlDepenses.Location = new System.Drawing.Point(3, 336);
             this.pnlDepenses.MaximumSize = new System.Drawing.Size(217, 208);
             this.pnlDepenses.MinimumSize = new System.Drawing.Size(217, 40);
             this.pnlDepenses.Name = "pnlDepenses";
@@ -556,7 +557,7 @@
             this.pnlFournisseurClient.Controls.Add(this.btnFournisseursEtClients);
             this.pnlFournisseurClient.Controls.Add(this.btnCreancesClients);
             this.pnlFournisseurClient.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.pnlFournisseurClient.Location = new System.Drawing.Point(3, 642);
+            this.pnlFournisseurClient.Location = new System.Drawing.Point(3, 382);
             this.pnlFournisseurClient.MaximumSize = new System.Drawing.Size(217, 111);
             this.pnlFournisseurClient.MinimumSize = new System.Drawing.Size(217, 40);
             this.pnlFournisseurClient.Name = "pnlFournisseurClient";
@@ -620,7 +621,7 @@
             this.pnlProductionStocks.Controls.Add(this.btnStockMatierePremiere);
             this.pnlProductionStocks.Controls.Add(this.btnStockProduitsFinis);
             this.pnlProductionStocks.Controls.Add(this.btnProductionStock);
-            this.pnlProductionStocks.Location = new System.Drawing.Point(3, 688);
+            this.pnlProductionStocks.Location = new System.Drawing.Point(3, 428);
             this.pnlProductionStocks.MaximumSize = new System.Drawing.Size(217, 210);
             this.pnlProductionStocks.MinimumSize = new System.Drawing.Size(217, 40);
             this.pnlProductionStocks.Name = "pnlProductionStocks";
@@ -709,7 +710,7 @@
             this.pnlEtatsFinanciers.Controls.Add(this.btnTableauTresorerie);
             this.pnlEtatsFinanciers.Controls.Add(this.btnCompteDeResultat);
             this.pnlEtatsFinanciers.Controls.Add(this.btnEtatsFinanciers);
-            this.pnlEtatsFinanciers.Location = new System.Drawing.Point(3, 734);
+            this.pnlEtatsFinanciers.Location = new System.Drawing.Point(3, 474);
             this.pnlEtatsFinanciers.MaximumSize = new System.Drawing.Size(217, 161);
             this.pnlEtatsFinanciers.MinimumSize = new System.Drawing.Size(217, 40);
             this.pnlEtatsFinanciers.Name = "pnlEtatsFinanciers";
@@ -786,7 +787,7 @@
             this.pnlUtilisateurs.Controls.Add(this.btnGererUtilisateurs);
             this.pnlUtilisateurs.Controls.Add(this.btnGererCompte);
             this.pnlUtilisateurs.Controls.Add(this.btnUtilisateurs);
-            this.pnlUtilisateurs.Location = new System.Drawing.Point(3, 780);
+            this.pnlUtilisateurs.Location = new System.Drawing.Point(3, 520);
             this.pnlUtilisateurs.MaximumSize = new System.Drawing.Size(217, 120);
             this.pnlUtilisateurs.MinimumSize = new System.Drawing.Size(217, 40);
             this.pnlUtilisateurs.Name = "pnlUtilisateurs";

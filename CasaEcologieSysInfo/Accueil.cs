@@ -246,5 +246,11 @@ namespace CasaEcologieSysInfo
             Pages.UC_AutreEncaissementDeFonds aen = new Pages.UC_AutreEncaissementDeFonds();
             AddControlsToPanel(aen);
         }
+
+        private void BtnMouvementCAC_Click(object sender, EventArgs e)
+        {
+            Pages.UC_MouvementCompteACompte mcc = new Pages.UC_MouvementCompteACompte();
+            AddControlsToPanel(mcc);
+        }
     }
 }

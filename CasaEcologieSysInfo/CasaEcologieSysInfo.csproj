@@ -418,6 +418,9 @@
     <EmbeddedResource Include="Pages\UC_JournalTresorerie.resx">
       <DependentUpon>UC_JournalTresorerie.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pages\UC_MouvementCompteACompte.resx">
+      <DependentUpon>UC_MouvementCompteACompte.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Pages\UC_NouveauCompteTresorerie.resx">
       <DependentUpon>UC_NouveauCompteTresorerie.cs</DependentUpon>
     </EmbeddedResource>
