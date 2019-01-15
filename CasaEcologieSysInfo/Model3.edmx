@@ -83,7 +83,6 @@
             <PropertyRef Name="CodeEncaissement" />
           </Key>
           <Property Name="CodeEncaissement" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CodeClient" Type="int" Nullable="false" />
           <Property Name="CodeEmploye" Type="int" Nullable="false" />
           <Property Name="CodeCompte" Type="int" Nullable="false" />
         </EntityType>
@@ -96,6 +95,7 @@
           <Property Name="CodeVente" Type="int" Nullable="false" />
           <Property Name="MontantEncaisse" Type="money" Nullable="false" />
           <Property Name="DateEncaissement" Type="date" Nullable="false" />
+          <Property Name="CodeClient" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="EvePaiementEmployes">
           <Key>
@@ -433,18 +433,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_EveEncaissements_AgeClients">
-          <End Role="AgeClients" Type="Self.AgeClients" Multiplicity="1" />
-          <End Role="EveEncaissements" Type="Self.EveEncaissements" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AgeClients">
-              <PropertyRef Name="CodeClient" />
-            </Principal>
-            <Dependent Role="EveEncaissements">
-              <PropertyRef Name="CodeClient" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_EveEncaissements_AgeEmployes">
           <End Role="AgeEmployes" Type="Self.AgeEmployes" Multiplicity="1" />
           <End Role="EveEncaissements" Type="Self.EveEncaissements" Multiplicity="*" />
@@ -466,6 +454,18 @@
             </Principal>
             <Dependent Role="EveEncaissements">
               <PropertyRef Name="CodeCompte" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveEncaissementsVentes_AgeClients">
+          <End Role="AgeClients" Type="Self.AgeClients" Multiplicity="1" />
+          <End Role="EveEncaissementsVentes" Type="Self.EveEncaissementsVentes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgeClients">
+              <PropertyRef Name="CodeClient" />
+            </Principal>
+            <Dependent Role="EveEncaissementsVentes">
+              <PropertyRef Name="CodeClient" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -952,10 +952,6 @@
             <End Role="ResComptesTresorerie" EntitySet="ResComptesTresorerie" />
             <End Role="EveDecaissements" EntitySet="EveDecaissements" />
           </AssociationSet>
-          <AssociationSet Name="FK_EveEncaissements_AgeClients" Association="Self.FK_EveEncaissements_AgeClients">
-            <End Role="AgeClients" EntitySet="AgeClients" />
-            <End Role="EveEncaissements" EntitySet="EveEncaissements" />
-          </AssociationSet>
           <AssociationSet Name="FK_EveEncaissements_AgeEmployes" Association="Self.FK_EveEncaissements_AgeEmployes">
             <End Role="AgeEmployes" EntitySet="AgeEmployes" />
             <End Role="EveEncaissements" EntitySet="EveEncaissements" />
@@ -963,6 +959,10 @@
           <AssociationSet Name="FK_EveEncaissements_ResComptesTresorerie" Association="Self.FK_EveEncaissements_ResComptesTresorerie">
             <End Role="ResComptesTresorerie" EntitySet="ResComptesTresorerie" />
             <End Role="EveEncaissements" EntitySet="EveEncaissements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveEncaissementsVentes_AgeClients" Association="Self.FK_EveEncaissementsVentes_AgeClients">
+            <End Role="AgeClients" EntitySet="AgeClients" />
+            <End Role="EveEncaissementsVentes" EntitySet="EveEncaissementsVentes" />
           </AssociationSet>
           <AssociationSet Name="FK_EveEncaissementsVentes_EveEncaissements" Association="Self.FK_EveEncaissementsVentes_EveEncaissements">
             <End Role="EveEncaissements" EntitySet="EveEncaissements" />
@@ -1112,8 +1112,8 @@
           <Property Name="NomClient" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Localite" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="SoldeInitialeCreance" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <NavigationProperty Name="EveEncaissements" Relationship="Self.FK_EveEncaissements_AgeClients" FromRole="AgeClients" ToRole="EveEncaissements" />
           <NavigationProperty Name="EveVentes" Relationship="Self.FK_EveVentes_AgeClients" FromRole="AgeClients" ToRole="EveVentes" />
+          <NavigationProperty Name="EveEncaissementsVentes" Relationship="CasaDBModel.FK_EveEncaissementsVentes_AgeClients" FromRole="AgeClient" ToRole="EveEncaissementsVente" />
         </EntityType>
         <EntityType Name="AgeEmploye">
           <Key>
@@ -1204,10 +1204,8 @@
             <PropertyRef Name="CodeEncaissement" />
           </Key>
           <Property Name="CodeEncaissement" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CodeClient" Type="Int32" Nullable="false" />
           <Property Name="CodeEmploye" Type="Int32" Nullable="false" />
           <Property Name="CodeCompte" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="AgeClient" Relationship="Self.FK_EveEncaissements_AgeClients" FromRole="EveEncaissements" ToRole="AgeClients" />
           <NavigationProperty Name="AgeEmploye" Relationship="Self.FK_EveEncaissements_AgeEmployes" FromRole="EveEncaissements" ToRole="AgeEmployes" />
           <NavigationProperty Name="ResComptesTresorerie" Relationship="Self.FK_EveEncaissements_ResComptesTresorerie" FromRole="EveEncaissements" ToRole="ResComptesTresorerie" />
           <NavigationProperty Name="EveEncaissementsVentes" Relationship="Self.FK_EveEncaissementsVentes_EveEncaissements" FromRole="EveEncaissements" ToRole="EveEncaissementsVentes" />
@@ -1223,6 +1221,8 @@
           <Property Name="DateEncaissement" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="EveEncaissement" Relationship="Self.FK_EveEncaissementsVentes_EveEncaissements" FromRole="EveEncaissementsVentes" ToRole="EveEncaissements" />
           <NavigationProperty Name="EveVente" Relationship="Self.FK_EveEncaissementsVentes_EveVentes" FromRole="EveEncaissementsVentes" ToRole="EveVentes" />
+          <Property Name="CodeClient" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AgeClient" Relationship="CasaDBModel.FK_EveEncaissementsVentes_AgeClients" FromRole="EveEncaissementsVente" ToRole="AgeClient" />
         </EntityType>
         <EntityType Name="EvePresenceEmploye">
           <Key>
@@ -1461,18 +1461,6 @@
             </Principal>
             <Dependent Role="EveReceptionEquipementsInfrastructures">
               <PropertyRef Name="CodeAutreFournisseur" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_EveEncaissements_AgeClients">
-          <End Role="AgeClients" Type="Self.AgeClient" Multiplicity="1" />
-          <End Role="EveEncaissements" Type="Self.EveEncaissement" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AgeClients">
-              <PropertyRef Name="CodeClient" />
-            </Principal>
-            <Dependent Role="EveEncaissements">
-              <PropertyRef Name="CodeClient" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1972,10 +1960,6 @@
             <End Role="AgeAutreFournisseurs" EntitySet="AgeAutreFournisseurs" />
             <End Role="EveReceptionEquipementsInfrastructures" EntitySet="EveReceptionEquipementsInfrastructures" />
           </AssociationSet>
-          <AssociationSet Name="FK_EveEncaissements_AgeClients" Association="Self.FK_EveEncaissements_AgeClients">
-            <End Role="AgeClients" EntitySet="AgeClients" />
-            <End Role="EveEncaissements" EntitySet="EveEncaissements" />
-          </AssociationSet>
           <AssociationSet Name="FK_EveVentes_AgeClients" Association="Self.FK_EveVentes_AgeClients">
             <End Role="AgeClients" EntitySet="AgeClients" />
             <End Role="EveVentes" EntitySet="EveVentes" />
@@ -2177,6 +2161,10 @@
             <End Role="AgeEmploye" EntitySet="AgeEmployes" />
             <End Role="Utilisateur" EntitySet="Utilisateurs" />
           </AssociationSet>
+          <AssociationSet Name="FK_EveEncaissementsVentes_AgeClients" Association="CasaDBModel.FK_EveEncaissementsVentes_AgeClients">
+            <End Role="AgeClient" EntitySet="AgeClients" />
+            <End Role="EveEncaissementsVente" EntitySet="EveEncaissementsVentes" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -2255,6 +2243,18 @@
             </Principal>
             <Dependent Role="Utilisateur">
               <PropertyRef Name="CodeEmploye" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveEncaissementsVentes_AgeClients">
+          <End Type="CasaDBModel.AgeClient" Role="AgeClient" Multiplicity="1" />
+          <End Type="CasaDBModel.EveEncaissementsVente" Role="EveEncaissementsVente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgeClient">
+              <PropertyRef Name="CodeClient" />
+            </Principal>
+            <Dependent Role="EveEncaissementsVente">
+              <PropertyRef Name="CodeClient" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2348,7 +2348,6 @@
             <EntityTypeMapping TypeName="CasaDBModel.EveEncaissement">
               <MappingFragment StoreEntitySet="EveEncaissements">
                 <ScalarProperty Name="CodeEncaissement" ColumnName="CodeEncaissement" />
-                <ScalarProperty Name="CodeClient" ColumnName="CodeClient" />
                 <ScalarProperty Name="CodeEmploye" ColumnName="CodeEmploye" />
                 <ScalarProperty Name="CodeCompte" ColumnName="CodeCompte" />
               </MappingFragment>
@@ -2357,6 +2356,7 @@
           <EntitySetMapping Name="EveEncaissementsVentes">
             <EntityTypeMapping TypeName="CasaDBModel.EveEncaissementsVente">
               <MappingFragment StoreEntitySet="EveEncaissementsVentes">
+                <ScalarProperty Name="CodeClient" ColumnName="CodeClient" />
                 <ScalarProperty Name="CodeEncaissement" ColumnName="CodeEncaissement" />
                 <ScalarProperty Name="CodeVente" ColumnName="CodeVente" />
                 <ScalarProperty Name="MontantEncaisse" ColumnName="MontantEncaisse" />

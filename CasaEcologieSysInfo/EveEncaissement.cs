@@ -21,11 +21,9 @@ namespace CasaEcologieSysInfo
         }
     
         public int CodeEncaissement { get; set; }
-        public int CodeClient { get; set; }
         public int CodeEmploye { get; set; }
         public int CodeCompte { get; set; }
     
-        public virtual AgeClient AgeClient { get; set; }
         public virtual AgeEmploye AgeEmploye { get; set; }
         public virtual ResComptesTresorerie ResComptesTresorerie { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

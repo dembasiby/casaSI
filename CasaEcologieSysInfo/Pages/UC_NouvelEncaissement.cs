@@ -37,8 +37,10 @@ namespace CasaEcologieSysInfo
                                  select (decimal?)vf.Montant).Sum() ?? 0m;
 
             var totalPaiementClient = (from c in db.AgeClients
+                                       from ev in db.EveEncaissementsVentes
                                        where c.NomClient == cbxNomClient.Text
-                                       select (decimal?)c.EveEncaissements.Sum(s => s.EveEncaissementsVentes.Sum(t => t.MontantEncaisse))).Sum() ?? 0m;
+                                       where c.CodeClient == ev.CodeClient
+                                       select (decimal?)ev.MontantEncaisse).Sum() ?? 0m;
 
             var creanceInitialClient = (from c in db.AgeClients where c.NomClient == cbxNomClient.Text select c.SoldeInitialeCreance).FirstOrDefault();
 
@@ -80,7 +82,6 @@ namespace CasaEcologieSysInfo
                 {
                     EveEncaissement enc = new EveEncaissement
                     {
-                        CodeClient = client.CodeClient,
                         CodeEmploye = tres.CodeEmploye,
                         CodeCompte = cpte.CodeCompte,
                     };
@@ -92,6 +93,7 @@ namespace CasaEcologieSysInfo
                     EveEncaissementsVente encV = new EveEncaissementsVente
                     {
                         CodeEncaissement = enc.CodeEncaissement,
+                        CodeClient = client.CodeClient,
                         CodeVente = vente.CodeVente,
                         MontantEncaisse = int.Parse(txtMontantEncaisse.Text),
                         DateEncaissement = DateTime.Parse(dtpDateEncaissement.Text)

@@ -39,11 +39,7 @@ namespace CasaEcologieSysInfo.Pages
             var query1 = (from c in db.EveEncaissements
                           from env in db.EveEncaissementsVentes
                           where c.CodeEncaissement == env.CodeEncaissement
-                          //from vpf in db.EveVenteStockProduitsFinis
-                          //where vpf.CodeVente== ev.CodeVente
-                          //from pf in db.ResStockProduitsFinis
-                          //where pf.CodeProduit == vpf.CodeProduitFini
-                        where c.ResComptesTresorerie.NomCompte == nomCompte
+                          where c.ResComptesTresorerie.NomCompte == nomCompte
 
                           select new
                           {

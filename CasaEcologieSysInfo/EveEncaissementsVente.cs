@@ -18,8 +18,10 @@ namespace CasaEcologieSysInfo
         public int CodeVente { get; set; }
         public decimal MontantEncaisse { get; set; }
         public System.DateTime DateEncaissement { get; set; }
+        public int CodeClient { get; set; }
     
         public virtual EveEncaissement EveEncaissement { get; set; }
         public virtual EveVente EveVente { get; set; }
+        public virtual AgeClient AgeClient { get; set; }
     }
 }

@@ -256,33 +256,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ResComptesTresorerie.cs">
-      <DependentUpon>Model3.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ResEquipementsInfrastructure.cs">
-      <DependentUpon>Model3.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ResServicesFourniture.cs">
-      <DependentUpon>Model3.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ResStockMatieresPremiere.cs">
-      <DependentUpon>Model3.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ResStockProduitsFini.cs">
-      <DependentUpon>Model3.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ResStockProduitsSemiFini.cs">
-      <DependentUpon>Model3.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>Model3.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sp_helpdiagrams_Result.cs">
-      <DependentUpon>Model3.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sysdiagram.cs">
-      <DependentUpon>Model3.tt</DependentUpon>
-    </Compile>
     <Compile Include="Pages\UC_StockMatieresPremieres.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -348,6 +321,33 @@
     </Compile>
     <Compile Include="Pages\UC_Production.Designer.cs">
       <DependentUpon>UC_Production.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ResComptesTresorerie.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ResEquipementsInfrastructure.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ResServicesFourniture.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ResStockMatieresPremiere.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ResStockProduitsFini.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ResStockProduitsSemiFini.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagrams_Result.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
     </Compile>
     <Compile Include="UC_NouveauDecaissement.cs">
       <SubType>UserControl</SubType>

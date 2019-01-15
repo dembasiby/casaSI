@@ -17,8 +17,8 @@ namespace CasaEcologieSysInfo
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public AgeClient()
         {
-            this.EveEncaissements = new HashSet<EveEncaissement>();
             this.EveVentes = new HashSet<EveVente>();
+            this.EveEncaissementsVentes = new HashSet<EveEncaissementsVente>();
         }
     
         public int CodeClient { get; set; }
@@ -27,8 +27,8 @@ namespace CasaEcologieSysInfo
         public decimal SoldeInitialeCreance { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EveEncaissement> EveEncaissements { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EveVente> EveVentes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EveEncaissementsVente> EveEncaissementsVentes { get; set; }
     }
 }

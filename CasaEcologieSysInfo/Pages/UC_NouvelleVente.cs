@@ -152,7 +152,6 @@ namespace CasaEcologieSysInfo
             {
                 EveEncaissement enc = new EveEncaissement
                 {
-                    CodeClient = client.CodeClient,
                     CodeEmploye = tres.CodeEmploye,
                     CodeCompte = cpte.CodeCompte,
                 };
@@ -162,6 +161,7 @@ namespace CasaEcologieSysInfo
 
                 EveEncaissementsVente encV = new EveEncaissementsVente
                 {
+                    CodeClient = client.CodeClient,
                     CodeEncaissement = enc.CodeEncaissement,
                     CodeVente = vente.CodeVente,
                     MontantEncaisse = int.Parse(txtMontantEncaisse.Text),

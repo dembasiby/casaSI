@@ -34,7 +34,6 @@
         <EntityTypeShape EntityType="CasaDBModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="CasaDBModel.FK_EveDecaissements_AgeAutreFournisseurs" ManuallyRouted="false" />
         <AssociationConnector Association="CasaDBModel.FK_EveReceptionEquipementsInfrastructures_AgeAutreFournisseurs" ManuallyRouted="false" />
-        <AssociationConnector Association="CasaDBModel.FK_EveEncaissements_AgeClients" ManuallyRouted="false" />
         <AssociationConnector Association="CasaDBModel.FK_EveVentes_AgeClients" ManuallyRouted="false" />
         <AssociationConnector Association="CasaDBModel.FK_EveAcquisitionServicesFournitures_AgeEmployes" ManuallyRouted="false" />
         <AssociationConnector Association="CasaDBModel.FK_EveDecaissements_AgeEmployes" ManuallyRouted="false" />
@@ -79,6 +78,7 @@
         <AssociationConnector Association="CasaDBModel.FK_EveDecaissements_EvePaiementEmployes" />
         <EntityTypeShape EntityType="CasaDBModel.Utilisateur" Width="1.5" PointX="3" PointY="30.75" />
         <AssociationConnector Association="CasaDBModel.FK_Utilisateurs_AgeEmployes" />
+        <AssociationConnector Association="CasaDBModel.FK_EveEncaissementsVentes_AgeClients" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
