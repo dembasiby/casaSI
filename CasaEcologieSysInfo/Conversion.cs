@@ -268,5 +268,26 @@ namespace CasaEcologieSysInfo
 
         }
 
+        public static bool MontantEstValide(string montant)
+        {
+            var estUnChiffre = int.TryParse(montant, out int n);
+
+            if (string.IsNullOrEmpty(montant))
+            {
+                MessageBox.Show("Le champ 'Montant reçu' doit être renseigné.");
+                return false;
+            }
+            else if (!estUnChiffre)
+            {
+                MessageBox.Show("Le champ 'Montant reçu' doit contenir uniquement des chiffres.");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+
+        }
+
     }
 }
