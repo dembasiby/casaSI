@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Accueil));
             this.panel3 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -85,6 +86,8 @@
             this.tmrUtilisateurs = new System.Windows.Forms.Timer(this.components);
             this.tmrEtatsFinanciers = new System.Windows.Forms.Timer(this.components);
             this.dragControl1 = new CasaEcologieSysInfo.DragControl();
+            this.btnAutreEncaissement = new System.Windows.Forms.Button();
+            this.btnMouvementCAC = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlTop.SuspendLayout();
@@ -187,15 +190,15 @@
             // 
             this.flowLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(31)))), ((int)(((byte)(20)))));
             this.flowLayoutPanel1.Controls.Add(this.panel3);
+            this.flowLayoutPanel1.Controls.Add(this.btnTableauDeBord);
             this.flowLayoutPanel1.Controls.Add(this.btnPersonnel);
+            this.flowLayoutPanel1.Controls.Add(this.pnlTresorerie);
+            this.flowLayoutPanel1.Controls.Add(this.pnlVentes);
             this.flowLayoutPanel1.Controls.Add(this.pnlDepenses);
             this.flowLayoutPanel1.Controls.Add(this.pnlFournisseurClient);
             this.flowLayoutPanel1.Controls.Add(this.pnlProductionStocks);
-            this.flowLayoutPanel1.Controls.Add(this.pnlUtilisateurs);
-            this.flowLayoutPanel1.Controls.Add(this.pnlTresorerie);
-            this.flowLayoutPanel1.Controls.Add(this.pnlVentes);
-            this.flowLayoutPanel1.Controls.Add(this.btnTableauDeBord);
             this.flowLayoutPanel1.Controls.Add(this.pnlEtatsFinanciers);
+            this.flowLayoutPanel1.Controls.Add(this.pnlUtilisateurs);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.flowLayoutPanel1.ForeColor = System.Drawing.Color.White;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
@@ -211,7 +214,7 @@
             this.btnPersonnel.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPersonnel.Image = global::CasaEcologieSysInfo.Properties.Resources.User_Groups_32px;
             this.btnPersonnel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPersonnel.Location = new System.Drawing.Point(3, 153);
+            this.btnPersonnel.Location = new System.Drawing.Point(3, 198);
             this.btnPersonnel.Name = "btnPersonnel";
             this.btnPersonnel.Size = new System.Drawing.Size(214, 40);
             this.btnPersonnel.TabIndex = 8;
@@ -230,7 +233,7 @@
             this.pnlDepenses.Controls.Add(this.btnMatierePremiere);
             this.pnlDepenses.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnlDepenses.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.pnlDepenses.Location = new System.Drawing.Point(3, 199);
+            this.pnlDepenses.Location = new System.Drawing.Point(3, 601);
             this.pnlDepenses.MaximumSize = new System.Drawing.Size(217, 208);
             this.pnlDepenses.MinimumSize = new System.Drawing.Size(217, 40);
             this.pnlDepenses.Name = "pnlDepenses";
@@ -339,7 +342,7 @@
             this.pnlFournisseurClient.Controls.Add(this.btnFournisseursEtClients);
             this.pnlFournisseurClient.Controls.Add(this.btnCreancesClients);
             this.pnlFournisseurClient.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.pnlFournisseurClient.Location = new System.Drawing.Point(3, 245);
+            this.pnlFournisseurClient.Location = new System.Drawing.Point(3, 647);
             this.pnlFournisseurClient.MaximumSize = new System.Drawing.Size(217, 111);
             this.pnlFournisseurClient.MinimumSize = new System.Drawing.Size(217, 40);
             this.pnlFournisseurClient.Name = "pnlFournisseurClient";
@@ -403,7 +406,7 @@
             this.pnlProductionStocks.Controls.Add(this.btnStockMatierePremiere);
             this.pnlProductionStocks.Controls.Add(this.btnStockProduitsFinis);
             this.pnlProductionStocks.Controls.Add(this.btnProductionStock);
-            this.pnlProductionStocks.Location = new System.Drawing.Point(3, 291);
+            this.pnlProductionStocks.Location = new System.Drawing.Point(3, 693);
             this.pnlProductionStocks.MaximumSize = new System.Drawing.Size(217, 210);
             this.pnlProductionStocks.MinimumSize = new System.Drawing.Size(217, 40);
             this.pnlProductionStocks.Name = "pnlProductionStocks";
@@ -478,7 +481,7 @@
             this.btnProductionStock.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnProductionStock.Image = global::CasaEcologieSysInfo.Properties.Resources.Expand_Arrow_20px;
             this.btnProductionStock.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnProductionStock.Location = new System.Drawing.Point(-3, 3);
+            this.btnProductionStock.Location = new System.Drawing.Point(-3, 2);
             this.btnProductionStock.Name = "btnProductionStock";
             this.btnProductionStock.Size = new System.Drawing.Size(217, 40);
             this.btnProductionStock.TabIndex = 1;
@@ -491,7 +494,7 @@
             this.pnlUtilisateurs.Controls.Add(this.btnGererUtilisateurs);
             this.pnlUtilisateurs.Controls.Add(this.btnGererCompte);
             this.pnlUtilisateurs.Controls.Add(this.btnUtilisateurs);
-            this.pnlUtilisateurs.Location = new System.Drawing.Point(3, 337);
+            this.pnlUtilisateurs.Location = new System.Drawing.Point(3, 785);
             this.pnlUtilisateurs.MaximumSize = new System.Drawing.Size(217, 120);
             this.pnlUtilisateurs.MinimumSize = new System.Drawing.Size(217, 40);
             this.pnlUtilisateurs.Name = "pnlUtilisateurs";
@@ -549,15 +552,17 @@
             // pnlTresorerie
             // 
             this.pnlTresorerie.Controls.Add(this.btnNouveauDecaissement);
+            this.pnlTresorerie.Controls.Add(this.btnMouvementCAC);
+            this.pnlTresorerie.Controls.Add(this.btnAutreEncaissement);
             this.pnlTresorerie.Controls.Add(this.btnNouvelEncaissement);
             this.pnlTresorerie.Controls.Add(this.btnJournalTresorerie);
             this.pnlTresorerie.Controls.Add(this.btnNouveauCompteTresorerie);
             this.pnlTresorerie.Controls.Add(this.btnTresorerie);
-            this.pnlTresorerie.Location = new System.Drawing.Point(3, 383);
-            this.pnlTresorerie.MaximumSize = new System.Drawing.Size(217, 200);
+            this.pnlTresorerie.Location = new System.Drawing.Point(3, 244);
+            this.pnlTresorerie.MaximumSize = new System.Drawing.Size(217, 305);
             this.pnlTresorerie.MinimumSize = new System.Drawing.Size(217, 40);
             this.pnlTresorerie.Name = "pnlTresorerie";
-            this.pnlTresorerie.Size = new System.Drawing.Size(217, 40);
+            this.pnlTresorerie.Size = new System.Drawing.Size(217, 305);
             this.pnlTresorerie.TabIndex = 9;
             // 
             // btnNouveauDecaissement
@@ -567,12 +572,12 @@
             this.btnNouveauDecaissement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNouveauDecaissement.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNouveauDecaissement.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNouveauDecaissement.Location = new System.Drawing.Point(-1, 163);
+            this.btnNouveauDecaissement.Location = new System.Drawing.Point(1, 262);
             this.btnNouveauDecaissement.Name = "btnNouveauDecaissement";
             this.btnNouveauDecaissement.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnNouveauDecaissement.Size = new System.Drawing.Size(217, 37);
             this.btnNouveauDecaissement.TabIndex = 4;
-            this.btnNouveauDecaissement.Text = "Nouveau décaissement";
+            this.btnNouveauDecaissement.Text = "Paiement dette fournisseur";
             this.btnNouveauDecaissement.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnNouveauDecaissement.UseVisualStyleBackColor = false;
             this.btnNouveauDecaissement.Click += new System.EventHandler(this.BtnNouveauDecaissement_Click);
@@ -589,7 +594,7 @@
             this.btnNouvelEncaissement.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnNouvelEncaissement.Size = new System.Drawing.Size(217, 40);
             this.btnNouvelEncaissement.TabIndex = 4;
-            this.btnNouvelEncaissement.Text = "Nouvel encaissement";
+            this.btnNouvelEncaissement.Text = "Encaissement créance client";
             this.btnNouvelEncaissement.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnNouvelEncaissement.UseVisualStyleBackColor = false;
             this.btnNouvelEncaissement.Click += new System.EventHandler(this.BtnNouvelEncaissement_Click);
@@ -651,11 +656,11 @@
             this.pnlVentes.Controls.Add(this.btnNouvelleVente);
             this.pnlVentes.Controls.Add(this.btnVentes);
             this.pnlVentes.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.pnlVentes.Location = new System.Drawing.Point(3, 429);
+            this.pnlVentes.Location = new System.Drawing.Point(3, 555);
             this.pnlVentes.MaximumSize = new System.Drawing.Size(217, 124);
             this.pnlVentes.MinimumSize = new System.Drawing.Size(217, 40);
             this.pnlVentes.Name = "pnlVentes";
-            this.pnlVentes.Size = new System.Drawing.Size(217, 41);
+            this.pnlVentes.Size = new System.Drawing.Size(217, 40);
             this.pnlVentes.TabIndex = 0;
             // 
             // btnJournalVentes
@@ -700,9 +705,9 @@
             this.btnVentes.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVentes.Image = global::CasaEcologieSysInfo.Properties.Resources.Expand_Arrow_20px;
             this.btnVentes.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnVentes.Location = new System.Drawing.Point(-3, -3);
+            this.btnVentes.Location = new System.Drawing.Point(3, 0);
             this.btnVentes.Name = "btnVentes";
-            this.btnVentes.Size = new System.Drawing.Size(217, 40);
+            this.btnVentes.Size = new System.Drawing.Size(211, 37);
             this.btnVentes.TabIndex = 1;
             this.btnVentes.Text = "Ventes";
             this.btnVentes.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -717,7 +722,7 @@
             this.btnTableauDeBord.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTableauDeBord.Image = global::CasaEcologieSysInfo.Properties.Resources.Home_32px;
             this.btnTableauDeBord.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnTableauDeBord.Location = new System.Drawing.Point(3, 476);
+            this.btnTableauDeBord.Location = new System.Drawing.Point(3, 153);
             this.btnTableauDeBord.Name = "btnTableauDeBord";
             this.btnTableauDeBord.Size = new System.Drawing.Size(214, 39);
             this.btnTableauDeBord.TabIndex = 1;
@@ -731,7 +736,7 @@
             this.pnlEtatsFinanciers.Controls.Add(this.btnTableauTresorerie);
             this.pnlEtatsFinanciers.Controls.Add(this.btnCompteDeResultat);
             this.pnlEtatsFinanciers.Controls.Add(this.btnEtatsFinanciers);
-            this.pnlEtatsFinanciers.Location = new System.Drawing.Point(3, 521);
+            this.pnlEtatsFinanciers.Location = new System.Drawing.Point(3, 739);
             this.pnlEtatsFinanciers.MaximumSize = new System.Drawing.Size(217, 161);
             this.pnlEtatsFinanciers.MinimumSize = new System.Drawing.Size(217, 40);
             this.pnlEtatsFinanciers.Name = "pnlEtatsFinanciers";
@@ -850,6 +855,40 @@
             // 
             this.dragControl1.SelectControl = this.pnlTop;
             // 
+            // btnAutreEncaissement
+            // 
+            this.btnAutreEncaissement.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
+            this.btnAutreEncaissement.FlatAppearance.BorderSize = 0;
+            this.btnAutreEncaissement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAutreEncaissement.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAutreEncaissement.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAutreEncaissement.Location = new System.Drawing.Point(0, 163);
+            this.btnAutreEncaissement.Name = "btnAutreEncaissement";
+            this.btnAutreEncaissement.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnAutreEncaissement.Size = new System.Drawing.Size(214, 45);
+            this.btnAutreEncaissement.TabIndex = 4;
+            this.btnAutreEncaissement.Text = "Autre encaissement de fonds";
+            this.btnAutreEncaissement.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAutreEncaissement.UseVisualStyleBackColor = false;
+            this.btnAutreEncaissement.Click += new System.EventHandler(this.BtnNouvelEncaissement_Click);
+            // 
+            // btnMouvementCAC
+            // 
+            this.btnMouvementCAC.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
+            this.btnMouvementCAC.FlatAppearance.BorderSize = 0;
+            this.btnMouvementCAC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMouvementCAC.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMouvementCAC.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMouvementCAC.Location = new System.Drawing.Point(1, 209);
+            this.btnMouvementCAC.Name = "btnMouvementCAC";
+            this.btnMouvementCAC.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnMouvementCAC.Size = new System.Drawing.Size(217, 52);
+            this.btnMouvementCAC.TabIndex = 4;
+            this.btnMouvementCAC.Text = "Mouvement compte à compte";
+            this.btnMouvementCAC.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMouvementCAC.UseVisualStyleBackColor = false;
+            this.btnMouvementCAC.Click += new System.EventHandler(this.BtnNouveauDecaissement_Click);
+            // 
             // Accueil
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -860,6 +899,7 @@
             this.Controls.Add(this.flowLayoutPanel1);
             this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "Accueil";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -940,5 +980,7 @@
         private System.Windows.Forms.Button btnTableauTresorerie;
         private System.Windows.Forms.Button btnCompteDeResultat;
         private System.Windows.Forms.Timer tmrEtatsFinanciers;
+        private System.Windows.Forms.Button btnMouvementCAC;
+        private System.Windows.Forms.Button btnAutreEncaissement;
     }
 }
