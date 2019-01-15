@@ -131,6 +131,9 @@ namespace CasaEcologieSysInfo
 
         private bool VerifierChampsMontantEncaisse()
         {
+            var nomCompte = cbxCompte.GetItemText(cbxCompte.SelectedItem);
+            var soldeCompte = Conversion.SoldeDisponibleDuCompteDeTresorerie(nomCompte);
+
             if (string.IsNullOrEmpty(txtMontantPaye.Text))
             {
                 MessageBox.Show("Ce champs doit être renseigné.");
@@ -150,7 +153,7 @@ namespace CasaEcologieSysInfo
 
             try
             {
-                bool verif = int.Parse(txtMontantPaye.Text) < int.Parse(txtSoldeCompte.Text);
+                bool verif = int.Parse(txtMontantPaye.Text) < soldeCompte;
             }
             catch (Exception)
             {
@@ -246,6 +249,7 @@ namespace CasaEcologieSysInfo
                     db.SaveChanges();
                     txtMontantPaye.Clear();
                 }
+                MessageBox.Show("Le paiement du fournisseur a été effectué avec succès.");
             }   
         }
 
