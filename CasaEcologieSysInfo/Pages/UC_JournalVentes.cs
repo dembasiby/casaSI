@@ -22,7 +22,7 @@ namespace CasaEcologieSysInfo
             InitializeComponent();
         }
 
-        private void UC_JournalVentes_Load(object sender, EventArgs e)
+        private void ChargerDonneesInitiales()
         {
             ageClientBindingSource.DataSource = db.AgeClients.OrderBy(c => c.NomClient).ToList();
             resStockProduitsFiniBindingSource.DataSource = db.ResStockProduitsFinis.OrderBy(p => p.NomProduit).ToList();
@@ -58,7 +58,7 @@ namespace CasaEcologieSysInfo
             dgvJournalVentes.Columns["Quantité"].HeaderText = "Quantité(unités)";
         }
 
-        private void FiltrerTableau(DateTime end, DateTime start=default(DateTime), string nomClient="", string produit = "")
+        private void FiltrerTableau(DateTime fin, DateTime debut = default(DateTime), string nomClient = "", string produit = "")
         {
             var ventes = (from v in db.EveVentes
                           join vpf in db.EveVenteStockProduitsFinis on v.CodeVente equals vpf.CodeVente
@@ -66,8 +66,8 @@ namespace CasaEcologieSysInfo
                           join c in db.AgeClients on v.CodeClient equals c.CodeClient
                           where (nomClient.Length > 0) ? c.NomClient == nomClient : c.NomClient != ""
                           where (produit.Length > 0) ? pf.NomProduit == produit : pf.NomProduit != ""
-                          where v.DateVente >= start.Date
-                          where v.DateVente <= end.Date
+                          where v.DateVente >= debut.Date
+                          where v.DateVente <= fin.Date
 
                           select new
                           {
@@ -83,12 +83,17 @@ namespace CasaEcologieSysInfo
 
         private void AfficherResultatsFiltre()
         {
-            var start = dtpDebut.Value.Date;
-            var end = dtpFin.Value.Date;
+            var debut = dtpDebut.Value.Date;
+            var fin = dtpFin.Value.Date;
             var client = cbxClients.GetItemText(cbxClients.SelectedItem);
             var produit = cbxProduits.GetItemText(cbxProduits.SelectedItem);
 
-            FiltrerTableau(end, start, client, produit);
+            FiltrerTableau(fin, debut, client, produit);
+        }
+
+        private void UC_JournalVentes_Load(object sender, EventArgs e)
+        {
+            ChargerDonneesInitiales();
         }
 
         private void BtnFiltrer_Click(object sender, EventArgs e)
