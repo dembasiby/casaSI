@@ -101,6 +101,8 @@ namespace CasaEcologieSysInfo.Pages
                 db.EveEncaissementsAutres.Add(autreEnc);
                 db.SaveChanges();
                 MessageBox.Show($"Le transfert de fonds du compte {cpteDebiteur} au compte {cpteCrediteur} a été enregistré avec succès.");
+                txtDescription.Clear();
+                txtMontant.Clear();
             }
         }
     }
