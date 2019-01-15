@@ -183,11 +183,19 @@ namespace CasaEcologieSysInfo
                                           
                                           select (decimal?)env.MontantEncaisse).Sum() ?? 0m;
 
+                var totalAutresEncaissement = (from c in db.EveEncaissements
+                                               join nc in db.ResComptesTresoreries on c.CodeCompte equals nc.CodeCompte
+                                               where nc.NomCompte == nomCompte
+                                               from enA in db.EveEncaissementsAutres
+                                               where c.CodeEncaissement == enA.CodeEncaissement
+
+                                               select (decimal?)enA.MontantEncaisse).Sum() ?? 0m;
+
                 var totalDecaissements = (from d in db.EveDecaissements
                                           where d.ResComptesTresorerie.NomCompte == nomCompte
                                           select (decimal?)d.Montant).Sum() ?? 0m;
               
-                var fondsDisponibles = soldeInitial + totalEncaissements - totalDecaissements;
+                var fondsDisponibles = soldeInitial + totalEncaissements  + totalAutresEncaissement - totalDecaissements;
 
                 return fondsDisponibles;
             }
