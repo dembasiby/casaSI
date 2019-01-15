@@ -263,6 +263,12 @@
     <Compile Include="Pages\UC_JournalTresorerie.Designer.cs">
       <DependentUpon>UC_JournalTresorerie.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pages\UC_MouvementCompteACompte.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\UC_MouvementCompteACompte.Designer.cs">
+      <DependentUpon>UC_MouvementCompteACompte.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pages\UC_NouveauCompteTresorerie.cs">
       <SubType>UserControl</SubType>
     </Compile>
