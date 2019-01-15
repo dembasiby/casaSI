@@ -152,6 +152,9 @@
     <Compile Include="EveEncaissement.cs">
       <DependentUpon>Model3.tt</DependentUpon>
     </Compile>
+    <Compile Include="EveEncaissementsAutre.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
     <Compile Include="EveEncaissementsVente.cs">
       <DependentUpon>Model3.tt</DependentUpon>
     </Compile>

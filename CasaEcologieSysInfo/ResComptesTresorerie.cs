@@ -19,6 +19,7 @@ namespace CasaEcologieSysInfo
         {
             this.EveDecaissements = new HashSet<EveDecaissement>();
             this.EveEncaissements = new HashSet<EveEncaissement>();
+            this.EveEncaissementsAutres = new HashSet<EveEncaissementsAutre>();
         }
     
         public int CodeCompte { get; set; }
@@ -29,5 +30,7 @@ namespace CasaEcologieSysInfo
         public virtual ICollection<EveDecaissement> EveDecaissements { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EveEncaissement> EveEncaissements { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EveEncaissementsAutre> EveEncaissementsAutres { get; set; }
     }
 }
