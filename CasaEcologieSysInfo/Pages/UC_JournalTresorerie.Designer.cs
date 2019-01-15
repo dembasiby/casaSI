@@ -68,7 +68,7 @@
             this.adgvJournalTresorerieDetails.AllowUserToAddRows = false;
             this.adgvJournalTresorerieDetails.AllowUserToDeleteRows = false;
             this.adgvJournalTresorerieDetails.AutoGenerateContextFilters = true;
-            this.adgvJournalTresorerieDetails.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.adgvJournalTresorerieDetails.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.adgvJournalTresorerieDetails.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.adgvJournalTresorerieDetails.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.adgvJournalTresorerieDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;

@@ -76,7 +76,11 @@ namespace CasaEcologieSysInfo.Pages
                               Sortie = d.Montant,
                               Solde = 0m
                           });
-            var combinedQuery = query1.Union(query3).Union(query2).ToList();
+            var combinedQuery = query1
+                .Union(query3)
+                .Union(query2)
+                .OrderByDescending(o => o.Date)
+                .ToList();
 
 
             var soldeInitial = (from c in db.ResComptesTresoreries
@@ -87,20 +91,19 @@ namespace CasaEcologieSysInfo.Pages
             DataTable dt = Conversion.ConvertirEnTableDeDonnees(combinedQuery);
 
             DataRow dr = dt.NewRow();
-            dt.Rows.InsertAt(dr, 0);
+            dt.Rows.InsertAt(dr, dt.Rows.Count);
             dr["Entree"] = 0;
             dr["Sortie"] = 0;
-            dr["Description"] = "Report";
+            dr["Description"] = "Solde initial";
 
             adgvJournalTresorerieDetails.DataSource = dt;
 
-
-            for (int i = 0; i < adgvJournalTresorerieDetails.Rows.Count; i++)
+            for (int i = adgvJournalTresorerieDetails.Rows.Count -1; i >= 0 ; i--)
             {
 
-                if (i > 0)
+                if (i < adgvJournalTresorerieDetails.Rows.Count - 1)
                 {
-                    adgvJournalTresorerieDetails.Rows[i].Cells[5].Value = Convert.ToInt32(adgvJournalTresorerieDetails.Rows[i - 1].Cells[5].Value)
+                    adgvJournalTresorerieDetails.Rows[i].Cells[5].Value = Convert.ToInt32(adgvJournalTresorerieDetails.Rows[i + 1].Cells[5].Value)
                     + Convert.ToInt32(adgvJournalTresorerieDetails.Rows[i].Cells[3].Value)
                     - Convert.ToInt32(adgvJournalTresorerieDetails.Rows[i].Cells[4].Value);
                 }
@@ -112,9 +115,12 @@ namespace CasaEcologieSysInfo.Pages
 
             }
 
-            adgvJournalTresorerieDetails.Columns["Entree"].DefaultCellStyle.Format = "c0";
-            adgvJournalTresorerieDetails.Columns["Sortie"].DefaultCellStyle.Format = "c0";
-            adgvJournalTresorerieDetails.Columns["Solde"].DefaultCellStyle.Format = "c0";
+            adgvJournalTresorerieDetails.Columns["Entree"].DefaultCellStyle.Format = "n0";
+            adgvJournalTresorerieDetails.Columns["Sortie"].DefaultCellStyle.Format = "n0";
+            adgvJournalTresorerieDetails.Columns["Solde"].DefaultCellStyle.Format = "n0";
+            adgvJournalTresorerieDetails.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            adgvJournalTresorerieDetails.Columns["Description"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            adgvJournalTresorerieDetails.Columns["CodeOperation"].Visible = false;
 
             // Calcul des soldes
 
