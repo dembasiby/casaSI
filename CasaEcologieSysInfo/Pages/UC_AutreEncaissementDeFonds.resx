@@ -117,36 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="dragControl1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="resComptesTresorerieBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        AAABAAEAEBAAAAEACABoBQAAFgAAACgAAAAQAAAAIAAAAAEACAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAA
-        AABvrKcAFSQIABYoCwD1//kAM66LAH/htQD7//AA+/v/ABdbNwD8/v8AICIdAMLFugD/+/8A//7/ADQ/
-        KwA0l2sA5PvuABAdBgAQHwwAKzIXAI+PkAD4+vQA1PfsABkiFQD6/u4A+fn6AJzmzQBRv5EA6O7jAP39
-        /QDBwcEAhYWFACF3XgALGAEACxQHADKXbACbopMA7+/vACZYOADo++8ANKNsAKClnADI++cAJGU7ABMf
-        DQDr/vgAFx4KAPj4+ACUnIsA+vn7AEKlewD9/f4AOY1hAP79/gD//f4AMZ1kAJuglwCcnJ0AeHd4AKGp
-        lwA+mHAANKN2AKrw2gAktoIAoqidACg0HwDx+PkApaygAPv69gD6/vkA/Pz8APr//ADAwMAA/P3/AJie
-        kgD9/f8A/v3/AB8mGgA5kGIA//3/AP///AA2OysAm5ubAB5aNwDu7u4AQLiIAKKmoQDo//0Afc+5AKSk
-        pADy+fQAGBwPAFVZTgA/SToAN6p6ALu7uwD3/PQA5engAPr++gD7//0A/f/9AP7//QDF694A3f/sAJv1
-        2QA5uJIAIFo4AGG6oADw8ukAQbWSAMjMwQCgppkALDUbADardQCRkZEA9fn1APb78gDz/fgAUmBSABgj
-        EwAnoVgA+fj7ACmbYQD7+/sA/fv7APv//gD8//4AmJyXAP3//gD///4ANpdnADWfZABOoY0AJC0fAO/1
-        6gA5oGcA8/jqAAlMPQDu/PYA+fvzAPn89gDz//8A/P/2ADE8KAD8//8A//z/AP3//wD///8AGWM6ANra
-        2gANeEMAoKiYACY0GgASblIAFhwJAMzMzAApNiAAOKd0AGZ1XACZ3s0As/PVAPj59wD5+/QAfYZ8APf+
-        /QD8/PcA/fv9AOnv4wALFQcAsLCwAK65pwCdopkAfX19ACA0PwD2+/UA+Pn4APj9+wD6/vUA9v7+ABww
-        BwD7//gAVmZVAPz+/gD+/v4AHFg2AC2bbQD//v4AmaCUAITnxgBCsJAAEBYLACUuHAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAk5OsX5MvqR2Vkx1ZUnKTk5NGFB46eyVUHzNIOZubk5NMXDtDb6tKQCmXViQ4u1sNZW5wEwIO
-        YZiep5yIqrBdtw2LohWlsRAnr1p0REWhYpOTHbe3t3U8PnqKkba6t5OTgZKTUHy8gje4BaC3kw2TgWCj
-        B429nSM0arl4HZMdZIBNtVc/WF5TJggrg2cJCbO0roUZSaSfPZROG1WHY44Bc0uaCpOTkUKtbQRoGiow
-        F4G3UTGQZokAhCCZaWt2EZOTgZOTqEcPKJZxMnkDho+Tk5OTfhxBCy0WsjYiGHe3k5OTk7eBLiESfaZ/
-        Biw1k5OTk5OTk0xsv0wMvoxPk5OTkwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=
-</value>
-  </data>
+  <metadata name="ageEmployeBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>266, 17</value>
+  </metadata>
+  <metadata name="resComptesTresorerieBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="ageEmployeBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>266, 17</value>
+  </metadata>
 </root>

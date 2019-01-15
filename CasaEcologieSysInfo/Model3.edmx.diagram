@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="565729c2b96b42b084fd06ac14681009" Name="Diagram1">
+      <Diagram DiagramId="565729c2b96b42b084fd06ac14681009" Name="Diagram1" ZoomLevel="85">
         <EntityTypeShape EntityType="CasaDBModel.AgeAutreFournisseur" Width="1.5" PointX="7.5" PointY="23" IsExpanded="true" />
         <EntityTypeShape EntityType="CasaDBModel.AgeClient" Width="1.5" PointX="3.75" PointY="11.5" IsExpanded="true" />
         <EntityTypeShape EntityType="CasaDBModel.AgeEmploye" Width="1.5" PointX="0.75" PointY="18.75" IsExpanded="true" />
@@ -34,7 +34,6 @@
         <EntityTypeShape EntityType="CasaDBModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="CasaDBModel.FK_EveDecaissements_AgeAutreFournisseurs" ManuallyRouted="false" />
         <AssociationConnector Association="CasaDBModel.FK_EveReceptionEquipementsInfrastructures_AgeAutreFournisseurs" ManuallyRouted="false" />
-        <AssociationConnector Association="CasaDBModel.FK_EveEncaissements_AgeClients" ManuallyRouted="false" />
         <AssociationConnector Association="CasaDBModel.FK_EveVentes_AgeClients" ManuallyRouted="false" />
         <AssociationConnector Association="CasaDBModel.FK_EveAcquisitionServicesFournitures_AgeEmployes" ManuallyRouted="false" />
         <AssociationConnector Association="CasaDBModel.FK_EveDecaissements_AgeEmployes" ManuallyRouted="false" />
@@ -79,6 +78,10 @@
         <AssociationConnector Association="CasaDBModel.FK_EveDecaissements_EvePaiementEmployes" />
         <EntityTypeShape EntityType="CasaDBModel.Utilisateur" Width="1.5" PointX="3" PointY="30.75" />
         <AssociationConnector Association="CasaDBModel.FK_Utilisateurs_AgeEmployes" />
+        <AssociationConnector Association="CasaDBModel.FK_EveEncaissementsVentes_AgeClients" />
+        <EntityTypeShape EntityType="CasaDBModel.EveEncaissementsAutre" Width="1.5" PointX="12.75" PointY="27" />
+        <AssociationConnector Association="CasaDBModel.FK_EveEncaissementsAutres_EveEncaissements" />
+        <AssociationConnector Association="CasaDBModel.FK_EveDecaissements_EveDecaissements" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

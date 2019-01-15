@@ -44,17 +44,15 @@ namespace CasaEcologieSysInfo.Pages
                                  });
 
             var totalPaiementClient = (from c in db.AgeClients
-                                       from e in db.EveEncaissements
+                                       from e in db.EveEncaissementsVentes
                                        where c.CodeClient == e.CodeClient
-                                       from ev in db.EveEncaissementsVentes
-                                       where ev.CodeEncaissement == e.CodeEncaissement
                                        where c.NomClient == nomClient
                                        select new
                                        {
-                                           Date = ev.DateEncaissement,
+                                           Date = e.DateEncaissement,
                                            Description = "Encaissement vente",
                                            MontantVente = 0m,
-                                           Encaissement = ev.MontantEncaisse,
+                                           Encaissement = e.MontantEncaisse,
                                            Solde = 0m
                                        });
 

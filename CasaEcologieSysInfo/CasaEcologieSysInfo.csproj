@@ -12,6 +12,21 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -31,6 +46,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>casa.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AdvancedDataGridView, Version=0.1.0.10, Culture=neutral, processorArchitecture=MSIL">
@@ -152,6 +170,9 @@
     <Compile Include="EveEncaissement.cs">
       <DependentUpon>Model3.tt</DependentUpon>
     </Compile>
+    <Compile Include="EveEncaissementsAutre.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
     <Compile Include="EveEncaissementsVente.cs">
       <DependentUpon>Model3.tt</DependentUpon>
     </Compile>
@@ -212,6 +233,12 @@
     <Compile Include="frmNouveauProduitFiniOuSemiFini.Designer.cs">
       <DependentUpon>frmNouveauProduitFiniOuSemiFini.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pages\UC_AutreEncaissementDeFonds.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\UC_AutreEncaissementDeFonds.Designer.cs">
+      <DependentUpon>UC_AutreEncaissementDeFonds.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pages\UC_DettesFournisseurs.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -256,33 +283,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ResComptesTresorerie.cs">
-      <DependentUpon>Model3.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ResEquipementsInfrastructure.cs">
-      <DependentUpon>Model3.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ResServicesFourniture.cs">
-      <DependentUpon>Model3.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ResStockMatieresPremiere.cs">
-      <DependentUpon>Model3.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ResStockProduitsFini.cs">
-      <DependentUpon>Model3.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ResStockProduitsSemiFini.cs">
-      <DependentUpon>Model3.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>Model3.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sp_helpdiagrams_Result.cs">
-      <DependentUpon>Model3.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sysdiagram.cs">
-      <DependentUpon>Model3.tt</DependentUpon>
-    </Compile>
     <Compile Include="Pages\UC_StockMatieresPremieres.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -349,6 +349,33 @@
     <Compile Include="Pages\UC_Production.Designer.cs">
       <DependentUpon>UC_Production.cs</DependentUpon>
     </Compile>
+    <Compile Include="ResComptesTresorerie.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ResEquipementsInfrastructure.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ResServicesFourniture.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ResStockMatieresPremiere.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ResStockProduitsFini.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ResStockProduitsSemiFini.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagrams_Result.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
     <Compile Include="UC_NouveauDecaissement.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -369,6 +396,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmNouveauProduitFiniOuSemiFini.resx">
       <DependentUpon>frmNouveauProduitFiniOuSemiFini.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\UC_AutreEncaissementDeFonds.resx">
+      <DependentUpon>UC_AutreEncaissementDeFonds.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\UC_CreancesClients.resx">
       <DependentUpon>UC_CreancesClients.cs</DependentUpon>
@@ -614,6 +644,7 @@
     <None Include="Resources\Expand Arrow_20px.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="casa.ico" />
     <Content Include="Model3.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model3.edmx</DependentUpon>
@@ -630,6 +661,18 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 et x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

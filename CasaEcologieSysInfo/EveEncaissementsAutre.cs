@@ -12,16 +12,14 @@ namespace CasaEcologieSysInfo
     using System;
     using System.Collections.Generic;
     
-    public partial class EveEncaissementsVente
+    public partial class EveEncaissementsAutre
     {
+        public int CodeEncaissementAutre { get; set; }
         public int CodeEncaissement { get; set; }
-        public int CodeVente { get; set; }
-        public decimal MontantEncaisse { get; set; }
         public System.DateTime DateEncaissement { get; set; }
-        public int CodeClient { get; set; }
+        public string Description { get; set; }
+        public decimal MontantEncaisse { get; set; }
     
         public virtual EveEncaissement EveEncaissement { get; set; }
-        public virtual EveVente EveVente { get; set; }
-        public virtual AgeClient AgeClient { get; set; }
     }
 }

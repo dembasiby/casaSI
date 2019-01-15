@@ -97,10 +97,8 @@ namespace CasaEcologieSysInfo
                                      select (decimal?)vf.Montant).Sum() ?? 0m;
 
                 var totalPaiementClient = (from c in db.AgeClients
-                                           from e in db.EveEncaissements
-                                           where c.CodeClient == e.CodeClient
                                            from ev in db.EveEncaissementsVentes
-                                           where ev.CodeEncaissement == e.CodeEncaissement
+                                           where c.CodeClient == ev.CodeClient
                                            select (decimal?)ev.MontantEncaisse).Sum() ?? 0m;
 
                 var creanceInitialClient = (from c in db.AgeClients
