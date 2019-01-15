@@ -95,7 +95,6 @@
           <Property Name="DateEncaissement" Type="date" Nullable="false" />
           <Property Name="Description" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="MontantEncaisse" Type="money" Nullable="false" />
-          <Property Name="CodeCompteCrediteur" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="EveEncaissementsVentes">
           <Key>
@@ -489,18 +488,6 @@
             </Principal>
             <Dependent Role="EveEncaissementsAutres">
               <PropertyRef Name="CodeEncaissement" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_EveEncaissementsAutres_ResComptesTresorerie">
-          <End Role="ResComptesTresorerie" Type="Self.ResComptesTresorerie" Multiplicity="1" />
-          <End Role="EveEncaissementsAutres" Type="Self.EveEncaissementsAutres" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ResComptesTresorerie">
-              <PropertyRef Name="CodeCompte" />
-            </Principal>
-            <Dependent Role="EveEncaissementsAutres">
-              <PropertyRef Name="CodeCompteCrediteur" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1016,10 +1003,6 @@
             <End Role="EveEncaissements" EntitySet="EveEncaissements" />
             <End Role="EveEncaissementsAutres" EntitySet="EveEncaissementsAutres" />
           </AssociationSet>
-          <AssociationSet Name="FK_EveEncaissementsAutres_ResComptesTresorerie" Association="Self.FK_EveEncaissementsAutres_ResComptesTresorerie">
-            <End Role="ResComptesTresorerie" EntitySet="ResComptesTresorerie" />
-            <End Role="EveEncaissementsAutres" EntitySet="EveEncaissementsAutres" />
-          </AssociationSet>
           <AssociationSet Name="FK_EveEncaissementsVentes_AgeClients" Association="Self.FK_EveEncaissementsVentes_AgeClients">
             <End Role="AgeClients" EntitySet="AgeClients" />
             <End Role="EveEncaissementsVentes" EntitySet="EveEncaissementsVentes" />
@@ -1434,7 +1417,6 @@
           <Property Name="SoldeCompte" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <NavigationProperty Name="EveDecaissements" Relationship="Self.FK_EveDecaissements_ResComptesTresorerie" FromRole="ResComptesTresorerie" ToRole="EveDecaissements" />
           <NavigationProperty Name="EveEncaissements" Relationship="Self.FK_EveEncaissements_ResComptesTresorerie" FromRole="ResComptesTresorerie" ToRole="EveEncaissements" />
-          <NavigationProperty Name="EveEncaissementsAutres" Relationship="CasaDBModel.FK_EveEncaissementsAutres_ResComptesTresorerie" FromRole="ResComptesTresorerie" ToRole="EveEncaissementsAutre" />
         </EntityType>
         <EntityType Name="ResEquipementsInfrastructure">
           <Key>
@@ -2232,10 +2214,6 @@
             <End Role="EveEncaissement" EntitySet="EveEncaissements" />
             <End Role="EveEncaissementsAutre" EntitySet="EveEncaissementsAutres" />
           </AssociationSet>
-          <AssociationSet Name="FK_EveEncaissementsAutres_ResComptesTresorerie" Association="CasaDBModel.FK_EveEncaissementsAutres_ResComptesTresorerie">
-            <End Role="ResComptesTresorerie" EntitySet="ResComptesTresoreries" />
-            <End Role="EveEncaissementsAutre" EntitySet="EveEncaissementsAutres" />
-          </AssociationSet>
           <AssociationSet Name="FK_EveDecaissements_EveDecaissements" Association="CasaDBModel.FK_EveDecaissements_EveDecaissements">
             <End Role="EveDecaissement" EntitySet="EveDecaissements" />
             <End Role="EveDecaissement1" EntitySet="EveDecaissements" />
@@ -2342,9 +2320,7 @@
           <Property Name="DateEncaissement" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MontantEncaisse" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-          <Property Name="CodeCompteCrediteur" Type="Int32" Nullable="false" />
           <NavigationProperty Name="EveEncaissement" Relationship="CasaDBModel.FK_EveEncaissementsAutres_EveEncaissements" FromRole="EveEncaissementsAutre" ToRole="EveEncaissement" />
-          <NavigationProperty Name="ResComptesTresorerie" Relationship="CasaDBModel.FK_EveEncaissementsAutres_ResComptesTresorerie" FromRole="EveEncaissementsAutre" ToRole="ResComptesTresorerie" />
         </EntityType>
         <Association Name="FK_EveEncaissementsAutres_EveEncaissements">
           <End Type="CasaDBModel.EveEncaissement" Role="EveEncaissement" Multiplicity="1" />
@@ -2355,18 +2331,6 @@
             </Principal>
             <Dependent Role="EveEncaissementsAutre">
               <PropertyRef Name="CodeEncaissement" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_EveEncaissementsAutres_ResComptesTresorerie">
-          <End Type="CasaDBModel.ResComptesTresorerie" Role="ResComptesTresorerie" Multiplicity="1" />
-          <End Type="CasaDBModel.EveEncaissementsAutre" Role="EveEncaissementsAutre" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ResComptesTresorerie">
-              <PropertyRef Name="CodeCompte" />
-            </Principal>
-            <Dependent Role="EveEncaissementsAutre">
-              <PropertyRef Name="CodeCompteCrediteur" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2740,7 +2704,6 @@
           <EntitySetMapping Name="EveEncaissementsAutres">
             <EntityTypeMapping TypeName="CasaDBModel.EveEncaissementsAutre">
               <MappingFragment StoreEntitySet="EveEncaissementsAutres">
-                <ScalarProperty Name="CodeCompteCrediteur" ColumnName="CodeCompteCrediteur" />
                 <ScalarProperty Name="MontantEncaisse" ColumnName="MontantEncaisse" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="DateEncaissement" ColumnName="DateEncaissement" />

@@ -19,9 +19,7 @@ namespace CasaEcologieSysInfo
         public System.DateTime DateEncaissement { get; set; }
         public string Description { get; set; }
         public decimal MontantEncaisse { get; set; }
-        public int CodeCompteCrediteur { get; set; }
     
         public virtual EveEncaissement EveEncaissement { get; set; }
-        public virtual ResComptesTresorerie ResComptesTresorerie { get; set; }
     }
 }

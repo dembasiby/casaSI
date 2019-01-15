@@ -229,16 +229,22 @@ namespace CasaEcologieSysInfo
             AddControlsToPanel(ct);
         }
 
-        private void btnEtatsFinanciersMensuels_Click(object sender, EventArgs e)
+        private void BtnEtatsFinanciersMensuels_Click(object sender, EventArgs e)
         {
             Pages.UC_EtatsFinMensuels efm = new Pages.UC_EtatsFinMensuels();
             AddControlsToPanel(efm);
         }
 
-        private void btnPersonnel_Click(object sender, EventArgs e)
+        private void BtnPersonnel_Click(object sender, EventArgs e)
         {
             Pages.UC_Personnel p = new Pages.UC_Personnel();
             AddControlsToPanel(p);
+        }
+
+        private void BtnAutreEncaissement_Click(object sender, EventArgs e)
+        {
+            Pages.UC_AutreEncaissementDeFonds aen = new Pages.UC_AutreEncaissementDeFonds();
+            AddControlsToPanel(aen);
         }
     }
 }
