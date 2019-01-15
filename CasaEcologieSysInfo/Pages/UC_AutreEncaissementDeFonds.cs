@@ -19,27 +19,6 @@ namespace CasaEcologieSysInfo.Pages
             InitializeComponent();
         }
 
-        private bool MontantEstValide()
-        {
-            var estUnChiffre = int.TryParse(txtMontantEncaisse.Text, out int n);
-
-            if (string.IsNullOrEmpty(txtMontantEncaisse.Text))
-            {
-                MessageBox.Show("Le champ 'Montant reçu' doit être renseigné.");
-                return false;
-            }
-            else if (!estUnChiffre)
-            {
-                MessageBox.Show("Le champ 'Montant reçu' doit contenir uniquement des chiffres.");
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-
-        }
-
         private bool ChampDescriptionEstRempli()
         {
             if (txtDescription.Text.Trim().Length < 5)
@@ -55,7 +34,7 @@ namespace CasaEcologieSysInfo.Pages
             var employe = cbxResponsableTransaction.GetItemText(cbxResponsableTransaction.SelectedItem);
             var compte = cbxCompteCrediteur.GetItemText(cbxCompteCrediteur.SelectedItem);
 
-            if (MontantEstValide() && ChampDescriptionEstRempli())
+            if (Conversion.MontantEstValide(txtMontantEncaisse.Text) && ChampDescriptionEstRempli())
             {
                 EveEncaissement enc = new EveEncaissement
                 {
