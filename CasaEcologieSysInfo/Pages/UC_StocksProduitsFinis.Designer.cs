@@ -39,13 +39,13 @@
             // adgvJournalStocksProduitsFinis
             // 
             this.adgvJournalStocksProduitsFinis.AutoGenerateContextFilters = true;
-            this.adgvJournalStocksProduitsFinis.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.adgvJournalStocksProduitsFinis.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.adgvJournalStocksProduitsFinis.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.adgvJournalStocksProduitsFinis.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.adgvJournalStocksProduitsFinis.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.adgvJournalStocksProduitsFinis.DateWithTime = false;
             this.adgvJournalStocksProduitsFinis.Location = new System.Drawing.Point(264, 104);
-            this.adgvJournalStocksProduitsFinis.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.adgvJournalStocksProduitsFinis.Margin = new System.Windows.Forms.Padding(2);
             this.adgvJournalStocksProduitsFinis.Name = "adgvJournalStocksProduitsFinis";
             this.adgvJournalStocksProduitsFinis.ReadOnly = true;
             this.adgvJournalStocksProduitsFinis.Size = new System.Drawing.Size(704, 476);
@@ -72,7 +72,7 @@
             this.lbxListeProduitsFinis.FormattingEnabled = true;
             this.lbxListeProduitsFinis.ItemHeight = 17;
             this.lbxListeProduitsFinis.Location = new System.Drawing.Point(14, 104);
-            this.lbxListeProduitsFinis.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lbxListeProduitsFinis.Margin = new System.Windows.Forms.Padding(2);
             this.lbxListeProduitsFinis.Name = "lbxListeProduitsFinis";
             this.lbxListeProduitsFinis.Size = new System.Drawing.Size(246, 476);
             this.lbxListeProduitsFinis.TabIndex = 15;
@@ -109,7 +109,7 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.adgvJournalStocksProduitsFinis);
             this.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UC_StocksProduitsFinis";
             this.Size = new System.Drawing.Size(983, 635);
             this.Load += new System.EventHandler(this.UC_StocksProduitsFinis_Load);
