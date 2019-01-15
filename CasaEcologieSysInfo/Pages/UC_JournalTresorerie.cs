@@ -50,6 +50,20 @@ namespace CasaEcologieSysInfo.Pages
                               Sortie = 0m,
                               Solde = 0m
                           });
+            var query3 = (from c in db.EveEncaissements
+                          from aut in db.EveEncaissementsAutres
+                          where c.CodeEncaissement == aut.CodeEncaissement
+                          where c.ResComptesTresorerie.NomCompte == nomCompte
+
+                          select new
+                          {
+                              Date = aut.DateEncaissement,
+                              CodeOperation = c.CodeEncaissement + "enc",
+                              Description = aut.Description,
+                              Entree = aut.MontantEncaisse,
+                              Sortie = 0m,
+                              Solde = 0m
+                          });
 
             var query2 = (from d in db.EveDecaissements
                           where d.ResComptesTresorerie.NomCompte == nomCompte
@@ -62,7 +76,7 @@ namespace CasaEcologieSysInfo.Pages
                               Sortie = d.Montant,
                               Solde = 0m
                           });
-            var combinedQuery = query1.Union(query2).ToList();
+            var combinedQuery = query1.Union(query3).Union(query2).ToList();
 
 
             var soldeInitial = (from c in db.ResComptesTresoreries
@@ -112,14 +126,19 @@ namespace CasaEcologieSysInfo.Pages
                                       where c.CodeEncaissement == env.CodeEncaissement
                                       select (decimal?)env.MontantEncaisse).Sum() ?? 0m;
 
+            var totalAutresEn = (from enc in db.EveEncaissements
+                                 from aut in db.EveEncaissementsAutres
+                                 where enc.CodeEncaissement == aut.CodeEncaissement
+                                 select (decimal?)aut.MontantEncaisse).Sum() ?? 0m;
+
             var totalDecaissements = (from d in db.EveDecaissements
                                       select (decimal?)d.Montant).Sum() ?? 0m;
             var fondsDisponibleEnCaissesEtEnBanques = soldeInitiaux
-                + totalEncaissements
+                + totalEncaissements + totalAutresEn
                 - totalDecaissements;
 
             txtSoldesInitiaux.Text = soldeInitiaux.ToString("c0");
-            txtTotalEncaissements.Text = totalEncaissements.ToString("c0");
+            txtTotalEncaissements.Text = (totalEncaissements + totalAutresEn).ToString("c0");
             txtTotalDecaissements.Text = totalDecaissements.ToString("c0");
             
 
