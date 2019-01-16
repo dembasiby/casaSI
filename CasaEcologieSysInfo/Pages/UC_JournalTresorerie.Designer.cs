@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.label4 = new System.Windows.Forms.Label();
-            this.adgvJournalTresorerieDetails = new ADGV.AdvancedDataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.resComptesTresorerieBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -47,8 +46,9 @@
             this.txtSoldesInitiaux = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.txtSolde = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.adgvJournalTresorerieDetails)).BeginInit();
+            this.dgvJournalTresorerieDetails = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.resComptesTresorerieBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvJournalTresorerieDetails)).BeginInit();
             this.SuspendLayout();
             // 
             // label4
@@ -62,24 +62,6 @@
             this.label4.TabIndex = 13;
             this.label4.Text = "Journal de Trésorerie Détaillé par Compte";
             this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // adgvJournalTresorerieDetails
-            // 
-            this.adgvJournalTresorerieDetails.AllowUserToAddRows = false;
-            this.adgvJournalTresorerieDetails.AllowUserToDeleteRows = false;
-            this.adgvJournalTresorerieDetails.AutoGenerateContextFilters = true;
-            this.adgvJournalTresorerieDetails.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.adgvJournalTresorerieDetails.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-            this.adgvJournalTresorerieDetails.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.adgvJournalTresorerieDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.adgvJournalTresorerieDetails.DateWithTime = false;
-            this.adgvJournalTresorerieDetails.Location = new System.Drawing.Point(201, 108);
-            this.adgvJournalTresorerieDetails.Margin = new System.Windows.Forms.Padding(2);
-            this.adgvJournalTresorerieDetails.Name = "adgvJournalTresorerieDetails";
-            this.adgvJournalTresorerieDetails.ReadOnly = true;
-            this.adgvJournalTresorerieDetails.Size = new System.Drawing.Size(768, 472);
-            this.adgvJournalTresorerieDetails.TabIndex = 14;
-            this.adgvJournalTresorerieDetails.TimeFilter = false;
             // 
             // label1
             // 
@@ -236,10 +218,24 @@
             this.txtSolde.Size = new System.Drawing.Size(169, 23);
             this.txtSolde.TabIndex = 19;
             // 
+            // dgvJournalTresorerieDetails
+            // 
+            this.dgvJournalTresorerieDetails.AllowUserToAddRows = false;
+            this.dgvJournalTresorerieDetails.AllowUserToDeleteRows = false;
+            this.dgvJournalTresorerieDetails.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dgvJournalTresorerieDetails.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.dgvJournalTresorerieDetails.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvJournalTresorerieDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvJournalTresorerieDetails.Location = new System.Drawing.Point(207, 133);
+            this.dgvJournalTresorerieDetails.Name = "dgvJournalTresorerieDetails";
+            this.dgvJournalTresorerieDetails.Size = new System.Drawing.Size(728, 457);
+            this.dgvJournalTresorerieDetails.TabIndex = 20;
+            // 
             // UC_JournalTresorerie
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.dgvJournalTresorerieDetails);
             this.Controls.Add(this.txtSolde);
             this.Controls.Add(this.txtTotalDecaissements);
             this.Controls.Add(this.txtSoldesInitiaux);
@@ -253,7 +249,6 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.listBox1);
-            this.Controls.Add(this.adgvJournalTresorerieDetails);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label4);
@@ -262,8 +257,8 @@
             this.Name = "UC_JournalTresorerie";
             this.Size = new System.Drawing.Size(983, 635);
             this.Load += new System.EventHandler(this.UC_JournalTresorerie_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.adgvJournalTresorerieDetails)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.resComptesTresorerieBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvJournalTresorerieDetails)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -272,7 +267,6 @@
         #endregion
 
         private System.Windows.Forms.Label label4;
-        private ADGV.AdvancedDataGridView adgvJournalTresorerieDetails;
         private System.Windows.Forms.BindingSource resComptesTresorerieBindingSource;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
@@ -289,5 +283,6 @@
         private System.Windows.Forms.TextBox txtSoldesInitiaux;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtSolde;
+        private System.Windows.Forms.DataGridView dgvJournalTresorerieDetails;
     }
 }

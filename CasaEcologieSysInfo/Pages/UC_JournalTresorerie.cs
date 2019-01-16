@@ -96,31 +96,31 @@ namespace CasaEcologieSysInfo.Pages
             dr["Sortie"] = 0;
             dr["Description"] = "Solde initial";
 
-            adgvJournalTresorerieDetails.DataSource = dt;
+            dgvJournalTresorerieDetails.DataSource = dt;
 
-            for (int i = adgvJournalTresorerieDetails.Rows.Count -1; i >= 0 ; i--)
+            for (int i = dgvJournalTresorerieDetails.Rows.Count -1; i >= 0 ; i--)
             {
 
-                if (i < adgvJournalTresorerieDetails.Rows.Count - 1)
+                if (i < dgvJournalTresorerieDetails.Rows.Count - 1)
                 {
-                    adgvJournalTresorerieDetails.Rows[i].Cells[5].Value = Convert.ToInt32(adgvJournalTresorerieDetails.Rows[i + 1].Cells[5].Value)
-                    + Convert.ToInt32(adgvJournalTresorerieDetails.Rows[i].Cells[3].Value)
-                    - Convert.ToInt32(adgvJournalTresorerieDetails.Rows[i].Cells[4].Value);
+                    dgvJournalTresorerieDetails.Rows[i].Cells[5].Value = Convert.ToInt32(dgvJournalTresorerieDetails.Rows[i + 1].Cells[5].Value)
+                    + Convert.ToInt32(dgvJournalTresorerieDetails.Rows[i].Cells[3].Value)
+                    - Convert.ToInt32(dgvJournalTresorerieDetails.Rows[i].Cells[4].Value);
                 }
                 else
                 {
-                    adgvJournalTresorerieDetails.Rows[i].Cells[5].Value = soldeInitial + Convert.ToInt32(adgvJournalTresorerieDetails.Rows[i].Cells[3].Value)
-                    - Convert.ToInt32(adgvJournalTresorerieDetails.Rows[i].Cells[4].Value);
+                    dgvJournalTresorerieDetails.Rows[i].Cells[5].Value = soldeInitial + Convert.ToInt32(dgvJournalTresorerieDetails.Rows[i].Cells[3].Value)
+                    - Convert.ToInt32(dgvJournalTresorerieDetails.Rows[i].Cells[4].Value);
                 }
 
             }
 
-            adgvJournalTresorerieDetails.Columns["Entree"].DefaultCellStyle.Format = "n0";
-            adgvJournalTresorerieDetails.Columns["Sortie"].DefaultCellStyle.Format = "n0";
-            adgvJournalTresorerieDetails.Columns["Solde"].DefaultCellStyle.Format = "n0";
-            adgvJournalTresorerieDetails.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            adgvJournalTresorerieDetails.Columns["Description"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            adgvJournalTresorerieDetails.Columns["CodeOperation"].Visible = false;
+            dgvJournalTresorerieDetails.Columns["Entree"].DefaultCellStyle.Format = "n0";
+            dgvJournalTresorerieDetails.Columns["Sortie"].DefaultCellStyle.Format = "n0";
+            dgvJournalTresorerieDetails.Columns["Solde"].DefaultCellStyle.Format = "n0";
+            dgvJournalTresorerieDetails.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvJournalTresorerieDetails.Columns["Description"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgvJournalTresorerieDetails.Columns["CodeOperation"].Visible = false;
 
             // Calcul des soldes
 
