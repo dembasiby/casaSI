@@ -63,6 +63,16 @@ namespace CasaEcologieSysInfo.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Cash_in_Hand_32px {
+            get {
+                object obj = ResourceManager.GetObject("Cash in Hand_32px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Collapse_Arrow_20px {
             get {
                 object obj = ResourceManager.GetObject("Collapse Arrow_20px", resourceCulture);
@@ -153,6 +163,26 @@ namespace CasaEcologieSysInfo.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Money_32px {
+            get {
+                object obj = ResourceManager.GetObject("Money_32px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Money_32px1 {
+            get {
+                object obj = ResourceManager.GetObject("Money_32px1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Save_32px {
             get {
                 object obj = ResourceManager.GetObject("Save_32px", resourceCulture);
@@ -183,9 +213,39 @@ namespace CasaEcologieSysInfo.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Supplier_32px {
+            get {
+                object obj = ResourceManager.GetObject("Supplier_32px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap User_Account_32px {
+            get {
+                object obj = ResourceManager.GetObject("User Account_32px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap User_Groups_32px {
             get {
                 object obj = ResourceManager.GetObject("User Groups_32px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Warehouse_32px {
+            get {
+                object obj = ResourceManager.GetObject("Warehouse_32px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

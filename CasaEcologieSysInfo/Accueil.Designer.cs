@@ -80,14 +80,19 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnTableauDeBord = new System.Windows.Forms.Button();
             this.btnPersonnel = new System.Windows.Forms.Button();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.btnTresorerie = new System.Windows.Forms.Button();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.btnVentes = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.btnDepenses = new System.Windows.Forms.Button();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.btnFournisseursEtClients = new System.Windows.Forms.Button();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.btnProductionStock = new System.Windows.Forms.Button();
             this.btnEtatsFinanciers = new System.Windows.Forms.Button();
             this.btnUtilisateurs = new System.Windows.Forms.Button();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.panel3.SuspendLayout();
             this.pnlTop.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -100,7 +105,12 @@
             this.pnlUtilisateurs.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.SuspendLayout();
             // 
             // panel3
@@ -186,6 +196,7 @@
             // 
             // pnlTresorerie
             // 
+            this.pnlTresorerie.Controls.Add(this.pictureBox6);
             this.pnlTresorerie.Controls.Add(this.btnNouveauDecaissement);
             this.pnlTresorerie.Controls.Add(this.btnMouvementCAC);
             this.pnlTresorerie.Controls.Add(this.btnAutreEncaissement);
@@ -305,6 +316,7 @@
             // pnlVentes
             // 
             this.pnlVentes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(31)))), ((int)(((byte)(20)))));
+            this.pnlVentes.Controls.Add(this.pictureBox4);
             this.pnlVentes.Controls.Add(this.btnJournalVentes);
             this.pnlVentes.Controls.Add(this.btnNouvelleVente);
             this.pnlVentes.Controls.Add(this.btnVentes);
@@ -439,6 +451,7 @@
             // pnlFournisseurClient
             // 
             this.pnlFournisseurClient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(31)))), ((int)(((byte)(20)))));
+            this.pnlFournisseurClient.Controls.Add(this.pictureBox7);
             this.pnlFournisseurClient.Controls.Add(this.btnDettesFournisseurs);
             this.pnlFournisseurClient.Controls.Add(this.btnFournisseursEtClients);
             this.pnlFournisseurClient.Controls.Add(this.btnCreancesClients);
@@ -486,6 +499,7 @@
             // 
             // pnlProductionStocks
             // 
+            this.pnlProductionStocks.Controls.Add(this.pictureBox5);
             this.pnlProductionStocks.Controls.Add(this.btnStockProduitsSemiFinis);
             this.pnlProductionStocks.Controls.Add(this.btnNouvelleProduction);
             this.pnlProductionStocks.Controls.Add(this.btnStockMatierePremiere);
@@ -622,9 +636,10 @@
             // 
             // pnlUtilisateurs
             // 
+            this.pnlUtilisateurs.Controls.Add(this.pictureBox8);
+            this.pnlUtilisateurs.Controls.Add(this.btnUtilisateurs);
             this.pnlUtilisateurs.Controls.Add(this.btnGererUtilisateurs);
             this.pnlUtilisateurs.Controls.Add(this.btnGererCompte);
-            this.pnlUtilisateurs.Controls.Add(this.btnUtilisateurs);
             this.pnlUtilisateurs.Location = new System.Drawing.Point(3, 520);
             this.pnlUtilisateurs.MaximumSize = new System.Drawing.Size(217, 120);
             this.pnlUtilisateurs.MinimumSize = new System.Drawing.Size(217, 40);
@@ -666,6 +681,7 @@
             // 
             // pnlPrincipal
             // 
+            this.pnlPrincipal.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.pnlPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlPrincipal.Location = new System.Drawing.Point(217, 85);
             this.pnlPrincipal.Name = "pnlPrincipal";
@@ -765,6 +781,17 @@
             this.btnPersonnel.UseVisualStyleBackColor = false;
             this.btnPersonnel.Click += new System.EventHandler(this.BtnPersonnel_Click);
             // 
+            // pictureBox6
+            // 
+            this.pictureBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(88)))), ((int)(((byte)(77)))));
+            this.pictureBox6.Image = global::CasaEcologieSysInfo.Properties.Resources.Cash_in_Hand_32px;
+            this.pictureBox6.Location = new System.Drawing.Point(-1, 4);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(47, 32);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox6.TabIndex = 10;
+            this.pictureBox6.TabStop = false;
+            // 
             // btnTresorerie
             // 
             this.btnTresorerie.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(88)))), ((int)(((byte)(77)))));
@@ -780,6 +807,16 @@
             this.btnTresorerie.Text = "Tresorerie";
             this.btnTresorerie.UseVisualStyleBackColor = false;
             this.btnTresorerie.Click += new System.EventHandler(this.BtnTresorerie_Click);
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(88)))), ((int)(((byte)(77)))));
+            this.pictureBox4.Image = global::CasaEcologieSysInfo.Properties.Resources.Money_32px1;
+            this.pictureBox4.Location = new System.Drawing.Point(4, 5);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(42, 30);
+            this.pictureBox4.TabIndex = 4;
+            this.pictureBox4.TabStop = false;
             // 
             // btnVentes
             // 
@@ -802,7 +839,7 @@
             // 
             this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(88)))), ((int)(((byte)(77)))));
             this.pictureBox3.Image = global::CasaEcologieSysInfo.Properties.Resources.Journal_32px;
-            this.pictureBox3.Location = new System.Drawing.Point(-3, 2);
+            this.pictureBox3.Location = new System.Drawing.Point(0, 0);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(49, 35);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -825,6 +862,17 @@
             this.btnDepenses.UseVisualStyleBackColor = false;
             this.btnDepenses.Click += new System.EventHandler(this.BtnDepenses_Click);
             // 
+            // pictureBox7
+            // 
+            this.pictureBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(88)))), ((int)(((byte)(77)))));
+            this.pictureBox7.Image = global::CasaEcologieSysInfo.Properties.Resources.Supplier_32px;
+            this.pictureBox7.Location = new System.Drawing.Point(-3, 3);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(28, 34);
+            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox7.TabIndex = 7;
+            this.pictureBox7.TabStop = false;
+            // 
             // btnFournisseursEtClients
             // 
             this.btnFournisseursEtClients.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(88)))), ((int)(((byte)(77)))));
@@ -840,6 +888,17 @@
             this.btnFournisseursEtClients.Text = "Fournisseurs et clients";
             this.btnFournisseursEtClients.UseVisualStyleBackColor = false;
             this.btnFournisseursEtClients.Click += new System.EventHandler(this.BtnFournisseursEtClients_Click);
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(88)))), ((int)(((byte)(77)))));
+            this.pictureBox5.Image = global::CasaEcologieSysInfo.Properties.Resources.Warehouse_32px;
+            this.pictureBox5.Location = new System.Drawing.Point(0, 2);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(34, 39);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox5.TabIndex = 7;
+            this.pictureBox5.TabStop = false;
             // 
             // btnProductionStock
             // 
@@ -889,6 +948,17 @@
             this.btnUtilisateurs.UseVisualStyleBackColor = false;
             this.btnUtilisateurs.Click += new System.EventHandler(this.BtnUtilisateurs_Click);
             // 
+            // pictureBox8
+            // 
+            this.pictureBox8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(88)))), ((int)(((byte)(77)))));
+            this.pictureBox8.Image = global::CasaEcologieSysInfo.Properties.Resources.User_Account_32px;
+            this.pictureBox8.Location = new System.Drawing.Point(3, 1);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(45, 34);
+            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox8.TabIndex = 4;
+            this.pictureBox8.TabStop = false;
+            // 
             // Accueil
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -918,7 +988,12 @@
             this.pnlUtilisateurs.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -982,5 +1057,10 @@
         private System.Windows.Forms.Timer tmrEtatsFinanciers;
         private System.Windows.Forms.Button btnMouvementCAC;
         private System.Windows.Forms.Button btnAutreEncaissement;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.PictureBox pictureBox7;
+        private System.Windows.Forms.PictureBox pictureBox8;
     }
 }

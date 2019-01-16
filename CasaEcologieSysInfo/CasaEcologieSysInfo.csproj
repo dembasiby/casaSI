@@ -665,7 +665,13 @@
       <DependentUpon>Model3.edmx</DependentUpon>
       <LastGenOutput>Model3.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\User Account_32px.png" />
+    <None Include="Resources\Supplier_32px.png" />
+    <None Include="Resources\Cash in Hand_32px.png" />
     <Content Include="Resources\Collapse Arrow_20px.png" />
+    <None Include="Resources\Warehouse_32px.png" />
+    <None Include="Resources\Money_32px1.png" />
+    <None Include="Resources\Money_32px.png" />
     <None Include="Resources\logo-Casa-ecologie.gif" />
     <None Include="Resources\logo-Casa-ecologie-2.gif" />
     <None Include="Resources\Expand Arrow_20px1.png" />
