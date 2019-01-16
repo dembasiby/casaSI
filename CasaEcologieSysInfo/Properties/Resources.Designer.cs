@@ -133,6 +133,26 @@ namespace CasaEcologieSysInfo.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap logo_Casa_ecologie {
+            get {
+                object obj = ResourceManager.GetObject("logo-Casa-ecologie", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap logo_Casa_ecologie_2 {
+            get {
+                object obj = ResourceManager.GetObject("logo-Casa-ecologie-2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Save_32px {
             get {
                 object obj = ResourceManager.GetObject("Save_32px", resourceCulture);

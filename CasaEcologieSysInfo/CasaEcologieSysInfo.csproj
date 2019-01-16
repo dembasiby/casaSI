@@ -48,7 +48,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>casa.ico</ApplicationIcon>
+    <ApplicationIcon>Casa-ecologie-2.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AdvancedDataGridView, Version=0.1.0.10, Culture=neutral, processorArchitecture=MSIL">
@@ -653,6 +653,7 @@
     <None Include="Resources\Expand Arrow_20px.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Casa-ecologie-2.ico" />
     <Content Include="casa.ico" />
     <Content Include="Model3.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -665,6 +666,8 @@
       <LastGenOutput>Model3.cs</LastGenOutput>
     </Content>
     <Content Include="Resources\Collapse Arrow_20px.png" />
+    <None Include="Resources\logo-Casa-ecologie.gif" />
+    <None Include="Resources\logo-Casa-ecologie-2.gif" />
     <None Include="Resources\Expand Arrow_20px1.png" />
     <None Include="Resources\Collapse Arrow_20px1.png" />
   </ItemGroup>
