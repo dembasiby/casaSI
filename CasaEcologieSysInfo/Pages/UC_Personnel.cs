@@ -59,20 +59,47 @@ namespace CasaEcologieSysInfo.Pages
         private void btnPresenceEmploye_Click(object sender, EventArgs e)
         {
             var employe = cbxTimeSheetNomEmploye.GetItemText(cbxTimeSheetNomEmploye.SelectedItem);
-
-            EvePresenceEmploye pe = new EvePresenceEmploye()
-            {
-                CodeEmploye = (from em in db.AgeEmployes
+            var codeEmploye = (from em in db.AgeEmployes
                                where em.PrenomNom == employe
-                               select em.CodeEmploye).FirstOrDefault(),
-                Date = DateTime.Parse(dtpDate.Text),
-                Arrivee = dtpArrivee.Value.TimeOfDay,
-                Depart = dtpDepart.Value.TimeOfDay,
-            };
+                               select em.CodeEmploye).FirstOrDefault();
 
-            db.EvePresenceEmployes.Add(pe);
-            db.SaveChanges();
-            MessageBox.Show("La présence de l'employé a été enregistrée avec succès.");
+            if (EmployeNonEncoreEnregistrePourCeJour(codeEmploye))
+            {
+                EvePresenceEmploye pe = new EvePresenceEmploye()
+                {
+                    CodeEmploye = codeEmploye,
+                    CodeUtilisationDesRessources = 0,
+                    Date = DateTime.Parse(dtpDate.Text),
+                    Arrivee = dtpArrivee.Value.TimeOfDay,
+                    Depart = dtpDepart.Value.TimeOfDay,
+                };
+
+                db.EvePresenceEmployes.Add(pe);
+                db.SaveChanges();
+                MessageBox.Show("La présence de l'employé a été enregistrée avec succès.");
+            }
+            else
+            {
+                MessageBox.Show($"{employe} a déjà été enregistré pour le {dtpDate.Value.ToShortDateString()}");
+                return;
+            }
+        }
+
+        private bool EmployeNonEncoreEnregistrePourCeJour(int codeEmploye)
+        {
+            try
+            {
+                var presenceEmploye = (from pe in db.EvePresenceEmployes
+                                       where pe.CodeEmploye == codeEmploye
+                                       where pe.Date == dtpDate.Value.Date
+                                       select pe).First();
+                return false;
+            }
+            catch (Exception)
+            {
+
+                return true;
+            }        
         }
     }
 }
