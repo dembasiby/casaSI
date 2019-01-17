@@ -51,9 +51,9 @@
             this.panel7 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.btnDecrementQuantite = new System.Windows.Forms.Button();
+            this.btnIncrementQuantite = new System.Windows.Forms.Button();
+            this.btnRetirer = new System.Windows.Forms.Button();
             this.btnVenteProduit = new System.Windows.Forms.Button();
             this.btnEnregistrerVente = new System.Windows.Forms.Button();
             this.lblTotalFacture = new System.Windows.Forms.Label();
@@ -313,9 +313,9 @@
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.flowLayoutPanel1.Controls.Add(this.button4);
-            this.flowLayoutPanel1.Controls.Add(this.button3);
-            this.flowLayoutPanel1.Controls.Add(this.button5);
+            this.flowLayoutPanel1.Controls.Add(this.btnDecrementQuantite);
+            this.flowLayoutPanel1.Controls.Add(this.btnIncrementQuantite);
+            this.flowLayoutPanel1.Controls.Add(this.btnRetirer);
             this.flowLayoutPanel1.Controls.Add(this.btnVenteProduit);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 10);
@@ -323,47 +323,50 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(533, 38);
             this.flowLayoutPanel1.TabIndex = 5;
             // 
-            // button4
+            // btnDecrementQuantite
             // 
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(31)))), ((int)(((byte)(20)))));
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.button4.Location = new System.Drawing.Point(3, 3);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(62, 31);
-            this.button4.TabIndex = 4;
-            this.button4.Text = "-";
-            this.button4.UseVisualStyleBackColor = false;
+            this.btnDecrementQuantite.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(31)))), ((int)(((byte)(20)))));
+            this.btnDecrementQuantite.FlatAppearance.BorderSize = 0;
+            this.btnDecrementQuantite.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDecrementQuantite.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDecrementQuantite.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnDecrementQuantite.Location = new System.Drawing.Point(3, 3);
+            this.btnDecrementQuantite.Name = "btnDecrementQuantite";
+            this.btnDecrementQuantite.Size = new System.Drawing.Size(62, 31);
+            this.btnDecrementQuantite.TabIndex = 4;
+            this.btnDecrementQuantite.Text = "-";
+            this.btnDecrementQuantite.UseVisualStyleBackColor = false;
+            this.btnDecrementQuantite.Click += new System.EventHandler(this.BtnDecrementQuantite_Click);
             // 
-            // button3
+            // btnIncrementQuantite
             // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(31)))), ((int)(((byte)(20)))));
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.button3.Location = new System.Drawing.Point(71, 3);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(68, 31);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "+";
-            this.button3.UseVisualStyleBackColor = false;
+            this.btnIncrementQuantite.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(31)))), ((int)(((byte)(20)))));
+            this.btnIncrementQuantite.FlatAppearance.BorderSize = 0;
+            this.btnIncrementQuantite.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnIncrementQuantite.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIncrementQuantite.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnIncrementQuantite.Location = new System.Drawing.Point(71, 3);
+            this.btnIncrementQuantite.Name = "btnIncrementQuantite";
+            this.btnIncrementQuantite.Size = new System.Drawing.Size(68, 31);
+            this.btnIncrementQuantite.TabIndex = 4;
+            this.btnIncrementQuantite.Text = "+";
+            this.btnIncrementQuantite.UseVisualStyleBackColor = false;
+            this.btnIncrementQuantite.Click += new System.EventHandler(this.BtnIncrementQuantite_Click);
             // 
-            // button5
+            // btnRetirer
             // 
-            this.button5.BackColor = System.Drawing.Color.Maroon;
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.button5.Location = new System.Drawing.Point(145, 3);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(175, 31);
-            this.button5.TabIndex = 4;
-            this.button5.Text = "Retirer";
-            this.button5.UseVisualStyleBackColor = false;
+            this.btnRetirer.BackColor = System.Drawing.Color.Maroon;
+            this.btnRetirer.FlatAppearance.BorderSize = 0;
+            this.btnRetirer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRetirer.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRetirer.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnRetirer.Location = new System.Drawing.Point(145, 3);
+            this.btnRetirer.Name = "btnRetirer";
+            this.btnRetirer.Size = new System.Drawing.Size(175, 31);
+            this.btnRetirer.TabIndex = 4;
+            this.btnRetirer.Text = "Retirer";
+            this.btnRetirer.UseVisualStyleBackColor = false;
+            this.btnRetirer.Click += new System.EventHandler(this.BtnRetirer_Click);
             // 
             // btnVenteProduit
             // 
@@ -843,9 +846,9 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.TextBox txtMontantEncaisse;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btnIncrementQuantite;
+        private System.Windows.Forms.Button btnDecrementQuantite;
+        private System.Windows.Forms.Button btnRetirer;
         private System.Windows.Forms.Button btnVenteProduit;
         private System.Windows.Forms.Button btnEnregistrerVente;
         private System.Windows.Forms.Label lbl;
