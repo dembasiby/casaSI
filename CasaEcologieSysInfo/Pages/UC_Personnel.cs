@@ -25,7 +25,50 @@ namespace CasaEcologieSysInfo.Pages
                                   select new { Nom = p.PrenomNom, p.Poste }).ToList();
 
             dgvListePersonnel.DataSource = listePersonnel;
+            cbxTempsEtRemun.DataSource = listePersonnel.Select(p => p.Nom).ToList();
             cbxTimeSheetNomEmploye.DataSource = listePersonnel.Select(p => p.Nom).ToList();
+            AfficherTempsEtRemunerationEmploye(dateTimePicker2.Value.Date);
+        }
+
+        private void AfficherTempsEtRemunerationEmploye(DateTime fin, DateTime debut = default(DateTime))
+        {
+            var employe = cbxTempsEtRemun.GetItemText(cbxTempsEtRemun.SelectedItem);
+
+            var liste = (from pe in db.EvePresenceEmployes
+                         where pe.AgeEmploye.PrenomNom == employe
+                         where pe.Date >= debut.Date
+                         where pe.Date <= fin.Date
+
+                         select new
+                         {
+                             pe.Date,
+                             Description = "Present",
+                             TotalHeures = pe.Depart.Hours - pe.Arrivee.Hours,
+                             TotalHeuresAPayer = 0,
+                             TauxHoraire = 125,
+                             Montant = 0,
+                             
+                         }).ToList();
+
+            DataTable dt = Conversion.ConvertirEnTableDeDonnees(liste);
+            dgvTempsEtRemun.DataSource = dt;
+            
+            for (int i = 0; i < dgvTempsEtRemun.Rows.Count; i++)
+            {
+                if (Convert.ToInt32(dgvTempsEtRemun.Rows[i].Cells["TotalHeures"].Value) > 6)
+                {
+                    dgvTempsEtRemun.Rows[i].Cells["TotalHeuresAPayer"].Value = 6;
+                }
+                else
+                {
+                    dgvTempsEtRemun.Rows[i].Cells["TotalHeuresAPayer"].Value = dgvTempsEtRemun.Rows[i].Cells["TotalHeures"].Value;
+                }
+
+                dgvTempsEtRemun.Rows[i].Cells["Montant"].Value = Convert.ToInt32(dgvTempsEtRemun.Rows[i].Cells["TotalHeuresAPayer"].Value)
+                    * Convert.ToInt32(dgvTempsEtRemun.Rows[i].Cells["TauxHoraire"].Value);
+            }
+
+            dt.Rows.Add(DateTime.Now, "Total", Conversion.CalculerTotal(dgvTempsEtRemun, "TotalHeures"), Conversion.CalculerTotal(dgvTempsEtRemun, "TotalHeuresAPayer"), 0, Conversion.CalculerTotal(dgvTempsEtRemun, "Montant"));
         }
 
         private void UC_Personnel_Load(object sender, EventArgs e)
@@ -100,6 +143,21 @@ namespace CasaEcologieSysInfo.Pages
 
                 return true;
             }        
+        }
+
+        private void cbxTempsEtRemun_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            AfficherTempsEtRemunerationEmploye(dateTimePicker2.Value.Date, dateTimePicker1.Value.Date);
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            AfficherTempsEtRemunerationEmploye(dateTimePicker2.Value.Date, dateTimePicker1.Value.Date);
+        }
+
+        private void DateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+            AfficherTempsEtRemunerationEmploye(dateTimePicker2.Value.Date, dateTimePicker1.Value.Date);
         }
     }
 }
