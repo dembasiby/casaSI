@@ -64,11 +64,14 @@ namespace CasaEcologieSysInfo.Pages
                     dgvTempsEtRemun.Rows[i].Cells["TotalHeuresAPayer"].Value = dgvTempsEtRemun.Rows[i].Cells["TotalHeures"].Value;
                 }
 
-                dgvTempsEtRemun.Rows[i].Cells["Montant"].Value = Convert.ToInt32(dgvTempsEtRemun.Rows[i].Cells["TotalHeuresAPayer"].Value)
+                dgvTempsEtRemun.Rows[i].Cells["Montant"].Value 
+                    = Convert.ToInt32(dgvTempsEtRemun.Rows[i].Cells["TotalHeuresAPayer"].Value)
                     * Convert.ToInt32(dgvTempsEtRemun.Rows[i].Cells["TauxHoraire"].Value);
             }
 
-            dt.Rows.Add(DateTime.Now, "Total", Conversion.CalculerTotal(dgvTempsEtRemun, "TotalHeures"), Conversion.CalculerTotal(dgvTempsEtRemun, "TotalHeuresAPayer"), 0, Conversion.CalculerTotal(dgvTempsEtRemun, "Montant"));
+            dt.Rows.Add(DateTime.Now, "Total", Conversion.CalculerTotal(dgvTempsEtRemun, "TotalHeures"), 
+                Conversion.CalculerTotal(dgvTempsEtRemun, "TotalHeuresAPayer"), 0, 
+                Conversion.CalculerTotal(dgvTempsEtRemun, "Montant"));
         }
 
         private void UC_Personnel_Load(object sender, EventArgs e)
