@@ -30,7 +30,7 @@ namespace CasaEcologieSysInfo.Pages
                            select new
                            {
                                prod.Date,
-                               psf.Description,
+                               Description = "Production de " + psf.Description,
                                Entree = ppsf.QuantiteProduitSemiFini,
                                Sortie = 0,
                                Solde = 0
@@ -68,9 +68,9 @@ namespace CasaEcologieSysInfo.Pages
             dr["Sortie"] = 0;
             dr["Description"] = "Stock initial";
 
-            adgvJournalStocksProduitsSemiFinis.DataSource = dt;
+            dgvJournalStocksProduitsSemiFinis.DataSource = dt;
 
-            Conversion.CalculerSoldeStocksDeFaconProgressive(adgvJournalStocksProduitsSemiFinis, stockInitial);
+            Conversion.CalculerSoldeStocksDeFaconProgressive(dgvJournalStocksProduitsSemiFinis, stockInitial);
         }
 
         private void UC_StockProduitsSemiFinis_Load(object sender, EventArgs e)
@@ -82,16 +82,6 @@ namespace CasaEcologieSysInfo.Pages
 
             var description = lbxListeProduitsSemiFinis.GetItemText(lbxListeProduitsSemiFinis.SelectedItem);
             AfficherJournalCorrespondant(description);
-        }
-
-        private void AdgvJournalStocksProduitsSemiFinis_FilterStringChanged(object sender, EventArgs e)
-        {
-            Conversion.FiltrerTableau(sender, e);
-        }
-
-        private void AdgvJournalStocksProduitsSemiFinis_SortStringChanged(object sender, EventArgs e)
-        {
-            Conversion.TrierTableau(sender, e);
         }
 
         private void lbxListeProduitsSemiFinis_SelectedIndexChanged(object sender, EventArgs e)

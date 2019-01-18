@@ -29,35 +29,16 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.adgvJournalStocksProduitsSemiFinis = new ADGV.AdvancedDataGridView();
             this.label4 = new System.Windows.Forms.Label();
             this.lbxListeProduitsSemiFinis = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.resStockProduitsSemiFiniBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.adgvJournalStocksProduitsSemiFinis)).BeginInit();
+            this.dgvJournalStocksProduitsSemiFinis = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.resStockProduitsSemiFiniBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvJournalStocksProduitsSemiFinis)).BeginInit();
             this.SuspendLayout();
-            // 
-            // adgvJournalStocksProduitsSemiFinis
-            // 
-            this.adgvJournalStocksProduitsSemiFinis.AutoGenerateContextFilters = true;
-            this.adgvJournalStocksProduitsSemiFinis.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.adgvJournalStocksProduitsSemiFinis.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-            this.adgvJournalStocksProduitsSemiFinis.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.adgvJournalStocksProduitsSemiFinis.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.adgvJournalStocksProduitsSemiFinis.DateWithTime = false;
-            this.adgvJournalStocksProduitsSemiFinis.GridColor = System.Drawing.SystemColors.AppWorkspace;
-            this.adgvJournalStocksProduitsSemiFinis.Location = new System.Drawing.Point(186, 89);
-            this.adgvJournalStocksProduitsSemiFinis.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.adgvJournalStocksProduitsSemiFinis.Name = "adgvJournalStocksProduitsSemiFinis";
-            this.adgvJournalStocksProduitsSemiFinis.ReadOnly = true;
-            this.adgvJournalStocksProduitsSemiFinis.Size = new System.Drawing.Size(784, 493);
-            this.adgvJournalStocksProduitsSemiFinis.TabIndex = 0;
-            this.adgvJournalStocksProduitsSemiFinis.TimeFilter = false;
-            this.adgvJournalStocksProduitsSemiFinis.SortStringChanged += new System.EventHandler(this.AdgvJournalStocksProduitsSemiFinis_SortStringChanged);
-            this.adgvJournalStocksProduitsSemiFinis.FilterStringChanged += new System.EventHandler(this.AdgvJournalStocksProduitsSemiFinis_FilterStringChanged);
             // 
             // label4
             // 
@@ -77,7 +58,7 @@
             this.lbxListeProduitsSemiFinis.FormattingEnabled = true;
             this.lbxListeProduitsSemiFinis.ItemHeight = 17;
             this.lbxListeProduitsSemiFinis.Location = new System.Drawing.Point(5, 89);
-            this.lbxListeProduitsSemiFinis.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lbxListeProduitsSemiFinis.Margin = new System.Windows.Forms.Padding(2);
             this.lbxListeProduitsSemiFinis.Name = "lbxListeProduitsSemiFinis";
             this.lbxListeProduitsSemiFinis.Size = new System.Drawing.Size(168, 493);
             this.lbxListeProduitsSemiFinis.TabIndex = 16;
@@ -120,36 +101,51 @@
             // 
             this.resStockProduitsSemiFiniBindingSource.DataSource = typeof(CasaEcologieSysInfo.ResStockProduitsSemiFini);
             // 
+            // dgvJournalStocksProduitsSemiFinis
+            // 
+            this.dgvJournalStocksProduitsSemiFinis.AllowUserToAddRows = false;
+            this.dgvJournalStocksProduitsSemiFinis.AllowUserToDeleteRows = false;
+            this.dgvJournalStocksProduitsSemiFinis.AllowUserToOrderColumns = true;
+            this.dgvJournalStocksProduitsSemiFinis.AllowUserToResizeColumns = false;
+            this.dgvJournalStocksProduitsSemiFinis.AllowUserToResizeRows = false;
+            this.dgvJournalStocksProduitsSemiFinis.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dgvJournalStocksProduitsSemiFinis.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.dgvJournalStocksProduitsSemiFinis.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvJournalStocksProduitsSemiFinis.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvJournalStocksProduitsSemiFinis.Location = new System.Drawing.Point(179, 89);
+            this.dgvJournalStocksProduitsSemiFinis.Name = "dgvJournalStocksProduitsSemiFinis";
+            this.dgvJournalStocksProduitsSemiFinis.Size = new System.Drawing.Size(788, 493);
+            this.dgvJournalStocksProduitsSemiFinis.TabIndex = 18;
+            // 
             // UC_StockProduitsSemiFinis
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.dgvJournalStocksProduitsSemiFinis);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lbxListeProduitsSemiFinis);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.adgvJournalStocksProduitsSemiFinis);
             this.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UC_StockProduitsSemiFinis";
             this.Size = new System.Drawing.Size(983, 635);
             this.Load += new System.EventHandler(this.UC_StockProduitsSemiFinis_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.adgvJournalStocksProduitsSemiFinis)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.resStockProduitsSemiFiniBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvJournalStocksProduitsSemiFinis)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private ADGV.AdvancedDataGridView adgvJournalStocksProduitsSemiFinis;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ListBox lbxListeProduitsSemiFinis;
         private System.Windows.Forms.BindingSource resStockProduitsSemiFiniBindingSource;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DataGridView dgvJournalStocksProduitsSemiFinis;
     }
 }
