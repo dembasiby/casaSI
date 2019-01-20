@@ -297,6 +297,18 @@
     <Compile Include="Pages\UC_Personnel.Designer.cs">
       <DependentUpon>UC_Personnel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pages\UC_ReceptionDonMatierePremiere.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\UC_ReceptionDonMatierePremiere.Designer.cs">
+      <DependentUpon>UC_ReceptionDonMatierePremiere.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\UC_SortieDechetsMatierePremiere.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\UC_SortieDechetsMatierePremiere.Designer.cs">
+      <DependentUpon>UC_SortieDechetsMatierePremiere.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pages\UC_StockProduitsSemiFinis.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -442,6 +454,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\UC_Personnel.resx">
       <DependentUpon>UC_Personnel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\UC_ReceptionDonMatierePremiere.resx">
+      <DependentUpon>UC_ReceptionDonMatierePremiere.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\UC_SortieDechetsMatierePremiere.resx">
+      <DependentUpon>UC_SortieDechetsMatierePremiere.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\UC_StockProduitsSemiFinis.resx">
       <DependentUpon>UC_StockProduitsSemiFinis.cs</DependentUpon>
