@@ -609,6 +609,7 @@
     <None Include="packages.config" />
     <None Include="Properties\DataSources\AgeClient.datasource" />
     <None Include="Properties\DataSources\AgeEmploye.datasource" />
+    <None Include="Properties\DataSources\AgeFournisseursMatieresPremiere.datasource" />
     <None Include="Properties\DataSources\CasaDBDataSet5.AgeEmployesDataTable.datasource" />
     <None Include="Properties\DataSources\CasaDBDataSet5.AgeEmployesRow.datasource" />
     <None Include="Properties\DataSources\CasaDBDataSet5.datasource" />

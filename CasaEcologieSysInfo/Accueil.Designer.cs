@@ -599,7 +599,7 @@
             this.pnlProductionStocks.MaximumSize = new System.Drawing.Size(217, 295);
             this.pnlProductionStocks.MinimumSize = new System.Drawing.Size(217, 40);
             this.pnlProductionStocks.Name = "pnlProductionStocks";
-            this.pnlProductionStocks.Size = new System.Drawing.Size(217, 295);
+            this.pnlProductionStocks.Size = new System.Drawing.Size(217, 40);
             this.pnlProductionStocks.TabIndex = 8;
             // 
             // pictureBox5
@@ -727,7 +727,7 @@
             this.pnlFournisseurClient.Controls.Add(this.btnFournisseursEtClients);
             this.pnlFournisseurClient.Controls.Add(this.btnCreancesClients);
             this.pnlFournisseurClient.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.pnlFournisseurClient.Location = new System.Drawing.Point(3, 683);
+            this.pnlFournisseurClient.Location = new System.Drawing.Point(3, 428);
             this.pnlFournisseurClient.MaximumSize = new System.Drawing.Size(217, 111);
             this.pnlFournisseurClient.MinimumSize = new System.Drawing.Size(217, 40);
             this.pnlFournisseurClient.Name = "pnlFournisseurClient";
@@ -801,7 +801,7 @@
             this.pnlEtatsFinanciers.Controls.Add(this.btnTableauTresorerie);
             this.pnlEtatsFinanciers.Controls.Add(this.btnCompteDeResultat);
             this.pnlEtatsFinanciers.Controls.Add(this.btnEtatsFinanciers);
-            this.pnlEtatsFinanciers.Location = new System.Drawing.Point(3, 729);
+            this.pnlEtatsFinanciers.Location = new System.Drawing.Point(3, 474);
             this.pnlEtatsFinanciers.MaximumSize = new System.Drawing.Size(217, 161);
             this.pnlEtatsFinanciers.MinimumSize = new System.Drawing.Size(217, 40);
             this.pnlEtatsFinanciers.Name = "pnlEtatsFinanciers";
@@ -879,7 +879,7 @@
             this.pnlUtilisateurs.Controls.Add(this.btnUtilisateurs);
             this.pnlUtilisateurs.Controls.Add(this.btnGererUtilisateurs);
             this.pnlUtilisateurs.Controls.Add(this.btnGererCompte);
-            this.pnlUtilisateurs.Location = new System.Drawing.Point(3, 775);
+            this.pnlUtilisateurs.Location = new System.Drawing.Point(3, 520);
             this.pnlUtilisateurs.MaximumSize = new System.Drawing.Size(217, 120);
             this.pnlUtilisateurs.MinimumSize = new System.Drawing.Size(217, 40);
             this.pnlUtilisateurs.Name = "pnlUtilisateurs";
