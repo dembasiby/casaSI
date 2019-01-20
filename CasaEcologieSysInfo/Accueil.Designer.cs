@@ -62,18 +62,20 @@
             this.btnDepenses = new System.Windows.Forms.Button();
             this.btnEquipementInfrastructure = new System.Windows.Forms.Button();
             this.btnMatierePremiere = new System.Windows.Forms.Button();
+            this.pnlProductionStocks = new System.Windows.Forms.Panel();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.btnStockProduitsSemiFinis = new System.Windows.Forms.Button();
+            this.btnNouvelleProduction = new System.Windows.Forms.Button();
+            this.btnDonRecuMatierePrem = new System.Windows.Forms.Button();
+            this.btnSortieStock = new System.Windows.Forms.Button();
+            this.btnStockMatierePremiere = new System.Windows.Forms.Button();
+            this.btnStockProduitsFinis = new System.Windows.Forms.Button();
+            this.btnProductionStock = new System.Windows.Forms.Button();
             this.pnlFournisseurClient = new System.Windows.Forms.Panel();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.btnDettesFournisseurs = new System.Windows.Forms.Button();
             this.btnFournisseursEtClients = new System.Windows.Forms.Button();
             this.btnCreancesClients = new System.Windows.Forms.Button();
-            this.pnlProductionStocks = new System.Windows.Forms.Panel();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.btnStockProduitsSemiFinis = new System.Windows.Forms.Button();
-            this.btnNouvelleProduction = new System.Windows.Forms.Button();
-            this.btnStockMatierePremiere = new System.Windows.Forms.Button();
-            this.btnStockProduitsFinis = new System.Windows.Forms.Button();
-            this.btnProductionStock = new System.Windows.Forms.Button();
             this.pnlEtatsFinanciers = new System.Windows.Forms.Panel();
             this.btnBilansMensuels = new System.Windows.Forms.Button();
             this.btnTableauTresorerie = new System.Windows.Forms.Button();
@@ -92,8 +94,6 @@
             this.tmrTresorerie = new System.Windows.Forms.Timer(this.components);
             this.tmrUtilisateurs = new System.Windows.Forms.Timer(this.components);
             this.tmrEtatsFinanciers = new System.Windows.Forms.Timer(this.components);
-            this.btnSortieStock = new System.Windows.Forms.Button();
-            this.btnDonRecuMatierePrem = new System.Windows.Forms.Button();
             this.dragControl1 = new CasaEcologieSysInfo.DragControl();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -106,10 +106,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.pnlDepenses.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            this.pnlFournisseurClient.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.pnlProductionStocks.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            this.pnlFournisseurClient.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.pnlEtatsFinanciers.SuspendLayout();
             this.pnlUtilisateurs.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
@@ -585,6 +585,140 @@
             this.btnMatierePremiere.UseVisualStyleBackColor = false;
             this.btnMatierePremiere.Click += new System.EventHandler(this.BtnMatierePremiere_Click);
             // 
+            // pnlProductionStocks
+            // 
+            this.pnlProductionStocks.Controls.Add(this.pictureBox5);
+            this.pnlProductionStocks.Controls.Add(this.btnStockProduitsSemiFinis);
+            this.pnlProductionStocks.Controls.Add(this.btnNouvelleProduction);
+            this.pnlProductionStocks.Controls.Add(this.btnDonRecuMatierePrem);
+            this.pnlProductionStocks.Controls.Add(this.btnSortieStock);
+            this.pnlProductionStocks.Controls.Add(this.btnStockMatierePremiere);
+            this.pnlProductionStocks.Controls.Add(this.btnStockProduitsFinis);
+            this.pnlProductionStocks.Controls.Add(this.btnProductionStock);
+            this.pnlProductionStocks.Location = new System.Drawing.Point(3, 382);
+            this.pnlProductionStocks.MaximumSize = new System.Drawing.Size(217, 295);
+            this.pnlProductionStocks.MinimumSize = new System.Drawing.Size(217, 40);
+            this.pnlProductionStocks.Name = "pnlProductionStocks";
+            this.pnlProductionStocks.Size = new System.Drawing.Size(217, 295);
+            this.pnlProductionStocks.TabIndex = 8;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(88)))), ((int)(((byte)(77)))));
+            this.pictureBox5.Image = global::CasaEcologieSysInfo.Properties.Resources.Warehouse_32px;
+            this.pictureBox5.Location = new System.Drawing.Point(0, 2);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(34, 39);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox5.TabIndex = 7;
+            this.pictureBox5.TabStop = false;
+            // 
+            // btnStockProduitsSemiFinis
+            // 
+            this.btnStockProduitsSemiFinis.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
+            this.btnStockProduitsSemiFinis.FlatAppearance.BorderSize = 0;
+            this.btnStockProduitsSemiFinis.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStockProduitsSemiFinis.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStockProduitsSemiFinis.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnStockProduitsSemiFinis.Location = new System.Drawing.Point(0, 122);
+            this.btnStockProduitsSemiFinis.Name = "btnStockProduitsSemiFinis";
+            this.btnStockProduitsSemiFinis.Size = new System.Drawing.Size(214, 39);
+            this.btnStockProduitsSemiFinis.TabIndex = 7;
+            this.btnStockProduitsSemiFinis.Text = "Stocks produits sémi-finis";
+            this.btnStockProduitsSemiFinis.UseVisualStyleBackColor = false;
+            this.btnStockProduitsSemiFinis.Click += new System.EventHandler(this.BtnStockProduitsSemiFinis_Click);
+            // 
+            // btnNouvelleProduction
+            // 
+            this.btnNouvelleProduction.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
+            this.btnNouvelleProduction.FlatAppearance.BorderSize = 0;
+            this.btnNouvelleProduction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNouvelleProduction.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNouvelleProduction.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNouvelleProduction.Location = new System.Drawing.Point(0, 42);
+            this.btnNouvelleProduction.Name = "btnNouvelleProduction";
+            this.btnNouvelleProduction.Size = new System.Drawing.Size(214, 39);
+            this.btnNouvelleProduction.TabIndex = 4;
+            this.btnNouvelleProduction.Text = "Nouvelle production";
+            this.btnNouvelleProduction.UseVisualStyleBackColor = false;
+            this.btnNouvelleProduction.Click += new System.EventHandler(this.BtnNouvelleProduction_Click);
+            // 
+            // btnDonRecuMatierePrem
+            // 
+            this.btnDonRecuMatierePrem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
+            this.btnDonRecuMatierePrem.FlatAppearance.BorderSize = 0;
+            this.btnDonRecuMatierePrem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDonRecuMatierePrem.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDonRecuMatierePrem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDonRecuMatierePrem.Location = new System.Drawing.Point(-1, 256);
+            this.btnDonRecuMatierePrem.Name = "btnDonRecuMatierePrem";
+            this.btnDonRecuMatierePrem.Size = new System.Drawing.Size(214, 45);
+            this.btnDonRecuMatierePrem.TabIndex = 3;
+            this.btnDonRecuMatierePrem.Text = "Matières premières reçues en dons";
+            this.btnDonRecuMatierePrem.UseVisualStyleBackColor = false;
+            this.btnDonRecuMatierePrem.Click += new System.EventHandler(this.BtnDonRecuMatierePrem_Click);
+            // 
+            // btnSortieStock
+            // 
+            this.btnSortieStock.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
+            this.btnSortieStock.FlatAppearance.BorderSize = 0;
+            this.btnSortieStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSortieStock.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSortieStock.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSortieStock.Location = new System.Drawing.Point(1, 208);
+            this.btnSortieStock.Name = "btnSortieStock";
+            this.btnSortieStock.Size = new System.Drawing.Size(214, 45);
+            this.btnSortieStock.TabIndex = 3;
+            this.btnSortieStock.Text = "Sortie déchets matières premières";
+            this.btnSortieStock.UseVisualStyleBackColor = false;
+            this.btnSortieStock.Click += new System.EventHandler(this.BtnSortieStock_Click);
+            // 
+            // btnStockMatierePremiere
+            // 
+            this.btnStockMatierePremiere.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
+            this.btnStockMatierePremiere.FlatAppearance.BorderSize = 0;
+            this.btnStockMatierePremiere.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStockMatierePremiere.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStockMatierePremiere.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnStockMatierePremiere.Location = new System.Drawing.Point(0, 162);
+            this.btnStockMatierePremiere.Name = "btnStockMatierePremiere";
+            this.btnStockMatierePremiere.Size = new System.Drawing.Size(214, 45);
+            this.btnStockMatierePremiere.TabIndex = 3;
+            this.btnStockMatierePremiere.Text = "Stock matières premières";
+            this.btnStockMatierePremiere.UseVisualStyleBackColor = false;
+            this.btnStockMatierePremiere.Click += new System.EventHandler(this.BtnStockMatierePremiere_Click);
+            // 
+            // btnStockProduitsFinis
+            // 
+            this.btnStockProduitsFinis.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
+            this.btnStockProduitsFinis.FlatAppearance.BorderSize = 0;
+            this.btnStockProduitsFinis.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStockProduitsFinis.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStockProduitsFinis.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnStockProduitsFinis.Location = new System.Drawing.Point(1, 82);
+            this.btnStockProduitsFinis.Name = "btnStockProduitsFinis";
+            this.btnStockProduitsFinis.Size = new System.Drawing.Size(213, 39);
+            this.btnStockProduitsFinis.TabIndex = 2;
+            this.btnStockProduitsFinis.Text = "Stocks produits finis";
+            this.btnStockProduitsFinis.UseVisualStyleBackColor = false;
+            this.btnStockProduitsFinis.Click += new System.EventHandler(this.BtnStockProduitsFinis_Click);
+            // 
+            // btnProductionStock
+            // 
+            this.btnProductionStock.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(88)))), ((int)(((byte)(77)))));
+            this.btnProductionStock.FlatAppearance.BorderSize = 0;
+            this.btnProductionStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProductionStock.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProductionStock.Image = global::CasaEcologieSysInfo.Properties.Resources.Expand_Arrow_20px;
+            this.btnProductionStock.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnProductionStock.Location = new System.Drawing.Point(-3, 2);
+            this.btnProductionStock.Name = "btnProductionStock";
+            this.btnProductionStock.Size = new System.Drawing.Size(217, 40);
+            this.btnProductionStock.TabIndex = 1;
+            this.btnProductionStock.Text = "Production / stocks";
+            this.btnProductionStock.UseVisualStyleBackColor = false;
+            this.btnProductionStock.Click += new System.EventHandler(this.BtnProductionStock_Click);
+            // 
             // pnlFournisseurClient
             // 
             this.pnlFournisseurClient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(31)))), ((int)(((byte)(20)))));
@@ -660,110 +794,6 @@
             this.btnCreancesClients.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCreancesClients.UseVisualStyleBackColor = false;
             this.btnCreancesClients.Click += new System.EventHandler(this.BtnCreancesClients_Click);
-            // 
-            // pnlProductionStocks
-            // 
-            this.pnlProductionStocks.Controls.Add(this.pictureBox5);
-            this.pnlProductionStocks.Controls.Add(this.btnStockProduitsSemiFinis);
-            this.pnlProductionStocks.Controls.Add(this.btnNouvelleProduction);
-            this.pnlProductionStocks.Controls.Add(this.btnDonRecuMatierePrem);
-            this.pnlProductionStocks.Controls.Add(this.btnSortieStock);
-            this.pnlProductionStocks.Controls.Add(this.btnStockMatierePremiere);
-            this.pnlProductionStocks.Controls.Add(this.btnStockProduitsFinis);
-            this.pnlProductionStocks.Controls.Add(this.btnProductionStock);
-            this.pnlProductionStocks.Location = new System.Drawing.Point(3, 382);
-            this.pnlProductionStocks.MaximumSize = new System.Drawing.Size(217, 295);
-            this.pnlProductionStocks.MinimumSize = new System.Drawing.Size(217, 40);
-            this.pnlProductionStocks.Name = "pnlProductionStocks";
-            this.pnlProductionStocks.Size = new System.Drawing.Size(217, 295);
-            this.pnlProductionStocks.TabIndex = 8;
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(88)))), ((int)(((byte)(77)))));
-            this.pictureBox5.Image = global::CasaEcologieSysInfo.Properties.Resources.Warehouse_32px;
-            this.pictureBox5.Location = new System.Drawing.Point(0, 2);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(34, 39);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox5.TabIndex = 7;
-            this.pictureBox5.TabStop = false;
-            // 
-            // btnStockProduitsSemiFinis
-            // 
-            this.btnStockProduitsSemiFinis.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.btnStockProduitsSemiFinis.FlatAppearance.BorderSize = 0;
-            this.btnStockProduitsSemiFinis.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStockProduitsSemiFinis.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStockProduitsSemiFinis.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnStockProduitsSemiFinis.Location = new System.Drawing.Point(0, 122);
-            this.btnStockProduitsSemiFinis.Name = "btnStockProduitsSemiFinis";
-            this.btnStockProduitsSemiFinis.Size = new System.Drawing.Size(214, 39);
-            this.btnStockProduitsSemiFinis.TabIndex = 7;
-            this.btnStockProduitsSemiFinis.Text = "Stocks produits sémi-finis";
-            this.btnStockProduitsSemiFinis.UseVisualStyleBackColor = false;
-            this.btnStockProduitsSemiFinis.Click += new System.EventHandler(this.BtnStockProduitsSemiFinis_Click);
-            // 
-            // btnNouvelleProduction
-            // 
-            this.btnNouvelleProduction.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.btnNouvelleProduction.FlatAppearance.BorderSize = 0;
-            this.btnNouvelleProduction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNouvelleProduction.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNouvelleProduction.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNouvelleProduction.Location = new System.Drawing.Point(0, 42);
-            this.btnNouvelleProduction.Name = "btnNouvelleProduction";
-            this.btnNouvelleProduction.Size = new System.Drawing.Size(214, 39);
-            this.btnNouvelleProduction.TabIndex = 4;
-            this.btnNouvelleProduction.Text = "Nouvelle production";
-            this.btnNouvelleProduction.UseVisualStyleBackColor = false;
-            this.btnNouvelleProduction.Click += new System.EventHandler(this.BtnNouvelleProduction_Click);
-            // 
-            // btnStockMatierePremiere
-            // 
-            this.btnStockMatierePremiere.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.btnStockMatierePremiere.FlatAppearance.BorderSize = 0;
-            this.btnStockMatierePremiere.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStockMatierePremiere.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStockMatierePremiere.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnStockMatierePremiere.Location = new System.Drawing.Point(0, 162);
-            this.btnStockMatierePremiere.Name = "btnStockMatierePremiere";
-            this.btnStockMatierePremiere.Size = new System.Drawing.Size(214, 45);
-            this.btnStockMatierePremiere.TabIndex = 3;
-            this.btnStockMatierePremiere.Text = "Stock matières premières";
-            this.btnStockMatierePremiere.UseVisualStyleBackColor = false;
-            this.btnStockMatierePremiere.Click += new System.EventHandler(this.BtnStockMatierePremiere_Click);
-            // 
-            // btnStockProduitsFinis
-            // 
-            this.btnStockProduitsFinis.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.btnStockProduitsFinis.FlatAppearance.BorderSize = 0;
-            this.btnStockProduitsFinis.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStockProduitsFinis.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStockProduitsFinis.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnStockProduitsFinis.Location = new System.Drawing.Point(1, 82);
-            this.btnStockProduitsFinis.Name = "btnStockProduitsFinis";
-            this.btnStockProduitsFinis.Size = new System.Drawing.Size(213, 39);
-            this.btnStockProduitsFinis.TabIndex = 2;
-            this.btnStockProduitsFinis.Text = "Stocks produits finis";
-            this.btnStockProduitsFinis.UseVisualStyleBackColor = false;
-            this.btnStockProduitsFinis.Click += new System.EventHandler(this.BtnStockProduitsFinis_Click);
-            // 
-            // btnProductionStock
-            // 
-            this.btnProductionStock.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(88)))), ((int)(((byte)(77)))));
-            this.btnProductionStock.FlatAppearance.BorderSize = 0;
-            this.btnProductionStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnProductionStock.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProductionStock.Image = global::CasaEcologieSysInfo.Properties.Resources.Expand_Arrow_20px;
-            this.btnProductionStock.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnProductionStock.Location = new System.Drawing.Point(-3, 2);
-            this.btnProductionStock.Name = "btnProductionStock";
-            this.btnProductionStock.Size = new System.Drawing.Size(217, 40);
-            this.btnProductionStock.TabIndex = 1;
-            this.btnProductionStock.Text = "Production / stocks";
-            this.btnProductionStock.UseVisualStyleBackColor = false;
-            this.btnProductionStock.Click += new System.EventHandler(this.BtnProductionStock_Click);
             // 
             // pnlEtatsFinanciers
             // 
@@ -959,34 +989,6 @@
             this.tmrEtatsFinanciers.Interval = 15;
             this.tmrEtatsFinanciers.Tick += new System.EventHandler(this.TmrEtatsFinanciers_Tick);
             // 
-            // btnSortieStock
-            // 
-            this.btnSortieStock.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.btnSortieStock.FlatAppearance.BorderSize = 0;
-            this.btnSortieStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSortieStock.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSortieStock.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSortieStock.Location = new System.Drawing.Point(1, 208);
-            this.btnSortieStock.Name = "btnSortieStock";
-            this.btnSortieStock.Size = new System.Drawing.Size(214, 45);
-            this.btnSortieStock.TabIndex = 3;
-            this.btnSortieStock.Text = "Sortie déchets matières premières";
-            this.btnSortieStock.UseVisualStyleBackColor = false;
-            // 
-            // btnDonRecuMatierePrem
-            // 
-            this.btnDonRecuMatierePrem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.btnDonRecuMatierePrem.FlatAppearance.BorderSize = 0;
-            this.btnDonRecuMatierePrem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDonRecuMatierePrem.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDonRecuMatierePrem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDonRecuMatierePrem.Location = new System.Drawing.Point(-1, 256);
-            this.btnDonRecuMatierePrem.Name = "btnDonRecuMatierePrem";
-            this.btnDonRecuMatierePrem.Size = new System.Drawing.Size(214, 45);
-            this.btnDonRecuMatierePrem.TabIndex = 3;
-            this.btnDonRecuMatierePrem.Text = "Matières premières reçues en dons";
-            this.btnDonRecuMatierePrem.UseVisualStyleBackColor = false;
-            // 
             // dragControl1
             // 
             this.dragControl1.SelectControl = this.pnlTop;
@@ -1019,10 +1021,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.pnlDepenses.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            this.pnlFournisseurClient.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             this.pnlProductionStocks.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            this.pnlFournisseurClient.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             this.pnlEtatsFinanciers.ResumeLayout(false);
             this.pnlUtilisateurs.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();

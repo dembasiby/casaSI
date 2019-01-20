@@ -252,5 +252,17 @@ namespace CasaEcologieSysInfo
             Pages.UC_MouvementCompteACompte mcc = new Pages.UC_MouvementCompteACompte();
             AddControlsToPanel(mcc);
         }
+
+        private void BtnSortieStock_Click(object sender, EventArgs e)
+        {
+            Pages.UC_SortieDechetsMatierePremiere dechet = new Pages.UC_SortieDechetsMatierePremiere();
+            AddControlsToPanel(dechet);
+        }
+
+        private void BtnDonRecuMatierePrem_Click(object sender, EventArgs e)
+        {
+            Pages.UC_ReceptionDonMatierePremiere don = new Pages.UC_ReceptionDonMatierePremiere();
+            AddControlsToPanel(don);
+        }
     }
 }
