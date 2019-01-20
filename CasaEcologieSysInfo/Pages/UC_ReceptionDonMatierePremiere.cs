@@ -16,5 +16,10 @@ namespace CasaEcologieSysInfo.Pages
         {
             InitializeComponent();
         }
+
+        private void UC_ReceptionDonMatierePremiere_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
