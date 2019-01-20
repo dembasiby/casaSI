@@ -1,6 +1,6 @@
 ﻿namespace CasaEcologieSysInfo.Pages
 {
-    partial class UC_EtatsFinMensuels
+    partial class UC_CompteDeResultat
     {
         /// <summary> 
         /// Variable nécessaire au concepteur.

@@ -231,7 +231,7 @@ namespace CasaEcologieSysInfo
 
         private void BtnEtatsFinanciersMensuels_Click(object sender, EventArgs e)
         {
-            Pages.UC_EtatsFinMensuels efm = new Pages.UC_EtatsFinMensuels();
+            Pages.UC_CompteDeResultat efm = new Pages.UC_CompteDeResultat();
             AddControlsToPanel(efm);
         }
 

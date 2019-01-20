@@ -12,7 +12,8 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
-    <PublishUrl>publish\</PublishUrl>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>C:\Users\dsiby_000\Downloads\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -22,10 +23,10 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationRevision>1</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -49,6 +50,18 @@
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>Casa-ecologie-2.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>E3B70EE29EC4B2364251CA3F08768AC8ACB4591D</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>CasaEcologieSysInfo_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AdvancedDataGridView, Version=0.1.0.10, Culture=neutral, processorArchitecture=MSIL">
@@ -251,11 +264,11 @@
     <Compile Include="Pages\UC_CreancesClients.Designer.cs">
       <DependentUpon>UC_CreancesClients.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pages\UC_EtatsFinMensuels.cs">
+    <Compile Include="Pages\UC_CompteDeResultat.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Pages\UC_EtatsFinMensuels.Designer.cs">
-      <DependentUpon>UC_EtatsFinMensuels.cs</DependentUpon>
+    <Compile Include="Pages\UC_CompteDeResultat.Designer.cs">
+      <DependentUpon>UC_CompteDeResultat.cs</DependentUpon>
     </Compile>
     <Compile Include="Pages\UC_JournalTresorerie.cs">
       <SubType>UserControl</SubType>
@@ -412,8 +425,8 @@
     <EmbeddedResource Include="Pages\UC_DettesFournisseurs.resx">
       <DependentUpon>UC_DettesFournisseurs.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pages\UC_EtatsFinMensuels.resx">
-      <DependentUpon>UC_EtatsFinMensuels.cs</DependentUpon>
+    <EmbeddedResource Include="Pages\UC_CompteDeResultat.resx">
+      <DependentUpon>UC_CompteDeResultat.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\UC_JournalTresorerie.resx">
       <DependentUpon>UC_JournalTresorerie.cs</DependentUpon>
@@ -553,6 +566,7 @@
     <None Include="CasaDBDataSetAll.xss">
       <DependentUpon>CasaDBDataSetAll.xsd</DependentUpon>
     </None>
+    <None Include="CasaEcologieSysInfo_TemporaryKey.pfx" />
     <None Include="EmployesDataSet3.xsc">
       <DependentUpon>EmployesDataSet3.xsd</DependentUpon>
     </None>
@@ -690,6 +704,11 @@
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.SqlServer.Express.11.0">
+      <Visible>False</Visible>
+      <ProductName>SQL Server 2012 Express</ProductName>
+      <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

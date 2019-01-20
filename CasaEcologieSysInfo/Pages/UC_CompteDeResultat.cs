@@ -10,12 +10,12 @@ using System.Windows.Forms;
 
 namespace CasaEcologieSysInfo.Pages
 {
-    public partial class UC_EtatsFinMensuels : UserControl
+    public partial class UC_CompteDeResultat : UserControl
     {
 
         CasaDBEntities2 db = new CasaDBEntities2();
 
-        public UC_EtatsFinMensuels()
+        public UC_CompteDeResultat()
         {
             InitializeComponent();
             dateTimePicker1.Format = DateTimePickerFormat.Custom;
