@@ -408,18 +408,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_EveDecaissements_EveDecaissements">
-          <End Role="EveDecaissements" Type="Self.EveDecaissements" Multiplicity="1" />
-          <End Role="EveDecaissements1" Type="Self.EveDecaissements" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="EveDecaissements">
-              <PropertyRef Name="CodeDecaissement" />
-            </Principal>
-            <Dependent Role="EveDecaissements1">
-              <PropertyRef Name="CodeDecaissement" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_EveDecaissements_EvePaiementEmployes">
           <End Role="EvePaiementEmployes" Type="Self.EvePaiementEmployes" Multiplicity="0..1" />
           <End Role="EveDecaissements" Type="Self.EveDecaissements" Multiplicity="*" />
@@ -1020,10 +1008,6 @@
           <AssociationSet Name="FK_EveDecaissements_EveAcquisitionServicesFournitures" Association="Self.FK_EveDecaissements_EveAcquisitionServicesFournitures">
             <End Role="EveAcquisitionServicesFournitures" EntitySet="EveAcquisitionServicesFournitures" />
             <End Role="EveDecaissements" EntitySet="EveDecaissements" />
-          </AssociationSet>
-          <AssociationSet Name="FK_EveDecaissements_EveDecaissements" Association="Self.FK_EveDecaissements_EveDecaissements">
-            <End Role="EveDecaissements" EntitySet="EveDecaissements" />
-            <End Role="EveDecaissements1" EntitySet="EveDecaissements" />
           </AssociationSet>
           <AssociationSet Name="FK_EveDecaissements_EvePaiementEmployes" Association="Self.FK_EveDecaissements_EvePaiementEmployes">
             <End Role="EvePaiementEmployes" EntitySet="EvePaiementEmployes" />
@@ -2280,10 +2264,6 @@
             <End Role="EveEncaissement" EntitySet="EveEncaissements" />
             <End Role="EveEncaissementsAutre" EntitySet="EveEncaissementsAutres" />
           </AssociationSet>
-          <AssociationSet Name="FK_EveDecaissements_EveDecaissements" Association="CasaDBModel.FK_EveDecaissements_EveDecaissements">
-            <End Role="EveDecaissement" EntitySet="EveDecaissements" />
-            <End Role="EveDecaissement1" EntitySet="EveDecaissements" />
-          </AssociationSet>
           <EntitySet Name="EveReceptionDonsMatieresPremieres" EntityType="CasaDBModel.EveReceptionDonsMatieresPremiere" />
           <AssociationSet Name="FK_EveReceptionDonsMatieresPremieres_AgeEmployes" Association="CasaDBModel.FK_EveReceptionDonsMatieresPremieres_AgeEmployes">
             <End Role="AgeEmploye" EntitySet="AgeEmployes" />
@@ -2410,18 +2390,6 @@
             </Principal>
             <Dependent Role="EveEncaissementsAutre">
               <PropertyRef Name="CodeEncaissement" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_EveDecaissements_EveDecaissements">
-          <End Type="CasaDBModel.EveDecaissement" Role="EveDecaissement" Multiplicity="1" />
-          <End Type="CasaDBModel.EveDecaissement" Role="EveDecaissement1" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="EveDecaissement">
-              <PropertyRef Name="CodeDecaissement" />
-            </Principal>
-            <Dependent Role="EveDecaissement1">
-              <PropertyRef Name="CodeDecaissement" />
             </Dependent>
           </ReferentialConstraint>
         </Association>

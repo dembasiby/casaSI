@@ -59,7 +59,8 @@ namespace CasaEcologieSysInfo
             
         }
 
-        private void AjouterNouvelleAchatMatierePremiere()
+        
+        private EveReceptionMatieresPremiere AjouterNouvelleAchatMatierePremiere()
         {          
             ResStockMatieresPremiere matPrem = db.ResStockMatieresPremieres.FirstOrDefault(mp => mp.NomMatiere == cbxNomMatierePremiere.Text);
             AgeFournisseursMatieresPremiere fournMp = db.AgeFournisseursMatieresPremieres.FirstOrDefault(fmp => fmp.Nom == cbxFournisseurMPrem.Text);
@@ -74,28 +75,62 @@ namespace CasaEcologieSysInfo
                 DateReception = DateTime.Parse(dtpDateApprovisionnement.Text),
                 Quantite = float.Parse(txtQuantite.Text),
                 Montant = int.Parse(txtMontant.Text),
+                TransportMatierePremiere = int.Parse(txtTransportMatierePremiere.Text),
                 CodeFournisseurMatierePremiere = fournMp.CodeFournisseurMatierePremiere,
                 CodeEmploye = resStocks.CodeEmploye,
             };
-     
-            if (int.Parse(txtMontantPaye.Text) > 0)
+            
+            db.EveReceptionMatieresPremieres.Add(achatMatiere);
+            db.SaveChanges();
+            return achatMatiere;
+        }
+
+        private void AjouterDecaissementTransportMatierePremiere(EveReceptionMatieresPremiere recep)
+        {
+            ResStockMatieresPremiere matPrem = db.ResStockMatieresPremieres.FirstOrDefault(mp => mp.NomMatiere == cbxNomMatierePremiere.Text);
+            AgeEmploye tresoriere = db.AgeEmployes.FirstOrDefault(em => em.PrenomNom == cbxTresoriere.Text);
+            ResComptesTresorerie tres = db.ResComptesTresoreries.FirstOrDefault(tr => tr.NomCompte == cbxComptePaiement.Text);
+
+            if (int.Parse(txtTransportMatierePremiere.Text) > 0)
             {
                 EveDecaissement decaiss = new EveDecaissement
                 {
-                    CodeReceptionMatierePremiere = achatMatiere.CodeReceptionMatierePremiere,
+                    CodeReceptionMatierePremiere = recep.CodeReceptionMatierePremiere,
+                    Description = "Transport de " + matPrem.NomMatiere,
+                    DateDecaissement = recep.DateReception,
+                    CodeEmploye = tresoriere.CodeEmploye,
+                    CodeCompte = tres.CodeCompte,
+                    Montant = int.Parse(txtTransportMatierePremiere.Text),
+                };
+
+                db.EveDecaissements.Add(decaiss);
+                db.SaveChanges();
+            }
+        }
+
+        private void AjouterPaiementFournisseur(EveReceptionMatieresPremiere recep)
+        {
+            ResStockMatieresPremiere matPrem = db.ResStockMatieresPremieres.FirstOrDefault(mp => mp.NomMatiere == cbxNomMatierePremiere.Text);
+            AgeFournisseursMatieresPremiere fournMp = db.AgeFournisseursMatieresPremieres.FirstOrDefault(fmp => fmp.Nom == cbxFournisseurMPrem.Text);
+            AgeEmploye tresoriere = db.AgeEmployes.FirstOrDefault(em => em.PrenomNom == cbxTresoriere.Text);
+            ResComptesTresorerie tres = db.ResComptesTresoreries.FirstOrDefault(tr => tr.NomCompte == cbxComptePaiement.Text);
+
+           if (int.Parse(txtMontantPaye.Text) > 0)
+            {
+                EveDecaissement decaiss = new EveDecaissement
+                {
+                    CodeReceptionMatierePremiere = recep.CodeReceptionMatierePremiere,
                     CodeFournisseurMatierePremiere = fournMp.CodeFournisseurMatierePremiere,
                     Description = "Achat de " + matPrem.NomMatiere,
-                    DateDecaissement = achatMatiere.DateReception,
+                    DateDecaissement = recep.DateReception,
                     CodeEmploye = tresoriere.CodeEmploye,
                     CodeCompte = tres.CodeCompte,
                     Montant = int.Parse(txtMontantPaye.Text),
                 };
 
                 db.EveDecaissements.Add(decaiss);
+                db.SaveChanges();
             }
-            db.EveReceptionMatieresPremieres.Add(achatMatiere);
-            db.SaveChanges();
-            AfficherSoldeCompte();
         }
 
         private void BtnEnregistrerAchatMatierePremiere_Click(object sender, EventArgs e)
@@ -104,17 +139,20 @@ namespace CasaEcologieSysInfo
             {
                 try
                 {
-                    AjouterNouvelleAchatMatierePremiere();
+                    var recep = AjouterNouvelleAchatMatierePremiere();
+                    AjouterDecaissementTransportMatierePremiere(recep);
+                    AjouterPaiementFournisseur(recep);
                     MessageBox.Show("Un nouvel achat de matière première a été enregistré avec succès");
+                    AfficherSoldeCompte();
                     txtQuantite.Text = "";
                     txtMontant.Text = "";
                     txtMontantPaye.Text = "";
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Erreur {0}", ex.Message);
+                    MessageBox.Show(ex.Message);
                 }
-            }
+            } 
            
         }
 
