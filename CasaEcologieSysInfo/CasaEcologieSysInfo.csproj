@@ -204,6 +204,9 @@
     <Compile Include="EveProductionStockProduitsFini.cs">
       <DependentUpon>Model3.tt</DependentUpon>
     </Compile>
+    <Compile Include="EveReceptionDonsMatieresPremiere.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
     <Compile Include="EveReceptionEquipementsInfrastructure.cs">
       <DependentUpon>Model3.tt</DependentUpon>
     </Compile>

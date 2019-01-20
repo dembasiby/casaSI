@@ -152,6 +152,18 @@
           <Property Name="CodeProduitFini" Type="int" Nullable="false" />
           <Property Name="QuantiteProduitFini" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="EveReceptionDonsMatieresPremieres">
+          <Key>
+            <PropertyRef Name="CodeReceptionDonMatierePremiere" />
+          </Key>
+          <Property Name="CodeReceptionDonMatierePremiere" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CodeMatierePremiere" Type="int" Nullable="false" />
+          <Property Name="CodeEmploye" Type="int" Nullable="false" />
+          <Property Name="CodeFournisseur" Type="int" Nullable="false" />
+          <Property Name="DateReception" Type="date" Nullable="false" />
+          <Property Name="Quantite" Type="float" Nullable="false" />
+          <Property Name="TransportMatierePremiere" Type="money" Nullable="false" />
+        </EntityType>
         <EntityType Name="EveReceptionEquipementsInfrastructures">
           <Key>
             <PropertyRef Name="CodeReceptionEquipementInfrastructure" />
@@ -175,6 +187,7 @@
           <Property Name="Montant" Type="money" Nullable="false" />
           <Property Name="CodeFournisseurMatierePremiere" Type="int" Nullable="false" />
           <Property Name="CodeEmploye" Type="int" Nullable="false" />
+          <Property Name="TransportMatierePremiere" Type="money" Nullable="false" />
         </EntityType>
         <EntityType Name="EveUtilisationEquipementInfrastructures">
           <Key>
@@ -623,6 +636,42 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_EveReceptionDonsMatieresPremieres_AgeEmployes">
+          <End Role="AgeEmployes" Type="Self.AgeEmployes" Multiplicity="1" />
+          <End Role="EveReceptionDonsMatieresPremieres" Type="Self.EveReceptionDonsMatieresPremieres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgeEmployes">
+              <PropertyRef Name="CodeEmploye" />
+            </Principal>
+            <Dependent Role="EveReceptionDonsMatieresPremieres">
+              <PropertyRef Name="CodeEmploye" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveReceptionDonsMatieresPremieres_AgeFournisseursMatieresPremieres">
+          <End Role="AgeFournisseursMatieresPremieres" Type="Self.AgeFournisseursMatieresPremieres" Multiplicity="1" />
+          <End Role="EveReceptionDonsMatieresPremieres" Type="Self.EveReceptionDonsMatieresPremieres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgeFournisseursMatieresPremieres">
+              <PropertyRef Name="CodeFournisseurMatierePremiere" />
+            </Principal>
+            <Dependent Role="EveReceptionDonsMatieresPremieres">
+              <PropertyRef Name="CodeFournisseur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveReceptionDonsMatieresPremieres_ResStockMatieresPremieres">
+          <End Role="ResStockMatieresPremieres" Type="Self.ResStockMatieresPremieres" Multiplicity="1" />
+          <End Role="EveReceptionDonsMatieresPremieres" Type="Self.EveReceptionDonsMatieresPremieres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ResStockMatieresPremieres">
+              <PropertyRef Name="CodeMatierePremiere" />
+            </Principal>
+            <Dependent Role="EveReceptionDonsMatieresPremieres">
+              <PropertyRef Name="CodeMatierePremiere" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_EveReceptionEquipementsInfrastructures_AgeAutreFournisseurs">
           <End Role="AgeAutreFournisseurs" Type="Self.AgeAutreFournisseurs" Multiplicity="1" />
           <End Role="EveReceptionEquipementsInfrastructures" Type="Self.EveReceptionEquipementsInfrastructures" Multiplicity="*" />
@@ -923,6 +972,7 @@
           <EntitySet Name="EveProductionProduitsSemiFinis" EntityType="Self.EveProductionProduitsSemiFinis" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EveProductions" EntityType="Self.EveProductions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EveProductionStockProduitsFinis" EntityType="Self.EveProductionStockProduitsFinis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EveReceptionDonsMatieresPremieres" EntityType="Self.EveReceptionDonsMatieresPremieres" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EveReceptionEquipementsInfrastructures" EntityType="Self.EveReceptionEquipementsInfrastructures" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EveReceptionMatieresPremieres" EntityType="Self.EveReceptionMatieresPremieres" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EveUtilisationEquipementInfrastructures" EntityType="Self.EveUtilisationEquipementInfrastructures" Schema="dbo" store:Type="Tables" />
@@ -1046,6 +1096,18 @@
           <AssociationSet Name="FK_EveProductionStockProduitsFinis_ResStockProduitsFinis" Association="Self.FK_EveProductionStockProduitsFinis_ResStockProduitsFinis">
             <End Role="ResStockProduitsFinis" EntitySet="ResStockProduitsFinis" />
             <End Role="EveProductionStockProduitsFinis" EntitySet="EveProductionStockProduitsFinis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveReceptionDonsMatieresPremieres_AgeEmployes" Association="Self.FK_EveReceptionDonsMatieresPremieres_AgeEmployes">
+            <End Role="AgeEmployes" EntitySet="AgeEmployes" />
+            <End Role="EveReceptionDonsMatieresPremieres" EntitySet="EveReceptionDonsMatieresPremieres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveReceptionDonsMatieresPremieres_AgeFournisseursMatieresPremieres" Association="Self.FK_EveReceptionDonsMatieresPremieres_AgeFournisseursMatieresPremieres">
+            <End Role="AgeFournisseursMatieresPremieres" EntitySet="AgeFournisseursMatieresPremieres" />
+            <End Role="EveReceptionDonsMatieresPremieres" EntitySet="EveReceptionDonsMatieresPremieres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveReceptionDonsMatieresPremieres_ResStockMatieresPremieres" Association="Self.FK_EveReceptionDonsMatieresPremieres_ResStockMatieresPremieres">
+            <End Role="ResStockMatieresPremieres" EntitySet="ResStockMatieresPremieres" />
+            <End Role="EveReceptionDonsMatieresPremieres" EntitySet="EveReceptionDonsMatieresPremieres" />
           </AssociationSet>
           <AssociationSet Name="FK_EveReceptionEquipementsInfrastructures_AgeAutreFournisseurs" Association="Self.FK_EveReceptionEquipementsInfrastructures_AgeAutreFournisseurs">
             <End Role="AgeAutreFournisseurs" EntitySet="AgeAutreFournisseurs" />
@@ -1177,6 +1239,7 @@
           <NavigationProperty Name="EveVentes" Relationship="Self.FK_EveVentes_AgeEmployes" FromRole="AgeEmployes" ToRole="EveVentes" />
           <NavigationProperty Name="EvePaiementEmployes" Relationship="CasaDBModel.FK_EvePaiementEmployes_AgeEmployes" FromRole="AgeEmploye" ToRole="EvePaiementEmploye" />
           <NavigationProperty Name="Utilisateur" Relationship="CasaDBModel.FK_Utilisateurs_AgeEmployes" FromRole="AgeEmploye" ToRole="Utilisateur" />
+          <NavigationProperty Name="EveReceptionDonsMatieresPremieres" Relationship="CasaDBModel.FK_EveReceptionDonsMatieresPremieres_AgeEmployes" FromRole="AgeEmploye" ToRole="EveReceptionDonsMatieresPremiere" />
         </EntityType>
         <EntityType Name="AgeFournisseursMatieresPremiere">
           <Key>
@@ -1188,6 +1251,7 @@
           <Property Name="SoldeDette" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <NavigationProperty Name="EveDecaissements" Relationship="Self.FK_EveDecaissements_AgeFournisseursMatieresPremieres" FromRole="AgeFournisseursMatieresPremieres" ToRole="EveDecaissements" />
           <NavigationProperty Name="EveReceptionMatieresPremieres" Relationship="Self.FK_EveReceptionMatieresPremieres_AgeFournisseursMatieresPremieres" FromRole="AgeFournisseursMatieresPremieres" ToRole="EveReceptionMatieresPremieres" />
+          <NavigationProperty Name="EveReceptionDonsMatieresPremieres" Relationship="CasaDBModel.FK_EveReceptionDonsMatieresPremieres_AgeFournisseursMatieresPremieres" FromRole="AgeFournisseursMatieresPremiere" ToRole="EveReceptionDonsMatieresPremiere" />
         </EntityType>
         <EntityType Name="AgeFournisseursServicesFourniture">
           <Key>
@@ -1346,6 +1410,7 @@
           <NavigationProperty Name="AgeFournisseursMatieresPremiere" Relationship="Self.FK_EveReceptionMatieresPremieres_AgeFournisseursMatieresPremieres" FromRole="EveReceptionMatieresPremieres" ToRole="AgeFournisseursMatieresPremieres" />
           <NavigationProperty Name="EveDecaissements" Relationship="Self.FK_EveDecaissements_EveReceptionMatieresPremieres" FromRole="EveReceptionMatieresPremieres" ToRole="EveDecaissements" />
           <NavigationProperty Name="ResStockMatieresPremiere" Relationship="Self.FK_EveReceptionMatieresPremieres_ResStockMatieresPremieres" FromRole="EveReceptionMatieresPremieres" ToRole="ResStockMatieresPremieres" />
+          <Property Name="TransportMatierePremiere" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
         </EntityType>
         <EntityType Name="EveUtilisationMatieresPremiere">
           <Key>
@@ -1448,6 +1513,7 @@
           <NavigationProperty Name="EveReceptionMatieresPremieres" Relationship="Self.FK_EveReceptionMatieresPremieres_ResStockMatieresPremieres" FromRole="ResStockMatieresPremieres" ToRole="EveReceptionMatieresPremieres" />
           <NavigationProperty Name="EveUtilisationMatieresPremieres" Relationship="Self.FK_EveUtilisationMatieresPremieres_ResStockMatieresPremieres" FromRole="ResStockMatieresPremieres" ToRole="EveUtilisationMatieresPremieres" />
           <NavigationProperty Name="ResStockProduitsSemiFinis" Relationship="Self.FK_ResStockProduitsSemiFinis_ResStockMatieresPremieres" FromRole="ResStockMatieresPremieres" ToRole="ResStockProduitsSemiFinis" />
+          <NavigationProperty Name="EveReceptionDonsMatieresPremieres" Relationship="CasaDBModel.FK_EveReceptionDonsMatieresPremieres_ResStockMatieresPremieres" FromRole="ResStockMatieresPremiere" ToRole="EveReceptionDonsMatieresPremiere" />
         </EntityType>
         <EntityType Name="ResStockProduitsFini">
           <Key>
@@ -2218,6 +2284,19 @@
             <End Role="EveDecaissement" EntitySet="EveDecaissements" />
             <End Role="EveDecaissement1" EntitySet="EveDecaissements" />
           </AssociationSet>
+          <EntitySet Name="EveReceptionDonsMatieresPremieres" EntityType="CasaDBModel.EveReceptionDonsMatieresPremiere" />
+          <AssociationSet Name="FK_EveReceptionDonsMatieresPremieres_AgeEmployes" Association="CasaDBModel.FK_EveReceptionDonsMatieresPremieres_AgeEmployes">
+            <End Role="AgeEmploye" EntitySet="AgeEmployes" />
+            <End Role="EveReceptionDonsMatieresPremiere" EntitySet="EveReceptionDonsMatieresPremieres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveReceptionDonsMatieresPremieres_AgeFournisseursMatieresPremieres" Association="CasaDBModel.FK_EveReceptionDonsMatieresPremieres_AgeFournisseursMatieresPremieres">
+            <End Role="AgeFournisseursMatieresPremiere" EntitySet="AgeFournisseursMatieresPremieres" />
+            <End Role="EveReceptionDonsMatieresPremiere" EntitySet="EveReceptionDonsMatieresPremieres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveReceptionDonsMatieresPremieres_ResStockMatieresPremieres" Association="CasaDBModel.FK_EveReceptionDonsMatieresPremieres_ResStockMatieresPremieres">
+            <End Role="ResStockMatieresPremiere" EntitySet="ResStockMatieresPremieres" />
+            <End Role="EveReceptionDonsMatieresPremiere" EntitySet="EveReceptionDonsMatieresPremieres" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -2343,6 +2422,57 @@
             </Principal>
             <Dependent Role="EveDecaissement1">
               <PropertyRef Name="CodeDecaissement" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="EveReceptionDonsMatieresPremiere">
+          <Key>
+            <PropertyRef Name="CodeReceptionDonMatierePremiere" />
+          </Key>
+          <Property Name="CodeReceptionDonMatierePremiere" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CodeMatierePremiere" Type="Int32" Nullable="false" />
+          <Property Name="CodeEmploye" Type="Int32" Nullable="false" />
+          <Property Name="CodeFournisseur" Type="Int32" Nullable="false" />
+          <Property Name="DateReception" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Quantite" Type="Double" Nullable="false" />
+          <Property Name="TransportMatierePremiere" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <NavigationProperty Name="AgeEmploye" Relationship="CasaDBModel.FK_EveReceptionDonsMatieresPremieres_AgeEmployes" FromRole="EveReceptionDonsMatieresPremiere" ToRole="AgeEmploye" />
+          <NavigationProperty Name="AgeFournisseursMatieresPremiere" Relationship="CasaDBModel.FK_EveReceptionDonsMatieresPremieres_AgeFournisseursMatieresPremieres" FromRole="EveReceptionDonsMatieresPremiere" ToRole="AgeFournisseursMatieresPremiere" />
+          <NavigationProperty Name="ResStockMatieresPremiere" Relationship="CasaDBModel.FK_EveReceptionDonsMatieresPremieres_ResStockMatieresPremieres" FromRole="EveReceptionDonsMatieresPremiere" ToRole="ResStockMatieresPremiere" />
+        </EntityType>
+        <Association Name="FK_EveReceptionDonsMatieresPremieres_AgeEmployes">
+          <End Type="CasaDBModel.AgeEmploye" Role="AgeEmploye" Multiplicity="1" />
+          <End Type="CasaDBModel.EveReceptionDonsMatieresPremiere" Role="EveReceptionDonsMatieresPremiere" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgeEmploye">
+              <PropertyRef Name="CodeEmploye" />
+            </Principal>
+            <Dependent Role="EveReceptionDonsMatieresPremiere">
+              <PropertyRef Name="CodeEmploye" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveReceptionDonsMatieresPremieres_AgeFournisseursMatieresPremieres">
+          <End Type="CasaDBModel.AgeFournisseursMatieresPremiere" Role="AgeFournisseursMatieresPremiere" Multiplicity="1" />
+          <End Type="CasaDBModel.EveReceptionDonsMatieresPremiere" Role="EveReceptionDonsMatieresPremiere" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgeFournisseursMatieresPremiere">
+              <PropertyRef Name="CodeFournisseurMatierePremiere" />
+            </Principal>
+            <Dependent Role="EveReceptionDonsMatieresPremiere">
+              <PropertyRef Name="CodeFournisseur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveReceptionDonsMatieresPremieres_ResStockMatieresPremieres">
+          <End Type="CasaDBModel.ResStockMatieresPremiere" Role="ResStockMatieresPremiere" Multiplicity="1" />
+          <End Type="CasaDBModel.EveReceptionDonsMatieresPremiere" Role="EveReceptionDonsMatieresPremiere" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ResStockMatieresPremiere">
+              <PropertyRef Name="CodeMatierePremiere" />
+            </Principal>
+            <Dependent Role="EveReceptionDonsMatieresPremiere">
+              <PropertyRef Name="CodeMatierePremiere" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2508,6 +2638,7 @@
           <EntitySetMapping Name="EveReceptionMatieresPremieres">
             <EntityTypeMapping TypeName="CasaDBModel.EveReceptionMatieresPremiere">
               <MappingFragment StoreEntitySet="EveReceptionMatieresPremieres">
+                <ScalarProperty Name="TransportMatierePremiere" ColumnName="TransportMatierePremiere" />
                 <ScalarProperty Name="CodeReceptionMatierePremiere" ColumnName="CodeReceptionMatierePremiere" />
                 <ScalarProperty Name="CodeMatierePremiere" ColumnName="CodeMatierePremiere" />
                 <ScalarProperty Name="DateReception" ColumnName="DateReception" />
@@ -2709,6 +2840,19 @@
                 <ScalarProperty Name="DateEncaissement" ColumnName="DateEncaissement" />
                 <ScalarProperty Name="CodeEncaissement" ColumnName="CodeEncaissement" />
                 <ScalarProperty Name="CodeEncaissementAutre" ColumnName="CodeEncaissementAutre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EveReceptionDonsMatieresPremieres">
+            <EntityTypeMapping TypeName="CasaDBModel.EveReceptionDonsMatieresPremiere">
+              <MappingFragment StoreEntitySet="EveReceptionDonsMatieresPremieres">
+                <ScalarProperty Name="TransportMatierePremiere" ColumnName="TransportMatierePremiere" />
+                <ScalarProperty Name="Quantite" ColumnName="Quantite" />
+                <ScalarProperty Name="DateReception" ColumnName="DateReception" />
+                <ScalarProperty Name="CodeFournisseur" ColumnName="CodeFournisseur" />
+                <ScalarProperty Name="CodeEmploye" ColumnName="CodeEmploye" />
+                <ScalarProperty Name="CodeMatierePremiere" ColumnName="CodeMatierePremiere" />
+                <ScalarProperty Name="CodeReceptionDonMatierePremiere" ColumnName="CodeReceptionDonMatierePremiere" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

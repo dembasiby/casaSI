@@ -82,6 +82,8 @@
             this.txtLocaliteFournisseur = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtSoldeCompte = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtTransportMatierePremiere = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.resStockMatieresPremieresBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.casaDBDataSetAll)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ageFournisseursMatieresPremieresBindingSource)).BeginInit();
@@ -122,7 +124,7 @@
             this.btnEnregistrerAchatMatierePremiere.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEnregistrerAchatMatierePremiere.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEnregistrerAchatMatierePremiere.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnEnregistrerAchatMatierePremiere.Location = new System.Drawing.Point(31, 532);
+            this.btnEnregistrerAchatMatierePremiere.Location = new System.Drawing.Point(31, 557);
             this.btnEnregistrerAchatMatierePremiere.Margin = new System.Windows.Forms.Padding(5);
             this.btnEnregistrerAchatMatierePremiere.Name = "btnEnregistrerAchatMatierePremiere";
             this.btnEnregistrerAchatMatierePremiere.Size = new System.Drawing.Size(504, 34);
@@ -133,7 +135,7 @@
             // 
             // txtMontant
             // 
-            this.txtMontant.Location = new System.Drawing.Point(249, 294);
+            this.txtMontant.Location = new System.Drawing.Point(249, 288);
             this.txtMontant.Margin = new System.Windows.Forms.Padding(5);
             this.txtMontant.Name = "txtMontant";
             this.txtMontant.Size = new System.Drawing.Size(286, 27);
@@ -141,7 +143,7 @@
             // 
             // txtQuantite
             // 
-            this.txtQuantite.Location = new System.Drawing.Point(249, 220);
+            this.txtQuantite.Location = new System.Drawing.Point(249, 214);
             this.txtQuantite.Margin = new System.Windows.Forms.Padding(5);
             this.txtQuantite.Name = "txtQuantite";
             this.txtQuantite.Size = new System.Drawing.Size(286, 27);
@@ -150,7 +152,7 @@
             // lblMontant
             // 
             this.lblMontant.AutoSize = true;
-            this.lblMontant.Location = new System.Drawing.Point(29, 300);
+            this.lblMontant.Location = new System.Drawing.Point(29, 294);
             this.lblMontant.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblMontant.Name = "lblMontant";
             this.lblMontant.Size = new System.Drawing.Size(80, 21);
@@ -160,7 +162,7 @@
             // lblQuantite
             // 
             this.lblQuantite.AutoSize = true;
-            this.lblQuantite.Location = new System.Drawing.Point(27, 226);
+            this.lblQuantite.Location = new System.Drawing.Point(27, 220);
             this.lblQuantite.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblQuantite.Name = "lblQuantite";
             this.lblQuantite.Size = new System.Drawing.Size(82, 21);
@@ -192,7 +194,7 @@
             // lblDate
             // 
             this.lblDate.AutoSize = true;
-            this.lblDate.Location = new System.Drawing.Point(27, 263);
+            this.lblDate.Location = new System.Drawing.Point(27, 257);
             this.lblDate.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblDate.Name = "lblDate";
             this.lblDate.Size = new System.Drawing.Size(50, 21);
@@ -205,7 +207,7 @@
             this.dtpDateApprovisionnement.CustomFormat = "dd / MM / yyyy";
             this.dtpDateApprovisionnement.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpDateApprovisionnement.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpDateApprovisionnement.Location = new System.Drawing.Point(249, 257);
+            this.dtpDateApprovisionnement.Location = new System.Drawing.Point(249, 251);
             this.dtpDateApprovisionnement.Name = "dtpDateApprovisionnement";
             this.dtpDateApprovisionnement.Size = new System.Drawing.Size(286, 27);
             this.dtpDateApprovisionnement.TabIndex = 19;
@@ -213,7 +215,7 @@
             // lblNomFournisseur
             // 
             this.lblNomFournisseur.AutoSize = true;
-            this.lblNomFournisseur.Location = new System.Drawing.Point(27, 149);
+            this.lblNomFournisseur.Location = new System.Drawing.Point(27, 147);
             this.lblNomFournisseur.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblNomFournisseur.Name = "lblNomFournisseur";
             this.lblNomFournisseur.Size = new System.Drawing.Size(131, 21);
@@ -225,7 +227,7 @@
             this.cbxFournisseurMPrem.DataSource = this.ageFournisseursMatieresPremieresBindingSource;
             this.cbxFournisseurMPrem.DisplayMember = "Nom";
             this.cbxFournisseurMPrem.FormattingEnabled = true;
-            this.cbxFournisseurMPrem.Location = new System.Drawing.Point(249, 141);
+            this.cbxFournisseurMPrem.Location = new System.Drawing.Point(249, 139);
             this.cbxFournisseurMPrem.Margin = new System.Windows.Forms.Padding(5);
             this.cbxFournisseurMPrem.Name = "cbxFournisseurMPrem";
             this.cbxFournisseurMPrem.Size = new System.Drawing.Size(286, 29);
@@ -416,7 +418,7 @@
             // lblMontantPaye
             // 
             this.lblMontantPaye.AutoSize = true;
-            this.lblMontantPaye.Location = new System.Drawing.Point(29, 336);
+            this.lblMontantPaye.Location = new System.Drawing.Point(29, 364);
             this.lblMontantPaye.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblMontantPaye.Name = "lblMontantPaye";
             this.lblMontantPaye.Size = new System.Drawing.Size(122, 21);
@@ -425,7 +427,7 @@
             // 
             // txtMontantPaye
             // 
-            this.txtMontantPaye.Location = new System.Drawing.Point(249, 330);
+            this.txtMontantPaye.Location = new System.Drawing.Point(249, 358);
             this.txtMontantPaye.Margin = new System.Windows.Forms.Padding(5);
             this.txtMontantPaye.Name = "txtMontantPaye";
             this.txtMontantPaye.Size = new System.Drawing.Size(286, 27);
@@ -452,7 +454,7 @@
             // lblAchatFaitPar
             // 
             this.lblAchatFaitPar.AutoSize = true;
-            this.lblAchatFaitPar.Location = new System.Drawing.Point(27, 376);
+            this.lblAchatFaitPar.Location = new System.Drawing.Point(27, 401);
             this.lblAchatFaitPar.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblAchatFaitPar.Name = "lblAchatFaitPar";
             this.lblAchatFaitPar.Size = new System.Drawing.Size(196, 21);
@@ -462,7 +464,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(27, 412);
+            this.label6.Location = new System.Drawing.Point(27, 437);
             this.label6.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(181, 21);
@@ -474,7 +476,7 @@
             this.cbxRespStocks.DataSource = this.ageEmployesBindingSource1;
             this.cbxRespStocks.DisplayMember = "PrenomNom";
             this.cbxRespStocks.FormattingEnabled = true;
-            this.cbxRespStocks.Location = new System.Drawing.Point(249, 368);
+            this.cbxRespStocks.Location = new System.Drawing.Point(249, 393);
             this.cbxRespStocks.Margin = new System.Windows.Forms.Padding(5);
             this.cbxRespStocks.Name = "cbxRespStocks";
             this.cbxRespStocks.Size = new System.Drawing.Size(286, 29);
@@ -495,7 +497,7 @@
             this.cbxTresoriere.DataSource = this.ageEmployesBindingSource;
             this.cbxTresoriere.DisplayMember = "PrenomNom";
             this.cbxTresoriere.FormattingEnabled = true;
-            this.cbxTresoriere.Location = new System.Drawing.Point(249, 407);
+            this.cbxTresoriere.Location = new System.Drawing.Point(249, 432);
             this.cbxTresoriere.Margin = new System.Windows.Forms.Padding(5);
             this.cbxTresoriere.Name = "cbxTresoriere";
             this.cbxTresoriere.Size = new System.Drawing.Size(286, 29);
@@ -508,7 +510,7 @@
             // lblComptePaiement
             // 
             this.lblComptePaiement.AutoSize = true;
-            this.lblComptePaiement.Location = new System.Drawing.Point(27, 451);
+            this.lblComptePaiement.Location = new System.Drawing.Point(27, 476);
             this.lblComptePaiement.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblComptePaiement.Name = "lblComptePaiement";
             this.lblComptePaiement.Size = new System.Drawing.Size(182, 21);
@@ -520,7 +522,7 @@
             this.cbxComptePaiement.DataSource = this.resComptesTresorerieBindingSource;
             this.cbxComptePaiement.DisplayMember = "NomCompte";
             this.cbxComptePaiement.FormattingEnabled = true;
-            this.cbxComptePaiement.Location = new System.Drawing.Point(249, 446);
+            this.cbxComptePaiement.Location = new System.Drawing.Point(249, 471);
             this.cbxComptePaiement.Margin = new System.Windows.Forms.Padding(5);
             this.cbxComptePaiement.Name = "cbxComptePaiement";
             this.cbxComptePaiement.Size = new System.Drawing.Size(286, 29);
@@ -539,7 +541,7 @@
             // lblLocaliteFournisseur
             // 
             this.lblLocaliteFournisseur.AutoSize = true;
-            this.lblLocaliteFournisseur.Location = new System.Drawing.Point(29, 190);
+            this.lblLocaliteFournisseur.Location = new System.Drawing.Point(29, 180);
             this.lblLocaliteFournisseur.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblLocaliteFournisseur.Name = "lblLocaliteFournisseur";
             this.lblLocaliteFournisseur.Size = new System.Drawing.Size(155, 21);
@@ -548,7 +550,7 @@
             // 
             // txtLocaliteFournisseur
             // 
-            this.txtLocaliteFournisseur.Location = new System.Drawing.Point(249, 184);
+            this.txtLocaliteFournisseur.Location = new System.Drawing.Point(249, 178);
             this.txtLocaliteFournisseur.Margin = new System.Windows.Forms.Padding(5);
             this.txtLocaliteFournisseur.Name = "txtLocaliteFournisseur";
             this.txtLocaliteFournisseur.Size = new System.Drawing.Size(286, 27);
@@ -557,7 +559,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(27, 490);
+            this.label5.Location = new System.Drawing.Point(27, 515);
             this.label5.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(212, 21);
@@ -567,11 +569,30 @@
             // txtSoldeCompte
             // 
             this.txtSoldeCompte.Enabled = false;
-            this.txtSoldeCompte.Location = new System.Drawing.Point(249, 487);
+            this.txtSoldeCompte.Location = new System.Drawing.Point(249, 512);
             this.txtSoldeCompte.Margin = new System.Windows.Forms.Padding(5);
             this.txtSoldeCompte.Name = "txtSoldeCompte";
             this.txtSoldeCompte.Size = new System.Drawing.Size(286, 27);
             this.txtSoldeCompte.TabIndex = 13;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(29, 328);
+            this.label9.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(221, 21);
+            this.label9.TabIndex = 9;
+            this.label9.Text = "Transport matière première";
+            // 
+            // txtTransportMatierePremiere
+            // 
+            this.txtTransportMatierePremiere.Location = new System.Drawing.Point(249, 322);
+            this.txtTransportMatierePremiere.Margin = new System.Windows.Forms.Padding(5);
+            this.txtTransportMatierePremiere.Name = "txtTransportMatierePremiere";
+            this.txtTransportMatierePremiere.Size = new System.Drawing.Size(286, 27);
+            this.txtTransportMatierePremiere.TabIndex = 13;
+            this.txtTransportMatierePremiere.Text = "0";
             // 
             // UC_AchatMatierePremiere
             // 
@@ -589,6 +610,7 @@
             this.Controls.Add(this.txtMontantPaye);
             this.Controls.Add(this.txtLocaliteFournisseur);
             this.Controls.Add(this.txtSoldeCompte);
+            this.Controls.Add(this.txtTransportMatierePremiere);
             this.Controls.Add(this.txtMontant);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtQuantite);
@@ -596,6 +618,7 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.lblMontantPaye);
             this.Controls.Add(this.lblAchatFaitPar);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.lblMontant);
             this.Controls.Add(this.lblDate);
             this.Controls.Add(this.lblQuantite);
@@ -680,5 +703,7 @@
         private System.Windows.Forms.TextBox txtLocaliteFournisseur;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtSoldeCompte;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtTransportMatierePremiere;
     }
 }

@@ -82,6 +82,10 @@
         <EntityTypeShape EntityType="CasaDBModel.EveEncaissementsAutre" Width="1.5" PointX="12.75" PointY="27" />
         <AssociationConnector Association="CasaDBModel.FK_EveEncaissementsAutres_EveEncaissements" />
         <AssociationConnector Association="CasaDBModel.FK_EveDecaissements_EveDecaissements" />
+        <EntityTypeShape EntityType="CasaDBModel.EveReceptionDonsMatieresPremiere" Width="1.5" PointX="9" PointY="11.375" />
+        <AssociationConnector Association="CasaDBModel.FK_EveReceptionDonsMatieresPremieres_AgeEmployes" />
+        <AssociationConnector Association="CasaDBModel.FK_EveReceptionDonsMatieresPremieres_AgeFournisseursMatieresPremieres" />
+        <AssociationConnector Association="CasaDBModel.FK_EveReceptionDonsMatieresPremieres_ResStockMatieresPremieres" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
