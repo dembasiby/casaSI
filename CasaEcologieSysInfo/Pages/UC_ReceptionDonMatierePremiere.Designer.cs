@@ -29,13 +29,15 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.cbxProduits = new System.Windows.Forms.ComboBox();
+            this.cbxFournisseur = new System.Windows.Forms.ComboBox();
+            this.ageFournisseursMatieresPremiereBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnFiltrer = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbxMatierePremiere = new System.Windows.Forms.ComboBox();
+            this.resStockMatieresPremiereBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -43,26 +45,35 @@
             this.txtTransport = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.cbxEmploye = new System.Windows.Forms.ComboBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.ageEmployeBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.resStockMatieresPremiereBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.ageFournisseursMatieresPremiereBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.ageEmployeBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.resStockMatieresPremiereBindingSource)).BeginInit();
+            this.dtpDateReception = new System.Windows.Forms.DateTimePicker();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.cbxCompte = new System.Windows.Forms.ComboBox();
+            this.resComptesTresorerieBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ageFournisseursMatieresPremiereBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.resStockMatieresPremiereBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ageEmployeBindingSource)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.resComptesTresorerieBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
-            // cbxProduits
+            // cbxFournisseur
             // 
-            this.cbxProduits.DataSource = this.ageFournisseursMatieresPremiereBindingSource;
-            this.cbxProduits.DisplayMember = "Nom";
-            this.cbxProduits.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxProduits.FormattingEnabled = true;
-            this.cbxProduits.Location = new System.Drawing.Point(384, 215);
-            this.cbxProduits.Name = "cbxProduits";
-            this.cbxProduits.Size = new System.Drawing.Size(306, 29);
-            this.cbxProduits.TabIndex = 2;
-            this.cbxProduits.ValueMember = "CodeFournisseurMatierePremiere";
+            this.cbxFournisseur.DataSource = this.ageFournisseursMatieresPremiereBindingSource;
+            this.cbxFournisseur.DisplayMember = "Nom";
+            this.cbxFournisseur.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxFournisseur.FormattingEnabled = true;
+            this.cbxFournisseur.Location = new System.Drawing.Point(384, 215);
+            this.cbxFournisseur.Name = "cbxFournisseur";
+            this.cbxFournisseur.Size = new System.Drawing.Size(306, 29);
+            this.cbxFournisseur.TabIndex = 2;
+            this.cbxFournisseur.ValueMember = "CodeFournisseurMatierePremiere";
+            // 
+            // ageFournisseursMatieresPremiereBindingSource
+            // 
+            this.ageFournisseursMatieresPremiereBindingSource.DataSource = typeof(CasaEcologieSysInfo.AgeFournisseursMatieresPremiere);
             // 
             // btnFiltrer
             // 
@@ -71,12 +82,13 @@
             this.btnFiltrer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFiltrer.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFiltrer.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnFiltrer.Location = new System.Drawing.Point(384, 394);
+            this.btnFiltrer.Location = new System.Drawing.Point(384, 507);
             this.btnFiltrer.Name = "btnFiltrer";
             this.btnFiltrer.Size = new System.Drawing.Size(306, 31);
             this.btnFiltrer.TabIndex = 6;
             this.btnFiltrer.Text = "Ajouter au stock";
             this.btnFiltrer.UseVisualStyleBackColor = false;
+            this.btnFiltrer.Click += new System.EventHandler(this.BtnFiltrer_Click);
             // 
             // label3
             // 
@@ -118,17 +130,21 @@
             this.label2.TabIndex = 21;
             this.label2.Text = "Matière première";
             // 
-            // comboBox1
+            // cbxMatierePremiere
             // 
-            this.comboBox1.DataSource = this.resStockMatieresPremiereBindingSource;
-            this.comboBox1.DisplayMember = "NomMatiere";
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(384, 178);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(306, 29);
-            this.comboBox1.TabIndex = 1;
-            this.comboBox1.ValueMember = "CodeMatierePremiere";
+            this.cbxMatierePremiere.DataSource = this.resStockMatieresPremiereBindingSource;
+            this.cbxMatierePremiere.DisplayMember = "NomMatiere";
+            this.cbxMatierePremiere.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxMatierePremiere.FormattingEnabled = true;
+            this.cbxMatierePremiere.Location = new System.Drawing.Point(384, 178);
+            this.cbxMatierePremiere.Name = "cbxMatierePremiere";
+            this.cbxMatierePremiere.Size = new System.Drawing.Size(306, 29);
+            this.cbxMatierePremiere.TabIndex = 1;
+            this.cbxMatierePremiere.ValueMember = "CodeMatierePremiere";
+            // 
+            // resStockMatieresPremiereBindingSource
+            // 
+            this.resStockMatieresPremiereBindingSource.DataSource = typeof(CasaEcologieSysInfo.ResStockMatieresPremiere);
             // 
             // label5
             // 
@@ -151,7 +167,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(213, 295);
+            this.label7.Location = new System.Drawing.Point(5, 63);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(151, 21);
             this.label7.TabIndex = 21;
@@ -166,15 +182,15 @@
             // 
             // txtTransport
             // 
-            this.txtTransport.Location = new System.Drawing.Point(384, 295);
+            this.txtTransport.Location = new System.Drawing.Point(188, 63);
             this.txtTransport.Name = "txtTransport";
-            this.txtTransport.Size = new System.Drawing.Size(306, 27);
+            this.txtTransport.Size = new System.Drawing.Size(267, 27);
             this.txtTransport.TabIndex = 4;
             this.txtTransport.Text = "0";
             // 
             // label8
             // 
-            this.label8.Location = new System.Drawing.Point(213, 334);
+            this.label8.Location = new System.Drawing.Point(213, 288);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(165, 49);
             this.label8.TabIndex = 21;
@@ -186,58 +202,101 @@
             this.cbxEmploye.DisplayMember = "PrenomNom";
             this.cbxEmploye.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxEmploye.FormattingEnabled = true;
-            this.cbxEmploye.Location = new System.Drawing.Point(384, 340);
+            this.cbxEmploye.Location = new System.Drawing.Point(384, 294);
             this.cbxEmploye.Name = "cbxEmploye";
             this.cbxEmploye.Size = new System.Drawing.Size(306, 29);
             this.cbxEmploye.TabIndex = 5;
             this.cbxEmploye.ValueMember = "CodeEmploye";
             // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(384, 143);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(306, 27);
-            this.dateTimePicker1.TabIndex = 0;
-            // 
             // ageEmployeBindingSource
             // 
             this.ageEmployeBindingSource.DataSource = typeof(CasaEcologieSysInfo.AgeEmploye);
             // 
-            // resStockMatieresPremiereBindingSource
+            // dtpDateReception
             // 
-            this.resStockMatieresPremiereBindingSource.DataSource = typeof(CasaEcologieSysInfo.ResStockMatieresPremiere);
+            this.dtpDateReception.Location = new System.Drawing.Point(384, 143);
+            this.dtpDateReception.Name = "dtpDateReception";
+            this.dtpDateReception.Size = new System.Drawing.Size(306, 27);
+            this.dtpDateReception.TabIndex = 0;
             // 
-            // ageFournisseursMatieresPremiereBindingSource
+            // groupBox1
             // 
-            this.ageFournisseursMatieresPremiereBindingSource.DataSource = typeof(CasaEcologieSysInfo.AgeFournisseursMatieresPremiere);
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.txtTransport);
+            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.cbxCompte);
+            this.groupBox1.Location = new System.Drawing.Point(244, 341);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(461, 147);
+            this.groupBox1.TabIndex = 22;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Paiement transport";
+            // 
+            // label9
+            // 
+            this.label9.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(6, 23);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(461, 40);
+            this.label9.TabIndex = 21;
+            this.label9.Text = "Remplissez cette section si la réception du don exige la prise en charge du trans" +
+    "port";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(6, 108);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(182, 21);
+            this.label10.TabIndex = 21;
+            this.label10.Text = "Compte de paiement";
+            // 
+            // cbxCompte
+            // 
+            this.cbxCompte.DataSource = this.resComptesTresorerieBindingSource;
+            this.cbxCompte.DisplayMember = "NomCompte";
+            this.cbxCompte.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxCompte.FormattingEnabled = true;
+            this.cbxCompte.Location = new System.Drawing.Point(189, 100);
+            this.cbxCompte.Name = "cbxCompte";
+            this.cbxCompte.Size = new System.Drawing.Size(266, 29);
+            this.cbxCompte.TabIndex = 2;
+            this.cbxCompte.ValueMember = "CodeCompte";
+            // 
+            // resComptesTresorerieBindingSource
+            // 
+            this.resComptesTresorerieBindingSource.DataSource = typeof(CasaEcologieSysInfo.ResComptesTresorerie);
             // 
             // UC_ReceptionDonMatierePremiere
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.txtTransport);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.dtpDateReception);
             this.Controls.Add(this.txtQuantite);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cbxMatierePremiere);
             this.Controls.Add(this.cbxEmploye);
-            this.Controls.Add(this.cbxProduits);
+            this.Controls.Add(this.cbxFournisseur);
             this.Controls.Add(this.btnFiltrer);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.label7);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label4);
             this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "UC_ReceptionDonMatierePremiere";
             this.Size = new System.Drawing.Size(983, 635);
             this.Load += new System.EventHandler(this.UC_ReceptionDonMatierePremiere_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.ageEmployeBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.resStockMatieresPremiereBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ageFournisseursMatieresPremiereBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.resStockMatieresPremiereBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ageEmployeBindingSource)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.resComptesTresorerieBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -245,14 +304,14 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox cbxProduits;
+        private System.Windows.Forms.ComboBox cbxFournisseur;
         private System.Windows.Forms.Button btnFiltrer;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.BindingSource ageFournisseursMatieresPremiereBindingSource;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbxMatierePremiere;
         private System.Windows.Forms.BindingSource resStockMatieresPremiereBindingSource;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
@@ -262,6 +321,11 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox cbxEmploye;
         private System.Windows.Forms.BindingSource ageEmployeBindingSource;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpDateReception;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ComboBox cbxCompte;
+        private System.Windows.Forms.BindingSource resComptesTresorerieBindingSource;
     }
 }
