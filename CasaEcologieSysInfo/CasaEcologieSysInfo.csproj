@@ -213,6 +213,9 @@
     <Compile Include="EveReceptionMatieresPremiere.cs">
       <DependentUpon>Model3.tt</DependentUpon>
     </Compile>
+    <Compile Include="EveSortieDechetsMatieresPremiere.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
     <Compile Include="EveUtilisationMatieresPremiere.cs">
       <DependentUpon>Model3.tt</DependentUpon>
     </Compile>

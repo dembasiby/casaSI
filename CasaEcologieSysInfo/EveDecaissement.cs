@@ -27,6 +27,7 @@ namespace CasaEcologieSysInfo
         public System.DateTime DateDecaissement { get; set; }
         public decimal Montant { get; set; }
         public Nullable<int> CodePaiementEmploye { get; set; }
+        public Nullable<int> CodeReceptionDonMatierePremiere { get; set; }
     
         public virtual AgeAutreFournisseur AgeAutreFournisseur { get; set; }
         public virtual AgeEmploye AgeEmploye { get; set; }
@@ -37,5 +38,6 @@ namespace CasaEcologieSysInfo
         public virtual EveReceptionMatieresPremiere EveReceptionMatieresPremiere { get; set; }
         public virtual ResComptesTresorerie ResComptesTresorerie { get; set; }
         public virtual EvePaiementEmploye EvePaiementEmploye { get; set; }
+        public virtual EveReceptionDonsMatieresPremiere EveReceptionDonsMatieresPremiere { get; set; }
     }
 }

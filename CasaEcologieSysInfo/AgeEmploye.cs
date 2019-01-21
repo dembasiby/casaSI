@@ -29,6 +29,8 @@ namespace CasaEcologieSysInfo
             this.EveVentes = new HashSet<EveVente>();
             this.EvePaiementEmployes = new HashSet<EvePaiementEmploye>();
             this.EveReceptionDonsMatieresPremieres = new HashSet<EveReceptionDonsMatieresPremiere>();
+            this.EveSortieDechetsMatieresPremieres = new HashSet<EveSortieDechetsMatieresPremiere>();
+            this.EveSortieDechetsMatieresPremieres1 = new HashSet<EveSortieDechetsMatieresPremiere>();
         }
     
         public int CodeEmploye { get; set; }
@@ -60,5 +62,9 @@ namespace CasaEcologieSysInfo
         public virtual Utilisateur Utilisateur { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EveReceptionDonsMatieresPremiere> EveReceptionDonsMatieresPremieres { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EveSortieDechetsMatieresPremiere> EveSortieDechetsMatieresPremieres { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EveSortieDechetsMatieresPremiere> EveSortieDechetsMatieresPremieres1 { get; set; }
     }
 }

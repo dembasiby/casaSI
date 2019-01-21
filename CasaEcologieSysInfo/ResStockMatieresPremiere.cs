@@ -21,6 +21,7 @@ namespace CasaEcologieSysInfo
             this.EveUtilisationMatieresPremieres = new HashSet<EveUtilisationMatieresPremiere>();
             this.ResStockProduitsSemiFinis = new HashSet<ResStockProduitsSemiFini>();
             this.EveReceptionDonsMatieresPremieres = new HashSet<EveReceptionDonsMatieresPremiere>();
+            this.EveSortieDechetsMatieresPremieres = new HashSet<EveSortieDechetsMatieresPremiere>();
         }
     
         public int CodeMatierePremiere { get; set; }
@@ -35,5 +36,7 @@ namespace CasaEcologieSysInfo
         public virtual ICollection<ResStockProduitsSemiFini> ResStockProduitsSemiFinis { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EveReceptionDonsMatieresPremiere> EveReceptionDonsMatieresPremieres { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EveSortieDechetsMatieresPremiere> EveSortieDechetsMatieresPremieres { get; set; }
     }
 }

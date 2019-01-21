@@ -39,7 +39,6 @@ namespace CasaEcologieSysInfo.Pages
                 CodeEmploye = codeEmploye,
                 CodeFournisseur = codeFournisseur,
                 Quantite = int.Parse(txtQuantite.Text),
-                TransportMatierePremiere = int.Parse(txtTransport.Text)
             };
 
             db.EveReceptionDonsMatieresPremieres.Add(don);
@@ -58,7 +57,7 @@ namespace CasaEcologieSysInfo.Pages
                 EveDecaissement decaiss = new EveDecaissement
                 {
                     DateDecaissement = don.DateReception,
-                    Montant = don.TransportMatierePremiere,
+                    Montant = int.Parse(txtTransport.Text),
                     Description = "Transport don matière premiere",
                     CodeCompte = int.Parse(cbxCompte.GetItemText(cbxCompte.SelectedValue)),
                     //CodeReceptionMatierePremiere = don.CodeReceptionDonMatierePremiere

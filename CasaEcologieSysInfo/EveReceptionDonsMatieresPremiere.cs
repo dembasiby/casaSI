@@ -14,16 +14,23 @@ namespace CasaEcologieSysInfo
     
     public partial class EveReceptionDonsMatieresPremiere
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public EveReceptionDonsMatieresPremiere()
+        {
+            this.EveDecaissements = new HashSet<EveDecaissement>();
+        }
+    
         public int CodeReceptionDonMatierePremiere { get; set; }
         public int CodeMatierePremiere { get; set; }
         public int CodeEmploye { get; set; }
         public int CodeFournisseur { get; set; }
         public System.DateTime DateReception { get; set; }
         public double Quantite { get; set; }
-        public decimal TransportMatierePremiere { get; set; }
     
         public virtual AgeEmploye AgeEmploye { get; set; }
         public virtual AgeFournisseursMatieresPremiere AgeFournisseursMatieresPremiere { get; set; }
         public virtual ResStockMatieresPremiere ResStockMatieresPremiere { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EveDecaissement> EveDecaissements { get; set; }
     }
 }
