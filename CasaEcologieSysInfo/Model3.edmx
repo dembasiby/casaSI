@@ -2546,12 +2546,6 @@
         <EntityType Name="EveSortieDechetsMatieresPremiere">
           <Key>
             <PropertyRef Name="CodeSortieDechet" />
-            <PropertyRef Name="DateSortie" />
-            <PropertyRef Name="Description" />
-            <PropertyRef Name="CodeMatierePremiere" />
-            <PropertyRef Name="QuantiteMatierePremiere" />
-            <PropertyRef Name="CodeEmploye_responsable_stock_" />
-            <PropertyRef Name="CodeEmploye_autre_responsable_" />
           </Key>
           <Property Name="CodeSortieDechet" Type="Int32" Nullable="false" />
           <Property Name="DateSortie" Type="DateTime" Nullable="false" Precision="0" />
