@@ -264,5 +264,11 @@ namespace CasaEcologieSysInfo
             Pages.UC_ReceptionDonMatierePremiere don = new Pages.UC_ReceptionDonMatierePremiere();
             AddControlsToPanel(don);
         }
+
+        private void BtnJournalApprovisionnements_Click(object sender, EventArgs e)
+        {
+            Pages.UC_JournalApprovisionnements ja = new Pages.UC_JournalApprovisionnements();
+            AddControlsToPanel(ja);
+        }
     }
 }
