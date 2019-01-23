@@ -46,12 +46,12 @@ namespace CasaEcologieSysInfo.Pages
                                rmp.Quantite,
                                Fournisseur = fmp.Nom,
                                fmp.Localite
-                           }).ToList();
+                           }).OrderBy(j => j.Date).ToList();
 
             DataTable dt = Conversion.ConvertirEnTableDeDonnees(journal);
             dgvJournalApprovisionnements.DataSource = dt;
 
-            dt.Rows.Add(DateTime.Now, "Total", Conversion.CalculerTotal(dgvJournalApprovisionnements, "Quantite"), "", "");
+            dt.Rows.Add(DateTime.Today, "Total", Conversion.CalculerTotal(dgvJournalApprovisionnements, "Quantite"), "", "");
         }
 
         private void UC_JournalApprovisionnements_Load(object sender, EventArgs e)

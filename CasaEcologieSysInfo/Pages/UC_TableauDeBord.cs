@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using MoreLinq;
 
 namespace CasaEcologieSysInfo
 {
@@ -14,6 +11,7 @@ namespace CasaEcologieSysInfo
     {
 
         CasaDBEntities2 db = new CasaDBEntities2();
+        CasaDBDataSet6 db2 = new CasaDBDataSet6();
 
         public UC_TableauDeBord()
         {
@@ -21,6 +19,50 @@ namespace CasaEcologieSysInfo
         }
 
         private void UC_TableauDeBord_Load(object sender, EventArgs e)
+        {
+            AfficherTableauVentesMensuelles();
+            AfficherDonneesGraphiqueQuantiteAcheteeParMatierePremiere();
+        }
+
+        private void AfficherDonneesGraphiqueQuantiteAcheteeParMatierePremiere()
+        {
+
+            var liste = (from mp in db.ResStockMatieresPremieres
+                         join rmp in db.EveReceptionMatieresPremieres on mp.CodeMatierePremiere equals rmp.CodeMatierePremiere
+                         where rmp.DateReception >= dtpDebut.Value.Date
+                         where rmp.DateReception <= dtpFin.Value.Date
+
+                         select new
+                         {
+                             Matiere = mp.NomMatiere,
+                             Quantite = (from rm in db.EveReceptionMatieresPremieres
+                                        join m in db.ResStockMatieresPremieres on rm.CodeMatierePremiere equals m.CodeMatierePremiere
+                                        where rm.DateReception >= dtpDebut.Value.Date
+                                        where rm.DateReception <= dtpFin.Value.Date
+                                        where m.NomMatiere == mp.NomMatiere
+                                        select rm.Quantite).Sum()
+                         })
+                         .DistinctBy(r => r.Matiere)
+                         .ToList();
+
+
+            DataTable dt = Conversion.ConvertirEnTableDeDonnees(liste);
+            /*
+            crtQuantiteMatierePremiereAchetee.Series["QuantiteMatP"].XValueMember = "Matiere";
+            crtQuantiteMatierePremiereAchetee.Series["QuantiteMatP"].YValueMembers = "Quantite";
+            crtQuantiteMatierePremiereAchetee.DataSource = dt;
+
+           
+            crtQuantiteMatierePremiereAchetee.DataBind();
+            */
+
+            dataGridView2.DataSource = dt;
+
+            FormatterDonneesTableau(dataGridView2);
+
+        }
+
+        private void AfficherTableauVentesMensuelles()
         {
             ventesMensuellesResultBindingSource.DataSource = db.VentesMensuelles().ToList();
             var tableau = db.VentesMensuelles().ToList();
@@ -34,27 +76,33 @@ namespace CasaEcologieSysInfo
 
             var Annees = new List<int>();
 
-            for (int i = 0; i < dataGridView1.Rows.Count-1; i++)
+            for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
             {
                 Annees.Add(startingYear);
                 startingYear++;
             }
 
             listBox1.DataSource = Annees;
-            
+            FormatterDonneesTableau(dataGridView1);
+        }
 
-
-           
-
-            for (int i = 0; i < dataGridView1.Columns.Count; i++)
+        private void FormatterDonneesTableau(DataGridView grid)
+        {
+            for (int i = 0; i < grid.Columns.Count; i++)
             {
-                dataGridView1.Columns[i].DefaultCellStyle.Format = "c0";
+                grid.Columns[i].DefaultCellStyle.Format = "n0";
+                grid.Columns[i].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             }
-          
+        }
 
+        private void DtpDebut_ValueChanged(object sender, EventArgs e)
+        {
+            AfficherDonneesGraphiqueQuantiteAcheteeParMatierePremiere();
+        }
 
-
-
+        private void DtpFin_ValueChanged(object sender, EventArgs e)
+        {
+            AfficherDonneesGraphiqueQuantiteAcheteeParMatierePremiere();
         }
     }
 }
