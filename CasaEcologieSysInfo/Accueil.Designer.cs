@@ -96,6 +96,7 @@
             this.tmrUtilisateurs = new System.Windows.Forms.Timer(this.components);
             this.tmrEtatsFinanciers = new System.Windows.Forms.Timer(this.components);
             this.dragControl1 = new CasaEcologieSysInfo.DragControl();
+            this.btnJournalProduction = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlTop.SuspendLayout();
@@ -563,9 +564,9 @@
             this.btnDepenses.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDepenses.Image = global::CasaEcologieSysInfo.Properties.Resources.Expand_Arrow_20px;
             this.btnDepenses.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnDepenses.Location = new System.Drawing.Point(3, -1);
+            this.btnDepenses.Location = new System.Drawing.Point(3, -4);
             this.btnDepenses.Name = "btnDepenses";
-            this.btnDepenses.Size = new System.Drawing.Size(214, 37);
+            this.btnDepenses.Size = new System.Drawing.Size(214, 42);
             this.btnDepenses.TabIndex = 1;
             this.btnDepenses.Text = "Dépenses";
             this.btnDepenses.UseVisualStyleBackColor = false;
@@ -611,13 +612,14 @@
             this.pnlProductionStocks.Controls.Add(this.pictureBox5);
             this.pnlProductionStocks.Controls.Add(this.btnStockProduitsSemiFinis);
             this.pnlProductionStocks.Controls.Add(this.btnNouvelleProduction);
+            this.pnlProductionStocks.Controls.Add(this.btnJournalProduction);
             this.pnlProductionStocks.Controls.Add(this.btnDonRecuMatierePrem);
             this.pnlProductionStocks.Controls.Add(this.btnSortieStock);
             this.pnlProductionStocks.Controls.Add(this.btnStockMatierePremiere);
             this.pnlProductionStocks.Controls.Add(this.btnStockProduitsFinis);
             this.pnlProductionStocks.Controls.Add(this.btnProductionStock);
             this.pnlProductionStocks.Location = new System.Drawing.Point(3, 382);
-            this.pnlProductionStocks.MaximumSize = new System.Drawing.Size(217, 295);
+            this.pnlProductionStocks.MaximumSize = new System.Drawing.Size(217, 345);
             this.pnlProductionStocks.MinimumSize = new System.Drawing.Size(217, 40);
             this.pnlProductionStocks.Name = "pnlProductionStocks";
             this.pnlProductionStocks.Size = new System.Drawing.Size(217, 40);
@@ -637,11 +639,10 @@
             // btnStockProduitsSemiFinis
             // 
             this.btnStockProduitsSemiFinis.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.btnStockProduitsSemiFinis.FlatAppearance.BorderSize = 0;
             this.btnStockProduitsSemiFinis.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStockProduitsSemiFinis.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStockProduitsSemiFinis.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnStockProduitsSemiFinis.Location = new System.Drawing.Point(0, 122);
+            this.btnStockProduitsSemiFinis.Location = new System.Drawing.Point(1, 166);
             this.btnStockProduitsSemiFinis.Name = "btnStockProduitsSemiFinis";
             this.btnStockProduitsSemiFinis.Size = new System.Drawing.Size(214, 39);
             this.btnStockProduitsSemiFinis.TabIndex = 7;
@@ -652,7 +653,6 @@
             // btnNouvelleProduction
             // 
             this.btnNouvelleProduction.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.btnNouvelleProduction.FlatAppearance.BorderSize = 0;
             this.btnNouvelleProduction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNouvelleProduction.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNouvelleProduction.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -667,11 +667,11 @@
             // btnDonRecuMatierePrem
             // 
             this.btnDonRecuMatierePrem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.btnDonRecuMatierePrem.FlatAppearance.BorderSize = 0;
+            this.btnDonRecuMatierePrem.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnDonRecuMatierePrem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDonRecuMatierePrem.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDonRecuMatierePrem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDonRecuMatierePrem.Location = new System.Drawing.Point(-1, 254);
+            this.btnDonRecuMatierePrem.Location = new System.Drawing.Point(0, 298);
             this.btnDonRecuMatierePrem.Name = "btnDonRecuMatierePrem";
             this.btnDonRecuMatierePrem.Size = new System.Drawing.Size(214, 45);
             this.btnDonRecuMatierePrem.TabIndex = 3;
@@ -682,11 +682,10 @@
             // btnSortieStock
             // 
             this.btnSortieStock.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.btnSortieStock.FlatAppearance.BorderSize = 0;
             this.btnSortieStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSortieStock.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSortieStock.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSortieStock.Location = new System.Drawing.Point(1, 208);
+            this.btnSortieStock.Location = new System.Drawing.Point(0, 252);
             this.btnSortieStock.Name = "btnSortieStock";
             this.btnSortieStock.Size = new System.Drawing.Size(214, 45);
             this.btnSortieStock.TabIndex = 3;
@@ -697,11 +696,10 @@
             // btnStockMatierePremiere
             // 
             this.btnStockMatierePremiere.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.btnStockMatierePremiere.FlatAppearance.BorderSize = 0;
             this.btnStockMatierePremiere.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStockMatierePremiere.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStockMatierePremiere.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnStockMatierePremiere.Location = new System.Drawing.Point(0, 162);
+            this.btnStockMatierePremiere.Location = new System.Drawing.Point(0, 206);
             this.btnStockMatierePremiere.Name = "btnStockMatierePremiere";
             this.btnStockMatierePremiere.Size = new System.Drawing.Size(214, 45);
             this.btnStockMatierePremiere.TabIndex = 3;
@@ -712,11 +710,10 @@
             // btnStockProduitsFinis
             // 
             this.btnStockProduitsFinis.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.btnStockProduitsFinis.FlatAppearance.BorderSize = 0;
             this.btnStockProduitsFinis.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStockProduitsFinis.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStockProduitsFinis.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnStockProduitsFinis.Location = new System.Drawing.Point(1, 82);
+            this.btnStockProduitsFinis.Location = new System.Drawing.Point(1, 126);
             this.btnStockProduitsFinis.Name = "btnStockProduitsFinis";
             this.btnStockProduitsFinis.Size = new System.Drawing.Size(213, 39);
             this.btnStockProduitsFinis.TabIndex = 2;
@@ -1015,6 +1012,21 @@
             // 
             this.dragControl1.SelectControl = this.pnlTop;
             // 
+            // btnJournalProduction
+            // 
+            this.btnJournalProduction.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
+            this.btnJournalProduction.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnJournalProduction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnJournalProduction.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnJournalProduction.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnJournalProduction.Location = new System.Drawing.Point(1, 81);
+            this.btnJournalProduction.Name = "btnJournalProduction";
+            this.btnJournalProduction.Size = new System.Drawing.Size(214, 45);
+            this.btnJournalProduction.TabIndex = 3;
+            this.btnJournalProduction.Text = "Journal de production";
+            this.btnJournalProduction.UseVisualStyleBackColor = false;
+            this.btnJournalProduction.Click += new System.EventHandler(this.btnJournalProduction_Click);
+            // 
             // Accueil
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -1122,5 +1134,6 @@
         private System.Windows.Forms.Button btnDonRecuMatierePrem;
         private System.Windows.Forms.Button btnSortieStock;
         private System.Windows.Forms.Button btnJournalApprovisionnements;
+        private System.Windows.Forms.Button btnJournalProduction;
     }
 }

@@ -303,6 +303,12 @@
     <Compile Include="Pages\UC_JournalApprovisionnements.Designer.cs">
       <DependentUpon>UC_JournalApprovisionnements.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pages\UC_JournalProduction.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\UC_JournalProduction.Designer.cs">
+      <DependentUpon>UC_JournalProduction.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pages\UC_JournalTresorerie.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -478,6 +484,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\UC_JournalApprovisionnements.resx">
       <DependentUpon>UC_JournalApprovisionnements.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\UC_JournalProduction.resx">
+      <DependentUpon>UC_JournalProduction.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\UC_JournalTresorerie.resx">
       <DependentUpon>UC_JournalTresorerie.cs</DependentUpon>

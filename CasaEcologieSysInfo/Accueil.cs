@@ -270,5 +270,11 @@ namespace CasaEcologieSysInfo
             Pages.UC_JournalApprovisionnements ja = new Pages.UC_JournalApprovisionnements();
             AddControlsToPanel(ja);
         }
+
+        private void btnJournalProduction_Click(object sender, EventArgs e)
+        {
+            Pages.UC_JournalProduction jprod = new Pages.UC_JournalProduction();
+            AddControlsToPanel(jprod);
+        }
     }
 }
