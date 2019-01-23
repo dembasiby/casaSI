@@ -167,5 +167,18 @@ namespace CasaEcologieSysInfo
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<VentesMensuelles_Result>("VentesMensuelles");
         }
+    
+        public virtual ObjectResult<QuantiteDeMatierePremiereAcheteePar_Result> QuantiteDeMatierePremiereAcheteePar(Nullable<System.DateTime> debut, Nullable<System.DateTime> fin)
+        {
+            var debutParameter = debut.HasValue ?
+                new ObjectParameter("Debut", debut) :
+                new ObjectParameter("Debut", typeof(System.DateTime));
+    
+            var finParameter = fin.HasValue ?
+                new ObjectParameter("Fin", fin) :
+                new ObjectParameter("Fin", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<QuantiteDeMatierePremiereAcheteePar_Result>("QuantiteDeMatierePremiereAcheteePar", debutParameter, finParameter);
+        }
     }
 }

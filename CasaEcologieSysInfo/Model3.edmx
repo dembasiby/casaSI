@@ -973,6 +973,10 @@
           </ReferentialConstraint>
         </Association>
         <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="QuantiteDeMatierePremiereAcheteePar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Debut" Type="date" Mode="In" />
+          <Parameter Name="Fin" Type="date" Mode="In" />
+        </Function>
         <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
           <Parameter Name="owner_id" Type="int" Mode="In" />
@@ -2376,6 +2380,10 @@
             <End Role="ResStockMatieresPremiere" EntitySet="ResStockMatieresPremieres" />
             <End Role="EveSortieDechetsMatieresPremiere" EntitySet="EveSortieDechetsMatieresPremieres" />
           </AssociationSet>
+          <FunctionImport Name="QuantiteDeMatierePremiereAcheteePar" ReturnType="Collection(CasaDBModel.QuantiteDeMatierePremiereAcheteePar_Result)">
+            <Parameter Name="Debut" Mode="In" Type="DateTime" />
+            <Parameter Name="Fin" Mode="In" Type="DateTime" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -2606,6 +2614,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <ComplexType Name="QuantiteDeMatierePremiereAcheteePar_Result">
+          <Property Type="String" Name="Matière_première" Nullable="false" MaxLength="50" />
+          <Property Type="Double" Name="Quantité" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2999,6 +3011,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="QuantiteDeMatierePremiereAcheteePar" FunctionName="CasaDBModel.Store.QuantiteDeMatierePremiereAcheteePar">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CasaDBModel.QuantiteDeMatierePremiereAcheteePar_Result">
+                <ScalarProperty Name="Matière_première" ColumnName="Matière première" />
+                <ScalarProperty Name="Quantité" ColumnName="Quantité" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -80,7 +80,13 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="LiveCharts.WinForms, Version=0.9.7.1, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.WinForms.0.9.7.1\lib\net45\LiveCharts.WinForms.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="MoreLinq, Version=3.1.0.0, Culture=neutral, PublicKeyToken=384d532d7e88985d, processorArchitecture=MSIL">
+      <HintPath>..\packages\morelinq.3.1.0\lib\net451\MoreLinq.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
@@ -92,6 +98,9 @@
     <Reference Include="System.Drawing.Design" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.4.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Services" />
@@ -160,6 +169,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CasaDBDataSet5.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="CasaDBDataSet6.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CasaDBDataSet6.xsd</DependentUpon>
     </Compile>
     <Compile Include="CasaDBDataSetAll.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -399,6 +413,9 @@
     <Compile Include="Pages\UC_Production.Designer.cs">
       <DependentUpon>UC_Production.cs</DependentUpon>
     </Compile>
+    <Compile Include="QuantiteDeMatierePremiereAcheteePar_Result.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
     <Compile Include="ResComptesTresorerie.cs">
       <DependentUpon>Model3.tt</DependentUpon>
     </Compile>
@@ -594,6 +611,17 @@
     </None>
     <None Include="CasaDBDataSet5.xss">
       <DependentUpon>CasaDBDataSet5.xsd</DependentUpon>
+    </None>
+    <None Include="CasaDBDataSet6.xsc">
+      <DependentUpon>CasaDBDataSet6.xsd</DependentUpon>
+    </None>
+    <None Include="CasaDBDataSet6.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CasaDBDataSet6.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CasaDBDataSet6.xss">
+      <DependentUpon>CasaDBDataSet6.xsd</DependentUpon>
     </None>
     <None Include="CasaDBDataSetAll.xsc">
       <DependentUpon>CasaDBDataSetAll.xsd</DependentUpon>
