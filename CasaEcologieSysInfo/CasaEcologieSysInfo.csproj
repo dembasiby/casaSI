@@ -49,7 +49,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Casa-ecologie-2.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\Casa-ecologie-2.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>7864DA1D6FB42FCA91FA82F8C4B50E96C1A4B1DA</ManifestCertificateThumbprint>
@@ -119,11 +119,11 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Accueil.cs">
+    <Compile Include="Formulaires\frmAccueil.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Accueil.Designer.cs">
-      <DependentUpon>Accueil.cs</DependentUpon>
+    <Compile Include="Formulaires\frmAccueil.Designer.cs">
+      <DependentUpon>frmAccueil.cs</DependentUpon>
     </Compile>
     <Compile Include="AgeAutreFournisseur.cs">
       <DependentUpon>Model3.tt</DependentUpon>
@@ -180,11 +180,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CasaDBDataSetAll.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Connexion.cs">
+    <Compile Include="Formulaires\frmConnexion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Connexion.Designer.cs">
-      <DependentUpon>Connexion.cs</DependentUpon>
+    <Compile Include="Formulaires\frmConnexion.Designer.cs">
+      <DependentUpon>frmConnexion.cs</DependentUpon>
     </Compile>
     <Compile Include="Conversion.cs" />
     <Compile Include="DragControl.cs">
@@ -267,10 +267,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model3.edmx</DependentUpon>
     </Compile>
-    <Compile Include="frmNouveauProduitFiniOuSemiFini.cs">
+    <Compile Include="Formulaires\frmNouveauProduitFiniOuSemiFini.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmNouveauProduitFiniOuSemiFini.Designer.cs">
+    <Compile Include="Formulaires\frmNouveauProduitFiniOuSemiFini.Designer.cs">
       <DependentUpon>frmNouveauProduitFiniOuSemiFini.cs</DependentUpon>
     </Compile>
     <Compile Include="Pages\UC_AutreEncaissementDeFonds.cs">
@@ -449,10 +449,10 @@
     <Compile Include="sysdiagram.cs">
       <DependentUpon>Model3.tt</DependentUpon>
     </Compile>
-    <Compile Include="UC_NouveauDecaissement.cs">
+    <Compile Include="Pages\UC_NouveauDecaissement.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UC_NouveauDecaissement.Designer.cs">
+    <Compile Include="Pages\UC_NouveauDecaissement.Designer.cs">
       <DependentUpon>UC_NouveauDecaissement.cs</DependentUpon>
     </Compile>
     <Compile Include="Utilisateur.cs">
@@ -461,13 +461,13 @@
     <Compile Include="VentesMensuelles_Result.cs">
       <DependentUpon>Model3.tt</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Accueil.resx">
-      <DependentUpon>Accueil.cs</DependentUpon>
+    <EmbeddedResource Include="Formulaires\frmAccueil.resx">
+      <DependentUpon>frmAccueil.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Connexion.resx">
-      <DependentUpon>Connexion.cs</DependentUpon>
+    <EmbeddedResource Include="Formulaires\frmConnexion.resx">
+      <DependentUpon>frmConnexion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmNouveauProduitFiniOuSemiFini.resx">
+    <EmbeddedResource Include="Formulaires\frmNouveauProduitFiniOuSemiFini.resx">
       <DependentUpon>frmNouveauProduitFiniOuSemiFini.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\UC_AutreEncaissementDeFonds.resx">
@@ -552,7 +552,7 @@
     <EmbeddedResource Include="Pages\UC_Production.resx">
       <DependentUpon>UC_Production.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UC_NouveauDecaissement.resx">
+    <EmbeddedResource Include="Pages\UC_NouveauDecaissement.resx">
       <DependentUpon>UC_NouveauDecaissement.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="CasaDBDataSet.xsc">
@@ -745,8 +745,8 @@
     <None Include="Resources\Expand Arrow_20px.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Casa-ecologie-2.ico" />
-    <Content Include="casa.ico" />
+    <Content Include="Resources\Casa-ecologie-2.ico" />
+    <Content Include="Resources\casa.ico" />
     <Content Include="Model3.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model3.edmx</DependentUpon>
@@ -788,6 +788,9 @@
       <ProductName>SQL Server 2012 Express</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DataSets\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
