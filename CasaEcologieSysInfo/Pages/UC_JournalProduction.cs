@@ -22,6 +22,8 @@ namespace CasaEcologieSysInfo.Pages
         private void UC_JournalProduction_Load(object sender, EventArgs e)
         {
             AfficherDatesProduction();
+            var year = DateTime.Today.Year;
+            dateTimePicker1.Value = DateTime.Parse($"{year},1,1");
         }
 
         private void DgvJoursEtCodeProduction_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -53,6 +55,8 @@ namespace CasaEcologieSysInfo.Pages
         private void AfficherDatesProduction()
         {
             var listeProduction = (from prod in db.EveProductions
+                                   where prod.Date >= dateTimePicker1.Value.Date
+                                   where prod.Date <= dateTimePicker2.Value.Date
                                    select new
                                    {
                                        prod.Date,
@@ -169,8 +173,14 @@ namespace CasaEcologieSysInfo.Pages
             }
         }
 
+        private void DateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            AfficherDatesProduction();
+        }
 
-
-
+        private void DateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+            AfficherDatesProduction();
+        }
     }
 }
