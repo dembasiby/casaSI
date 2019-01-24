@@ -89,6 +89,7 @@
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.splitter2 = new System.Windows.Forms.Splitter();
             this.cbxNomProduit = new System.Windows.Forms.ComboBox();
+            this.resStockProduitsFiniBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.resStockProduitsFinisBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.casaDBDataSet3 = new CasaEcologieSysInfo.CasaDBDataSet3();
             this.casaDBDataSet1 = new CasaEcologieSysInfo.CasaDBDataSet1();
@@ -112,6 +113,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.casaDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.resStockProduitsFinisBindingSource)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.resStockProduitsFiniBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.resStockProduitsFinisBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.casaDBDataSet3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.casaDBDataSet1)).BeginInit();
@@ -701,7 +703,7 @@
             // 
             // cbxNomProduit
             // 
-            this.cbxNomProduit.DataSource = this.resStockProduitsFinisBindingSource1;
+            this.cbxNomProduit.DataSource = this.resStockProduitsFiniBindingSource;
             this.cbxNomProduit.DisplayMember = "NomProduit";
             this.cbxNomProduit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxNomProduit.FormattingEnabled = true;
@@ -711,6 +713,10 @@
             this.cbxNomProduit.TabIndex = 1;
             this.cbxNomProduit.ValueMember = "CodeProduit";
             this.cbxNomProduit.SelectedIndexChanged += new System.EventHandler(this.CbxNomProduit_SelectedIndexChanged);
+            // 
+            // resStockProduitsFiniBindingSource
+            // 
+            this.resStockProduitsFiniBindingSource.DataSource = typeof(CasaEcologieSysInfo.ResStockProduitsFini);
             // 
             // resStockProduitsFinisBindingSource1
             // 
@@ -756,7 +762,7 @@
             // 
             // cbxPUProduit
             // 
-            this.cbxPUProduit.DataSource = this.resStockProduitsFinisBindingSource1;
+            this.cbxPUProduit.DataSource = this.resStockProduitsFiniBindingSource;
             this.cbxPUProduit.DisplayMember = "PrixDeVenteStandard";
             this.cbxPUProduit.FormattingEnabled = true;
             this.cbxPUProduit.Location = new System.Drawing.Point(176, 161);
@@ -819,6 +825,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.resStockProduitsFinisBindingSource)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.resStockProduitsFiniBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.resStockProduitsFinisBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.casaDBDataSet3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.casaDBDataSet1)).EndInit();
@@ -904,5 +911,6 @@
         private System.Windows.Forms.BindingSource ageEmployeBindingSource;
         private System.Windows.Forms.TextBox txtQuantite;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.BindingSource resStockProduitsFiniBindingSource;
     }
 }

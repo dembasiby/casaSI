@@ -33,7 +33,7 @@ namespace CasaEcologieSysInfo
             ageClientBindingSource.DataSource = db.AgeClients
                 .OrderBy(c => c.NomClient)
                 .ToList();
-            resStockProduitsFinisBindingSource1.DataSource = db.ResStockProduitsFinis.ToList().OrderBy(p => p.NomProduit);
+            resStockProduitsFiniBindingSource.DataSource = db.ResStockProduitsFinis.ToList().OrderBy(p => p.NomProduit);
             resComptesTresorerieBindingSource.DataSource = db.ResComptesTresoreries.ToList();
 
             MettreAJourStockProduitFini();
