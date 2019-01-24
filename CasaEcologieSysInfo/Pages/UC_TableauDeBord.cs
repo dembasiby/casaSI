@@ -69,14 +69,12 @@ namespace CasaEcologieSysInfo
 
             DataTable dt = Conversion.ConvertirEnTableDeDonnees(tableau);
 
-
-            var startingYear = 2019;
-
             dataGridView1.DataSource = dt;
 
+            var startingYear = 2019;
             var Annees = new List<int>();
 
-            for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
             {
                 Annees.Add(startingYear);
                 startingYear++;

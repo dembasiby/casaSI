@@ -31,19 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.label4 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.janvierDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.févrierDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.marsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.avrilDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.maiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.juinDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.juilletDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.aoûtDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.septembreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.octobreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.novembreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.décembreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ventesMensuellesResultBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dtpDebut = new System.Windows.Forms.DateTimePicker();
@@ -58,11 +45,24 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.janvierDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.févrierDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.marsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.avrilDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.maiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.juinDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.juilletDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.aoûtDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.septembreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.octobreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.novembreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.décembreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ventesMensuellesResultBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ventesMensuellesResultBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.casaDBDataSet6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.quantiteDeMatierePremiereAcheteeParBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ventesMensuellesResultBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label4
@@ -83,10 +83,8 @@
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AllowUserToResizeColumns = false;
             this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.janvierDataGridViewTextBoxColumn,
             this.févrierDataGridViewTextBoxColumn,
@@ -101,113 +99,14 @@
             this.novembreDataGridViewTextBoxColumn,
             this.décembreDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.ventesMensuellesResultBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(75, 88);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
+            this.dataGridView1.Location = new System.Drawing.Point(88, 88);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(1);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(898, 113);
+            this.dataGridView1.RowHeadersWidth = 30;
+            this.dataGridView1.Size = new System.Drawing.Size(868, 113);
             this.dataGridView1.TabIndex = 27;
-            // 
-            // janvierDataGridViewTextBoxColumn
-            // 
-            this.janvierDataGridViewTextBoxColumn.DataPropertyName = "Janvier";
-            this.janvierDataGridViewTextBoxColumn.HeaderText = "Janvier";
-            this.janvierDataGridViewTextBoxColumn.Name = "janvierDataGridViewTextBoxColumn";
-            this.janvierDataGridViewTextBoxColumn.ReadOnly = true;
-            this.janvierDataGridViewTextBoxColumn.Width = 79;
-            // 
-            // févrierDataGridViewTextBoxColumn
-            // 
-            this.févrierDataGridViewTextBoxColumn.DataPropertyName = "Février";
-            this.févrierDataGridViewTextBoxColumn.HeaderText = "Février";
-            this.févrierDataGridViewTextBoxColumn.Name = "févrierDataGridViewTextBoxColumn";
-            this.févrierDataGridViewTextBoxColumn.ReadOnly = true;
-            this.févrierDataGridViewTextBoxColumn.Width = 74;
-            // 
-            // marsDataGridViewTextBoxColumn
-            // 
-            this.marsDataGridViewTextBoxColumn.DataPropertyName = "Mars";
-            this.marsDataGridViewTextBoxColumn.HeaderText = "Mars";
-            this.marsDataGridViewTextBoxColumn.Name = "marsDataGridViewTextBoxColumn";
-            this.marsDataGridViewTextBoxColumn.ReadOnly = true;
-            this.marsDataGridViewTextBoxColumn.Width = 62;
-            // 
-            // avrilDataGridViewTextBoxColumn
-            // 
-            this.avrilDataGridViewTextBoxColumn.DataPropertyName = "Avril";
-            this.avrilDataGridViewTextBoxColumn.HeaderText = "Avril";
-            this.avrilDataGridViewTextBoxColumn.Name = "avrilDataGridViewTextBoxColumn";
-            this.avrilDataGridViewTextBoxColumn.ReadOnly = true;
-            this.avrilDataGridViewTextBoxColumn.Width = 60;
-            // 
-            // maiDataGridViewTextBoxColumn
-            // 
-            this.maiDataGridViewTextBoxColumn.DataPropertyName = "Mai";
-            this.maiDataGridViewTextBoxColumn.HeaderText = "Mai";
-            this.maiDataGridViewTextBoxColumn.Name = "maiDataGridViewTextBoxColumn";
-            this.maiDataGridViewTextBoxColumn.ReadOnly = true;
-            this.maiDataGridViewTextBoxColumn.Width = 56;
-            // 
-            // juinDataGridViewTextBoxColumn
-            // 
-            this.juinDataGridViewTextBoxColumn.DataPropertyName = "Juin";
-            this.juinDataGridViewTextBoxColumn.HeaderText = "Juin";
-            this.juinDataGridViewTextBoxColumn.Name = "juinDataGridViewTextBoxColumn";
-            this.juinDataGridViewTextBoxColumn.ReadOnly = true;
-            this.juinDataGridViewTextBoxColumn.Width = 58;
-            // 
-            // juilletDataGridViewTextBoxColumn
-            // 
-            this.juilletDataGridViewTextBoxColumn.DataPropertyName = "Juillet";
-            this.juilletDataGridViewTextBoxColumn.HeaderText = "Juillet";
-            this.juilletDataGridViewTextBoxColumn.Name = "juilletDataGridViewTextBoxColumn";
-            this.juilletDataGridViewTextBoxColumn.ReadOnly = true;
-            this.juilletDataGridViewTextBoxColumn.Width = 69;
-            // 
-            // aoûtDataGridViewTextBoxColumn
-            // 
-            this.aoûtDataGridViewTextBoxColumn.DataPropertyName = "Août";
-            this.aoûtDataGridViewTextBoxColumn.HeaderText = "Août";
-            this.aoûtDataGridViewTextBoxColumn.Name = "aoûtDataGridViewTextBoxColumn";
-            this.aoûtDataGridViewTextBoxColumn.ReadOnly = true;
-            this.aoûtDataGridViewTextBoxColumn.Width = 64;
-            // 
-            // septembreDataGridViewTextBoxColumn
-            // 
-            this.septembreDataGridViewTextBoxColumn.DataPropertyName = "Septembre";
-            this.septembreDataGridViewTextBoxColumn.HeaderText = "Septembre";
-            this.septembreDataGridViewTextBoxColumn.Name = "septembreDataGridViewTextBoxColumn";
-            this.septembreDataGridViewTextBoxColumn.ReadOnly = true;
-            this.septembreDataGridViewTextBoxColumn.Width = 103;
-            // 
-            // octobreDataGridViewTextBoxColumn
-            // 
-            this.octobreDataGridViewTextBoxColumn.DataPropertyName = "Octobre";
-            this.octobreDataGridViewTextBoxColumn.HeaderText = "Octobre";
-            this.octobreDataGridViewTextBoxColumn.Name = "octobreDataGridViewTextBoxColumn";
-            this.octobreDataGridViewTextBoxColumn.ReadOnly = true;
-            this.octobreDataGridViewTextBoxColumn.Width = 87;
-            // 
-            // novembreDataGridViewTextBoxColumn
-            // 
-            this.novembreDataGridViewTextBoxColumn.DataPropertyName = "Novembre";
-            this.novembreDataGridViewTextBoxColumn.HeaderText = "Novembre";
-            this.novembreDataGridViewTextBoxColumn.Name = "novembreDataGridViewTextBoxColumn";
-            this.novembreDataGridViewTextBoxColumn.ReadOnly = true;
-            this.novembreDataGridViewTextBoxColumn.Width = 102;
-            // 
-            // décembreDataGridViewTextBoxColumn
-            // 
-            this.décembreDataGridViewTextBoxColumn.DataPropertyName = "Décembre";
-            this.décembreDataGridViewTextBoxColumn.HeaderText = "Décembre";
-            this.décembreDataGridViewTextBoxColumn.Name = "décembreDataGridViewTextBoxColumn";
-            this.décembreDataGridViewTextBoxColumn.ReadOnly = true;
-            this.décembreDataGridViewTextBoxColumn.Width = 101;
-            // 
-            // ventesMensuellesResultBindingSource
-            // 
-            this.ventesMensuellesResultBindingSource.DataSource = typeof(CasaEcologieSysInfo.VentesMensuelles_Result);
             // 
             // label1
             // 
@@ -322,7 +221,7 @@
             this.listBox1.ItemHeight = 17;
             this.listBox1.Location = new System.Drawing.Point(6, 109);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(64, 85);
+            this.listBox1.Size = new System.Drawing.Size(78, 85);
             this.listBox1.TabIndex = 36;
             // 
             // label5
@@ -333,6 +232,106 @@
             this.label5.Size = new System.Drawing.Size(88, 78);
             this.label5.TabIndex = 37;
             this.label5.Text = "Choisir l\'intervalle de temps ci-dessous";
+            // 
+            // janvierDataGridViewTextBoxColumn
+            // 
+            this.janvierDataGridViewTextBoxColumn.DataPropertyName = "Janvier";
+            this.janvierDataGridViewTextBoxColumn.HeaderText = "Janvier";
+            this.janvierDataGridViewTextBoxColumn.Name = "janvierDataGridViewTextBoxColumn";
+            this.janvierDataGridViewTextBoxColumn.ReadOnly = true;
+            this.janvierDataGridViewTextBoxColumn.Width = 70;
+            // 
+            // févrierDataGridViewTextBoxColumn
+            // 
+            this.févrierDataGridViewTextBoxColumn.DataPropertyName = "Février";
+            this.févrierDataGridViewTextBoxColumn.HeaderText = "Février";
+            this.févrierDataGridViewTextBoxColumn.Name = "févrierDataGridViewTextBoxColumn";
+            this.févrierDataGridViewTextBoxColumn.ReadOnly = true;
+            this.févrierDataGridViewTextBoxColumn.Width = 69;
+            // 
+            // marsDataGridViewTextBoxColumn
+            // 
+            this.marsDataGridViewTextBoxColumn.DataPropertyName = "Mars";
+            this.marsDataGridViewTextBoxColumn.HeaderText = "Mars";
+            this.marsDataGridViewTextBoxColumn.Name = "marsDataGridViewTextBoxColumn";
+            this.marsDataGridViewTextBoxColumn.ReadOnly = true;
+            this.marsDataGridViewTextBoxColumn.Width = 62;
+            // 
+            // avrilDataGridViewTextBoxColumn
+            // 
+            this.avrilDataGridViewTextBoxColumn.DataPropertyName = "Avril";
+            this.avrilDataGridViewTextBoxColumn.HeaderText = "Avril";
+            this.avrilDataGridViewTextBoxColumn.Name = "avrilDataGridViewTextBoxColumn";
+            this.avrilDataGridViewTextBoxColumn.ReadOnly = true;
+            this.avrilDataGridViewTextBoxColumn.Width = 60;
+            // 
+            // maiDataGridViewTextBoxColumn
+            // 
+            this.maiDataGridViewTextBoxColumn.DataPropertyName = "Mai";
+            this.maiDataGridViewTextBoxColumn.HeaderText = "Mai";
+            this.maiDataGridViewTextBoxColumn.Name = "maiDataGridViewTextBoxColumn";
+            this.maiDataGridViewTextBoxColumn.ReadOnly = true;
+            this.maiDataGridViewTextBoxColumn.Width = 56;
+            // 
+            // juinDataGridViewTextBoxColumn
+            // 
+            this.juinDataGridViewTextBoxColumn.DataPropertyName = "Juin";
+            this.juinDataGridViewTextBoxColumn.HeaderText = "Juin";
+            this.juinDataGridViewTextBoxColumn.Name = "juinDataGridViewTextBoxColumn";
+            this.juinDataGridViewTextBoxColumn.ReadOnly = true;
+            this.juinDataGridViewTextBoxColumn.Width = 58;
+            // 
+            // juilletDataGridViewTextBoxColumn
+            // 
+            this.juilletDataGridViewTextBoxColumn.DataPropertyName = "Juillet";
+            this.juilletDataGridViewTextBoxColumn.HeaderText = "Juillet";
+            this.juilletDataGridViewTextBoxColumn.Name = "juilletDataGridViewTextBoxColumn";
+            this.juilletDataGridViewTextBoxColumn.ReadOnly = true;
+            this.juilletDataGridViewTextBoxColumn.Width = 55;
+            // 
+            // aoûtDataGridViewTextBoxColumn
+            // 
+            this.aoûtDataGridViewTextBoxColumn.DataPropertyName = "Août";
+            this.aoûtDataGridViewTextBoxColumn.HeaderText = "Août";
+            this.aoûtDataGridViewTextBoxColumn.Name = "aoûtDataGridViewTextBoxColumn";
+            this.aoûtDataGridViewTextBoxColumn.ReadOnly = true;
+            this.aoûtDataGridViewTextBoxColumn.Width = 64;
+            // 
+            // septembreDataGridViewTextBoxColumn
+            // 
+            this.septembreDataGridViewTextBoxColumn.DataPropertyName = "Septembre";
+            this.septembreDataGridViewTextBoxColumn.HeaderText = "Septembre";
+            this.septembreDataGridViewTextBoxColumn.Name = "septembreDataGridViewTextBoxColumn";
+            this.septembreDataGridViewTextBoxColumn.ReadOnly = true;
+            this.septembreDataGridViewTextBoxColumn.Width = 103;
+            // 
+            // octobreDataGridViewTextBoxColumn
+            // 
+            this.octobreDataGridViewTextBoxColumn.DataPropertyName = "Octobre";
+            this.octobreDataGridViewTextBoxColumn.HeaderText = "Octobre";
+            this.octobreDataGridViewTextBoxColumn.Name = "octobreDataGridViewTextBoxColumn";
+            this.octobreDataGridViewTextBoxColumn.ReadOnly = true;
+            this.octobreDataGridViewTextBoxColumn.Width = 80;
+            // 
+            // novembreDataGridViewTextBoxColumn
+            // 
+            this.novembreDataGridViewTextBoxColumn.DataPropertyName = "Novembre";
+            this.novembreDataGridViewTextBoxColumn.HeaderText = "Novembre";
+            this.novembreDataGridViewTextBoxColumn.Name = "novembreDataGridViewTextBoxColumn";
+            this.novembreDataGridViewTextBoxColumn.ReadOnly = true;
+            this.novembreDataGridViewTextBoxColumn.Width = 95;
+            // 
+            // décembreDataGridViewTextBoxColumn
+            // 
+            this.décembreDataGridViewTextBoxColumn.DataPropertyName = "Décembre";
+            this.décembreDataGridViewTextBoxColumn.HeaderText = "Décembre";
+            this.décembreDataGridViewTextBoxColumn.Name = "décembreDataGridViewTextBoxColumn";
+            this.décembreDataGridViewTextBoxColumn.ReadOnly = true;
+            this.décembreDataGridViewTextBoxColumn.Width = 95;
+            // 
+            // ventesMensuellesResultBindingSource
+            // 
+            this.ventesMensuellesResultBindingSource.DataSource = typeof(CasaEcologieSysInfo.VentesMensuelles_Result);
             // 
             // UC_TableauDeBord
             // 
@@ -357,10 +356,10 @@
             this.Size = new System.Drawing.Size(983, 635);
             this.Load += new System.EventHandler(this.UC_TableauDeBord_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ventesMensuellesResultBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.casaDBDataSet6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.quantiteDeMatierePremiereAcheteeParBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ventesMensuellesResultBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -371,18 +370,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.BindingSource ventesMensuellesResultBindingSource;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn janvierDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn févrierDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn marsDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn avrilDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn maiDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn juinDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn juilletDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn aoûtDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn septembreDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn octobreDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn novembreDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn décembreDataGridViewTextBoxColumn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dtpDebut;
@@ -397,5 +384,17 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn janvierDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn févrierDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn marsDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn avrilDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn maiDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn juinDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn juilletDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn aoûtDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn septembreDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn octobreDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn novembreDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn décembreDataGridViewTextBoxColumn;
     }
 }
