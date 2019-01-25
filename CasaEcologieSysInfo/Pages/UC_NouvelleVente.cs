@@ -264,9 +264,9 @@ namespace CasaEcologieSysInfo
                     lblTotalFacture.Text = TotalFacture().ToString();
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show("Veuillez selectionner un produit dans la liste.");
+                MessageBox.Show("Veuillez selectionner un produit dans la liste.", "Erreur de choix d'un produit");
                 return;
             }
 

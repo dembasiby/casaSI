@@ -527,7 +527,7 @@
             this.cbxComptePaiement.Name = "cbxComptePaiement";
             this.cbxComptePaiement.Size = new System.Drawing.Size(286, 29);
             this.cbxComptePaiement.TabIndex = 16;
-            this.cbxComptePaiement.SelectedIndexChanged += new System.EventHandler(this.cbxComptePaiement_SelectedIndexChanged);
+            this.cbxComptePaiement.SelectedIndexChanged += new System.EventHandler(this.CbxComptePaiement_SelectedIndexChanged);
             // 
             // resComptesTresorerieBindingSource
             // 

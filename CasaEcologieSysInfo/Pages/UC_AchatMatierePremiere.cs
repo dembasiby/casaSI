@@ -156,7 +156,7 @@ namespace CasaEcologieSysInfo
            
         }
 
-        private void cbxComptePaiement_SelectedIndexChanged(object sender, EventArgs e)
+        private void CbxComptePaiement_SelectedIndexChanged(object sender, EventArgs e)
         {
             AfficherSoldeCompte();
         }
