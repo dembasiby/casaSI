@@ -284,14 +284,13 @@
             // btnNouveauDecaissement
             // 
             this.btnNouveauDecaissement.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.btnNouveauDecaissement.FlatAppearance.BorderSize = 0;
             this.btnNouveauDecaissement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNouveauDecaissement.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNouveauDecaissement.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnNouveauDecaissement.Location = new System.Drawing.Point(1, 262);
             this.btnNouveauDecaissement.Name = "btnNouveauDecaissement";
             this.btnNouveauDecaissement.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnNouveauDecaissement.Size = new System.Drawing.Size(217, 37);
+            this.btnNouveauDecaissement.Size = new System.Drawing.Size(213, 37);
             this.btnNouveauDecaissement.TabIndex = 4;
             this.btnNouveauDecaissement.Text = "Paiement dette fournisseur";
             this.btnNouveauDecaissement.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -301,7 +300,6 @@
             // btnMouvementCAC
             // 
             this.btnMouvementCAC.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.btnMouvementCAC.FlatAppearance.BorderSize = 0;
             this.btnMouvementCAC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMouvementCAC.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMouvementCAC.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -318,7 +316,6 @@
             // btnAutreEncaissement
             // 
             this.btnAutreEncaissement.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.btnAutreEncaissement.FlatAppearance.BorderSize = 0;
             this.btnAutreEncaissement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAutreEncaissement.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAutreEncaissement.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -335,14 +332,13 @@
             // btnNouvelEncaissement
             // 
             this.btnNouvelEncaissement.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.btnNouvelEncaissement.FlatAppearance.BorderSize = 0;
             this.btnNouvelEncaissement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNouvelEncaissement.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNouvelEncaissement.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNouvelEncaissement.Location = new System.Drawing.Point(-1, 122);
+            this.btnNouvelEncaissement.Location = new System.Drawing.Point(0, 122);
             this.btnNouvelEncaissement.Name = "btnNouvelEncaissement";
             this.btnNouvelEncaissement.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnNouvelEncaissement.Size = new System.Drawing.Size(217, 40);
+            this.btnNouvelEncaissement.Size = new System.Drawing.Size(213, 40);
             this.btnNouvelEncaissement.TabIndex = 4;
             this.btnNouvelEncaissement.Text = "Encaissement créance client";
             this.btnNouvelEncaissement.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -352,14 +348,13 @@
             // btnJournalTresorerie
             // 
             this.btnJournalTresorerie.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.btnJournalTresorerie.FlatAppearance.BorderSize = 0;
             this.btnJournalTresorerie.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnJournalTresorerie.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnJournalTresorerie.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnJournalTresorerie.Location = new System.Drawing.Point(1, 82);
             this.btnJournalTresorerie.Name = "btnJournalTresorerie";
             this.btnJournalTresorerie.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnJournalTresorerie.Size = new System.Drawing.Size(214, 39);
+            this.btnJournalTresorerie.Size = new System.Drawing.Size(212, 39);
             this.btnJournalTresorerie.TabIndex = 9;
             this.btnJournalTresorerie.Text = "Journal de trésorerie";
             this.btnJournalTresorerie.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -369,19 +364,18 @@
             // btnNouveauCompteTresorerie
             // 
             this.btnNouveauCompteTresorerie.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.btnNouveauCompteTresorerie.FlatAppearance.BorderSize = 0;
             this.btnNouveauCompteTresorerie.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNouveauCompteTresorerie.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNouveauCompteTresorerie.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnNouveauCompteTresorerie.Location = new System.Drawing.Point(1, 42);
             this.btnNouveauCompteTresorerie.Name = "btnNouveauCompteTresorerie";
             this.btnNouveauCompteTresorerie.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnNouveauCompteTresorerie.Size = new System.Drawing.Size(214, 39);
+            this.btnNouveauCompteTresorerie.Size = new System.Drawing.Size(213, 39);
             this.btnNouveauCompteTresorerie.TabIndex = 8;
             this.btnNouveauCompteTresorerie.Text = "Créer un nouveau compte";
             this.btnNouveauCompteTresorerie.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnNouveauCompteTresorerie.UseVisualStyleBackColor = false;
-            this.btnNouveauCompteTresorerie.Click += new System.EventHandler(this.btnNouveauCompteTresorerie_Click);
+            this.btnNouveauCompteTresorerie.Click += new System.EventHandler(this.BtnNouveauCompteTresorerie_Click);
             // 
             // btnTresorerie
             // 
@@ -427,7 +421,6 @@
             // btnJournalVentes
             // 
             this.btnJournalVentes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.btnJournalVentes.FlatAppearance.BorderSize = 0;
             this.btnJournalVentes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnJournalVentes.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnJournalVentes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -444,7 +437,6 @@
             // btnNouvelleVente
             // 
             this.btnNouvelleVente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.btnNouvelleVente.FlatAppearance.BorderSize = 0;
             this.btnNouvelleVente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNouvelleVente.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNouvelleVente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -497,14 +489,13 @@
             // btnJournalApprovisionnements
             // 
             this.btnJournalApprovisionnements.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.btnJournalApprovisionnements.FlatAppearance.BorderSize = 0;
             this.btnJournalApprovisionnements.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnJournalApprovisionnements.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnJournalApprovisionnements.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnJournalApprovisionnements.Location = new System.Drawing.Point(-1, 211);
+            this.btnJournalApprovisionnements.Location = new System.Drawing.Point(0, 211);
             this.btnJournalApprovisionnements.Name = "btnJournalApprovisionnements";
             this.btnJournalApprovisionnements.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnJournalApprovisionnements.Size = new System.Drawing.Size(214, 49);
+            this.btnJournalApprovisionnements.Size = new System.Drawing.Size(214, 41);
             this.btnJournalApprovisionnements.TabIndex = 3;
             this.btnJournalApprovisionnements.Text = "Journall des approvisionnements";
             this.btnJournalApprovisionnements.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -525,14 +516,13 @@
             // btnJournalDepenses
             // 
             this.btnJournalDepenses.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.btnJournalDepenses.FlatAppearance.BorderSize = 0;
             this.btnJournalDepenses.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnJournalDepenses.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnJournalDepenses.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnJournalDepenses.Location = new System.Drawing.Point(0, 168);
             this.btnJournalDepenses.Name = "btnJournalDepenses";
             this.btnJournalDepenses.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnJournalDepenses.Size = new System.Drawing.Size(218, 41);
+            this.btnJournalDepenses.Size = new System.Drawing.Size(213, 41);
             this.btnJournalDepenses.TabIndex = 5;
             this.btnJournalDepenses.Text = "Journal des dépenses";
             this.btnJournalDepenses.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -542,14 +532,13 @@
             // BtnServiceFourniture
             // 
             this.BtnServiceFourniture.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.BtnServiceFourniture.FlatAppearance.BorderSize = 0;
             this.BtnServiceFourniture.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnServiceFourniture.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnServiceFourniture.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnServiceFourniture.Location = new System.Drawing.Point(0, 125);
             this.BtnServiceFourniture.Name = "BtnServiceFourniture";
             this.BtnServiceFourniture.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.BtnServiceFourniture.Size = new System.Drawing.Size(218, 41);
+            this.BtnServiceFourniture.Size = new System.Drawing.Size(213, 41);
             this.BtnServiceFourniture.TabIndex = 4;
             this.BtnServiceFourniture.Text = "Service ou fourniture";
             this.BtnServiceFourniture.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -566,7 +555,7 @@
             this.btnDepenses.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnDepenses.Location = new System.Drawing.Point(3, -4);
             this.btnDepenses.Name = "btnDepenses";
-            this.btnDepenses.Size = new System.Drawing.Size(214, 42);
+            this.btnDepenses.Size = new System.Drawing.Size(214, 44);
             this.btnDepenses.TabIndex = 1;
             this.btnDepenses.Text = "Dépenses";
             this.btnDepenses.UseVisualStyleBackColor = false;
@@ -575,14 +564,13 @@
             // btnEquipementInfrastructure
             // 
             this.btnEquipementInfrastructure.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.btnEquipementInfrastructure.FlatAppearance.BorderSize = 0;
             this.btnEquipementInfrastructure.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEquipementInfrastructure.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEquipementInfrastructure.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnEquipementInfrastructure.Location = new System.Drawing.Point(0, 82);
             this.btnEquipementInfrastructure.Name = "btnEquipementInfrastructure";
             this.btnEquipementInfrastructure.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnEquipementInfrastructure.Size = new System.Drawing.Size(218, 41);
+            this.btnEquipementInfrastructure.Size = new System.Drawing.Size(213, 41);
             this.btnEquipementInfrastructure.TabIndex = 3;
             this.btnEquipementInfrastructure.Text = "Equipements / Infrastructures";
             this.btnEquipementInfrastructure.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -592,14 +580,13 @@
             // btnMatierePremiere
             // 
             this.btnMatierePremiere.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.btnMatierePremiere.FlatAppearance.BorderSize = 0;
             this.btnMatierePremiere.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMatierePremiere.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMatierePremiere.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMatierePremiere.Location = new System.Drawing.Point(0, 39);
             this.btnMatierePremiere.Name = "btnMatierePremiere";
             this.btnMatierePremiere.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnMatierePremiere.Size = new System.Drawing.Size(218, 41);
+            this.btnMatierePremiere.Size = new System.Drawing.Size(213, 41);
             this.btnMatierePremiere.TabIndex = 2;
             this.btnMatierePremiere.Text = "Matière première";
             this.btnMatierePremiere.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -677,7 +664,7 @@
             this.btnJournalProduction.TabIndex = 3;
             this.btnJournalProduction.Text = "Journal de production";
             this.btnJournalProduction.UseVisualStyleBackColor = false;
-            this.btnJournalProduction.Click += new System.EventHandler(this.btnJournalProduction_Click);
+            this.btnJournalProduction.Click += new System.EventHandler(this.BtnJournalProduction_Click);
             // 
             // btnDonRecuMatierePrem
             // 
@@ -761,7 +748,7 @@
             this.pnlFournisseurClient.Controls.Add(this.btnCreancesClients);
             this.pnlFournisseurClient.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.pnlFournisseurClient.Location = new System.Drawing.Point(3, 428);
-            this.pnlFournisseurClient.MaximumSize = new System.Drawing.Size(217, 110);
+            this.pnlFournisseurClient.MaximumSize = new System.Drawing.Size(217, 115);
             this.pnlFournisseurClient.MinimumSize = new System.Drawing.Size(217, 40);
             this.pnlFournisseurClient.Name = "pnlFournisseurClient";
             this.pnlFournisseurClient.Size = new System.Drawing.Size(217, 40);
@@ -781,14 +768,13 @@
             // btnDettesFournisseurs
             // 
             this.btnDettesFournisseurs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.btnDettesFournisseurs.FlatAppearance.BorderSize = 0;
             this.btnDettesFournisseurs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDettesFournisseurs.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDettesFournisseurs.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDettesFournisseurs.Location = new System.Drawing.Point(1, 77);
+            this.btnDettesFournisseurs.Location = new System.Drawing.Point(0, 80);
             this.btnDettesFournisseurs.Name = "btnDettesFournisseurs";
             this.btnDettesFournisseurs.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnDettesFournisseurs.Size = new System.Drawing.Size(214, 34);
+            this.btnDettesFournisseurs.Size = new System.Drawing.Size(213, 34);
             this.btnDettesFournisseurs.TabIndex = 3;
             this.btnDettesFournisseurs.Text = "Dettes fournisseurs";
             this.btnDettesFournisseurs.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -814,14 +800,13 @@
             // btnCreancesClients
             // 
             this.btnCreancesClients.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.btnCreancesClients.FlatAppearance.BorderSize = 0;
             this.btnCreancesClients.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCreancesClients.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCreancesClients.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCreancesClients.Location = new System.Drawing.Point(0, 35);
+            this.btnCreancesClients.Location = new System.Drawing.Point(0, 41);
             this.btnCreancesClients.Name = "btnCreancesClients";
             this.btnCreancesClients.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnCreancesClients.Size = new System.Drawing.Size(214, 41);
+            this.btnCreancesClients.Size = new System.Drawing.Size(213, 41);
             this.btnCreancesClients.TabIndex = 2;
             this.btnCreancesClients.Text = "Créances clients";
             this.btnCreancesClients.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -836,7 +821,7 @@
             this.pnlEtatsFinanciers.Controls.Add(this.btnCompteDeResultat);
             this.pnlEtatsFinanciers.Controls.Add(this.btnEtatsFinanciers);
             this.pnlEtatsFinanciers.Location = new System.Drawing.Point(3, 474);
-            this.pnlEtatsFinanciers.MaximumSize = new System.Drawing.Size(217, 161);
+            this.pnlEtatsFinanciers.MaximumSize = new System.Drawing.Size(217, 162);
             this.pnlEtatsFinanciers.MinimumSize = new System.Drawing.Size(217, 40);
             this.pnlEtatsFinanciers.Name = "pnlEtatsFinanciers";
             this.pnlEtatsFinanciers.Size = new System.Drawing.Size(217, 40);
@@ -845,14 +830,13 @@
             // btnBilansMensuels
             // 
             this.btnBilansMensuels.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.btnBilansMensuels.FlatAppearance.BorderSize = 0;
             this.btnBilansMensuels.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBilansMensuels.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBilansMensuels.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBilansMensuels.Location = new System.Drawing.Point(-1, 122);
+            this.btnBilansMensuels.Location = new System.Drawing.Point(0, 122);
             this.btnBilansMensuels.Name = "btnBilansMensuels";
             this.btnBilansMensuels.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnBilansMensuels.Size = new System.Drawing.Size(217, 40);
+            this.btnBilansMensuels.Size = new System.Drawing.Size(213, 40);
             this.btnBilansMensuels.TabIndex = 4;
             this.btnBilansMensuels.Text = "Bilans mensuels";
             this.btnBilansMensuels.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -861,14 +845,13 @@
             // btnTableauTresorerie
             // 
             this.btnTableauTresorerie.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.btnTableauTresorerie.FlatAppearance.BorderSize = 0;
             this.btnTableauTresorerie.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTableauTresorerie.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTableauTresorerie.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnTableauTresorerie.Location = new System.Drawing.Point(1, 82);
             this.btnTableauTresorerie.Name = "btnTableauTresorerie";
             this.btnTableauTresorerie.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnTableauTresorerie.Size = new System.Drawing.Size(214, 39);
+            this.btnTableauTresorerie.Size = new System.Drawing.Size(211, 39);
             this.btnTableauTresorerie.TabIndex = 9;
             this.btnTableauTresorerie.Text = "Tableau de trésorerie";
             this.btnTableauTresorerie.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -877,14 +860,13 @@
             // btnCompteDeResultat
             // 
             this.btnCompteDeResultat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.btnCompteDeResultat.FlatAppearance.BorderSize = 0;
             this.btnCompteDeResultat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCompteDeResultat.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCompteDeResultat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCompteDeResultat.Location = new System.Drawing.Point(1, 42);
             this.btnCompteDeResultat.Name = "btnCompteDeResultat";
             this.btnCompteDeResultat.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnCompteDeResultat.Size = new System.Drawing.Size(214, 39);
+            this.btnCompteDeResultat.Size = new System.Drawing.Size(211, 39);
             this.btnCompteDeResultat.TabIndex = 8;
             this.btnCompteDeResultat.Text = "Compte de résultats";
             this.btnCompteDeResultat.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -905,7 +887,7 @@
             this.btnEtatsFinanciers.TabIndex = 5;
             this.btnEtatsFinanciers.Text = "Etats financiers";
             this.btnEtatsFinanciers.UseVisualStyleBackColor = false;
-            this.btnEtatsFinanciers.Click += new System.EventHandler(this.btnEtatsFinanciers_Click);
+            this.btnEtatsFinanciers.Click += new System.EventHandler(this.BtnEtatsFinanciers_Click);
             // 
             // pnlUtilisateurs
             // 

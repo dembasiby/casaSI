@@ -121,7 +121,7 @@ namespace CasaEcologieSysInfo
             SetTimer(pnlEtatsFinanciers, tmrEtatsFinanciers);
         }
 
-        private void btnEtatsFinanciers_Click(object sender, EventArgs e)
+        private void BtnEtatsFinanciers_Click(object sender, EventArgs e)
         {
             tmrEtatsFinanciers.Start();
         }
@@ -223,7 +223,7 @@ namespace CasaEcologieSysInfo
             AddControlsToPanel(nd);
         }
 
-        private void btnNouveauCompteTresorerie_Click(object sender, EventArgs e)
+        private void BtnNouveauCompteTresorerie_Click(object sender, EventArgs e)
         {
             Pages.UC_NouveauCompteTresorerie ct = new Pages.UC_NouveauCompteTresorerie();
             AddControlsToPanel(ct);
@@ -271,7 +271,7 @@ namespace CasaEcologieSysInfo
             AddControlsToPanel(ja);
         }
 
-        private void btnJournalProduction_Click(object sender, EventArgs e)
+        private void BtnJournalProduction_Click(object sender, EventArgs e)
         {
             Pages.UC_JournalProduction jprod = new Pages.UC_JournalProduction();
             AddControlsToPanel(jprod);
