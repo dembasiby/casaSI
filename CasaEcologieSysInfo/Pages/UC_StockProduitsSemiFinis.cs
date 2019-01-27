@@ -51,7 +51,7 @@ namespace CasaEcologieSysInfo.Pages
                                Solde = 0
                            });
 
-            var resultat = entrees.Union(sorties)
+            var resultat = entrees.Concat(sorties)
                 .OrderByDescending(d => d.Date)
                 .ToList();
 

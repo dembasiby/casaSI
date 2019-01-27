@@ -77,8 +77,8 @@ namespace CasaEcologieSysInfo.Pages
                               Solde = 0m
                           });
             var combinedQuery = query1
-                .Union(query3)
-                .Union(query2)
+                .Concat(query3)
+                .Concat(query2)
                 .OrderByDescending(o => o.Date)
                 .ToList();
 
