@@ -296,6 +296,54 @@ namespace CasaEcologieSysInfo
 
         }
 
+        public static int CalculerSoldeStockProduitFiniDebutPeriod(string nomProduit, DateTime debutPeriod)
+        {
+            using (CasaDBEntities2 db = new CasaDBEntities2())
+            {
+                var stockInitial = (from pf in db.ResStockProduitsFinis
+                                    where pf.NomProduit == nomProduit
+                                    select pf.StockProduit).FirstOrDefault();
+
+                var entrees = (from pro in db.EveProductionStockProduitsFinis
+                               where pro.ResStockProduitsFini.NomProduit == nomProduit
+                               where pro.EveProduction.Date < debutPeriod.Date
+                               select (int?)pro.QuantiteProduitFini).Sum() ?? 0;
+
+                var sorties = (from pf in db.EveVenteStockProduitsFinis
+                               where pf.ResStockProduitsFini.NomProduit == nomProduit
+                               where pf.EveVente.DateVente < debutPeriod.Date
+                               select (int?)pf.QuantiteProduitFini).Sum() ?? 0;
+
+
+                return stockInitial + entrees - sorties;
+            }
+
+        }
+
+        public static int CalculerSoldeStockProduitFiniFinPeriod(string nomProduit, DateTime finPeriod)
+        {
+            using (CasaDBEntities2 db = new CasaDBEntities2())
+            {
+                var stockInitial = (from pf in db.ResStockProduitsFinis
+                                    where pf.NomProduit == nomProduit
+                                    select pf.StockProduit).FirstOrDefault();
+
+                var entrees = (from pro in db.EveProductionStockProduitsFinis
+                               where pro.ResStockProduitsFini.NomProduit == nomProduit
+                               where pro.EveProduction.Date < finPeriod.Date
+                               select (int?)pro.QuantiteProduitFini).Sum() ?? 0;
+
+                var sorties = (from pf in db.EveVenteStockProduitsFinis
+                               where pf.ResStockProduitsFini.NomProduit == nomProduit
+                               where pf.EveVente.DateVente < finPeriod.Date
+                               select (int?)pf.QuantiteProduitFini).Sum() ?? 0;
+
+
+                return stockInitial + entrees - sorties;
+            }
+
+        }
+
         public static bool MontantEstValide(string montant)
         {
             var estUnChiffre = int.TryParse(montant, out int n);
