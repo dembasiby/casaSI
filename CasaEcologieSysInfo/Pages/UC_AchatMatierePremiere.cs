@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CasaEcologieSysInfo
@@ -144,9 +139,9 @@ namespace CasaEcologieSysInfo
                     AjouterPaiementFournisseur(recep);
                     MessageBox.Show("Un nouvel achat de matière première a été enregistré avec succès");
                     AfficherSoldeCompte();
-                    txtQuantite.Text = "";
-                    txtMontant.Text = "";
-                    txtMontantPaye.Text = "";
+                    txtQuantite.Text = "0";
+                    txtMontant.Text = "0";
+                    txtMontantPaye.Text = "0";
                 }
                 catch (Exception ex)
                 {

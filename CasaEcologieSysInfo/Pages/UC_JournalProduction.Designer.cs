@@ -42,20 +42,20 @@
             this.grbResultat = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
             this.lvwExtrantProduitSemiFini = new System.Windows.Forms.ListView();
+            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label4 = new System.Windows.Forms.Label();
             this.lvwExtrantProduitFini = new System.Windows.Forms.ListView();
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.grbRessourcesHumaines = new System.Windows.Forms.GroupBox();
             this.label6 = new System.Windows.Forms.Label();
             this.lvwRessourcesHumaines = new System.Windows.Forms.ListView();
-            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.dgvJoursEtCodeProduction)).BeginInit();
             this.grbIntrants.SuspendLayout();
             this.grbResultat.SuspendLayout();
@@ -82,6 +82,7 @@
             this.dgvJoursEtCodeProduction.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvJoursEtCodeProduction.Location = new System.Drawing.Point(50, 145);
             this.dgvJoursEtCodeProduction.Name = "dgvJoursEtCodeProduction";
+            this.dgvJoursEtCodeProduction.ReadOnly = true;
             this.dgvJoursEtCodeProduction.RowHeadersVisible = false;
             this.dgvJoursEtCodeProduction.Size = new System.Drawing.Size(155, 438);
             this.dgvJoursEtCodeProduction.TabIndex = 16;
@@ -199,6 +200,16 @@
             this.lvwExtrantProduitSemiFini.UseCompatibleStateImageBehavior = false;
             this.lvwExtrantProduitSemiFini.View = System.Windows.Forms.View.Details;
             // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "Produit semi-fini";
+            this.columnHeader7.Width = 235;
+            // 
+            // columnHeader8
+            // 
+            this.columnHeader8.Text = "Quantité";
+            this.columnHeader8.Width = 70;
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -220,6 +231,16 @@
             this.lvwExtrantProduitFini.TabIndex = 0;
             this.lvwExtrantProduitFini.UseCompatibleStateImageBehavior = false;
             this.lvwExtrantProduitFini.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Produit fini";
+            this.columnHeader5.Width = 295;
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "Quantité";
+            this.columnHeader6.Width = 70;
             // 
             // grbRessourcesHumaines
             // 
@@ -253,25 +274,10 @@
             this.lvwRessourcesHumaines.UseCompatibleStateImageBehavior = false;
             this.lvwRessourcesHumaines.View = System.Windows.Forms.View.Details;
             // 
-            // columnHeader5
+            // columnHeader9
             // 
-            this.columnHeader5.Text = "Produit fini";
-            this.columnHeader5.Width = 295;
-            // 
-            // columnHeader6
-            // 
-            this.columnHeader6.Text = "Quantité";
-            this.columnHeader6.Width = 70;
-            // 
-            // columnHeader7
-            // 
-            this.columnHeader7.Text = "Produit semi-fini";
-            this.columnHeader7.Width = 235;
-            // 
-            // columnHeader8
-            // 
-            this.columnHeader8.Text = "Quantité";
-            this.columnHeader8.Width = 70;
+            this.columnHeader9.Text = "Prénom et Nom";
+            this.columnHeader9.Width = 225;
             // 
             // dateTimePicker1
             // 
@@ -308,11 +314,6 @@
             this.label8.Size = new System.Drawing.Size(25, 17);
             this.label8.TabIndex = 20;
             this.label8.Text = "Au";
-            // 
-            // columnHeader9
-            // 
-            this.columnHeader9.Text = "Prénom et Nom";
-            this.columnHeader9.Width = 225;
             // 
             // UC_JournalProduction
             // 

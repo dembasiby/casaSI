@@ -25,8 +25,9 @@ namespace CasaEcologieSysInfo.Pages
             AfficherAnnees();
             AfficherCompteDeResultat();
 
-            //AfficherCoutMatierePremierePrincipalParUnite();
 
+
+            // CODE UTILISE POUR LE DEBUGGING
             var date = dtpAnnee.Value.Date;
             DateTime debut = DateTime.Parse($"{date.Year},1,1");
             DateTime fin = DateTime.Parse($"{date.Year},1,{DateTime.DaysInMonth(date.Year, date.Month)}");
@@ -56,24 +57,8 @@ namespace CasaEcologieSysInfo.Pages
             dtpAnnee.ShowUpDown = true;
         }
 
-        private string CalculerVentesMois(int NumMois, DateTime date)
-        {
-            return ((from v in db.EveVentes
-                     join vp in db.EveVenteStockProduitsFinis on v.CodeVente equals vp.CodeVente
-                     where v.DateVente.Year == date.Year
-                     where v.DateVente.Month == NumMois
-                     select (decimal?)vp.Montant).Sum() ?? 0m).ToString("n0");
-        }
+        
 
-        private decimal CalculerCoutDesProduitsFabriques(int numMois, DateTime date)
-        {
-            return 0m;
-        }
-
-        private void CoutDesMatieresPremieresUtiliseesParProduit(string nomProduit)
-        {
-
-        }
 
         private float? CalculerCoutDesProduitsVendusParProduit(string nomProduit)
         {
@@ -112,9 +97,9 @@ namespace CasaEcologieSysInfo.Pages
             {
                 coutUnitaireMatierePremiere = Convert.ToInt32(coutTotal) / Convert.ToInt32(quantiteAchetee);
             }
-            
-            // calculer la quantite moyenne de matiere premiere utilisee par unite de produit fini
 
+            // calculer la quantite moyenne de matiere premiere utilisee par unite de produit fini
+            /*
             var quantiteDeMatierePremiereUtilisee = (from pf in db.ResStockProduitsFinis
                                                      join ppf in db.EveProductionStockProduitsFinis on pf.CodeProduit equals ppf.CodeProduitFini
                                                      join ur in db.EveUtilisationMatieresPremieres on ppf.EveProduction.CodeUtilisationRessources equals ur.CodeUtilisationRessource
@@ -148,13 +133,19 @@ namespace CasaEcologieSysInfo.Pages
             {
                 return 0f;
             }
-            //return /*Convert.ToSingle(coutUnitaireMatierePremiere);// */ quantiteMoyenneParProduitFini;
+
+    */
+            return coutUnitaireMatierePremiere;
         }
 
+
+        // RESUME DU CALCUL DU COUT DES PRODUITS VENDUS
         private float CalculerCoutDesProduitsVendus(int numMois, DateTime date)
         {
-            // var matieresPremieresUtilisees
             float coutDesProduitsVendus = 0f;
+
+            // Déterminer la date de démarrage et de fin de la période prise en compte
+            // Ici, le timeline est le mois, qui commence le  premier (variable 'debut'). La variable fin permet de déterminer le dernier jour du mois 
             DateTime debut = new DateTime(date.Year, numMois, 1);
             DateTime fin = new DateTime(date.Year, numMois, DateTime.DaysInMonth(date.Year, numMois));
 
@@ -181,23 +172,7 @@ namespace CasaEcologieSysInfo.Pages
             return coutDesProduitsVendus;
         }
 
-        private void AfficherVentesMensuelles()
-        {
-            dgvCompteDeResultats.Rows.Add("Chiffre d'affaires",
-                CalculerVentesMois(1, dtpAnnee.Value.Date),
-                CalculerVentesMois(2, dtpAnnee.Value.Date),
-                CalculerVentesMois(3, dtpAnnee.Value.Date),
-                CalculerVentesMois(4, dtpAnnee.Value.Date),
-                CalculerVentesMois(5, dtpAnnee.Value.Date),
-                CalculerVentesMois(6, dtpAnnee.Value.Date),
-                CalculerVentesMois(7, dtpAnnee.Value.Date),
-                CalculerVentesMois(8, dtpAnnee.Value.Date),
-                CalculerVentesMois(9, dtpAnnee.Value.Date),
-                CalculerVentesMois(10, dtpAnnee.Value.Date),
-                CalculerVentesMois(11, dtpAnnee.Value.Date),
-                CalculerVentesMois(12, dtpAnnee.Value.Date));
-        }
-
+       
         private void AfficherCoutsDesProduitsVendus()
         {
             dgvCompteDeResultats.Rows.Add("Coût des produits vendus",
@@ -216,48 +191,25 @@ namespace CasaEcologieSysInfo.Pages
                 );
         }
 
-        private void AfficherMargeBrute()
-        {
-            dgvCompteDeResultats.Rows.Add("Marge brute",
-                (Convert.ToSingle(dgvCompteDeResultats.Rows[0].Cells[1].Value.ToString()) 
-                    - Convert.ToSingle(dgvCompteDeResultats.Rows[1].Cells[1].Value.ToString())).ToString("n0"),
-                (Convert.ToSingle(dgvCompteDeResultats.Rows[0].Cells[2].Value.ToString()) 
-                    - Convert.ToSingle(dgvCompteDeResultats.Rows[1].Cells[2].Value.ToString())).ToString("n0"),
-                (Convert.ToSingle(dgvCompteDeResultats.Rows[0].Cells[3].Value.ToString()) 
-                    - Convert.ToSingle(dgvCompteDeResultats.Rows[1].Cells[3].Value.ToString())).ToString("n0"),
-                (Convert.ToSingle(dgvCompteDeResultats.Rows[0].Cells[4].Value.ToString()) 
-                    - Convert.ToSingle(dgvCompteDeResultats.Rows[1].Cells[4].Value.ToString())).ToString("n0"),
-                (Convert.ToSingle(dgvCompteDeResultats.Rows[0].Cells[5].Value.ToString()) 
-                    - Convert.ToSingle(dgvCompteDeResultats.Rows[1].Cells[5].Value.ToString())).ToString("n0"),
-                (Convert.ToSingle(dgvCompteDeResultats.Rows[0].Cells[6].Value.ToString()) 
-                    - Convert.ToSingle(dgvCompteDeResultats.Rows[1].Cells[6].Value.ToString())).ToString("n0"),
-                (Convert.ToSingle(dgvCompteDeResultats.Rows[0].Cells[7].Value.ToString()) 
-                    - Convert.ToSingle(dgvCompteDeResultats.Rows[1].Cells[7].Value.ToString())).ToString("n0"),
-                (Convert.ToSingle(dgvCompteDeResultats.Rows[0].Cells[8].Value.ToString()) 
-                    - Convert.ToSingle(dgvCompteDeResultats.Rows[1].Cells[8].Value.ToString())).ToString("n0"),
-                (Convert.ToSingle(dgvCompteDeResultats.Rows[0].Cells[9].Value.ToString()) 
-                    - Convert.ToSingle(dgvCompteDeResultats.Rows[1].Cells[9].Value.ToString())).ToString("n0"),
-                (Convert.ToSingle(dgvCompteDeResultats.Rows[0].Cells[10].Value.ToString()) 
-                    - Convert.ToSingle(dgvCompteDeResultats.Rows[1].Cells[10].Value.ToString())).ToString("n0"),
-                (Convert.ToSingle(dgvCompteDeResultats.Rows[0].Cells[11].Value.ToString()) 
-                    - Convert.ToSingle(dgvCompteDeResultats.Rows[1].Cells[11].Value.ToString())).ToString("n0"),
-                (Convert.ToSingle(dgvCompteDeResultats.Rows[0].Cells[12].Value.ToString()) 
-                    - Convert.ToSingle(dgvCompteDeResultats.Rows[1].Cells[12].Value.ToString())).ToString("n0")
-                );
-        }
-
 
         private void AfficherCompteDeResultat()
         {
             dgvCompteDeResultats.Rows.Clear();
-            dgvCompteDeResultats.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dgvCompteDeResultats.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            AfficherVentesMensuelles();
-            AfficherCoutsDesProduitsVendus();
-            AfficherMargeBrute();
+
+            // Affichage des différentes lignes des états financiers
+            CompteDeResultat.AfficherVentesMensuelles(dgvCompteDeResultats, dtpAnnee); // ligne du chiffre d'affaire
+            AfficherCoutsDesProduitsVendus(); // ligne du coût des produits vendus (COGS)
+            CompteDeResultat.AfficherMargeBrute(dgvCompteDeResultats); // ligne de calcul de la marge brute
         }
 
 
+
+
+
+
+
+
+        // FONCTIONS UTILISEES POUR LE DEBUGGING
         private void AfficherCoutMatierePremierePrincipalParUnite()
         {
             var produit = listBox1.GetItemText(listBox1.SelectedItem);
