@@ -26,11 +26,13 @@ namespace CasaEcologieSysInfo.Pages
 
             dgvListePersonnel.DataSource = listePersonnel;
             cbxTempsEtRemun.DataSource = listePersonnel.Select(p => p.Nom).ToList();
+            ageEmployeBindingSource1.DataSource = db.AgeEmployes.ToList();
+            resComptesTresorerieBindingSource.DataSource = db.ResComptesTresoreries.ToList();
             cbxTimeSheetNomEmploye.DataSource = listePersonnel.Select(p => p.Nom).ToList();
-            AfficherTempsEtRemunerationEmploye(dateTimePicker2.Value.Date);
+            AfficherPresenceEtRemunerationEmploye(dtpFin.Value.Date);
         }
 
-        private void AfficherTempsEtRemunerationEmploye(DateTime fin, DateTime debut = default(DateTime))
+        private void AfficherPresenceEtRemunerationEmploye(DateTime fin, DateTime debut = default(DateTime))
         {
             var employe = cbxTempsEtRemun.GetItemText(cbxTempsEtRemun.SelectedItem);
 
@@ -43,35 +45,14 @@ namespace CasaEcologieSysInfo.Pages
                          {
                              pe.Date,
                              Description = "Present",
-                             TotalHeures = pe.Depart.Hours - pe.Arrivee.Hours,
-                             TotalHeuresAPayer = 0,
-                             TauxHoraire = 125,
-                             Montant = 0,
-                             
+                             Remuneration = pe.RemunerationJournaliere
                          }).ToList();
 
             DataTable dt = Conversion.ConvertirEnTableDeDonnees(liste);
             dgvTempsEtRemun.DataSource = dt;
-            
-            for (int i = 0; i < dgvTempsEtRemun.Rows.Count; i++)
-            {
-                if (Convert.ToInt32(dgvTempsEtRemun.Rows[i].Cells["TotalHeures"].Value) > 6)
-                {
-                    dgvTempsEtRemun.Rows[i].Cells["TotalHeuresAPayer"].Value = 6;
-                }
-                else
-                {
-                    dgvTempsEtRemun.Rows[i].Cells["TotalHeuresAPayer"].Value = dgvTempsEtRemun.Rows[i].Cells["TotalHeures"].Value;
-                }
+            dt.Rows.Add(DateTime.Now, "Total", Conversion.CalculerTotal(dgvTempsEtRemun, "Remuneration"));
 
-                dgvTempsEtRemun.Rows[i].Cells["Montant"].Value 
-                    = Convert.ToInt32(dgvTempsEtRemun.Rows[i].Cells["TotalHeuresAPayer"].Value)
-                    * Convert.ToInt32(dgvTempsEtRemun.Rows[i].Cells["TauxHoraire"].Value);
-            }
-
-            dt.Rows.Add(DateTime.Now, "Total", Conversion.CalculerTotal(dgvTempsEtRemun, "TotalHeures"), 
-                Conversion.CalculerTotal(dgvTempsEtRemun, "TotalHeuresAPayer"), 0, 
-                Conversion.CalculerTotal(dgvTempsEtRemun, "Montant"));
+            txtRemunerationPeriod.Text = dgvTempsEtRemun.Rows[dgvTempsEtRemun.Rows.Count - 2].Cells[2].Value.ToString();
         }
 
         private void UC_Personnel_Load(object sender, EventArgs e)
@@ -102,7 +83,7 @@ namespace CasaEcologieSysInfo.Pages
             }
         }
 
-        private void btnPresenceEmploye_Click(object sender, EventArgs e)
+        private void BtnPresenceEmploye_Click(object sender, EventArgs e)
         {
             var employe = cbxTimeSheetNomEmploye.GetItemText(cbxTimeSheetNomEmploye.SelectedItem);
             var codeEmploye = (from em in db.AgeEmployes
@@ -116,8 +97,7 @@ namespace CasaEcologieSysInfo.Pages
                     CodeEmploye = codeEmploye,
                     CodeUtilisationDesRessources = 0,
                     Date = DateTime.Parse(dtpDate.Text),
-                    Arrivee = dtpArrivee.Value.TimeOfDay,
-                    Depart = dtpDepart.Value.TimeOfDay,
+                    RemunerationJournaliere = Convert.ToInt32(txtRemunerationJournaliere.Text)
                 };
 
                 db.EvePresenceEmployes.Add(pe);
@@ -145,22 +125,76 @@ namespace CasaEcologieSysInfo.Pages
             {
 
                 return true;
-            }        
+            }
         }
 
-        private void cbxTempsEtRemun_SelectedIndexChanged(object sender, EventArgs e)
+        private void CbxTempsEtRemun_SelectedIndexChanged(object sender, EventArgs e)
         {
-            AfficherTempsEtRemunerationEmploye(dateTimePicker2.Value.Date, dateTimePicker1.Value.Date);
+            AfficherPresenceEtRemunerationEmploye(dtpFin.Value.Date, dtpDebut.Value.Date);
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-            AfficherTempsEtRemunerationEmploye(dateTimePicker2.Value.Date, dateTimePicker1.Value.Date);
+            AfficherPresenceEtRemunerationEmploye(dtpFin.Value.Date, dtpDebut.Value.Date);
         }
 
         private void DateTimePicker2_ValueChanged(object sender, EventArgs e)
         {
-            AfficherTempsEtRemunerationEmploye(dateTimePicker2.Value.Date, dateTimePicker1.Value.Date);
+            AfficherPresenceEtRemunerationEmploye(dtpFin.Value.Date, dtpDebut.Value.Date);
+        }
+
+        private void BtnPayerEmploye_Click(object sender, EventArgs e)
+        {
+            var employe = cbxTempsEtRemun.GetItemText(cbxTempsEtRemun.SelectedItem);
+            var codeEmploye = (from em in db.AgeEmployes
+                               where em.PrenomNom == employe
+                               select em.CodeEmploye).FirstOrDefault();
+
+            if (RemunerationPasEncorePayePourLaPeriod(codeEmploye))
+            {
+                EvePaiementEmploye paiement = new EvePaiementEmploye
+                {
+                    CodeEmployePaye = codeEmploye,
+                    DeCetteDate = DateTime.Parse(dtpDebut.Text),
+                    ACetteDate = DateTime.Parse(dtpFin.Text)
+                };
+
+                db.EvePaiementEmployes.Add(paiement);
+                db.SaveChanges();
+
+                EveDecaissement decaiss = new EveDecaissement
+                {
+                    DateDecaissement = DateTime.Parse(dtpDatePaiement.Text),
+                    CodePaiementEmploye = paiement.CodePaiementEmploye,
+                    CodeCompte = int.Parse(cbxComptePaiement.SelectedValue.ToString()),
+                    Description = "Paiment rémunération de " + employe + " pour la période du " + dtpDebut.Value.ToShortDateString() + " au " + dtpFin.Value.ToShortDateString(),
+                    CodeEmploye = int.Parse(cbxTresoriere.SelectedValue.ToString()),
+                    Montant = int.Parse(txtRemunerationPeriod.Text)
+                };
+
+                db.EveDecaissements.Add(decaiss);
+                db.SaveChanges();
+
+                MessageBox.Show($"Le paiement de {employe} a été enregistré pour la période du {dtpDebut.Value.ToShortDateString()} au {dtpFin.Value.ToShortDateString()}.");
+            }
+            else
+            {
+                MessageBox.Show($"{employe} a déjà été payé pour la période selectionnée.");
+                return;
+            }
+        }
+
+        private bool RemunerationPasEncorePayePourLaPeriod(int codeEmploye)
+        {
+
+            var remunere = (from epaye in db.EvePaiementEmployes
+                                         where epaye.CodeEmployePaye == codeEmploye
+                                         where epaye.DeCetteDate == dtpDebut.Value.Date
+                                         where epaye.ACetteDate == dtpFin.Value.Date
+                                         select epaye.CodePaiementEmploye).FirstOrDefault();
+
+            if (remunere > 0) { return false; }
+            return true;
         }
     }
 }

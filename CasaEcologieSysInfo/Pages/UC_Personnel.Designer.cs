@@ -42,22 +42,37 @@
             this.cbxTimeSheetNomEmploye = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.dtpArrivee = new System.Windows.Forms.DateTimePicker();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.dtpDepart = new System.Windows.Forms.DateTimePicker();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnNouvelEmploye = new System.Windows.Forms.Button();
             this.ageEmployeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label10 = new System.Windows.Forms.Label();
             this.dtpDate = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dtpDebut = new System.Windows.Forms.DateTimePicker();
+            this.dtpFin = new System.Windows.Forms.DateTimePicker();
             this.dgvTempsEtRemun = new System.Windows.Forms.DataGridView();
             this.cbxTempsEtRemun = new System.Windows.Forms.ComboBox();
+            this.txtRemunerationJournaliere = new System.Windows.Forms.TextBox();
+            this.btnPayerEmploye = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.dtpDatePaiement = new System.Windows.Forms.DateTimePicker();
+            this.txtRemunerationPeriod = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.cbxComptePaiement = new System.Windows.Forms.ComboBox();
+            this.resComptesTresorerieBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.label12 = new System.Windows.Forms.Label();
+            this.cbxTresoriere = new System.Windows.Forms.ComboBox();
+            this.ageEmployeBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.label14 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListePersonnel)).BeginInit();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ageEmployeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTempsEtRemun)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.resComptesTresorerieBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ageEmployeBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // label4
@@ -130,13 +145,13 @@
             this.btnPresenceEmploye.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPresenceEmploye.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPresenceEmploye.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnPresenceEmploye.Location = new System.Drawing.Point(13, 447);
+            this.btnPresenceEmploye.Location = new System.Drawing.Point(13, 437);
             this.btnPresenceEmploye.Name = "btnPresenceEmploye";
             this.btnPresenceEmploye.Size = new System.Drawing.Size(223, 31);
             this.btnPresenceEmploye.TabIndex = 30;
             this.btnPresenceEmploye.Text = "Enregistrer";
             this.btnPresenceEmploye.UseVisualStyleBackColor = false;
-            this.btnPresenceEmploye.Click += new System.EventHandler(this.btnPresenceEmploye_Click);
+            this.btnPresenceEmploye.Click += new System.EventHandler(this.BtnPresenceEmploye_Click);
             // 
             // txtPosteEmploye
             // 
@@ -188,46 +203,38 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
+            this.panel1.Controls.Add(this.panel4);
+            this.panel1.Controls.Add(this.panel3);
             this.panel1.Location = new System.Drawing.Point(-1, 234);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(985, 10);
             this.panel1.TabIndex = 34;
             // 
-            // dtpArrivee
+            // panel4
             // 
-            this.dtpArrivee.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtpArrivee.Location = new System.Drawing.Point(13, 403);
-            this.dtpArrivee.Name = "dtpArrivee";
-            this.dtpArrivee.Size = new System.Drawing.Size(99, 23);
-            this.dtpArrivee.TabIndex = 35;
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
+            this.panel4.Location = new System.Drawing.Point(630, 10);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(10, 396);
+            this.panel4.TabIndex = 36;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
+            this.panel3.Location = new System.Drawing.Point(630, 7);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(10, 396);
+            this.panel3.TabIndex = 36;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(10, 383);
+            this.label8.Location = new System.Drawing.Point(10, 387);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(52, 17);
+            this.label8.Size = new System.Drawing.Size(170, 17);
             this.label8.TabIndex = 33;
-            this.label8.Text = "Arrivée";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(134, 383);
-            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(53, 17);
-            this.label9.TabIndex = 33;
-            this.label9.Text = "Départ";
-            // 
-            // dtpDepart
-            // 
-            this.dtpDepart.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtpDepart.Location = new System.Drawing.Point(137, 403);
-            this.dtpDepart.Name = "dtpDepart";
-            this.dtpDepart.Size = new System.Drawing.Size(99, 23);
-            this.dtpDepart.TabIndex = 35;
+            this.label8.Text = "Rémunération journalière";
             // 
             // panel2
             // 
@@ -273,23 +280,23 @@
             this.dtpDate.Size = new System.Drawing.Size(225, 23);
             this.dtpDate.TabIndex = 37;
             // 
-            // dateTimePicker1
+            // dtpDebut
             // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(258, 285);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(123, 23);
-            this.dateTimePicker1.TabIndex = 38;
-            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            this.dtpDebut.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDebut.Location = new System.Drawing.Point(258, 285);
+            this.dtpDebut.Name = "dtpDebut";
+            this.dtpDebut.Size = new System.Drawing.Size(123, 23);
+            this.dtpDebut.TabIndex = 38;
+            this.dtpDebut.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
-            // dateTimePicker2
+            // dtpFin
             // 
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker2.Location = new System.Drawing.Point(400, 285);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(123, 23);
-            this.dateTimePicker2.TabIndex = 38;
-            this.dateTimePicker2.ValueChanged += new System.EventHandler(this.DateTimePicker2_ValueChanged);
+            this.dtpFin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFin.Location = new System.Drawing.Point(400, 285);
+            this.dtpFin.Name = "dtpFin";
+            this.dtpFin.Size = new System.Drawing.Size(123, 23);
+            this.dtpFin.TabIndex = 38;
+            this.dtpFin.ValueChanged += new System.EventHandler(this.DateTimePicker2_ValueChanged);
             // 
             // dgvTempsEtRemun
             // 
@@ -298,7 +305,8 @@
             this.dgvTempsEtRemun.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTempsEtRemun.Location = new System.Drawing.Point(258, 325);
             this.dgvTempsEtRemun.Name = "dgvTempsEtRemun";
-            this.dgvTempsEtRemun.Size = new System.Drawing.Size(722, 307);
+            this.dgvTempsEtRemun.RowHeadersVisible = false;
+            this.dgvTempsEtRemun.Size = new System.Drawing.Size(325, 307);
             this.dgvTempsEtRemun.TabIndex = 40;
             // 
             // cbxTempsEtRemun
@@ -308,27 +316,155 @@
             this.cbxTempsEtRemun.Name = "cbxTempsEtRemun";
             this.cbxTempsEtRemun.Size = new System.Drawing.Size(265, 25);
             this.cbxTempsEtRemun.TabIndex = 41;
-            this.cbxTempsEtRemun.SelectedIndexChanged += new System.EventHandler(this.cbxTempsEtRemun_SelectedIndexChanged);
+            this.cbxTempsEtRemun.SelectedIndexChanged += new System.EventHandler(this.CbxTempsEtRemun_SelectedIndexChanged);
+            // 
+            // txtRemunerationJournaliere
+            // 
+            this.txtRemunerationJournaliere.Location = new System.Drawing.Point(13, 408);
+            this.txtRemunerationJournaliere.Name = "txtRemunerationJournaliere";
+            this.txtRemunerationJournaliere.Size = new System.Drawing.Size(223, 23);
+            this.txtRemunerationJournaliere.TabIndex = 42;
+            // 
+            // btnPayerEmploye
+            // 
+            this.btnPayerEmploye.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
+            this.btnPayerEmploye.FlatAppearance.BorderSize = 0;
+            this.btnPayerEmploye.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPayerEmploye.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPayerEmploye.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnPayerEmploye.Location = new System.Drawing.Point(665, 522);
+            this.btnPayerEmploye.Name = "btnPayerEmploye";
+            this.btnPayerEmploye.Size = new System.Drawing.Size(223, 31);
+            this.btnPayerEmploye.TabIndex = 30;
+            this.btnPayerEmploye.Text = "Payer l\'employé";
+            this.btnPayerEmploye.UseVisualStyleBackColor = false;
+            this.btnPayerEmploye.Click += new System.EventHandler(this.BtnPayerEmploye_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(678, 279);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(175, 19);
+            this.label9.TabIndex = 31;
+            this.label9.Text = "Paiement des salaires";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(662, 416);
+            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(190, 17);
+            this.label13.TabIndex = 33;
+            this.label13.Text = "Rémunération de la période";
+            // 
+            // dtpDatePaiement
+            // 
+            this.dtpDatePaiement.Location = new System.Drawing.Point(663, 327);
+            this.dtpDatePaiement.Name = "dtpDatePaiement";
+            this.dtpDatePaiement.Size = new System.Drawing.Size(225, 23);
+            this.dtpDatePaiement.TabIndex = 37;
+            // 
+            // txtRemunerationPeriod
+            // 
+            this.txtRemunerationPeriod.Location = new System.Drawing.Point(665, 437);
+            this.txtRemunerationPeriod.Name = "txtRemunerationPeriod";
+            this.txtRemunerationPeriod.ReadOnly = true;
+            this.txtRemunerationPeriod.Size = new System.Drawing.Size(223, 23);
+            this.txtRemunerationPeriod.TabIndex = 42;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(662, 307);
+            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(40, 17);
+            this.label11.TabIndex = 33;
+            this.label11.Text = "Date";
+            // 
+            // cbxComptePaiement
+            // 
+            this.cbxComptePaiement.DataSource = this.resComptesTresorerieBindingSource;
+            this.cbxComptePaiement.DisplayMember = "NomCompte";
+            this.cbxComptePaiement.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxComptePaiement.FormattingEnabled = true;
+            this.cbxComptePaiement.Location = new System.Drawing.Point(665, 385);
+            this.cbxComptePaiement.Name = "cbxComptePaiement";
+            this.cbxComptePaiement.Size = new System.Drawing.Size(223, 25);
+            this.cbxComptePaiement.TabIndex = 32;
+            this.cbxComptePaiement.ValueMember = "CodeCompte";
+            // 
+            // resComptesTresorerieBindingSource
+            // 
+            this.resComptesTresorerieBindingSource.DataSource = typeof(CasaEcologieSysInfo.ResComptesTresorerie);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(662, 362);
+            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(151, 17);
+            this.label12.TabIndex = 33;
+            this.label12.Text = "Compte de paiement";
+            // 
+            // cbxTresoriere
+            // 
+            this.cbxTresoriere.DataSource = this.ageEmployeBindingSource1;
+            this.cbxTresoriere.DisplayMember = "PrenomNom";
+            this.cbxTresoriere.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxTresoriere.FormattingEnabled = true;
+            this.cbxTresoriere.Location = new System.Drawing.Point(665, 491);
+            this.cbxTresoriere.Name = "cbxTresoriere";
+            this.cbxTresoriere.Size = new System.Drawing.Size(223, 25);
+            this.cbxTresoriere.TabIndex = 32;
+            this.cbxTresoriere.ValueMember = "CodeEmploye";
+            // 
+            // ageEmployeBindingSource1
+            // 
+            this.ageEmployeBindingSource1.DataSource = typeof(CasaEcologieSysInfo.AgeEmploye);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(662, 471);
+            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(125, 17);
+            this.label14.TabIndex = 33;
+            this.label14.Text = "Paiement fait par:";
             // 
             // UC_Personnel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.txtRemunerationPeriod);
+            this.Controls.Add(this.txtRemunerationJournaliere);
             this.Controls.Add(this.cbxTempsEtRemun);
             this.Controls.Add(this.dgvTempsEtRemun);
-            this.Controls.Add(this.dateTimePicker2);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.dtpFin);
+            this.Controls.Add(this.dtpDebut);
+            this.Controls.Add(this.dtpDatePaiement);
             this.Controls.Add(this.dtpDate);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.dtpDepart);
-            this.Controls.Add(this.dtpArrivee);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label13);
             this.Controls.Add(this.label8);
+            this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.cbxTresoriere);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.cbxComptePaiement);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.cbxTimeSheetNomEmploye);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnPayerEmploye);
             this.Controls.Add(this.btnNouvelEmploye);
             this.Controls.Add(this.btnPresenceEmploye);
             this.Controls.Add(this.txtPosteEmploye);
@@ -345,8 +481,11 @@
             this.Size = new System.Drawing.Size(983, 635);
             this.Load += new System.EventHandler(this.UC_Personnel_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvListePersonnel)).EndInit();
+            this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ageEmployeBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTempsEtRemun)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.resComptesTresorerieBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ageEmployeBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -367,18 +506,30 @@
         private System.Windows.Forms.ComboBox cbxTimeSheetNomEmploye;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DateTimePicker dtpArrivee;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.DateTimePicker dtpDepart;
         private System.Windows.Forms.BindingSource ageEmployeBindingSource;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnNouvelEmploye;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.DateTimePicker dtpDate;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker dtpDebut;
+        private System.Windows.Forms.DateTimePicker dtpFin;
         private System.Windows.Forms.DataGridView dgvTempsEtRemun;
         private System.Windows.Forms.ComboBox cbxTempsEtRemun;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.TextBox txtRemunerationJournaliere;
+        private System.Windows.Forms.Button btnPayerEmploye;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.DateTimePicker dtpDatePaiement;
+        private System.Windows.Forms.TextBox txtRemunerationPeriod;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.ComboBox cbxComptePaiement;
+        private System.Windows.Forms.BindingSource resComptesTresorerieBindingSource;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.ComboBox cbxTresoriere;
+        private System.Windows.Forms.BindingSource ageEmployeBindingSource1;
+        private System.Windows.Forms.Label label14;
     }
 }
