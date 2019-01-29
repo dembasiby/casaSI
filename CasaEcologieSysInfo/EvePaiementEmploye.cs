@@ -22,6 +22,8 @@ namespace CasaEcologieSysInfo
     
         public int CodePaiementEmploye { get; set; }
         public int CodeEmployePaye { get; set; }
+        public System.DateTime DeCetteDate { get; set; }
+        public System.DateTime ACetteDate { get; set; }
     
         public virtual AgeEmploye AgeEmploye { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
