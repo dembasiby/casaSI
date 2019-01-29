@@ -114,6 +114,8 @@
           </Key>
           <Property Name="CodePaiementEmploye" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CodeEmployePaye" Type="int" Nullable="false" />
+          <Property Name="DeCetteDate" Type="date" Nullable="false" />
+          <Property Name="ACetteDate" Type="date" Nullable="false" />
         </EntityType>
         <EntityType Name="EvePresenceEmployes">
           <Key>
@@ -123,8 +125,9 @@
           <Property Name="CodeEmploye" Type="int" Nullable="false" />
           <Property Name="CodeUtilisationDesRessources" Type="int" />
           <Property Name="Date" Type="date" Nullable="false" />
-          <Property Name="Arrivee" Type="time" Precision="7" Nullable="false" />
-          <Property Name="Depart" Type="time" Precision="7" Nullable="false" />
+          <Property Name="Arrivee" Type="time" Precision="7" />
+          <Property Name="Depart" Type="time" Precision="7" />
+          <Property Name="RemunerationJournaliere" Type="int" />
         </EntityType>
         <EntityType Name="EveProductionProduitsSemiFinis">
           <Key>
@@ -973,10 +976,6 @@
           </ReferentialConstraint>
         </Association>
         <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
-        <Function Name="QuantiteDeMatierePremiereAcheteePar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="Debut" Type="date" Mode="In" />
-          <Parameter Name="Fin" Type="date" Mode="In" />
-        </Function>
         <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
           <Parameter Name="owner_id" Type="int" Mode="In" />
@@ -1410,8 +1409,9 @@
           <Property Name="CodeUtilisationDesRessources" Type="Int32" />
           <NavigationProperty Name="AgeEmploye" Relationship="Self.FK_EvePresenceEmployes_AgeEmployes" FromRole="EvePresenceEmployes" ToRole="AgeEmployes" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Arrivee" Type="Time" Nullable="false" Precision="7" />
-          <Property Name="Depart" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="Arrivee" Type="Time" Precision="7" />
+          <Property Name="Depart" Type="Time" Precision="7" />
+          <Property Name="RemunerationJournaliere" Type="Int32" />
         </EntityType>
         <EntityType Name="EveProductionProduitsSemiFini">
           <Key>
@@ -2418,6 +2418,8 @@
           <Property Name="CodeEmployePaye" Type="Int32" Nullable="false" />
           <NavigationProperty Name="AgeEmploye" Relationship="CasaDBModel.FK_EvePaiementEmployes_AgeEmployes" FromRole="EvePaiementEmploye" ToRole="AgeEmploye" />
           <NavigationProperty Name="EveDecaissements" Relationship="CasaDBModel.FK_EveDecaissements_EvePaiementEmployes" FromRole="EvePaiementEmploye" ToRole="EveDecaissement" />
+          <Property Name="DeCetteDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ACetteDate" Type="DateTime" Nullable="false" Precision="0" />
         </EntityType>
         <Association Name="FK_EvePaiementEmployes_AgeEmployes">
           <End Type="CasaDBModel.AgeEmploye" Role="AgeEmploye" Multiplicity="1" />
@@ -2728,6 +2730,7 @@
           <EntitySetMapping Name="EvePresenceEmployes">
             <EntityTypeMapping TypeName="CasaDBModel.EvePresenceEmploye">
               <MappingFragment StoreEntitySet="EvePresenceEmployes">
+                <ScalarProperty Name="RemunerationJournaliere" ColumnName="RemunerationJournaliere" />
                 <ScalarProperty Name="Depart" ColumnName="Depart" />
                 <ScalarProperty Name="Arrivee" ColumnName="Arrivee" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
@@ -2960,6 +2963,8 @@
           <EntitySetMapping Name="EvePaiementEmployes">
             <EntityTypeMapping TypeName="CasaDBModel.EvePaiementEmploye">
               <MappingFragment StoreEntitySet="EvePaiementEmployes">
+                <ScalarProperty Name="ACetteDate" ColumnName="ACetteDate" />
+                <ScalarProperty Name="DeCetteDate" ColumnName="DeCetteDate" />
                 <ScalarProperty Name="CodeEmployePaye" ColumnName="CodeEmployePaye" />
                 <ScalarProperty Name="CodePaiementEmploye" ColumnName="CodePaiementEmploye" />
               </MappingFragment>
@@ -3011,14 +3016,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="QuantiteDeMatierePremiereAcheteePar" FunctionName="CasaDBModel.Store.QuantiteDeMatierePremiereAcheteePar">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="CasaDBModel.QuantiteDeMatierePremiereAcheteePar_Result">
-                <ScalarProperty Name="Matière_première" ColumnName="Matière première" />
-                <ScalarProperty Name="Quantité" ColumnName="Quantité" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
