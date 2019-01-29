@@ -34,9 +34,9 @@
             this.resStockMatieresPremiereBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.adgvJournalStocksMatieresPremieres = new ADGV.AdvancedDataGridView();
+            this.dgvJournalStocksMatieresPremieres = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.resStockMatieresPremiereBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.adgvJournalStocksMatieresPremieres)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvJournalStocksMatieresPremieres)).BeginInit();
             this.SuspendLayout();
             // 
             // label4
@@ -89,26 +89,27 @@
             this.label2.TabIndex = 19;
             this.label2.Text = "Liste des matières premières";
             // 
-            // adgvJournalStocksMatieresPremieres
+            // dgvJournalStocksMatieresPremieres
             // 
-            this.adgvJournalStocksMatieresPremieres.AutoGenerateContextFilters = true;
-            this.adgvJournalStocksMatieresPremieres.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.adgvJournalStocksMatieresPremieres.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-            this.adgvJournalStocksMatieresPremieres.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.adgvJournalStocksMatieresPremieres.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.adgvJournalStocksMatieresPremieres.DateWithTime = false;
-            this.adgvJournalStocksMatieresPremieres.Enabled = false;
-            this.adgvJournalStocksMatieresPremieres.Location = new System.Drawing.Point(202, 100);
-            this.adgvJournalStocksMatieresPremieres.Name = "adgvJournalStocksMatieresPremieres";
-            this.adgvJournalStocksMatieresPremieres.Size = new System.Drawing.Size(778, 476);
-            this.adgvJournalStocksMatieresPremieres.TabIndex = 20;
-            this.adgvJournalStocksMatieresPremieres.TimeFilter = false;
+            this.dgvJournalStocksMatieresPremieres.AllowUserToAddRows = false;
+            this.dgvJournalStocksMatieresPremieres.AllowUserToDeleteRows = false;
+            this.dgvJournalStocksMatieresPremieres.AllowUserToOrderColumns = true;
+            this.dgvJournalStocksMatieresPremieres.AllowUserToResizeColumns = false;
+            this.dgvJournalStocksMatieresPremieres.AllowUserToResizeRows = false;
+            this.dgvJournalStocksMatieresPremieres.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.dgvJournalStocksMatieresPremieres.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvJournalStocksMatieresPremieres.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvJournalStocksMatieresPremieres.Location = new System.Drawing.Point(198, 100);
+            this.dgvJournalStocksMatieresPremieres.Name = "dgvJournalStocksMatieresPremieres";
+            this.dgvJournalStocksMatieresPremieres.RowHeadersVisible = false;
+            this.dgvJournalStocksMatieresPremieres.Size = new System.Drawing.Size(771, 476);
+            this.dgvJournalStocksMatieresPremieres.TabIndex = 20;
             // 
             // UC_StockMatieresPremieres
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.adgvJournalStocksMatieresPremieres);
+            this.Controls.Add(this.dgvJournalStocksMatieresPremieres);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.listBox1);
@@ -119,7 +120,7 @@
             this.Size = new System.Drawing.Size(983, 635);
             this.Load += new System.EventHandler(this.UC_StockMatieresPremieres_Load);
             ((System.ComponentModel.ISupportInitialize)(this.resStockMatieresPremiereBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.adgvJournalStocksMatieresPremieres)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvJournalStocksMatieresPremieres)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -131,6 +132,6 @@
         private System.Windows.Forms.BindingSource resStockMatieresPremiereBindingSource;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private ADGV.AdvancedDataGridView adgvJournalStocksMatieresPremieres;
+        private System.Windows.Forms.DataGridView dgvJournalStocksMatieresPremieres;
     }
 }

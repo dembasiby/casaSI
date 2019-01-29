@@ -28,31 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.adgvJournalStocksProduitsFinis = new ADGV.AdvancedDataGridView();
             this.label4 = new System.Windows.Forms.Label();
             this.lbxListeProduitsFinis = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.adgvJournalStocksProduitsFinis)).BeginInit();
+            this.dgvJournalStocksProduitsFinis = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvJournalStocksProduitsFinis)).BeginInit();
             this.SuspendLayout();
-            // 
-            // adgvJournalStocksProduitsFinis
-            // 
-            this.adgvJournalStocksProduitsFinis.AutoGenerateContextFilters = true;
-            this.adgvJournalStocksProduitsFinis.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.adgvJournalStocksProduitsFinis.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-            this.adgvJournalStocksProduitsFinis.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.adgvJournalStocksProduitsFinis.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.adgvJournalStocksProduitsFinis.DateWithTime = false;
-            this.adgvJournalStocksProduitsFinis.Location = new System.Drawing.Point(264, 104);
-            this.adgvJournalStocksProduitsFinis.Margin = new System.Windows.Forms.Padding(2);
-            this.adgvJournalStocksProduitsFinis.Name = "adgvJournalStocksProduitsFinis";
-            this.adgvJournalStocksProduitsFinis.ReadOnly = true;
-            this.adgvJournalStocksProduitsFinis.Size = new System.Drawing.Size(704, 476);
-            this.adgvJournalStocksProduitsFinis.TabIndex = 0;
-            this.adgvJournalStocksProduitsFinis.TimeFilter = false;
-            this.adgvJournalStocksProduitsFinis.SortStringChanged += new System.EventHandler(this.AdgvJournalStocksProduitsFinis_SortStringChanged);
-            this.adgvJournalStocksProduitsFinis.FilterStringChanged += new System.EventHandler(this.AdgvJournalStocksProduitsFinis_FilterStringChanged);
             // 
             // label4
             // 
@@ -99,32 +81,47 @@
             this.label2.TabIndex = 20;
             this.label2.Text = "Liste des produits finis";
             // 
+            // dgvJournalStocksProduitsFinis
+            // 
+            this.dgvJournalStocksProduitsFinis.AllowUserToAddRows = false;
+            this.dgvJournalStocksProduitsFinis.AllowUserToDeleteRows = false;
+            this.dgvJournalStocksProduitsFinis.AllowUserToOrderColumns = true;
+            this.dgvJournalStocksProduitsFinis.AllowUserToResizeColumns = false;
+            this.dgvJournalStocksProduitsFinis.AllowUserToResizeRows = false;
+            this.dgvJournalStocksProduitsFinis.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.dgvJournalStocksProduitsFinis.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvJournalStocksProduitsFinis.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvJournalStocksProduitsFinis.Location = new System.Drawing.Point(266, 104);
+            this.dgvJournalStocksProduitsFinis.Name = "dgvJournalStocksProduitsFinis";
+            this.dgvJournalStocksProduitsFinis.RowHeadersVisible = false;
+            this.dgvJournalStocksProduitsFinis.Size = new System.Drawing.Size(703, 476);
+            this.dgvJournalStocksProduitsFinis.TabIndex = 21;
+            // 
             // UC_StocksProduitsFinis
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.dgvJournalStocksProduitsFinis);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lbxListeProduitsFinis);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.adgvJournalStocksProduitsFinis);
             this.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UC_StocksProduitsFinis";
             this.Size = new System.Drawing.Size(983, 635);
             this.Load += new System.EventHandler(this.UC_StocksProduitsFinis_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.adgvJournalStocksProduitsFinis)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvJournalStocksProduitsFinis)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private ADGV.AdvancedDataGridView adgvJournalStocksProduitsFinis;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ListBox lbxListeProduitsFinis;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DataGridView dgvJournalStocksProduitsFinis;
     }
 }

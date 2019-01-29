@@ -49,7 +49,7 @@ namespace CasaEcologieSysInfo
                            select new
                            {
                                prod.Date,
-                               Description = pf.NomProduit,
+                               Description = "Production de " + pf.NomProduit,
                                Entree = ppf.QuantiteProduitFini,
                                Sortie = 0,
                                Solde = 0
@@ -63,7 +63,7 @@ namespace CasaEcologieSysInfo
                            select new
                            {
                                Date = v.DateVente,
-                               Description = pf.NomProduit,
+                               Description = "Vente de " +  pf.NomProduit,
                                Entree = 0,
                                Sortie = vpf.QuantiteProduitFini,
                                Solde = 0
@@ -81,9 +81,10 @@ namespace CasaEcologieSysInfo
             dr["Sortie"] = 0;
             dr["Description"] = "Stock initial";
 
-            adgvJournalStocksProduitsFinis.DataSource = dt;
+            dgvJournalStocksProduitsFinis.DataSource = dt;
 
-            Conversion.CalculerSoldeStocksDeFaconProgressive(adgvJournalStocksProduitsFinis, stockInitial);
+            Formattage.TableauDesStock(dgvJournalStocksProduitsFinis);
+            Conversion.CalculerSoldeStocksDeFaconProgressive(dgvJournalStocksProduitsFinis, stockInitial);
         }
 
         private void UC_StocksProduitsFinis_Load(object sender, EventArgs e)

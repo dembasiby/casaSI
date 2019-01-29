@@ -70,6 +70,7 @@ namespace CasaEcologieSysInfo.Pages
 
             dgvJournalStocksProduitsSemiFinis.DataSource = dt;
 
+            Formattage.TableauDesStock(dgvJournalStocksProduitsSemiFinis);
             Conversion.CalculerSoldeStocksDeFaconProgressive(dgvJournalStocksProduitsSemiFinis, stockInitial);
         }
 

@@ -37,7 +37,7 @@ namespace CasaEcologieSysInfo
 
         private void AfficherJournalCorrespondant(string nomMatiere)
         {
-            var entrees = (from mp in db.ResStockMatieresPremieres
+            var entreesAchat = (from mp in db.ResStockMatieresPremieres
                            join rmp in db.EveReceptionMatieresPremieres on mp.CodeMatierePremiere equals rmp.CodeMatierePremiere
                            where mp.NomMatiere == nomMatiere
                            select new
@@ -48,8 +48,19 @@ namespace CasaEcologieSysInfo
                                Sortie = 0f,
                                Solde = 0f
                            });
+            var entreesDon = (from mp in db.ResStockMatieresPremieres
+                              join dmp in db.EveReceptionDonsMatieresPremieres on mp.CodeMatierePremiere equals dmp.CodeMatierePremiere
+                              where mp.NomMatiere == nomMatiere
+                              select new
+                              {
+                                  Date = dmp.DateReception,
+                                  Description = "Don de " + dmp.AgeFournisseursMatieresPremiere.Nom,
+                                  Entree = (float)dmp.Quantite,
+                                  Sortie = 0f,
+                                  Solde = 0f
+                              });
 
-            var sorties = (from mp in db.ResStockMatieresPremieres
+            var sortiesProduction = (from mp in db.ResStockMatieresPremieres
                            join ump in db.EveUtilisationMatieresPremieres on mp.CodeMatierePremiere equals ump.CodeMatierePremiere
                            join ur in db.EveUtilisationRessources on ump.CodeUtilisationRessource equals ur.CodeUtilisationRessources
                            join p in db.EveProductions on ur.CodeUtilisationRessources equals p.CodeUtilisationRessources
@@ -62,8 +73,22 @@ namespace CasaEcologieSysInfo
                                Sortie = ump.QuantiteMatierePremiere,
                                Solde = 0f
                            });
+            var sortiesAutre = (from mp in db.ResStockMatieresPremieres
+                                join dmp in db.EveSortieDechetsMatieresPremieres on mp.CodeMatierePremiere equals dmp.CodeMatierePremiere
+                                where mp.NomMatiere == nomMatiere
+                                select new
+                                {
+                                    Date = dmp.DateSortie,
+                                    Description = "Perte de " + mp.NomMatiere,
+                                    Entree = 0f,
+                                    Sortie = (float)dmp.QuantiteMatierePremiere,
+                                    Solde = 0f
+                                });
 
-            var resultats = entrees.Concat(sorties)
+            var resultats = entreesAchat
+                .Concat(entreesDon)
+                .Concat(sortiesProduction)
+                .Concat(sortiesAutre)
                 .OrderByDescending(d => d.Date)
                 .ToList();
 
@@ -79,9 +104,10 @@ namespace CasaEcologieSysInfo
             dr["Sortie"] = 0;
             dr["Description"] = "Stock Initial";
             
-            adgvJournalStocksMatieresPremieres.DataSource = dt;
+            dgvJournalStocksMatieresPremieres.DataSource = dt;
 
-            Conversion.CalculerSoldeStocksDeFaconProgressive(adgvJournalStocksMatieresPremieres, stockInitial);
+            Formattage.TableauDesStock(dgvJournalStocksMatieresPremieres);
+            Conversion.CalculerSoldeStocksDeFaconProgressive(dgvJournalStocksMatieresPremieres, stockInitial);
         }
     }
 }
