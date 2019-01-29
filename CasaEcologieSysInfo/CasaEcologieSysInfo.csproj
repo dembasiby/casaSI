@@ -119,6 +119,8 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CompteDeResultat.cs" />
+    <Compile Include="Formattage.cs" />
     <Compile Include="Formulaires\frmAccueil.cs">
       <SubType>Form</SubType>
     </Compile>
