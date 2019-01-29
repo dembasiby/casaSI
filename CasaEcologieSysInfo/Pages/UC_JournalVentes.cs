@@ -39,7 +39,7 @@ namespace CasaEcologieSysInfo
                               Quantité = vpf.QuantiteProduitFini,
                               Client = c.NomClient,
                               vpf.Montant
-                          }).ToList();
+                          }).OrderBy(d => d.Date).ToList();
 
             DefinirSourceDeDonnees(ventes);
         }
@@ -76,7 +76,7 @@ namespace CasaEcologieSysInfo
                               Quantité = vpf.QuantiteProduitFini,
                               Client = c.NomClient,
                               vpf.Montant
-                          }).ToList();
+                          }).OrderBy(d => d.Date).ToList();
 
             DefinirSourceDeDonnees(ventes);
         }
