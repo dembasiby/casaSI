@@ -25,8 +25,6 @@ namespace CasaEcologieSysInfo.Pages
             AfficherAnnees();
             AfficherCompteDeResultat();
 
-
-
             // CODE UTILISE POUR LE DEBUGGING
             var date = dtpAnnee.Value.Date;
             DateTime debut = DateTime.Parse($"{date.Year},1,1");
@@ -41,8 +39,7 @@ namespace CasaEcologieSysInfo.Pages
                                                          .Select(p => p.Produit).ToList();
 
             listBox1.DataSource = listeDesProduitsVendusDurantLaPeriode;
-
-            
+            //  FIN DU CODE DE DEBUGGING          
         }
 
         private void DtpAnnee_ValueChanged(object sender, EventArgs e)
@@ -56,9 +53,6 @@ namespace CasaEcologieSysInfo.Pages
             dtpAnnee.CustomFormat = "yyyy";
             dtpAnnee.ShowUpDown = true;
         }
-
-        
-
 
         private float? CalculerCoutDesProduitsVendusParProduit(string nomProduit)
         {
@@ -201,12 +195,6 @@ namespace CasaEcologieSysInfo.Pages
             AfficherCoutsDesProduitsVendus(); // ligne du coût des produits vendus (COGS)
             CompteDeResultat.AfficherMargeBrute(dgvCompteDeResultats); // ligne de calcul de la marge brute
         }
-
-
-
-
-
-
 
 
         // FONCTIONS UTILISEES POUR LE DEBUGGING
