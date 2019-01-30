@@ -48,7 +48,7 @@ namespace CasaEcologieSysInfo
             db.ResStockMatieresPremieres.Add(matierePremiere);
             db.SaveChanges();
             txtNomMatierePremiere.Text = "";
-            txtStockInitial.Text = "00";
+            txtStockInitial.Text = "0";
             MessageBox.Show("Une nouvelle matière première a été ajoutée avec succès");
             LoadData();
             
@@ -187,7 +187,7 @@ namespace CasaEcologieSysInfo
             {
                 MessageBox.Show("Ce fournisseur existe déjà dans la base de données. Merci de le choisir dans la liste déroulante.");
             }
-            else if (VerifierChampsMontant(txtSoldeInitialeDette.Text))
+            else if (Validation.VerifierChampsMontant(txtSoldeInitialeDette.Text))
            
             {
                 AgeFournisseursMatieresPremiere fmp = new AgeFournisseursMatieresPremiere
@@ -203,7 +203,7 @@ namespace CasaEcologieSysInfo
                 LoadData();
                 txtNomFournisseurMP.Clear();
                 txtLocalite.Clear();
-                txtSoldeInitialeDette.Text = "00";
+                txtSoldeInitialeDette.Text = "0";
             }
             
         }
@@ -224,27 +224,6 @@ namespace CasaEcologieSysInfo
                 return false;
             }
             
-        }
-
-        private bool VerifierChampsMontant(string nomChamps)
-        {
-            if (string.IsNullOrEmpty(nomChamps))
-            {
-                MessageBox.Show("Ce champs doit être renseigné.");
-                return false;
-            }
-
-            try
-            {
-                int temp = Convert.ToInt32(nomChamps);
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ce champs doit contenir uniquement des nombres.");
-                return false;
-            }
-
-            return true;
         }
     }
 }
