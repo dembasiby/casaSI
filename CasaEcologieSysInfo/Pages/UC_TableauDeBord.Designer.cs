@@ -29,22 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            this.quantiteDeMatierePremiereAcheteeParBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.casaDBDataSet6 = new CasaEcologieSysInfo.CasaDBDataSet6();
             this.label4 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dtpDebut = new System.Windows.Forms.DateTimePicker();
-            this.dtpFin = new System.Windows.Forms.DateTimePicker();
-            this.casaDBDataSet6 = new CasaEcologieSysInfo.CasaDBDataSet6();
-            this.quantiteDeMatierePremiereAcheteeParBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.quantiteDeMatierePremiereAcheteeParTableAdapter = new CasaEcologieSysInfo.CasaDBDataSet6TableAdapters.QuantiteDeMatierePremiereAcheteeParTableAdapter();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.label3 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.janvierDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.févrierDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.marsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,12 +46,34 @@
             this.novembreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.décembreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ventesMensuellesResultBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.casaDBDataSet6)).BeginInit();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dtpDebut = new System.Windows.Forms.DateTimePicker();
+            this.dtpFin = new System.Windows.Forms.DateTimePicker();
+            this.quantiteDeMatierePremiereAcheteeParTableAdapter = new CasaEcologieSysInfo.CasaDBDataSet6TableAdapters.QuantiteDeMatierePremiereAcheteeParTableAdapter();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.label3 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.quantiteDeMatierePremiereAcheteeParBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.casaDBDataSet6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ventesMensuellesResultBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
+            // 
+            // quantiteDeMatierePremiereAcheteeParBindingSource
+            // 
+            this.quantiteDeMatierePremiereAcheteeParBindingSource.DataMember = "QuantiteDeMatierePremiereAcheteePar";
+            this.quantiteDeMatierePremiereAcheteeParBindingSource.DataSource = this.casaDBDataSet6;
+            // 
+            // casaDBDataSet6
+            // 
+            this.casaDBDataSet6.DataSetName = "CasaDBDataSet6";
+            this.casaDBDataSet6.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // label4
             // 
@@ -107,131 +117,6 @@
             this.dataGridView1.RowHeadersWidth = 30;
             this.dataGridView1.Size = new System.Drawing.Size(868, 113);
             this.dataGridView1.TabIndex = 27;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 88);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(54, 17);
-            this.label1.TabIndex = 29;
-            this.label1.Text = "Années";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(306, 55);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(279, 19);
-            this.label2.TabIndex = 26;
-            this.label2.Text = "Récapitulatif des ventes mensuelles";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // dtpDebut
-            // 
-            this.dtpDebut.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDebut.Location = new System.Drawing.Point(369, 340);
-            this.dtpDebut.Name = "dtpDebut";
-            this.dtpDebut.Size = new System.Drawing.Size(88, 23);
-            this.dtpDebut.TabIndex = 31;
-            this.dtpDebut.Value = new System.DateTime(2019, 1, 1, 0, 0, 0, 0);
-            this.dtpDebut.ValueChanged += new System.EventHandler(this.DtpDebut_ValueChanged);
-            // 
-            // dtpFin
-            // 
-            this.dtpFin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFin.Location = new System.Drawing.Point(369, 369);
-            this.dtpFin.Name = "dtpFin";
-            this.dtpFin.Size = new System.Drawing.Size(88, 23);
-            this.dtpFin.TabIndex = 31;
-            this.dtpFin.ValueChanged += new System.EventHandler(this.DtpFin_ValueChanged);
-            // 
-            // casaDBDataSet6
-            // 
-            this.casaDBDataSet6.DataSetName = "CasaDBDataSet6";
-            this.casaDBDataSet6.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // quantiteDeMatierePremiereAcheteeParBindingSource
-            // 
-            this.quantiteDeMatierePremiereAcheteeParBindingSource.DataMember = "QuantiteDeMatierePremiereAcheteePar";
-            this.quantiteDeMatierePremiereAcheteeParBindingSource.DataSource = this.casaDBDataSet6;
-            // 
-            // quantiteDeMatierePremiereAcheteeParTableAdapter
-            // 
-            this.quantiteDeMatierePremiereAcheteeParTableAdapter.ClearBeforeFill = true;
-            // 
-            // dataGridView2
-            // 
-            this.dataGridView2.AllowUserToAddRows = false;
-            this.dataGridView2.AllowUserToDeleteRows = false;
-            this.dataGridView2.AllowUserToOrderColumns = true;
-            this.dataGridView2.AllowUserToResizeColumns = false;
-            this.dataGridView2.AllowUserToResizeRows = false;
-            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.dataGridView2.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-            this.dataGridView2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(16, 244);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowHeadersVisible = false;
-            this.dataGridView2.Size = new System.Drawing.Size(347, 158);
-            this.dataGridView2.TabIndex = 32;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(12, 222);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(404, 19);
-            this.label3.TabIndex = 33;
-            this.label3.Text = "Quantité de matière première achetée par période";
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.panel1.Location = new System.Drawing.Point(-3, 206);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(988, 10);
-            this.panel1.TabIndex = 34;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.panel3.Location = new System.Drawing.Point(472, 215);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(10, 423);
-            this.panel3.TabIndex = 35;
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.panel4.Location = new System.Drawing.Point(-2, 408);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(986, 10);
-            this.panel4.TabIndex = 35;
-            // 
-            // listBox1
-            // 
-            this.listBox1.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.listBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 17;
-            this.listBox1.Location = new System.Drawing.Point(6, 109);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(78, 85);
-            this.listBox1.TabIndex = 36;
-            // 
-            // label5
-            // 
-            this.label5.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(369, 259);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(88, 78);
-            this.label5.TabIndex = 37;
-            this.label5.Text = "Choisir l\'intervalle de temps ci-dessous";
             // 
             // janvierDataGridViewTextBoxColumn
             // 
@@ -333,6 +218,121 @@
             // 
             this.ventesMensuellesResultBindingSource.DataSource = typeof(CasaEcologieSysInfo.VentesMensuelles_Result);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 88);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(54, 17);
+            this.label1.TabIndex = 29;
+            this.label1.Text = "Années";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(306, 55);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(279, 19);
+            this.label2.TabIndex = 26;
+            this.label2.Text = "Récapitulatif des ventes mensuelles";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // dtpDebut
+            // 
+            this.dtpDebut.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDebut.Location = new System.Drawing.Point(369, 340);
+            this.dtpDebut.Name = "dtpDebut";
+            this.dtpDebut.Size = new System.Drawing.Size(88, 23);
+            this.dtpDebut.TabIndex = 31;
+            this.dtpDebut.Value = new System.DateTime(2019, 1, 1, 0, 0, 0, 0);
+            this.dtpDebut.ValueChanged += new System.EventHandler(this.DtpDebut_ValueChanged);
+            // 
+            // dtpFin
+            // 
+            this.dtpFin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFin.Location = new System.Drawing.Point(369, 369);
+            this.dtpFin.Name = "dtpFin";
+            this.dtpFin.Size = new System.Drawing.Size(88, 23);
+            this.dtpFin.TabIndex = 31;
+            this.dtpFin.ValueChanged += new System.EventHandler(this.DtpFin_ValueChanged);
+            // 
+            // quantiteDeMatierePremiereAcheteeParTableAdapter
+            // 
+            this.quantiteDeMatierePremiereAcheteeParTableAdapter.ClearBeforeFill = true;
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.AllowUserToAddRows = false;
+            this.dataGridView2.AllowUserToDeleteRows = false;
+            this.dataGridView2.AllowUserToOrderColumns = true;
+            this.dataGridView2.AllowUserToResizeColumns = false;
+            this.dataGridView2.AllowUserToResizeRows = false;
+            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dataGridView2.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.dataGridView2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(16, 244);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.RowHeadersVisible = false;
+            this.dataGridView2.Size = new System.Drawing.Size(347, 158);
+            this.dataGridView2.TabIndex = 32;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(12, 222);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(404, 19);
+            this.label3.TabIndex = 33;
+            this.label3.Text = "Quantité de matière première achetée par période";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
+            this.panel1.Location = new System.Drawing.Point(-3, 206);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(988, 10);
+            this.panel1.TabIndex = 34;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
+            this.panel3.Location = new System.Drawing.Point(472, 215);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(10, 423);
+            this.panel3.TabIndex = 35;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
+            this.panel4.Location = new System.Drawing.Point(-2, 408);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(986, 10);
+            this.panel4.TabIndex = 35;
+            // 
+            // listBox1
+            // 
+            this.listBox1.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.listBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 17;
+            this.listBox1.Location = new System.Drawing.Point(6, 109);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(78, 85);
+            this.listBox1.TabIndex = 36;
+            // 
+            // label5
+            // 
+            this.label5.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(369, 259);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(88, 78);
+            this.label5.TabIndex = 37;
+            this.label5.Text = "Choisir l\'intervalle de temps ci-dessous";
+            // 
             // UC_TableauDeBord
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -355,11 +355,11 @@
             this.Name = "UC_TableauDeBord";
             this.Size = new System.Drawing.Size(983, 635);
             this.Load += new System.EventHandler(this.UC_TableauDeBord_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.casaDBDataSet6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.quantiteDeMatierePremiereAcheteeParBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.casaDBDataSet6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ventesMensuellesResultBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
