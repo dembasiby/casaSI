@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CasaEcologieSysInfo.Pages
@@ -103,6 +98,7 @@ namespace CasaEcologieSysInfo.Pages
                 db.EvePresenceEmployes.Add(pe);
                 db.SaveChanges();
                 MessageBox.Show("La présence de l'employé a été enregistrée avec succès.");
+                AfficherPresenceEtRemunerationEmploye(dtpFin.Value.Date, dtpDebut.Value.Date);
             }
             else
             {
@@ -186,14 +182,13 @@ namespace CasaEcologieSysInfo.Pages
 
         private bool RemunerationPasEncorePayePourLaPeriod(int codeEmploye)
         {
-
             var remunere = (from epaye in db.EvePaiementEmployes
                                          where epaye.CodeEmployePaye == codeEmploye
                                          where epaye.DeCetteDate == dtpDebut.Value.Date
                                          where epaye.ACetteDate == dtpFin.Value.Date
                                          select epaye.CodePaiementEmploye).FirstOrDefault();
 
-            if (remunere > 0) { return false; }
+            if (remunere > 0) return false;
             return true;
         }
     }
