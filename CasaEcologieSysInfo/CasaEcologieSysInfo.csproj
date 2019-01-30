@@ -470,6 +470,7 @@
     <Compile Include="Utilisateur.cs">
       <DependentUpon>Model3.tt</DependentUpon>
     </Compile>
+    <Compile Include="Validation.cs" />
     <Compile Include="VentesMensuelles_Result.cs">
       <DependentUpon>Model3.tt</DependentUpon>
     </Compile>
