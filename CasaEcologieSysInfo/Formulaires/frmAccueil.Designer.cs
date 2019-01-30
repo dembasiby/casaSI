@@ -492,12 +492,12 @@
             this.btnJournalApprovisionnements.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnJournalApprovisionnements.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnJournalApprovisionnements.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnJournalApprovisionnements.Location = new System.Drawing.Point(0, 211);
+            this.btnJournalApprovisionnements.Location = new System.Drawing.Point(0, 207);
             this.btnJournalApprovisionnements.Name = "btnJournalApprovisionnements";
             this.btnJournalApprovisionnements.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnJournalApprovisionnements.Size = new System.Drawing.Size(214, 41);
+            this.btnJournalApprovisionnements.Size = new System.Drawing.Size(214, 47);
             this.btnJournalApprovisionnements.TabIndex = 3;
-            this.btnJournalApprovisionnements.Text = "Journall des approvisionnements";
+            this.btnJournalApprovisionnements.Text = "Journal des approvisionnements";
             this.btnJournalApprovisionnements.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnJournalApprovisionnements.UseVisualStyleBackColor = false;
             this.btnJournalApprovisionnements.Click += new System.EventHandler(this.BtnJournalApprovisionnements_Click);
@@ -519,7 +519,7 @@
             this.btnJournalDepenses.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnJournalDepenses.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnJournalDepenses.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnJournalDepenses.Location = new System.Drawing.Point(0, 168);
+            this.btnJournalDepenses.Location = new System.Drawing.Point(0, 166);
             this.btnJournalDepenses.Name = "btnJournalDepenses";
             this.btnJournalDepenses.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnJournalDepenses.Size = new System.Drawing.Size(213, 41);
@@ -567,7 +567,7 @@
             this.btnEquipementInfrastructure.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEquipementInfrastructure.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEquipementInfrastructure.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEquipementInfrastructure.Location = new System.Drawing.Point(0, 82);
+            this.btnEquipementInfrastructure.Location = new System.Drawing.Point(0, 84);
             this.btnEquipementInfrastructure.Name = "btnEquipementInfrastructure";
             this.btnEquipementInfrastructure.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnEquipementInfrastructure.Size = new System.Drawing.Size(213, 41);
@@ -583,7 +583,7 @@
             this.btnMatierePremiere.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMatierePremiere.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMatierePremiere.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMatierePremiere.Location = new System.Drawing.Point(0, 39);
+            this.btnMatierePremiere.Location = new System.Drawing.Point(0, 43);
             this.btnMatierePremiere.Name = "btnMatierePremiere";
             this.btnMatierePremiere.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnMatierePremiere.Size = new System.Drawing.Size(213, 41);
@@ -629,7 +629,7 @@
             this.btnStockProduitsSemiFinis.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStockProduitsSemiFinis.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStockProduitsSemiFinis.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnStockProduitsSemiFinis.Location = new System.Drawing.Point(1, 166);
+            this.btnStockProduitsSemiFinis.Location = new System.Drawing.Point(1, 167);
             this.btnStockProduitsSemiFinis.Name = "btnStockProduitsSemiFinis";
             this.btnStockProduitsSemiFinis.Size = new System.Drawing.Size(214, 39);
             this.btnStockProduitsSemiFinis.TabIndex = 7;
@@ -643,7 +643,7 @@
             this.btnNouvelleProduction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNouvelleProduction.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNouvelleProduction.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNouvelleProduction.Location = new System.Drawing.Point(0, 42);
+            this.btnNouvelleProduction.Location = new System.Drawing.Point(0, 44);
             this.btnNouvelleProduction.Name = "btnNouvelleProduction";
             this.btnNouvelleProduction.Size = new System.Drawing.Size(214, 39);
             this.btnNouvelleProduction.TabIndex = 4;
@@ -658,7 +658,7 @@
             this.btnJournalProduction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnJournalProduction.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnJournalProduction.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnJournalProduction.Location = new System.Drawing.Point(1, 81);
+            this.btnJournalProduction.Location = new System.Drawing.Point(1, 83);
             this.btnJournalProduction.Name = "btnJournalProduction";
             this.btnJournalProduction.Size = new System.Drawing.Size(214, 45);
             this.btnJournalProduction.TabIndex = 3;
@@ -673,7 +673,7 @@
             this.btnDonRecuMatierePrem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDonRecuMatierePrem.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDonRecuMatierePrem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDonRecuMatierePrem.Location = new System.Drawing.Point(0, 298);
+            this.btnDonRecuMatierePrem.Location = new System.Drawing.Point(0, 296);
             this.btnDonRecuMatierePrem.Name = "btnDonRecuMatierePrem";
             this.btnDonRecuMatierePrem.Size = new System.Drawing.Size(214, 45);
             this.btnDonRecuMatierePrem.TabIndex = 3;
@@ -687,7 +687,7 @@
             this.btnSortieStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSortieStock.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSortieStock.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSortieStock.Location = new System.Drawing.Point(0, 252);
+            this.btnSortieStock.Location = new System.Drawing.Point(0, 251);
             this.btnSortieStock.Name = "btnSortieStock";
             this.btnSortieStock.Size = new System.Drawing.Size(214, 45);
             this.btnSortieStock.TabIndex = 3;
@@ -715,7 +715,7 @@
             this.btnStockProduitsFinis.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStockProduitsFinis.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStockProduitsFinis.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnStockProduitsFinis.Location = new System.Drawing.Point(1, 126);
+            this.btnStockProduitsFinis.Location = new System.Drawing.Point(1, 128);
             this.btnStockProduitsFinis.Name = "btnStockProduitsFinis";
             this.btnStockProduitsFinis.Size = new System.Drawing.Size(213, 39);
             this.btnStockProduitsFinis.TabIndex = 2;
