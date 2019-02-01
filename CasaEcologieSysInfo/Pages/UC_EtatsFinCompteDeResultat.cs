@@ -54,17 +54,11 @@ namespace CasaEcologieSysInfo.Pages
             dtpAnnee.ShowUpDown = true;
         }
 
-        private float? CalculerCoutDesProduitsVendusParProduit(string nomProduit)
+        private float CalculerCoutMatieresPremieres(string nomProduit)
         {
-            // FORMULE DE CALCUL DU COUT DES PRODUITS VENDUS
-
-            // COGS = Beginning Finished Goods Inventory + COGM - Ending Finished Goods Inventory
-            // COGM = Beginning WIP + Total Manufacturing Cost(TMC) - Ending WIP
-            // TMC = Raw materials used + Direct labor + Manufacturing overhead
-            // Raw materials used = Beginning raw materials inventory + Purchase - Ending raw materials inventory
             var matieres = nomProduit.Split(' ');
             var matierePremiere = matieres[1];
-            
+
             var coutMatierePremiere = (from mp in db.ResStockMatieresPremieres
                                        join amp in db.EveReceptionMatieresPremieres on mp.CodeMatierePremiere equals amp.CodeMatierePremiere
                                        where mp.NomMatiere == matierePremiere
@@ -80,7 +74,7 @@ namespace CasaEcologieSysInfo.Pages
                                    where mp.NomMatiere == matierePremiere
                                    select (float?)amp.Quantite).Sum() ?? 0f;
 
-            
+
             // Cout du sucre utilise
             // Cout des emballages utilisees
 
@@ -91,6 +85,25 @@ namespace CasaEcologieSysInfo.Pages
             {
                 coutUnitaireMatierePremiere = Convert.ToInt32(coutTotal) / Convert.ToInt32(quantiteAchetee);
             }
+
+            return coutUnitaireMatierePremiere;
+
+        }
+
+        /// <summary>
+        /// //
+        /// </summary>
+        /// <param name="RawMaterialsUsed"></param>
+        /// <returns></returns>
+
+        private float? CalculerCoutDesProduitsVendusParProduit(string nomProduit)
+        {
+            // FORMULE DE CALCUL DU COUT DES PRODUITS VENDUS
+
+            // COGS = Beginning Finished Goods Inventory + COGM - Ending Finished Goods Inventory
+            // COGM = Beginning WIP + Total Manufacturing Cost(TMC) - Ending WIP
+            // TMC = Raw materials used + Direct labor + Manufacturing overhead
+            // Raw materials used = Beginning raw materials inventory + Purchase - Ending raw materials inventory
 
             // calculer la quantite moyenne de matiere premiere utilisee par unite de produit fini
             /*
@@ -127,8 +140,10 @@ namespace CasaEcologieSysInfo.Pages
             {
                 return 0f;
             }
+            
 
     */
+            var coutUnitaireMatierePremiere = CalculerCoutMatieresPremieres(nomProduit);
             return coutUnitaireMatierePremiere;
         }
 
@@ -143,24 +158,24 @@ namespace CasaEcologieSysInfo.Pages
             DateTime debut = new DateTime(date.Year, numMois, 1);
             DateTime fin = new DateTime(date.Year, numMois, DateTime.DaysInMonth(date.Year, numMois));
 
-            var listeDesProduitsVendusDurantLaPeriode = (from pf in db.ResStockProduitsFinis
-                                                         join vpf in db.EveVenteStockProduitsFinis on pf.CodeProduit equals vpf.CodeProduitFini
-                                                         where vpf.EveVente.DateVente >= debut
-                                                         where vpf.EveVente.DateVente <= fin
 
+            // Dresser la liste des produits
+            var listeDesProduits = (from pf in db.ResStockProduitsFinis                                                        
                                                          select new { Produit = pf.NomProduit})
                                                          .Distinct().OrderBy(p => p.Produit)
                                                          .Select(p => p.Produit).ToList();
 
-            foreach (var produit in listeDesProduitsVendusDurantLaPeriode)
+            // Calculer le stock de depart et le stock final pour chaque produit fini vendu
+            foreach (var produit in listeDesProduits)
             {
-                // calculer la variation des stocks
-                var stockDispoEnDebutDePeriod = Conversion.CalculerSoldeStockProduitFiniDebutPeriod(produit, debut);
-                var stockDispoEnFinDePeriod = Conversion.CalculerSoldeStockProduitFiniFinPeriod(produit, fin);
+                var stockProduitFiniDispoEnDebutDePeriod = Conversion.CalculerSoldeStockProduitFiniDebutPeriod(produit, debut);
+                var stockProduitFiniDispoEnFinDePeriod = Conversion.CalculerSoldeStockProduitFiniFinPeriod(produit, fin);
 
-                var variationStock = stockDispoEnDebutDePeriod - stockDispoEnFinDePeriod;
+                // A enlever de la version finale
+                var variationStock = stockProduitFiniDispoEnDebutDePeriod - stockProduitFiniDispoEnFinDePeriod;
 
-                coutDesProduitsVendus += (Convert.ToSingle(CalculerCoutDesProduitsVendusParProduit(produit)) * variationStock);
+                coutDesProduitsVendus += (Convert.ToSingle(CalculerCoutDesProduitsVendusParProduit(produit)) * stockProduitFiniDispoEnDebutDePeriod);
+                coutDesProduitsVendus -= (Convert.ToSingle(CalculerCoutDesProduitsVendusParProduit(produit)) * stockProduitFiniDispoEnFinDePeriod);
             }
 
             return coutDesProduitsVendus;

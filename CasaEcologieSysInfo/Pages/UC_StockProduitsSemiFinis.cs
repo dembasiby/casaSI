@@ -32,8 +32,8 @@ namespace CasaEcologieSysInfo.Pages
                                prod.Date,
                                Description = "Production de " + psf.Description,
                                Entree = ppsf.QuantiteProduitSemiFini,
-                               Sortie = 0,
-                               Solde = 0
+                               Sortie = 0f,
+                               Solde = 0f
                            });
 
             var sorties = (from mp in db.ResStockMatieresPremieres
@@ -46,9 +46,9 @@ namespace CasaEcologieSysInfo.Pages
                            {
                                prod.Date,
                                Description = "Utilisation de " + psf.Description,
-                               Entree = 0,
+                               Entree = 0f,
                                Sortie = upsf.QuantiteProduitSemiFini,
-                               Solde = 0
+                               Solde = 0f
                            });
 
             var resultat = entrees.Concat(sorties)

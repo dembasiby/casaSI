@@ -136,7 +136,7 @@
           </Key>
           <Property Name="CodeProduction" Type="int" Nullable="false" />
           <Property Name="CodeProduitSemiFini" Type="int" Nullable="false" />
-          <Property Name="QuantiteProduitSemiFini" Type="int" Nullable="false" />
+          <Property Name="QuantiteProduitSemiFini" Type="float" Nullable="false" />
         </EntityType>
         <EntityType Name="EveProductions">
           <Key>
@@ -228,7 +228,7 @@
           </Key>
           <Property Name="CodeUtilisationRessource" Type="int" Nullable="false" />
           <Property Name="CodeProduitSemiFini" Type="int" Nullable="false" />
-          <Property Name="QuantiteProduitSemiFini" Type="int" Nullable="false" />
+          <Property Name="QuantiteProduitSemiFini" Type="float" Nullable="false" />
         </EntityType>
         <EntityType Name="EveUtilisationRessources">
           <Key>
@@ -1420,7 +1420,7 @@
           </Key>
           <Property Name="CodeProduction" Type="Int32" Nullable="false" />
           <Property Name="CodeProduitSemiFini" Type="Int32" Nullable="false" />
-          <Property Name="QuantiteProduitSemiFini" Type="Int32" Nullable="false" />
+          <Property Name="QuantiteProduitSemiFini" Type="Single" Nullable="false" />
           <NavigationProperty Name="EveProduction" Relationship="Self.FK_EveProductionProduitsSemiFinis_EveProductions" FromRole="EveProductionProduitsSemiFinis" ToRole="EveProductions" />
           <NavigationProperty Name="ResStockProduitsSemiFini" Relationship="Self.FK_EveProductionProduitsSemiFinis_ResStockProduitsSemiFinis" FromRole="EveProductionProduitsSemiFinis" ToRole="ResStockProduitsSemiFinis" />
         </EntityType>
@@ -1499,7 +1499,7 @@
           </Key>
           <Property Name="CodeUtilisationRessource" Type="Int32" Nullable="false" />
           <Property Name="CodeProduitSemiFini" Type="Int32" Nullable="false" />
-          <Property Name="QuantiteProduitSemiFini" Type="Int32" Nullable="false" />
+          <Property Name="QuantiteProduitSemiFini" Type="Single" Nullable="false" />
           <NavigationProperty Name="EveUtilisationRessource" Relationship="Self.FK_EveUtilisationProduitsSemiFinis_EveUtilisationRessources" FromRole="EveUtilisationProduitsSemiFinis" ToRole="EveUtilisationRessources" />
           <NavigationProperty Name="ResStockProduitsSemiFini" Relationship="Self.FK_EveUtilisationProduitsSemiFinis_ResStockProduitsSemiFinis" FromRole="EveUtilisationProduitsSemiFinis" ToRole="ResStockProduitsSemiFinis" />
         </EntityType>

@@ -264,6 +264,7 @@
     <Compile Include="EveVenteStockProduitsFini.cs">
       <DependentUpon>Model3.tt</DependentUpon>
     </Compile>
+    <Compile Include="GestionStocks.cs" />
     <Compile Include="Model3.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

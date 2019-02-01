@@ -25,6 +25,7 @@ namespace CasaEcologieSysInfo
                 return (valeurDesAchats + coutTransportMatierePremiere) / quantiteAchetee;
             }
         }
+        /*
         public static Single MatieresPremieresUtilisees(string nomProduit, DateTime beginning, DateTime ending)
         {
             // Raw materials used = Beginning raw materials inventory + Purchase - Ending raw materials inventory
@@ -35,5 +36,6 @@ namespace CasaEcologieSysInfo
                 var quantiteDisponibleDebutPeriod = 0;
             }
         }
+        */
     }
 }

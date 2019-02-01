@@ -16,7 +16,7 @@ namespace CasaEcologieSysInfo
     {
         public int CodeUtilisationRessource { get; set; }
         public int CodeProduitSemiFini { get; set; }
-        public int QuantiteProduitSemiFini { get; set; }
+        public float QuantiteProduitSemiFini { get; set; }
     
         public virtual EveUtilisationRessource EveUtilisationRessource { get; set; }
         public virtual ResStockProduitsSemiFini ResStockProduitsSemiFini { get; set; }

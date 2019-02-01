@@ -382,7 +382,7 @@ namespace CasaEcologieSysInfo
 
         }
 
-        private void ProductionProduitSemiFiniProduit(int codeProduction, string nomProduit, int quantite)
+        private void ProductionProduitSemiFiniProduit(int codeProduction, string nomProduit, float quantite)
         {
             ResStockProduitsSemiFini npsf = db.ResStockProduitsSemiFinis.FirstOrDefault(n => n.Description == nomProduit);
             EveProductionProduitsSemiFini prodPSFini = new EveProductionProduitsSemiFini
@@ -403,7 +403,7 @@ namespace CasaEcologieSysInfo
             for (int i = 0; i < lvwListeProduitsSemiF.Items.Count; i++)
             {
                 var produit = lvwListeProduitsSemiF.Items[i];
-                ProductionProduitSemiFiniProduit(codeProduction, produit.Text, int.Parse(produit.SubItems[1].Text));
+                ProductionProduitSemiFiniProduit(codeProduction, produit.Text, float.Parse(produit.SubItems[1].Text));
             }
         }
 
