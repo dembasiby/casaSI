@@ -85,25 +85,28 @@ namespace CasaEcologieSysInfo.Pages
                                where em.PrenomNom == employe
                                select em.CodeEmploye).FirstOrDefault();
 
-            if (EmployeNonEncoreEnregistrePourCeJour(codeEmploye))
+            if (Validation.VerifierChampsMontant(txtRemunerationJournaliere.Text))
             {
-                EvePresenceEmploye pe = new EvePresenceEmploye()
+                if (EmployeNonEncoreEnregistrePourCeJour(codeEmploye))
                 {
-                    CodeEmploye = codeEmploye,
-                    CodeUtilisationDesRessources = 0,
-                    Date = DateTime.Parse(dtpDate.Text),
-                    RemunerationJournaliere = Convert.ToInt32(txtRemunerationJournaliere.Text)
-                };
+                    EvePresenceEmploye pe = new EvePresenceEmploye()
+                    {
+                        CodeEmploye = codeEmploye,
+                        CodeUtilisationDesRessources = 0,
+                        Date = DateTime.Parse(dtpDate.Text),
+                        RemunerationJournaliere = Convert.ToInt32(txtRemunerationJournaliere.Text)
+                    };
 
-                db.EvePresenceEmployes.Add(pe);
-                db.SaveChanges();
-                MessageBox.Show("La présence de l'employé a été enregistrée avec succès.");
-                AfficherPresenceEtRemunerationEmploye(dtpFin.Value.Date, dtpDebut.Value.Date);
-            }
-            else
-            {
-                MessageBox.Show($"{employe} a déjà été enregistré pour le {dtpDate.Value.ToShortDateString()}");
-                return;
+                    db.EvePresenceEmployes.Add(pe);
+                    db.SaveChanges();
+                    MessageBox.Show("La présence de l'employé a été enregistrée avec succès.");
+                    AfficherPresenceEtRemunerationEmploye(dtpFin.Value.Date, dtpDebut.Value.Date);
+                }
+                else
+                {
+                    MessageBox.Show($"{employe} a déjà été enregistré pour le {dtpDate.Value.ToShortDateString()}");
+                    return;
+                } 
             }
         }
 
