@@ -88,7 +88,7 @@ namespace CasaEcologieSysInfo
 
         private void TmrProductionStocks_Tick(object sender, EventArgs e)
         {
-            SetTimer(pnlProductionStocks, tmrProductionStocks);
+            SetTimer(pnlStocks, tmrProductionStocks);
         }
 
         private void BtnProductionStock_Click(object sender, EventArgs e)
@@ -124,6 +124,17 @@ namespace CasaEcologieSysInfo
         private void BtnEtatsFinanciers_Click(object sender, EventArgs e)
         {
             tmrEtatsFinanciers.Start();
+        }
+
+
+        private void TmrProduction_Tick(object sender, EventArgs e)
+        {
+            SetTimer(pnlProduction, tmrProduction);
+        }
+
+        private void BtnProduction_Click(object sender, EventArgs e)
+        {
+            tmrProduction.Start();
         }
 
         private void BtnNouvelleVente_Click(object sender, EventArgs e)
@@ -276,5 +287,6 @@ namespace CasaEcologieSysInfo
             Pages.UC_JournalProduction jprod = new Pages.UC_JournalProduction();
             AddControlsToPanel(jprod);
         }
+
     }
 }
