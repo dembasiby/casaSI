@@ -10,7 +10,7 @@ namespace CasaEcologieSysInfo
     public partial class UC_TableauDeBord : UserControl
     {
 
-        CasaDBEntities2 db = new CasaDBEntities2();
+        CasaDBEntities db = new CasaDBEntities();
         CasaDBDataSet6 db2 = new CasaDBDataSet6();
 
         public UC_TableauDeBord()

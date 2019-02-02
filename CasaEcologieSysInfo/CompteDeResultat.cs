@@ -11,7 +11,7 @@ namespace CasaEcologieSysInfo
     {
         private static string CalculerVentesMois(int NumMois, DateTime date)
         {
-            using (CasaDBEntities2 db = new CasaDBEntities2())
+            using (CasaDBEntities db = new CasaDBEntities())
             {
                 return ((from v in db.EveVentes
                          join vp in db.EveVenteStockProduitsFinis on v.CodeVente equals vp.CodeVente

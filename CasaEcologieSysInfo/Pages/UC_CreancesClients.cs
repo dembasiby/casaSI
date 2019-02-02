@@ -12,7 +12,7 @@ namespace CasaEcologieSysInfo.Pages
 {
     public partial class UC_CreancesClients : UserControl
     {
-        CasaDBEntities2 db = new CasaDBEntities2();
+        CasaDBEntities db = new CasaDBEntities();
 
         public UC_CreancesClients()
         {

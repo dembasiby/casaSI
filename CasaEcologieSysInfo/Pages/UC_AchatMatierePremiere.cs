@@ -7,7 +7,7 @@ namespace CasaEcologieSysInfo
 {
     public partial class UC_AchatMatierePremiere : UserControl
     {
-        CasaDBEntities2 db = new CasaDBEntities2();
+        CasaDBEntities db = new CasaDBEntities();
 
         public UC_AchatMatierePremiere()
         {

@@ -10,7 +10,7 @@ namespace CasaEcologieSysInfo
     {
         private Single CoutUnitaireParMatierePremiere(string nomMatiere)
         {
-            using (CasaDBEntities2 db = new CasaDBEntities2())
+            using (CasaDBEntities db = new CasaDBEntities())
             {
                 var quantiteAchetee = (from amp in db.EveReceptionMatieresPremieres
                                        where amp.ResStockMatieresPremiere.NomMatiere == nomMatiere

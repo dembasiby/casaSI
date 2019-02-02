@@ -12,7 +12,7 @@ namespace CasaEcologieSysInfo
 {
     public partial class frmConnexion : Form
     {
-        CasaDBEntities2 db = new CasaDBEntities2();
+        CasaDBEntities db = new CasaDBEntities();
 
         public frmConnexion()
         {

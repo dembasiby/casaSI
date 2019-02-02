@@ -15,10 +15,10 @@ namespace CasaEcologieSysInfo
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class CasaDBEntities2 : DbContext
+    public partial class CasaDBEntities : DbContext
     {
-        public CasaDBEntities2()
-            : base("name=CasaDBEntities2")
+        public CasaDBEntities()
+            : base("name=CasaDBEntities")
         {
         }
     

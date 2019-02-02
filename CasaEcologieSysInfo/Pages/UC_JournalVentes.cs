@@ -13,7 +13,7 @@ namespace CasaEcologieSysInfo
 {
     public partial class UC_JournalVentes : UserControl
     {
-        CasaDBEntities2 db = new CasaDBEntities2();
+        CasaDBEntities db = new CasaDBEntities();
 
         //Double Tot = 0;
 

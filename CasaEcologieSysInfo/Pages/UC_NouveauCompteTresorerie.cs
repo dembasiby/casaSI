@@ -42,7 +42,7 @@ namespace CasaEcologieSysInfo.Pages
 
         private void BtnAjouterNouveauCompte_Click(object sender, EventArgs e)
         {
-            using (CasaDBEntities2 db = new CasaDBEntities2())
+            using (CasaDBEntities db = new CasaDBEntities())
             {
                 if (VerifierChampsSoldeInitial() && txtNomCompte.Text.Trim().Length > 0)
                 {

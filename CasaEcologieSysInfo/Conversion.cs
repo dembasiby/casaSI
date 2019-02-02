@@ -87,7 +87,7 @@ namespace CasaEcologieSysInfo
 
         public static decimal CalculerTotalCreancesClients()
         {
-            using (CasaDBEntities2 db = new CasaDBEntities2())
+            using (CasaDBEntities db = new CasaDBEntities())
             {
                 var ventesClients = (from c in db.AgeClients
                                      from vf in db.EveVenteStockProduitsFinis
@@ -110,7 +110,7 @@ namespace CasaEcologieSysInfo
 
         public static decimal CalculerTotalDettesFournisseurs()
         {
-            using (CasaDBEntities2 db = new CasaDBEntities2())
+            using (CasaDBEntities db = new CasaDBEntities())
             {
                  var fournisseursMP = (from fmp in db.AgeFournisseursMatieresPremieres
                                     select new
@@ -189,7 +189,7 @@ namespace CasaEcologieSysInfo
 
         public static decimal SoldeDisponibleDuCompteDeTresorerie(string nomCompte)
         {
-            using (CasaDBEntities2 db = new CasaDBEntities2())
+            using (CasaDBEntities db = new CasaDBEntities())
             {
                 var soldeInitial = (from c in db.ResComptesTresoreries
                                     where c.NomCompte == nomCompte
@@ -223,7 +223,7 @@ namespace CasaEcologieSysInfo
 
         public static decimal CalculerSoldeDetteParFournisseur(string nomFournisseur)
         {
-            using (CasaDBEntities2 db = new CasaDBEntities2())
+            using (CasaDBEntities db = new CasaDBEntities())
             {
                 
                 var soldeInitial = (from fmp in db.AgeFournisseursMatieresPremieres
@@ -276,7 +276,7 @@ namespace CasaEcologieSysInfo
 
        public static int CalculerSoldeStockProduitFini(string nomProduit)
         {
-            using (CasaDBEntities2 db = new CasaDBEntities2())
+            using (CasaDBEntities db = new CasaDBEntities())
             {
                 var stockInitial = (from pf in db.ResStockProduitsFinis
                                     where pf.NomProduit == nomProduit
@@ -298,7 +298,7 @@ namespace CasaEcologieSysInfo
 
         public static int CalculerSoldeStockProduitFiniDebutPeriod(string nomProduit, DateTime debutPeriod)
         {
-            using (CasaDBEntities2 db = new CasaDBEntities2())
+            using (CasaDBEntities db = new CasaDBEntities())
             {
                 var stockInitial = (from pf in db.ResStockProduitsFinis
                                     where pf.NomProduit == nomProduit
@@ -322,7 +322,7 @@ namespace CasaEcologieSysInfo
 
         public static int CalculerSoldeStockProduitFiniFinPeriod(string nomProduit, DateTime finPeriod)
         {
-            using (CasaDBEntities2 db = new CasaDBEntities2())
+            using (CasaDBEntities db = new CasaDBEntities())
             {
                 var stockInitial = (from pf in db.ResStockProduitsFinis
                                     where pf.NomProduit == nomProduit

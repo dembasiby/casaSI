@@ -12,7 +12,7 @@ namespace CasaEcologieSysInfo
 {
     public partial class frmNouveauProduitFiniOuSemiFini : Form
     {
-        CasaDBEntities2 db = new CasaDBEntities2();
+        CasaDBEntities db = new CasaDBEntities();
         UC_Production prod = new UC_Production();
 
         public frmNouveauProduitFiniOuSemiFini()
