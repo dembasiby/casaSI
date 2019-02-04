@@ -289,6 +289,7 @@
           <Property Name="CodeMatierePremiere" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NomMatiere" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="StockMatiere" Type="float" Nullable="false" />
+          <Property Name="TypeMatiere" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="ResStockProduitsFinis">
           <Key>
@@ -1584,6 +1585,7 @@
           <NavigationProperty Name="ResStockProduitsSemiFinis" Relationship="Self.FK_ResStockProduitsSemiFinis_ResStockMatieresPremieres" FromRole="ResStockMatieresPremieres" ToRole="ResStockProduitsSemiFinis" />
           <NavigationProperty Name="EveReceptionDonsMatieresPremieres" Relationship="CasaDBModel.FK_EveReceptionDonsMatieresPremieres_ResStockMatieresPremieres" FromRole="ResStockMatieresPremiere" ToRole="EveReceptionDonsMatieresPremiere" />
           <NavigationProperty Name="EveSortieDechetsMatieresPremieres" Relationship="CasaDBModel.FK_EveSortieDechetsMatieresPremieres_ResStockMatieresPremieres" FromRole="ResStockMatieresPremiere" ToRole="EveSortieDechetsMatieresPremiere" />
+          <Property Name="TypeMatiere" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="ResStockProduitsFini">
           <Key>
@@ -2873,6 +2875,7 @@
           <EntitySetMapping Name="ResStockMatieresPremieres">
             <EntityTypeMapping TypeName="CasaDBModel.ResStockMatieresPremiere">
               <MappingFragment StoreEntitySet="ResStockMatieresPremieres">
+                <ScalarProperty Name="TypeMatiere" ColumnName="TypeMatiere" />
                 <ScalarProperty Name="CodeMatierePremiere" ColumnName="CodeMatierePremiere" />
                 <ScalarProperty Name="NomMatiere" ColumnName="NomMatiere" />
                 <ScalarProperty Name="StockMatiere" ColumnName="StockMatiere" />

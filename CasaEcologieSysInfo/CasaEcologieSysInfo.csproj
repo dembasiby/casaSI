@@ -116,8 +116,8 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CompteDeResultat.cs" />
-    <Compile Include="Formattage.cs" />
+    <Compile Include="Classes\CompteDeResultat.cs" />
+    <Compile Include="Classes\Formattage.cs" />
     <Compile Include="Formulaires\frmAccueil.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -185,8 +185,8 @@
     <Compile Include="Formulaires\frmConnexion.Designer.cs">
       <DependentUpon>frmConnexion.cs</DependentUpon>
     </Compile>
-    <Compile Include="Conversion.cs" />
-    <Compile Include="DragControl.cs">
+    <Compile Include="Classes\Conversion.cs" />
+    <Compile Include="Classes\DragControl.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="EmployesDataSet3.Designer.cs">
@@ -251,7 +251,7 @@
     <Compile Include="EveVenteStockProduitsFini.cs">
       <DependentUpon>Model3.tt</DependentUpon>
     </Compile>
-    <Compile Include="GestionStocks.cs" />
+    <Compile Include="Classes\GestionStocks.cs" />
     <Compile Include="Model3.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -464,7 +464,7 @@
     <Compile Include="Utilisateur.cs">
       <DependentUpon>Model3.tt</DependentUpon>
     </Compile>
-    <Compile Include="Validation.cs" />
+    <Compile Include="Classes\Validation.cs" />
     <Compile Include="VentesMensuelles_Result.cs">
       <DependentUpon>Model3.tt</DependentUpon>
     </Compile>
