@@ -63,7 +63,7 @@ namespace CasaEcologieSysInfo.Pages
 
             if (IlYaAssezDeFondsDansLeCompteDebiteur(cpteDebiteur) && 
                 ComptesDifferents(cpteDebiteur, cpteCrediteur) &&
-                Conversion.MontantEstValide(txtMontant.Text))
+                Validation.MontantEstValide(txtMontant.Text))
             {
                 EveDecaissement decaissement = new EveDecaissement
                 {

@@ -56,38 +56,47 @@ namespace CasaEcologieSysInfo.Pages
 
         private float CalculerCoutMatieresPremieres(string nomProduit)
         {
-            var matieres = nomProduit.Split(' ');
-            var matierePremiere = matieres[1];
 
-            var coutMatierePremiere = (from mp in db.ResStockMatieresPremieres
-                                       join amp in db.EveReceptionMatieresPremieres on mp.CodeMatierePremiere equals amp.CodeMatierePremiere
-                                       where mp.NomMatiere == matierePremiere
-                                       select (decimal?)amp.Montant).Sum() ?? 0m;
+            //var matieres = nomProduit.Split(' ');
+            var matieresPremieres = (from pf in db.ResStockProduitsFinis
+                                     join ppf in db.EveProductionStockProduitsFinis on pf.CodeProduit equals ppf.CodeProduction
+                                     join p in db.EveProductions on ppf.CodeProduction equals p.CodeProduction
+                                     join ur in db.EveUtilisationMatieresPremieres on p.CodeUtilisationRessources equals ur.CodeUtilisationRessource
+                                     
+                                     select new
+                                     {
+                                         Matiere = ur.ResStockMatieresPremiere.NomMatiere
+                                     }).ToList();
 
-            var coutTransportMatierePremiere = (from mp in db.ResStockMatieresPremieres
-                                                join amp in db.EveReceptionMatieresPremieres on mp.CodeMatierePremiere equals amp.CodeMatierePremiere
-                                                where mp.NomMatiere == matierePremiere
-                                                select (decimal?)amp.TransportMatierePremiere).Sum() ?? 0m;
+            var coutMatieresPremieres = 0f;
 
-            var quantiteAchetee = (from mp in db.ResStockMatieresPremieres
-                                   join amp in db.EveReceptionMatieresPremieres on mp.CodeMatierePremiere equals amp.CodeMatierePremiere
-                                   where mp.NomMatiere == matierePremiere
-                                   select (float?)amp.Quantite).Sum() ?? 0f;
-
-
-            // Cout du sucre utilise
-            // Cout des emballages utilisees
-
-            // calculer le cout unitaire pour chaque kilo de matiere premiere
-            var coutTotal = coutMatierePremiere + coutTransportMatierePremiere;
-            var coutUnitaireMatierePremiere = 0;
-            if (Convert.ToInt32(quantiteAchetee) > 0)
+            foreach (var matierePremiere in matieresPremieres)
             {
-                coutUnitaireMatierePremiere = Convert.ToInt32(coutTotal) / Convert.ToInt32(quantiteAchetee);
+                var coutMatierePremiere = (from mp in db.ResStockMatieresPremieres
+                                           join amp in db.EveReceptionMatieresPremieres on mp.CodeMatierePremiere equals amp.CodeMatierePremiere
+                                           where mp.NomMatiere == matierePremiere.Matiere
+                                           select (decimal?)amp.Montant).Sum() ?? 0m;
+
+                var coutTransportMatierePremiere = (from mp in db.ResStockMatieresPremieres
+                                                    join amp in db.EveReceptionMatieresPremieres on mp.CodeMatierePremiere equals amp.CodeMatierePremiere
+                                                    where mp.NomMatiere == matierePremiere.Matiere
+                                                    select (decimal?)amp.TransportMatierePremiere).Sum() ?? 0m;
+
+                var quantiteAchetee = (from mp in db.ResStockMatieresPremieres
+                                       join amp in db.EveReceptionMatieresPremieres on mp.CodeMatierePremiere equals amp.CodeMatierePremiere
+                                       where mp.NomMatiere == matierePremiere.Matiere
+                                       select (float?)amp.Quantite).Sum() ?? 0f;
+
+                var coutTotal = coutMatierePremiere + coutTransportMatierePremiere;
+                if (Convert.ToInt32(quantiteAchetee) > 0)
+                {
+                    var coutUnitaire = (float)coutTotal / (float)quantiteAchetee;
+                    var coutMatiere = coutUnitaire * GestionStocks.QuantiteMatierePremiereParProduitFini(nomProduit, matierePremiere.Matiere);
+                    coutMatieresPremieres += coutMatiere;
+                }
             }
 
-            return coutUnitaireMatierePremiere;
-
+            return coutMatieresPremieres;
         }
 
         /// <summary>
@@ -105,46 +114,20 @@ namespace CasaEcologieSysInfo.Pages
             // TMC = Raw materials used + Direct labor + Manufacturing overhead
             // Raw materials used = Beginning raw materials inventory + Purchase - Ending raw materials inventory
 
-            // calculer la quantite moyenne de matiere premiere utilisee par unite de produit fini
-            /*
-            var quantiteDeMatierePremiereUtilisee = (from pf in db.ResStockProduitsFinis
-                                                     join ppf in db.EveProductionStockProduitsFinis on pf.CodeProduit equals ppf.CodeProduitFini
-                                                     join ur in db.EveUtilisationMatieresPremieres on ppf.EveProduction.CodeUtilisationRessources equals ur.CodeUtilisationRessource
-                                                     where ur.ResStockMatieresPremiere.NomMatiere == matierePremiere
-                                                     where pf.NomProduit == nomProduit
-                                                     select new
-                                                     {
-                                                         MatierePrem = ur.QuantiteMatierePremiere,
-                                                         ProduitFini = ppf.QuantiteProduitFini
-                                                     });
+            /*            
 
-            var quantiteMatP = quantiteDeMatierePremiereUtilisee.Select(m => (float?)m.MatierePrem).Sum() ?? 0f;
-            var quantitePF = quantiteDeMatierePremiereUtilisee.Select(m => (float?)m.ProduitFini).Sum() ?? 0f;
+             if (coutUnitaireMatierePremiere > 0f && quantiteMoyenneParProduitFini > 0f)
+             {
+                 return (coutUnitaireMatierePremiere * quantiteMoyenneParProduitFini);
+             }
+             else
+             {
+                 return 0f;
+             }
 
-            float quantiteMoyenneParProduitFini = 0f;
 
-            if (quantiteMatP > 0f && quantitePF > 0f)
-            {
-                quantiteMoyenneParProduitFini = quantiteMatP / quantitePF;
-            }
-            else
-            {
-                quantiteMoyenneParProduitFini = 0f;
-            }            
-
-            if (coutUnitaireMatierePremiere > 0f && quantiteMoyenneParProduitFini > 0f)
-            {
-                return (coutUnitaireMatierePremiere * quantiteMoyenneParProduitFini);
-            }
-            else
-            {
-                return 0f;
-            }
-            
-
-    */
-            var coutUnitaireMatierePremiere = CalculerCoutMatieresPremieres(nomProduit);
-            return coutUnitaireMatierePremiere;
+     */
+            return CalculerCoutMatieresPremieres(nomProduit);
         }
 
 
@@ -215,8 +198,9 @@ namespace CasaEcologieSysInfo.Pages
         // FONCTIONS UTILISEES POUR LE DEBUGGING
         private void AfficherCoutMatierePremierePrincipalParUnite()
         {
-            var produit = listBox1.GetItemText(listBox1.SelectedItem);
-            txtCoutMatierePremiereParUnite.Text =  CalculerCoutDesProduitsVendusParProduit(produit).ToString();
+            var produit = listBox1.GetItemText(listBox1.SelectedItem).Split(' ')[1];
+            txtCoutMatierePremiereParUnite.Text = GestionStocks.CoutUnitaireParMatierePremiere(produit).ToString("n0");
+            //txtCoutMatierePremiereParUnite.Text = CalculerCoutDesProduitsVendusParProduit(produit).ToString();
         }
 
         private void ListBox1_SelectedIndexChanged(object sender, EventArgs e)

@@ -34,7 +34,7 @@ namespace CasaEcologieSysInfo.Pages
             var employe = cbxResponsableTransaction.GetItemText(cbxResponsableTransaction.SelectedItem);
             var compte = cbxCompteCrediteur.GetItemText(cbxCompteCrediteur.SelectedItem);
 
-            if (Conversion.MontantEstValide(txtMontantEncaisse.Text) && ChampDescriptionEstRempli())
+            if (Validation.MontantEstValide(txtMontantEncaisse.Text) && ChampDescriptionEstRempli())
             {
                 EveEncaissement enc = new EveEncaissement
                 {
