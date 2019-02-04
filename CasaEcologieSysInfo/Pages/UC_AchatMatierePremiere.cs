@@ -22,6 +22,7 @@ namespace CasaEcologieSysInfo
             ageEmployesBindingSource.DataSource = db.AgeEmployes.ToList();
             ageEmployesBindingSource1.DataSource = db.AgeEmployes.ToList();
             resComptesTresorerieBindingSource.DataSource = db.ResComptesTresoreries.ToList();
+            cbxTypesMatieres.DataSource = (from mp in db.ResStockMatieresPremieres select mp.TypeMatiere).Distinct().ToList();
            
         }
 
@@ -42,6 +43,7 @@ namespace CasaEcologieSysInfo
             ResStockMatieresPremiere matierePremiere = new ResStockMatieresPremiere
             {
                 NomMatiere = txtNomMatierePremiere.Text,
+                TypeMatiere = cbxTypesMatieres.GetItemText(cbxTypesMatieres.SelectedItem),
                 StockMatiere = float.Parse(txtStockInitial.Text)
             };
 

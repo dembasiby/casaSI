@@ -84,6 +84,8 @@
             this.txtSoldeCompte = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.txtTransportMatierePremiere = new System.Windows.Forms.TextBox();
+            this.cbxTypesMatieres = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.resStockMatieresPremieresBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.casaDBDataSetAll)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ageFournisseursMatieresPremieresBindingSource)).BeginInit();
@@ -249,9 +251,9 @@
             this.grbNouveauFournisseur.Controls.Add(this.label8);
             this.grbNouveauFournisseur.Controls.Add(this.lblNomNouveauClient);
             this.grbNouveauFournisseur.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grbNouveauFournisseur.Location = new System.Drawing.Point(571, 361);
+            this.grbNouveauFournisseur.Location = new System.Drawing.Point(571, 360);
             this.grbNouveauFournisseur.Name = "grbNouveauFournisseur";
-            this.grbNouveauFournisseur.Size = new System.Drawing.Size(395, 227);
+            this.grbNouveauFournisseur.Size = new System.Drawing.Size(395, 214);
             this.grbNouveauFournisseur.TabIndex = 20;
             this.grbNouveauFournisseur.TabStop = false;
             this.grbNouveauFournisseur.Text = "Nouveau Fournisseur";
@@ -334,15 +336,17 @@
             // 
             this.gBxNouvelleMatierePremiere.Controls.Add(this.btnAjouterNouvelleMatierePremiere);
             this.gBxNouvelleMatierePremiere.Controls.Add(this.txtStockInitial);
+            this.gBxNouvelleMatierePremiere.Controls.Add(this.label10);
             this.gBxNouvelleMatierePremiere.Controls.Add(this.label1);
             this.gBxNouvelleMatierePremiere.Controls.Add(this.txtNomMatierePremiere);
             this.gBxNouvelleMatierePremiere.Controls.Add(this.label2);
             this.gBxNouvelleMatierePremiere.Controls.Add(this.label3);
+            this.gBxNouvelleMatierePremiere.Controls.Add(this.cbxTypesMatieres);
             this.gBxNouvelleMatierePremiere.Controls.Add(this.label7);
-            this.gBxNouvelleMatierePremiere.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gBxNouvelleMatierePremiere.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gBxNouvelleMatierePremiere.Location = new System.Drawing.Point(571, 95);
             this.gBxNouvelleMatierePremiere.Name = "gBxNouvelleMatierePremiere";
-            this.gBxNouvelleMatierePremiere.Size = new System.Drawing.Size(395, 260);
+            this.gBxNouvelleMatierePremiere.Size = new System.Drawing.Size(395, 254);
             this.gBxNouvelleMatierePremiere.TabIndex = 20;
             this.gBxNouvelleMatierePremiere.TabStop = false;
             this.gBxNouvelleMatierePremiere.Text = "Nouvelle matière première";
@@ -354,7 +358,7 @@
             this.btnAjouterNouvelleMatierePremiere.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAjouterNouvelleMatierePremiere.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAjouterNouvelleMatierePremiere.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnAjouterNouvelleMatierePremiere.Location = new System.Drawing.Point(5, 189);
+            this.btnAjouterNouvelleMatierePremiere.Location = new System.Drawing.Point(5, 203);
             this.btnAjouterNouvelleMatierePremiere.Name = "btnAjouterNouvelleMatierePremiere";
             this.btnAjouterNouvelleMatierePremiere.Size = new System.Drawing.Size(365, 31);
             this.btnAjouterNouvelleMatierePremiere.TabIndex = 10;
@@ -364,26 +368,26 @@
             // 
             // txtStockInitial
             // 
-            this.txtStockInitial.Location = new System.Drawing.Point(5, 149);
+            this.txtStockInitial.Location = new System.Drawing.Point(123, 167);
             this.txtStockInitial.Name = "txtStockInitial";
-            this.txtStockInitial.Size = new System.Drawing.Size(365, 27);
+            this.txtStockInitial.Size = new System.Drawing.Size(247, 23);
             this.txtStockInitial.TabIndex = 8;
             this.txtStockInitial.Text = "00";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(1, 125);
+            this.label1.Location = new System.Drawing.Point(9, 172);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(97, 21);
+            this.label1.Size = new System.Drawing.Size(81, 17);
             this.label1.TabIndex = 5;
             this.label1.Text = "Stock initial";
             // 
             // txtNomMatierePremiere
             // 
-            this.txtNomMatierePremiere.Location = new System.Drawing.Point(5, 95);
+            this.txtNomMatierePremiere.Location = new System.Drawing.Point(123, 95);
             this.txtNomMatierePremiere.Name = "txtNomMatierePremiere";
-            this.txtNomMatierePremiere.Size = new System.Drawing.Size(365, 27);
+            this.txtNomMatierePremiere.Size = new System.Drawing.Size(247, 23);
             this.txtNomMatierePremiere.TabIndex = 9;
             // 
             // label2
@@ -408,12 +412,11 @@
             // 
             // label7
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(1, 64);
+            this.label7.Location = new System.Drawing.Point(5, 101);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(226, 21);
+            this.label7.Size = new System.Drawing.Size(131, 22);
             this.label7.TabIndex = 7;
-            this.label7.Text = "Nom de la Matière Première";
+            this.label7.Text = "Matière Première";
             // 
             // lblMontantPaye
             // 
@@ -594,6 +597,25 @@
             this.txtTransportMatierePremiere.TabIndex = 13;
             this.txtTransportMatierePremiere.Text = "0";
             // 
+            // cbxTypesMatieres
+            // 
+            this.cbxTypesMatieres.DisplayMember = "PrenomNom";
+            this.cbxTypesMatieres.FormattingEnabled = true;
+            this.cbxTypesMatieres.Location = new System.Drawing.Point(123, 130);
+            this.cbxTypesMatieres.Margin = new System.Windows.Forms.Padding(5);
+            this.cbxTypesMatieres.Name = "cbxTypesMatieres";
+            this.cbxTypesMatieres.Size = new System.Drawing.Size(247, 25);
+            this.cbxTypesMatieres.TabIndex = 16;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(9, 135);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(111, 17);
+            this.label10.TabIndex = 5;
+            this.label10.Text = "Type de matiere";
+            // 
             // UC_AchatMatierePremiere
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
@@ -705,5 +727,7 @@
         private System.Windows.Forms.TextBox txtSoldeCompte;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtTransportMatierePremiere;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ComboBox cbxTypesMatieres;
     }
 }
