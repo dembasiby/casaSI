@@ -288,5 +288,10 @@ namespace CasaEcologieSysInfo
             AddControlsToPanel(jprod);
         }
 
+        private void BtnImmobilisations_Click(object sender, EventArgs e)
+        {
+            Pages.UC_RegistreImmobilisations imo = new Pages.UC_RegistreImmobilisations();
+            AddControlsToPanel(imo);
+        }
     }
 }

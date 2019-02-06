@@ -339,6 +339,12 @@
     <Compile Include="Pages\UC_ReceptionDonMatierePremiere.Designer.cs">
       <DependentUpon>UC_ReceptionDonMatierePremiere.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pages\UC_RegistreImmobilisations.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\UC_RegistreImmobilisations.Designer.cs">
+      <DependentUpon>UC_RegistreImmobilisations.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pages\UC_SortieDechetsMatierePremiere.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -509,6 +515,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\UC_ReceptionDonMatierePremiere.resx">
       <DependentUpon>UC_ReceptionDonMatierePremiere.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\UC_RegistreImmobilisations.resx">
+      <DependentUpon>UC_RegistreImmobilisations.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\UC_SortieDechetsMatierePremiere.resx">
       <DependentUpon>UC_SortieDechetsMatierePremiere.cs</DependentUpon>

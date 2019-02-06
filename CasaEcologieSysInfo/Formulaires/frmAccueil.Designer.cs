@@ -37,6 +37,19 @@
             this.label3 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.pnlStocks = new System.Windows.Forms.Panel();
+            this.btnNouvelleProduction = new System.Windows.Forms.Button();
+            this.btnStockProduitsSemiFinis = new System.Windows.Forms.Button();
+            this.btnDonRecuMatierePrem = new System.Windows.Forms.Button();
+            this.btnSortieStock = new System.Windows.Forms.Button();
+            this.btnStockMatierePremiere = new System.Windows.Forms.Button();
+            this.btnStockProduitsFinis = new System.Windows.Forms.Button();
+            this.pnlDepenses = new System.Windows.Forms.Panel();
+            this.btnJournalApprovisionnements = new System.Windows.Forms.Button();
+            this.btnJournalDepenses = new System.Windows.Forms.Button();
+            this.BtnServiceFourniture = new System.Windows.Forms.Button();
+            this.btnEquipementInfrastructure = new System.Windows.Forms.Button();
+            this.btnMatierePremiere = new System.Windows.Forms.Button();
             this.pnlTresorerie = new System.Windows.Forms.Panel();
             this.btnNouveauDecaissement = new System.Windows.Forms.Button();
             this.btnMouvementCAC = new System.Windows.Forms.Button();
@@ -47,22 +60,17 @@
             this.pnlVentes = new System.Windows.Forms.Panel();
             this.btnJournalVentes = new System.Windows.Forms.Button();
             this.btnNouvelleVente = new System.Windows.Forms.Button();
-            this.pnlDepenses = new System.Windows.Forms.Panel();
-            this.btnJournalApprovisionnements = new System.Windows.Forms.Button();
-            this.btnJournalDepenses = new System.Windows.Forms.Button();
-            this.BtnServiceFourniture = new System.Windows.Forms.Button();
-            this.btnEquipementInfrastructure = new System.Windows.Forms.Button();
-            this.btnMatierePremiere = new System.Windows.Forms.Button();
-            this.pnlStocks = new System.Windows.Forms.Panel();
-            this.btnStockProduitsSemiFinis = new System.Windows.Forms.Button();
-            this.btnNouvelleProduction = new System.Windows.Forms.Button();
-            this.btnDonRecuMatierePrem = new System.Windows.Forms.Button();
-            this.btnSortieStock = new System.Windows.Forms.Button();
-            this.btnStockMatierePremiere = new System.Windows.Forms.Button();
-            this.btnStockProduitsFinis = new System.Windows.Forms.Button();
             this.pnlFournisseurClient = new System.Windows.Forms.Panel();
             this.btnDettesFournisseurs = new System.Windows.Forms.Button();
             this.btnCreancesClients = new System.Windows.Forms.Button();
+            this.pnlProduction = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
             this.pnlEtatsFinanciers = new System.Windows.Forms.Panel();
             this.btnBilansMensuels = new System.Windows.Forms.Button();
             this.btnTableauTresorerie = new System.Windows.Forms.Button();
@@ -78,14 +86,9 @@
             this.tmrTresorerie = new System.Windows.Forms.Timer(this.components);
             this.tmrUtilisateurs = new System.Windows.Forms.Timer(this.components);
             this.tmrEtatsFinanciers = new System.Windows.Forms.Timer(this.components);
-            this.pnlProduction = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
+            this.dragControl1 = new CasaEcologieSysInfo.DragControl();
+            this.tmrProduction = new System.Windows.Forms.Timer(this.components);
+            this.btnImmobilisations = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnTableauDeBord = new System.Windows.Forms.Button();
@@ -105,19 +108,17 @@
             this.btnEtatsFinanciers = new System.Windows.Forms.Button();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.btnUtilisateurs = new System.Windows.Forms.Button();
-            this.dragControl1 = new CasaEcologieSysInfo.DragControl();
-            this.tmrProduction = new System.Windows.Forms.Timer(this.components);
             this.panel3.SuspendLayout();
             this.pnlTop.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
+            this.pnlStocks.SuspendLayout();
+            this.pnlDepenses.SuspendLayout();
             this.pnlTresorerie.SuspendLayout();
             this.pnlVentes.SuspendLayout();
-            this.pnlDepenses.SuspendLayout();
-            this.pnlStocks.SuspendLayout();
             this.pnlFournisseurClient.SuspendLayout();
+            this.pnlProduction.SuspendLayout();
             this.pnlEtatsFinanciers.SuspendLayout();
             this.pnlUtilisateurs.SuspendLayout();
-            this.pnlProduction.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -204,12 +205,214 @@
             this.flowLayoutPanel1.Controls.Add(this.pnlProduction);
             this.flowLayoutPanel1.Controls.Add(this.pnlEtatsFinanciers);
             this.flowLayoutPanel1.Controls.Add(this.pnlUtilisateurs);
+            this.flowLayoutPanel1.Controls.Add(this.btnImmobilisations);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.flowLayoutPanel1.ForeColor = System.Drawing.Color.White;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(217, 720);
             this.flowLayoutPanel1.TabIndex = 3;
+            // 
+            // pnlStocks
+            // 
+            this.pnlStocks.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(88)))), ((int)(((byte)(77)))));
+            this.pnlStocks.Controls.Add(this.pictureBox5);
+            this.pnlStocks.Controls.Add(this.btnNouvelleProduction);
+            this.pnlStocks.Controls.Add(this.btnStockProduitsSemiFinis);
+            this.pnlStocks.Controls.Add(this.btnDonRecuMatierePrem);
+            this.pnlStocks.Controls.Add(this.btnSortieStock);
+            this.pnlStocks.Controls.Add(this.btnStockMatierePremiere);
+            this.pnlStocks.Controls.Add(this.btnStockProduitsFinis);
+            this.pnlStocks.Controls.Add(this.btnStock);
+            this.pnlStocks.Location = new System.Drawing.Point(3, 244);
+            this.pnlStocks.MaximumSize = new System.Drawing.Size(217, 307);
+            this.pnlStocks.MinimumSize = new System.Drawing.Size(217, 40);
+            this.pnlStocks.Name = "pnlStocks";
+            this.pnlStocks.Size = new System.Drawing.Size(217, 40);
+            this.pnlStocks.TabIndex = 8;
+            // 
+            // btnNouvelleProduction
+            // 
+            this.btnNouvelleProduction.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
+            this.btnNouvelleProduction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNouvelleProduction.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNouvelleProduction.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNouvelleProduction.Location = new System.Drawing.Point(0, 254);
+            this.btnNouvelleProduction.Name = "btnNouvelleProduction";
+            this.btnNouvelleProduction.Size = new System.Drawing.Size(214, 55);
+            this.btnNouvelleProduction.TabIndex = 4;
+            this.btnNouvelleProduction.Text = "Inventaire et valorisation des stocks";
+            this.btnNouvelleProduction.UseVisualStyleBackColor = false;
+            // 
+            // btnStockProduitsSemiFinis
+            // 
+            this.btnStockProduitsSemiFinis.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
+            this.btnStockProduitsSemiFinis.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStockProduitsSemiFinis.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStockProduitsSemiFinis.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnStockProduitsSemiFinis.Location = new System.Drawing.Point(1, 80);
+            this.btnStockProduitsSemiFinis.Name = "btnStockProduitsSemiFinis";
+            this.btnStockProduitsSemiFinis.Size = new System.Drawing.Size(214, 39);
+            this.btnStockProduitsSemiFinis.TabIndex = 7;
+            this.btnStockProduitsSemiFinis.Text = "Stocks produits sémi-finis";
+            this.btnStockProduitsSemiFinis.UseVisualStyleBackColor = false;
+            this.btnStockProduitsSemiFinis.Click += new System.EventHandler(this.BtnStockProduitsSemiFinis_Click);
+            // 
+            // btnDonRecuMatierePrem
+            // 
+            this.btnDonRecuMatierePrem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
+            this.btnDonRecuMatierePrem.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnDonRecuMatierePrem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDonRecuMatierePrem.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDonRecuMatierePrem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDonRecuMatierePrem.Location = new System.Drawing.Point(0, 209);
+            this.btnDonRecuMatierePrem.Name = "btnDonRecuMatierePrem";
+            this.btnDonRecuMatierePrem.Size = new System.Drawing.Size(214, 45);
+            this.btnDonRecuMatierePrem.TabIndex = 3;
+            this.btnDonRecuMatierePrem.Text = "Matières premières reçues en dons";
+            this.btnDonRecuMatierePrem.UseVisualStyleBackColor = false;
+            this.btnDonRecuMatierePrem.Click += new System.EventHandler(this.BtnDonRecuMatierePrem_Click);
+            // 
+            // btnSortieStock
+            // 
+            this.btnSortieStock.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
+            this.btnSortieStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSortieStock.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSortieStock.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSortieStock.Location = new System.Drawing.Point(0, 164);
+            this.btnSortieStock.Name = "btnSortieStock";
+            this.btnSortieStock.Size = new System.Drawing.Size(214, 45);
+            this.btnSortieStock.TabIndex = 3;
+            this.btnSortieStock.Text = "Sortie déchets matières premières";
+            this.btnSortieStock.UseVisualStyleBackColor = false;
+            this.btnSortieStock.Click += new System.EventHandler(this.BtnSortieStock_Click);
+            // 
+            // btnStockMatierePremiere
+            // 
+            this.btnStockMatierePremiere.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
+            this.btnStockMatierePremiere.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStockMatierePremiere.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStockMatierePremiere.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnStockMatierePremiere.Location = new System.Drawing.Point(0, 119);
+            this.btnStockMatierePremiere.Name = "btnStockMatierePremiere";
+            this.btnStockMatierePremiere.Size = new System.Drawing.Size(214, 45);
+            this.btnStockMatierePremiere.TabIndex = 3;
+            this.btnStockMatierePremiere.Text = "Stock matières premières";
+            this.btnStockMatierePremiere.UseVisualStyleBackColor = false;
+            this.btnStockMatierePremiere.Click += new System.EventHandler(this.BtnStockMatierePremiere_Click);
+            // 
+            // btnStockProduitsFinis
+            // 
+            this.btnStockProduitsFinis.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
+            this.btnStockProduitsFinis.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStockProduitsFinis.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStockProduitsFinis.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnStockProduitsFinis.Location = new System.Drawing.Point(1, 41);
+            this.btnStockProduitsFinis.Name = "btnStockProduitsFinis";
+            this.btnStockProduitsFinis.Size = new System.Drawing.Size(213, 39);
+            this.btnStockProduitsFinis.TabIndex = 2;
+            this.btnStockProduitsFinis.Text = "Stocks produits finis";
+            this.btnStockProduitsFinis.UseVisualStyleBackColor = false;
+            this.btnStockProduitsFinis.Click += new System.EventHandler(this.BtnStockProduitsFinis_Click);
+            // 
+            // pnlDepenses
+            // 
+            this.pnlDepenses.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(88)))), ((int)(((byte)(77)))));
+            this.pnlDepenses.Controls.Add(this.btnJournalApprovisionnements);
+            this.pnlDepenses.Controls.Add(this.pictureBox3);
+            this.pnlDepenses.Controls.Add(this.btnJournalDepenses);
+            this.pnlDepenses.Controls.Add(this.BtnServiceFourniture);
+            this.pnlDepenses.Controls.Add(this.btnDepenses);
+            this.pnlDepenses.Controls.Add(this.btnEquipementInfrastructure);
+            this.pnlDepenses.Controls.Add(this.btnMatierePremiere);
+            this.pnlDepenses.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pnlDepenses.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.pnlDepenses.Location = new System.Drawing.Point(3, 290);
+            this.pnlDepenses.MaximumSize = new System.Drawing.Size(217, 255);
+            this.pnlDepenses.MinimumSize = new System.Drawing.Size(217, 40);
+            this.pnlDepenses.Name = "pnlDepenses";
+            this.pnlDepenses.Size = new System.Drawing.Size(217, 40);
+            this.pnlDepenses.TabIndex = 5;
+            // 
+            // btnJournalApprovisionnements
+            // 
+            this.btnJournalApprovisionnements.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
+            this.btnJournalApprovisionnements.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnJournalApprovisionnements.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnJournalApprovisionnements.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnJournalApprovisionnements.Location = new System.Drawing.Point(0, 207);
+            this.btnJournalApprovisionnements.Name = "btnJournalApprovisionnements";
+            this.btnJournalApprovisionnements.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnJournalApprovisionnements.Size = new System.Drawing.Size(214, 47);
+            this.btnJournalApprovisionnements.TabIndex = 3;
+            this.btnJournalApprovisionnements.Text = "Journal des approvisionnements";
+            this.btnJournalApprovisionnements.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnJournalApprovisionnements.UseVisualStyleBackColor = false;
+            this.btnJournalApprovisionnements.Click += new System.EventHandler(this.BtnJournalApprovisionnements_Click);
+            // 
+            // btnJournalDepenses
+            // 
+            this.btnJournalDepenses.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
+            this.btnJournalDepenses.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnJournalDepenses.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnJournalDepenses.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnJournalDepenses.Location = new System.Drawing.Point(0, 166);
+            this.btnJournalDepenses.Name = "btnJournalDepenses";
+            this.btnJournalDepenses.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnJournalDepenses.Size = new System.Drawing.Size(213, 41);
+            this.btnJournalDepenses.TabIndex = 5;
+            this.btnJournalDepenses.Text = "Journal des dépenses";
+            this.btnJournalDepenses.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnJournalDepenses.UseVisualStyleBackColor = false;
+            this.btnJournalDepenses.Click += new System.EventHandler(this.BtnJournalDepenses_Click);
+            // 
+            // BtnServiceFourniture
+            // 
+            this.BtnServiceFourniture.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
+            this.BtnServiceFourniture.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnServiceFourniture.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnServiceFourniture.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnServiceFourniture.Location = new System.Drawing.Point(0, 125);
+            this.BtnServiceFourniture.Name = "BtnServiceFourniture";
+            this.BtnServiceFourniture.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.BtnServiceFourniture.Size = new System.Drawing.Size(213, 41);
+            this.BtnServiceFourniture.TabIndex = 4;
+            this.BtnServiceFourniture.Text = "Service ou fourniture";
+            this.BtnServiceFourniture.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnServiceFourniture.UseVisualStyleBackColor = false;
+            this.BtnServiceFourniture.Click += new System.EventHandler(this.BtnServiceFourniture_Click);
+            // 
+            // btnEquipementInfrastructure
+            // 
+            this.btnEquipementInfrastructure.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
+            this.btnEquipementInfrastructure.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEquipementInfrastructure.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEquipementInfrastructure.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEquipementInfrastructure.Location = new System.Drawing.Point(0, 84);
+            this.btnEquipementInfrastructure.Name = "btnEquipementInfrastructure";
+            this.btnEquipementInfrastructure.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnEquipementInfrastructure.Size = new System.Drawing.Size(213, 41);
+            this.btnEquipementInfrastructure.TabIndex = 3;
+            this.btnEquipementInfrastructure.Text = "Equipements / Infrastructures";
+            this.btnEquipementInfrastructure.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEquipementInfrastructure.UseVisualStyleBackColor = false;
+            this.btnEquipementInfrastructure.Click += new System.EventHandler(this.BtnEquipementInfrastructure_Click);
+            // 
+            // btnMatierePremiere
+            // 
+            this.btnMatierePremiere.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
+            this.btnMatierePremiere.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMatierePremiere.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMatierePremiere.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMatierePremiere.Location = new System.Drawing.Point(0, 43);
+            this.btnMatierePremiere.Name = "btnMatierePremiere";
+            this.btnMatierePremiere.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnMatierePremiere.Size = new System.Drawing.Size(213, 41);
+            this.btnMatierePremiere.TabIndex = 2;
+            this.btnMatierePremiere.Text = "Matière première";
+            this.btnMatierePremiere.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMatierePremiere.UseVisualStyleBackColor = false;
+            this.btnMatierePremiere.Click += new System.EventHandler(this.BtnMatierePremiere_Click);
             // 
             // pnlTresorerie
             // 
@@ -372,207 +575,6 @@
             this.btnNouvelleVente.UseVisualStyleBackColor = false;
             this.btnNouvelleVente.Click += new System.EventHandler(this.BtnNouvelleVente_Click);
             // 
-            // pnlDepenses
-            // 
-            this.pnlDepenses.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(88)))), ((int)(((byte)(77)))));
-            this.pnlDepenses.Controls.Add(this.btnJournalApprovisionnements);
-            this.pnlDepenses.Controls.Add(this.pictureBox3);
-            this.pnlDepenses.Controls.Add(this.btnJournalDepenses);
-            this.pnlDepenses.Controls.Add(this.BtnServiceFourniture);
-            this.pnlDepenses.Controls.Add(this.btnDepenses);
-            this.pnlDepenses.Controls.Add(this.btnEquipementInfrastructure);
-            this.pnlDepenses.Controls.Add(this.btnMatierePremiere);
-            this.pnlDepenses.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pnlDepenses.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.pnlDepenses.Location = new System.Drawing.Point(3, 290);
-            this.pnlDepenses.MaximumSize = new System.Drawing.Size(217, 255);
-            this.pnlDepenses.MinimumSize = new System.Drawing.Size(217, 40);
-            this.pnlDepenses.Name = "pnlDepenses";
-            this.pnlDepenses.Size = new System.Drawing.Size(217, 40);
-            this.pnlDepenses.TabIndex = 5;
-            // 
-            // btnJournalApprovisionnements
-            // 
-            this.btnJournalApprovisionnements.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.btnJournalApprovisionnements.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnJournalApprovisionnements.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnJournalApprovisionnements.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnJournalApprovisionnements.Location = new System.Drawing.Point(0, 207);
-            this.btnJournalApprovisionnements.Name = "btnJournalApprovisionnements";
-            this.btnJournalApprovisionnements.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnJournalApprovisionnements.Size = new System.Drawing.Size(214, 47);
-            this.btnJournalApprovisionnements.TabIndex = 3;
-            this.btnJournalApprovisionnements.Text = "Journal des approvisionnements";
-            this.btnJournalApprovisionnements.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnJournalApprovisionnements.UseVisualStyleBackColor = false;
-            this.btnJournalApprovisionnements.Click += new System.EventHandler(this.BtnJournalApprovisionnements_Click);
-            // 
-            // btnJournalDepenses
-            // 
-            this.btnJournalDepenses.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.btnJournalDepenses.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnJournalDepenses.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnJournalDepenses.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnJournalDepenses.Location = new System.Drawing.Point(0, 166);
-            this.btnJournalDepenses.Name = "btnJournalDepenses";
-            this.btnJournalDepenses.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnJournalDepenses.Size = new System.Drawing.Size(213, 41);
-            this.btnJournalDepenses.TabIndex = 5;
-            this.btnJournalDepenses.Text = "Journal des dépenses";
-            this.btnJournalDepenses.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnJournalDepenses.UseVisualStyleBackColor = false;
-            this.btnJournalDepenses.Click += new System.EventHandler(this.BtnJournalDepenses_Click);
-            // 
-            // BtnServiceFourniture
-            // 
-            this.BtnServiceFourniture.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.BtnServiceFourniture.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnServiceFourniture.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnServiceFourniture.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnServiceFourniture.Location = new System.Drawing.Point(0, 125);
-            this.BtnServiceFourniture.Name = "BtnServiceFourniture";
-            this.BtnServiceFourniture.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.BtnServiceFourniture.Size = new System.Drawing.Size(213, 41);
-            this.BtnServiceFourniture.TabIndex = 4;
-            this.BtnServiceFourniture.Text = "Service ou fourniture";
-            this.BtnServiceFourniture.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnServiceFourniture.UseVisualStyleBackColor = false;
-            this.BtnServiceFourniture.Click += new System.EventHandler(this.BtnServiceFourniture_Click);
-            // 
-            // btnEquipementInfrastructure
-            // 
-            this.btnEquipementInfrastructure.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.btnEquipementInfrastructure.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEquipementInfrastructure.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEquipementInfrastructure.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEquipementInfrastructure.Location = new System.Drawing.Point(0, 84);
-            this.btnEquipementInfrastructure.Name = "btnEquipementInfrastructure";
-            this.btnEquipementInfrastructure.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnEquipementInfrastructure.Size = new System.Drawing.Size(213, 41);
-            this.btnEquipementInfrastructure.TabIndex = 3;
-            this.btnEquipementInfrastructure.Text = "Equipements / Infrastructures";
-            this.btnEquipementInfrastructure.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEquipementInfrastructure.UseVisualStyleBackColor = false;
-            this.btnEquipementInfrastructure.Click += new System.EventHandler(this.BtnEquipementInfrastructure_Click);
-            // 
-            // btnMatierePremiere
-            // 
-            this.btnMatierePremiere.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.btnMatierePremiere.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMatierePremiere.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMatierePremiere.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMatierePremiere.Location = new System.Drawing.Point(0, 43);
-            this.btnMatierePremiere.Name = "btnMatierePremiere";
-            this.btnMatierePremiere.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnMatierePremiere.Size = new System.Drawing.Size(213, 41);
-            this.btnMatierePremiere.TabIndex = 2;
-            this.btnMatierePremiere.Text = "Matière première";
-            this.btnMatierePremiere.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMatierePremiere.UseVisualStyleBackColor = false;
-            this.btnMatierePremiere.Click += new System.EventHandler(this.BtnMatierePremiere_Click);
-            // 
-            // pnlStocks
-            // 
-            this.pnlStocks.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(88)))), ((int)(((byte)(77)))));
-            this.pnlStocks.Controls.Add(this.pictureBox5);
-            this.pnlStocks.Controls.Add(this.btnNouvelleProduction);
-            this.pnlStocks.Controls.Add(this.btnStockProduitsSemiFinis);
-            this.pnlStocks.Controls.Add(this.btnDonRecuMatierePrem);
-            this.pnlStocks.Controls.Add(this.btnSortieStock);
-            this.pnlStocks.Controls.Add(this.btnStockMatierePremiere);
-            this.pnlStocks.Controls.Add(this.btnStockProduitsFinis);
-            this.pnlStocks.Controls.Add(this.btnStock);
-            this.pnlStocks.Location = new System.Drawing.Point(3, 244);
-            this.pnlStocks.MaximumSize = new System.Drawing.Size(217, 307);
-            this.pnlStocks.MinimumSize = new System.Drawing.Size(217, 40);
-            this.pnlStocks.Name = "pnlStocks";
-            this.pnlStocks.Size = new System.Drawing.Size(217, 40);
-            this.pnlStocks.TabIndex = 8;
-            // 
-            // btnStockProduitsSemiFinis
-            // 
-            this.btnStockProduitsSemiFinis.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.btnStockProduitsSemiFinis.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStockProduitsSemiFinis.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStockProduitsSemiFinis.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnStockProduitsSemiFinis.Location = new System.Drawing.Point(1, 80);
-            this.btnStockProduitsSemiFinis.Name = "btnStockProduitsSemiFinis";
-            this.btnStockProduitsSemiFinis.Size = new System.Drawing.Size(214, 39);
-            this.btnStockProduitsSemiFinis.TabIndex = 7;
-            this.btnStockProduitsSemiFinis.Text = "Stocks produits sémi-finis";
-            this.btnStockProduitsSemiFinis.UseVisualStyleBackColor = false;
-            this.btnStockProduitsSemiFinis.Click += new System.EventHandler(this.BtnStockProduitsSemiFinis_Click);
-            // 
-            // btnNouvelleProduction
-            // 
-            this.btnNouvelleProduction.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.btnNouvelleProduction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNouvelleProduction.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNouvelleProduction.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNouvelleProduction.Location = new System.Drawing.Point(0, 254);
-            this.btnNouvelleProduction.Name = "btnNouvelleProduction";
-            this.btnNouvelleProduction.Size = new System.Drawing.Size(214, 55);
-            this.btnNouvelleProduction.TabIndex = 4;
-            this.btnNouvelleProduction.Text = "Inventaire et valorisation des stocks";
-            this.btnNouvelleProduction.UseVisualStyleBackColor = false;
-            // 
-            // btnDonRecuMatierePrem
-            // 
-            this.btnDonRecuMatierePrem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.btnDonRecuMatierePrem.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnDonRecuMatierePrem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDonRecuMatierePrem.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDonRecuMatierePrem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDonRecuMatierePrem.Location = new System.Drawing.Point(0, 209);
-            this.btnDonRecuMatierePrem.Name = "btnDonRecuMatierePrem";
-            this.btnDonRecuMatierePrem.Size = new System.Drawing.Size(214, 45);
-            this.btnDonRecuMatierePrem.TabIndex = 3;
-            this.btnDonRecuMatierePrem.Text = "Matières premières reçues en dons";
-            this.btnDonRecuMatierePrem.UseVisualStyleBackColor = false;
-            this.btnDonRecuMatierePrem.Click += new System.EventHandler(this.BtnDonRecuMatierePrem_Click);
-            // 
-            // btnSortieStock
-            // 
-            this.btnSortieStock.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.btnSortieStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSortieStock.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSortieStock.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSortieStock.Location = new System.Drawing.Point(0, 164);
-            this.btnSortieStock.Name = "btnSortieStock";
-            this.btnSortieStock.Size = new System.Drawing.Size(214, 45);
-            this.btnSortieStock.TabIndex = 3;
-            this.btnSortieStock.Text = "Sortie déchets matières premières";
-            this.btnSortieStock.UseVisualStyleBackColor = false;
-            this.btnSortieStock.Click += new System.EventHandler(this.BtnSortieStock_Click);
-            // 
-            // btnStockMatierePremiere
-            // 
-            this.btnStockMatierePremiere.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.btnStockMatierePremiere.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStockMatierePremiere.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStockMatierePremiere.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnStockMatierePremiere.Location = new System.Drawing.Point(0, 119);
-            this.btnStockMatierePremiere.Name = "btnStockMatierePremiere";
-            this.btnStockMatierePremiere.Size = new System.Drawing.Size(214, 45);
-            this.btnStockMatierePremiere.TabIndex = 3;
-            this.btnStockMatierePremiere.Text = "Stock matières premières";
-            this.btnStockMatierePremiere.UseVisualStyleBackColor = false;
-            this.btnStockMatierePremiere.Click += new System.EventHandler(this.BtnStockMatierePremiere_Click);
-            // 
-            // btnStockProduitsFinis
-            // 
-            this.btnStockProduitsFinis.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.btnStockProduitsFinis.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStockProduitsFinis.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStockProduitsFinis.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnStockProduitsFinis.Location = new System.Drawing.Point(1, 41);
-            this.btnStockProduitsFinis.Name = "btnStockProduitsFinis";
-            this.btnStockProduitsFinis.Size = new System.Drawing.Size(213, 39);
-            this.btnStockProduitsFinis.TabIndex = 2;
-            this.btnStockProduitsFinis.Text = "Stocks produits finis";
-            this.btnStockProduitsFinis.UseVisualStyleBackColor = false;
-            this.btnStockProduitsFinis.Click += new System.EventHandler(this.BtnStockProduitsFinis_Click);
-            // 
             // pnlFournisseurClient
             // 
             this.pnlFournisseurClient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(88)))), ((int)(((byte)(77)))));
@@ -619,6 +621,125 @@
             this.btnCreancesClients.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCreancesClients.UseVisualStyleBackColor = false;
             this.btnCreancesClients.Click += new System.EventHandler(this.BtnCreancesClients_Click);
+            // 
+            // pnlProduction
+            // 
+            this.pnlProduction.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(88)))), ((int)(((byte)(77)))));
+            this.pnlProduction.Controls.Add(this.pictureBox9);
+            this.pnlProduction.Controls.Add(this.button1);
+            this.pnlProduction.Controls.Add(this.button2);
+            this.pnlProduction.Controls.Add(this.button3);
+            this.pnlProduction.Controls.Add(this.button4);
+            this.pnlProduction.Controls.Add(this.button5);
+            this.pnlProduction.Controls.Add(this.button6);
+            this.pnlProduction.Controls.Add(this.button7);
+            this.pnlProduction.Controls.Add(this.btnProduction);
+            this.pnlProduction.Location = new System.Drawing.Point(3, 474);
+            this.pnlProduction.MaximumSize = new System.Drawing.Size(217, 130);
+            this.pnlProduction.MinimumSize = new System.Drawing.Size(217, 40);
+            this.pnlProduction.Name = "pnlProduction";
+            this.pnlProduction.Size = new System.Drawing.Size(217, 40);
+            this.pnlProduction.TabIndex = 8;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(1, 167);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(214, 39);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Stocks produits sémi-finis";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.BtnStockProduitsSemiFinis_Click);
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.Location = new System.Drawing.Point(0, 46);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(217, 39);
+            this.button2.TabIndex = 4;
+            this.button2.Text = "Nouvelle production";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.BtnNouvelleProduction_Click);
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
+            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button3.Location = new System.Drawing.Point(0, 84);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(217, 45);
+            this.button3.TabIndex = 3;
+            this.button3.Text = "Journal de production";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.BtnJournalProduction_Click);
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
+            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button4.Location = new System.Drawing.Point(0, 296);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(214, 45);
+            this.button4.TabIndex = 3;
+            this.button4.Text = "Matières premières reçues en dons";
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.BtnDonRecuMatierePrem_Click);
+            // 
+            // button5
+            // 
+            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button5.Location = new System.Drawing.Point(0, 251);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(214, 45);
+            this.button5.TabIndex = 3;
+            this.button5.Text = "Sortie déchets matières premières";
+            this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.BtnSortieStock_Click);
+            // 
+            // button6
+            // 
+            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button6.Location = new System.Drawing.Point(0, 206);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(214, 45);
+            this.button6.TabIndex = 3;
+            this.button6.Text = "Stock matières premières";
+            this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.BtnStockMatierePremiere_Click);
+            // 
+            // button7
+            // 
+            this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
+            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button7.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button7.Location = new System.Drawing.Point(1, 128);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(213, 39);
+            this.button7.TabIndex = 2;
+            this.button7.Text = "Stocks produits finis";
+            this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.BtnStockProduitsFinis_Click);
             // 
             // pnlEtatsFinanciers
             // 
@@ -769,124 +890,29 @@
             this.tmrEtatsFinanciers.Interval = 15;
             this.tmrEtatsFinanciers.Tick += new System.EventHandler(this.TmrEtatsFinanciers_Tick);
             // 
-            // pnlProduction
+            // dragControl1
             // 
-            this.pnlProduction.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(88)))), ((int)(((byte)(77)))));
-            this.pnlProduction.Controls.Add(this.pictureBox9);
-            this.pnlProduction.Controls.Add(this.button1);
-            this.pnlProduction.Controls.Add(this.button2);
-            this.pnlProduction.Controls.Add(this.button3);
-            this.pnlProduction.Controls.Add(this.button4);
-            this.pnlProduction.Controls.Add(this.button5);
-            this.pnlProduction.Controls.Add(this.button6);
-            this.pnlProduction.Controls.Add(this.button7);
-            this.pnlProduction.Controls.Add(this.btnProduction);
-            this.pnlProduction.Location = new System.Drawing.Point(3, 474);
-            this.pnlProduction.MaximumSize = new System.Drawing.Size(217, 130);
-            this.pnlProduction.MinimumSize = new System.Drawing.Size(217, 40);
-            this.pnlProduction.Name = "pnlProduction";
-            this.pnlProduction.Size = new System.Drawing.Size(217, 40);
-            this.pnlProduction.TabIndex = 8;
+            this.dragControl1.SelectControl = this.pnlTop;
             // 
-            // button1
+            // tmrProduction
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(1, 167);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(214, 39);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Stocks produits sémi-finis";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.BtnStockProduitsSemiFinis_Click);
+            this.tmrProduction.Interval = 15;
+            this.tmrProduction.Tick += new System.EventHandler(this.TmrProduction_Tick);
             // 
-            // button2
+            // btnImmobilisations
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(0, 46);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(217, 39);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Nouvelle production";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.BtnNouvelleProduction_Click);
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(0, 84);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(217, 45);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Journal de production";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.BtnJournalProduction_Click);
-            // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.Location = new System.Drawing.Point(0, 296);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(214, 45);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "Matières premières reçues en dons";
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.BtnDonRecuMatierePrem_Click);
-            // 
-            // button5
-            // 
-            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button5.Location = new System.Drawing.Point(0, 251);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(214, 45);
-            this.button5.TabIndex = 3;
-            this.button5.Text = "Sortie déchets matières premières";
-            this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.BtnSortieStock_Click);
-            // 
-            // button6
-            // 
-            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button6.Location = new System.Drawing.Point(0, 206);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(214, 45);
-            this.button6.TabIndex = 3;
-            this.button6.Text = "Stock matières premières";
-            this.button6.UseVisualStyleBackColor = false;
-            this.button6.Click += new System.EventHandler(this.BtnStockMatierePremiere_Click);
-            // 
-            // button7
-            // 
-            this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button7.Location = new System.Drawing.Point(1, 128);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(213, 39);
-            this.button7.TabIndex = 2;
-            this.button7.Text = "Stocks produits finis";
-            this.button7.UseVisualStyleBackColor = false;
-            this.button7.Click += new System.EventHandler(this.BtnStockProduitsFinis_Click);
+            this.btnImmobilisations.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(88)))), ((int)(((byte)(77)))));
+            this.btnImmobilisations.FlatAppearance.BorderSize = 0;
+            this.btnImmobilisations.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImmobilisations.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImmobilisations.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnImmobilisations.Location = new System.Drawing.Point(3, 612);
+            this.btnImmobilisations.Name = "btnImmobilisations";
+            this.btnImmobilisations.Size = new System.Drawing.Size(214, 48);
+            this.btnImmobilisations.TabIndex = 1;
+            this.btnImmobilisations.Text = "Registre des immobilisations";
+            this.btnImmobilisations.UseVisualStyleBackColor = false;
+            this.btnImmobilisations.Click += new System.EventHandler(this.BtnImmobilisations_Click);
             // 
             // pictureBox2
             // 
@@ -1147,15 +1173,6 @@
             this.btnUtilisateurs.UseVisualStyleBackColor = false;
             this.btnUtilisateurs.Click += new System.EventHandler(this.BtnUtilisateurs_Click);
             // 
-            // dragControl1
-            // 
-            this.dragControl1.SelectControl = this.pnlTop;
-            // 
-            // tmrProduction
-            // 
-            this.tmrProduction.Interval = 15;
-            this.tmrProduction.Tick += new System.EventHandler(this.TmrProduction_Tick);
-            // 
             // frmAccueil
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -1177,14 +1194,14 @@
             this.pnlTop.ResumeLayout(false);
             this.pnlTop.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
+            this.pnlStocks.ResumeLayout(false);
+            this.pnlDepenses.ResumeLayout(false);
             this.pnlTresorerie.ResumeLayout(false);
             this.pnlVentes.ResumeLayout(false);
-            this.pnlDepenses.ResumeLayout(false);
-            this.pnlStocks.ResumeLayout(false);
             this.pnlFournisseurClient.ResumeLayout(false);
+            this.pnlProduction.ResumeLayout(false);
             this.pnlEtatsFinanciers.ResumeLayout(false);
             this.pnlUtilisateurs.ResumeLayout(false);
-            this.pnlProduction.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
@@ -1276,5 +1293,6 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button btnProduction;
         private System.Windows.Forms.Timer tmrProduction;
+        private System.Windows.Forms.Button btnImmobilisations;
     }
 }
