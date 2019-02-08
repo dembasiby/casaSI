@@ -24,9 +24,11 @@ namespace CasaEcologieSysInfo
             grid.Columns["DateAcquisition"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             grid.Columns["DureeDeVie"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             grid.Columns["AmortissementMensuel"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            grid.Columns["AmortissementTrimestriel"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             grid.Columns["AmortissementAnnuel"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             grid.Columns["ValeurDOrigine"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             grid.Columns["AmortissementMensuel"].DefaultCellStyle.Format = "n0";
+            grid.Columns["AmortissementTrimestriel"].DefaultCellStyle.Format = "n0";
             grid.Columns["AmortissementAnnuel"].DefaultCellStyle.Format = "n0";
             grid.Columns["ValeurDOrigine"].DefaultCellStyle.Format = "n0";
         }
