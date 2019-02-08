@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.label4 = new System.Windows.Forms.Label();
-            this.dgvImmobilisations = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvImmobilisations)).BeginInit();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.ResEquipementsInfrastructureBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.ResEquipementsInfrastructureBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label4
@@ -48,63 +48,34 @@
             this.label4.Text = "Registre des immobilisations";
             this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // dgvImmobilisations
+            // reportViewer1
             // 
-            this.dgvImmobilisations.AllowUserToAddRows = false;
-            this.dgvImmobilisations.AllowUserToDeleteRows = false;
-            this.dgvImmobilisations.AllowUserToOrderColumns = true;
-            this.dgvImmobilisations.AllowUserToResizeColumns = false;
-            this.dgvImmobilisations.AllowUserToResizeRows = false;
-            this.dgvImmobilisations.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.dgvImmobilisations.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvImmobilisations.Location = new System.Drawing.Point(20, 110);
-            this.dgvImmobilisations.Name = "dgvImmobilisations";
-            this.dgvImmobilisations.RowHeadersVisible = false;
-            this.dgvImmobilisations.Size = new System.Drawing.Size(943, 483);
-            this.dgvImmobilisations.TabIndex = 32;
+            reportDataSource1.Name = "Immobilisations";
+            reportDataSource1.Value = this.ResEquipementsInfrastructureBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "CasaEcologieSysInfo.RptRegistreImmobilisations.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(24, 79);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.ServerReport.BearerToken = null;
+            this.reportViewer1.Size = new System.Drawing.Size(939, 501);
+            this.reportViewer1.TabIndex = 34;
             // 
-            // button1
+            // ResEquipementsInfrastructureBindingSource
             // 
-            this.button1.Location = new System.Drawing.Point(35, 67);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 33;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(222, 67);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 33;
-            this.button2.Text = "button1";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(888, 67);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 33;
-            this.button3.Text = "Imprimer";
-            this.button3.UseVisualStyleBackColor = true;
+            this.ResEquipementsInfrastructureBindingSource.DataSource = typeof(CasaEcologieSysInfo.ResEquipementsInfrastructure);
             // 
             // UC_RegistreImmobilisations
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.dgvImmobilisations);
+            this.Controls.Add(this.reportViewer1);
             this.Controls.Add(this.label4);
             this.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UC_RegistreImmobilisations";
             this.Size = new System.Drawing.Size(983, 596);
             this.Load += new System.EventHandler(this.UC_RegistreImmobilisations_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvImmobilisations)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ResEquipementsInfrastructureBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -113,9 +84,7 @@
         #endregion
 
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DataGridView dgvImmobilisations;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
+        private System.Windows.Forms.BindingSource ResEquipementsInfrastructureBindingSource;
     }
 }

@@ -21121,7 +21121,47 @@ SELECT CodeCompte, NomCompte, SoldeCompte FROM ResComptesTresorerie WHERE (CodeC
     public partial class ResEquipementsInfrastructuresTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
-        
+        /*
+        <DirectedGraph xmlns="http://schemas.microsoft.com/vs/2009/dgml">
+  <Nodes>
+    <Node Id="(@1 @2)" Visibility="Hidden" />
+    <Node Id="(@3 Namespace=CasaEcologieSysInfo.CasaDBDataSetAllTableAdapters Type=ResEquipementsInfrastructuresTableAdapter)" Category="CodeSchema_Class" CodeSchemaProperty_IsPublic="True" CommonLabel="ResEquipementsInfrastructuresTableAdapter" Icon="Microsoft.VisualStudio.Class.Public" IsDragSource="True" Label="ResEquipementsInfrastructuresTableAdapter" SourceLocation="(Assembly=&quot;file:///C:/Users/hp pro/source/repos/CasaEcologieSysInfo/CasaEcologieSysInfo/CasaDBDataSetAll.Designer.cs&quot; StartLineNumber=21120 StartCharacterOffset=25 EndLineNumber=21120 EndCharacterOffset=66)" />
+  </Nodes>
+  <Links>
+    <Link Source="(@1 @2)" Target="(@3 Namespace=CasaEcologieSysInfo.CasaDBDataSetAllTableAdapters Type=ResEquipementsInfrastructuresTableAdapter)" Category="Contains" />
+  </Links>
+  <Categories>
+    <Category Id="CodeSchema_Class" Label="Classe" BasedOn="CodeSchema_Type" Icon="CodeSchema_Class" />
+    <Category Id="CodeSchema_Type" Label="Type" Icon="CodeSchema_Class" />
+    <Category Id="Contains" Label="Contient" Description="Si la source de la liaison contient ou non l'objet cible" IsContainment="True" />
+  </Categories>
+  <Properties>
+    <Property Id="CodeSchemaProperty_IsPublic" Label="Est public" Description="Indicateur qui spécifie que la portée est publique" DataType="System.Boolean" />
+    <Property Id="CommonLabel" DataType="System.String" />
+    <Property Id="Icon" Label="Icône" DataType="System.String" />
+    <Property Id="IsContainment" DataType="System.Boolean" />
+    <Property Id="IsDragSource" Label="IsDragSource" Description="IsDragSource" DataType="System.Boolean" />
+    <Property Id="Label" Label="Étiquette" Description="Étiquette affichable d'un objet pouvant être annoté" DataType="System.String" />
+    <Property Id="SourceLocation" Label="Numéro de la ligne de début" DataType="Microsoft.VisualStudio.GraphModel.CodeSchema.SourceLocation" />
+    <Property Id="Visibility" Label="Visibilité" Description="Définit si un nœud du graphique est visible ou non" DataType="System.Windows.Visibility" />
+  </Properties>
+  <QualifiedNames>
+    <Name Id="Assembly" Label="Assembly" ValueType="Uri" />
+    <Name Id="File" Label="Fichier" ValueType="Uri" />
+    <Name Id="Namespace" Label="Espace de noms" ValueType="System.String" />
+    <Name Id="Type" Label="Type" ValueType="System.Object" />
+  </QualifiedNames>
+  <IdentifierAliases>
+    <Alias n="1" Uri="Assembly=$(VsSolutionUri)/CasaEcologieSysInfo/CasaEcologieSysInfo.csproj" />
+    <Alias n="2" Uri="File=$(VsSolutionUri)/CasaEcologieSysInfo/CasaDBDataSetAll.Designer.cs" />
+    <Alias n="3" Uri="Assembly=$(9a66a3c2-33b4-4b48-90b1-d3211be1acb4.OutputPathUri)" />
+  </IdentifierAliases>
+  <Paths>
+    <Path Id="9a66a3c2-33b4-4b48-90b1-d3211be1acb4.OutputPathUri" Value="file:///C:/Users/hp pro/source/repos/CasaEcologieSysInfo/CasaEcologieSysInfo/bin/Debug/CasaEcologieSysInfo.exe" />
+    <Path Id="VsSolutionUri" Value="file:///C:/Users/hp pro/source/repos/CasaEcologieSysInfo" />
+  </Paths>
+</DirectedGraph>
+            */
         private global::System.Data.SqlClient.SqlConnection _connection;
         
         private global::System.Data.SqlClient.SqlTransaction _transaction;

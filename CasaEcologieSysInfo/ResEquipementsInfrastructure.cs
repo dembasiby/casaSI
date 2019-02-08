@@ -23,9 +23,11 @@ namespace CasaEcologieSysInfo
     
         public int CodeEquipementInfrastructure { get; set; }
         public string Nom { get; set; }
-        public int AmortissementCumule { get; set; }
         public System.DateTime DateAcquisition { get; set; }
         public int DureeDeVie { get; set; }
+        public int Quantite { get; set; }
+        public bool MaterielDeProduction { get; set; }
+        public decimal Montant { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EveReceptionEquipementsInfrastructure> EveReceptionEquipementsInfrastructures { get; set; }

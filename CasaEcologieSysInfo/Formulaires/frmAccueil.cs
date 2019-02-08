@@ -16,6 +16,7 @@ namespace CasaEcologieSysInfo
 
         public frmAccueil()
         {
+            SqlServerTypes.Utilities.LoadNativeAssemblies(AppDomain.CurrentDomain.BaseDirectory);
             InitializeComponent();
             UC_TableauDeBord tb = new UC_TableauDeBord();
             AddControlsToPanel(tb);

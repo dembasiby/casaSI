@@ -31,13 +31,19 @@ namespace CasaEcologieSysInfo.Pages
                                        inE.DateAcquisition,
                                        inE.DureeDeVie,
                                        AmortissementMensuel = inE.Montant / (inE.DureeDeVie * 12),
+                                       AmortissementTrimestriel = inE.Montant / (inE.DureeDeVie * 4),
                                        AmortissementAnnuel = inE.Montant / inE.DureeDeVie
                                    }).ToList();
-
+            /*
             DataTable dt = Conversion.ConvertirEnTableDeDonnees(immobilisations);
             dgvImmobilisations.DataSource = dt;
-            dt.Rows.Add("Total", 0, 0, DateTime.Today, 0, Conversion.CalculerTotal(dgvImmobilisations, "AmortissementMensuel"), Conversion.CalculerTotal(dgvImmobilisations, "AmortissementAnnuel"));
+            dt.Rows.Add("Total", 0, 0, DateTime.Today, 0, Conversion.CalculerTotal(dgvImmobilisations, "AmortissementMensuel"), Conversion.CalculerTotal(dgvImmobilisations, "AmortissementTrimestriel"), Conversion.CalculerTotal(dgvImmobilisations, "AmortissementAnnuel"));
             Formattage.RegistreImmobilisations(dgvImmobilisations);
+            */
+            ResEquipementsInfrastructureBindingSource.DataSource = db.ResEquipementsInfrastructures.ToList();
+            reportViewer1.RefreshReport();
+
+        
 
         }
     }
