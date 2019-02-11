@@ -41,7 +41,9 @@ namespace CasaEcologieSysInfo.Pages
                              pe.Date,
                              Description = "Present",
                              Remuneration = pe.RemunerationJournaliere
-                         }).ToList();
+                         })
+                         .OrderBy(d => d.Date)
+                         .ToList();
 
             DataTable dt = Conversion.ConvertirEnTableDeDonnees(liste);
             dgvTempsEtRemun.DataSource = dt;

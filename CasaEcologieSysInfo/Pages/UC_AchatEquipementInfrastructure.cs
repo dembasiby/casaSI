@@ -55,22 +55,30 @@ namespace CasaEcologieSysInfo
         }
 
         private void BtnEqInfrExistant_Click(object sender, EventArgs e)
-        {          
-            ResEquipementsInfrastructure einfr = new ResEquipementsInfrastructure()
-            {
-                Nom = txtNomEqInfr2.Text,
-                DateAcquisition = DateTime.Parse(dtpAchatEqInfr2.Text),
-                DureeDeVie = int.Parse(txtDuree2.Text),
-                AmortissementCumule = int.Parse(txtAmort2.Text),
-            };
+        {
+            bool checkboxValue = cbxUtilisePourProduction.Checked;
 
-            db.ResEquipementsInfrastructures.Add(einfr);
-            db.SaveChanges();
-            txtNomEqInfr2.Text = "";
-            txtDuree2.Text = "";
-            txtMontant2.Text = "";
-            txtAmort2.Text = "";
-            MessageBox.Show("Un équipement ou infrastructure existant a été ajouté avec succès");
+
+            if (Validation.VerifierChampsMontant(txtMontant2.Text) && Validation.VerifierChampsMontant(txtQuantiteExistant.Text))
+            {
+                ResEquipementsInfrastructure einfr = new ResEquipementsInfrastructure()
+                {
+                    Nom = txtNomEqInfr2.Text,
+                    DateAcquisition = DateTime.Parse(dtpAchatEqInfr2.Text),
+                    DureeDeVie = int.Parse(txtDuree2.Text),
+                    Quantite = int.Parse(txtQuantiteExistant.Text),
+                    MaterielDeProduction = checkboxValue,
+                    Montant = int.Parse(txtMontant2.Text)
+                };
+
+                db.ResEquipementsInfrastructures.Add(einfr);
+                db.SaveChanges();
+                txtNomEqInfr2.Text = "";
+                txtDuree2.Text = "";
+                txtMontant2.Text = "";
+                txtQuantiteExistant.Text = "";
+                MessageBox.Show("Un équipement ou infrastructure existant a été ajouté avec succès"); 
+            }
             
         }
 
@@ -81,59 +89,59 @@ namespace CasaEcologieSysInfo
             AgeEmploye tresoriere = db.AgeEmployes.FirstOrDefault(em=> em.PrenomNom == cbxTresoriere.Text);
             ResComptesTresorerie cpte = db.ResComptesTresoreries.FirstOrDefault(c => c.NomCompte == cbxComptePaiement.Text);
 
-            ResEquipementsInfrastructure einfr = new ResEquipementsInfrastructure()
+            if (Validation.VerifierChampsMontant(txtMontant1.Text) && Validation.VerifierChampsMontant(txtQuantite.Text))
             {
-                Nom = txtNomEqInfr1.Text,
-                DateAcquisition = DateTime.Parse(dtpAchatEqInfr1.Text),
-                DureeDeVie = int.Parse(txtDuree1.Text),
-                AmortissementCumule = int.Parse(txtAmort1.Text),
-            };
-
-            db.ResEquipementsInfrastructures.Add(einfr);
-            db.SaveChanges();
-
-            EveReceptionEquipementsInfrastructure reinfr = new EveReceptionEquipementsInfrastructure()
-            {
-                CodeEquipementInfrastructure = einfr.CodeEquipementInfrastructure,
-                DateReception = einfr.DateAcquisition,
-                Quantite = int.Parse(txtQuantite.Text),
-                CodeAutreFournisseur = afourIm.CodeAutreFournisseur,
-                CodeEmploye = emp.CodeEmploye,
-                Montant = int.Parse(txtMontant1.Text),
-
-            };
-
-            db.EveReceptionEquipementsInfrastructures.Add(reinfr);
-            db.SaveChanges();
-
-            // Décaissement effectué lors de l'acquisition de l'équipement ou de l'infrastructure
-            // Il s'agit ici du montant au moment d'enregistrer la transaction. Souvent, il s'agit du 
-            // premier accompte.
-
-            if (int.Parse(txtMontantPaye.Text) > 0)
-            {
-                EveDecaissement decaiss = new EveDecaissement
+                ResEquipementsInfrastructure einfr = new ResEquipementsInfrastructure()
                 {
-                    CodeReceptionEquipementInfrastructure = reinfr.CodeReceptionEquipementInfrastructure,
-                    CodeAutreFournisseur = afourIm.CodeAutreFournisseur,
-                    Description = "Acquisition de " + einfr.Nom,
-                    DateDecaissement = reinfr.DateReception,
-                    CodeEmploye = tresoriere.CodeEmploye,
-                    CodeCompte = cpte.CodeCompte,
-                    Montant = int.Parse(txtMontantPaye.Text),
+                    Nom = txtNomEqInfr1.Text,
+                    DateAcquisition = DateTime.Parse(dtpAchatEqInfr1.Text),
+                    DureeDeVie = int.Parse(txtDuree1.Text),
+                    MaterielDeProduction = cbxImmobilisationLieeAProduction.Checked,
+                    Montant = int.Parse(txtMontant1.Text),
+                    Quantite = int.Parse(txtQuantite.Text)
                 };
-                db.EveDecaissements.Add(decaiss);
+
+                db.ResEquipementsInfrastructures.Add(einfr);
                 db.SaveChanges();
+
+                EveReceptionEquipementsInfrastructure reinfr = new EveReceptionEquipementsInfrastructure()
+                {
+                    CodeEquipementInfrastructure = einfr.CodeEquipementInfrastructure,
+                    CodeAutreFournisseur = afourIm.CodeAutreFournisseur,
+                    CodeEmploye = emp.CodeEmploye,
+                };
+
+                db.EveReceptionEquipementsInfrastructures.Add(reinfr);
+                db.SaveChanges();
+
+                // Décaissement effectué lors de l'acquisition de l'équipement ou de l'infrastructure
+                // Il s'agit ici du montant au moment d'enregistrer la transaction. Souvent, il s'agit du 
+                // premier accompte.
+
+                if (int.Parse(txtMontantPaye.Text) > 0)
+                {
+                    EveDecaissement decaiss = new EveDecaissement
+                    {
+                        CodeReceptionEquipementInfrastructure = reinfr.CodeReceptionEquipementInfrastructure,
+                        CodeAutreFournisseur = afourIm.CodeAutreFournisseur,
+                        Description = "Acquisition de " + einfr.Nom,
+                        DateDecaissement = einfr.DateAcquisition,
+                        CodeEmploye = tresoriere.CodeEmploye,
+                        CodeCompte = cpte.CodeCompte,
+                        Montant = int.Parse(txtMontantPaye.Text),
+                    };
+                    db.EveDecaissements.Add(decaiss);
+                    db.SaveChanges();
+                }
+
+                MessageBox.Show("Le nouvel achat ou acquisition d'équipement ou d'infrastructure a été enregistré avec succès!");
+                txtNomEqInfr1.Text = "";
+                txtDuree1.Text = "";
+                txtMontant1.Text = "";
+                txtQuantite.Text = "1";
+                txtMontantPaye.Text = "";
             }
 
-            MessageBox.Show("Le nouvel achat ou acquisition d'équipement ou d'infrastructure a été enregistré avec succès!");
-            txtNomEqInfr1.Text = "";
-            txtDuree1.Text = "";
-            txtMontant1.Text = "";
-            txtAmort1.Text = "";
-            txtQuantite.Text = "1";
-            txtMontantPaye.Text = "";
         }
-        
     }
 }

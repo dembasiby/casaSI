@@ -45,7 +45,7 @@ namespace CasaEcologieSysInfo
 
                       select new
                       {
-                          Date = asf.Date,
+                          asf.Date,
                           Description = sf.NomServiceFourniture,
                           Matiere_Premiere = 0m,
                           Services_et_fournitures = asf.Montant,
@@ -58,11 +58,11 @@ namespace CasaEcologieSysInfo
 
                         select new
                         {
-                            Date = rei.DateReception,
+                            Date = ie.DateAcquisition,
                             Description = ie.Nom,
                             Matiere_Premiere = 0m,
                             Services_et_fournitures = 0m,
-                            Infrastructures_et_equipements = rei.Montant,
+                            Infrastructures_et_equipements = ie.Montant,
                             Personnel = 0m
                         });
 
@@ -72,10 +72,10 @@ namespace CasaEcologieSysInfo
 
             DataTable dt = Conversion.ConvertirEnTableDeDonnees(resultat);
             adgvJournalDepenses.DataSource = dt;
-            FormatColumn("Matiere_Premiere", "c0");
-            FormatColumn("Services_et_fournitures", "c0");
-            FormatColumn("Infrastructures_et_equipements", "c0");
-            FormatColumn("Personnel", "c0");
+            FormatColumn("Matiere_Premiere", "n0");
+            FormatColumn("Services_et_fournitures", "n0");
+            FormatColumn("Infrastructures_et_equipements", "n0");
+            FormatColumn("Personnel", "n0");
         }
 
         private void AdgvDepensesMatPrem_FilterStringChanged(object sender, EventArgs e)

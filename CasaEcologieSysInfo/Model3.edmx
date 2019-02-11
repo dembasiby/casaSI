@@ -125,8 +125,6 @@
           <Property Name="CodeEmploye" Type="int" Nullable="false" />
           <Property Name="CodeUtilisationDesRessources" Type="int" />
           <Property Name="Date" Type="date" Nullable="false" />
-          <Property Name="Arrivee" Type="time" Precision="7" />
-          <Property Name="Depart" Type="time" Precision="7" />
           <Property Name="RemunerationJournaliere" Type="int" />
         </EntityType>
         <EntityType Name="EveProductionProduitsSemiFinis">
@@ -173,11 +171,8 @@
           </Key>
           <Property Name="CodeReceptionEquipementInfrastructure" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CodeEquipementInfrastructure" Type="int" Nullable="false" />
-          <Property Name="DateReception" Type="date" Nullable="false" />
           <Property Name="CodeEmploye" Type="int" Nullable="false" />
           <Property Name="CodeAutreFournisseur" Type="int" Nullable="false" />
-          <Property Name="Quantite" Type="int" Nullable="false" />
-          <Property Name="Montant" Type="money" Nullable="false" />
         </EntityType>
         <EntityType Name="EveReceptionMatieresPremieres">
           <Key>
@@ -271,9 +266,11 @@
           </Key>
           <Property Name="CodeEquipementInfrastructure" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nom" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="AmortissementCumule" Type="int" Nullable="false" />
           <Property Name="DateAcquisition" Type="date" Nullable="false" />
           <Property Name="DureeDeVie" Type="int" Nullable="false" />
+          <Property Name="Quantite" Type="int" Nullable="false" />
+          <Property Name="MaterielDeProduction" Type="bit" Nullable="false" />
+          <Property Name="Montant" Type="money" Nullable="false" />
         </EntityType>
         <EntityType Name="ResServicesFournitures">
           <Key>
@@ -1410,8 +1407,6 @@
           <Property Name="CodeUtilisationDesRessources" Type="Int32" />
           <NavigationProperty Name="AgeEmploye" Relationship="Self.FK_EvePresenceEmployes_AgeEmployes" FromRole="EvePresenceEmployes" ToRole="AgeEmployes" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Arrivee" Type="Time" Precision="7" />
-          <Property Name="Depart" Type="Time" Precision="7" />
           <Property Name="RemunerationJournaliere" Type="Int32" />
         </EntityType>
         <EntityType Name="EveProductionProduitsSemiFini">
@@ -1455,15 +1450,12 @@
           </Key>
           <Property Name="CodeReceptionEquipementInfrastructure" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CodeEquipementInfrastructure" Type="Int32" Nullable="false" />
-          <Property Name="DateReception" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="CodeEmploye" Type="Int32" Nullable="false" />
           <Property Name="CodeAutreFournisseur" Type="Int32" Nullable="false" />
-          <Property Name="Quantite" Type="Int32" Nullable="false" />
           <NavigationProperty Name="AgeAutreFournisseur" Relationship="Self.FK_EveReceptionEquipementsInfrastructures_AgeAutreFournisseurs" FromRole="EveReceptionEquipementsInfrastructures" ToRole="AgeAutreFournisseurs" />
           <NavigationProperty Name="AgeEmploye" Relationship="Self.FK_EveReceptionEquipementsInfrastructures_AgeEmployes" FromRole="EveReceptionEquipementsInfrastructures" ToRole="AgeEmployes" />
           <NavigationProperty Name="EveDecaissements" Relationship="Self.FK_EveDecaissements_EveReceptionEquipementsInfrastructures" FromRole="EveReceptionEquipementsInfrastructures" ToRole="EveDecaissements" />
           <NavigationProperty Name="ResEquipementsInfrastructure" Relationship="Self.FK_EveReceptionEquipementsInfrastructures_ResEquipementsInfrastructures" FromRole="EveReceptionEquipementsInfrastructures" ToRole="ResEquipementsInfrastructures" />
-          <Property Name="Montant" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
         </EntityType>
         <EntityType Name="EveReceptionMatieresPremiere">
           <Key>
@@ -1559,11 +1551,13 @@
           </Key>
           <Property Name="CodeEquipementInfrastructure" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="AmortissementCumule" Type="Int32" Nullable="false" />
           <Property Name="DateAcquisition" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="DureeDeVie" Type="Int32" Nullable="false" />
           <NavigationProperty Name="EveReceptionEquipementsInfrastructures" Relationship="Self.FK_EveReceptionEquipementsInfrastructures_ResEquipementsInfrastructures" FromRole="ResEquipementsInfrastructures" ToRole="EveReceptionEquipementsInfrastructures" />
           <NavigationProperty Name="EveUtilisationRessources" Relationship="Self.EveUtilisationEquipementInfrastructures" FromRole="ResEquipementsInfrastructures" ToRole="EveUtilisationRessources" />
+          <Property Name="Quantite" Type="Int32" Nullable="false" />
+          <Property Name="MaterielDeProduction" Type="Boolean" Nullable="false" />
+          <Property Name="Montant" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
         </EntityType>
         <EntityType Name="ResServicesFourniture">
           <Key>
@@ -2106,7 +2100,7 @@
           <End Role="EveUtilisationRessources" Type="Self.EveUtilisationRessource" Multiplicity="*" />
           <End Role="ResEquipementsInfrastructures" Type="Self.ResEquipementsInfrastructure" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="CasaDBEntities2" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="CasaDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AgeAutreFournisseurs" EntityType="Self.AgeAutreFournisseur" />
           <EntitySet Name="AgeClients" EntityType="Self.AgeClient" />
           <EntitySet Name="AgeEmployes" EntityType="Self.AgeEmploye" />
@@ -2627,7 +2621,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="CasaDBModelStoreContainer" CdmEntityContainer="CasaDBEntities2">
+        <EntityContainerMapping StorageEntityContainer="CasaDBModelStoreContainer" CdmEntityContainer="CasaDBEntities">
           <EntitySetMapping Name="AgeAutreFournisseurs">
             <EntityTypeMapping TypeName="CasaDBModel.AgeAutreFournisseur">
               <MappingFragment StoreEntitySet="AgeAutreFournisseurs">
@@ -2733,8 +2727,6 @@
             <EntityTypeMapping TypeName="CasaDBModel.EvePresenceEmploye">
               <MappingFragment StoreEntitySet="EvePresenceEmployes">
                 <ScalarProperty Name="RemunerationJournaliere" ColumnName="RemunerationJournaliere" />
-                <ScalarProperty Name="Depart" ColumnName="Depart" />
-                <ScalarProperty Name="Arrivee" ColumnName="Arrivee" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="CodePresence" ColumnName="CodePresence" />
                 <ScalarProperty Name="CodeEmploye" ColumnName="CodeEmploye" />
@@ -2773,13 +2765,10 @@
           <EntitySetMapping Name="EveReceptionEquipementsInfrastructures">
             <EntityTypeMapping TypeName="CasaDBModel.EveReceptionEquipementsInfrastructure">
               <MappingFragment StoreEntitySet="EveReceptionEquipementsInfrastructures">
-                <ScalarProperty Name="Montant" ColumnName="Montant" />
                 <ScalarProperty Name="CodeReceptionEquipementInfrastructure" ColumnName="CodeReceptionEquipementInfrastructure" />
                 <ScalarProperty Name="CodeEquipementInfrastructure" ColumnName="CodeEquipementInfrastructure" />
-                <ScalarProperty Name="DateReception" ColumnName="DateReception" />
                 <ScalarProperty Name="CodeEmploye" ColumnName="CodeEmploye" />
                 <ScalarProperty Name="CodeAutreFournisseur" ColumnName="CodeAutreFournisseur" />
-                <ScalarProperty Name="Quantite" ColumnName="Quantite" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2856,9 +2845,11 @@
           <EntitySetMapping Name="ResEquipementsInfrastructures">
             <EntityTypeMapping TypeName="CasaDBModel.ResEquipementsInfrastructure">
               <MappingFragment StoreEntitySet="ResEquipementsInfrastructures">
+                <ScalarProperty Name="Montant" ColumnName="Montant" />
+                <ScalarProperty Name="MaterielDeProduction" ColumnName="MaterielDeProduction" />
+                <ScalarProperty Name="Quantite" ColumnName="Quantite" />
                 <ScalarProperty Name="CodeEquipementInfrastructure" ColumnName="CodeEquipementInfrastructure" />
                 <ScalarProperty Name="Nom" ColumnName="Nom" />
-                <ScalarProperty Name="AmortissementCumule" ColumnName="AmortissementCumule" />
                 <ScalarProperty Name="DateAcquisition" ColumnName="DateAcquisition" />
                 <ScalarProperty Name="DureeDeVie" ColumnName="DureeDeVie" />
               </MappingFragment>

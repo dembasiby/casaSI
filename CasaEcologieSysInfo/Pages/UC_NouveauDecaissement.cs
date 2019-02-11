@@ -55,7 +55,7 @@ namespace CasaEcologieSysInfo
                     select new
                     {
                         NomFournisseur = af.NomAutreFournisseur,
-                        Solde = (decimal?)af.EveReceptionEquipementsInfrastructures.Select(d => d.Montant).Sum() ?? 0m + (decimal?)af.SoldeInitialDetteFournisseur ?? 0m
+                        Solde = (decimal?)af.EveReceptionEquipementsInfrastructures.Select(d => d.ResEquipementsInfrastructure.Montant).Sum() ?? 0m + (decimal?)af.SoldeInitialDetteFournisseur ?? 0m
                         - (decimal?)af.EveDecaissements.Select(d => d.Montant).Sum() ?? 0m
                     })
                     .OrderByDescending(s => s.Solde)
@@ -70,7 +70,7 @@ namespace CasaEcologieSysInfo
                     where af.NomAutreFournisseur == nomFournisseur
                     select new
                     {
-                        Solde = (decimal?)af.EveReceptionEquipementsInfrastructures.Select(d => d.Montant).Sum() ?? 0m + (decimal?)af.SoldeInitialDetteFournisseur ?? 0m
+                        Solde = (decimal?)af.EveReceptionEquipementsInfrastructures.Select(d => d.ResEquipementsInfrastructure.Montant).Sum() ?? 0m + (decimal?)af.SoldeInitialDetteFournisseur ?? 0m
                         - (decimal?)af.EveDecaissements.Select(d => d.Montant).Sum() ?? 0m
                     })
                     .Select(f => f.Solde)

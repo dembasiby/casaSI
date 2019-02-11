@@ -18,8 +18,6 @@ namespace CasaEcologieSysInfo
         public int CodeEmploye { get; set; }
         public Nullable<int> CodeUtilisationDesRessources { get; set; }
         public System.DateTime Date { get; set; }
-        public Nullable<System.TimeSpan> Arrivee { get; set; }
-        public Nullable<System.TimeSpan> Depart { get; set; }
         public Nullable<int> RemunerationJournaliere { get; set; }
     
         public virtual AgeEmploye AgeEmploye { get; set; }

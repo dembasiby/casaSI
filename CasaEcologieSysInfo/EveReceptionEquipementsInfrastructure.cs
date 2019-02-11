@@ -22,11 +22,8 @@ namespace CasaEcologieSysInfo
     
         public int CodeReceptionEquipementInfrastructure { get; set; }
         public int CodeEquipementInfrastructure { get; set; }
-        public System.DateTime DateReception { get; set; }
         public int CodeEmploye { get; set; }
         public int CodeAutreFournisseur { get; set; }
-        public int Quantite { get; set; }
-        public decimal Montant { get; set; }
     
         public virtual AgeAutreFournisseur AgeAutreFournisseur { get; set; }
         public virtual AgeEmploye AgeEmploye { get; set; }

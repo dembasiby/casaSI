@@ -30,11 +30,15 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            this.ResEquipementsInfrastructureBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label4 = new System.Windows.Forms.Label();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.ResEquipementsInfrastructureBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ResEquipementsInfrastructureBindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // ResEquipementsInfrastructureBindingSource
+            // 
+            this.ResEquipementsInfrastructureBindingSource.DataSource = typeof(CasaEcologieSysInfo.ResEquipementsInfrastructure);
             // 
             // label4
             // 
@@ -53,16 +57,12 @@
             reportDataSource1.Name = "Immobilisations";
             reportDataSource1.Value = this.ResEquipementsInfrastructureBindingSource;
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "CasaEcologieSysInfo.RptRegistreImmobilisations.rdlc";
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "CasaEcologieSysInfo.Etats.RptRegistreImmobilisations.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(24, 79);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
             this.reportViewer1.Size = new System.Drawing.Size(939, 501);
             this.reportViewer1.TabIndex = 34;
-            // 
-            // ResEquipementsInfrastructureBindingSource
-            // 
-            this.ResEquipementsInfrastructureBindingSource.DataSource = typeof(CasaEcologieSysInfo.ResEquipementsInfrastructure);
             // 
             // UC_RegistreImmobilisations
             // 

@@ -74,12 +74,17 @@
     <Reference Include="AdvancedDataGridView, Version=0.1.0.10, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ADGV.0.1.0.10\lib\net40\AdvancedDataGridView.dll</HintPath>
     </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.900.148\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
     </Reference>
@@ -130,6 +135,12 @@
   <ItemGroup>
     <Compile Include="Classes\CompteDeResultat.cs" />
     <Compile Include="Classes\Formattage.cs" />
+    <Compile Include="Etats\crptCompteDeResultat.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crptCompteDeResultat.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Formulaires\frmAccueil.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -487,6 +498,10 @@
     <Compile Include="VentesMensuelles_Result.cs">
       <DependentUpon>Model3.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Etats\crptCompteDeResultat.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crptCompteDeResultat.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formulaires\frmAccueil.resx">
       <DependentUpon>frmAccueil.cs</DependentUpon>
     </EmbeddedResource>
@@ -587,7 +602,7 @@
     <EmbeddedResource Include="Pages\UC_NouveauDecaissement.resx">
       <DependentUpon>UC_NouveauDecaissement.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RptRegistreImmobilisations.rdlc" />
+    <EmbeddedResource Include="Etats\RptRegistreImmobilisations.rdlc" />
     <None Include="CasaDBDataSet.xsc">
       <DependentUpon>CasaDBDataSet.xsd</DependentUpon>
     </None>
@@ -816,6 +831,7 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">

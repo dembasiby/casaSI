@@ -47,10 +47,10 @@ namespace CasaEcologieSysInfo.Pages
                                   {
                                       NomFournisseur = af.NomAutreFournisseur,
                                       DetteInitial = (decimal?)af.SoldeInitialDetteFournisseur ?? 0m,
-                                      MontantAchat = (decimal?)af.EveReceptionEquipementsInfrastructures.Select(d => d.Montant).Sum() ?? 0m,
+                                      MontantAchat = (decimal?)af.EveReceptionEquipementsInfrastructures.Select(d => d.ResEquipementsInfrastructure.Montant).Sum() ?? 0m,
                                       MontantPaye = (decimal?)af.EveDecaissements.Select(d => d.Montant).Sum() ?? 0m,
                                       Solde = (decimal?)af.SoldeInitialDetteFournisseur ?? 0m + (decimal?)af.EveReceptionEquipementsInfrastructures
-                                      .Select(d => d.Montant).Sum() ?? 0m
+                                      .Select(d => d.ResEquipementsInfrastructure.Montant).Sum() ?? 0m
                                       - (decimal?)af.EveDecaissements.Select(d => d.Montant).Sum() ?? 0m
                                   }).ToList();
 
@@ -105,8 +105,8 @@ namespace CasaEcologieSysInfo.Pages
                                        where af.NomAutreFournisseur == nomFournisseur
                                     select new
                                     {
-                                        Date = af.EveReceptionEquipementsInfrastructures.Select(d => d.DateReception).FirstOrDefault(),
-                                        MontantAchat = (decimal?)af.EveReceptionEquipementsInfrastructures.Select(s => s.Montant).FirstOrDefault() ?? 0m,
+                                        Date = af.EveReceptionEquipementsInfrastructures.Select(d => d.ResEquipementsInfrastructure.DateAcquisition).FirstOrDefault(),
+                                        MontantAchat = (decimal?)af.EveReceptionEquipementsInfrastructures.Select(s => s.ResEquipementsInfrastructure.Montant).FirstOrDefault() ?? 0m,
                                         MontantPaye = 0m,
                                         Solde = 0m
                                     }

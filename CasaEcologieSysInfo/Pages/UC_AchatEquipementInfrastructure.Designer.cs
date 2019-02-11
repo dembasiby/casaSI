@@ -39,12 +39,15 @@
             this.lblNomNouveauClient = new System.Windows.Forms.Label();
             this.dtpAchatEqInfr1 = new System.Windows.Forms.DateTimePicker();
             this.cbxComptePaiement = new System.Windows.Forms.ComboBox();
-            this.cbxTresoriere = new System.Windows.Forms.ComboBox();
-            this.cbxFournisseurImmo = new System.Windows.Forms.ComboBox();
-            this.ageAutreFournisseursBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.resComptesTresorerieBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.casaDBDataSetAllBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.casaDBDataSetAll = new CasaEcologieSysInfo.CasaDBDataSetAll();
+            this.cbxTresoriere = new System.Windows.Forms.ComboBox();
+            this.ageEmployesBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.cbxFournisseurImmo = new System.Windows.Forms.ComboBox();
+            this.ageAutreFournisseursBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cbxRespImmo = new System.Windows.Forms.ComboBox();
+            this.ageEmployesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnEnregistrerAchatEquipementInfrastructure = new System.Windows.Forms.Button();
             this.txtMontantPaye = new System.Windows.Forms.TextBox();
             this.txtMontant1 = new System.Windows.Forms.TextBox();
@@ -64,7 +67,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtDuree1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtAmort1 = new System.Windows.Forms.TextBox();
             this.ageAutreFournisseursTableAdapter = new CasaEcologieSysInfo.CasaDBDataSetAllTableAdapters.AgeAutreFournisseursTableAdapter();
             this.lbxLocaliteFournisseurImmo = new System.Windows.Forms.ListBox();
             this.btnEqInfrExistant = new System.Windows.Forms.Button();
@@ -80,32 +82,32 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtMontant2 = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.txtAmort2 = new System.Windows.Forms.TextBox();
+            this.txtQuantiteExistant = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cbxUtilisePourProduction = new System.Windows.Forms.CheckBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.panel9 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
             this.label19 = new System.Windows.Forms.Label();
-            this.ageEmployesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ageEmployesTableAdapter = new CasaEcologieSysInfo.CasaDBDataSetAllTableAdapters.AgeEmployesTableAdapter();
-            this.ageEmployesBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.resComptesTresorerieBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.resComptesTresorerieTableAdapter = new CasaEcologieSysInfo.CasaDBDataSetAllTableAdapters.ResComptesTresorerieTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.ageAutreFournisseursBindingSource)).BeginInit();
+            this.cbxImmobilisationLieeAProduction = new System.Windows.Forms.CheckBox();
+            ((System.ComponentModel.ISupportInitialize)(this.resComptesTresorerieBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.casaDBDataSetAllBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.casaDBDataSetAll)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ageEmployesBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ageAutreFournisseursBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ageEmployesBindingSource)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ageEmployesBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ageEmployesBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.resComptesTresorerieBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // btnNouveauFournisseurImmo
@@ -115,51 +117,51 @@
             this.btnNouveauFournisseurImmo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNouveauFournisseurImmo.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNouveauFournisseurImmo.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnNouveauFournisseurImmo.Location = new System.Drawing.Point(254, 162);
+            this.btnNouveauFournisseurImmo.Location = new System.Drawing.Point(254, 156);
             this.btnNouveauFournisseurImmo.Name = "btnNouveauFournisseurImmo";
             this.btnNouveauFournisseurImmo.Size = new System.Drawing.Size(145, 31);
-            this.btnNouveauFournisseurImmo.TabIndex = 10;
+            this.btnNouveauFournisseurImmo.TabIndex = 20;
             this.btnNouveauFournisseurImmo.Text = "Enregistrer";
             this.btnNouveauFournisseurImmo.UseVisualStyleBackColor = false;
             this.btnNouveauFournisseurImmo.Click += new System.EventHandler(this.BtnNouveauFournisseurImmo_Click);
             // 
             // txtSoldeInitialeDetteFournisseurImmo
             // 
-            this.txtSoldeInitialeDetteFournisseurImmo.Location = new System.Drawing.Point(180, 162);
+            this.txtSoldeInitialeDetteFournisseurImmo.Location = new System.Drawing.Point(180, 156);
             this.txtSoldeInitialeDetteFournisseurImmo.Name = "txtSoldeInitialeDetteFournisseurImmo";
-            this.txtSoldeInitialeDetteFournisseurImmo.Size = new System.Drawing.Size(68, 27);
-            this.txtSoldeInitialeDetteFournisseurImmo.TabIndex = 8;
+            this.txtSoldeInitialeDetteFournisseurImmo.Size = new System.Drawing.Size(68, 23);
+            this.txtSoldeInitialeDetteFournisseurImmo.TabIndex = 19;
             this.txtSoldeInitialeDetteFournisseurImmo.Text = "00";
             // 
             // txtLocaliteFournisseurImmo
             // 
-            this.txtLocaliteFournisseurImmo.Location = new System.Drawing.Point(18, 130);
+            this.txtLocaliteFournisseurImmo.Location = new System.Drawing.Point(18, 128);
             this.txtLocaliteFournisseurImmo.Name = "txtLocaliteFournisseurImmo";
-            this.txtLocaliteFournisseurImmo.Size = new System.Drawing.Size(383, 27);
-            this.txtLocaliteFournisseurImmo.TabIndex = 8;
+            this.txtLocaliteFournisseurImmo.Size = new System.Drawing.Size(383, 23);
+            this.txtLocaliteFournisseurImmo.TabIndex = 18;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(19, 165);
+            this.label12.Location = new System.Drawing.Point(19, 159);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(155, 21);
+            this.label12.Size = new System.Drawing.Size(128, 17);
             this.label12.TabIndex = 5;
             this.label12.Text = "Solde initiale dette";
             // 
             // txtNomFournisseurImmo
             // 
-            this.txtNomFournisseurImmo.Location = new System.Drawing.Point(18, 76);
+            this.txtNomFournisseurImmo.Location = new System.Drawing.Point(18, 74);
             this.txtNomFournisseurImmo.Name = "txtNomFournisseurImmo";
-            this.txtNomFournisseurImmo.Size = new System.Drawing.Size(384, 27);
-            this.txtNomFournisseurImmo.TabIndex = 9;
+            this.txtNomFournisseurImmo.Size = new System.Drawing.Size(384, 23);
+            this.txtNomFournisseurImmo.TabIndex = 17;
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(17, 106);
+            this.label13.Location = new System.Drawing.Point(17, 104);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(71, 21);
+            this.label13.Size = new System.Drawing.Size(59, 17);
             this.label13.TabIndex = 5;
             this.label13.Text = "Localité";
             // 
@@ -168,7 +170,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.OrangeRed;
-            this.label8.Location = new System.Drawing.Point(18, 36);
+            this.label8.Location = new System.Drawing.Point(18, 34);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(375, 16);
             this.label8.TabIndex = 6;
@@ -177,9 +179,9 @@
             // lblNomNouveauClient
             // 
             this.lblNomNouveauClient.AutoSize = true;
-            this.lblNomNouveauClient.Location = new System.Drawing.Point(18, 52);
+            this.lblNomNouveauClient.Location = new System.Drawing.Point(18, 50);
             this.lblNomNouveauClient.Name = "lblNomNouveauClient";
-            this.lblNomNouveauClient.Size = new System.Drawing.Size(159, 21);
+            this.lblNomNouveauClient.Size = new System.Drawing.Size(133, 17);
             this.lblNomNouveauClient.TabIndex = 7;
             this.lblNomNouveauClient.Text = "Nom du Fournisseur";
             // 
@@ -203,7 +205,22 @@
             this.cbxComptePaiement.Margin = new System.Windows.Forms.Padding(5);
             this.cbxComptePaiement.Name = "cbxComptePaiement";
             this.cbxComptePaiement.Size = new System.Drawing.Size(286, 29);
-            this.cbxComptePaiement.TabIndex = 41;
+            this.cbxComptePaiement.TabIndex = 8;
+            // 
+            // resComptesTresorerieBindingSource
+            // 
+            this.resComptesTresorerieBindingSource.DataMember = "ResComptesTresorerie";
+            this.resComptesTresorerieBindingSource.DataSource = this.casaDBDataSetAllBindingSource;
+            // 
+            // casaDBDataSetAllBindingSource
+            // 
+            this.casaDBDataSetAllBindingSource.DataSource = this.casaDBDataSetAll;
+            this.casaDBDataSetAllBindingSource.Position = 0;
+            // 
+            // casaDBDataSetAll
+            // 
+            this.casaDBDataSetAll.DataSetName = "CasaDBDataSetAll";
+            this.casaDBDataSetAll.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // cbxTresoriere
             // 
@@ -214,7 +231,12 @@
             this.cbxTresoriere.Margin = new System.Windows.Forms.Padding(5);
             this.cbxTresoriere.Name = "cbxTresoriere";
             this.cbxTresoriere.Size = new System.Drawing.Size(286, 29);
-            this.cbxTresoriere.TabIndex = 40;
+            this.cbxTresoriere.TabIndex = 7;
+            // 
+            // ageEmployesBindingSource1
+            // 
+            this.ageEmployesBindingSource1.DataMember = "AgeEmployes";
+            this.ageEmployesBindingSource1.DataSource = this.casaDBDataSetAllBindingSource;
             // 
             // cbxFournisseurImmo
             // 
@@ -232,16 +254,6 @@
             this.ageAutreFournisseursBindingSource.DataMember = "AgeAutreFournisseurs";
             this.ageAutreFournisseursBindingSource.DataSource = this.casaDBDataSetAllBindingSource;
             // 
-            // casaDBDataSetAllBindingSource
-            // 
-            this.casaDBDataSetAllBindingSource.DataSource = this.casaDBDataSetAll;
-            this.casaDBDataSetAllBindingSource.Position = 0;
-            // 
-            // casaDBDataSetAll
-            // 
-            this.casaDBDataSetAll.DataSetName = "CasaDBDataSetAll";
-            this.casaDBDataSetAll.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // cbxRespImmo
             // 
             this.cbxRespImmo.DataSource = this.ageEmployesBindingSource;
@@ -251,7 +263,12 @@
             this.cbxRespImmo.Margin = new System.Windows.Forms.Padding(5);
             this.cbxRespImmo.Name = "cbxRespImmo";
             this.cbxRespImmo.Size = new System.Drawing.Size(286, 29);
-            this.cbxRespImmo.TabIndex = 39;
+            this.cbxRespImmo.TabIndex = 6;
+            // 
+            // ageEmployesBindingSource
+            // 
+            this.ageEmployesBindingSource.DataMember = "AgeEmployes";
+            this.ageEmployesBindingSource.DataSource = this.casaDBDataSetAllBindingSource;
             // 
             // btnEnregistrerAchatEquipementInfrastructure
             // 
@@ -264,7 +281,7 @@
             this.btnEnregistrerAchatEquipementInfrastructure.Margin = new System.Windows.Forms.Padding(5);
             this.btnEnregistrerAchatEquipementInfrastructure.Name = "btnEnregistrerAchatEquipementInfrastructure";
             this.btnEnregistrerAchatEquipementInfrastructure.Size = new System.Drawing.Size(504, 34);
-            this.btnEnregistrerAchatEquipementInfrastructure.TabIndex = 38;
+            this.btnEnregistrerAchatEquipementInfrastructure.TabIndex = 9;
             this.btnEnregistrerAchatEquipementInfrastructure.Text = "Enregistrer";
             this.btnEnregistrerAchatEquipementInfrastructure.UseVisualStyleBackColor = false;
             this.btnEnregistrerAchatEquipementInfrastructure.Click += new System.EventHandler(this.BtnEnregistrerAchatEquipementInfrastructure_Click);
@@ -275,7 +292,7 @@
             this.txtMontantPaye.Margin = new System.Windows.Forms.Padding(5);
             this.txtMontantPaye.Name = "txtMontantPaye";
             this.txtMontantPaye.Size = new System.Drawing.Size(286, 27);
-            this.txtMontantPaye.TabIndex = 36;
+            this.txtMontantPaye.TabIndex = 5;
             // 
             // txtMontant1
             // 
@@ -283,7 +300,7 @@
             this.txtMontant1.Margin = new System.Windows.Forms.Padding(5);
             this.txtMontant1.Name = "txtMontant1";
             this.txtMontant1.Size = new System.Drawing.Size(286, 27);
-            this.txtMontant1.TabIndex = 34;
+            this.txtMontant1.TabIndex = 4;
             // 
             // txtQuantite
             // 
@@ -291,7 +308,7 @@
             this.txtQuantite.Margin = new System.Windows.Forms.Padding(5);
             this.txtQuantite.Name = "txtQuantite";
             this.txtQuantite.Size = new System.Drawing.Size(286, 27);
-            this.txtQuantite.TabIndex = 37;
+            this.txtQuantite.TabIndex = 1;
             this.txtQuantite.Text = "1";
             // 
             // lblCompteDecaissement
@@ -412,7 +429,7 @@
             this.txtNomEqInfr1.Margin = new System.Windows.Forms.Padding(5);
             this.txtNomEqInfr1.Name = "txtNomEqInfr1";
             this.txtNomEqInfr1.Size = new System.Drawing.Size(286, 27);
-            this.txtNomEqInfr1.TabIndex = 35;
+            this.txtNomEqInfr1.TabIndex = 0;
             // 
             // label1
             // 
@@ -430,7 +447,7 @@
             this.txtDuree1.Margin = new System.Windows.Forms.Padding(5);
             this.txtDuree1.Name = "txtDuree1";
             this.txtDuree1.Size = new System.Drawing.Size(286, 27);
-            this.txtDuree1.TabIndex = 34;
+            this.txtDuree1.TabIndex = 2;
             // 
             // label2
             // 
@@ -438,17 +455,9 @@
             this.label2.Location = new System.Drawing.Point(22, 289);
             this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(189, 21);
+            this.label2.Size = new System.Drawing.Size(402, 21);
             this.label2.TabIndex = 23;
-            this.label2.Text = "Amortissement cumulé";
-            // 
-            // txtAmort1
-            // 
-            this.txtAmort1.Location = new System.Drawing.Point(244, 283);
-            this.txtAmort1.Margin = new System.Windows.Forms.Padding(5);
-            this.txtAmort1.Name = "txtAmort1";
-            this.txtAmort1.Size = new System.Drawing.Size(286, 27);
-            this.txtAmort1.TabIndex = 34;
+            this.label2.Text = "L\'immobilisation est-elle utilisée pour la production?";
             // 
             // ageAutreFournisseursTableAdapter
             // 
@@ -472,27 +481,27 @@
             this.btnEqInfrExistant.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEqInfrExistant.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEqInfrExistant.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnEqInfrExistant.Location = new System.Drawing.Point(16, 244);
+            this.btnEqInfrExistant.Location = new System.Drawing.Point(16, 247);
             this.btnEqInfrExistant.Name = "btnEqInfrExistant";
             this.btnEqInfrExistant.Size = new System.Drawing.Size(398, 39);
-            this.btnEqInfrExistant.TabIndex = 10;
+            this.btnEqInfrExistant.TabIndex = 16;
             this.btnEqInfrExistant.Text = "Enregistrer";
             this.btnEqInfrExistant.UseVisualStyleBackColor = false;
             this.btnEqInfrExistant.Click += new System.EventHandler(this.BtnEqInfrExistant_Click);
             // 
             // txtNomEqInfr2
             // 
-            this.txtNomEqInfr2.Location = new System.Drawing.Point(19, 95);
+            this.txtNomEqInfr2.Location = new System.Drawing.Point(105, 84);
             this.txtNomEqInfr2.Name = "txtNomEqInfr2";
-            this.txtNomEqInfr2.Size = new System.Drawing.Size(393, 27);
-            this.txtNomEqInfr2.TabIndex = 9;
+            this.txtNomEqInfr2.Size = new System.Drawing.Size(305, 23);
+            this.txtNomEqInfr2.TabIndex = 10;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(16, 128);
+            this.label5.Location = new System.Drawing.Point(16, 146);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(152, 21);
+            this.label5.Size = new System.Drawing.Size(126, 17);
             this.label5.TabIndex = 5;
             this.label5.Text = "Date d\'acquisition";
             // 
@@ -509,11 +518,11 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(15, 71);
+            this.label7.Location = new System.Drawing.Point(19, 84);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(300, 21);
+            this.label7.Size = new System.Drawing.Size(80, 17);
             this.label7.TabIndex = 7;
-            this.label7.Text = "Nom de l\'équipement / Infrastructure";
+            this.label7.Text = "Description";
             // 
             // label10
             // 
@@ -540,65 +549,66 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(215, 128);
+            this.label11.Location = new System.Drawing.Point(215, 146);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(109, 21);
+            this.label11.Size = new System.Drawing.Size(90, 17);
             this.label11.TabIndex = 5;
             this.label11.Text = "Durée de vie";
             // 
             // txtDuree2
             // 
-            this.txtDuree2.Location = new System.Drawing.Point(219, 152);
+            this.txtDuree2.Location = new System.Drawing.Point(219, 170);
             this.txtDuree2.Name = "txtDuree2";
-            this.txtDuree2.Size = new System.Drawing.Size(193, 27);
-            this.txtDuree2.TabIndex = 8;
+            this.txtDuree2.Size = new System.Drawing.Size(193, 23);
+            this.txtDuree2.TabIndex = 13;
             // 
             // dtpAchatEqInfr2
             // 
             this.dtpAchatEqInfr2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpAchatEqInfr2.Location = new System.Drawing.Point(20, 152);
+            this.dtpAchatEqInfr2.Location = new System.Drawing.Point(20, 170);
             this.dtpAchatEqInfr2.Name = "dtpAchatEqInfr2";
-            this.dtpAchatEqInfr2.Size = new System.Drawing.Size(174, 27);
-            this.dtpAchatEqInfr2.TabIndex = 11;
+            this.dtpAchatEqInfr2.Size = new System.Drawing.Size(174, 23);
+            this.dtpAchatEqInfr2.TabIndex = 12;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(16, 186);
+            this.label3.Location = new System.Drawing.Point(16, 198);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(152, 21);
+            this.label3.Size = new System.Drawing.Size(127, 17);
             this.label3.TabIndex = 5;
             this.label3.Text = "Coût d\'acquisition";
             // 
             // txtMontant2
             // 
-            this.txtMontant2.Location = new System.Drawing.Point(20, 210);
+            this.txtMontant2.Location = new System.Drawing.Point(20, 219);
             this.txtMontant2.Name = "txtMontant2";
-            this.txtMontant2.Size = new System.Drawing.Size(174, 27);
-            this.txtMontant2.TabIndex = 8;
+            this.txtMontant2.Size = new System.Drawing.Size(174, 23);
+            this.txtMontant2.TabIndex = 14;
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(217, 186);
+            this.label14.Location = new System.Drawing.Point(217, 198);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(189, 21);
+            this.label14.Size = new System.Drawing.Size(65, 17);
             this.label14.TabIndex = 5;
-            this.label14.Text = "Amortissement cumulé";
+            this.label14.Text = "Quantité";
             // 
-            // txtAmort2
+            // txtQuantiteExistant
             // 
-            this.txtAmort2.Location = new System.Drawing.Point(219, 210);
-            this.txtAmort2.Name = "txtAmort2";
-            this.txtAmort2.Size = new System.Drawing.Size(193, 27);
-            this.txtAmort2.TabIndex = 8;
+            this.txtQuantiteExistant.Location = new System.Drawing.Point(219, 219);
+            this.txtQuantiteExistant.Name = "txtQuantiteExistant";
+            this.txtQuantiteExistant.Size = new System.Drawing.Size(193, 23);
+            this.txtQuantiteExistant.TabIndex = 15;
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.cbxUtilisePourProduction);
             this.panel1.Controls.Add(this.dtpAchatEqInfr2);
             this.panel1.Controls.Add(this.btnEqInfrExistant);
             this.panel1.Controls.Add(this.panel5);
-            this.panel1.Controls.Add(this.txtAmort2);
+            this.panel1.Controls.Add(this.txtQuantiteExistant);
             this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.txtMontant2);
             this.panel1.Controls.Add(this.panel3);
@@ -608,14 +618,27 @@
             this.panel1.Controls.Add(this.label15);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.label16);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.txtNomEqInfr2);
+            this.panel1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(554, 91);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(426, 300);
             this.panel1.TabIndex = 45;
+            // 
+            // cbxUtilisePourProduction
+            // 
+            this.cbxUtilisePourProduction.AutoSize = true;
+            this.cbxUtilisePourProduction.BackColor = System.Drawing.SystemColors.ControlText;
+            this.cbxUtilisePourProduction.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxUtilisePourProduction.Location = new System.Drawing.Point(395, 117);
+            this.cbxUtilisePourProduction.Name = "cbxUtilisePourProduction";
+            this.cbxUtilisePourProduction.Size = new System.Drawing.Size(15, 14);
+            this.cbxUtilisePourProduction.TabIndex = 11;
+            this.cbxUtilisePourProduction.UseVisualStyleBackColor = false;
             // 
             // panel5
             // 
@@ -663,6 +686,17 @@
             this.label15.TabIndex = 6;
             this.label15.Text = "la mise en place du présent système d\'information\r\n";
             // 
+            // label16
+            // 
+            this.label16.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.Color.Firebrick;
+            this.label16.Location = new System.Drawing.Point(19, 110);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(337, 36);
+            this.label16.TabIndex = 7;
+            this.label16.Text = "Cochez la case ci-contre si l\'équipement/infrastructure es utilisé pour la produc" +
+    "tion?";
+            // 
             // panel6
             // 
             this.panel6.Controls.Add(this.btnNouveauFournisseurImmo);
@@ -678,9 +712,10 @@
             this.panel6.Controls.Add(this.label8);
             this.panel6.Controls.Add(this.lblNomNouveauClient);
             this.panel6.Controls.Add(this.label19);
+            this.panel6.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel6.Location = new System.Drawing.Point(554, 382);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(426, 211);
+            this.panel6.Size = new System.Drawing.Size(426, 199);
             this.panel6.TabIndex = 45;
             // 
             // panel7
@@ -689,7 +724,7 @@
             this.panel7.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel7.Location = new System.Drawing.Point(416, 10);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(10, 191);
+            this.panel7.Size = new System.Drawing.Size(10, 179);
             this.panel7.TabIndex = 1;
             // 
             // panel8
@@ -698,14 +733,14 @@
             this.panel8.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel8.Location = new System.Drawing.Point(0, 10);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(10, 191);
+            this.panel8.Size = new System.Drawing.Size(10, 179);
             this.panel8.TabIndex = 1;
             // 
             // panel9
             // 
             this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(31)))), ((int)(((byte)(20)))));
             this.panel9.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel9.Location = new System.Drawing.Point(0, 201);
+            this.panel9.Location = new System.Drawing.Point(0, 189);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(426, 10);
             this.panel9.TabIndex = 1;
@@ -723,39 +758,36 @@
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(16, 15);
+            this.label19.Location = new System.Drawing.Point(16, 13);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(169, 19);
             this.label19.TabIndex = 7;
             this.label19.Text = "Nouveau Fournisseur";
             // 
-            // ageEmployesBindingSource
-            // 
-            this.ageEmployesBindingSource.DataMember = "AgeEmployes";
-            this.ageEmployesBindingSource.DataSource = this.casaDBDataSetAllBindingSource;
-            // 
             // ageEmployesTableAdapter
             // 
             this.ageEmployesTableAdapter.ClearBeforeFill = true;
-            // 
-            // ageEmployesBindingSource1
-            // 
-            this.ageEmployesBindingSource1.DataMember = "AgeEmployes";
-            this.ageEmployesBindingSource1.DataSource = this.casaDBDataSetAllBindingSource;
-            // 
-            // resComptesTresorerieBindingSource
-            // 
-            this.resComptesTresorerieBindingSource.DataMember = "ResComptesTresorerie";
-            this.resComptesTresorerieBindingSource.DataSource = this.casaDBDataSetAllBindingSource;
             // 
             // resComptesTresorerieTableAdapter
             // 
             this.resComptesTresorerieTableAdapter.ClearBeforeFill = true;
             // 
+            // cbxImmobilisationLieeAProduction
+            // 
+            this.cbxImmobilisationLieeAProduction.AutoSize = true;
+            this.cbxImmobilisationLieeAProduction.BackColor = System.Drawing.SystemColors.ControlText;
+            this.cbxImmobilisationLieeAProduction.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxImmobilisationLieeAProduction.Location = new System.Drawing.Point(515, 293);
+            this.cbxImmobilisationLieeAProduction.Name = "cbxImmobilisationLieeAProduction";
+            this.cbxImmobilisationLieeAProduction.Size = new System.Drawing.Size(15, 14);
+            this.cbxImmobilisationLieeAProduction.TabIndex = 3;
+            this.cbxImmobilisationLieeAProduction.UseVisualStyleBackColor = false;
+            // 
             // UC_AchatEquipementInfrastructure
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.cbxImmobilisationLieeAProduction);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lbxLocaliteFournisseurImmo);
@@ -769,7 +801,6 @@
             this.Controls.Add(this.btnEnregistrerAchatEquipementInfrastructure);
             this.Controls.Add(this.txtMontantPaye);
             this.Controls.Add(this.txtNomEqInfr1);
-            this.Controls.Add(this.txtAmort1);
             this.Controls.Add(this.txtDuree1);
             this.Controls.Add(this.txtMontant1);
             this.Controls.Add(this.txtQuantite);
@@ -791,16 +822,16 @@
             this.Name = "UC_AchatEquipementInfrastructure";
             this.Size = new System.Drawing.Size(983, 596);
             this.Load += new System.EventHandler(this.UC_AchatEquipementInfrastructure_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.ageAutreFournisseursBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.resComptesTresorerieBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.casaDBDataSetAllBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.casaDBDataSetAll)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ageEmployesBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ageAutreFournisseursBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ageEmployesBindingSource)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ageEmployesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ageEmployesBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.resComptesTresorerieBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -839,7 +870,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtDuree1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtAmort1;
         private System.Windows.Forms.BindingSource ageAutreFournisseursBindingSource;
         private System.Windows.Forms.BindingSource casaDBDataSetAllBindingSource;
         private CasaDBDataSetAll casaDBDataSetAll;
@@ -847,7 +877,7 @@
         private System.Windows.Forms.ListBox lbxLocaliteFournisseurImmo;
         private System.Windows.Forms.DateTimePicker dtpAchatEqInfr2;
         private System.Windows.Forms.Button btnEqInfrExistant;
-        private System.Windows.Forms.TextBox txtAmort2;
+        private System.Windows.Forms.TextBox txtQuantiteExistant;
         private System.Windows.Forms.TextBox txtMontant2;
         private System.Windows.Forms.TextBox txtDuree2;
         private System.Windows.Forms.Label label14;
@@ -876,5 +906,8 @@
         private System.Windows.Forms.BindingSource ageEmployesBindingSource1;
         private System.Windows.Forms.BindingSource resComptesTresorerieBindingSource;
         private CasaDBDataSetAllTableAdapters.ResComptesTresorerieTableAdapter resComptesTresorerieTableAdapter;
+        private System.Windows.Forms.CheckBox cbxUtilisePourProduction;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.CheckBox cbxImmobilisationLieeAProduction;
     }
 }

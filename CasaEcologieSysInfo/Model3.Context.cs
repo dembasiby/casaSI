@@ -18,7 +18,7 @@ namespace CasaEcologieSysInfo
     public partial class CasaDBEntities : DbContext
     {
         public CasaDBEntities()
-            : base("name=CasaDBEntities2")
+            : base("name=CasaDBEntities")
         {
         }
     
