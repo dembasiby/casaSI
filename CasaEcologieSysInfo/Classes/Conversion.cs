@@ -121,7 +121,7 @@ namespace CasaEcologieSysInfo
                                     }
                                  ).Sum(d => (decimal?)d.Solde) ?? 0m;
 
-                var achatEquip = (from rei in db.EveReceptionEquipementsInfrastructures
+                var achatEquip = (from rei in db.ResEquipementsInfrastructures
                                   select (decimal?)rei.Montant).Sum() ?? 0m;
 
                 var soldeInitialFournisseurEquip = (from af in db.AgeAutreFournisseurs
@@ -247,7 +247,8 @@ namespace CasaEcologieSysInfo
                 var totalAchatsFE = (from f in db.AgeAutreFournisseurs
                                      where f.NomAutreFournisseur == nomFournisseur
                                      join rmp in db.EveReceptionEquipementsInfrastructures on f.CodeAutreFournisseur equals rmp.CodeAutreFournisseur
-                                     select (decimal?)rmp.Montant).Sum() ?? 0m;
+                                     join ei in db.ResEquipementsInfrastructures on rmp.CodeEquipementInfrastructure equals ei.CodeEquipementInfrastructure
+                                     select (decimal?)ei.Montant).Sum() ?? 0m;
 
                 var totalPaiementsFE = (from f in db.AgeAutreFournisseurs
                                         where f.NomAutreFournisseur == nomFournisseur
@@ -296,7 +297,7 @@ namespace CasaEcologieSysInfo
 
         }
 
-        public static int CalculerSoldeStockProduitFiniDebutPeriod(string nomProduit, DateTime debutPeriod)
+        public static int CalculerSoldeStockProduitFiniParPeriod(string nomProduit, DateTime debutPeriod)
         {
             using (CasaDBEntities db = new CasaDBEntities())
             {
@@ -318,32 +319,6 @@ namespace CasaEcologieSysInfo
                 return stockInitial + entrees - sorties;
             }
 
-        }
-
-        public static int CalculerSoldeStockProduitFiniFinPeriod(string nomProduit, DateTime finPeriod)
-        {
-            using (CasaDBEntities db = new CasaDBEntities())
-            {
-                var stockInitial = (from pf in db.ResStockProduitsFinis
-                                    where pf.NomProduit == nomProduit
-                                    select pf.StockProduit).FirstOrDefault();
-
-                var entrees = (from pro in db.EveProductionStockProduitsFinis
-                               where pro.ResStockProduitsFini.NomProduit == nomProduit
-                               where pro.EveProduction.Date < finPeriod.Date
-                               select (int?)pro.QuantiteProduitFini).Sum() ?? 0;
-
-                var sorties = (from pf in db.EveVenteStockProduitsFinis
-                               where pf.ResStockProduitsFini.NomProduit == nomProduit
-                               where pf.EveVente.DateVente < finPeriod.Date
-                               select (int?)pf.QuantiteProduitFini).Sum() ?? 0;
-
-
-                return stockInitial + entrees - sorties;
-            }
-
-        }
-
-
+        }       
     }
 }

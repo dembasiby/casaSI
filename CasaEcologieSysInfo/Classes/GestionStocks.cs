@@ -8,8 +8,10 @@ namespace CasaEcologieSysInfo
 {
     class GestionStocks
     {
+        /*
         private Single ValeurStockMatierePremiere(string nomMatiere)
         {
+            //var listeMatieresPremieres = 
             using (CasaDBEntities db = new CasaDBEntities())
             {
                 var coutMatierePremiere = (from mp in db.ResStockMatieresPremieres
@@ -33,6 +35,7 @@ namespace CasaEcologieSysInfo
                 return 0f;
             }
         }
+        */
 
         public static Single CalculerSoldeStockMatierePremiere(string nomMatiere, DateTime debutPeriod)
         {
@@ -80,6 +83,28 @@ namespace CasaEcologieSysInfo
             }
         }
 
+        public static float ValeurAchatsMatierePremiere(string nomMatiere, DateTime debut, DateTime fin)
+        {
+            using (CasaDBEntities db = new CasaDBEntities())
+            {
+                var achats = (from amp in db.EveReceptionMatieresPremieres
+                              where amp.ResStockMatieresPremiere.NomMatiere == nomMatiere
+                              where amp.DateReception >= debut.Date
+                              where amp.DateReception <= fin.Date
+                              select (float?)amp.Montant).Sum() ?? 0f;
+               
+                var QuantitedonsRecu = (from amp in db.EveReceptionDonsMatieresPremieres
+                              where amp.ResStockMatieresPremiere.NomMatiere == nomMatiere
+                              where amp.DateReception >= debut.Date
+                              where amp.DateReception <= fin.Date
+                              select (float?)amp.Quantite).Sum() ?? 0f;
+
+                var valeurDons = QuantitedonsRecu * CoutUnitaireParMatierePremiere(nomMatiere);
+
+                return achats + valeurDons;
+            }
+        }
+
         public static Single QuantiteMatierePremiereParProduitFini(string nomProduit, string matierePremiere)
         {
             // calculer la quantite moyenne de matiere premiere utilisee par unite de produit fini
@@ -93,12 +118,14 @@ namespace CasaEcologieSysInfo
                                                          where pf.NomProduit == nomProduit
                                                          select new
                                                          {
-                                                             MatierePrem = ur.QuantiteMatierePremiere,
-                                                             ProduitFini = ppf.QuantiteProduitFini
+                                                             MatierePremiere = ur.ResStockMatieresPremiere.NomMatiere,
+                                                             ur.QuantiteMatierePremiere,
+                                                             ppf.QuantiteProduitFini
                                                          });
+               
+                var quantiteMatP = quantiteDeMatierePremiereUtilisee.Select(m => (float?)m.QuantiteMatierePremiere).Sum() ?? 0f;
 
-                var quantiteMatP = quantiteDeMatierePremiereUtilisee.Select(m => (float?)m.MatierePrem).Sum() ?? 0f;
-                var quantitePF = quantiteDeMatierePremiereUtilisee.Select(m => (float?)m.ProduitFini).Sum() ?? 0f;
+                var quantitePF = quantiteDeMatierePremiereUtilisee.Select(m => (float?)m.QuantiteProduitFini).Sum() ?? 0f;
 
                 float quantiteMoyenneParProduitFini = 0f;
 
@@ -108,6 +135,10 @@ namespace CasaEcologieSysInfo
                 }
 
                 return quantiteMoyenneParProduitFini; 
+               
+                //var quantitePF = quantiteDeMatierePremiereUtilisee.Select(m => (float?)m.QuantiteProduitFini).Sum() ?? 0f;
+               // return quantitePF;
+
             }
         }
         /*

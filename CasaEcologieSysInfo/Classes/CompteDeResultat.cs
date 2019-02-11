@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -40,32 +41,58 @@ namespace CasaEcologieSysInfo
 
         public static void AfficherMargeBrute(DataGridView grid)
         {
+            
             grid.Rows.Add("Marge brute",
-                (Convert.ToSingle(grid.Rows[0].Cells[1].Value.ToString())
-                    - Convert.ToSingle(grid.Rows[1].Cells[1].Value.ToString())).ToString("n0"),
-                (Convert.ToSingle(grid.Rows[0].Cells[2].Value.ToString())
-                    - Convert.ToSingle(grid.Rows[1].Cells[2].Value.ToString())).ToString("n0"),
-                (Convert.ToSingle(grid.Rows[0].Cells[3].Value.ToString())
-                    - Convert.ToSingle(grid.Rows[1].Cells[3].Value.ToString())).ToString("n0"),
-                (Convert.ToSingle(grid.Rows[0].Cells[4].Value.ToString())
-                    - Convert.ToSingle(grid.Rows[1].Cells[4].Value.ToString())).ToString("n0"),
-                (Convert.ToSingle(grid.Rows[0].Cells[5].Value.ToString())
-                    - Convert.ToSingle(grid.Rows[1].Cells[5].Value.ToString())).ToString("n0"),
-                (Convert.ToSingle(grid.Rows[0].Cells[6].Value.ToString())
-                    - Convert.ToSingle(grid.Rows[1].Cells[6].Value.ToString())).ToString("n0"),
-                (Convert.ToSingle(grid.Rows[0].Cells[7].Value.ToString())
-                    - Convert.ToSingle(grid.Rows[1].Cells[7].Value.ToString())).ToString("n0"),
-                (Convert.ToSingle(grid.Rows[0].Cells[8].Value.ToString())
-                    - Convert.ToSingle(grid.Rows[1].Cells[8].Value.ToString())).ToString("n0"),
-                (Convert.ToSingle(grid.Rows[0].Cells[9].Value.ToString())
-                    - Convert.ToSingle(grid.Rows[1].Cells[9].Value.ToString())).ToString("n0"),
-                (Convert.ToSingle(grid.Rows[0].Cells[10].Value.ToString())
-                    - Convert.ToSingle(grid.Rows[1].Cells[10].Value.ToString())).ToString("n0"),
-                (Convert.ToSingle(grid.Rows[0].Cells[11].Value.ToString())
-                    - Convert.ToSingle(grid.Rows[1].Cells[11].Value.ToString())).ToString("n0"),
-                (Convert.ToSingle(grid.Rows[0].Cells[12].Value.ToString())
-                    - Convert.ToSingle(grid.Rows[1].Cells[12].Value.ToString())).ToString("n0")
+                (Convert.ToSingle(grid.Rows[0].Cells[1].Value.ToString()) - Convert.ToSingle(grid.Rows[1].Cells[1].Value.ToString())).ToString("n0"),
+                (Convert.ToSingle(grid.Rows[0].Cells[2].Value.ToString()) - Convert.ToSingle(grid.Rows[1].Cells[2].Value.ToString())).ToString("n0"),
+                (Convert.ToSingle(grid.Rows[0].Cells[3].Value.ToString()) - Convert.ToSingle(grid.Rows[1].Cells[3].Value.ToString())).ToString("n0"),
+                (Convert.ToSingle(grid.Rows[0].Cells[4].Value.ToString()) - Convert.ToSingle(grid.Rows[1].Cells[4].Value.ToString())).ToString("n0"),
+                (Convert.ToSingle(grid.Rows[0].Cells[5].Value.ToString()) - Convert.ToSingle(grid.Rows[1].Cells[5].Value.ToString())).ToString("n0"),
+                (Convert.ToSingle(grid.Rows[0].Cells[6].Value.ToString()) - Convert.ToSingle(grid.Rows[1].Cells[6].Value.ToString())).ToString("n0"),
+                (Convert.ToSingle(grid.Rows[0].Cells[7].Value.ToString()) - Convert.ToSingle(grid.Rows[1].Cells[7].Value.ToString())).ToString("n0"),
+                (Convert.ToSingle(grid.Rows[0].Cells[8].Value.ToString()) - Convert.ToSingle(grid.Rows[1].Cells[8].Value.ToString())).ToString("n0"),
+                (Convert.ToSingle(grid.Rows[0].Cells[9].Value.ToString()) - Convert.ToSingle(grid.Rows[1].Cells[9].Value.ToString())).ToString("n0"),
+                (Convert.ToSingle(grid.Rows[0].Cells[10].Value.ToString())- Convert.ToSingle(grid.Rows[1].Cells[10].Value.ToString())).ToString("n0"),
+                (Convert.ToSingle(grid.Rows[0].Cells[11].Value.ToString())- Convert.ToSingle(grid.Rows[1].Cells[11].Value.ToString())).ToString("n0"),
+                (Convert.ToSingle(grid.Rows[0].Cells[12].Value.ToString())- Convert.ToSingle(grid.Rows[1].Cells[12].Value.ToString())).ToString("n0")
                 );
+        }
+
+        public static float CoutDirectMainDOeuvre(int numMois, DateTime date)
+        {
+            using (CasaDBEntities db = new CasaDBEntities())
+            {
+                DateTime debut = new DateTime(date.Year, numMois, 1);
+                DateTime fin = new DateTime(date.Year, numMois, DateTime.DaysInMonth(date.Year, numMois));
+
+                return (from rem in db.EvePresenceEmployes
+                        where rem.Date >= debut.Date
+                        where rem.Date <= fin.Date
+                        select (float?)rem.RemunerationJournaliere).Sum() ?? 0f; 
+            }
+        }
+
+        public static decimal AmortissementsMensuels(DateTime date, int numMois)
+        {
+            using (CasaDBEntities db = new CasaDBEntities())
+            {
+                return (from inE in db.ResEquipementsInfrastructures
+                        where inE.DateAcquisition.Year + inE.DureeDeVie >= date.Year
+                        //where inE.DateAcquisition.Month <= date.Month
+                        where inE.MaterielDeProduction == true
+                        select new
+                        {
+                            Immobilisation = inE.Nom,
+                            inE.Quantite,
+                            ValeurDOrigine = inE.Montant,
+                            inE.DateAcquisition,
+                            inE.DureeDeVie,
+                            AmortissementMensuel = inE.Montant / (inE.DureeDeVie * 12),
+                            AmortissementAnnuel = inE.Montant / inE.DureeDeVie
+                        })
+                        .Select(a => (decimal?)a.AmortissementMensuel)
+                        .Sum() ?? 0m; 
+            }
         }
 
     }
