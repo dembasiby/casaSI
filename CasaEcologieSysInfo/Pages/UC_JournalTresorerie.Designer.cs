@@ -228,6 +228,7 @@
             this.dgvJournalTresorerieDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvJournalTresorerieDetails.Location = new System.Drawing.Point(207, 133);
             this.dgvJournalTresorerieDetails.Name = "dgvJournalTresorerieDetails";
+            this.dgvJournalTresorerieDetails.ReadOnly = true;
             this.dgvJournalTresorerieDetails.Size = new System.Drawing.Size(728, 457);
             this.dgvJournalTresorerieDetails.TabIndex = 20;
             // 

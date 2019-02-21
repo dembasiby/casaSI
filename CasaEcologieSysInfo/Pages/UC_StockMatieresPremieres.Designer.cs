@@ -101,6 +101,7 @@
             this.dgvJournalStocksMatieresPremieres.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvJournalStocksMatieresPremieres.Location = new System.Drawing.Point(198, 100);
             this.dgvJournalStocksMatieresPremieres.Name = "dgvJournalStocksMatieresPremieres";
+            this.dgvJournalStocksMatieresPremieres.ReadOnly = true;
             this.dgvJournalStocksMatieresPremieres.RowHeadersVisible = false;
             this.dgvJournalStocksMatieresPremieres.Size = new System.Drawing.Size(771, 476);
             this.dgvJournalStocksMatieresPremieres.TabIndex = 20;

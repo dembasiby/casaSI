@@ -44,7 +44,6 @@ namespace CasaEcologieSysInfo.Pages
                           select new
                           {
                               Date = env.DateEncaissement,
-                              CodeOperation = c.CodeEncaissement + "enc", 
                               Description = "Encaissement vente",//vpf.ResStockProduitsFini.NomProduit,
                               Entree = env.MontantEncaisse,
                               Sortie = 0m,
@@ -58,8 +57,21 @@ namespace CasaEcologieSysInfo.Pages
                           select new
                           {
                               Date = aut.DateEncaissement,
-                              CodeOperation = c.CodeEncaissement + "enc",
-                              Description = aut.Description,
+                              aut.Description,
+                              Entree = aut.MontantEncaisse,
+                              Sortie = 0m,
+                              Solde = 0m
+                          });
+
+            var query4 = (from c in db.EveEncaissements
+                          from aut in db.EveEncaissementsCreances
+                          where c.CodeEncaissement == aut.CodeEncaissement
+                          where c.ResComptesTresorerie.NomCompte == nomCompte
+
+                          select new
+                          {
+                              Date = aut.DateEncaissement,
+                              Description = "Encaissement créance",
                               Entree = aut.MontantEncaisse,
                               Sortie = 0m,
                               Solde = 0m
@@ -70,15 +82,15 @@ namespace CasaEcologieSysInfo.Pages
                           select new
                           {
                               Date = d.DateDecaissement,
-                              CodeOperation = d.CodeDecaissement + "dec",
                               d.Description,
                               Entree = 0m,
                               Sortie = d.Montant,
                               Solde = 0m
                           });
             var combinedQuery = query1
-                .Concat(query3)
-                .Concat(query2)
+                .Union(query4)
+                .Union(query3)
+                .Union(query2)
                 .OrderByDescending(o => o.Date)
                 .ToList();
 
@@ -103,14 +115,14 @@ namespace CasaEcologieSysInfo.Pages
 
                 if (i < dgvJournalTresorerieDetails.Rows.Count - 1)
                 {
-                    dgvJournalTresorerieDetails.Rows[i].Cells[5].Value = Convert.ToInt32(dgvJournalTresorerieDetails.Rows[i + 1].Cells[5].Value)
-                    + Convert.ToInt32(dgvJournalTresorerieDetails.Rows[i].Cells[3].Value)
-                    - Convert.ToInt32(dgvJournalTresorerieDetails.Rows[i].Cells[4].Value);
+                    dgvJournalTresorerieDetails.Rows[i].Cells[4].Value = Convert.ToInt32(dgvJournalTresorerieDetails.Rows[i + 1].Cells[4].Value)
+                    + Convert.ToInt32(dgvJournalTresorerieDetails.Rows[i].Cells[2].Value)
+                    - Convert.ToInt32(dgvJournalTresorerieDetails.Rows[i].Cells[3].Value);
                 }
                 else
                 {
-                    dgvJournalTresorerieDetails.Rows[i].Cells[5].Value = soldeInitial + Convert.ToInt32(dgvJournalTresorerieDetails.Rows[i].Cells[3].Value)
-                    - Convert.ToInt32(dgvJournalTresorerieDetails.Rows[i].Cells[4].Value);
+                    dgvJournalTresorerieDetails.Rows[i].Cells[4].Value = soldeInitial + Convert.ToInt32(dgvJournalTresorerieDetails.Rows[i].Cells[2].Value)
+                    - Convert.ToInt32(dgvJournalTresorerieDetails.Rows[i].Cells[3].Value);
                 }
 
             }
@@ -120,7 +132,6 @@ namespace CasaEcologieSysInfo.Pages
             dgvJournalTresorerieDetails.Columns["Solde"].DefaultCellStyle.Format = "n0";
             dgvJournalTresorerieDetails.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgvJournalTresorerieDetails.Columns["Description"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dgvJournalTresorerieDetails.Columns["CodeOperation"].Visible = false;
 
             // Calcul des soldes
 
@@ -129,6 +140,10 @@ namespace CasaEcologieSysInfo.Pages
 
             var totalEncaissements = (from c in db.EveEncaissements
                                       from env in db.EveEncaissementsVentes
+                                      where c.CodeEncaissement == env.CodeEncaissement
+                                      select (decimal?)env.MontantEncaisse).Sum() ?? 0m;
+            var encaissementCreance = (from c in db.EveEncaissements
+                                      from env in db.EveEncaissementsCreances
                                       where c.CodeEncaissement == env.CodeEncaissement
                                       select (decimal?)env.MontantEncaisse).Sum() ?? 0m;
 
@@ -140,11 +155,11 @@ namespace CasaEcologieSysInfo.Pages
             var totalDecaissements = (from d in db.EveDecaissements
                                       select (decimal?)d.Montant).Sum() ?? 0m;
             var fondsDisponibleEnCaissesEtEnBanques = soldeInitiaux
-                + totalEncaissements + totalAutresEn
+                + totalEncaissements + totalAutresEn + encaissementCreance
                 - totalDecaissements;
 
             txtSoldesInitiaux.Text = soldeInitiaux.ToString("c0");
-            txtTotalEncaissements.Text = (totalEncaissements + totalAutresEn).ToString("c0");
+            txtTotalEncaissements.Text = (totalEncaissements + encaissementCreance + totalAutresEn).ToString("c0");
             txtTotalDecaissements.Text = totalDecaissements.ToString("c0");
             
 

@@ -294,5 +294,11 @@ namespace CasaEcologieSysInfo
             Pages.UC_RegistreImmobilisations imo = new Pages.UC_RegistreImmobilisations();
             AddControlsToPanel(imo);
         }
+
+        private void btnValorisationStocks_Click(object sender, EventArgs e)
+        {
+            Pages.UC_StocksInventaireEtValorisation vs = new Pages.UC_StocksInventaireEtValorisation();
+            AddControlsToPanel(vs);
+        }
     }
 }

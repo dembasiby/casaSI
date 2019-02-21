@@ -56,12 +56,10 @@
             // listBox1
             // 
             this.listBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listBox1.DataSource = this.ageClientBindingSource;
-            this.listBox1.DisplayMember = "NomClient";
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 17;
             this.listBox1.Location = new System.Drawing.Point(15, 103);
-            this.listBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listBox1.Margin = new System.Windows.Forms.Padding(2);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(228, 323);
             this.listBox1.TabIndex = 26;
@@ -78,7 +76,7 @@
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(256, 77);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(712, 440);
             this.dataGridView1.TabIndex = 27;
@@ -123,7 +121,7 @@
             this.txtTotalCreances.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTotalCreances.ForeColor = System.Drawing.SystemColors.Desktop;
             this.txtTotalCreances.Location = new System.Drawing.Point(14, 456);
-            this.txtTotalCreances.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtTotalCreances.Margin = new System.Windows.Forms.Padding(2);
             this.txtTotalCreances.Name = "txtTotalCreances";
             this.txtTotalCreances.ReadOnly = true;
             this.txtTotalCreances.Size = new System.Drawing.Size(162, 27);
@@ -142,7 +140,7 @@
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.label4);
             this.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UC_CreancesClients";
             this.Size = new System.Drawing.Size(983, 635);
             this.Load += new System.EventHandler(this.UC_CreancesClients_Load);

@@ -41,7 +41,8 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(369, 11);
+            this.label4.Location = new System.Drawing.Point(295, 9);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(197, 25);
             this.label4.TabIndex = 26;
@@ -54,28 +55,33 @@
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(234, 88);
+            this.dataGridView1.Location = new System.Drawing.Point(199, 70);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(735, 481);
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.Size = new System.Drawing.Size(762, 480);
             this.dataGridView1.TabIndex = 27;
             // 
             // lbxListeFournisseursDettes
             // 
             this.lbxListeFournisseursDettes.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lbxListeFournisseursDettes.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbxListeFournisseursDettes.FormattingEnabled = true;
-            this.lbxListeFournisseursDettes.ItemHeight = 21;
-            this.lbxListeFournisseursDettes.Location = new System.Drawing.Point(13, 122);
+            this.lbxListeFournisseursDettes.ItemHeight = 17;
+            this.lbxListeFournisseursDettes.Location = new System.Drawing.Point(10, 99);
+            this.lbxListeFournisseursDettes.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.lbxListeFournisseursDettes.Name = "lbxListeFournisseursDettes";
-            this.lbxListeFournisseursDettes.Size = new System.Drawing.Size(215, 399);
+            this.lbxListeFournisseursDettes.Size = new System.Drawing.Size(172, 323);
             this.lbxListeFournisseursDettes.TabIndex = 28;
             this.lbxListeFournisseursDettes.SelectedValueChanged += new System.EventHandler(this.LbxListeFournisseursDettes_SelectedValueChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 61);
+            this.label1.Location = new System.Drawing.Point(10, 49);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(225, 21);
+            this.label1.Size = new System.Drawing.Size(184, 17);
             this.label1.TabIndex = 29;
             this.label1.Text = "Total des dettes fournisseurs";
             // 
@@ -86,9 +92,10 @@
             this.txtTotalDettesFournisseurs.Enabled = false;
             this.txtTotalDettesFournisseurs.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTotalDettesFournisseurs.ForeColor = System.Drawing.Color.Red;
-            this.txtTotalDettesFournisseurs.Location = new System.Drawing.Point(17, 86);
+            this.txtTotalDettesFournisseurs.Location = new System.Drawing.Point(14, 70);
+            this.txtTotalDettesFournisseurs.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtTotalDettesFournisseurs.Name = "txtTotalDettesFournisseurs";
-            this.txtTotalDettesFournisseurs.Size = new System.Drawing.Size(211, 20);
+            this.txtTotalDettesFournisseurs.Size = new System.Drawing.Size(169, 20);
             this.txtTotalDettesFournisseurs.TabIndex = 30;
             this.txtTotalDettesFournisseurs.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -96,7 +103,8 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(431, 59);
+            this.label2.Location = new System.Drawing.Point(345, 48);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(280, 23);
             this.label2.TabIndex = 31;
@@ -104,7 +112,7 @@
             // 
             // UC_DettesFournisseurs
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtTotalDettesFournisseurs);
@@ -112,8 +120,8 @@
             this.Controls.Add(this.lbxListeFournisseursDettes);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label4);
-            this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(5);
+            this.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "UC_DettesFournisseurs";
             this.Size = new System.Drawing.Size(983, 635);
             this.Load += new System.EventHandler(this.UC_DettesFournisseurs_Load);

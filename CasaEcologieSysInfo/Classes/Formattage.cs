@@ -16,6 +16,11 @@ namespace CasaEcologieSysInfo
             grid.Columns["Entree"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             grid.Columns["Sortie"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             grid.Columns["Solde"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            grid.Columns["PU"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            grid.Columns["Valeur"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+            grid.Columns["PU"].DefaultCellStyle.Format = "n0";
+            grid.Columns["Valeur"].DefaultCellStyle.Format = "n0";
         }
 
         public static void RegistreImmobilisations(DataGridView grid)

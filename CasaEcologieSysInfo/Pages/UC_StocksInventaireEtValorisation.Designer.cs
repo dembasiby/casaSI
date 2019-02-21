@@ -30,12 +30,19 @@
         {
             this.label26 = new System.Windows.Forms.Label();
             this.gbxMatieresPremières = new System.Windows.Forms.GroupBox();
+            this.dgvMatieresPremieres = new System.Windows.Forms.DataGridView();
             this.gbxProduitsSemiFinis = new System.Windows.Forms.GroupBox();
+            this.dgvProduitsSemiFinis = new System.Windows.Forms.DataGridView();
             this.gbxProduitsFinis = new System.Windows.Forms.GroupBox();
+            this.dgvProduitsFinis = new System.Windows.Forms.DataGridView();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.gbxMatieresPremières.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMatieresPremieres)).BeginInit();
+            this.gbxProduitsSemiFinis.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProduitsSemiFinis)).BeginInit();
+            this.gbxProduitsFinis.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProduitsFinis)).BeginInit();
             this.SuspendLayout();
             // 
             // label26
@@ -52,81 +59,107 @@
             // 
             // gbxMatieresPremières
             // 
-            this.gbxMatieresPremières.Location = new System.Drawing.Point(23, 93);
+            this.gbxMatieresPremières.Controls.Add(this.dgvMatieresPremieres);
+            this.gbxMatieresPremières.Location = new System.Drawing.Point(3, 93);
             this.gbxMatieresPremières.Name = "gbxMatieresPremières";
-            this.gbxMatieresPremières.Size = new System.Drawing.Size(290, 480);
+            this.gbxMatieresPremières.Size = new System.Drawing.Size(375, 480);
             this.gbxMatieresPremières.TabIndex = 29;
             this.gbxMatieresPremières.TabStop = false;
             this.gbxMatieresPremières.Text = "Matières premières";
             // 
+            // dgvMatieresPremieres
+            // 
+            this.dgvMatieresPremieres.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dgvMatieresPremieres.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMatieresPremieres.Location = new System.Drawing.Point(7, 23);
+            this.dgvMatieresPremieres.Name = "dgvMatieresPremieres";
+            this.dgvMatieresPremieres.ReadOnly = true;
+            this.dgvMatieresPremieres.RowHeadersVisible = false;
+            this.dgvMatieresPremieres.Size = new System.Drawing.Size(362, 451);
+            this.dgvMatieresPremieres.TabIndex = 0;
+            // 
             // gbxProduitsSemiFinis
             // 
-            this.gbxProduitsSemiFinis.Location = new System.Drawing.Point(327, 93);
+            this.gbxProduitsSemiFinis.Controls.Add(this.dgvProduitsSemiFinis);
+            this.gbxProduitsSemiFinis.Location = new System.Drawing.Point(384, 93);
             this.gbxProduitsSemiFinis.Name = "gbxProduitsSemiFinis";
-            this.gbxProduitsSemiFinis.Size = new System.Drawing.Size(301, 480);
+            this.gbxProduitsSemiFinis.Size = new System.Drawing.Size(161, 480);
             this.gbxProduitsSemiFinis.TabIndex = 29;
             this.gbxProduitsSemiFinis.TabStop = false;
             this.gbxProduitsSemiFinis.Text = "Produits semi-finis";
             // 
+            // dgvProduitsSemiFinis
+            // 
+            this.dgvProduitsSemiFinis.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dgvProduitsSemiFinis.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProduitsSemiFinis.Location = new System.Drawing.Point(6, 23);
+            this.dgvProduitsSemiFinis.Name = "dgvProduitsSemiFinis";
+            this.dgvProduitsSemiFinis.ReadOnly = true;
+            this.dgvProduitsSemiFinis.RowHeadersVisible = false;
+            this.dgvProduitsSemiFinis.Size = new System.Drawing.Size(99, 451);
+            this.dgvProduitsSemiFinis.TabIndex = 0;
+            // 
             // gbxProduitsFinis
             // 
-            this.gbxProduitsFinis.Location = new System.Drawing.Point(646, 93);
+            this.gbxProduitsFinis.Controls.Add(this.dgvProduitsFinis);
+            this.gbxProduitsFinis.Location = new System.Drawing.Point(551, 93);
             this.gbxProduitsFinis.Name = "gbxProduitsFinis";
-            this.gbxProduitsFinis.Size = new System.Drawing.Size(320, 480);
+            this.gbxProduitsFinis.Size = new System.Drawing.Size(415, 480);
             this.gbxProduitsFinis.TabIndex = 29;
             this.gbxProduitsFinis.TabStop = false;
             this.gbxProduitsFinis.Text = "Produits finis";
             // 
+            // dgvProduitsFinis
+            // 
+            this.dgvProduitsFinis.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dgvProduitsFinis.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProduitsFinis.Location = new System.Drawing.Point(6, 22);
+            this.dgvProduitsFinis.Name = "dgvProduitsFinis";
+            this.dgvProduitsFinis.ReadOnly = true;
+            this.dgvProduitsFinis.RowHeadersVisible = false;
+            this.dgvProduitsFinis.Size = new System.Drawing.Size(403, 451);
+            this.dgvProduitsFinis.TabIndex = 0;
+            // 
             // dateTimePicker1
             // 
+            this.dateTimePicker1.Checked = false;
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePicker1.Location = new System.Drawing.Point(415, 50);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(142, 23);
             this.dateTimePicker1.TabIndex = 30;
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker2.Location = new System.Drawing.Point(590, 51);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(142, 23);
-            this.dateTimePicker2.TabIndex = 30;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.DateTimePicker1_ValueChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(281, 56);
+            this.label1.Location = new System.Drawing.Point(369, 55);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(128, 17);
+            this.label1.Size = new System.Drawing.Size(40, 17);
             this.label1.TabIndex = 31;
-            this.label1.Text = "Pour la période du";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(561, 56);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(25, 17);
-            this.label2.TabIndex = 31;
-            this.label2.Text = "au";
+            this.label1.Text = "Date";
             // 
             // UC_StocksInventaireEtValorisation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dateTimePicker2);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.gbxProduitsFinis);
             this.Controls.Add(this.gbxProduitsSemiFinis);
             this.Controls.Add(this.gbxMatieresPremières);
             this.Controls.Add(this.label26);
             this.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UC_StocksInventaireEtValorisation";
             this.Size = new System.Drawing.Size(983, 635);
+            this.Load += new System.EventHandler(this.UC_StocksInventaireEtValorisation_Load);
+            this.gbxMatieresPremières.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMatieresPremieres)).EndInit();
+            this.gbxProduitsSemiFinis.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProduitsSemiFinis)).EndInit();
+            this.gbxProduitsFinis.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProduitsFinis)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -139,8 +172,9 @@
         private System.Windows.Forms.GroupBox gbxProduitsSemiFinis;
         private System.Windows.Forms.GroupBox gbxProduitsFinis;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DataGridView dgvMatieresPremieres;
+        private System.Windows.Forms.DataGridView dgvProduitsSemiFinis;
+        private System.Windows.Forms.DataGridView dgvProduitsFinis;
     }
 }

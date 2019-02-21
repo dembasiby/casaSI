@@ -132,7 +132,7 @@ namespace CasaEcologieSysInfo
 
         private void BtnEnregistrerAchatMatierePremiere_Click(object sender, EventArgs e)
         {
-            if (VerifierSoldeCompteTresorerie())
+            if (VerifierSoldeCompteTresorerie() && float.Parse(txtQuantite.Text) > 0 && int.Parse(txtMontant.Text) > 0)
             {
                 try
                 {
@@ -149,7 +149,11 @@ namespace CasaEcologieSysInfo
                 {
                     MessageBox.Show(ex.Message);
                 }
-            } 
+            }
+            else
+            {
+                MessageBox.Show("Veuillez renseigner correctement les champs montant et quantité");
+            }
            
         }
 

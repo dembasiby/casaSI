@@ -34,7 +34,6 @@
             this.resComptesTresorerieBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cbxTres = new System.Windows.Forms.ComboBox();
             this.ageEmployeBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.cbxNomClient = new System.Windows.Forms.ComboBox();
             this.ageClientBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txtMontantEncaisse = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -49,6 +48,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txtCreancesClient = new System.Windows.Forms.TextBox();
+            this.cbxNomClient = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.resComptesTresorerieBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ageEmployeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ageClientBindingSource)).BeginInit();
@@ -93,19 +93,6 @@
             // ageEmployeBindingSource
             // 
             this.ageEmployeBindingSource.DataSource = typeof(CasaEcologieSysInfo.AgeEmploye);
-            // 
-            // cbxNomClient
-            // 
-            this.cbxNomClient.DataSource = this.ageClientBindingSource;
-            this.cbxNomClient.DisplayMember = "NomClient";
-            this.cbxNomClient.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxNomClient.FormattingEnabled = true;
-            this.cbxNomClient.Location = new System.Drawing.Point(183, 92);
-            this.cbxNomClient.Name = "cbxNomClient";
-            this.cbxNomClient.Size = new System.Drawing.Size(326, 29);
-            this.cbxNomClient.TabIndex = 21;
-            this.cbxNomClient.ValueMember = "CodeClient";
-            this.cbxNomClient.SelectedValueChanged += new System.EventHandler(this.cbxNomClient_SelectedValueChanged);
             // 
             // ageClientBindingSource
             // 
@@ -243,6 +230,19 @@
             this.txtCreancesClient.Size = new System.Drawing.Size(283, 27);
             this.txtCreancesClient.TabIndex = 25;
             // 
+            // cbxNomClient
+            // 
+            this.cbxNomClient.DataSource = this.ageClientBindingSource;
+            this.cbxNomClient.DisplayMember = "NomClient";
+            this.cbxNomClient.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxNomClient.FormattingEnabled = true;
+            this.cbxNomClient.Location = new System.Drawing.Point(183, 92);
+            this.cbxNomClient.Name = "cbxNomClient";
+            this.cbxNomClient.Size = new System.Drawing.Size(326, 29);
+            this.cbxNomClient.TabIndex = 21;
+            this.cbxNomClient.ValueMember = "CodeClient";
+            this.cbxNomClient.SelectedValueChanged += new System.EventHandler(this.CbxNomClient_SelectedValueChanged);
+            // 
             // UC_NouvelEncaissement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
@@ -282,7 +282,6 @@
         private System.Windows.Forms.DateTimePicker dtpDateEncaissement;
         private System.Windows.Forms.ComboBox cbxCompte;
         private System.Windows.Forms.ComboBox cbxTres;
-        private System.Windows.Forms.ComboBox cbxNomClient;
         private System.Windows.Forms.TextBox txtMontantEncaisse;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnEnregistrerEncaissement;
@@ -299,5 +298,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtCreancesClient;
+        private System.Windows.Forms.ComboBox cbxNomClient;
     }
 }

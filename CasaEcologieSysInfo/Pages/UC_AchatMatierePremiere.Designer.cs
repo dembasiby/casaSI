@@ -56,10 +56,12 @@
             this.gBxNouvelleMatierePremiere = new System.Windows.Forms.GroupBox();
             this.btnAjouterNouvelleMatierePremiere = new System.Windows.Forms.Button();
             this.txtStockInitial = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtNomMatierePremiere = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.cbxTypesMatieres = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.lblMontantPaye = new System.Windows.Forms.Label();
             this.txtMontantPaye = new System.Windows.Forms.TextBox();
@@ -79,13 +81,11 @@
             this.resComptesTresorerieBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.resComptesTresorerieTableAdapter = new CasaEcologieSysInfo.CasaDBDataSetAllTableAdapters.ResComptesTresorerieTableAdapter();
             this.lblLocaliteFournisseur = new System.Windows.Forms.Label();
-            this.txtLocaliteFournisseur = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtSoldeCompte = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.txtTransportMatierePremiere = new System.Windows.Forms.TextBox();
-            this.cbxTypesMatieres = new System.Windows.Forms.ComboBox();
-            this.label10 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.resStockMatieresPremieresBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.casaDBDataSetAll)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ageFournisseursMatieresPremieresBindingSource)).BeginInit();
@@ -102,6 +102,7 @@
             // 
             this.cbxNomMatierePremiere.DataSource = this.resStockMatieresPremieresBindingSource;
             this.cbxNomMatierePremiere.DisplayMember = "NomMatiere";
+            this.cbxNomMatierePremiere.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxNomMatierePremiere.FormattingEnabled = true;
             this.cbxNomMatierePremiere.Location = new System.Drawing.Point(249, 102);
             this.cbxNomMatierePremiere.Margin = new System.Windows.Forms.Padding(5);
@@ -228,6 +229,7 @@
             // 
             this.cbxFournisseurMPrem.DataSource = this.ageFournisseursMatieresPremieresBindingSource;
             this.cbxFournisseurMPrem.DisplayMember = "Nom";
+            this.cbxFournisseurMPrem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxFournisseurMPrem.FormattingEnabled = true;
             this.cbxFournisseurMPrem.Location = new System.Drawing.Point(249, 139);
             this.cbxFournisseurMPrem.Margin = new System.Windows.Forms.Padding(5);
@@ -374,6 +376,15 @@
             this.txtStockInitial.TabIndex = 8;
             this.txtStockInitial.Text = "00";
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(9, 135);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(111, 17);
+            this.label10.TabIndex = 5;
+            this.label10.Text = "Type de matiere";
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -409,6 +420,16 @@
             this.label3.Size = new System.Drawing.Size(295, 16);
             this.label3.TabIndex = 6;
             this.label3.Text = "Veuillez enregistrer la matière première si elle";
+            // 
+            // cbxTypesMatieres
+            // 
+            this.cbxTypesMatieres.DisplayMember = "PrenomNom";
+            this.cbxTypesMatieres.FormattingEnabled = true;
+            this.cbxTypesMatieres.Location = new System.Drawing.Point(123, 130);
+            this.cbxTypesMatieres.Margin = new System.Windows.Forms.Padding(5);
+            this.cbxTypesMatieres.Name = "cbxTypesMatieres";
+            this.cbxTypesMatieres.Size = new System.Drawing.Size(247, 25);
+            this.cbxTypesMatieres.TabIndex = 16;
             // 
             // label7
             // 
@@ -551,14 +572,6 @@
             this.lblLocaliteFournisseur.TabIndex = 12;
             this.lblLocaliteFournisseur.Text = "Localité fournisseur";
             // 
-            // txtLocaliteFournisseur
-            // 
-            this.txtLocaliteFournisseur.Location = new System.Drawing.Point(249, 178);
-            this.txtLocaliteFournisseur.Margin = new System.Windows.Forms.Padding(5);
-            this.txtLocaliteFournisseur.Name = "txtLocaliteFournisseur";
-            this.txtLocaliteFournisseur.Size = new System.Drawing.Size(286, 27);
-            this.txtLocaliteFournisseur.TabIndex = 13;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -597,24 +610,17 @@
             this.txtTransportMatierePremiere.TabIndex = 13;
             this.txtTransportMatierePremiere.Text = "0";
             // 
-            // cbxTypesMatieres
+            // comboBox1
             // 
-            this.cbxTypesMatieres.DisplayMember = "PrenomNom";
-            this.cbxTypesMatieres.FormattingEnabled = true;
-            this.cbxTypesMatieres.Location = new System.Drawing.Point(123, 130);
-            this.cbxTypesMatieres.Margin = new System.Windows.Forms.Padding(5);
-            this.cbxTypesMatieres.Name = "cbxTypesMatieres";
-            this.cbxTypesMatieres.Size = new System.Drawing.Size(247, 25);
-            this.cbxTypesMatieres.TabIndex = 16;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(9, 135);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(111, 17);
-            this.label10.TabIndex = 5;
-            this.label10.Text = "Type de matiere";
+            this.comboBox1.DataSource = this.ageFournisseursMatieresPremieresBindingSource;
+            this.comboBox1.DisplayMember = "Localite";
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(249, 177);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(5);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(286, 29);
+            this.comboBox1.TabIndex = 2;
             // 
             // UC_AchatMatierePremiere
             // 
@@ -625,12 +631,12 @@
             this.Controls.Add(this.dtpDateApprovisionnement);
             this.Controls.Add(this.cbxComptePaiement);
             this.Controls.Add(this.cbxTresoriere);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.cbxFournisseurMPrem);
             this.Controls.Add(this.cbxRespStocks);
             this.Controls.Add(this.cbxNomMatierePremiere);
             this.Controls.Add(this.btnEnregistrerAchatMatierePremiere);
             this.Controls.Add(this.txtMontantPaye);
-            this.Controls.Add(this.txtLocaliteFournisseur);
             this.Controls.Add(this.txtSoldeCompte);
             this.Controls.Add(this.txtTransportMatierePremiere);
             this.Controls.Add(this.txtMontant);
@@ -722,12 +728,12 @@
         private System.Windows.Forms.BindingSource resComptesTresorerieBindingSource;
         private CasaDBDataSetAllTableAdapters.ResComptesTresorerieTableAdapter resComptesTresorerieTableAdapter;
         private System.Windows.Forms.Label lblLocaliteFournisseur;
-        private System.Windows.Forms.TextBox txtLocaliteFournisseur;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtSoldeCompte;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtTransportMatierePremiere;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox cbxTypesMatieres;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

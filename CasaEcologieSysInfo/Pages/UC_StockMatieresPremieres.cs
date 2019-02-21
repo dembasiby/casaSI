@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
 
 namespace CasaEcologieSysInfo
 {
@@ -37,6 +31,8 @@ namespace CasaEcologieSysInfo
 
         private void AfficherJournalCorrespondant(string nomMatiere)
         {
+            float coutUnitaire = GestionStocks.CalculerCoutUnitaireMatierePremiere(nomMatiere);
+
             var entreesAchat = (from mp in db.ResStockMatieresPremieres
                            join rmp in db.EveReceptionMatieresPremieres on mp.CodeMatierePremiere equals rmp.CodeMatierePremiere
                            where mp.NomMatiere == nomMatiere
@@ -46,7 +42,7 @@ namespace CasaEcologieSysInfo
                                Description = "Achat de " + mp.NomMatiere,
                                Entree = rmp.Quantite,
                                Sortie = 0f,
-                               Solde = 0f
+                               Solde = 0f,
                            });
             var entreesDon = (from mp in db.ResStockMatieresPremieres
                               join dmp in db.EveReceptionDonsMatieresPremieres on mp.CodeMatierePremiere equals dmp.CodeMatierePremiere
@@ -103,11 +99,24 @@ namespace CasaEcologieSysInfo
             dr["Entree"] = 0;
             dr["Sortie"] = 0;
             dr["Description"] = "Stock Initial";
+
+            dt.Columns.Add("PU", typeof(float));
+            dt.Columns.Add("Valeur", typeof(float));
             
             dgvJournalStocksMatieresPremieres.DataSource = dt;
 
             Formattage.TableauDesStock(dgvJournalStocksMatieresPremieres);
             Conversion.CalculerSoldeStocksDeFaconProgressive(dgvJournalStocksMatieresPremieres, stockInitial);
+
+            //float number;
+            bool isNumeric = float.TryParse(coutUnitaire.ToString(), out float number);
+            float pu = (isNumeric ? coutUnitaire : 0f);
+
+            foreach (DataRow row in dt.Rows)
+            {
+                row["PU"] = pu;
+                row["Valeur"] = Convert.ToSingle(row["Solde"].ToString()) * pu;
+            }
         }
     }
 }

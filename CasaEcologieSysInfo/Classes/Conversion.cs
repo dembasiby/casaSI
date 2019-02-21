@@ -100,11 +100,15 @@ namespace CasaEcologieSysInfo
                                            from ev in db.EveEncaissementsVentes
                                            where c.CodeClient == ev.CodeClient
                                            select (decimal?)ev.MontantEncaisse).Sum() ?? 0m;
+                var encaissementCreances = (from c in db.AgeClients
+                                            from ec in db.EveEncaissementsCreances
+                                            where c.CodeClient == ec.CodeClient
+                                            select (decimal?)ec.MontantEncaisse).Sum() ?? 0m;
 
                 var creanceInitialClient = (from c in db.AgeClients
                                             select (decimal?)c.SoldeInitialeCreance).Sum() ?? 0m;
 
-                return creanceInitialClient + ventesClients - totalPaiementClient;
+                return creanceInitialClient + ventesClients - totalPaiementClient - encaissementCreances;
             }         
         }
 
@@ -121,8 +125,9 @@ namespace CasaEcologieSysInfo
                                     }
                                  ).Sum(d => (decimal?)d.Solde) ?? 0m;
 
-                var achatEquip = (from rei in db.ResEquipementsInfrastructures
-                                  select (decimal?)rei.Montant).Sum() ?? 0m;
+                var achatEquip = (from ei in db.ResEquipementsInfrastructures
+                                  join rei in db.EveReceptionEquipementsInfrastructures on ei.CodeEquipementInfrastructure equals rei.CodeEquipementInfrastructure
+                                  select (decimal?)ei.Montant).Sum() ?? 0m;
 
                 var soldeInitialFournisseurEquip = (from af in db.AgeAutreFournisseurs
                                                     select (decimal?)af.SoldeInitialDetteFournisseur).Sum() ?? 0m;
@@ -142,6 +147,11 @@ namespace CasaEcologieSysInfo
                                  }).Sum(s => (decimal?)s.Solde) ?? 0m;
 
                 var totalDettesFournisseurs = fournisseursMP + achatEquip + soldeInitialFournisseurEquip - decaissementEquip + fournisseurFS;
+                MessageBox.Show($"Solde fournisseurs matieres premieres: {fournisseursMP}");
+                MessageBox.Show($"Achat equipement: {achatEquip}.");
+                MessageBox.Show($"Solde initial fournisseurs equipements: {soldeInitialFournisseurEquip}.");
+                MessageBox.Show($"Decaissement equipements: {decaissementEquip}.");
+                MessageBox.Show($"Fournisseurs FS: {fournisseurFS}.");
 
                 return totalDettesFournisseurs;
             }
@@ -203,6 +213,14 @@ namespace CasaEcologieSysInfo
                                           
                                           select (decimal?)env.MontantEncaisse).Sum() ?? 0m;
 
+                var encaissementCreances = (from c in db.EveEncaissements
+                                            join nc in db.ResComptesTresoreries on c.CodeCompte equals nc.CodeCompte
+                                            where nc.NomCompte == nomCompte
+                                            from enc in db.EveEncaissementsCreances
+                                            where c.CodeEncaissement == enc.CodeEncaissement
+
+                                            select (decimal?)enc.MontantEncaisse).Sum() ?? 0m;
+
                 var totalAutresEncaissement = (from c in db.EveEncaissements
                                                join nc in db.ResComptesTresoreries on c.CodeCompte equals nc.CodeCompte
                                                where nc.NomCompte == nomCompte
@@ -215,7 +233,7 @@ namespace CasaEcologieSysInfo
                                           where d.ResComptesTresorerie.NomCompte == nomCompte
                                           select (decimal?)d.Montant).Sum() ?? 0m;
               
-                var fondsDisponibles = soldeInitial + totalEncaissements  + totalAutresEncaissement - totalDecaissements;
+                var fondsDisponibles = soldeInitial + totalEncaissements  + encaissementCreances + totalAutresEncaissement - totalDecaissements;
 
                 return fondsDisponibles;
             }

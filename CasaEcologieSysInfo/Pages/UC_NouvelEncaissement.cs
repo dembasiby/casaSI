@@ -28,23 +28,31 @@ namespace CasaEcologieSysInfo
 
         private void MettreCreanceAJour()
         {
+            var codeClient = Convert.ToInt32(cbxNomClient.SelectedValue);
+
             var ventesClients = (from c in db.AgeClients
                                  from vf in db.EveVenteStockProduitsFinis
                                  from v in db.EveVentes
                                  where v.CodeClient == c.CodeClient
                                  where vf.CodeVente == v.CodeVente
-                                 where c.NomClient == cbxNomClient.Text
+                                 where c.CodeClient == codeClient
                                  select (decimal?)vf.Montant).Sum() ?? 0m;
 
             var totalPaiementClient = (from c in db.AgeClients
                                        from ev in db.EveEncaissementsVentes
-                                       where c.NomClient == cbxNomClient.Text
+                                       where c.CodeClient == codeClient
                                        where c.CodeClient == ev.CodeClient
                                        select (decimal?)ev.MontantEncaisse).Sum() ?? 0m;
 
-            var creanceInitialClient = (from c in db.AgeClients where c.NomClient == cbxNomClient.Text select c.SoldeInitialeCreance).FirstOrDefault();
+            var totalPaiementCreances = (from c in db.AgeClients
+                                         from pc in db.EveEncaissementsCreances
+                                         where c.CodeClient == codeClient
+                                         where pc.CodeClient == c.CodeClient
+                                         select (decimal?)pc.MontantEncaisse).Sum() ?? 0m;
 
-            var creancesClients = ventesClients + creanceInitialClient - totalPaiementClient;
+            var creanceInitialClient = (from c in db.AgeClients where c.CodeClient == codeClient select c.SoldeInitialeCreance).FirstOrDefault();
+
+            var creancesClients = ventesClients + creanceInitialClient - totalPaiementClient - totalPaiementCreances;
 
             txtCreancesClient.Text = creancesClients.ToString("c0");
         }
@@ -89,25 +97,21 @@ namespace CasaEcologieSysInfo
                     db.EveEncaissements.Add(enc);
                     db.SaveChanges();
 
-                    EveVente vente = db.EveVentes.FirstOrDefault(nc => nc.CodeClient == client.CodeClient);
-                    EveEncaissementsVente encV = new EveEncaissementsVente
+                    EveEncaissementsCreance encC = new EveEncaissementsCreance
                     {
                         CodeEncaissement = enc.CodeEncaissement,
                         CodeClient = client.CodeClient,
-                        CodeVente = vente.CodeVente,
                         MontantEncaisse = int.Parse(txtMontantEncaisse.Text),
                         DateEncaissement = DateTime.Parse(dtpDateEncaissement.Text)
                     };
 
-                    db.EveEncaissementsVentes.Add(encV);
+                    db.EveEncaissementsCreances.Add(encC);
                     db.SaveChanges();
                     txtMontantEncaisse.Clear();
                     LoadData();
                     MettreCreanceAJour();
                 }
-            }
-            
-           
+            }           
         }
 
         private void UC_NouvelEncaissement_Load(object sender, EventArgs e)
@@ -116,11 +120,9 @@ namespace CasaEcologieSysInfo
             MettreCreanceAJour();
         }
 
-        private void cbxNomClient_SelectedValueChanged(object sender, EventArgs e)
+        private void CbxNomClient_SelectedValueChanged(object sender, EventArgs e)
         {
             MettreCreanceAJour();
         }
     }
-
-
 }

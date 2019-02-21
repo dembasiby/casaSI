@@ -70,6 +70,8 @@
             this.dgvJournalVentes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvJournalVentes.Location = new System.Drawing.Point(26, 117);
             this.dgvJournalVentes.Name = "dgvJournalVentes";
+            this.dgvJournalVentes.ReadOnly = true;
+            this.dgvJournalVentes.RowHeadersVisible = false;
             this.dgvJournalVentes.Size = new System.Drawing.Size(838, 497);
             this.dgvJournalVentes.TabIndex = 13;
             // 

@@ -47,18 +47,18 @@ namespace CasaEcologieSysInfo
 
                 var entrees = (from rmp in db.EveReceptionMatieresPremieres
                                where rmp.ResStockMatieresPremiere.NomMatiere == nomMatiere
-                               where rmp.DateReception < debutPeriod.Date
+                               where rmp.DateReception < debutPeriod
                                select (float?)rmp.Quantite).Sum() ?? 0;
 
                 var sorties = (from ur in db.EveUtilisationMatieresPremieres
                                where ur.ResStockMatieresPremiere.NomMatiere == nomMatiere
                                join p in db.EveProductions on ur.CodeUtilisationRessource equals p.CodeUtilisationRessources
-                               where p.Date < debutPeriod.Date
+                               where p.Date < debutPeriod
                                select (float?)ur.QuantiteMatierePremiere).Sum() ?? 0;
 
                 var autresSorties = (from asort in db.EveSortieDechetsMatieresPremieres
                                      where asort.ResStockMatieresPremiere.NomMatiere == nomMatiere
-                                     where asort.DateSortie < debutPeriod.Date
+                                     where asort.DateSortie < debutPeriod
                                      select (float?)asort.QuantiteMatierePremiere).Sum() ?? 0;
 
                 return (stockInitial + entrees) - (sorties + autresSorties);
@@ -105,7 +105,7 @@ namespace CasaEcologieSysInfo
             }
         }
 
-        public static Single QuantiteMatierePremiereParProduitFini(string nomProduit, string matierePremiere)
+        public static decimal QuantiteMatierePremierePrincipaleParProduitFini(string nomProduit, string matierePremiere)
         {
             // calculer la quantite moyenne de matiere premiere utilisee par unite de produit fini
 
@@ -115,6 +115,7 @@ namespace CasaEcologieSysInfo
                                                          join ppf in db.EveProductionStockProduitsFinis on pf.CodeProduit equals ppf.CodeProduitFini
                                                          join ur in db.EveUtilisationMatieresPremieres on ppf.EveProduction.CodeUtilisationRessources equals ur.CodeUtilisationRessource
                                                          where ur.ResStockMatieresPremiere.NomMatiere == matierePremiere
+                                                         where ur.ResStockMatieresPremiere.TypeMatiere != "emballage"
                                                          where pf.NomProduit == nomProduit
                                                          select new
                                                          {
@@ -127,11 +128,11 @@ namespace CasaEcologieSysInfo
 
                 var quantitePF = quantiteDeMatierePremiereUtilisee.Select(m => (float?)m.QuantiteProduitFini).Sum() ?? 0f;
 
-                float quantiteMoyenneParProduitFini = 0f;
+                decimal quantiteMoyenneParProduitFini = 0m;
 
                 if (quantiteMatP > 0f && quantitePF > 0f)
                 {
-                    quantiteMoyenneParProduitFini = quantiteMatP / quantitePF;
+                    quantiteMoyenneParProduitFini = (decimal)quantiteMatP / (decimal)quantitePF;
                 }
 
                 return quantiteMoyenneParProduitFini; 
@@ -139,6 +140,28 @@ namespace CasaEcologieSysInfo
                 //var quantitePF = quantiteDeMatierePremiereUtilisee.Select(m => (float?)m.QuantiteProduitFini).Sum() ?? 0f;
                // return quantitePF;
 
+            }
+        }
+
+        public static float CalculerCoutUnitaireMatierePremiere(string matiere)
+        {
+            using (CasaDBEntities db = new CasaDBEntities())
+            {
+                var valeurAchats = (from mp in db.ResStockMatieresPremieres
+                                    join rmp in db.EveReceptionMatieresPremieres on mp.CodeMatierePremiere equals rmp.CodeMatierePremiere
+                                    where rmp.DateReception.Year == DateTime.Now.Year
+                                    where mp.NomMatiere == matiere
+                                    select (float?)(rmp.Montant + rmp.TransportMatierePremiere)).Sum() ?? 0f;
+
+                var quantitesAchetees = (from mp in db.ResStockMatieresPremieres
+                                         join rmp in db.EveReceptionMatieresPremieres on mp.CodeMatierePremiere equals rmp.CodeMatierePremiere
+                                         where rmp.DateReception.Year == DateTime.Now.Year
+                                         where mp.NomMatiere == matiere
+                                         select (float?)(rmp.Quantite)).Sum() ?? 0f;
+
+                float coutUnitaire = valeurAchats / quantitesAchetees;
+
+                return coutUnitaire; 
             }
         }
         /*

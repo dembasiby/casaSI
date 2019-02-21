@@ -25,10 +25,14 @@ namespace CasaEcologieSysInfo
         public string NomProduit { get; set; }
         public int StockProduit { get; set; }
         public int PrixDeVenteStandard { get; set; }
+        public Nullable<int> CodeEmballage { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EveProductionStockProduitsFini> EveProductionStockProduitsFinis { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EveVenteStockProduitsFini> EveVenteStockProduitsFinis { get; set; }
+        public virtual ResStockMatieresPremiere ResStockMatieresPremiere { get; set; }
+        public virtual ResStockProduitsFini ResStockProduitsFinis1 { get; set; }
+        public virtual ResStockProduitsFini ResStockProduitsFini1 { get; set; }
     }
 }

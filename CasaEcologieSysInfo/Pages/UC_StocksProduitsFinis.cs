@@ -37,6 +37,8 @@ namespace CasaEcologieSysInfo
 
         private void AfficherJournalCorrespondant(string nomProduit)
         {
+            var coutUnitaire = 0f;
+
             var stockInitial = (from pf in db.ResStockProduitsFinis
                                 where pf.NomProduit == nomProduit
                                 select pf.StockProduit).FirstOrDefault(); 
@@ -81,10 +83,23 @@ namespace CasaEcologieSysInfo
             dr["Sortie"] = 0;
             dr["Description"] = "Stock initial";
 
+            dt.Columns.Add("PU", typeof(float));
+            dt.Columns.Add("Valeur", typeof(float));
+
             dgvJournalStocksProduitsFinis.DataSource = dt;
 
             Formattage.TableauDesStock(dgvJournalStocksProduitsFinis);
             Conversion.CalculerSoldeStocksDeFaconProgressive(dgvJournalStocksProduitsFinis, stockInitial);
+
+            //float number;
+            bool isNumeric = float.TryParse(coutUnitaire.ToString(), out float number);
+            float pu = (isNumeric ? coutUnitaire : 0f);
+
+            foreach (DataRow row in dt.Rows)
+            {
+                row["PU"] = pu;
+                row["Valeur"] = Convert.ToSingle(row["Solde"].ToString()) * pu;
+            }
         }
 
         private void UC_StocksProduitsFinis_Load(object sender, EventArgs e)

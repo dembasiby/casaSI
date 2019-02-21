@@ -161,6 +161,7 @@
             this.dgvJournalApprovisionnements.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvJournalApprovisionnements.Location = new System.Drawing.Point(42, 137);
             this.dgvJournalApprovisionnements.Name = "dgvJournalApprovisionnements";
+            this.dgvJournalApprovisionnements.ReadOnly = true;
             this.dgvJournalApprovisionnements.Size = new System.Drawing.Size(868, 497);
             this.dgvJournalApprovisionnements.TabIndex = 20;
             // 

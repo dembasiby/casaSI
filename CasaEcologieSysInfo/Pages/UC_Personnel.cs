@@ -20,19 +20,43 @@ namespace CasaEcologieSysInfo.Pages
                                   select new { Nom = p.PrenomNom, p.Poste }).ToList();
 
             dgvListePersonnel.DataSource = listePersonnel;
-            cbxTempsEtRemun.DataSource = listePersonnel.Select(p => p.Nom).ToList();
+
+            cbxTempsEtRemun.DisplayMember = "PrenomNom";
+            cbxTempsEtRemun.ValueMember = "CodeEmploye";
+            cbxTempsEtRemun.DataSource = db.AgeEmployes.Where(em => !em.Poste.StartsWith("Stagiaire")).OrderBy(c => c.PrenomNom).ToList();
+
             ageEmployeBindingSource1.DataSource = db.AgeEmployes.ToList();
             resComptesTresorerieBindingSource.DataSource = db.ResComptesTresoreries.ToList();
-            cbxTimeSheetNomEmploye.DataSource = listePersonnel.Select(p => p.Nom).ToList();
+            cbxTimeSheetNomEmploye.DataSource = db.AgeEmployes.Where(em => !em.Poste.StartsWith("Stagiaire")).OrderBy(c => c.PrenomNom).ToList();
+            cbxTimeSheetNomEmploye.DisplayMember = "PrenomNom";
+            cbxTimeSheetNomEmploye.ValueMember = "CodeEmploye";
+
+            cbxTresoriere.DataSource = db.AgeEmployes.Where(em => !em.Poste.StartsWith("Stagiaire")).OrderBy(c => c.PrenomNom).ToList();
+            cbxTresoriere.DisplayMember = "PrenomNom";
+            cbxTresoriere.ValueMember = "CodeEmploye";
+
+            cbxStagiaires.DisplayMember = "PrenomNom";
+            cbxStagiaires.ValueMember = "CodeEmploye";
+            cbxStagiaires.DataSource = db.AgeEmployes.Where(em => em.Poste.StartsWith("Stagiaire")).OrderBy(c => c.PrenomNom).ToList();
+
+            cbxComptePaiementStagiare.DataSource = db.ResComptesTresoreries.ToList();
+            cbxComptePaiementStagiare.ValueMember = "CodeCompte";
+            cbxPaiementFaitPar.DataSource = db.AgeEmployes.Where(em => !em.Poste.StartsWith("Stagiaire")).OrderBy(c => c.PrenomNom).ToList();
+            cbxPaiementFaitPar.DisplayMember = "PrenomNom";
+            cbxPaiementFaitPar.ValueMember = "CodeEmploye";
+
+
             AfficherPresenceEtRemunerationEmploye(dtpFin.Value.Date);
         }
 
         private void AfficherPresenceEtRemunerationEmploye(DateTime fin, DateTime debut = default(DateTime))
         {
             var employe = cbxTempsEtRemun.GetItemText(cbxTempsEtRemun.SelectedItem);
+            var codeEmploye = Convert.ToInt32(cbxTempsEtRemun.SelectedValue.ToString());
 
             var liste = (from pe in db.EvePresenceEmployes
                          where pe.AgeEmploye.PrenomNom == employe
+                         where pe.CodeEmploye == codeEmploye
                          where pe.Date >= debut.Date
                          where pe.Date <= fin.Date
 
@@ -83,9 +107,7 @@ namespace CasaEcologieSysInfo.Pages
         private void BtnPresenceEmploye_Click(object sender, EventArgs e)
         {
             var employe = cbxTimeSheetNomEmploye.GetItemText(cbxTimeSheetNomEmploye.SelectedItem);
-            var codeEmploye = (from em in db.AgeEmployes
-                               where em.PrenomNom == employe
-                               select em.CodeEmploye).FirstOrDefault();
+            var codeEmploye = Convert.ToInt32(cbxTimeSheetNomEmploye.SelectedValue.ToString());
 
             if (Validation.VerifierChampsMontant(txtRemunerationJournaliere.Text))
             {
@@ -147,42 +169,10 @@ namespace CasaEcologieSysInfo.Pages
         private void BtnPayerEmploye_Click(object sender, EventArgs e)
         {
             var employe = cbxTempsEtRemun.GetItemText(cbxTempsEtRemun.SelectedItem);
-            var codeEmploye = (from em in db.AgeEmployes
-                               where em.PrenomNom == employe
-                               select em.CodeEmploye).FirstOrDefault();
+            var codeEmploye = Convert.ToInt32(cbxTempsEtRemun.SelectedValue.ToString());
 
-            if (RemunerationPasEncorePayePourLaPeriod(codeEmploye))
-            {
-                EvePaiementEmploye paiement = new EvePaiementEmploye
-                {
-                    CodeEmployePaye = codeEmploye,
-                    DeCetteDate = DateTime.Parse(dtpDebut.Text),
-                    ACetteDate = DateTime.Parse(dtpFin.Text)
-                };
-
-                db.EvePaiementEmployes.Add(paiement);
-                db.SaveChanges();
-
-                EveDecaissement decaiss = new EveDecaissement
-                {
-                    DateDecaissement = DateTime.Parse(dtpDatePaiement.Text),
-                    CodePaiementEmploye = paiement.CodePaiementEmploye,
-                    CodeCompte = int.Parse(cbxComptePaiement.SelectedValue.ToString()),
-                    Description = "Paiment rémunération de " + employe + " pour la période du " + dtpDebut.Value.ToShortDateString() + " au " + dtpFin.Value.ToShortDateString(),
-                    CodeEmploye = int.Parse(cbxTresoriere.SelectedValue.ToString()),
-                    Montant = int.Parse(txtRemunerationPeriod.Text)
-                };
-
-                db.EveDecaissements.Add(decaiss);
-                db.SaveChanges();
-
-                MessageBox.Show($"Le paiement de {employe} a été enregistré pour la période du {dtpDebut.Value.ToShortDateString()} au {dtpFin.Value.ToShortDateString()}.");
-            }
-            else
-            {
-                MessageBox.Show($"{employe} a déjà été payé pour la période selectionnée.");
-                return;
-            }
+            PayerPersonnel(employe, codeEmploye, dtpDebut.Text, dtpFin.Text, dtpDatePaiement.Text, cbxComptePaiement.SelectedValue.ToString(),
+                cbxTresoriere.SelectedValue.ToString(), txtRemunerationPeriod.Text);            
         }
 
         private bool RemunerationPasEncorePayePourLaPeriod(int codeEmploye)
@@ -195,6 +185,66 @@ namespace CasaEcologieSysInfo.Pages
 
             if (remunere > 0) return false;
             return true;
+        }
+
+        private void BtnPayerIndemnite_Click(object sender, EventArgs e)
+        { 
+            var stagiaire = cbxStagiaires.GetItemText(cbxStagiaires.SelectedItem);
+            var codeStagiaire = Convert.ToInt32(cbxStagiaires.SelectedValue.ToString());
+
+            /*
+            cbxPaiementFaitPar.DataSource = db.AgeEmployes.Where(em => !em.Poste.StartsWith("Stagiaire")).OrderBy(c => c.PrenomNom).ToList();
+            cbxPaiementFaitPar.DisplayMember = "PrenomNom";
+            cbxPaiementFaitPar.ValueMember = "CodeEmploye"; 
+            */
+
+            PayerPersonnel(stagiaire, codeStagiaire, dtpDeStagiaire.Text, dtpAStagiaire.Text, dtpDatePaiementIndemStagiaires.Text, cbxComptePaiementStagiare.SelectedValue.ToString(),
+                cbxPaiementFaitPar.SelectedValue.ToString(), txtMontantIndemnite.Text);
+        }
+
+        private void PayerPersonnel(string employe, int codeEmploye, string debut, string fin, string date, string cptePaiement,
+                string tresoriere, string montant)
+        {
+            if (Validation.VerifierChampsMontant(montant))
+            {
+                if (RemunerationPasEncorePayePourLaPeriod(codeEmploye))
+                {
+                    EvePaiementEmploye paiement = new EvePaiementEmploye
+                    {
+                        CodeEmployePaye = codeEmploye,
+                        DeCetteDate = DateTime.Parse(debut),
+                        ACetteDate = DateTime.Parse(fin)
+                    };
+
+                    db.EvePaiementEmployes.Add(paiement);
+                    db.SaveChanges();
+
+                    EveDecaissement decaiss = new EveDecaissement
+                    {
+                        DateDecaissement = DateTime.Parse(date),
+                        CodePaiementEmploye = paiement.CodePaiementEmploye,
+                        CodeCompte = int.Parse(cptePaiement),
+                        Description = "Paiment rémunération de " + employe + " pour la période du " + debut + " au " + fin,
+                        CodeEmploye = int.Parse(tresoriere),
+                        Montant = int.Parse(montant)
+                    };
+
+                    db.EveDecaissements.Add(decaiss);
+                    db.SaveChanges();
+
+                    MessageBox.Show($"Le paiement de {employe} a été enregistré pour la période du {debut} au {fin}.");
+                }
+                else
+                {
+                    MessageBox.Show($"{employe} a déjà été payé pour la période selectionnée.");
+                    return;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Le montant entré n'est pas valide.");
+                return;
+            }
         }
     }
 }

@@ -20,7 +20,7 @@ namespace CasaEcologieSysInfo.Pages
         private void UC_EtatsFinMensuels_Load(object sender, EventArgs e)
         {
             AfficherAnnees();
-            //AfficherCompteDeResultat();
+            AfficherCompteDeResultat();
 
             var date = dtpAnnee.Value.Date;
             DateTime debut = new DateTime(date.Year, 1, 1);
@@ -126,7 +126,7 @@ namespace CasaEcologieSysInfo.Pages
 
             // Ending Work in Progress
             var endingWIP = 0f;
-
+ 
             // Total Manufacturing Costs(TMC) du mois
             var TMC = TotalManufacturingCosts(numMois);
 
@@ -149,13 +149,21 @@ namespace CasaEcologieSysInfo.Pages
             foreach (var produit in listeDesProduits)
             {
                 var cogsProduit = Convert.ToSingle(CalculerCoutDesProduitsVendusParProduit(produit));
-
+                /*
                 if (cogsProduit == 0)
                 {
-                    cogsProduit = (from p in db.ResStockProduitsFinis select p.PrixDeVenteStandard).FirstOrDefault() * 0.8f;
+                    cogsProduit = (from p in db.ResStockProduitsFinis
+                                   where p.NomProduit == produit
+                                   select p.PrixDeVenteStandard).FirstOrDefault() * 0.35f;
                 }
+
+                */
+
                 var stockProduitFiniDeLaPeriode = Conversion.CalculerSoldeStockProduitFiniParPeriod(produit, date);
-                coutDesProduitsVendus += (Convert.ToSingle(CalculerCoutDesProduitsVendusParProduit(produit)) * stockProduitFiniDeLaPeriode);
+                var cogs = cogsProduit * stockProduitFiniDeLaPeriode;
+
+                // MessageBox.Show($"{produit} - {cogs}");
+                coutDesProduitsVendus += cogs;
             }
 
             return coutDesProduitsVendus;
@@ -171,10 +179,10 @@ namespace CasaEcologieSysInfo.Pages
             var startingFinishedGoodsInventory = ValeurStocksDeProduitsFinis(numMois, debut);
 
             // Cost of Goods Manufactured
-            var cogm = 0f; // CostsOfGoodsManufactured(numMois);
+            var cogm = CostsOfGoodsManufactured(numMois);
 
             // Ending Finished Goods Inventory
-            var endingFinishedGoodsInventory = 0f; // ValeurStocksDeProduitsFinis(numMois, fin);
+            var endingFinishedGoodsInventory = ValeurStocksDeProduitsFinis(numMois, fin);
 
             // Cost of Goods Sold
             var cogs = startingFinishedGoodsInventory + cogm - endingFinishedGoodsInventory;
@@ -194,12 +202,13 @@ namespace CasaEcologieSysInfo.Pages
 
 
 
-        private float CalculerCoutMatieresPremieres(string nomProduit)
+        private decimal CalculerCoutMatieresPremieres(string nomProduit)
         {
             var matieresPremieres = (from pf in db.ResStockProduitsFinis
                                      join ppf in db.EveProductionStockProduitsFinis on pf.CodeProduit equals ppf.CodeProduction
                                      join p in db.EveProductions on ppf.CodeProduction equals p.CodeProduction
                                      join ur in db.EveUtilisationMatieresPremieres on p.CodeUtilisationRessources equals ur.CodeUtilisationRessource
+                                     where ur.ResStockMatieresPremiere.TypeMatiere == "fruit"
                                      where pf.NomProduit == nomProduit
                                      
                                      select new
@@ -207,7 +216,7 @@ namespace CasaEcologieSysInfo.Pages
                                          Matiere = ur.ResStockMatieresPremiere.NomMatiere
                                      }).ToList();
 
-            var coutMatieresPremieres = 0f;
+            decimal coutMatieresPremieres = 0m;
 
             foreach (var matierePremiere in matieresPremieres)
             {
@@ -229,8 +238,9 @@ namespace CasaEcologieSysInfo.Pages
                 var coutTotal = coutMatierePremiere + coutTransportMatierePremiere;
                 if (Convert.ToInt32(quantiteAchetee) > 0)
                 {
-                    var coutUnitaire = (float)coutTotal / (float)quantiteAchetee;
-                    var coutMatiere = coutUnitaire * GestionStocks.QuantiteMatierePremiereParProduitFini(nomProduit, matierePremiere.Matiere);
+                    var coutUnitaire = (decimal)coutTotal / (decimal)quantiteAchetee;
+                    var coutMatiere = coutUnitaire * GestionStocks.QuantiteMatierePremierePrincipaleParProduitFini(nomProduit, matierePremiere.Matiere);
+                    MessageBox.Show($"Produit: {nomProduit}\nMatiere premiere: {matierePremiere}\nCout unitaire matiere: {coutUnitaire}\nQuantite par produit: {GestionStocks.QuantiteMatierePremierePrincipaleParProduitFini(nomProduit, matierePremiere.Matiere)}\nCout matiere par produit: {coutMatiere}");
                     coutMatieresPremieres += coutMatiere;
                 }
 
@@ -249,7 +259,7 @@ namespace CasaEcologieSysInfo.Pages
         /// <param name="RawMaterialsUsed"></param>
         /// <returns></returns>
 
-        private float? CalculerCoutDesProduitsVendusParProduit(string nomProduit)
+        private decimal? CalculerCoutDesProduitsVendusParProduit(string nomProduit)
         {
             // FORMULE DE CALCUL DU COUT DES PRODUITS VENDUS
 
