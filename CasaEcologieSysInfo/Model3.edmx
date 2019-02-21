@@ -97,6 +97,16 @@
           <Property Name="Description" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="MontantEncaisse" Type="money" Nullable="false" />
         </EntityType>
+        <EntityType Name="EveEncaissementsCreances">
+          <Key>
+            <PropertyRef Name="CodeEncaissementCreance" />
+          </Key>
+          <Property Name="CodeEncaissementCreance" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CodeClient" Type="int" Nullable="false" />
+          <Property Name="MontantEncaisse" Type="money" Nullable="false" />
+          <Property Name="DateEncaissement" Type="date" Nullable="false" />
+          <Property Name="CodeEncaissement" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="EveEncaissementsVentes">
           <Key>
             <PropertyRef Name="CodeEncaissement" />
@@ -296,6 +306,7 @@
           <Property Name="NomProduit" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="StockProduit" Type="int" Nullable="false" />
           <Property Name="PrixDeVenteStandard" Type="int" Nullable="false" />
+          <Property Name="CodeEmballage" Type="int" />
         </EntityType>
         <EntityType Name="ResStockProduitsSemiFinis">
           <Key>
@@ -513,6 +524,30 @@
               <PropertyRef Name="CodeEncaissement" />
             </Principal>
             <Dependent Role="EveEncaissementsAutres">
+              <PropertyRef Name="CodeEncaissement" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveEncaissementsCreances_AgeClients">
+          <End Role="AgeClients" Type="Self.AgeClients" Multiplicity="1" />
+          <End Role="EveEncaissementsCreances" Type="Self.EveEncaissementsCreances" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgeClients">
+              <PropertyRef Name="CodeClient" />
+            </Principal>
+            <Dependent Role="EveEncaissementsCreances">
+              <PropertyRef Name="CodeClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveEncaissementsCreances_EveEncaissements">
+          <End Role="EveEncaissements" Type="Self.EveEncaissements" Multiplicity="1" />
+          <End Role="EveEncaissementsCreances" Type="Self.EveEncaissementsCreances" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EveEncaissements">
+              <PropertyRef Name="CodeEncaissement" />
+            </Principal>
+            <Dependent Role="EveEncaissementsCreances">
               <PropertyRef Name="CodeEncaissement" />
             </Dependent>
           </ReferentialConstraint>
@@ -937,6 +972,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ResStockProduitsFinis_ResStockMatieresPremieresEmballages">
+          <End Role="ResStockMatieresPremieres" Type="Self.ResStockMatieresPremieres" Multiplicity="0..1" />
+          <End Role="ResStockProduitsFinis" Type="Self.ResStockProduitsFinis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ResStockMatieresPremieres">
+              <PropertyRef Name="CodeMatierePremiere" />
+            </Principal>
+            <Dependent Role="ResStockProduitsFinis">
+              <PropertyRef Name="CodeEmballage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResStockProduitsFinis_ResStockProduitsFinis">
+          <End Role="ResStockProduitsFinis" Type="Self.ResStockProduitsFinis" Multiplicity="1" />
+          <End Role="ResStockProduitsFinis1" Type="Self.ResStockProduitsFinis" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ResStockProduitsFinis">
+              <PropertyRef Name="CodeProduit" />
+            </Principal>
+            <Dependent Role="ResStockProduitsFinis1">
+              <PropertyRef Name="CodeProduit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ResStockProduitsSemiFinis_ResStockMatieresPremieres">
           <End Role="ResStockMatieresPremieres" Type="Self.ResStockMatieresPremieres" Multiplicity="1" />
           <End Role="ResStockProduitsSemiFinis" Type="Self.ResStockProduitsSemiFinis" Multiplicity="*" />
@@ -1015,6 +1074,7 @@
           <EntitySet Name="EveDecaissements" EntityType="Self.EveDecaissements" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EveEncaissements" EntityType="Self.EveEncaissements" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EveEncaissementsAutres" EntityType="Self.EveEncaissementsAutres" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EveEncaissementsCreances" EntityType="Self.EveEncaissementsCreances" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EveEncaissementsVentes" EntityType="Self.EveEncaissementsVentes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EvePaiementEmployes" EntityType="Self.EvePaiementEmployes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EvePresenceEmployes" EntityType="Self.EvePresenceEmployes" Schema="dbo" store:Type="Tables" />
@@ -1102,6 +1162,14 @@
           <AssociationSet Name="FK_EveEncaissementsAutres_EveEncaissements" Association="Self.FK_EveEncaissementsAutres_EveEncaissements">
             <End Role="EveEncaissements" EntitySet="EveEncaissements" />
             <End Role="EveEncaissementsAutres" EntitySet="EveEncaissementsAutres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveEncaissementsCreances_AgeClients" Association="Self.FK_EveEncaissementsCreances_AgeClients">
+            <End Role="AgeClients" EntitySet="AgeClients" />
+            <End Role="EveEncaissementsCreances" EntitySet="EveEncaissementsCreances" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveEncaissementsCreances_EveEncaissements" Association="Self.FK_EveEncaissementsCreances_EveEncaissements">
+            <End Role="EveEncaissements" EntitySet="EveEncaissements" />
+            <End Role="EveEncaissementsCreances" EntitySet="EveEncaissementsCreances" />
           </AssociationSet>
           <AssociationSet Name="FK_EveEncaissementsVentes_AgeClients" Association="Self.FK_EveEncaissementsVentes_AgeClients">
             <End Role="AgeClients" EntitySet="AgeClients" />
@@ -1243,6 +1311,14 @@
             <End Role="ResStockProduitsFinis" EntitySet="ResStockProduitsFinis" />
             <End Role="EveVenteStockProduitsFinis" EntitySet="EveVenteStockProduitsFinis" />
           </AssociationSet>
+          <AssociationSet Name="FK_ResStockProduitsFinis_ResStockMatieresPremieresEmballages" Association="Self.FK_ResStockProduitsFinis_ResStockMatieresPremieresEmballages">
+            <End Role="ResStockMatieresPremieres" EntitySet="ResStockMatieresPremieres" />
+            <End Role="ResStockProduitsFinis" EntitySet="ResStockProduitsFinis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResStockProduitsFinis_ResStockProduitsFinis" Association="Self.FK_ResStockProduitsFinis_ResStockProduitsFinis">
+            <End Role="ResStockProduitsFinis" EntitySet="ResStockProduitsFinis" />
+            <End Role="ResStockProduitsFinis1" EntitySet="ResStockProduitsFinis" />
+          </AssociationSet>
           <AssociationSet Name="FK_ResStockProduitsSemiFinis_ResStockMatieresPremieres" Association="Self.FK_ResStockProduitsSemiFinis_ResStockMatieresPremieres">
             <End Role="ResStockMatieresPremieres" EntitySet="ResStockMatieresPremieres" />
             <End Role="ResStockProduitsSemiFinis" EntitySet="ResStockProduitsSemiFinis" />
@@ -1281,6 +1357,7 @@
           <Property Name="SoldeInitialeCreance" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <NavigationProperty Name="EveVentes" Relationship="Self.FK_EveVentes_AgeClients" FromRole="AgeClients" ToRole="EveVentes" />
           <NavigationProperty Name="EveEncaissementsVentes" Relationship="CasaDBModel.FK_EveEncaissementsVentes_AgeClients" FromRole="AgeClient" ToRole="EveEncaissementsVente" />
+          <NavigationProperty Name="EveEncaissementsCreances" Relationship="CasaDBModel.FK_EveEncaissementsCreances_AgeClients" FromRole="AgeClient" ToRole="EveEncaissementsCreance" />
         </EntityType>
         <EntityType Name="AgeEmploye">
           <Key>
@@ -1383,6 +1460,7 @@
           <NavigationProperty Name="ResComptesTresorerie" Relationship="Self.FK_EveEncaissements_ResComptesTresorerie" FromRole="EveEncaissements" ToRole="ResComptesTresorerie" />
           <NavigationProperty Name="EveEncaissementsVentes" Relationship="Self.FK_EveEncaissementsVentes_EveEncaissements" FromRole="EveEncaissements" ToRole="EveEncaissementsVentes" />
           <NavigationProperty Name="EveEncaissementsAutres" Relationship="CasaDBModel.FK_EveEncaissementsAutres_EveEncaissements" FromRole="EveEncaissement" ToRole="EveEncaissementsAutre" />
+          <NavigationProperty Name="EveEncaissementsCreances" Relationship="CasaDBModel.FK_EveEncaissementsCreances_EveEncaissements" FromRole="EveEncaissement" ToRole="EveEncaissementsCreance" />
         </EntityType>
         <EntityType Name="EveEncaissementsVente">
           <Key>
@@ -1580,6 +1658,7 @@
           <NavigationProperty Name="EveReceptionDonsMatieresPremieres" Relationship="CasaDBModel.FK_EveReceptionDonsMatieresPremieres_ResStockMatieresPremieres" FromRole="ResStockMatieresPremiere" ToRole="EveReceptionDonsMatieresPremiere" />
           <NavigationProperty Name="EveSortieDechetsMatieresPremieres" Relationship="CasaDBModel.FK_EveSortieDechetsMatieresPremieres_ResStockMatieresPremieres" FromRole="ResStockMatieresPremiere" ToRole="EveSortieDechetsMatieresPremiere" />
           <Property Name="TypeMatiere" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ResStockProduitsFinis" Relationship="CasaDBModel.FK_ResStockProduitsFinis_ResStockMatieresPremieresEmballages" FromRole="ResStockMatieresPremiere" ToRole="ResStockProduitsFini" />
         </EntityType>
         <EntityType Name="ResStockProduitsFini">
           <Key>
@@ -1591,6 +1670,10 @@
           <Property Name="PrixDeVenteStandard" Type="Int32" Nullable="false" />
           <NavigationProperty Name="EveProductionStockProduitsFinis" Relationship="Self.FK_EveProductionStockProduitsFinis_ResStockProduitsFinis" FromRole="ResStockProduitsFinis" ToRole="EveProductionStockProduitsFinis" />
           <NavigationProperty Name="EveVenteStockProduitsFinis" Relationship="Self.FK_EveVenteStockProduitsFinis_ResStockProduitsFinis" FromRole="ResStockProduitsFinis" ToRole="EveVenteStockProduitsFinis" />
+          <Property Name="CodeEmballage" Type="Int32" />
+          <NavigationProperty Name="ResStockMatieresPremiere" Relationship="CasaDBModel.FK_ResStockProduitsFinis_ResStockMatieresPremieresEmballages" FromRole="ResStockProduitsFini" ToRole="ResStockMatieresPremiere" />
+          <NavigationProperty Name="ResStockProduitsFinis1" Relationship="CasaDBModel.FK_ResStockProduitsFinis_ResStockProduitsFinis" FromRole="ResStockProduitsFini" ToRole="ResStockProduitsFini1" />
+          <NavigationProperty Name="ResStockProduitsFini1" Relationship="CasaDBModel.FK_ResStockProduitsFinis_ResStockProduitsFinis" FromRole="ResStockProduitsFini1" ToRole="ResStockProduitsFini" />
         </EntityType>
         <EntityType Name="ResStockProduitsSemiFini">
           <Key>
@@ -2380,6 +2463,23 @@
             <Parameter Name="Debut" Mode="In" Type="DateTime" />
             <Parameter Name="Fin" Mode="In" Type="DateTime" />
           </FunctionImport>
+          <AssociationSet Name="FK_ResStockProduitsFinis_ResStockMatieresPremieresEmballages" Association="CasaDBModel.FK_ResStockProduitsFinis_ResStockMatieresPremieresEmballages">
+            <End Role="ResStockMatieresPremiere" EntitySet="ResStockMatieresPremieres" />
+            <End Role="ResStockProduitsFini" EntitySet="ResStockProduitsFinis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResStockProduitsFinis_ResStockProduitsFinis" Association="CasaDBModel.FK_ResStockProduitsFinis_ResStockProduitsFinis">
+            <End Role="ResStockProduitsFini" EntitySet="ResStockProduitsFinis" />
+            <End Role="ResStockProduitsFini1" EntitySet="ResStockProduitsFinis" />
+          </AssociationSet>
+          <EntitySet Name="EveEncaissementsCreances" EntityType="CasaDBModel.EveEncaissementsCreance" />
+          <AssociationSet Name="FK_EveEncaissementsCreances_AgeClients" Association="CasaDBModel.FK_EveEncaissementsCreances_AgeClients">
+            <End Role="AgeClient" EntitySet="AgeClients" />
+            <End Role="EveEncaissementsCreance" EntitySet="EveEncaissementsCreances" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveEncaissementsCreances_EveEncaissements" Association="CasaDBModel.FK_EveEncaissementsCreances_EveEncaissements">
+            <End Role="EveEncaissement" EntitySet="EveEncaissements" />
+            <End Role="EveEncaissementsCreance" EntitySet="EveEncaissementsCreances" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -2616,6 +2716,66 @@
           <Property Type="String" Name="Matière_première" Nullable="false" MaxLength="50" />
           <Property Type="Double" Name="Quantité" Nullable="true" />
         </ComplexType>
+        <Association Name="FK_ResStockProduitsFinis_ResStockMatieresPremieresEmballages">
+          <End Type="CasaDBModel.ResStockMatieresPremiere" Role="ResStockMatieresPremiere" Multiplicity="0..1" />
+          <End Type="CasaDBModel.ResStockProduitsFini" Role="ResStockProduitsFini" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ResStockMatieresPremiere">
+              <PropertyRef Name="CodeMatierePremiere" />
+            </Principal>
+            <Dependent Role="ResStockProduitsFini">
+              <PropertyRef Name="CodeEmballage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResStockProduitsFinis_ResStockProduitsFinis">
+          <End Type="CasaDBModel.ResStockProduitsFini" Role="ResStockProduitsFini" Multiplicity="1" />
+          <End Type="CasaDBModel.ResStockProduitsFini" Role="ResStockProduitsFini1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ResStockProduitsFini">
+              <PropertyRef Name="CodeProduit" />
+            </Principal>
+            <Dependent Role="ResStockProduitsFini1">
+              <PropertyRef Name="CodeProduit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="EveEncaissementsCreance">
+          <Key>
+            <PropertyRef Name="CodeEncaissementCreance" />
+          </Key>
+          <Property Name="CodeEncaissementCreance" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CodeClient" Type="Int32" Nullable="false" />
+          <Property Name="MontantEncaisse" Type="Decimal" Nullable="false" />
+          <Property Name="DateEncaissement" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CodeEncaissement" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AgeClient" Relationship="CasaDBModel.FK_EveEncaissementsCreances_AgeClients" FromRole="EveEncaissementsCreance" ToRole="AgeClient" />
+          <NavigationProperty Name="EveEncaissement" Relationship="CasaDBModel.FK_EveEncaissementsCreances_EveEncaissements" FromRole="EveEncaissementsCreance" ToRole="EveEncaissement" />
+        </EntityType>
+        <Association Name="FK_EveEncaissementsCreances_AgeClients">
+          <End Type="CasaDBModel.AgeClient" Role="AgeClient" Multiplicity="1" />
+          <End Type="CasaDBModel.EveEncaissementsCreance" Role="EveEncaissementsCreance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgeClient">
+              <PropertyRef Name="CodeClient" />
+            </Principal>
+            <Dependent Role="EveEncaissementsCreance">
+              <PropertyRef Name="CodeClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveEncaissementsCreances_EveEncaissements">
+          <End Type="CasaDBModel.EveEncaissement" Role="EveEncaissement" Multiplicity="1" />
+          <End Type="CasaDBModel.EveEncaissementsCreance" Role="EveEncaissementsCreance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EveEncaissement">
+              <PropertyRef Name="CodeEncaissement" />
+            </Principal>
+            <Dependent Role="EveEncaissementsCreance">
+              <PropertyRef Name="CodeEncaissement" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2876,6 +3036,7 @@
           <EntitySetMapping Name="ResStockProduitsFinis">
             <EntityTypeMapping TypeName="CasaDBModel.ResStockProduitsFini">
               <MappingFragment StoreEntitySet="ResStockProduitsFinis">
+                <ScalarProperty Name="CodeEmballage" ColumnName="CodeEmballage" />
                 <ScalarProperty Name="CodeProduit" ColumnName="CodeProduit" />
                 <ScalarProperty Name="NomProduit" ColumnName="NomProduit" />
                 <ScalarProperty Name="StockProduit" ColumnName="StockProduit" />
@@ -3007,6 +3168,17 @@
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="DateSortie" ColumnName="DateSortie" />
                 <ScalarProperty Name="CodeSortieDechet" ColumnName="CodeSortieDechet" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EveEncaissementsCreances">
+            <EntityTypeMapping TypeName="CasaDBModel.EveEncaissementsCreance">
+              <MappingFragment StoreEntitySet="EveEncaissementsCreances">
+                <ScalarProperty Name="CodeEncaissement" ColumnName="CodeEncaissement" />
+                <ScalarProperty Name="DateEncaissement" ColumnName="DateEncaissement" />
+                <ScalarProperty Name="MontantEncaisse" ColumnName="MontantEncaisse" />
+                <ScalarProperty Name="CodeClient" ColumnName="CodeClient" />
+                <ScalarProperty Name="CodeEncaissementCreance" ColumnName="CodeEncaissementCreance" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

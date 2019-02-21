@@ -90,6 +90,11 @@
         <AssociationConnector Association="CasaDBModel.FK_EveSortieDechetsMatieresPremieres_AgeEmployes" />
         <AssociationConnector Association="CasaDBModel.FK_EveSortieDechetsMatieresPremieres_AgeEmployes1" />
         <AssociationConnector Association="CasaDBModel.FK_EveSortieDechetsMatieresPremieres_ResStockMatieresPremieres" />
+        <AssociationConnector Association="CasaDBModel.FK_ResStockProduitsFinis_ResStockMatieresPremieresEmballages" />
+        <AssociationConnector Association="CasaDBModel.FK_ResStockProduitsFinis_ResStockProduitsFinis" />
+        <EntityTypeShape EntityType="CasaDBModel.EveEncaissementsCreance" Width="1.5" PointX="8.25" PointY="21.375" />
+        <AssociationConnector Association="CasaDBModel.FK_EveEncaissementsCreances_AgeClients" />
+        <AssociationConnector Association="CasaDBModel.FK_EveEncaissementsCreances_EveEncaissements" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
