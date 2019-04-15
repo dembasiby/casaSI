@@ -85,7 +85,7 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
+            this.btnTransvasage = new System.Windows.Forms.Button();
             this.btnProduction = new System.Windows.Forms.Button();
             this.pnlEtatsFinanciers = new System.Windows.Forms.Panel();
             this.btnBilansMensuels = new System.Windows.Forms.Button();
@@ -308,7 +308,7 @@
             this.btnValorisationStocks.TabIndex = 4;
             this.btnValorisationStocks.Text = "Inventaire et valorisation des stocks";
             this.btnValorisationStocks.UseVisualStyleBackColor = false;
-            this.btnValorisationStocks.Click += new System.EventHandler(this.btnValorisationStocks_Click);
+            this.btnValorisationStocks.Click += new System.EventHandler(this.BtnValorisationStocks_Click);
             // 
             // btnStockProduitsSemiFinis
             // 
@@ -822,10 +822,10 @@
             this.pnlProduction.Controls.Add(this.button4);
             this.pnlProduction.Controls.Add(this.button5);
             this.pnlProduction.Controls.Add(this.button6);
-            this.pnlProduction.Controls.Add(this.button7);
+            this.pnlProduction.Controls.Add(this.btnTransvasage);
             this.pnlProduction.Controls.Add(this.btnProduction);
             this.pnlProduction.Location = new System.Drawing.Point(3, 474);
-            this.pnlProduction.MaximumSize = new System.Drawing.Size(217, 130);
+            this.pnlProduction.MaximumSize = new System.Drawing.Size(217, 170);
             this.pnlProduction.MinimumSize = new System.Drawing.Size(217, 40);
             this.pnlProduction.Name = "pnlProduction";
             this.pnlProduction.Size = new System.Drawing.Size(217, 40);
@@ -928,19 +928,19 @@
             this.button6.UseVisualStyleBackColor = false;
             this.button6.Click += new System.EventHandler(this.BtnStockMatierePremiere_Click);
             // 
-            // button7
+            // btnTransvasage
             // 
-            this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button7.Location = new System.Drawing.Point(1, 128);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(213, 39);
-            this.button7.TabIndex = 2;
-            this.button7.Text = "Stocks produits finis";
-            this.button7.UseVisualStyleBackColor = false;
-            this.button7.Click += new System.EventHandler(this.BtnStockProduitsFinis_Click);
+            this.btnTransvasage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
+            this.btnTransvasage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTransvasage.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTransvasage.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTransvasage.Location = new System.Drawing.Point(1, 128);
+            this.btnTransvasage.Name = "btnTransvasage";
+            this.btnTransvasage.Size = new System.Drawing.Size(213, 39);
+            this.btnTransvasage.TabIndex = 2;
+            this.btnTransvasage.Text = "Transvasage";
+            this.btnTransvasage.UseVisualStyleBackColor = false;
+            this.btnTransvasage.Click += new System.EventHandler(this.BtnTransvasage_Click);
             // 
             // btnProduction
             // 
@@ -1291,7 +1291,7 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button btnTransvasage;
         private System.Windows.Forms.Button btnProduction;
         private System.Windows.Forms.Timer tmrProduction;
         private System.Windows.Forms.Button btnImmobilisations;

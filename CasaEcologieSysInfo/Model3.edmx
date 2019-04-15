@@ -59,6 +59,7 @@
           <Property Name="CodeServiceFourniture" Type="int" Nullable="false" />
           <Property Name="CodeFournisseurServiceFourniture" Type="int" Nullable="false" />
           <Property Name="CodeEmploye" Type="int" />
+          <Property Name="TransportServiceFourniture" Type="money" />
         </EntityType>
         <EntityType Name="EveDecaissements">
           <Key>
@@ -208,6 +209,18 @@
           <Property Name="QuantiteMatierePremiere" Type="float" Nullable="false" />
           <Property Name="CodeEmploye(responsable stock)" Type="int" Nullable="false" />
           <Property Name="CodeEmploye(autre responsable)" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EveTransvasements">
+          <Key>
+            <PropertyRef Name="CodeTransvasage" />
+          </Key>
+          <Property Name="CodeTransvasage" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateOperation" Type="date" Nullable="false" />
+          <Property Name="CodeEmballageInitial" Type="int" Nullable="false" />
+          <Property Name="QuantiteATransvaser" Type="float" Nullable="false" />
+          <Property Name="CodeEmballageFinal" Type="int" Nullable="false" />
+          <Property Name="CodeProduitInitial" Type="int" Nullable="false" />
+          <Property Name="CodeProduitFinal" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="EveUtilisationEquipementInfrastructures">
           <Key>
@@ -828,6 +841,54 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_EveTransvasements_ResStockMatieresPremieres_Final">
+          <End Role="ResStockMatieresPremieres" Type="Self.ResStockMatieresPremieres" Multiplicity="1" />
+          <End Role="EveTransvasements" Type="Self.EveTransvasements" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ResStockMatieresPremieres">
+              <PropertyRef Name="CodeMatierePremiere" />
+            </Principal>
+            <Dependent Role="EveTransvasements">
+              <PropertyRef Name="CodeEmballageFinal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveTransvasements_ResStockMatieresPremieres_Initial">
+          <End Role="ResStockMatieresPremieres" Type="Self.ResStockMatieresPremieres" Multiplicity="1" />
+          <End Role="EveTransvasements" Type="Self.EveTransvasements" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ResStockMatieresPremieres">
+              <PropertyRef Name="CodeMatierePremiere" />
+            </Principal>
+            <Dependent Role="EveTransvasements">
+              <PropertyRef Name="CodeEmballageInitial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveTransvasements_ResStockProduitsFinis_Final">
+          <End Role="ResStockProduitsFinis" Type="Self.ResStockProduitsFinis" Multiplicity="1" />
+          <End Role="EveTransvasements" Type="Self.EveTransvasements" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ResStockProduitsFinis">
+              <PropertyRef Name="CodeProduit" />
+            </Principal>
+            <Dependent Role="EveTransvasements">
+              <PropertyRef Name="CodeProduitFinal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveTransvasements_ResStockProduitsFinis_Initial">
+          <End Role="ResStockProduitsFinis" Type="Self.ResStockProduitsFinis" Multiplicity="1" />
+          <End Role="EveTransvasements" Type="Self.EveTransvasements" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ResStockProduitsFinis">
+              <PropertyRef Name="CodeProduit" />
+            </Principal>
+            <Dependent Role="EveTransvasements">
+              <PropertyRef Name="CodeProduitInitial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_EveUtilisationEquipementInfrastructures_EveUtilisationRessources">
           <End Role="EveUtilisationRessources" Type="Self.EveUtilisationRessources" Multiplicity="1" />
           <End Role="EveUtilisationEquipementInfrastructures" Type="Self.EveUtilisationEquipementInfrastructures" Multiplicity="*" />
@@ -1085,6 +1146,7 @@
           <EntitySet Name="EveReceptionEquipementsInfrastructures" EntityType="Self.EveReceptionEquipementsInfrastructures" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EveReceptionMatieresPremieres" EntityType="Self.EveReceptionMatieresPremieres" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EveSortieDechetsMatieresPremieres" EntityType="Self.EveSortieDechetsMatieresPremieres" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EveTransvasements" EntityType="Self.EveTransvasements" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EveUtilisationEquipementInfrastructures" EntityType="Self.EveUtilisationEquipementInfrastructures" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EveUtilisationMatieresPremieres" EntityType="Self.EveUtilisationMatieresPremieres" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EveUtilisationProduitsSemiFinis" EntityType="Self.EveUtilisationProduitsSemiFinis" Schema="dbo" store:Type="Tables" />
@@ -1263,6 +1325,22 @@
             <End Role="ResStockMatieresPremieres" EntitySet="ResStockMatieresPremieres" />
             <End Role="EveSortieDechetsMatieresPremieres" EntitySet="EveSortieDechetsMatieresPremieres" />
           </AssociationSet>
+          <AssociationSet Name="FK_EveTransvasements_ResStockMatieresPremieres_Final" Association="Self.FK_EveTransvasements_ResStockMatieresPremieres_Final">
+            <End Role="ResStockMatieresPremieres" EntitySet="ResStockMatieresPremieres" />
+            <End Role="EveTransvasements" EntitySet="EveTransvasements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveTransvasements_ResStockMatieresPremieres_Initial" Association="Self.FK_EveTransvasements_ResStockMatieresPremieres_Initial">
+            <End Role="ResStockMatieresPremieres" EntitySet="ResStockMatieresPremieres" />
+            <End Role="EveTransvasements" EntitySet="EveTransvasements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveTransvasements_ResStockProduitsFinis_Final" Association="Self.FK_EveTransvasements_ResStockProduitsFinis_Final">
+            <End Role="ResStockProduitsFinis" EntitySet="ResStockProduitsFinis" />
+            <End Role="EveTransvasements" EntitySet="EveTransvasements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveTransvasements_ResStockProduitsFinis_Initial" Association="Self.FK_EveTransvasements_ResStockProduitsFinis_Initial">
+            <End Role="ResStockProduitsFinis" EntitySet="ResStockProduitsFinis" />
+            <End Role="EveTransvasements" EntitySet="EveTransvasements" />
+          </AssociationSet>
           <AssociationSet Name="FK_EveUtilisationEquipementInfrastructures_EveUtilisationRessources" Association="Self.FK_EveUtilisationEquipementInfrastructures_EveUtilisationRessources">
             <End Role="EveUtilisationRessources" EntitySet="EveUtilisationRessources" />
             <End Role="EveUtilisationEquipementInfrastructures" EntitySet="EveUtilisationEquipementInfrastructures" />
@@ -1419,6 +1497,7 @@
           <NavigationProperty Name="AgeFournisseursServicesFourniture" Relationship="Self.FK_EveAcquisitionServicesFournitures_AgeFournisseursServicesFournitures" FromRole="EveAcquisitionServicesFournitures" ToRole="AgeFournisseursServicesFournitures" />
           <NavigationProperty Name="ResServicesFourniture" Relationship="Self.FK_EveAcquisitionServicesFournitures_ResServicesFournitures" FromRole="EveAcquisitionServicesFournitures" ToRole="ResServicesFournitures" />
           <NavigationProperty Name="EveDecaissements" Relationship="Self.FK_EveDecaissements_EveAcquisitionServicesFournitures" FromRole="EveAcquisitionServicesFournitures" ToRole="EveDecaissements" />
+          <Property Name="TransportServiceFourniture" Type="Decimal" Precision="19" Scale="4" />
         </EntityType>
         <EntityType Name="EveDecaissement">
           <Key>
@@ -1659,6 +1738,8 @@
           <NavigationProperty Name="EveSortieDechetsMatieresPremieres" Relationship="CasaDBModel.FK_EveSortieDechetsMatieresPremieres_ResStockMatieresPremieres" FromRole="ResStockMatieresPremiere" ToRole="EveSortieDechetsMatieresPremiere" />
           <Property Name="TypeMatiere" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="ResStockProduitsFinis" Relationship="CasaDBModel.FK_ResStockProduitsFinis_ResStockMatieresPremieresEmballages" FromRole="ResStockMatieresPremiere" ToRole="ResStockProduitsFini" />
+          <NavigationProperty Name="EveTransvasements" Relationship="CasaDBModel.FK_EveTransvasements_ResStockMatieresPremieres_Final" FromRole="ResStockMatieresPremiere" ToRole="EveTransvasement" />
+          <NavigationProperty Name="EveTransvasements1" Relationship="CasaDBModel.FK_EveTransvasements_ResStockMatieresPremieres_Initial" FromRole="ResStockMatieresPremiere" ToRole="EveTransvasement" />
         </EntityType>
         <EntityType Name="ResStockProduitsFini">
           <Key>
@@ -1674,6 +1755,8 @@
           <NavigationProperty Name="ResStockMatieresPremiere" Relationship="CasaDBModel.FK_ResStockProduitsFinis_ResStockMatieresPremieresEmballages" FromRole="ResStockProduitsFini" ToRole="ResStockMatieresPremiere" />
           <NavigationProperty Name="ResStockProduitsFinis1" Relationship="CasaDBModel.FK_ResStockProduitsFinis_ResStockProduitsFinis" FromRole="ResStockProduitsFini" ToRole="ResStockProduitsFini1" />
           <NavigationProperty Name="ResStockProduitsFini1" Relationship="CasaDBModel.FK_ResStockProduitsFinis_ResStockProduitsFinis" FromRole="ResStockProduitsFini1" ToRole="ResStockProduitsFini" />
+          <NavigationProperty Name="EveTransvasements" Relationship="CasaDBModel.FK_EveTransvasements_ResStockProduitsFinis_Final" FromRole="ResStockProduitsFini" ToRole="EveTransvasement" />
+          <NavigationProperty Name="EveTransvasements1" Relationship="CasaDBModel.FK_EveTransvasements_ResStockProduitsFinis_Initial" FromRole="ResStockProduitsFini" ToRole="EveTransvasement" />
         </EntityType>
         <EntityType Name="ResStockProduitsSemiFini">
           <Key>
@@ -2480,6 +2563,23 @@
             <End Role="EveEncaissement" EntitySet="EveEncaissements" />
             <End Role="EveEncaissementsCreance" EntitySet="EveEncaissementsCreances" />
           </AssociationSet>
+          <EntitySet Name="EveTransvasements" EntityType="CasaDBModel.EveTransvasement" />
+          <AssociationSet Name="FK_EveTransvasements_ResStockMatieresPremieres_Final" Association="CasaDBModel.FK_EveTransvasements_ResStockMatieresPremieres_Final">
+            <End Role="ResStockMatieresPremiere" EntitySet="ResStockMatieresPremieres" />
+            <End Role="EveTransvasement" EntitySet="EveTransvasements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveTransvasements_ResStockMatieresPremieres_Initial" Association="CasaDBModel.FK_EveTransvasements_ResStockMatieresPremieres_Initial">
+            <End Role="ResStockMatieresPremiere" EntitySet="ResStockMatieresPremieres" />
+            <End Role="EveTransvasement" EntitySet="EveTransvasements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveTransvasements_ResStockProduitsFinis_Final" Association="CasaDBModel.FK_EveTransvasements_ResStockProduitsFinis_Final">
+            <End Role="ResStockProduitsFini" EntitySet="ResStockProduitsFinis" />
+            <End Role="EveTransvasement" EntitySet="EveTransvasements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EveTransvasements_ResStockProduitsFinis_Initial" Association="CasaDBModel.FK_EveTransvasements_ResStockProduitsFinis_Initial">
+            <End Role="ResStockProduitsFini" EntitySet="ResStockProduitsFinis" />
+            <End Role="EveTransvasement" EntitySet="EveTransvasements" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -2746,7 +2846,7 @@
           </Key>
           <Property Name="CodeEncaissementCreance" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CodeClient" Type="Int32" Nullable="false" />
-          <Property Name="MontantEncaisse" Type="Decimal" Nullable="false" />
+          <Property Name="MontantEncaisse" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="DateEncaissement" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="CodeEncaissement" Type="Int32" Nullable="false" />
           <NavigationProperty Name="AgeClient" Relationship="CasaDBModel.FK_EveEncaissementsCreances_AgeClients" FromRole="EveEncaissementsCreance" ToRole="AgeClient" />
@@ -2773,6 +2873,70 @@
             </Principal>
             <Dependent Role="EveEncaissementsCreance">
               <PropertyRef Name="CodeEncaissement" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="EveTransvasement">
+          <Key>
+            <PropertyRef Name="CodeTransvasage" />
+          </Key>
+          <Property Name="CodeTransvasage" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateOperation" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CodeEmballageInitial" Type="Int32" Nullable="false" />
+          <Property Name="QuantiteATransvaser" Type="Double" Nullable="false" />
+          <Property Name="CodeEmballageFinal" Type="Int32" Nullable="false" />
+          <Property Name="CodeProduitInitial" Type="Int32" Nullable="false" />
+          <Property Name="CodeProduitFinal" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ResStockMatieresPremiere" Relationship="CasaDBModel.FK_EveTransvasements_ResStockMatieresPremieres_Final" FromRole="EveTransvasement" ToRole="ResStockMatieresPremiere" />
+          <NavigationProperty Name="ResStockMatieresPremiere1" Relationship="CasaDBModel.FK_EveTransvasements_ResStockMatieresPremieres_Initial" FromRole="EveTransvasement" ToRole="ResStockMatieresPremiere" />
+          <NavigationProperty Name="ResStockProduitsFini" Relationship="CasaDBModel.FK_EveTransvasements_ResStockProduitsFinis_Final" FromRole="EveTransvasement" ToRole="ResStockProduitsFini" />
+          <NavigationProperty Name="ResStockProduitsFini1" Relationship="CasaDBModel.FK_EveTransvasements_ResStockProduitsFinis_Initial" FromRole="EveTransvasement" ToRole="ResStockProduitsFini" />
+        </EntityType>
+        <Association Name="FK_EveTransvasements_ResStockMatieresPremieres_Final">
+          <End Type="CasaDBModel.ResStockMatieresPremiere" Role="ResStockMatieresPremiere" Multiplicity="1" />
+          <End Type="CasaDBModel.EveTransvasement" Role="EveTransvasement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ResStockMatieresPremiere">
+              <PropertyRef Name="CodeMatierePremiere" />
+            </Principal>
+            <Dependent Role="EveTransvasement">
+              <PropertyRef Name="CodeEmballageFinal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveTransvasements_ResStockMatieresPremieres_Initial">
+          <End Type="CasaDBModel.ResStockMatieresPremiere" Role="ResStockMatieresPremiere" Multiplicity="1" />
+          <End Type="CasaDBModel.EveTransvasement" Role="EveTransvasement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ResStockMatieresPremiere">
+              <PropertyRef Name="CodeMatierePremiere" />
+            </Principal>
+            <Dependent Role="EveTransvasement">
+              <PropertyRef Name="CodeEmballageInitial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveTransvasements_ResStockProduitsFinis_Final">
+          <End Type="CasaDBModel.ResStockProduitsFini" Role="ResStockProduitsFini" Multiplicity="1" />
+          <End Type="CasaDBModel.EveTransvasement" Role="EveTransvasement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ResStockProduitsFini">
+              <PropertyRef Name="CodeProduit" />
+            </Principal>
+            <Dependent Role="EveTransvasement">
+              <PropertyRef Name="CodeProduitFinal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EveTransvasements_ResStockProduitsFinis_Initial">
+          <End Type="CasaDBModel.ResStockProduitsFini" Role="ResStockProduitsFini" Multiplicity="1" />
+          <End Type="CasaDBModel.EveTransvasement" Role="EveTransvasement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ResStockProduitsFini">
+              <PropertyRef Name="CodeProduit" />
+            </Principal>
+            <Dependent Role="EveTransvasement">
+              <PropertyRef Name="CodeProduitInitial" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2834,6 +2998,7 @@
           <EntitySetMapping Name="EveAcquisitionServicesFournitures">
             <EntityTypeMapping TypeName="CasaDBModel.EveAcquisitionServicesFourniture">
               <MappingFragment StoreEntitySet="EveAcquisitionServicesFournitures">
+                <ScalarProperty Name="TransportServiceFourniture" ColumnName="TransportServiceFourniture" />
                 <ScalarProperty Name="CodeAcquisitionServiceFourniture" ColumnName="CodeAcquisitionServiceFourniture" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="Montant" ColumnName="Montant" />
@@ -3179,6 +3344,19 @@
                 <ScalarProperty Name="MontantEncaisse" ColumnName="MontantEncaisse" />
                 <ScalarProperty Name="CodeClient" ColumnName="CodeClient" />
                 <ScalarProperty Name="CodeEncaissementCreance" ColumnName="CodeEncaissementCreance" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EveTransvasements">
+            <EntityTypeMapping TypeName="CasaDBModel.EveTransvasement">
+              <MappingFragment StoreEntitySet="EveTransvasements">
+                <ScalarProperty Name="CodeProduitFinal" ColumnName="CodeProduitFinal" />
+                <ScalarProperty Name="CodeProduitInitial" ColumnName="CodeProduitInitial" />
+                <ScalarProperty Name="CodeEmballageFinal" ColumnName="CodeEmballageFinal" />
+                <ScalarProperty Name="QuantiteATransvaser" ColumnName="QuantiteATransvaser" />
+                <ScalarProperty Name="CodeEmballageInitial" ColumnName="CodeEmballageInitial" />
+                <ScalarProperty Name="DateOperation" ColumnName="DateOperation" />
+                <ScalarProperty Name="CodeTransvasage" ColumnName="CodeTransvasage" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

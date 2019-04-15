@@ -222,14 +222,14 @@
             // 
             this.dgvJournalTresorerieDetails.AllowUserToAddRows = false;
             this.dgvJournalTresorerieDetails.AllowUserToDeleteRows = false;
-            this.dgvJournalTresorerieDetails.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dgvJournalTresorerieDetails.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvJournalTresorerieDetails.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dgvJournalTresorerieDetails.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvJournalTresorerieDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvJournalTresorerieDetails.Location = new System.Drawing.Point(207, 133);
             this.dgvJournalTresorerieDetails.Name = "dgvJournalTresorerieDetails";
             this.dgvJournalTresorerieDetails.ReadOnly = true;
-            this.dgvJournalTresorerieDetails.Size = new System.Drawing.Size(728, 457);
+            this.dgvJournalTresorerieDetails.Size = new System.Drawing.Size(759, 457);
             this.dgvJournalTresorerieDetails.TabIndex = 20;
             // 
             // UC_JournalTresorerie

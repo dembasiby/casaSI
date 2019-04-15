@@ -44,6 +44,7 @@ namespace CasaEcologieSysInfo
                                Sortie = 0f,
                                Solde = 0f,
                            });
+
             var entreesDon = (from mp in db.ResStockMatieresPremieres
                               join dmp in db.EveReceptionDonsMatieresPremieres on mp.CodeMatierePremiere equals dmp.CodeMatierePremiere
                               where mp.NomMatiere == nomMatiere
@@ -55,6 +56,17 @@ namespace CasaEcologieSysInfo
                                   Sortie = 0f,
                                   Solde = 0f
                               });
+            var entreesTransvasage = (from str in db.EveTransvasements
+                                      join mp in db.ResStockMatieresPremieres on str.CodeEmballageInitial equals mp.CodeMatierePremiere
+                                      where mp.NomMatiere == nomMatiere
+                                      select new
+                                      {
+                                          Date = str.DateOperation,
+                                          Description = "Transvasage",
+                                          Entree = (float)str.QuantiteATransvaser,
+                                          Sortie = 0f,
+                                          Solde = 0f
+                                      });
 
             var sortiesProduction = (from mp in db.ResStockMatieresPremieres
                            join ump in db.EveUtilisationMatieresPremieres on mp.CodeMatierePremiere equals ump.CodeMatierePremiere
@@ -69,6 +81,17 @@ namespace CasaEcologieSysInfo
                                Sortie = ump.QuantiteMatierePremiere,
                                Solde = 0f
                            });
+            var sortiesTransvasage = (from str in db.EveTransvasements
+                                      join mp in db.ResStockMatieresPremieres on str.CodeEmballageFinal equals mp.CodeMatierePremiere
+                                      where mp.NomMatiere == nomMatiere
+                                      select new
+                                      {
+                                          Date = str.DateOperation,
+                                          Description = "Transvasage",
+                                          Entree = 0f,
+                                          Sortie = (float)str.QuantiteATransvaser,
+                                          Solde = 0f
+                                      });
             var sortiesAutre = (from mp in db.ResStockMatieresPremieres
                                 join dmp in db.EveSortieDechetsMatieresPremieres on mp.CodeMatierePremiere equals dmp.CodeMatierePremiere
                                 where mp.NomMatiere == nomMatiere
@@ -82,9 +105,11 @@ namespace CasaEcologieSysInfo
                                 });
 
             var resultats = entreesAchat
-                .Concat(entreesDon)
-                .Concat(sortiesProduction)
-                .Concat(sortiesAutre)
+                .Union(entreesDon)
+                .Union(entreesTransvasage)
+                .Union(sortiesProduction)
+                .Union(sortiesTransvasage)
+                .Union(sortiesAutre)
                 .OrderByDescending(d => d.Date)
                 .ToList();
 

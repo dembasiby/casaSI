@@ -136,10 +136,6 @@ namespace CasaEcologieSysInfo
                 }
 
                 return quantiteMoyenneParProduitFini; 
-               
-                //var quantitePF = quantiteDeMatierePremiereUtilisee.Select(m => (float?)m.QuantiteProduitFini).Sum() ?? 0f;
-               // return quantitePF;
-
             }
         }
 

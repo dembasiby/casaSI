@@ -149,7 +149,7 @@ namespace CasaEcologieSysInfo
             {
                 CodeUtilisationRessource = codeURes,
                 CodeProduitSemiFini = psf.CodeProduitSemiFini,
-                QuantiteProduitSemiFini = int.Parse(li.SubItems[1].Text)
+                QuantiteProduitSemiFini = float.Parse(li.SubItems[1].Text)
             };
 
             db.EveUtilisationProduitsSemiFinis.Add(upsf);
@@ -227,8 +227,10 @@ namespace CasaEcologieSysInfo
             {
                 if (float.Parse(quantite) > 0f || int.Parse(quantite) > 0)
                 {
-                    ListViewItem resultats = new ListViewItem(element);
-                    resultats.Name = element;
+                    ListViewItem resultats = new ListViewItem(element)
+                    {
+                        Name = element
+                    };
 
                     if (!liste.Items.ContainsKey(resultats.Name))
                     {
@@ -267,18 +269,24 @@ namespace CasaEcologieSysInfo
 
         private void BtnAjouterPSemiFiniProduction_Click(object sender, EventArgs e)
         {
-            if (int.Parse(txtStockProduitSFini.Text) <= 0 || int.Parse(txtStockProduitSFini.Text) < int.Parse(txtQuantiteProduitSemiFiniUtilise.Text))
+            try
+            {
+                bool stockSuffisant = (float.Parse(txtStockProduitSFini.Text) > 0f);
+                bool stockSuperieurAQuantiteAUtiliser = (float.Parse(txtStockProduitSFini.Text) >= float.Parse(txtQuantiteProduitSemiFiniUtilise.Text));
+                Validation.VerifierChampsMontant(txtQuantiteProduitSemiFiniUtilise.Text);
+
+                AjouterResultatProductionALaListe(
+                txtQuantiteProduitSemiFiniUtilise.Text,
+                cbxNomProduitSemiFini.Text,
+                lvwListProduitsSemiFinisUtilises);
+
+                txtQuantiteProduitSemiFiniUtilise.Clear();
+            }
+            catch (Exception)
             {
                 MessageBox.Show("Le stock de matière première disponible est insuffisant.");
                 return;
             }
-
-            AjouterResultatProductionALaListe(
-                txtQuantiteProduitSemiFiniUtilise.Text, 
-                cbxNomProduitSemiFini.Text, 
-                lvwListProduitsSemiFinisUtilises);
-
-            txtQuantiteProduitSemiFiniUtilise.Clear();
         }
 
         private void BtnAjouterProduitFini_Click(object sender, EventArgs e)
@@ -425,10 +433,10 @@ namespace CasaEcologieSysInfo
                 var stockInitial = codeQuery.Quantite;
                 var entrees = (from epsf in db.EveProductionProduitsSemiFinis
                                where epsf.ResStockProduitsSemiFini.Description == prodSF
-                               select (int?)epsf.QuantiteProduitSemiFini).Sum() ?? 0;
+                               select (float?)epsf.QuantiteProduitSemiFini).Sum() ?? 0f;
                 var sorties = (from ufsp in db.EveUtilisationProduitsSemiFinis
                                where ufsp.ResStockProduitsSemiFini.Description == prodSF
-                               select (int?)ufsp.QuantiteProduitSemiFini).Sum() ?? 0;
+                               select (float?)ufsp.QuantiteProduitSemiFini).Sum() ?? 0f;
 
                 var soldeStock = stockInitial + entrees - sorties;
                 txtStockProduitSFini.Text = soldeStock.ToString();

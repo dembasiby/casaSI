@@ -32,6 +32,7 @@ namespace CasaEcologieSysInfo
         private void AfficherJournal()
         {
             var nomProduit = lbxListeProduitsFinis.GetItemText(lbxListeProduitsFinis.SelectedItem);
+            lblNomProduit.Text = $"( {nomProduit} )";
             AfficherJournalCorrespondant(nomProduit);
         }
 
@@ -51,11 +52,22 @@ namespace CasaEcologieSysInfo
                            select new
                            {
                                prod.Date,
-                               Description = "Production de " + pf.NomProduit,
+                               Description = "Production",
                                Entree = ppf.QuantiteProduitFini,
                                Sortie = 0,
                                Solde = 0
                            });
+            var entreesTransvasage = (from etrv in db.EveTransvasements
+                                      join pf in db.ResStockProduitsFinis on etrv.CodeProduitFinal equals pf.CodeProduit
+                                      where pf.NomProduit == nomProduit
+                                      select new
+                                      {
+                                          Date = etrv.DateOperation,
+                                          Description = "Transvasage",
+                                          Entree = (int)etrv.QuantiteATransvaser,
+                                          Sortie = 0,
+                                          Solde = 0
+                                      });
 
             var sorties = (from pf in db.ResStockProduitsFinis
                            join vpf in db.EveVenteStockProduitsFinis on pf.CodeProduit equals vpf.CodeProduitFini
@@ -65,13 +77,27 @@ namespace CasaEcologieSysInfo
                            select new
                            {
                                Date = v.DateVente,
-                               Description = "Vente de " +  pf.NomProduit,
-                               Entree = 0,
+                               Description = "Vente",
+                               Entree = 0, 
                                Sortie = vpf.QuantiteProduitFini,
                                Solde = 0
                            });
+            var sortiesTransvasage = (from etrv in db.EveTransvasements
+                                      join pf in db.ResStockProduitsFinis on etrv.CodeProduitInitial equals pf.CodeProduit
+                                      where pf.NomProduit == nomProduit
+                                      select new
+                                      {
+                                          Date = etrv.DateOperation,
+                                          Description = "Transvasage",
+                                          Entree = 0,
+                                          Sortie = (int)etrv.QuantiteATransvaser,
+                                          Solde = 0
+                                      });
 
-            var resultat = entrees.Concat(sorties)
+            var resultat = entrees
+                .Union(entreesTransvasage)
+                .Union(sorties)
+                .Union(sortiesTransvasage)
                 .OrderByDescending(d => d.Date)
                 .ToList();
 

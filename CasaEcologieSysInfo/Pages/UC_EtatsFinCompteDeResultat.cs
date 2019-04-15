@@ -240,7 +240,7 @@ namespace CasaEcologieSysInfo.Pages
                 {
                     var coutUnitaire = (decimal)coutTotal / (decimal)quantiteAchetee;
                     var coutMatiere = coutUnitaire * GestionStocks.QuantiteMatierePremierePrincipaleParProduitFini(nomProduit, matierePremiere.Matiere);
-                    MessageBox.Show($"Produit: {nomProduit}\nMatiere premiere: {matierePremiere}\nCout unitaire matiere: {coutUnitaire}\nQuantite par produit: {GestionStocks.QuantiteMatierePremierePrincipaleParProduitFini(nomProduit, matierePremiere.Matiere)}\nCout matiere par produit: {coutMatiere}");
+                   // MessageBox.Show($"Produit: {nomProduit}\nMatiere premiere: {matierePremiere}\nCout unitaire matiere: {coutUnitaire}\nQuantite par produit: {GestionStocks.QuantiteMatierePremierePrincipaleParProduitFini(nomProduit, matierePremiere.Matiere)}\nCout matiere par produit: {coutMatiere}");
                     coutMatieresPremieres += coutMatiere;
                 }
 

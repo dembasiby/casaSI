@@ -33,6 +33,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dgvJournalStocksProduitsFinis = new System.Windows.Forms.DataGridView();
+            this.lblNomProduit = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvJournalStocksProduitsFinis)).BeginInit();
             this.SuspendLayout();
             // 
@@ -93,14 +94,24 @@
             this.dgvJournalStocksProduitsFinis.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvJournalStocksProduitsFinis.Location = new System.Drawing.Point(266, 104);
             this.dgvJournalStocksProduitsFinis.Name = "dgvJournalStocksProduitsFinis";
+            this.dgvJournalStocksProduitsFinis.ReadOnly = true;
             this.dgvJournalStocksProduitsFinis.RowHeadersVisible = false;
             this.dgvJournalStocksProduitsFinis.Size = new System.Drawing.Size(703, 476);
             this.dgvJournalStocksProduitsFinis.TabIndex = 21;
+            // 
+            // lblNomProduit
+            // 
+            this.lblNomProduit.AutoSize = true;
+            this.lblNomProduit.Location = new System.Drawing.Point(700, 76);
+            this.lblNomProduit.Name = "lblNomProduit";
+            this.lblNomProduit.Size = new System.Drawing.Size(0, 17);
+            this.lblNomProduit.TabIndex = 22;
             // 
             // UC_StocksProduitsFinis
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lblNomProduit);
             this.Controls.Add(this.dgvJournalStocksProduitsFinis);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -123,5 +134,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dgvJournalStocksProduitsFinis;
+        private System.Windows.Forms.Label lblNomProduit;
     }
 }

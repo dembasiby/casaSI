@@ -113,7 +113,8 @@ namespace CasaEcologieSysInfo.Pages
 
         private void ListBox1_SelectedValueChanged(object sender, EventArgs e)
         {
-            int codeClient = Convert.ToInt32(listBox1.SelectedValue);
+            listBox1.ValueMember = "CodeClient";
+            int codeClient = Convert.ToInt32(listBox1.SelectedValue.ToString());
             MontrerDetailsCreances(codeClient);
         }
     }

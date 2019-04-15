@@ -295,10 +295,16 @@ namespace CasaEcologieSysInfo
             AddControlsToPanel(imo);
         }
 
-        private void btnValorisationStocks_Click(object sender, EventArgs e)
+        private void BtnValorisationStocks_Click(object sender, EventArgs e)
         {
             Pages.UC_StocksInventaireEtValorisation vs = new Pages.UC_StocksInventaireEtValorisation();
             AddControlsToPanel(vs);
+        }
+
+        private void BtnTransvasage_Click(object sender, EventArgs e)
+        {
+            Pages.UC_Transvasage trv = new Pages.UC_Transvasage();
+            AddControlsToPanel(trv);
         }
     }
 }
