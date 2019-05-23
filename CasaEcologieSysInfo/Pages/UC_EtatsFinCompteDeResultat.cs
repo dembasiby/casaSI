@@ -49,7 +49,7 @@ namespace CasaEcologieSysInfo.Pages
 
             }
 
-            listBox1.DataSource = listeProdFinis;
+            // listBox1.DataSource = listeProdFinis;
         }
 
         private void DtpAnnee_ValueChanged(object sender, EventArgs e)
@@ -306,6 +306,7 @@ namespace CasaEcologieSysInfo.Pages
                 CalculerCoutDesProduitsVendus(12, dtpAnnee.Value.Date).ToString("n0")
                 );
             */
+            /*
             dgvCompteDeResultats.Rows.Add("Coût des produits vendus",
                 CostOfGoodsSold(1).ToString("n0"),
                 CostOfGoodsSold(2).ToString("n0"),
@@ -319,7 +320,7 @@ namespace CasaEcologieSysInfo.Pages
                 CostOfGoodsSold(10).ToString("n0"),
                 CostOfGoodsSold(11).ToString("n0"),
                 CostOfGoodsSold(12).ToString("n0")
-                );
+                );*/
             /*
            for (int i = 1; i <= 12; i++)
            {
@@ -332,12 +333,12 @@ namespace CasaEcologieSysInfo.Pages
 
         private void AfficherCompteDeResultat()
         {
-            dgvCompteDeResultats.Rows.Clear();
+           // dgvCompteDeResultats.Rows.Clear();
 
             // Affichage des différentes lignes des états financiers
-            CompteDeResultat.AfficherVentesMensuelles(dgvCompteDeResultats, dtpAnnee); // ligne du chiffre d'affaire
+            //CompteDeResultat.AfficherVentesMensuelles(dgvCompteDeResultats, dtpAnnee); // ligne du chiffre d'affaire
             AfficherCoutsDesProduitsVendus(); // ligne du coût des produits vendus (COGS)
-            CompteDeResultat.AfficherMargeBrute(dgvCompteDeResultats); // ligne de calcul de la marge brute
+            //CompteDeResultat.AfficherMargeBrute(dgvCompteDeResultats); // ligne de calcul de la marge brute
         }
 
 
