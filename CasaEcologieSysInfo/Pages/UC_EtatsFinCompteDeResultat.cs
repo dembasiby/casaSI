@@ -19,10 +19,9 @@ namespace CasaEcologieSysInfo.Pages
 
         private void UC_EtatsFinMensuels_Load(object sender, EventArgs e)
         {
-            AfficherAnnees();
             AfficherCompteDeResultat();
 
-            var date = dtpAnnee.Value.Date;
+            var date = dtpDebut.Value.Date;
             DateTime debut = new DateTime(date.Year, 1, 1);
             DateTime fin = new DateTime(date.Year, 1, DateTime.DaysInMonth(date.Year, 1));
 
@@ -52,17 +51,9 @@ namespace CasaEcologieSysInfo.Pages
             // listBox1.DataSource = listeProdFinis;
         }
 
-        private void DtpAnnee_ValueChanged(object sender, EventArgs e)
-        {
-            AfficherCompteDeResultat();
-        }
 
-        private void AfficherAnnees()
-        {
-            dtpAnnee.Format = DateTimePickerFormat.Custom;
-            dtpAnnee.CustomFormat = "yyyy";
-            dtpAnnee.ShowUpDown = true;
-        }
+
+      
 
         // VALUE OF RAW MATERIALS USED
         // Raw materials used = Beginning raw materials inventory + Purchase - Ending raw materials inventory
@@ -70,7 +61,7 @@ namespace CasaEcologieSysInfo.Pages
         {
             var valeurMatieresPremieresUtilisees = 0f;
 
-            var date = dtpAnnee.Value.Date;
+            var date = dtpDebut.Value.Date;
             DateTime debut = new DateTime(date.Year, numMois, 1);
             DateTime fin = new DateTime(date.Year, numMois, DateTime.DaysInMonth(date.Year, numMois));
 
@@ -97,7 +88,7 @@ namespace CasaEcologieSysInfo.Pages
         {
             // TMC = Raw materials used + Direct labor + Manufacturing overhead
 
-            var date = dtpAnnee.Value.Date;
+            var date = dtpDebut.Value.Date;
 
             // Valeur des matières premières utilisées
             var rawMaterialsUsed = MatieresPremiereUtilisees(numMois);
@@ -106,7 +97,8 @@ namespace CasaEcologieSysInfo.Pages
             var directLabor = CompteDeResultat.CoutDirectMainDOeuvre(numMois, date);
 
             // Frais généraux liés à la production
-            var manufacturingOverhead = (float)CompteDeResultat.AmortissementsMensuels(date, numMois);
+            //var manufacturingOverhead = (float)CompteDeResultat.AmortissementsMensuels(date, numMois);
+            var manufacturingOverhead = 0;
 
             // Total des coûts de production du mois
             var totalManufacturingCosts =  rawMaterialsUsed + directLabor + manufacturingOverhead;
@@ -171,7 +163,7 @@ namespace CasaEcologieSysInfo.Pages
 
         private float CostOfGoodsSold(int numMois)
         {
-            var date = dtpAnnee.Value.Date;
+            var date = dtpDebut.Value.Date;
             DateTime debut = new DateTime(date.Year, numMois, 1);
             DateTime fin = new DateTime(date.Year, numMois, DateTime.DaysInMonth(date.Year, numMois));
 
@@ -284,61 +276,49 @@ namespace CasaEcologieSysInfo.Pages
             return CalculerCoutMatieresPremieres(nomProduit);
         }
 
-
-        
-
-       
-        private void AfficherCoutsDesProduitsVendus()
-        {
-            /*
-            dgvCompteDeResultats.Rows.Add("Coût des produits vendus",
-                CalculerCoutDesProduitsVendus(1, dtpAnnee.Value.Date).ToString("n0"),
-                CalculerCoutDesProduitsVendus(2, dtpAnnee.Value.Date).ToString("n0"),
-                CalculerCoutDesProduitsVendus(3, dtpAnnee.Value.Date).ToString("n0"),
-                CalculerCoutDesProduitsVendus(4, dtpAnnee.Value.Date).ToString("n0"),
-                CalculerCoutDesProduitsVendus(5, dtpAnnee.Value.Date).ToString("n0"),
-                CalculerCoutDesProduitsVendus(6, dtpAnnee.Value.Date).ToString("n0"),
-                CalculerCoutDesProduitsVendus(7, dtpAnnee.Value.Date).ToString("n0"),
-                CalculerCoutDesProduitsVendus(8, dtpAnnee.Value.Date).ToString("n0"),
-                CalculerCoutDesProduitsVendus(9, dtpAnnee.Value.Date).ToString("n0"),
-                CalculerCoutDesProduitsVendus(10, dtpAnnee.Value.Date).ToString("n0"),
-                CalculerCoutDesProduitsVendus(11, dtpAnnee.Value.Date).ToString("n0"),
-                CalculerCoutDesProduitsVendus(12, dtpAnnee.Value.Date).ToString("n0")
-                );
-            */
-            /*
-            dgvCompteDeResultats.Rows.Add("Coût des produits vendus",
-                CostOfGoodsSold(1).ToString("n0"),
-                CostOfGoodsSold(2).ToString("n0"),
-                CostOfGoodsSold(3).ToString("n0"),
-                CostOfGoodsSold(4).ToString("n0"),
-                CostOfGoodsSold(5).ToString("n0"),
-                CostOfGoodsSold(6).ToString("n0"),
-                CostOfGoodsSold(7).ToString("n0"),
-                CostOfGoodsSold(8).ToString("n0"),
-                CostOfGoodsSold(9).ToString("n0"),
-                CostOfGoodsSold(10).ToString("n0"),
-                CostOfGoodsSold(11).ToString("n0"),
-                CostOfGoodsSold(12).ToString("n0")
-                );*/
-            /*
-           for (int i = 1; i <= 12; i++)
-           {
-               dgvCompteDeResultats.Rows.Add("Coût des produits vendus",
-              CalculerCoutDesProduitsVendus(i, dtpAnnee.Value.Date).ToString("n0"));
-           }
-           */
-        }
-
-
         private void AfficherCompteDeResultat()
         {
+
+            var debut = dtpDebut;
+            var fin = dtpFin;
+            string cogs;
+
+            if (Validation.MontantEstValide(txtCOGS.Text))
+            {
+                cogs = Double.Parse(txtCOGS.Text).ToString("n0");
+                ReInitialiserTableau(dgvCpteResultats);
+                CompteDeResultat.AfficherVentesPeriode(dgvCpteResultats, cogs, debut, fin);
+            }
+
+            
+            
            // dgvCompteDeResultats.Rows.Clear();
 
             // Affichage des différentes lignes des états financiers
-            //CompteDeResultat.AfficherVentesMensuelles(dgvCompteDeResultats, dtpAnnee); // ligne du chiffre d'affaire
-            AfficherCoutsDesProduitsVendus(); // ligne du coût des produits vendus (COGS)
+            //AfficherCoutsDesProduitsVendus(); // ligne du coût des produits vendus (COGS)
             //CompteDeResultat.AfficherMargeBrute(dgvCompteDeResultats); // ligne de calcul de la marge brute
+        }
+
+
+
+        private void ReInitialiserTableau(DataGridView tableau)
+        {
+            tableau.Rows.Clear();
+        }
+
+        private void DtpDebut_ValueChanged(object sender, EventArgs e)
+        {
+            AfficherCompteDeResultat();
+        }
+
+        private void DtpFin_ValueChanged(object sender, EventArgs e)
+        {
+            AfficherCompteDeResultat();
+        }
+
+        private void TxtCOGS_TextChanged(object sender, EventArgs e)
+        {
+            AfficherCompteDeResultat();
         }
 
 

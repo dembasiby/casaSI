@@ -12,7 +12,7 @@ namespace CasaEcologieSysInfo
         private Single ValeurStockMatierePremiere(string nomMatiere)
         {
             //var listeMatieresPremieres = 
-            using (CasaDBEntities db = new CasaDBEntities())
+            using (CasaDBEntities db = new CasaDBEntities())  
             {
                 var coutMatierePremiere = (from mp in db.ResStockMatieresPremieres
                                            join amp in db.EveReceptionMatieresPremieres on mp.CodeMatierePremiere equals amp.CodeMatierePremiere

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,6 +37,16 @@ namespace CasaEcologieSysInfo
             grid.Columns["AmortissementTrimestriel"].DefaultCellStyle.Format = "n0";
             grid.Columns["AmortissementAnnuel"].DefaultCellStyle.Format = "n0";
             grid.Columns["ValeurDOrigine"].DefaultCellStyle.Format = "n0";
+        }
+
+        public static void FormatterLigneEnGras(DataGridView grid, int cellIndex)
+        {
+            grid.Rows[cellIndex].DefaultCellStyle = new DataGridViewCellStyle
+            {
+                Font = new Font("Tahoma", 9.75F, FontStyle.Bold),
+                ForeColor = Color.Black,
+                //BackColor = Color.GreenYellow
+            };
         }
     }
 }
