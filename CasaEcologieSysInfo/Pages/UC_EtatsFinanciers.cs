@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CasaEcologieSysInfo.Classes;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -19,8 +20,9 @@ namespace CasaEcologieSysInfo.Pages
 
         private void UC_EtatsFinMensuels_Load(object sender, EventArgs e)
         {
-            AfficherCompteDeResultat();
+            AfficherEtatsFinanciers();
 
+            /*
             var date = dtpDebut.Value.Date;
             DateTime debut = new DateTime(date.Year, 1, 1);
             DateTime fin = new DateTime(date.Year, 1, DateTime.DaysInMonth(date.Year, 1));
@@ -45,6 +47,8 @@ namespace CasaEcologieSysInfo.Pages
                 var cogs = (cogsProduit * stockProduitFiniDeLaPeriode).ToString("n0");
                listeProdFinis.Add($"{produit} - {cogs}");
             }
+
+    */
         }
 
 
@@ -236,6 +240,17 @@ namespace CasaEcologieSysInfo.Pages
             return CalculerCoutMatieresPremieres(nomProduit);
         }
 
+        /// <summary>
+        /// ETATS FINANCIERS
+        /// </summary>
+        /// 
+
+        private void AfficherEtatsFinanciers()
+        {
+            AfficherCompteDeResultat();
+            AfficherTableauDeTresorerie();
+        }
+
         private void AfficherCompteDeResultat()
         {
             var debut = dtpDebut;
@@ -250,8 +265,17 @@ namespace CasaEcologieSysInfo.Pages
             }
         }
 
+        private void AfficherTableauDeTresorerie()
+        {
+            var debut = dtpDebut;
+            var fin = dtpFin;
+
+            ReInitialiserTableau(dgvTableauTresorerie);
+            Tresorerie.AfficherTresorerie(dgvTableauTresorerie, debut, fin);       
+        }
 
 
+        // Helpers
         private void ReInitialiserTableau(DataGridView tableau)
         {
             tableau.Rows.Clear();
@@ -259,17 +283,17 @@ namespace CasaEcologieSysInfo.Pages
 
         private void DtpDebut_ValueChanged(object sender, EventArgs e)
         {
-            AfficherCompteDeResultat();
+            AfficherEtatsFinanciers();
         }
 
         private void DtpFin_ValueChanged(object sender, EventArgs e)
         {
-            AfficherCompteDeResultat();
+            AfficherEtatsFinanciers();
         }
 
         private void TxtCOGS_TextChanged(object sender, EventArgs e)
         {
-            AfficherCompteDeResultat();
+            AfficherEtatsFinanciers();
         }
     }
 }

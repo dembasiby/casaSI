@@ -32,6 +32,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dtpDebut = new System.Windows.Forms.DateTimePicker();
             this.label26 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -190,6 +192,8 @@
             this.dgvTableauTresorerie.Name = "dgvTableauTresorerie";
             this.dgvTableauTresorerie.ReadOnly = true;
             this.dgvTableauTresorerie.RowHeadersVisible = false;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvTableauTresorerie.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvTableauTresorerie.Size = new System.Drawing.Size(305, 466);
             this.dgvTableauTresorerie.TabIndex = 31;
             // 
@@ -232,6 +236,8 @@
             this.dgvBilan.Name = "dgvBilan";
             this.dgvBilan.ReadOnly = true;
             this.dgvBilan.RowHeadersVisible = false;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvBilan.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvBilan.Size = new System.Drawing.Size(305, 466);
             this.dgvBilan.TabIndex = 31;
             // 
@@ -268,7 +274,7 @@
             this.txtCOGS.Text = "0";
             this.txtCOGS.TextChanged += new System.EventHandler(this.TxtCOGS_TextChanged);
             // 
-            // UC_EtatsFinCompteDeResultat
+            // UC_EtatsFinanciers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -284,7 +290,7 @@
             this.Controls.Add(this.dtpDebut);
             this.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "UC_EtatsFinCompteDeResultat";
+            this.Name = "UC_EtatsFinanciers";
             this.Size = new System.Drawing.Size(983, 635);
             this.Load += new System.EventHandler(this.UC_EtatsFinMensuels_Load);
             this.groupBox1.ResumeLayout(false);

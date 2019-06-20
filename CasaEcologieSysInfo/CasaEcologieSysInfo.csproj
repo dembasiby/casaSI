@@ -153,6 +153,7 @@
   <ItemGroup>
     <Compile Include="Classes\CompteDeResultat.cs" />
     <Compile Include="Classes\Formattage.cs" />
+    <Compile Include="Classes\Tresorerie.cs" />
     <Compile Include="Etats\crptCompteDeResultat.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

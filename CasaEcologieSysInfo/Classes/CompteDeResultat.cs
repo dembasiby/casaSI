@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CasaEcologieSysInfo
@@ -121,7 +116,7 @@ namespace CasaEcologieSysInfo
 
         public static void AfficherMargeBrute(DataGridView grid)
         {
-            
+            /*
             grid.Rows.Add("Marge brute",
                 (Convert.ToSingle(grid.Rows[0].Cells[1].Value.ToString()) - Convert.ToSingle(grid.Rows[1].Cells[1].Value.ToString())).ToString("n0"),
                 (Convert.ToSingle(grid.Rows[0].Cells[2].Value.ToString()) - Convert.ToSingle(grid.Rows[1].Cells[2].Value.ToString())).ToString("n0"),
@@ -136,6 +131,7 @@ namespace CasaEcologieSysInfo
                 (Convert.ToSingle(grid.Rows[0].Cells[11].Value.ToString())- Convert.ToSingle(grid.Rows[1].Cells[11].Value.ToString())).ToString("n0"),
                 (Convert.ToSingle(grid.Rows[0].Cells[12].Value.ToString())- Convert.ToSingle(grid.Rows[1].Cells[12].Value.ToString())).ToString("n0")
                 );
+            */
         }
 
         public static float CoutDirectMainDOeuvre(int numMois, DateTime date)
@@ -185,7 +181,6 @@ namespace CasaEcologieSysInfo
 
                 float amortissementsJournaliers = (from inE in db.ResEquipementsInfrastructures
                         where (inE.DateAcquisition.Year + inE.DureeDeVie) >= debut.Year
-                        //where inE.MaterielDeProduction == true
                         select new
                         {
                             Immobilisation = inE.Nom,
@@ -193,14 +188,10 @@ namespace CasaEcologieSysInfo
                             ValeurDOrigine = inE.Montant,
                             inE.DateAcquisition,
                             inE.DureeDeVie,
-                            //AmortissementJournalier = inE.Montant / (inE.DureeDeVie * 365),
                             AmortissementAnnuel = inE.Montant / (inE.DureeDeVie),
                         })
                         .Select(a => (float?)(a.AmortissementAnnuel/365) * nombreJoursPeriode)
                         .Sum() ?? 0f;
-
-                
-
                 return amortissementsJournaliers.ToString("n0");
             }
         }
