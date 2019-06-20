@@ -7,12 +7,12 @@ using System.Windows.Forms;
 
 namespace CasaEcologieSysInfo.Pages
 {
-    public partial class UC_EtatsFinCompteDeResultat : UserControl
+    public partial class UC_EtatsFinanciers : UserControl
     {
 
         CasaDBEntities db = new CasaDBEntities();
 
-        public UC_EtatsFinCompteDeResultat()
+        public UC_EtatsFinanciers()
         {
             InitializeComponent();
         }
@@ -246,7 +246,7 @@ namespace CasaEcologieSysInfo.Pages
             {
                 cogs = Double.Parse(txtCOGS.Text).ToString("n0");
                 ReInitialiserTableau(dgvCpteResultats);
-                CompteDeResultat.AfficherVentesPeriode(dgvCpteResultats, cogs, debut, fin);
+                CompteDeResultat.AfficherCompteDeResultats(dgvCpteResultats, cogs, debut, fin);
             }
         }
 

@@ -338,11 +338,11 @@
     <Compile Include="Pages\UC_CreancesClients.Designer.cs">
       <DependentUpon>UC_CreancesClients.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pages\UC_EtatsFinCompteDeResultat.cs">
+    <Compile Include="Pages\UC_EtatsFinanciers.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Pages\UC_EtatsFinCompteDeResultat.Designer.cs">
-      <DependentUpon>UC_EtatsFinCompteDeResultat.cs</DependentUpon>
+    <Compile Include="Pages\UC_EtatsFinanciers.Designer.cs">
+      <DependentUpon>UC_EtatsFinanciers.cs</DependentUpon>
     </Compile>
     <Compile Include="Pages\UC_JournalApprovisionnements.cs">
       <SubType>UserControl</SubType>
@@ -552,8 +552,8 @@
     <EmbeddedResource Include="Pages\UC_DettesFournisseurs.resx">
       <DependentUpon>UC_DettesFournisseurs.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pages\UC_EtatsFinCompteDeResultat.resx">
-      <DependentUpon>UC_EtatsFinCompteDeResultat.cs</DependentUpon>
+    <EmbeddedResource Include="Pages\UC_EtatsFinanciers.resx">
+      <DependentUpon>UC_EtatsFinanciers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\UC_JournalApprovisionnements.resx">
       <DependentUpon>UC_JournalApprovisionnements.cs</DependentUpon>

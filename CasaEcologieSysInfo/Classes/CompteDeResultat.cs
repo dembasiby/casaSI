@@ -22,7 +22,7 @@ namespace CasaEcologieSysInfo
             }
         }
 
-        public static void AfficherVentesPeriode(DataGridView grid, string cogs, DateTimePicker debut, DateTimePicker fin)
+        public static void AfficherCompteDeResultats(DataGridView grid, string cogs, DateTimePicker debut, DateTimePicker fin)
         {
             grid.Rows.Add("Chiffre d'affaires",
                 CalculerVentesPeriode(debut.Value.Date, fin.Value.Date));
