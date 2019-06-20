@@ -44,11 +44,7 @@ namespace CasaEcologieSysInfo.Pages
                 var stockProduitFiniDeLaPeriode = Conversion.CalculerSoldeStockProduitFiniParPeriod(produit, debut);
                 var cogs = (cogsProduit * stockProduitFiniDeLaPeriode).ToString("n0");
                listeProdFinis.Add($"{produit} - {cogs}");
-                // Convert.ToSingle(CalculerCoutDesProduitsVendusParProduit(produit)) *
-
             }
-
-            // listBox1.DataSource = listeProdFinis;
         }
 
 
@@ -141,20 +137,9 @@ namespace CasaEcologieSysInfo.Pages
             foreach (var produit in listeDesProduits)
             {
                 var cogsProduit = Convert.ToSingle(CalculerCoutDesProduitsVendusParProduit(produit));
-                /*
-                if (cogsProduit == 0)
-                {
-                    cogsProduit = (from p in db.ResStockProduitsFinis
-                                   where p.NomProduit == produit
-                                   select p.PrixDeVenteStandard).FirstOrDefault() * 0.35f;
-                }
-
-                */
-
                 var stockProduitFiniDeLaPeriode = Conversion.CalculerSoldeStockProduitFiniParPeriod(produit, date);
                 var cogs = cogsProduit * stockProduitFiniDeLaPeriode;
 
-                // MessageBox.Show($"{produit} - {cogs}");
                 coutDesProduitsVendus += cogs;
             }
 
@@ -232,17 +217,12 @@ namespace CasaEcologieSysInfo.Pages
                 {
                     var coutUnitaire = (decimal)coutTotal / (decimal)quantiteAchetee;
                     var coutMatiere = coutUnitaire * GestionStocks.QuantiteMatierePremierePrincipaleParProduitFini(nomProduit, matierePremiere.Matiere);
-                   // MessageBox.Show($"Produit: {nomProduit}\nMatiere premiere: {matierePremiere}\nCout unitaire matiere: {coutUnitaire}\nQuantite par produit: {GestionStocks.QuantiteMatierePremierePrincipaleParProduitFini(nomProduit, matierePremiere.Matiere)}\nCout matiere par produit: {coutMatiere}");
                     coutMatieresPremieres += coutMatiere;
                 }
-
-               // coutMatieresPremieres = GestionStocks.QuantiteMatierePremiereParProduitFini(nomProduit, matierePremiere.Matiere));
-
             }
 
             return coutMatieresPremieres;
 
-            //return GestionStocks.QuantiteMatierePremiereParProduitFini(nomProduit, matierePremiere.Matiere);
         }
 
         /// <summary>
@@ -253,32 +233,11 @@ namespace CasaEcologieSysInfo.Pages
 
         private decimal? CalculerCoutDesProduitsVendusParProduit(string nomProduit)
         {
-            // FORMULE DE CALCUL DU COUT DES PRODUITS VENDUS
-
-            // COGS = Beginning Finished Goods Inventory + COGM - Ending Finished Goods Inventory
-            // COGM = Beginning WIP + Total Manufacturing Cost(TMC) - Ending WIP
-            // TMC = Raw materials used + Direct labor + Manufacturing overhead
-            // Raw materials used = Beginning raw materials inventory + Purchase - Ending raw materials inventory
-
-            /*            
-
-             if (coutUnitaireMatierePremiere > 0f && quantiteMoyenneParProduitFini > 0f)
-             {
-                 return (coutUnitaireMatierePremiere * quantiteMoyenneParProduitFini);
-             }
-             else
-             {
-                 return 0f;
-             }
-
-
-     */
             return CalculerCoutMatieresPremieres(nomProduit);
         }
 
         private void AfficherCompteDeResultat()
         {
-
             var debut = dtpDebut;
             var fin = dtpFin;
             string cogs;
@@ -289,14 +248,6 @@ namespace CasaEcologieSysInfo.Pages
                 ReInitialiserTableau(dgvCpteResultats);
                 CompteDeResultat.AfficherVentesPeriode(dgvCpteResultats, cogs, debut, fin);
             }
-
-            
-            
-           // dgvCompteDeResultats.Rows.Clear();
-
-            // Affichage des différentes lignes des états financiers
-            //AfficherCoutsDesProduitsVendus(); // ligne du coût des produits vendus (COGS)
-            //CompteDeResultat.AfficherMargeBrute(dgvCompteDeResultats); // ligne de calcul de la marge brute
         }
 
 
@@ -320,21 +271,5 @@ namespace CasaEcologieSysInfo.Pages
         {
             AfficherCompteDeResultat();
         }
-
-
-        // FONCTIONS UTILISEES POUR LE DEBUGGING
-        /*
-        private void AfficherCoutMatierePremierePrincipalParUnite()
-        {
-            var produit = listBox1.GetItemText(listBox1.SelectedItem).Split(' ')[1];
-            txtCoutMatierePremiereParUnite.Text = GestionStocks.CoutUnitaireParMatierePremiere(produit).ToString("n0");
-            //txtCoutMatierePremiereParUnite.Text = CalculerCoutDesProduitsVendusParProduit(produit).ToString();
-        }
-        
-        private void ListBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            AfficherCoutMatierePremierePrincipalParUnite();
-        }
-        */
     }
 }
