@@ -30,6 +30,7 @@
           <Property Name="CodeEmploye" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PrenomNom" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Poste" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Actif" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="AgeFournisseursMatieresPremieres">
           <Key>
@@ -1460,6 +1461,7 @@
           <NavigationProperty Name="EveReceptionDonsMatieresPremieres" Relationship="CasaDBModel.FK_EveReceptionDonsMatieresPremieres_AgeEmployes" FromRole="AgeEmploye" ToRole="EveReceptionDonsMatieresPremiere" />
           <NavigationProperty Name="EveSortieDechetsMatieresPremieres" Relationship="CasaDBModel.FK_EveSortieDechetsMatieresPremieres_AgeEmployes" FromRole="AgeEmploye" ToRole="EveSortieDechetsMatieresPremiere" />
           <NavigationProperty Name="EveSortieDechetsMatieresPremieres1" Relationship="CasaDBModel.FK_EveSortieDechetsMatieresPremieres_AgeEmployes1" FromRole="AgeEmploye" ToRole="EveSortieDechetsMatieresPremiere" />
+          <Property Name="Actif" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="AgeFournisseursMatieresPremiere">
           <Key>
@@ -2971,6 +2973,7 @@
           <EntitySetMapping Name="AgeEmployes">
             <EntityTypeMapping TypeName="CasaDBModel.AgeEmploye">
               <MappingFragment StoreEntitySet="AgeEmployes">
+                <ScalarProperty Name="Actif" ColumnName="Actif" />
                 <ScalarProperty Name="CodeEmploye" ColumnName="CodeEmploye" />
                 <ScalarProperty Name="PrenomNom" ColumnName="PrenomNom" />
                 <ScalarProperty Name="Poste" ColumnName="Poste" />

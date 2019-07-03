@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.Entity.Infrastructure;
 
 namespace CasaEcologieSysInfo
 {
@@ -26,9 +20,9 @@ namespace CasaEcologieSysInfo
             resStockProduitsFiniBindingSource.DataSource = db.ResStockProduitsFinis.ToList().OrderBy(p => p.NomProduit);
             resStockProduitsSemiFiniBindingSource2.DataSource = db.ResStockProduitsSemiFinis.ToList();
 
-            ageEmployeBindingSource2.DataSource = db.AgeEmployes.ToList();
-            ageEmployeBindingSource1.DataSource = db.AgeEmployes.ToList();
-            ageEmployeBindingSource3.DataSource = db.AgeEmployes.ToList();
+            ageEmployeBindingSource2.DataSource = db.AgeEmployes.Where(em => em.Actif == true).OrderBy(em => em.PrenomNom).ToList();
+            ageEmployeBindingSource1.DataSource = db.AgeEmployes.Where(em => em.Actif == true).OrderBy(em => em.PrenomNom).ToList();
+            ageEmployeBindingSource3.DataSource = db.AgeEmployes.Where(em => em.Actif == true).OrderBy(em => em.PrenomNom).ToList();
 
             var nomMatierePrem = cbxNomMatiereP.GetItemText(cbxNomMatiereP.SelectedItem);
             txtStockMatierePremiereDispo.Text = ChargerStockMatierePremiere(nomMatierePrem).ToString();

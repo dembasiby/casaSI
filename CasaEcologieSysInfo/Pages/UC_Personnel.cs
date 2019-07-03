@@ -17,31 +17,55 @@ namespace CasaEcologieSysInfo.Pages
         private void LoadData()
         {
             var listePersonnel = (from p in db.AgeEmployes
+                                  where p.Actif == true
                                   select new { Nom = p.PrenomNom, p.Poste }).ToList();
 
             dgvListePersonnel.DataSource = listePersonnel;
 
             cbxTempsEtRemun.DisplayMember = "PrenomNom";
             cbxTempsEtRemun.ValueMember = "CodeEmploye";
-            cbxTempsEtRemun.DataSource = db.AgeEmployes.Where(em => !em.Poste.StartsWith("Stagiaire")).OrderBy(c => c.PrenomNom).ToList();
+            cbxTempsEtRemun.DataSource = db.AgeEmployes
+                                           .Where(em => em.Actif == true)
+                                           .Where(em => !em.Poste.StartsWith("Stagiaire"))
+                                           .OrderBy(c => c.PrenomNom)
+                                           .ToList();
 
-            ageEmployeBindingSource1.DataSource = db.AgeEmployes.ToList();
+            ageEmployeBindingSource1.DataSource = db.AgeEmployes
+                                                    .Where(em => em.Actif == true)
+                                                    .OrderBy(em => em.PrenomNom)
+                                                    .ToList();
             resComptesTresorerieBindingSource.DataSource = db.ResComptesTresoreries.ToList();
-            cbxTimeSheetNomEmploye.DataSource = db.AgeEmployes.Where(em => !em.Poste.StartsWith("Stagiaire")).OrderBy(c => c.PrenomNom).ToList();
+            cbxTimeSheetNomEmploye.DataSource = db.AgeEmployes
+                                                  .Where(em => em.Actif == true)
+                                                  .Where(em => !em.Poste.StartsWith("Stagiaire"))
+                                                  .OrderBy(c => c.PrenomNom)
+                                                  .ToList();
             cbxTimeSheetNomEmploye.DisplayMember = "PrenomNom";
             cbxTimeSheetNomEmploye.ValueMember = "CodeEmploye";
 
-            cbxTresoriere.DataSource = db.AgeEmployes.Where(em => !em.Poste.StartsWith("Stagiaire")).OrderBy(c => c.PrenomNom).ToList();
+            cbxTresoriere.DataSource = db.AgeEmployes
+                                         .Where(em => em.Actif == true)
+                                         .Where(em => !em.Poste.StartsWith("Stagiaire"))
+                                         .OrderBy(c => c.PrenomNom)
+                                         .ToList();
             cbxTresoriere.DisplayMember = "PrenomNom";
             cbxTresoriere.ValueMember = "CodeEmploye";
 
             cbxStagiaires.DisplayMember = "PrenomNom";
             cbxStagiaires.ValueMember = "CodeEmploye";
-            cbxStagiaires.DataSource = db.AgeEmployes.Where(em => em.Poste.StartsWith("Stagiaire")).OrderBy(c => c.PrenomNom).ToList();
+            cbxStagiaires.DataSource = db.AgeEmployes
+                                         .Where(em => em.Actif == true)
+                                         .Where(em => em.Poste.StartsWith("Stagiaire"))
+                                         .OrderBy(c => c.PrenomNom)
+                                         .ToList();
 
             cbxComptePaiementStagiare.DataSource = db.ResComptesTresoreries.ToList();
             cbxComptePaiementStagiare.ValueMember = "CodeCompte";
-            cbxPaiementFaitPar.DataSource = db.AgeEmployes.Where(em => !em.Poste.StartsWith("Stagiaire")).OrderBy(c => c.PrenomNom).ToList();
+            cbxPaiementFaitPar.DataSource = db.AgeEmployes
+                                              .Where(em => em.Actif == true)
+                                              .Where(em => !em.Poste.StartsWith("Stagiaire"))
+                                              .OrderBy(c => c.PrenomNom)
+                                              .ToList();
             cbxPaiementFaitPar.DisplayMember = "PrenomNom";
             cbxPaiementFaitPar.ValueMember = "CodeEmploye";
 

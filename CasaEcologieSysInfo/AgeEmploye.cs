@@ -36,6 +36,7 @@ namespace CasaEcologieSysInfo
         public int CodeEmploye { get; set; }
         public string PrenomNom { get; set; }
         public string Poste { get; set; }
+        public bool Actif { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EveAcquisitionServicesFourniture> EveAcquisitionServicesFournitures { get; set; }

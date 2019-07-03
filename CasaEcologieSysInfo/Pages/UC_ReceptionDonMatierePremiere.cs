@@ -21,7 +21,7 @@ namespace CasaEcologieSysInfo.Pages
 
         private void UC_ReceptionDonMatierePremiere_Load(object sender, EventArgs e)
         {
-            ageEmployeBindingSource.DataSource = db.AgeEmployes.ToList();
+            ageEmployeBindingSource.DataSource = db.AgeEmployes.Where(em => em.Actif == true).OrderBy(em => em.PrenomNom).ToList();
             ageFournisseursMatieresPremiereBindingSource.DataSource = db.AgeFournisseursMatieresPremieres.OrderBy(f => f.Nom).ToList();
             resStockMatieresPremiereBindingSource.DataSource = db.ResStockMatieresPremieres.OrderBy(m => m.NomMatiere).ToList();
         }

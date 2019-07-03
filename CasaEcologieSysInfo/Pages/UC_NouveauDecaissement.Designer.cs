@@ -93,7 +93,7 @@
             this.cbxCompte.Size = new System.Drawing.Size(218, 29);
             this.cbxCompte.TabIndex = 38;
             this.cbxCompte.ValueMember = "CodeEmploye";
-            this.cbxCompte.SelectedIndexChanged += new System.EventHandler(this.cbxCompte_SelectedIndexChanged);
+            this.cbxCompte.SelectedIndexChanged += new System.EventHandler(this.CbxCompte_SelectedIndexChanged);
             // 
             // resComptesTresorerieBindingSource
             // 

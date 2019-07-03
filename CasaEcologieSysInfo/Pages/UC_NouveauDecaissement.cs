@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CasaEcologieSysInfo
@@ -253,7 +249,7 @@ namespace CasaEcologieSysInfo
             }   
         }
 
-        private void cbxCompte_SelectedIndexChanged(object sender, EventArgs e)
+        private void CbxCompte_SelectedIndexChanged(object sender, EventArgs e)
         {
             var nomCompte = cbxCompte.GetItemText(cbxCompte.SelectedItem);
             txtSoldeCompte.Text = Conversion.SoldeDisponibleDuCompteDeTresorerie(nomCompte).ToString("c0");
