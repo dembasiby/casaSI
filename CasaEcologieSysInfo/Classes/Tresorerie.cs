@@ -113,16 +113,9 @@ namespace CasaEcologieSysInfo.Classes
             // ligne 28
             grid.Rows.Add("");
             // ligne 29 = ligne 7 - ligne 27
-            grid.Rows.Add("Trésorerie Disponible en fin de période", TresorerieDisponibleEnFinDePeriode(grid));  
+            grid.Rows.Add("Trésorerie Disponible en fin de période", TresorerieDisponibleEnFinDePeriode(grid));
 
-
-            Formattage.FormatterLigneEnGras(grid, 2);
-            Formattage.FormatterLigneEnGras(grid, 6);
-            Formattage.FormatterLigneEnGras(grid, 7);
-            Formattage.FormatterLigneEnGras(grid, 9);
-            Formattage.FormatterLigneEnGras(grid, 23);
-            Formattage.FormatterLigneEnGras(grid, 27);
-            Formattage.FormatterLigneEnGras(grid, 29);
+            MettreLesLignesEnGras(grid);          
         }
 
         private static object Location(DateTimePicker debut, DateTimePicker fin)
@@ -373,15 +366,27 @@ namespace CasaEcologieSysInfo.Classes
             using (CasaDBEntities db = new CasaDBEntities())
             {
                 decimal depense = (from sf in db.EveAcquisitionServicesFournitures
-                                                  join d in db.EveDecaissements on sf.CodeAcquisitionServiceFourniture
-                                                         equals d.CodeAcquisitionServiceFourniture
-                                                  where sf.ResServicesFourniture.NomServiceFourniture == typeDepense
-                                                  where d.DateDecaissement >= debut.Value.Date
-                                                  where d.DateDecaissement <= fin.Value.Date
-                                                  select (decimal?)d.Montant).Sum() ?? 0m;
+                                   join d in db.EveDecaissements on sf.CodeAcquisitionServiceFourniture
+                                          equals d.CodeAcquisitionServiceFourniture
+                                   where sf.ResServicesFourniture.NomServiceFourniture == typeDepense
+                                   where d.DateDecaissement >= debut.Value.Date
+                                   where d.DateDecaissement <= fin.Value.Date
+                                   select (decimal?)d.Montant).Sum() ?? 0m;
 
                 return depense.ToString("n0");
             }
         }
+
+        private static void MettreLesLignesEnGras(DataGridView grid)
+        {
+            Formattage.FormatterLigneEnGras(grid, 2);
+            Formattage.FormatterLigneEnGras(grid, 6);
+            Formattage.FormatterLigneEnGras(grid, 7);
+            Formattage.FormatterLigneEnGras(grid, 9);
+            Formattage.FormatterLigneEnGras(grid, 23);
+            Formattage.FormatterLigneEnGras(grid, 27);
+            Formattage.FormatterLigneEnGras(grid, 29);
+        }
+    
     }
 }
