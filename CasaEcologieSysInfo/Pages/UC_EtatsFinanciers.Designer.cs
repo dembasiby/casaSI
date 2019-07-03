@@ -33,7 +33,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dtpDebut = new System.Windows.Forms.DateTimePicker();
             this.label26 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -181,6 +184,8 @@
             // 
             this.dgvTableauTresorerie.AllowUserToAddRows = false;
             this.dgvTableauTresorerie.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.dgvTableauTresorerie.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvTableauTresorerie.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvTableauTresorerie.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvTableauTresorerie.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -192,8 +197,8 @@
             this.dgvTableauTresorerie.Name = "dgvTableauTresorerie";
             this.dgvTableauTresorerie.ReadOnly = true;
             this.dgvTableauTresorerie.RowHeadersVisible = false;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvTableauTresorerie.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvTableauTresorerie.RowsDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvTableauTresorerie.Size = new System.Drawing.Size(305, 466);
             this.dgvTableauTresorerie.TabIndex = 31;
             // 
@@ -206,6 +211,9 @@
             // 
             // dataGridViewTextBoxColumn2
             // 
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridViewTextBoxColumn2.FillWeight = 30F;
             this.dataGridViewTextBoxColumn2.HeaderText = "Montant";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
@@ -225,6 +233,8 @@
             // 
             this.dgvBilan.AllowUserToAddRows = false;
             this.dgvBilan.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.dgvBilan.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvBilan.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvBilan.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvBilan.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -236,8 +246,8 @@
             this.dgvBilan.Name = "dgvBilan";
             this.dgvBilan.ReadOnly = true;
             this.dgvBilan.RowHeadersVisible = false;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvBilan.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvBilan.RowsDefaultCellStyle = dataGridViewCellStyle9;
             this.dgvBilan.Size = new System.Drawing.Size(305, 466);
             this.dgvBilan.TabIndex = 31;
             // 
@@ -314,8 +324,6 @@
         private System.Windows.Forms.DataGridView dgvCpteResultats;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DataGridView dgvTableauTresorerie;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.DataGridView dgvBilan;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
@@ -324,5 +332,7 @@
         private System.Windows.Forms.TextBox txtCOGS;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
     }
 }

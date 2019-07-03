@@ -97,6 +97,7 @@
           <Property Name="DateEncaissement" Type="date" Nullable="false" />
           <Property Name="Description" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="MontantEncaisse" Type="money" Nullable="false" />
+          <Property Name="FondsExternes" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="EveEncaissementsCreances">
           <Key>
@@ -2685,6 +2686,7 @@
           <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MontantEncaisse" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <NavigationProperty Name="EveEncaissement" Relationship="CasaDBModel.FK_EveEncaissementsAutres_EveEncaissements" FromRole="EveEncaissementsAutre" ToRole="EveEncaissement" />
+          <Property Name="FondsExternes" Type="Boolean" Nullable="false" />
         </EntityType>
         <Association Name="FK_EveEncaissementsAutres_EveEncaissements">
           <End Type="CasaDBModel.EveEncaissement" Role="EveEncaissement" Multiplicity="1" />
@@ -3303,6 +3305,7 @@
           <EntitySetMapping Name="EveEncaissementsAutres">
             <EntityTypeMapping TypeName="CasaDBModel.EveEncaissementsAutre">
               <MappingFragment StoreEntitySet="EveEncaissementsAutres">
+                <ScalarProperty Name="FondsExternes" ColumnName="FondsExternes" />
                 <ScalarProperty Name="MontantEncaisse" ColumnName="MontantEncaisse" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="DateEncaissement" ColumnName="DateEncaissement" />

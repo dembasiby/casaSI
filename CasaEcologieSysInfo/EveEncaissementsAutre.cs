@@ -19,6 +19,7 @@ namespace CasaEcologieSysInfo
         public System.DateTime DateEncaissement { get; set; }
         public string Description { get; set; }
         public decimal MontantEncaisse { get; set; }
+        public bool FondsExternes { get; set; }
     
         public virtual EveEncaissement EveEncaissement { get; set; }
     }
