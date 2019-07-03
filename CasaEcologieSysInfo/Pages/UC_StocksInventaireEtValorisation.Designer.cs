@@ -37,6 +37,7 @@
             this.dgvProduitsFinis = new System.Windows.Forms.DataGridView();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.gbxMatieresPremières.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMatieresPremieres)).BeginInit();
             this.gbxProduitsSemiFinis.SuspendLayout();
@@ -139,10 +140,22 @@
             this.label1.TabIndex = 31;
             this.label1.Text = "Date";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Red;
+            this.label2.Location = new System.Drawing.Point(92, 53);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(241, 19);
+            this.label2.TabIndex = 32;
+            this.label2.Text = "Cette page est en construction";
+            // 
             // UC_StocksInventaireEtValorisation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.gbxProduitsFinis);
@@ -176,5 +189,6 @@
         private System.Windows.Forms.DataGridView dgvMatieresPremieres;
         private System.Windows.Forms.DataGridView dgvProduitsSemiFinis;
         private System.Windows.Forms.DataGridView dgvProduitsFinis;
+        private System.Windows.Forms.Label label2;
     }
 }
