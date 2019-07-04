@@ -130,35 +130,23 @@ namespace CasaEcologieSysInfo
             var nomCompte = cbxCompte.GetItemText(cbxCompte.SelectedItem);
             var soldeCompte = Conversion.SoldeDisponibleDuCompteDeTresorerie(nomCompte);
 
-            if (string.IsNullOrEmpty(txtMontantPaye.Text))
+            if (Validation.VerifierChampsMontant(txtMontantPaye.Text))
             {
-                MessageBox.Show("Ce champs doit être renseigné.");
-                return false;
-            }
-           
+                try
+                {
+                    bool verif = int.Parse(txtMontantPaye.Text) < soldeCompte;
+                }
+                catch (Exception)
+                {
 
-            try
-            {
-                int temp = Convert.ToInt32(txtMontantPaye.Text);
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ce champs doit contenir uniquement des nombres.");
-                return false;
-            }
+                    MessageBox.Show("Il n'y a pas assez de fonds dans le compte séléctionné pour effectuer ce paiement. Veuillez changer de compte ou diminuer le montant.");
+                    return false;
+                }
 
-            try
-            {
-                bool verif = int.Parse(txtMontantPaye.Text) < soldeCompte;
+                return true;
             }
-            catch (Exception)
-            {
-
-                MessageBox.Show("Il n'y a pas assez de fonds dans le compte séléctionné pour effectuer ce paiement. Veuillez changer de compte ou diminuer le montant.");
-                return false;
-            }
-
-            return true;
+            
+            return false;          
         }
 
 

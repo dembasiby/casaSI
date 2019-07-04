@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CasaEcologieSysInfo
@@ -60,34 +55,13 @@ namespace CasaEcologieSysInfo
             txtCreancesClient.Text = creancesClients.ToString("c0");
         }
 
-        private bool VerifierChampsMontantEncaisse()
-        {
-            if (string.IsNullOrEmpty(txtMontantEncaisse.Text))
-            {
-                MessageBox.Show("Ce champs doit être renseigné.");
-                return false;
-            }
-
-            try
-            {
-                int temp = Convert.ToInt32(txtMontantEncaisse.Text);
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ce champs doit contenir uniquement des nombres.");
-                return false;
-            }
-
-            return true;
-        }
-
         private void BtnEnregistrerEncaissement_Click(object sender, EventArgs e)
         {
             AgeClient client = db.AgeClients.FirstOrDefault(c => c.NomClient == cbxNomClient.Text);
             AgeEmploye tres = db.AgeEmployes.FirstOrDefault(rv => rv.PrenomNom == cbxTres.Text);
             ResComptesTresorerie cpte = db.ResComptesTresoreries.FirstOrDefault(cte => cte.NomCompte == cbxCompte.Text);
 
-            if (VerifierChampsMontantEncaisse())
+            if (Validation.VerifierChampsMontant(txtMontantEncaisse.Text))
             {
                 if (int.Parse(txtMontantEncaisse.Text) > 0)
                 {

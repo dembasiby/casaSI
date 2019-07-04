@@ -18,33 +18,11 @@ namespace CasaEcologieSysInfo.Pages
             txtSoldeCompte.Text = "00";
         }
 
-        private bool VerifierChampsSoldeInitial()
-        {
-            if (string.IsNullOrEmpty(txtSoldeCompte.Text))
-            {
-                MessageBox.Show("Ce champs doit être renseigné.");
-                return false;
-            }
-
-
-            try
-            {
-                int temp = Convert.ToInt32(txtSoldeCompte.Text);
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ce champs doit contenir uniquement des nombres.");
-                return false;
-            }
-
-            return true;
-        }
-
         private void BtnAjouterNouveauCompte_Click(object sender, EventArgs e)
         {
             using (CasaDBEntities db = new CasaDBEntities())
             {
-                if (VerifierChampsSoldeInitial() && txtNomCompte.Text.Trim().Length > 0)
+                if (Validation.VerifierChampsMontant(txtSoldeCompte.Text) && txtNomCompte.Text.Trim().Length > 0)
                 {
                     ResComptesTresorerie c = new ResComptesTresorerie()
                     {

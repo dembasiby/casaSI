@@ -73,47 +73,31 @@ namespace CasaEcologieSysInfo
 
         private void BtnVente_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtQuantite.Text) || string.IsNullOrEmpty(cbxPUProduit.Text))
+            if (Validation.VerifierChampsMontant(txtQuantite.Text) && Validation.VerifierChampsMontant(cbxPUProduit.Text))
             {
-                MessageBox.Show("Ces champs doivent être renseignés.");
-                return;
-            }
+                var montant = int.Parse(cbxPUProduit.Text) * int.Parse(txtQuantite.Text);
 
-            try
-            {
-                int temp = Convert.ToInt32(txtQuantite.Text);
-                int temp1 = Convert.ToInt32(cbxPUProduit.Text);
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ces champs doivent contenir des nombres.");
-                return;
-            }            
-                
-            var montant = int.Parse(cbxPUProduit.Text) * int.Parse(txtQuantite.Text);
-            
-            ListViewItem item = new ListViewItem(cbxNomProduit.Text);
-            item.SubItems.Add(txtQuantite.Text);
-            item.SubItems.Add(cbxPUProduit.Text);
-            item.SubItems.Add(montant.ToString());
+                ListViewItem item = new ListViewItem(cbxNomProduit.Text);
+                item.SubItems.Add(txtQuantite.Text);
+                item.SubItems.Add(cbxPUProduit.Text);
+                item.SubItems.Add(montant.ToString());
 
-            for (int i = 0; i < listView1.Items.Count; i++)
-            {
-                if (listView1.Items[i].SubItems[0].Text == item.SubItems[0].Text)
+                for (int i = 0; i < listView1.Items.Count; i++)
                 {
-                    MessageBox.Show("Ce produit est déjà dans le panier.");
-                    return;
+                    if (listView1.Items[i].SubItems[0].Text == item.SubItems[0].Text)
+                    {
+                        MessageBox.Show("Ce produit est déjà dans le panier.");
+                        return;
+                    }
                 }
-            }
-           
-            listView1.Items.Add(item);
 
-            lblTotalFacture.Text = TotalFacture().ToString();
-            var produitFini = cbxNomProduit.GetItemText(cbxNomProduit.SelectedItem);
-            txtSoldeStockProduit.Text = (Conversion.CalculerSoldeStockProduitFini(produitFini) - int.Parse(txtQuantite.Text)).ToString();
-            txtQuantite.Clear();
-            
-            
+                listView1.Items.Add(item);
+
+                lblTotalFacture.Text = TotalFacture().ToString();
+                var produitFini = cbxNomProduit.GetItemText(cbxNomProduit.SelectedItem);
+                txtSoldeStockProduit.Text = (Conversion.CalculerSoldeStockProduitFini(produitFini) - int.Parse(txtQuantite.Text)).ToString();
+                txtQuantite.Clear();
+            }           
         }
 
         private decimal TotalFacture()
