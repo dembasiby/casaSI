@@ -171,7 +171,11 @@ namespace CasaEcologieSysInfo
         private void UC_NouveauDecaissement_Load(object sender, EventArgs e)
         {
             DefinirListeDesFournisseursAAfficher();
-            ageEmployeBindingSource.DataSource = db.AgeEmployes.ToList();
+            ageEmployeBindingSource.DataSource = db.AgeEmployes
+                                                    .Where(em => em.Actif == true)
+                                                    .OrderBy(em => em.PrenomNom)
+                                                    .ToList();
+
             resComptesTresorerieBindingSource.DataSource = db.ResComptesTresoreries.ToList();
 
             var nomCompte = cbxCompte.GetItemText(cbxCompte.SelectedItem);

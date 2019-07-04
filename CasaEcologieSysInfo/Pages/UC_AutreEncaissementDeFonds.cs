@@ -65,7 +65,10 @@ namespace CasaEcologieSysInfo.Pages
         private void UC_AutreEncaissementDeFonds_Load(object sender, EventArgs e)
         {
             resComptesTresorerieBindingSource.DataSource = db.ResComptesTresoreries.ToList();
-            ageEmployeBindingSource.DataSource = db.AgeEmployes.OrderBy(n => n.PrenomNom).ToList();
+            ageEmployeBindingSource.DataSource = db.AgeEmployes
+                                                    .Where(em => em.Actif == true)
+                                                    .OrderBy(em => em.PrenomNom)
+                                                    .ToList();
         }
 
         private void BtnEnregistrer_Click(object sender, EventArgs e)

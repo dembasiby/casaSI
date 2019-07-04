@@ -21,7 +21,10 @@ namespace CasaEcologieSysInfo
 
         private void LoadData()
         {
-            ageEmployeBindingSource.DataSource = db.AgeEmployes.ToList();
+            ageEmployeBindingSource.DataSource = db.AgeEmployes
+                                                    .Where(em => em.Actif == true)
+                                                    .OrderBy(em => em.PrenomNom)
+                                                    .ToList();
             ageClientBindingSource.DataSource = db.AgeClients.ToList();
             resComptesTresorerieBindingSource.DataSource = db.ResComptesTresoreries.ToList();
         }

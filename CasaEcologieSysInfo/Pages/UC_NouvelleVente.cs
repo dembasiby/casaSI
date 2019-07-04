@@ -28,8 +28,15 @@ namespace CasaEcologieSysInfo
 
         private void LoadData()
         {
-            ageEmployesBindingSource.DataSource = db.AgeEmployes.ToList();
-            ageEmployeBindingSource.DataSource = db.AgeEmployes.ToList();
+            ageEmployesBindingSource.DataSource = db.AgeEmployes
+                                                    .Where(em => em.Actif == true)
+                                                    .OrderBy(em => em.PrenomNom)
+                                                    .ToList();
+            ageEmployeBindingSource.DataSource = db.AgeEmployes
+                                                    .Where(em => em.Actif == true)
+                                                    .OrderBy(em => em.PrenomNom)
+                                                    .ToList();
+
             ageClientBindingSource.DataSource = db.AgeClients
                 .OrderBy(c => c.NomClient)
                 .ToList();
@@ -269,11 +276,6 @@ namespace CasaEcologieSysInfo
                 MessageBox.Show("Veuillez selectionner un produit dans la liste.", "Erreur de choix d'un produit");
                 return;
             }
-
-            {
-               
-            }
-           
         }
 
         private void BtnRetirer_Click(object sender, EventArgs e)

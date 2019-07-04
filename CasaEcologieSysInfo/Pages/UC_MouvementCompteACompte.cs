@@ -23,7 +23,10 @@ namespace CasaEcologieSysInfo.Pages
         {
             resComptesTresorerieBindingSource.DataSource = db.ResComptesTresoreries.ToList();
             resComptesTresorerieBindingSource1.DataSource = db.ResComptesTresoreries.ToList();
-            ageEmployeBindingSource.DataSource = db.AgeEmployes.OrderBy(em => em.PrenomNom).ToList();
+            ageEmployeBindingSource.DataSource = db.AgeEmployes
+                                                    .Where(em => em.Actif == true)
+                                                    .OrderBy(em => em.PrenomNom)
+                                                    .ToList();
         }
 
         private bool IlYaAssezDeFondsDansLeCompteDebiteur(string nomCompte)

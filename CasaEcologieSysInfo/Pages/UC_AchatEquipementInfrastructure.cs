@@ -20,13 +20,17 @@ namespace CasaEcologieSysInfo
         }
 
         private void LoadData()
-        {
-           
+        {          
             ageAutreFournisseursBindingSource.DataSource = db.AgeAutreFournisseurs.ToList();
-            ageEmployesBindingSource.DataSource = db.AgeEmployes.ToList();
-            ageEmployesBindingSource1.DataSource = db.AgeEmployes.ToList();
-            resComptesTresorerieBindingSource.DataSource = db.ResComptesTresoreries.ToList();
-           
+            ageEmployesBindingSource.DataSource = db.AgeEmployes
+                                                    .Where(em => em.Actif == true)
+                                                    .OrderBy(em => em.PrenomNom)
+                                                    .ToList();
+            ageEmployesBindingSource1.DataSource = db.AgeEmployes
+                                                    .Where(em => em.Actif == true)
+                                                    .OrderBy(em => em.PrenomNom)
+                                                    .ToList();
+            resComptesTresorerieBindingSource.DataSource = db.ResComptesTresoreries.ToList();         
         }
 
         private void UC_AchatEquipementInfrastructure_Load(object sender, EventArgs e)

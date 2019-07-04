@@ -24,8 +24,15 @@ namespace CasaEcologieSysInfo
             resServicesFournituresBindingSource.DataSource = db.ResServicesFournitures.ToList();
             resComptesTresorerieBindingSource.DataSource = db.ResComptesTresoreries.ToList();
             ageFournisseursServicesFournituresBindingSource.DataSource = db.AgeFournisseursServicesFournitures.ToList();
-            ageEmployesBindingSource.DataSource = db.AgeEmployes.ToList();
-            ageEmployesBindingSource1.DataSource = db.AgeEmployes.ToList();           
+            ageEmployesBindingSource.DataSource = db.AgeEmployes
+                                                    .Where(em => em.Actif == true)
+                                                    .OrderBy(em => em.PrenomNom)
+                                                    .ToList();
+
+            ageEmployesBindingSource1.DataSource = db.AgeEmployes
+                                                    .Where(em => em.Actif == true)
+                                                    .OrderBy(em => em.PrenomNom)
+                                                    .ToList();
         }
 
         private void BtnNewServFourniture_Click(object sender, EventArgs e)
