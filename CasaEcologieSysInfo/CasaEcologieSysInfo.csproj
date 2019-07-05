@@ -154,12 +154,6 @@
     <Compile Include="Classes\CompteDeResultat.cs" />
     <Compile Include="Classes\Formattage.cs" />
     <Compile Include="Classes\Tresorerie.cs" />
-    <Compile Include="Etats\crptCompteDeResultat.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>crptCompteDeResultat.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="EveEncaissementsCreance.cs">
       <DependentUpon>Model3.tt</DependentUpon>
     </Compile>
@@ -531,10 +525,6 @@
     <Compile Include="VentesMensuelles_Result.cs">
       <DependentUpon>Model3.tt</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Etats\crptCompteDeResultat.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>crptCompteDeResultat.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Formulaires\frmAccueil.resx">
       <DependentUpon>frmAccueil.cs</DependentUpon>
     </EmbeddedResource>
