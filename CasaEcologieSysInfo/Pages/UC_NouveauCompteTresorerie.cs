@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CasaEcologieSysInfo.Pages
@@ -16,7 +9,7 @@ namespace CasaEcologieSysInfo.Pages
         {
             InitializeComponent();
             txtSoldeCompte.Text = "00";
-        }
+        }  
 
         private void BtnAjouterNouveauCompte_Click(object sender, EventArgs e)
         {

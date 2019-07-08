@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
+﻿using Squirrel;
+using System;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -17,6 +12,16 @@ namespace CasaEcologieSysInfo
         public frmConnexion()
         {
             InitializeComponent();
+
+            VerifierMiseAJour();
+        }
+
+        private async Task VerifierMiseAJour()
+        {
+            using (var mgr = new UpdateManager("https://github.com/dembasiby/casaSI/Releases"))
+            {
+                await mgr.UpdateApp();
+            }
         }
 
         private bool UtilisateurAutorise(string nomUtilisateur, string motDePasse)
