@@ -14,6 +14,8 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <IsWebBootstrapper>false</IsWebBootstrapper>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
     <PublishUrl>C:\Users\dsiby_000\Desktop\Deploy\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -30,8 +32,6 @@
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -855,6 +855,13 @@
     <None Include="Resources\Expand Arrow_20px.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CasaDB2.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="CasaDB2_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>CasaDB2.mdf</DependentUpon>
+    </Content>
     <Content Include="Resources\Casa-ecologie-2.ico" />
     <Content Include="Resources\casa.ico" />
     <Content Include="Model3.Context.tt">
@@ -912,7 +919,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DataSets\" />
-    <Folder Include="Donnees\" />
   </ItemGroup>
   <ItemGroup>
     <PublishFile Include="Microsoft.VisualStudio.Shell.Interop.10.0">

@@ -26,7 +26,8 @@ namespace CasaEcologieSysInfo.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\SQLEXPRESS;Initial Catalog=CasaDB;Integrated Security=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\SQLEXPRESS;AttachDbFilename=|DataDirectory|\\CasaDB2.mdf;Integrated " +
+            "Security=True;MultipleActiveResultSets=True")]
         public string CasaDBConnectionString {
             get {
                 return ((string)(this["CasaDBConnectionString"]));
