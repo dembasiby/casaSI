@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,13 @@ namespace CasaEcologieSysInfo
 {
     class Conversion
     {
+        public static void AjouterNumeroVersion(Label lbl)
+        {
+            System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
+            FileVersionInfo infoVersion = FileVersionInfo.GetVersionInfo(assembly.Location);
+
+            lbl.Text += $" v.{infoVersion.FileVersion } - Conception: Demba Siby (+221) 77 562 72 95";
+        }
 
         // Conversion d'une liste en tableau de données
         public static DataTable ConvertirEnTableDeDonnees<T>(IList<T> data)

@@ -1,5 +1,6 @@
 ﻿using Squirrel;
 using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -14,11 +15,13 @@ namespace CasaEcologieSysInfo
             InitializeComponent();
 
             VerifierMiseAJour();
+
+            Conversion.AjouterNumeroVersion(labelConn);
         }
 
         private async Task VerifierMiseAJour()
         {
-            using (var mgr = new UpdateManager("https://github.com/dembasiby/casaSI/Releases"))
+            using (var mgr = new UpdateManager("https://github.com/dembasiby/casaSI/releases/latest"))
             {
                 await mgr.UpdateApp();
             }

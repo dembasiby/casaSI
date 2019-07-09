@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmConnexion));
             this.pnlTopConnexion = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelConn = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -53,7 +53,7 @@
             // 
             this.pnlTopConnexion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(31)))), ((int)(((byte)(20)))));
             this.pnlTopConnexion.Controls.Add(this.pictureBox2);
-            this.pnlTopConnexion.Controls.Add(this.label1);
+            this.pnlTopConnexion.Controls.Add(this.labelConn);
             this.pnlTopConnexion.Controls.Add(this.pictureBox1);
             this.pnlTopConnexion.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTopConnexion.ForeColor = System.Drawing.Color.White;
@@ -72,15 +72,15 @@
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Click += new System.EventHandler(this.PictureBox2_Click);
             // 
-            // label1
+            // labelConn
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(88, 18);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(442, 19);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Système d\'information du GIE Casa Ecologie de Bignona";
+            this.labelConn.AutoSize = true;
+            this.labelConn.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelConn.Location = new System.Drawing.Point(88, 18);
+            this.labelConn.Name = "labelConn";
+            this.labelConn.Size = new System.Drawing.Size(442, 19);
+            this.labelConn.TabIndex = 1;
+            this.labelConn.Text = "Système d\'information du GIE Casa Ecologie de Bignona";
             // 
             // pictureBox1
             // 
@@ -223,7 +223,7 @@
 
         private System.Windows.Forms.Panel pnlTopConnexion;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelConn;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label label2;

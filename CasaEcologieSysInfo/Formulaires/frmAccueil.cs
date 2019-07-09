@@ -20,6 +20,7 @@ namespace CasaEcologieSysInfo
             InitializeComponent();
             UC_TableauDeBord tb = new UC_TableauDeBord();
             AddControlsToPanel(tb);
+            Conversion.AjouterNumeroVersion(labelAccueil);
         } 
  
         private void AddControlsToPanel(Control c)

@@ -36,7 +36,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnlTop = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.labelAccueil = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnTableauDeBord = new System.Windows.Forms.Button();
@@ -171,7 +171,7 @@
             // pnlTop
             // 
             this.pnlTop.Controls.Add(this.pictureBox2);
-            this.pnlTop.Controls.Add(this.label3);
+            this.pnlTop.Controls.Add(this.labelAccueil);
             this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTop.Location = new System.Drawing.Point(217, 0);
             this.pnlTop.Name = "pnlTop";
@@ -190,15 +190,15 @@
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Click += new System.EventHandler(this.PictureBox2_Click);
             // 
-            // label3
+            // labelAccueil
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(8, 20);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(439, 19);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Système d\'information comptable du GIE Casa Ecologie";
+            this.labelAccueil.AutoSize = true;
+            this.labelAccueil.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAccueil.Location = new System.Drawing.Point(8, 20);
+            this.labelAccueil.Name = "labelAccueil";
+            this.labelAccueil.Size = new System.Drawing.Size(439, 19);
+            this.labelAccueil.TabIndex = 1;
+            this.labelAccueil.Text = "Système d\'information comptable du GIE Casa Ecologie";
             // 
             // panel4
             // 
@@ -1170,7 +1170,7 @@
         private System.Windows.Forms.Button btnStock;
         private System.Windows.Forms.Button btnDepenses;
         private System.Windows.Forms.Button btnVentes;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label labelAccueil;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button btnEtatsFinanciers;
