@@ -3,6 +3,7 @@ using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace CasaEcologieSysInfo
 {
@@ -29,8 +30,10 @@ namespace CasaEcologieSysInfo
 
         private bool UtilisateurAutorise(string nomUtilisateur, string motDePasse)
         {
-            /*
-            var user
+            var user = (from usr in db.Utilisateurs
+                        where usr.NomUtilisateur == nomUtilisateur
+                        where usr.MotDePasse == motDePasse
+                        select usr.Role);
 
             if (user.Equals(null))
             {
@@ -40,8 +43,6 @@ namespace CasaEcologieSysInfo
             {
                 return true;
             }
-            */
-            return true;
         }
 
         private void PictureBox2_Click(object sender, EventArgs e)
@@ -60,13 +61,27 @@ namespace CasaEcologieSysInfo
 
         private void Button1_Click(object sender, EventArgs e)
         {
-           
-            using (frmAccueil fn = new frmAccueil())
+            try
             {
-                this.Hide();
-                fn.ShowDialog();
-            }         
-                
+                var user = (from usr in db.Utilisateurs
+                            where usr.NomUtilisateur == txtNomUtilisateur.Text
+                            where usr.MotDePasse == txtMotDePasse.Text
+                            select usr.Role).FirstOrDefault();
+
+                if (!user.Equals(null))
+                {
+                    using (frmAccueil fn = new frmAccueil(user))
+                    {
+                        this.Hide();
+                        fn.ShowDialog();
+                    }
+                }              
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Votre nom d'utilisateur et/ou mot de passe sont incorrects.");
+                return;
+            }
         }
     }
 }

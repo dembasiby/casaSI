@@ -13,14 +13,18 @@ namespace CasaEcologieSysInfo
     public partial class frmAccueil : Form
     {
         private bool isCollapsed = true;
+        private string role;
 
-        public frmAccueil()
+        public frmAccueil(string userRole)
         {
             SqlServerTypes.Utilities.LoadNativeAssemblies(AppDomain.CurrentDomain.BaseDirectory);
             InitializeComponent();
+            role = userRole;
             UC_TableauDeBord tb = new UC_TableauDeBord();
             AddControlsToPanel(tb);
             Conversion.AjouterNumeroVersion(labelAccueil);
+
+            
         } 
  
         private void AddControlsToPanel(Control c)
@@ -113,9 +117,21 @@ namespace CasaEcologieSysInfo
             SetTimer(pnlUtilisateurs, tmrUtilisateurs);
         }
 
-        private void BtnUtilisateurs_Click(object sender, EventArgs e)
+        private bool SuperAdmin()
         {
-            tmrUtilisateurs.Start();
+            return role == "'super admin'";
+        }
+
+        private void BtnUtilisateurs_Click(object sender, EventArgs e)
+        {            
+            if (SuperAdmin())
+            {
+                tmrUtilisateurs.Start();
+            }
+            else
+            {
+                MessageBox.Show("Vous n'avez pas accces à cette page.");
+            }         
         }
 
         private void BtnEtatsFinanciers_Click(object sender, EventArgs e)
