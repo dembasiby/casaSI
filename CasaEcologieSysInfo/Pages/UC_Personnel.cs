@@ -112,7 +112,8 @@ namespace CasaEcologieSysInfo.Pages
                 AgeEmploye emp = new AgeEmploye()
                 {
                     PrenomNom = txtPrenomNom.Text,
-                    Poste = txtPosteEmploye.Text
+                    Poste = txtPosteEmploye.Text,
+                    Actif = true
                 };
 
                 db.AgeEmployes.Add(emp);

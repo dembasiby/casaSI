@@ -119,7 +119,7 @@ namespace CasaEcologieSysInfo
 
         private bool SuperAdmin()
         {
-            return role == "'super admin'";
+            return role == "super admin";
         }
 
         private void BtnUtilisateurs_Click(object sender, EventArgs e)
