@@ -187,21 +187,6 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\CompteDeResultat.cs" />
-    <Compile Include="Classes\Formattage.cs" />
-    <Compile Include="Classes\Tresorerie.cs" />
-    <Compile Include="EveEncaissementsCreance.cs">
-      <DependentUpon>Model3.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EveTransvasement.cs">
-      <DependentUpon>Model3.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Formulaires\frmAccueil.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formulaires\frmAccueil.Designer.cs">
-      <DependentUpon>frmAccueil.cs</DependentUpon>
-    </Compile>
     <Compile Include="AgeAutreFournisseur.cs">
       <DependentUpon>Model3.tt</DependentUpon>
     </Compile>
@@ -216,6 +201,78 @@
     </Compile>
     <Compile Include="AgeFournisseursServicesFourniture.cs">
       <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\CompteDeResultat.cs" />
+    <Compile Include="Classes\Formattage.cs" />
+    <Compile Include="Classes\Tresorerie.cs" />
+    <Compile Include="EveAcquisitionServicesFourniture.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EveDecaissement.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EveEncaissement.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EveEncaissementsAutre.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EveEncaissementsCreance.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EveEncaissementsVente.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EvePaiementEmploye.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EvePresenceEmploye.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EveProduction.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EveProductionProduitsSemiFini.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EveProductionStockProduitsFini.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EveReceptionDonsMatieresPremiere.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EveReceptionEquipementsInfrastructure.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EveReceptionMatieresPremiere.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EveSortieDechetsMatieresPremiere.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EveTransvasement.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EveUtilisationMatieresPremiere.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EveUtilisationProduitsSemiFini.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EveUtilisationRessource.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EveVente.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EveVenteStockProduitsFini.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Formulaires\frmAccueil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulaires\frmAccueil.Designer.cs">
+      <DependentUpon>frmAccueil.cs</DependentUpon>
     </Compile>
     <Compile Include="CasaDBDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -271,63 +328,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>EmployesDataSet3.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="EveAcquisitionServicesFourniture.cs">
-      <DependentUpon>Model3.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EveDecaissement.cs">
-      <DependentUpon>Model3.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EveEncaissement.cs">
-      <DependentUpon>Model3.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EveEncaissementsAutre.cs">
-      <DependentUpon>Model3.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EveEncaissementsVente.cs">
-      <DependentUpon>Model3.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EvePaiementEmploye.cs">
-      <DependentUpon>Model3.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EvePresenceEmploye.cs">
-      <DependentUpon>Model3.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EveProduction.cs">
-      <DependentUpon>Model3.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EveProductionProduitsSemiFini.cs">
-      <DependentUpon>Model3.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EveProductionStockProduitsFini.cs">
-      <DependentUpon>Model3.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EveReceptionDonsMatieresPremiere.cs">
-      <DependentUpon>Model3.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EveReceptionEquipementsInfrastructure.cs">
-      <DependentUpon>Model3.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EveReceptionMatieresPremiere.cs">
-      <DependentUpon>Model3.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EveSortieDechetsMatieresPremiere.cs">
-      <DependentUpon>Model3.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EveUtilisationMatieresPremiere.cs">
-      <DependentUpon>Model3.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EveUtilisationProduitsSemiFini.cs">
-      <DependentUpon>Model3.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EveUtilisationRessource.cs">
-      <DependentUpon>Model3.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EveVente.cs">
-      <DependentUpon>Model3.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EveVenteStockProduitsFini.cs">
-      <DependentUpon>Model3.tt</DependentUpon>
     </Compile>
     <Compile Include="Classes\GestionStocks.cs" />
     <Compile Include="Model3.Context.cs">
@@ -447,6 +447,12 @@
     <Compile Include="Pages\UC_Transvasage.Designer.cs">
       <DependentUpon>UC_Transvasage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pages\UC_Utilisateurs.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\UC_Utilisateurs.Designer.cs">
+      <DependentUpon>UC_Utilisateurs.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Pages\UC_StockMatieresPremieres.cs">
       <SubType>UserControl</SubType>
@@ -543,19 +549,19 @@
       <DependentUpon>Model3.tt</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
-    <Compile Include="sysdiagram.cs">
-      <DependentUpon>Model3.tt</DependentUpon>
-    </Compile>
     <Compile Include="Pages\UC_NouveauDecaissement.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Pages\UC_NouveauDecaissement.Designer.cs">
       <DependentUpon>UC_NouveauDecaissement.cs</DependentUpon>
     </Compile>
+    <Compile Include="Classes\Validation.cs" />
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
     <Compile Include="Utilisateur.cs">
       <DependentUpon>Model3.tt</DependentUpon>
     </Compile>
-    <Compile Include="Classes\Validation.cs" />
     <Compile Include="VentesMensuelles_Result.cs">
       <DependentUpon>Model3.tt</DependentUpon>
     </Compile>
@@ -615,6 +621,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\UC_Transvasage.resx">
       <DependentUpon>UC_Transvasage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\UC_Utilisateurs.resx">
+      <DependentUpon>UC_Utilisateurs.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -921,52 +930,52 @@
   <ItemGroup>
     <PublishFile Include="Microsoft.VisualStudio.Shell.Interop.10.0">
       <Visible>False</Visible>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="Microsoft.VisualStudio.Shell.Interop.11.0">
       <Visible>False</Visible>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="Microsoft.VisualStudio.Shell.Interop.8.0">
       <Visible>False</Visible>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="Microsoft.VisualStudio.Shell.Interop.9.0">
       <Visible>False</Visible>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="stdole">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
   </ItemGroup>

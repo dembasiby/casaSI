@@ -28,23 +28,6 @@ namespace CasaEcologieSysInfo
             }
         }
 
-        private bool UtilisateurAutorise(string nomUtilisateur, string motDePasse)
-        {
-            var user = (from usr in db.Utilisateurs
-                        where usr.NomUtilisateur == nomUtilisateur
-                        where usr.MotDePasse == motDePasse
-                        select usr.Role);
-
-            if (user.Equals(null))
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
-
         private void PictureBox2_Click(object sender, EventArgs e)
         {
             Application.Exit();

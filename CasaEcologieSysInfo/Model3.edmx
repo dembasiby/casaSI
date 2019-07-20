@@ -2655,7 +2655,9 @@
           <NavigationProperty Name="AgeEmploye" Relationship="CasaDBModel.FK_Utilisateurs_AgeEmployes" FromRole="Utilisateur" ToRole="AgeEmploye" />
         </EntityType>
         <Association Name="FK_Utilisateurs_AgeEmployes">
-          <End Type="CasaDBModel.AgeEmploye" Role="AgeEmploye" Multiplicity="1" />
+          <End Type="CasaDBModel.AgeEmploye" Role="AgeEmploye" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="CasaDBModel.Utilisateur" Role="Utilisateur" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="AgeEmploye">

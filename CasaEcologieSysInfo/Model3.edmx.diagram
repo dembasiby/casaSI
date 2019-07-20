@@ -4,33 +4,33 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="565729c2b96b42b084fd06ac14681009" Name="Diagram1" ZoomLevel="85">
-        <EntityTypeShape EntityType="CasaDBModel.AgeAutreFournisseur" Width="1.5" PointX="7.5" PointY="38.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="CasaDBModel.AgeClient" Width="1.5" PointX="0.75" PointY="23.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="CasaDBModel.AgeEmploye" Width="1.5" PointX="0.75" PointY="27.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CasaDBModel.AgeFournisseursMatieresPremiere" Width="1.5" PointX="3.75" PointY="40.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="CasaDBModel.AgeFournisseursServicesFourniture" Width="1.5" PointX="3.75" PointY="12.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CasaDBModel.EveAcquisitionServicesFourniture" Width="1.5" PointX="6" PointY="32.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="CasaDBModel.EveDecaissement" Width="1.5" PointX="9.75" PointY="36.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="CasaDBModel.EveEncaissement" Width="1.5" PointX="6" PointY="24.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CasaDBModel.EveEncaissementsVente" Width="1.5" PointX="8.25" PointY="24.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CasaDBModel.EvePresenceEmploye" Width="1.5" PointX="3" PointY="46" IsExpanded="true" />
-        <EntityTypeShape EntityType="CasaDBModel.EveProductionProduitsSemiFini" Width="1.5" PointX="7.5" PointY="44" IsExpanded="true" />
-        <EntityTypeShape EntityType="CasaDBModel.EveProduction" Width="1.5" PointX="5.25" PointY="44.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CasaDBModel.EveProductionStockProduitsFini" Width="1.5" PointX="10.5" PointY="45" IsExpanded="true" />
-        <EntityTypeShape EntityType="CasaDBModel.EveReceptionEquipementsInfrastructure" Width="1.5" PointX="7.5" PointY="47" IsExpanded="true" />
-        <EntityTypeShape EntityType="CasaDBModel.EveReceptionMatieresPremiere" Width="1.5" PointX="3" PointY="32.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="CasaDBModel.EveUtilisationMatieresPremiere" Width="1.5" PointX="5.25" PointY="58.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="CasaDBModel.EveUtilisationProduitsSemiFini" Width="1.5" PointX="5.25" PointY="61.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="CasaDBModel.EveUtilisationRessource" Width="1.5" PointX="3" PointY="61.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="CasaDBModel.EveVente" Width="1.5" PointX="3" PointY="24.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CasaDBModel.EveVenteStockProduitsFini" Width="1.5" PointX="5.25" PointY="21.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="CasaDBModel.ResComptesTresorerie" Width="1.5" PointX="3.75" PointY="19" IsExpanded="true" />
-        <EntityTypeShape EntityType="CasaDBModel.ResEquipementsInfrastructure" Width="1.5" PointX="5.25" PointY="67.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="CasaDBModel.ResServicesFourniture" Width="1.5" PointX="3.75" PointY="51.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CasaDBModel.ResStockMatieresPremiere" Width="1.5" PointX="3.75" PointY="37.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="CasaDBModel.ResStockProduitsFini" Width="1.5" PointX="3" PointY="15.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="CasaDBModel.ResStockProduitsSemiFini" Width="1.5" PointX="5.25" PointY="54.625" IsExpanded="true" />
+      <Diagram DiagramId="565729c2b96b42b084fd06ac14681009" Name="Diagram1" ZoomLevel="100">
+        <EntityTypeShape EntityType="CasaDBModel.AgeAutreFournisseur" Width="1.5" PointX="8.5" PointY="40.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CasaDBModel.AgeClient" Width="1.5" PointX="0.75" PointY="25.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CasaDBModel.AgeEmploye" Width="1.5" PointX="0.75" PointY="29.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CasaDBModel.AgeFournisseursMatieresPremiere" Width="1.5" PointX="3.75" PointY="38.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CasaDBModel.AgeFournisseursServicesFourniture" Width="1.5" PointX="3.75" PointY="18.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CasaDBModel.EveAcquisitionServicesFourniture" Width="1.5" PointX="6" PointY="34.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CasaDBModel.EveDecaissement" Width="1.5" PointX="10.75" PointY="39.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CasaDBModel.EveEncaissement" Width="1.5" PointX="6" PointY="30.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CasaDBModel.EveEncaissementsVente" Width="1.5" PointX="11.25" PointY="30.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CasaDBModel.EvePresenceEmploye" Width="1.5" PointX="3" PointY="51.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CasaDBModel.EveProductionProduitsSemiFini" Width="1.5" PointX="7.5" PointY="45.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CasaDBModel.EveProduction" Width="1.5" PointX="5.25" PointY="46.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CasaDBModel.EveProductionStockProduitsFini" Width="1.5" PointX="10.5" PointY="46.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CasaDBModel.EveReceptionEquipementsInfrastructure" Width="1.5" PointX="7.5" PointY="49.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CasaDBModel.EveReceptionMatieresPremiere" Width="1.5" PointX="6" PointY="26.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CasaDBModel.EveUtilisationMatieresPremiere" Width="1.5" PointX="5.25" PointY="63.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CasaDBModel.EveUtilisationProduitsSemiFini" Width="1.5" PointX="5.25" PointY="60.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CasaDBModel.EveUtilisationRessource" Width="1.5" PointX="3" PointY="63.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CasaDBModel.EveVente" Width="1.5" PointX="3" PointY="30.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CasaDBModel.EveVenteStockProduitsFini" Width="1.5" PointX="8.25" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CasaDBModel.ResComptesTresorerie" Width="1.5" PointX="3.75" PointY="41.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CasaDBModel.ResEquipementsInfrastructure" Width="1.5" PointX="5.25" PointY="68.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CasaDBModel.ResServicesFourniture" Width="1.5" PointX="3.75" PointY="54.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CasaDBModel.ResStockMatieresPremiere" Width="1.5" PointX="3.75" PointY="21.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CasaDBModel.ResStockProduitsFini" Width="1.5" PointX="6" PointY="21.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CasaDBModel.ResStockProduitsSemiFini" Width="1.5" PointX="5.25" PointY="50.5" IsExpanded="true" />
         <EntityTypeShape EntityType="CasaDBModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="CasaDBModel.FK_EveDecaissements_AgeAutreFournisseurs" ManuallyRouted="false" />
         <AssociationConnector Association="CasaDBModel.FK_EveReceptionEquipementsInfrastructures_AgeAutreFournisseurs" ManuallyRouted="false" />
@@ -73,29 +73,29 @@
         <AssociationConnector Association="CasaDBModel.FK_ResStockProduitsSemiFinis_ResStockMatieresPremieres" ManuallyRouted="false" />
         <AssociationConnector Association="CasaDBModel.FK_ResStockProduitsSemiFinis_ResStockProduitsSemiFinis" ManuallyRouted="false" />
         <AssociationConnector Association="CasaDBModel.EveUtilisationEquipementInfrastructures" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="CasaDBModel.EvePaiementEmploye" Width="1.5" PointX="3" PointY="49" />
+        <EntityTypeShape EntityType="CasaDBModel.EvePaiementEmploye" Width="1.5" PointX="3" PointY="57.625" />
         <AssociationConnector Association="CasaDBModel.FK_EvePaiementEmployes_AgeEmployes" />
         <AssociationConnector Association="CasaDBModel.FK_EveDecaissements_EvePaiementEmployes" />
-        <EntityTypeShape EntityType="CasaDBModel.Utilisateur" Width="1.5" PointX="3" PointY="54.875" />
+        <EntityTypeShape EntityType="CasaDBModel.Utilisateur" Width="1.5" PointX="3" PointY="60.5" />
         <AssociationConnector Association="CasaDBModel.FK_Utilisateurs_AgeEmployes" />
         <AssociationConnector Association="CasaDBModel.FK_EveEncaissementsVentes_AgeClients" />
-        <EntityTypeShape EntityType="CasaDBModel.EveEncaissementsAutre" Width="1.5" PointX="8.25" PointY="28.125" />
+        <EntityTypeShape EntityType="CasaDBModel.EveEncaissementsAutre" Width="1.5" PointX="8.25" PointY="37.125" />
         <AssociationConnector Association="CasaDBModel.FK_EveEncaissementsAutres_EveEncaissements" />
-        <EntityTypeShape EntityType="CasaDBModel.EveReceptionDonsMatieresPremiere" Width="1.5" PointX="6" PointY="28.5" />
+        <EntityTypeShape EntityType="CasaDBModel.EveReceptionDonsMatieresPremiere" Width="1.5" PointX="3" PointY="26.375" />
         <AssociationConnector Association="CasaDBModel.FK_EveReceptionDonsMatieresPremieres_AgeEmployes" />
         <AssociationConnector Association="CasaDBModel.FK_EveReceptionDonsMatieresPremieres_AgeFournisseursMatieresPremieres" />
         <AssociationConnector Association="CasaDBModel.FK_EveReceptionDonsMatieresPremieres_ResStockMatieresPremieres" />
-        <EntityTypeShape EntityType="CasaDBModel.EveSortieDechetsMatieresPremiere" Width="1.5" PointX="3" PointY="28.5" />
+        <EntityTypeShape EntityType="CasaDBModel.EveSortieDechetsMatieresPremiere" Width="1.5" PointX="3" PointY="34.375" />
         <AssociationConnector Association="CasaDBModel.FK_EveDecaissements_EveReceptionDonsMatieresPremieres" />
         <AssociationConnector Association="CasaDBModel.FK_EveSortieDechetsMatieresPremieres_AgeEmployes" />
         <AssociationConnector Association="CasaDBModel.FK_EveSortieDechetsMatieresPremieres_AgeEmployes1" />
         <AssociationConnector Association="CasaDBModel.FK_EveSortieDechetsMatieresPremieres_ResStockMatieresPremieres" />
         <AssociationConnector Association="CasaDBModel.FK_ResStockProduitsFinis_ResStockMatieresPremieresEmballages" />
         <AssociationConnector Association="CasaDBModel.FK_ResStockProduitsFinis_ResStockProduitsFinis" />
-        <EntityTypeShape EntityType="CasaDBModel.EveEncaissementsCreance" Width="1.5" PointX="8.25" PointY="21.375" />
+        <EntityTypeShape EntityType="CasaDBModel.EveEncaissementsCreance" Width="1.5" PointX="8.25" PointY="30.625" />
         <AssociationConnector Association="CasaDBModel.FK_EveEncaissementsCreances_AgeClients" />
         <AssociationConnector Association="CasaDBModel.FK_EveEncaissementsCreances_EveEncaissements" />
-        <EntityTypeShape EntityType="CasaDBModel.EveTransvasement" Width="1.5" PointX="11" PointY="26.625" />
+        <EntityTypeShape EntityType="CasaDBModel.EveTransvasement" Width="1.5" PointX="8.25" PointY="21.5" />
         <AssociationConnector Association="CasaDBModel.FK_EveTransvasements_ResStockMatieresPremieres_Final" />
         <AssociationConnector Association="CasaDBModel.FK_EveTransvasements_ResStockMatieresPremieres_Initial" />
         <AssociationConnector Association="CasaDBModel.FK_EveTransvasements_ResStockProduitsFinis_Final" />

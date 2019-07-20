@@ -92,8 +92,6 @@
             this.pnlUtilisateurs = new System.Windows.Forms.Panel();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.btnUtilisateurs = new System.Windows.Forms.Button();
-            this.btnGererUtilisateurs = new System.Windows.Forms.Button();
-            this.btnGererCompte = new System.Windows.Forms.Button();
             this.btnImmobilisations = new System.Windows.Forms.Button();
             this.pnlPrincipal = new System.Windows.Forms.Panel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -101,7 +99,6 @@
             this.tmrFournisseursClients = new System.Windows.Forms.Timer(this.components);
             this.tmrProductionStocks = new System.Windows.Forms.Timer(this.components);
             this.tmrTresorerie = new System.Windows.Forms.Timer(this.components);
-            this.tmrUtilisateurs = new System.Windows.Forms.Timer(this.components);
             this.tmrProduction = new System.Windows.Forms.Timer(this.components);
             this.dragControl1 = new CasaEcologieSysInfo.DragControl();
             this.panel3.SuspendLayout();
@@ -985,10 +982,8 @@
             // 
             this.pnlUtilisateurs.Controls.Add(this.pictureBox8);
             this.pnlUtilisateurs.Controls.Add(this.btnUtilisateurs);
-            this.pnlUtilisateurs.Controls.Add(this.btnGererUtilisateurs);
-            this.pnlUtilisateurs.Controls.Add(this.btnGererCompte);
             this.pnlUtilisateurs.Location = new System.Drawing.Point(3, 566);
-            this.pnlUtilisateurs.MaximumSize = new System.Drawing.Size(217, 120);
+            this.pnlUtilisateurs.MaximumSize = new System.Drawing.Size(217, 40);
             this.pnlUtilisateurs.MinimumSize = new System.Drawing.Size(217, 40);
             this.pnlUtilisateurs.Name = "pnlUtilisateurs";
             this.pnlUtilisateurs.Size = new System.Drawing.Size(217, 40);
@@ -1011,47 +1006,14 @@
             this.btnUtilisateurs.FlatAppearance.BorderSize = 0;
             this.btnUtilisateurs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUtilisateurs.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUtilisateurs.Image = global::CasaEcologieSysInfo.Properties.Resources.Expand_Arrow_20px;
             this.btnUtilisateurs.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnUtilisateurs.Location = new System.Drawing.Point(-1, 0);
             this.btnUtilisateurs.Name = "btnUtilisateurs";
-            this.btnUtilisateurs.Size = new System.Drawing.Size(219, 37);
+            this.btnUtilisateurs.Size = new System.Drawing.Size(219, 40);
             this.btnUtilisateurs.TabIndex = 1;
             this.btnUtilisateurs.Text = "Utilisateurs";
             this.btnUtilisateurs.UseVisualStyleBackColor = false;
             this.btnUtilisateurs.Click += new System.EventHandler(this.BtnUtilisateurs_Click);
-            // 
-            // btnGererUtilisateurs
-            // 
-            this.btnGererUtilisateurs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.btnGererUtilisateurs.FlatAppearance.BorderSize = 0;
-            this.btnGererUtilisateurs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGererUtilisateurs.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGererUtilisateurs.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnGererUtilisateurs.Location = new System.Drawing.Point(1, 81);
-            this.btnGererUtilisateurs.Name = "btnGererUtilisateurs";
-            this.btnGererUtilisateurs.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnGererUtilisateurs.Size = new System.Drawing.Size(217, 39);
-            this.btnGererUtilisateurs.TabIndex = 3;
-            this.btnGererUtilisateurs.Text = "Gérer les utilisateurs";
-            this.btnGererUtilisateurs.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGererUtilisateurs.UseVisualStyleBackColor = false;
-            // 
-            // btnGererCompte
-            // 
-            this.btnGererCompte.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.btnGererCompte.FlatAppearance.BorderSize = 0;
-            this.btnGererCompte.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGererCompte.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGererCompte.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnGererCompte.Location = new System.Drawing.Point(1, 41);
-            this.btnGererCompte.Name = "btnGererCompte";
-            this.btnGererCompte.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnGererCompte.Size = new System.Drawing.Size(217, 39);
-            this.btnGererCompte.TabIndex = 2;
-            this.btnGererCompte.Text = "Gérer mon compte";
-            this.btnGererCompte.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGererCompte.UseVisualStyleBackColor = false;
             // 
             // btnImmobilisations
             // 
@@ -1101,11 +1063,6 @@
             // 
             this.tmrTresorerie.Interval = 15;
             this.tmrTresorerie.Tick += new System.EventHandler(this.TmrTresorerie_Tick);
-            // 
-            // tmrUtilisateurs
-            // 
-            this.tmrUtilisateurs.Interval = 15;
-            this.tmrUtilisateurs.Tick += new System.EventHandler(this.TmrUtilisateurs_Tick);
             // 
             // tmrProduction
             // 
@@ -1203,9 +1160,6 @@
         private System.Windows.Forms.Timer tmrTresorerie;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Panel pnlUtilisateurs;
-        private System.Windows.Forms.Button btnGererUtilisateurs;
-        private System.Windows.Forms.Button btnGererCompte;
-        private System.Windows.Forms.Timer tmrUtilisateurs;
         private System.Windows.Forms.Button btnStockProduitsSemiFinis;
         private System.Windows.Forms.Button btnNouvelEncaissement;
         private DragControl dragControl1;

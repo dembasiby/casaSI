@@ -112,10 +112,7 @@ namespace CasaEcologieSysInfo
             tmrTresorerie.Start();
         }
 
-        private void TmrUtilisateurs_Tick(object sender, EventArgs e)
-        {
-            SetTimer(pnlUtilisateurs, tmrUtilisateurs);
-        }
+  
 
         private bool SuperAdmin()
         {
@@ -126,7 +123,8 @@ namespace CasaEcologieSysInfo
         {            
             if (SuperAdmin())
             {
-                tmrUtilisateurs.Start();
+                Pages.UC_Utilisateurs user = new Pages.UC_Utilisateurs();
+                AddControlsToPanel(user);
             }
             else
             {
