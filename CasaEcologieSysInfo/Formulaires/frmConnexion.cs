@@ -22,9 +22,9 @@ namespace CasaEcologieSysInfo
 
         private async Task VerifierMiseAJour()
         {
-            using (var mgr = new UpdateManager("https://github.com/dembasiby/casaSI/releases/latest"))
+            using (var mgr = UpdateManager.GitHubUpdateManager("https://github.com/dembasiby/casaSI"))
             {
-                await mgr.UpdateApp();
+                await mgr.Result.UpdateApp();
             }
         }
 
