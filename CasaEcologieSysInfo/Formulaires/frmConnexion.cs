@@ -20,11 +20,11 @@ namespace CasaEcologieSysInfo
             Conversion.AjouterNumeroVersion(labelConn);
         }
 
-        private async Task VerifierMiseAJour()
+        private static async Task VerifierMiseAJour()
         {
-            using (var mgr = UpdateManager.GitHubUpdateManager("https://github.com/dembasiby/casaSI"))
+            using (var mgr = await UpdateManager.GitHubUpdateManager("https://github.com/dembasiby/casaSI"))
             {
-                await mgr.Result.UpdateApp();
+                await mgr.UpdateApp();
             }
         }
 
