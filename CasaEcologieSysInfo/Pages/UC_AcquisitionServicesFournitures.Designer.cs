@@ -72,6 +72,8 @@
             this.ageFournisseursServicesFournituresTableAdapter = new CasaEcologieSysInfo.CasaDBDataSetAllTableAdapters.AgeFournisseursServicesFournituresTableAdapter();
             this.ageEmployesTableAdapter = new CasaEcologieSysInfo.CasaDBDataSetAllTableAdapters.AgeEmployesTableAdapter();
             this.resComptesTresorerieTableAdapter = new CasaEcologieSysInfo.CasaDBDataSetAllTableAdapters.ResComptesTresorerieTableAdapter();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtSoldeCompte = new System.Windows.Forms.TextBox();
             this.gBxNouvelleMatierePremiere.SuspendLayout();
             this.grbNouveauFournisseur.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ageFournisseursServicesFournituresBindingSource)).BeginInit();
@@ -254,6 +256,7 @@
             // 
             this.cbxNomFournServFourn.DataSource = this.ageFournisseursServicesFournituresBindingSource;
             this.cbxNomFournServFourn.DisplayMember = "NomFournisseurServiceFourniture";
+            this.cbxNomFournServFourn.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxNomFournServFourn.FormattingEnabled = true;
             this.cbxNomFournServFourn.Location = new System.Drawing.Point(253, 92);
             this.cbxNomFournServFourn.Margin = new System.Windows.Forms.Padding(5);
@@ -275,6 +278,7 @@
             // 
             this.cbxNomServFourniture.DataSource = this.resServicesFournituresBindingSource;
             this.cbxNomServFourniture.DisplayMember = "NomServiceFourniture";
+            this.cbxNomServFourniture.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxNomServFourniture.FormattingEnabled = true;
             this.cbxNomServFourniture.Location = new System.Drawing.Point(253, 53);
             this.cbxNomServFourniture.Margin = new System.Windows.Forms.Padding(5);
@@ -294,7 +298,7 @@
             this.btnAchatServiceFourniture.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAchatServiceFourniture.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAchatServiceFourniture.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnAchatServiceFourniture.Location = new System.Drawing.Point(39, 363);
+            this.btnAchatServiceFourniture.Location = new System.Drawing.Point(39, 402);
             this.btnAchatServiceFourniture.Margin = new System.Windows.Forms.Padding(5);
             this.btnAchatServiceFourniture.Name = "btnAchatServiceFourniture";
             this.btnAchatServiceFourniture.Size = new System.Drawing.Size(486, 34);
@@ -405,6 +409,7 @@
             // 
             this.cbxRespServFourn.DataSource = this.ageEmployesBindingSource;
             this.cbxRespServFourn.DisplayMember = "PrenomNom";
+            this.cbxRespServFourn.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxRespServFourn.FormattingEnabled = true;
             this.cbxRespServFourn.Location = new System.Drawing.Point(253, 246);
             this.cbxRespServFourn.Margin = new System.Windows.Forms.Padding(5);
@@ -421,6 +426,7 @@
             // 
             this.cbxTresoriere.DataSource = this.ageEmployesBindingSource1;
             this.cbxTresoriere.DisplayMember = "PrenomNom";
+            this.cbxTresoriere.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxTresoriere.FormattingEnabled = true;
             this.cbxTresoriere.Location = new System.Drawing.Point(253, 285);
             this.cbxTresoriere.Margin = new System.Windows.Forms.Padding(5);
@@ -447,12 +453,14 @@
             // 
             this.cbxComptePaiement.DataSource = this.resComptesTresorerieBindingSource;
             this.cbxComptePaiement.DisplayMember = "NomCompte";
+            this.cbxComptePaiement.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxComptePaiement.FormattingEnabled = true;
             this.cbxComptePaiement.Location = new System.Drawing.Point(253, 324);
             this.cbxComptePaiement.Margin = new System.Windows.Forms.Padding(5);
             this.cbxComptePaiement.Name = "cbxComptePaiement";
             this.cbxComptePaiement.Size = new System.Drawing.Size(272, 29);
             this.cbxComptePaiement.TabIndex = 32;
+            this.cbxComptePaiement.SelectedIndexChanged += new System.EventHandler(this.CbxComptePaiement_SelectedIndexChanged_1);
             // 
             // resComptesTresorerieBindingSource
             // 
@@ -475,6 +483,25 @@
             // 
             this.resComptesTresorerieTableAdapter.ClearBeforeFill = true;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(37, 366);
+            this.label5.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(122, 21);
+            this.label5.TabIndex = 21;
+            this.label5.Text = "Solde Compte";
+            // 
+            // txtSoldeCompte
+            // 
+            this.txtSoldeCompte.Location = new System.Drawing.Point(253, 360);
+            this.txtSoldeCompte.Margin = new System.Windows.Forms.Padding(5);
+            this.txtSoldeCompte.Name = "txtSoldeCompte";
+            this.txtSoldeCompte.ReadOnly = true;
+            this.txtSoldeCompte.Size = new System.Drawing.Size(272, 27);
+            this.txtSoldeCompte.TabIndex = 28;
+            // 
             // UC_AcquisitionServicesFournitures
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
@@ -488,7 +515,9 @@
             this.Controls.Add(this.cbxRespServFourn);
             this.Controls.Add(this.cbxNomServFourniture);
             this.Controls.Add(this.btnAchatServiceFourniture);
+            this.Controls.Add(this.txtSoldeCompte);
             this.Controls.Add(this.txtMontantPayeServFourn);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.txtMontantServFourn);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label6);
@@ -564,5 +593,7 @@
         private CasaDBDataSetAllTableAdapters.AgeEmployesTableAdapter ageEmployesTableAdapter;
         private CasaDBDataSetAllTableAdapters.ResComptesTresorerieTableAdapter resComptesTresorerieTableAdapter;
         private System.Windows.Forms.DateTimePicker dtpDateAchatServFourn;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtSoldeCompte;
     }
 }

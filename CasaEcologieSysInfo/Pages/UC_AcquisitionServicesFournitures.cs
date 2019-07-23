@@ -33,6 +33,8 @@ namespace CasaEcologieSysInfo
                                                     .Where(em => em.Actif == true)
                                                     .OrderBy(em => em.PrenomNom)
                                                     .ToList();
+
+            Conversion.AfficherSoldeTresorerie(cbxComptePaiement, txtSoldeCompte);
         }
 
         private void BtnNewServFourniture_Click(object sender, EventArgs e)
@@ -114,6 +116,11 @@ namespace CasaEcologieSysInfo
             MessageBox.Show("Le nouvel achat de service ou de fourniture a été enregistré avec succès!");
             txtMontantServFourn.Text = "";
             txtMontantPayeServFourn.Text = "";           
+        }
+
+        private void CbxComptePaiement_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            Conversion.AfficherSoldeTresorerie(cbxComptePaiement, txtSoldeCompte);
         }
     }
 }

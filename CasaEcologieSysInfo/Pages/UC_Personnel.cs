@@ -71,6 +71,7 @@ namespace CasaEcologieSysInfo.Pages
 
 
             AfficherPresenceEtRemunerationEmploye(dtpFin.Value.Date);
+            Conversion.AfficherSoldeTresorerie(cbxComptePaiement, txtSoldeCompte);
         }
 
         private void AfficherPresenceEtRemunerationEmploye(DateTime fin, DateTime debut = default(DateTime))
@@ -270,6 +271,11 @@ namespace CasaEcologieSysInfo.Pages
                 MessageBox.Show("Le montant entré n'est pas valide.");
                 return;
             }
+        }
+
+        private void CbxComptePaiement_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Conversion.AfficherSoldeTresorerie(cbxComptePaiement, txtSoldeCompte);
         }
     }
 }

@@ -100,6 +100,8 @@
             this.ageEmployesTableAdapter = new CasaEcologieSysInfo.CasaDBDataSetAllTableAdapters.AgeEmployesTableAdapter();
             this.resComptesTresorerieTableAdapter = new CasaEcologieSysInfo.CasaDBDataSetAllTableAdapters.ResComptesTresorerieTableAdapter();
             this.cbxImmobilisationLieeAProduction = new System.Windows.Forms.CheckBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.txtSoldeCompte = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.resComptesTresorerieBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.casaDBDataSetAllBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.casaDBDataSetAll)).BeginInit();
@@ -191,7 +193,7 @@
             this.dtpAchatEqInfr1.CustomFormat = "dd / MM / yyyy";
             this.dtpAchatEqInfr1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpAchatEqInfr1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpAchatEqInfr1.Location = new System.Drawing.Point(244, 318);
+            this.dtpAchatEqInfr1.Location = new System.Drawing.Point(244, 290);
             this.dtpAchatEqInfr1.Name = "dtpAchatEqInfr1";
             this.dtpAchatEqInfr1.Size = new System.Drawing.Size(286, 27);
             this.dtpAchatEqInfr1.TabIndex = 42;
@@ -200,12 +202,14 @@
             // 
             this.cbxComptePaiement.DataSource = this.resComptesTresorerieBindingSource;
             this.cbxComptePaiement.DisplayMember = "NomCompte";
+            this.cbxComptePaiement.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxComptePaiement.FormattingEnabled = true;
-            this.cbxComptePaiement.Location = new System.Drawing.Point(244, 507);
+            this.cbxComptePaiement.Location = new System.Drawing.Point(244, 479);
             this.cbxComptePaiement.Margin = new System.Windows.Forms.Padding(5);
             this.cbxComptePaiement.Name = "cbxComptePaiement";
             this.cbxComptePaiement.Size = new System.Drawing.Size(286, 29);
             this.cbxComptePaiement.TabIndex = 8;
+            this.cbxComptePaiement.SelectedIndexChanged += new System.EventHandler(this.CbxComptePaiement_SelectedIndexChanged);
             // 
             // resComptesTresorerieBindingSource
             // 
@@ -226,8 +230,9 @@
             // 
             this.cbxTresoriere.DataSource = this.ageEmployesBindingSource1;
             this.cbxTresoriere.DisplayMember = "PrenomNom";
+            this.cbxTresoriere.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxTresoriere.FormattingEnabled = true;
-            this.cbxTresoriere.Location = new System.Drawing.Point(244, 468);
+            this.cbxTresoriere.Location = new System.Drawing.Point(244, 440);
             this.cbxTresoriere.Margin = new System.Windows.Forms.Padding(5);
             this.cbxTresoriere.Name = "cbxTresoriere";
             this.cbxTresoriere.Size = new System.Drawing.Size(286, 29);
@@ -242,6 +247,7 @@
             // 
             this.cbxFournisseurImmo.DataSource = this.ageAutreFournisseursBindingSource;
             this.cbxFournisseurImmo.DisplayMember = "NomAutreFournisseur";
+            this.cbxFournisseurImmo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxFournisseurImmo.FormattingEnabled = true;
             this.cbxFournisseurImmo.Location = new System.Drawing.Point(244, 125);
             this.cbxFournisseurImmo.Margin = new System.Windows.Forms.Padding(5);
@@ -258,8 +264,9 @@
             // 
             this.cbxRespImmo.DataSource = this.ageEmployesBindingSource;
             this.cbxRespImmo.DisplayMember = "PrenomNom";
+            this.cbxRespImmo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxRespImmo.FormattingEnabled = true;
-            this.cbxRespImmo.Location = new System.Drawing.Point(244, 429);
+            this.cbxRespImmo.Location = new System.Drawing.Point(244, 401);
             this.cbxRespImmo.Margin = new System.Windows.Forms.Padding(5);
             this.cbxRespImmo.Name = "cbxRespImmo";
             this.cbxRespImmo.Size = new System.Drawing.Size(286, 29);
@@ -288,7 +295,7 @@
             // 
             // txtMontantPaye
             // 
-            this.txtMontantPaye.Location = new System.Drawing.Point(244, 391);
+            this.txtMontantPaye.Location = new System.Drawing.Point(244, 363);
             this.txtMontantPaye.Margin = new System.Windows.Forms.Padding(5);
             this.txtMontantPaye.Name = "txtMontantPaye";
             this.txtMontantPaye.Size = new System.Drawing.Size(286, 27);
@@ -296,7 +303,7 @@
             // 
             // txtMontant1
             // 
-            this.txtMontant1.Location = new System.Drawing.Point(244, 355);
+            this.txtMontant1.Location = new System.Drawing.Point(244, 327);
             this.txtMontant1.Margin = new System.Windows.Forms.Padding(5);
             this.txtMontant1.Name = "txtMontant1";
             this.txtMontant1.Size = new System.Drawing.Size(286, 27);
@@ -304,7 +311,7 @@
             // 
             // txtQuantite
             // 
-            this.txtQuantite.Location = new System.Drawing.Point(244, 201);
+            this.txtQuantite.Location = new System.Drawing.Point(244, 194);
             this.txtQuantite.Margin = new System.Windows.Forms.Padding(5);
             this.txtQuantite.Name = "txtQuantite";
             this.txtQuantite.Size = new System.Drawing.Size(286, 27);
@@ -314,7 +321,7 @@
             // lblCompteDecaissement
             // 
             this.lblCompteDecaissement.AutoSize = true;
-            this.lblCompteDecaissement.Location = new System.Drawing.Point(22, 512);
+            this.lblCompteDecaissement.Location = new System.Drawing.Point(22, 484);
             this.lblCompteDecaissement.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblCompteDecaissement.Name = "lblCompteDecaissement";
             this.lblCompteDecaissement.Size = new System.Drawing.Size(182, 21);
@@ -324,7 +331,7 @@
             // lblDecaissementFaitPar
             // 
             this.lblDecaissementFaitPar.AutoSize = true;
-            this.lblDecaissementFaitPar.Location = new System.Drawing.Point(22, 473);
+            this.lblDecaissementFaitPar.Location = new System.Drawing.Point(22, 445);
             this.lblDecaissementFaitPar.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblDecaissementFaitPar.Name = "lblDecaissementFaitPar";
             this.lblDecaissementFaitPar.Size = new System.Drawing.Size(181, 21);
@@ -334,7 +341,7 @@
             // lblMontantPaye
             // 
             this.lblMontantPaye.AutoSize = true;
-            this.lblMontantPaye.Location = new System.Drawing.Point(24, 397);
+            this.lblMontantPaye.Location = new System.Drawing.Point(24, 369);
             this.lblMontantPaye.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblMontantPaye.Name = "lblMontantPaye";
             this.lblMontantPaye.Size = new System.Drawing.Size(122, 21);
@@ -344,7 +351,7 @@
             // lblAchatFaitPar
             // 
             this.lblAchatFaitPar.AutoSize = true;
-            this.lblAchatFaitPar.Location = new System.Drawing.Point(22, 437);
+            this.lblAchatFaitPar.Location = new System.Drawing.Point(22, 409);
             this.lblAchatFaitPar.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblAchatFaitPar.Name = "lblAchatFaitPar";
             this.lblAchatFaitPar.Size = new System.Drawing.Size(142, 21);
@@ -354,7 +361,7 @@
             // lblMontant
             // 
             this.lblMontant.AutoSize = true;
-            this.lblMontant.Location = new System.Drawing.Point(24, 361);
+            this.lblMontant.Location = new System.Drawing.Point(24, 333);
             this.lblMontant.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblMontant.Name = "lblMontant";
             this.lblMontant.Size = new System.Drawing.Size(92, 21);
@@ -364,7 +371,7 @@
             // lblDate
             // 
             this.lblDate.AutoSize = true;
-            this.lblDate.Location = new System.Drawing.Point(22, 324);
+            this.lblDate.Location = new System.Drawing.Point(22, 296);
             this.lblDate.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblDate.Name = "lblDate";
             this.lblDate.Size = new System.Drawing.Size(142, 21);
@@ -374,7 +381,7 @@
             // lblQuantite
             // 
             this.lblQuantite.AutoSize = true;
-            this.lblQuantite.Location = new System.Drawing.Point(22, 207);
+            this.lblQuantite.Location = new System.Drawing.Point(22, 200);
             this.lblQuantite.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblQuantite.Name = "lblQuantite";
             this.lblQuantite.Size = new System.Drawing.Size(82, 21);
@@ -396,7 +403,7 @@
             // lblLocaliteFournisseurImmo
             // 
             this.lblLocaliteFournisseurImmo.AutoSize = true;
-            this.lblLocaliteFournisseurImmo.Location = new System.Drawing.Point(24, 171);
+            this.lblLocaliteFournisseurImmo.Location = new System.Drawing.Point(24, 164);
             this.lblLocaliteFournisseurImmo.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblLocaliteFournisseurImmo.Name = "lblLocaliteFournisseurImmo";
             this.lblLocaliteFournisseurImmo.Size = new System.Drawing.Size(155, 21);
@@ -434,7 +441,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(22, 249);
+            this.label1.Location = new System.Drawing.Point(22, 236);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(109, 21);
@@ -443,7 +450,7 @@
             // 
             // txtDuree1
             // 
-            this.txtDuree1.Location = new System.Drawing.Point(244, 243);
+            this.txtDuree1.Location = new System.Drawing.Point(244, 230);
             this.txtDuree1.Margin = new System.Windows.Forms.Padding(5);
             this.txtDuree1.Name = "txtDuree1";
             this.txtDuree1.Size = new System.Drawing.Size(286, 27);
@@ -452,7 +459,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(22, 289);
+            this.label2.Location = new System.Drawing.Point(22, 261);
             this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(402, 21);
@@ -469,7 +476,7 @@
             this.lbxLocaliteFournisseurImmo.DisplayMember = "Localite";
             this.lbxLocaliteFournisseurImmo.FormattingEnabled = true;
             this.lbxLocaliteFournisseurImmo.ItemHeight = 21;
-            this.lbxLocaliteFournisseurImmo.Location = new System.Drawing.Point(244, 171);
+            this.lbxLocaliteFournisseurImmo.Location = new System.Drawing.Point(244, 164);
             this.lbxLocaliteFournisseurImmo.Name = "lbxLocaliteFournisseurImmo";
             this.lbxLocaliteFournisseurImmo.Size = new System.Drawing.Size(286, 25);
             this.lbxLocaliteFournisseurImmo.TabIndex = 44;
@@ -777,11 +784,30 @@
             this.cbxImmobilisationLieeAProduction.AutoSize = true;
             this.cbxImmobilisationLieeAProduction.BackColor = System.Drawing.SystemColors.ControlText;
             this.cbxImmobilisationLieeAProduction.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxImmobilisationLieeAProduction.Location = new System.Drawing.Point(515, 293);
+            this.cbxImmobilisationLieeAProduction.Location = new System.Drawing.Point(515, 265);
             this.cbxImmobilisationLieeAProduction.Name = "cbxImmobilisationLieeAProduction";
             this.cbxImmobilisationLieeAProduction.Size = new System.Drawing.Size(15, 14);
             this.cbxImmobilisationLieeAProduction.TabIndex = 3;
             this.cbxImmobilisationLieeAProduction.UseVisualStyleBackColor = false;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(24, 520);
+            this.label17.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(144, 21);
+            this.label17.TabIndex = 25;
+            this.label17.Text = "Solde du compte";
+            // 
+            // txtSoldeCompte
+            // 
+            this.txtSoldeCompte.Location = new System.Drawing.Point(244, 514);
+            this.txtSoldeCompte.Margin = new System.Windows.Forms.Padding(5);
+            this.txtSoldeCompte.Name = "txtSoldeCompte";
+            this.txtSoldeCompte.ReadOnly = true;
+            this.txtSoldeCompte.Size = new System.Drawing.Size(286, 27);
+            this.txtSoldeCompte.TabIndex = 5;
             // 
             // UC_AchatEquipementInfrastructure
             // 
@@ -799,12 +825,14 @@
             this.Controls.Add(this.cbxFournisseurImmo);
             this.Controls.Add(this.cbxRespImmo);
             this.Controls.Add(this.btnEnregistrerAchatEquipementInfrastructure);
+            this.Controls.Add(this.txtSoldeCompte);
             this.Controls.Add(this.txtMontantPaye);
             this.Controls.Add(this.txtNomEqInfr1);
             this.Controls.Add(this.txtDuree1);
             this.Controls.Add(this.txtMontant1);
             this.Controls.Add(this.txtQuantite);
             this.Controls.Add(this.lblCompteDecaissement);
+            this.Controls.Add(this.label17);
             this.Controls.Add(this.lblDecaissementFaitPar);
             this.Controls.Add(this.lblMontantPaye);
             this.Controls.Add(this.lblAchatFaitPar);
@@ -909,5 +937,7 @@
         private System.Windows.Forms.CheckBox cbxUtilisePourProduction;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.CheckBox cbxImmobilisationLieeAProduction;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox txtSoldeCompte;
     }
 }

@@ -27,6 +27,8 @@ namespace CasaEcologieSysInfo.Pages
                                                     .Where(em => em.Actif == true)
                                                     .OrderBy(em => em.PrenomNom)
                                                     .ToList();
+
+            Conversion.AfficherSoldeTresorerie(cbxCompteDebit, txtSoldeCompte);
         }
 
         private bool IlYaAssezDeFondsDansLeCompteDebiteur(string nomCompte)
@@ -107,6 +109,11 @@ namespace CasaEcologieSysInfo.Pages
                 txtDescription.Clear();
                 txtMontant.Clear();
             }
+        }
+
+        private void CbxCompteDebit_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Conversion.AfficherSoldeTresorerie(cbxCompteDebit, txtSoldeCompte);
         }
     }
 }

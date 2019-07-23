@@ -49,6 +49,8 @@
             this.cbxEmploye = new System.Windows.Forms.ComboBox();
             this.ageEmployeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtSoldeCompte = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.resComptesTresorerieBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.resComptesTresorerieBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ageEmployeBindingSource)).BeginInit();
@@ -72,9 +74,9 @@
             this.btnEnregistrerTransfert.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEnregistrerTransfert.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEnregistrerTransfert.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnEnregistrerTransfert.Location = new System.Drawing.Point(366, 388);
+            this.btnEnregistrerTransfert.Location = new System.Drawing.Point(521, 409);
             this.btnEnregistrerTransfert.Name = "btnEnregistrerTransfert";
-            this.btnEnregistrerTransfert.Size = new System.Drawing.Size(277, 26);
+            this.btnEnregistrerTransfert.Size = new System.Drawing.Size(277, 32);
             this.btnEnregistrerTransfert.TabIndex = 27;
             this.btnEnregistrerTransfert.Text = "Enregistrer";
             this.btnEnregistrerTransfert.UseVisualStyleBackColor = false;
@@ -91,7 +93,7 @@
             // 
             // dtpDateOperation
             // 
-            this.dtpDateOperation.Location = new System.Drawing.Point(366, 146);
+            this.dtpDateOperation.Location = new System.Drawing.Point(521, 147);
             this.dtpDateOperation.Name = "dtpDateOperation";
             this.dtpDateOperation.Size = new System.Drawing.Size(277, 27);
             this.dtpDateOperation.TabIndex = 29;
@@ -102,10 +104,11 @@
             this.cbxCompteDebit.DisplayMember = "NomCompte";
             this.cbxCompteDebit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxCompteDebit.FormattingEnabled = true;
-            this.cbxCompteDebit.Location = new System.Drawing.Point(366, 225);
+            this.cbxCompteDebit.Location = new System.Drawing.Point(521, 226);
             this.cbxCompteDebit.Name = "cbxCompteDebit";
             this.cbxCompteDebit.Size = new System.Drawing.Size(277, 29);
             this.cbxCompteDebit.TabIndex = 30;
+            this.cbxCompteDebit.SelectedIndexChanged += new System.EventHandler(this.CbxCompteDebit_SelectedIndexChanged);
             // 
             // resComptesTresorerieBindingSource1
             // 
@@ -114,7 +117,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(182, 194);
+            this.label2.Location = new System.Drawing.Point(226, 195);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(97, 21);
             this.label2.TabIndex = 31;
@@ -122,7 +125,7 @@
             // 
             // txtDescription
             // 
-            this.txtDescription.Location = new System.Drawing.Point(366, 191);
+            this.txtDescription.Location = new System.Drawing.Point(521, 192);
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(277, 27);
             this.txtDescription.TabIndex = 32;
@@ -130,7 +133,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(182, 152);
+            this.label3.Location = new System.Drawing.Point(226, 153);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(50, 21);
             this.label3.TabIndex = 31;
@@ -139,12 +142,11 @@
             // lblCompteDebiteur
             // 
             this.lblCompteDebiteur.AutoSize = true;
-            this.lblCompteDebiteur.Location = new System.Drawing.Point(182, 228);
+            this.lblCompteDebiteur.Location = new System.Drawing.Point(226, 229);
             this.lblCompteDebiteur.Name = "lblCompteDebiteur";
-            this.lblCompteDebiteur.Size = new System.Drawing.Size(147, 21);
+            this.lblCompteDebiteur.Size = new System.Drawing.Size(289, 21);
             this.lblCompteDebiteur.TabIndex = 31;
-            this.lblCompteDebiteur.Text = "Compte débiteur";
-            this.tlpTransfert.SetToolTip(this.lblCompteDebiteur, "Compte d\'où proviendront les fonds");
+            this.lblCompteDebiteur.Text = "Compte d\'où proviendront les fonds";
             // 
             // tlpTransfert
             // 
@@ -155,17 +157,16 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(182, 313);
+            this.label6.Location = new System.Drawing.Point(226, 334);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(151, 21);
+            this.label6.Size = new System.Drawing.Size(259, 21);
             this.label6.TabIndex = 31;
-            this.label6.Text = "Compte créditeur";
-            this.tlpTransfert.SetToolTip(this.label6, "Compte qui encaissera les fonds");
+            this.label6.Text = "Compte qui encaissera les fonds";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(182, 272);
+            this.label5.Location = new System.Drawing.Point(226, 298);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(80, 21);
             this.label5.TabIndex = 31;
@@ -173,7 +174,7 @@
             // 
             // txtMontant
             // 
-            this.txtMontant.Location = new System.Drawing.Point(366, 269);
+            this.txtMontant.Location = new System.Drawing.Point(521, 295);
             this.txtMontant.Name = "txtMontant";
             this.txtMontant.Size = new System.Drawing.Size(277, 27);
             this.txtMontant.TabIndex = 32;
@@ -184,7 +185,7 @@
             this.cbxCompteCredit.DisplayMember = "NomCompte";
             this.cbxCompteCredit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxCompteCredit.FormattingEnabled = true;
-            this.cbxCompteCredit.Location = new System.Drawing.Point(366, 310);
+            this.cbxCompteCredit.Location = new System.Drawing.Point(521, 331);
             this.cbxCompteCredit.Name = "cbxCompteCredit";
             this.cbxCompteCredit.Size = new System.Drawing.Size(277, 29);
             this.cbxCompteCredit.TabIndex = 30;
@@ -199,7 +200,7 @@
             this.cbxEmploye.DisplayMember = "PrenomNom";
             this.cbxEmploye.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxEmploye.FormattingEnabled = true;
-            this.cbxEmploye.Location = new System.Drawing.Point(366, 349);
+            this.cbxEmploye.Location = new System.Drawing.Point(521, 370);
             this.cbxEmploye.Name = "cbxEmploye";
             this.cbxEmploye.Size = new System.Drawing.Size(277, 29);
             this.cbxEmploye.TabIndex = 30;
@@ -210,18 +211,37 @@
             // 
             // label7
             // 
-            this.label7.Location = new System.Drawing.Point(182, 352);
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(226, 373);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(178, 45);
+            this.label7.Size = new System.Drawing.Size(256, 21);
             this.label7.TabIndex = 31;
             this.label7.Text = "Employé en charge du transfert";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(226, 265);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(144, 21);
+            this.label8.TabIndex = 31;
+            this.label8.Text = "Solde du compte";
+            // 
+            // txtSoldeCompte
+            // 
+            this.txtSoldeCompte.Location = new System.Drawing.Point(521, 262);
+            this.txtSoldeCompte.Name = "txtSoldeCompte";
+            this.txtSoldeCompte.Size = new System.Drawing.Size(277, 27);
+            this.txtSoldeCompte.TabIndex = 32;
             // 
             // UC_MouvementCompteACompte
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.txtSoldeCompte);
             this.Controls.Add(this.txtMontant);
             this.Controls.Add(this.txtDescription);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label7);
@@ -269,5 +289,7 @@
         private System.Windows.Forms.ComboBox cbxEmploye;
         private System.Windows.Forms.BindingSource ageEmployeBindingSource;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtSoldeCompte;
     }
 }

@@ -30,7 +30,9 @@ namespace CasaEcologieSysInfo
                                                     .Where(em => em.Actif == true)
                                                     .OrderBy(em => em.PrenomNom)
                                                     .ToList();
-            resComptesTresorerieBindingSource.DataSource = db.ResComptesTresoreries.ToList();         
+            resComptesTresorerieBindingSource.DataSource = db.ResComptesTresoreries.ToList();
+
+            Conversion.AfficherSoldeTresorerie(cbxComptePaiement, txtSoldeCompte);
         }
 
         private void UC_AchatEquipementInfrastructure_Load(object sender, EventArgs e)
@@ -124,18 +126,29 @@ namespace CasaEcologieSysInfo
 
                 if (int.Parse(txtMontantPaye.Text) > 0)
                 {
-                    EveDecaissement decaiss = new EveDecaissement
+                    var nomCompte = cbxComptePaiement.GetItemText(cbxComptePaiement.SelectedItem);
+                    int soldeCompte = Convert.ToInt32(Conversion.SoldeDisponibleDuCompteDeTresorerie(nomCompte));
+
+                    if (int.Parse(txtMontantPaye.Text) <= soldeCompte)
                     {
-                        CodeReceptionEquipementInfrastructure = reinfr.CodeReceptionEquipementInfrastructure,
-                        CodeAutreFournisseur = afourIm.CodeAutreFournisseur,
-                        Description = "Acquisition de " + einfr.Nom,
-                        DateDecaissement = einfr.DateAcquisition,
-                        CodeEmploye = tresoriere.CodeEmploye,
-                        CodeCompte = cpte.CodeCompte,
-                        Montant = int.Parse(txtMontantPaye.Text),
-                    };
-                    db.EveDecaissements.Add(decaiss);
-                    db.SaveChanges();
+                        EveDecaissement decaiss = new EveDecaissement
+                        {
+                            CodeReceptionEquipementInfrastructure = reinfr.CodeReceptionEquipementInfrastructure,
+                            CodeAutreFournisseur = afourIm.CodeAutreFournisseur,
+                            Description = "Acquisition de " + einfr.Nom,
+                            DateDecaissement = einfr.DateAcquisition,
+                            CodeEmploye = tresoriere.CodeEmploye,
+                            CodeCompte = cpte.CodeCompte,
+                            Montant = int.Parse(txtMontantPaye.Text),
+                        };
+                        db.EveDecaissements.Add(decaiss);
+                        db.SaveChanges();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Le solde du compte séléctionné est inferieur au montant à décaisser. L'achat a été enregistré avec 0 paiement.");
+                    }
+                    
                 }
 
                 MessageBox.Show("Le nouvel achat ou acquisition d'équipement ou d'infrastructure a été enregistré avec succès!");
@@ -146,6 +159,11 @@ namespace CasaEcologieSysInfo
                 txtMontantPaye.Text = "";
             }
 
+        }
+
+        private void CbxComptePaiement_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Conversion.AfficherSoldeTresorerie(cbxComptePaiement, txtSoldeCompte);
         }
     }
 }

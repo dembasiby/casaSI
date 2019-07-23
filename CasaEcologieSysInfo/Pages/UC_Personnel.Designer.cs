@@ -91,6 +91,8 @@
             this.panel11 = new System.Windows.Forms.Panel();
             this.panel12 = new System.Windows.Forms.Panel();
             this.panel13 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtSoldeCompte = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListePersonnel)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ageEmployeBindingSource)).BeginInit();
@@ -351,7 +353,7 @@
             this.btnPayerEmploye.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPayerEmploye.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPayerEmploye.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnPayerEmploye.Location = new System.Drawing.Point(710, 528);
+            this.btnPayerEmploye.Location = new System.Drawing.Point(710, 582);
             this.btnPayerEmploye.Name = "btnPayerEmploye";
             this.btnPayerEmploye.Size = new System.Drawing.Size(223, 31);
             this.btnPayerEmploye.TabIndex = 30;
@@ -373,7 +375,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(707, 422);
+            this.label13.Location = new System.Drawing.Point(705, 477);
             this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(190, 17);
@@ -389,7 +391,7 @@
             // 
             // txtRemunerationPeriod
             // 
-            this.txtRemunerationPeriod.Location = new System.Drawing.Point(710, 443);
+            this.txtRemunerationPeriod.Location = new System.Drawing.Point(708, 498);
             this.txtRemunerationPeriod.Name = "txtRemunerationPeriod";
             this.txtRemunerationPeriod.ReadOnly = true;
             this.txtRemunerationPeriod.Size = new System.Drawing.Size(223, 23);
@@ -416,6 +418,7 @@
             this.cbxComptePaiement.Size = new System.Drawing.Size(223, 25);
             this.cbxComptePaiement.TabIndex = 32;
             this.cbxComptePaiement.ValueMember = "CodeCompte";
+            this.cbxComptePaiement.SelectedIndexChanged += new System.EventHandler(this.CbxComptePaiement_SelectedIndexChanged);
             // 
             // resComptesTresorerieBindingSource
             // 
@@ -433,9 +436,10 @@
             // 
             // cbxTresoriere
             // 
+            this.cbxTresoriere.DisplayMember = "CodeEmploye";
             this.cbxTresoriere.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxTresoriere.FormattingEnabled = true;
-            this.cbxTresoriere.Location = new System.Drawing.Point(710, 497);
+            this.cbxTresoriere.Location = new System.Drawing.Point(710, 551);
             this.cbxTresoriere.Name = "cbxTresoriere";
             this.cbxTresoriere.Size = new System.Drawing.Size(223, 25);
             this.cbxTresoriere.TabIndex = 32;
@@ -448,7 +452,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(707, 477);
+            this.label14.Location = new System.Drawing.Point(707, 531);
             this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(125, 17);
@@ -689,10 +693,29 @@
             this.panel13.Size = new System.Drawing.Size(10, 396);
             this.panel13.TabIndex = 36;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(707, 427);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(120, 17);
+            this.label7.TabIndex = 33;
+            this.label7.Text = "Solde du compte";
+            // 
+            // txtSoldeCompte
+            // 
+            this.txtSoldeCompte.Location = new System.Drawing.Point(710, 448);
+            this.txtSoldeCompte.Name = "txtSoldeCompte";
+            this.txtSoldeCompte.ReadOnly = true;
+            this.txtSoldeCompte.Size = new System.Drawing.Size(223, 23);
+            this.txtSoldeCompte.TabIndex = 42;
+            // 
             // UC_Personnel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.txtSoldeCompte);
             this.Controls.Add(this.txtRemunerationPeriod);
             this.Controls.Add(this.txtMontantIndemnite);
             this.Controls.Add(this.txtRemunerationJournaliere);
@@ -709,6 +732,7 @@
             this.Controls.Add(this.panel8);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label11);
@@ -826,5 +850,7 @@
         private System.Windows.Forms.Panel panel11;
         private System.Windows.Forms.Panel panel12;
         private System.Windows.Forms.Panel panel13;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtSoldeCompte;
     }
 }

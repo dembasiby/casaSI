@@ -155,12 +155,13 @@ namespace CasaEcologieSysInfo
                                  }).Sum(s => (decimal?)s.Solde) ?? 0m;
 
                 var totalDettesFournisseurs = fournisseursMP + achatEquip + soldeInitialFournisseurEquip - decaissementEquip + fournisseurFS;
+                /*
                 MessageBox.Show($"Solde fournisseurs matieres premieres: {fournisseursMP}");
                 MessageBox.Show($"Achat equipement: {achatEquip}.");
                 MessageBox.Show($"Solde initial fournisseurs equipements: {soldeInitialFournisseurEquip}.");
                 MessageBox.Show($"Decaissement equipements: {decaissementEquip}.");
                 MessageBox.Show($"Fournisseurs FS: {fournisseurFS}.");
-
+                */
                 return totalDettesFournisseurs;
             }
         }
@@ -245,6 +246,12 @@ namespace CasaEcologieSysInfo
 
                 return fondsDisponibles;
             }
+        }
+
+        public static void AfficherSoldeTresorerie(ComboBox listeComptes, TextBox txtBox)
+        {
+            var compte = listeComptes.GetItemText(listeComptes.SelectedItem);
+            txtBox.Text = SoldeDisponibleDuCompteDeTresorerie(compte).ToString("n0");
         }
 
         public static decimal CalculerSoldeDetteParFournisseur(string nomFournisseur)

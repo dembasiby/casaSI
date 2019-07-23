@@ -15,18 +15,28 @@ namespace CasaEcologieSysInfo
         {
             InitializeComponent();
 
-            VerifierMiseAJour();
-
+            
             Conversion.AjouterNumeroVersion(labelConn);
         }
 
         
         private async Task VerifierMiseAJour()
         {
-            using (var mgr = await UpdateManager.GitHubUpdateManager("https://github.com/dembasiby/casaSI"))
+            try
             {
-                await mgr.UpdateApp();
+                using (var mgr = new UpdateManager("https://github.com/dembasiby/casaSI/releases/latest"))
+                {
+                    await mgr.UpdateApp();
+                }
+
+                MessageBox.Show("Une nouvelle mise à jour est disponible et sera installée au prochain démarrage.");
             }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Aucune mise à jour disponible pour le moment.");
+            }
+            
         }
         
         private void PictureBox2_Click(object sender, EventArgs e)
@@ -49,6 +59,7 @@ namespace CasaEcologieSysInfo
             {
                 var user = (from usr in db.Utilisateurs
                             where usr.NomUtilisateur == txtNomUtilisateur.Text
+                            where usr.AgeEmploye.Actif == true
                             where usr.MotDePasse == txtMotDePasse.Text
                             select usr.Role).FirstOrDefault();
 

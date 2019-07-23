@@ -166,8 +166,8 @@ namespace CasaEcologieSysInfo
 
             resComptesTresorerieBindingSource.DataSource = db.ResComptesTresoreries.ToList();
 
-            var nomCompte = cbxCompte.GetItemText(cbxCompte.SelectedItem);
-            txtSoldeCompte.Text = Conversion.SoldeDisponibleDuCompteDeTresorerie(nomCompte).ToString("c0");
+            Conversion.AfficherSoldeTresorerie(cbxCompte, txtSoldeCompte);
+
             AfficherDetteDuFournisseurSelectionne();
         }
 
@@ -181,6 +181,7 @@ namespace CasaEcologieSysInfo
             if (VerifierChampsMontantEncaisse())
             {
                 ResComptesTresorerie cpte = db.ResComptesTresoreries.FirstOrDefault(c => c.NomCompte == cbxCompte.Text);
+
                 AgeEmploye em = db.AgeEmployes.FirstOrDefault(emp => emp.PrenomNom == cbxTresoriere.Text);
 
                 if (cbxTypeFournisseur.Text == "Fournisseur de matière première")
@@ -243,8 +244,7 @@ namespace CasaEcologieSysInfo
 
         private void CbxCompte_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var nomCompte = cbxCompte.GetItemText(cbxCompte.SelectedItem);
-            txtSoldeCompte.Text = Conversion.SoldeDisponibleDuCompteDeTresorerie(nomCompte).ToString("c0");
+            Conversion.AfficherSoldeTresorerie(cbxCompte, txtSoldeCompte);
         }
     }
 }
