@@ -85,37 +85,45 @@ namespace CasaEcologieSysInfo
             ResComptesTresorerie cpte = db.ResComptesTresoreries.FirstOrDefault(c => c.NomCompte == cbxComptePaiement.Text);
             ResServicesFourniture sf = db.ResServicesFournitures.FirstOrDefault(s => s.NomServiceFourniture == cbxNomServFourniture.Text);
 
-            EveAcquisitionServicesFourniture asf = new EveAcquisitionServicesFourniture
+            if (Validation.VerifierChampsMontant(txtMontantServFourn.Text))
             {
-                Date = DateTime.Parse(dtpDateAchatServFourn.Text),
-                Montant = int.Parse(txtMontantServFourn.Text),
-                CodeServiceFourniture = sf.CodeServiceFourniture,
-                CodeFournisseurServiceFourniture = fsf.CodeFournisseurServiceFourniture,
-                CodeEmploye = emp.CodeEmploye,
-            };
-
-            db.EveAcquisitionServicesFournitures.Add(asf);
-            db.SaveChanges();
-
-            if (int.Parse(txtMontantPayeServFourn.Text) > 0)
-            {
-                EveDecaissement decaiss = new EveDecaissement
+                EveAcquisitionServicesFourniture asf = new EveAcquisitionServicesFourniture
                 {
-                    CodeAcquisitionServiceFourniture = asf.CodeAcquisitionServiceFourniture,
-                    Description = "Achat de " + sf.NomServiceFourniture,
-                    DateDecaissement = asf.Date,
-                    CodeEmploye = tresoriere.CodeEmploye,
-                    CodeCompte = cpte.CodeCompte,
-                    Montant = int.Parse(txtMontantPayeServFourn.Text),
+                    Date = DateTime.Parse(dtpDateAchatServFourn.Text),
+                    Montant = int.Parse(txtMontantServFourn.Text),
+                    CodeServiceFourniture = sf.CodeServiceFourniture,
+                    CodeFournisseurServiceFourniture = fsf.CodeFournisseurServiceFourniture,
+                    CodeEmploye = emp.CodeEmploye,
                 };
 
-                db.EveDecaissements.Add(decaiss);
+                db.EveAcquisitionServicesFournitures.Add(asf);
                 db.SaveChanges();
+
+                if (int.Parse(txtMontantPayeServFourn.Text) > 0 && Validation.VerifierChampsMontant(txtMontantPayeServFourn.Text))
+                {
+                    if (Conversion.IlYaAssezDeFondsDansLeCompte(cbxComptePaiement, txtMontantPayeServFourn))
+                    {
+                        EveDecaissement decaiss = new EveDecaissement
+                        {
+                            CodeAcquisitionServiceFourniture = asf.CodeAcquisitionServiceFourniture,
+                            Description = "Achat de " + sf.NomServiceFourniture,
+                            DateDecaissement = asf.Date,
+                            CodeEmploye = tresoriere.CodeEmploye,
+                            CodeCompte = cpte.CodeCompte,
+                            Montant = int.Parse(txtMontantPayeServFourn.Text),
+                        };
+
+                        db.EveDecaissements.Add(decaiss);
+                        db.SaveChanges();
+                    }
+                }
+
+                MessageBox.Show("Le nouvel achat de service ou de fourniture a été enregistré avec succès!");
+                txtMontantServFourn.Text = "";
+                txtMontantPayeServFourn.Text = "";
             }
 
-            MessageBox.Show("Le nouvel achat de service ou de fourniture a été enregistré avec succès!");
-            txtMontantServFourn.Text = "";
-            txtMontantPayeServFourn.Text = "";           
+                     
         }
 
         private void CbxComptePaiement_SelectedIndexChanged_1(object sender, EventArgs e)

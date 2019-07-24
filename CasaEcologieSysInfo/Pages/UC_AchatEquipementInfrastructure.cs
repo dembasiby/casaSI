@@ -126,10 +126,7 @@ namespace CasaEcologieSysInfo
 
                 if (int.Parse(txtMontantPaye.Text) > 0)
                 {
-                    var nomCompte = cbxComptePaiement.GetItemText(cbxComptePaiement.SelectedItem);
-                    int soldeCompte = Convert.ToInt32(Conversion.SoldeDisponibleDuCompteDeTresorerie(nomCompte));
-
-                    if (int.Parse(txtMontantPaye.Text) <= soldeCompte)
+                    if (Conversion.IlYaAssezDeFondsDansLeCompte(cbxComptePaiement, txtMontantPaye))
                     {
                         EveDecaissement decaiss = new EveDecaissement
                         {
@@ -143,12 +140,7 @@ namespace CasaEcologieSysInfo
                         };
                         db.EveDecaissements.Add(decaiss);
                         db.SaveChanges();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Le solde du compte séléctionné est inferieur au montant à décaisser. L'achat a été enregistré avec 0 paiement.");
-                    }
-                    
+                    }                    
                 }
 
                 MessageBox.Show("Le nouvel achat ou acquisition d'équipement ou d'infrastructure a été enregistré avec succès!");

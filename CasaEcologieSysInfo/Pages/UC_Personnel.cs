@@ -197,8 +197,8 @@ namespace CasaEcologieSysInfo.Pages
             var employe = cbxTempsEtRemun.GetItemText(cbxTempsEtRemun.SelectedItem);
             var codeEmploye = Convert.ToInt32(cbxTempsEtRemun.SelectedValue.ToString());
 
-            PayerPersonnel(employe, codeEmploye, dtpDebut.Text, dtpFin.Text, dtpDatePaiement.Text, cbxComptePaiement.SelectedValue.ToString(),
-                cbxTresoriere.SelectedValue.ToString(), txtRemunerationPeriod.Text);            
+            PayerPersonnel(employe, codeEmploye, dtpDebut.Text, dtpFin.Text, dtpDatePaiement.Text, cbxComptePaiement,
+                cbxTresoriere.SelectedValue.ToString(), txtRemunerationPeriod);            
         }
 
         private bool RemunerationPasEncorePayePourLaPeriod(int codeEmploye)
@@ -218,47 +218,48 @@ namespace CasaEcologieSysInfo.Pages
             var stagiaire = cbxStagiaires.GetItemText(cbxStagiaires.SelectedItem);
             var codeStagiaire = Convert.ToInt32(cbxStagiaires.SelectedValue.ToString());
 
-            /*
-            cbxPaiementFaitPar.DataSource = db.AgeEmployes.Where(em => !em.Poste.StartsWith("Stagiaire")).OrderBy(c => c.PrenomNom).ToList();
-            cbxPaiementFaitPar.DisplayMember = "PrenomNom";
-            cbxPaiementFaitPar.ValueMember = "CodeEmploye"; 
-            */
-
-            PayerPersonnel(stagiaire, codeStagiaire, dtpDeStagiaire.Text, dtpAStagiaire.Text, dtpDatePaiementIndemStagiaires.Text, cbxComptePaiementStagiare.SelectedValue.ToString(),
-                cbxPaiementFaitPar.SelectedValue.ToString(), txtMontantIndemnite.Text);
+            PayerPersonnel(stagiaire, codeStagiaire, dtpDeStagiaire.Text, dtpAStagiaire.Text, dtpDatePaiementIndemStagiaires.Text, cbxComptePaiementStagiare,
+                cbxPaiementFaitPar.SelectedValue.ToString(), txtMontantIndemnite);
         }
 
-        private void PayerPersonnel(string employe, int codeEmploye, string debut, string fin, string date, string cptePaiement,
-                string tresoriere, string montant)
+        private void PayerPersonnel(string employe, int codeEmploye, string debut, string fin, string date, ComboBox cptePaiement,
+                string tresoriere, TextBox montant)
         {
-            if (Validation.VerifierChampsMontant(montant))
+            string cptePaie = cptePaiement.GetItemText(cptePaiement.SelectedItem);
+            int codeCompte = Convert.ToInt32(cptePaiement.SelectedValue.ToString());
+
+            if (Validation.VerifierChampsMontant(montant.Text))
             {
                 if (RemunerationPasEncorePayePourLaPeriod(codeEmploye))
                 {
-                    EvePaiementEmploye paiement = new EvePaiementEmploye
+                    if (Conversion.IlYaAssezDeFondsDansLeCompte(cptePaiement, montant))
                     {
-                        CodeEmployePaye = codeEmploye,
-                        DeCetteDate = DateTime.Parse(debut),
-                        ACetteDate = DateTime.Parse(fin)
-                    };
+                        EvePaiementEmploye paiement = new EvePaiementEmploye
+                        {
+                            CodeEmployePaye = codeEmploye,
+                            DeCetteDate = DateTime.Parse(debut),
+                            ACetteDate = DateTime.Parse(fin)
+                        };
 
-                    db.EvePaiementEmployes.Add(paiement);
-                    db.SaveChanges();
+                        db.EvePaiementEmployes.Add(paiement);
+                        db.SaveChanges();
 
-                    EveDecaissement decaiss = new EveDecaissement
-                    {
-                        DateDecaissement = DateTime.Parse(date),
-                        CodePaiementEmploye = paiement.CodePaiementEmploye,
-                        CodeCompte = int.Parse(cptePaiement),
-                        Description = "Paiment rémunération de " + employe + " pour la période du " + debut + " au " + fin,
-                        CodeEmploye = int.Parse(tresoriere),
-                        Montant = int.Parse(montant)
-                    };
+                        EveDecaissement decaiss = new EveDecaissement
+                        {
+                            DateDecaissement = DateTime.Parse(date),
+                            CodePaiementEmploye = paiement.CodePaiementEmploye,
+                            CodeCompte = codeCompte,
+                            Description = "Paiment rémunération de " + employe + " pour la période du " + debut + " au " + fin,
+                            CodeEmploye = int.Parse(tresoriere),
+                            Montant = int.Parse(montant.Text)
+                        };
 
-                    db.EveDecaissements.Add(decaiss);
-                    db.SaveChanges();
+                        db.EveDecaissements.Add(decaiss);
+                        db.SaveChanges();
 
-                    MessageBox.Show($"Le paiement de {employe} a été enregistré pour la période du {debut} au {fin}.");
+                        MessageBox.Show($"Le paiement de {employe} a été enregistré pour la période du {debut} au {fin}.");
+                    }
+                   
                 }
                 else
                 {

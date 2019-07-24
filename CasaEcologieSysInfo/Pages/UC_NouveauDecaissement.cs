@@ -125,30 +125,6 @@ namespace CasaEcologieSysInfo
             txtDetteFournisseur.Text = Conversion.CalculerSoldeDetteParFournisseur(nomFournisseur).ToString("c0"); 
         }
 
-        private bool VerifierChampsMontantEncaisse()
-        {
-            var nomCompte = cbxCompte.GetItemText(cbxCompte.SelectedItem);
-            var soldeCompte = Conversion.SoldeDisponibleDuCompteDeTresorerie(nomCompte);
-
-            if (Validation.VerifierChampsMontant(txtMontantPaye.Text))
-            {
-                try
-                {
-                    bool verif = int.Parse(txtMontantPaye.Text) < soldeCompte;
-                }
-                catch (Exception)
-                {
-
-                    MessageBox.Show("Il n'y a pas assez de fonds dans le compte séléctionné pour effectuer ce paiement. Veuillez changer de compte ou diminuer le montant.");
-                    return false;
-                }
-
-                return true;
-            }
-            
-            return false;          
-        }
-
 
         private void CbxTypeFournisseur_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -178,7 +154,7 @@ namespace CasaEcologieSysInfo
 
         private void BtnEnregistrerDecaissement_Click(object sender, EventArgs e)
         {
-            if (VerifierChampsMontantEncaisse())
+            if (Conversion.IlYaAssezDeFondsDansLeCompte(cbxCompte, txtMontantPaye))
             {
                 ResComptesTresorerie cpte = db.ResComptesTresoreries.FirstOrDefault(c => c.NomCompte == cbxCompte.Text);
 

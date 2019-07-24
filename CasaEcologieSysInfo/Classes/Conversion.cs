@@ -254,6 +254,23 @@ namespace CasaEcologieSysInfo
             txtBox.Text = SoldeDisponibleDuCompteDeTresorerie(compte).ToString("n0");
         }
 
+        public static bool IlYaAssezDeFondsDansLeCompte(ComboBox cbxCompte, TextBox txtMontantPaye)
+        {
+            var nomCompte = cbxCompte.GetItemText(cbxCompte.SelectedItem);
+            var soldeCompte = SoldeDisponibleDuCompteDeTresorerie(nomCompte);
+
+            if (Validation.VerifierChampsMontant(txtMontantPaye.Text) && int.Parse(txtMontantPaye.Text) < soldeCompte && soldeCompte > 0m)
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("Il n'y a pas assez de fonds dans le compte séléctionné pour effectuer ce paiement. Veuillez changer de compte ou diminuer le montant.");
+                return false;
+            }
+    
+        }
+
         public static decimal CalculerSoldeDetteParFournisseur(string nomFournisseur)
         {
             using (CasaDBEntities db = new CasaDBEntities())

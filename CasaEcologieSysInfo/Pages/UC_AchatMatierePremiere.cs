@@ -29,7 +29,7 @@ namespace CasaEcologieSysInfo
                                                     .ToList();
             resComptesTresorerieBindingSource.DataSource = db.ResComptesTresoreries.ToList();
             cbxTypesMatieres.DataSource = (from mp in db.ResStockMatieresPremieres select mp.TypeMatiere).Distinct().ToList();
-           
+            Conversion.AfficherSoldeTresorerie(cbxComptePaiement, txtSoldeCompte);
         }
 
         private void UC_AchatMatierePremiere_Load(object sender, EventArgs e)
@@ -38,9 +38,7 @@ namespace CasaEcologieSysInfo
             {
                 Value = DateTime.Now
             };
-            LoadData();
-            AfficherSoldeCompte();
-            
+            LoadData();            
         }
 
         private void BtnAjouterNouvelleMatierePremiere_Click(object sender, EventArgs e)
@@ -94,7 +92,7 @@ namespace CasaEcologieSysInfo
             AgeEmploye tresoriere = db.AgeEmployes.FirstOrDefault(em => em.PrenomNom == cbxTresoriere.Text);
             ResComptesTresorerie tres = db.ResComptesTresoreries.FirstOrDefault(tr => tr.NomCompte == cbxComptePaiement.Text);
 
-            if (int.Parse(txtTransportMatierePremiere.Text) > 0)
+            if (int.Parse(txtTransportMatierePremiere.Text) > 0 && Conversion.IlYaAssezDeFondsDansLeCompte(cbxComptePaiement, txtTransportMatierePremiere))
             {
                 EveDecaissement decaiss = new EveDecaissement
                 {
@@ -118,7 +116,7 @@ namespace CasaEcologieSysInfo
             AgeEmploye tresoriere = db.AgeEmployes.FirstOrDefault(em => em.PrenomNom == cbxTresoriere.Text);
             ResComptesTresorerie tres = db.ResComptesTresoreries.FirstOrDefault(tr => tr.NomCompte == cbxComptePaiement.Text);
 
-           if (int.Parse(txtMontantPaye.Text) > 0)
+           if (int.Parse(txtMontantPaye.Text) > 0 && Conversion.IlYaAssezDeFondsDansLeCompte(cbxComptePaiement, txtMontantPaye))
             {
                 EveDecaissement decaiss = new EveDecaissement
                 {
@@ -138,23 +136,26 @@ namespace CasaEcologieSysInfo
 
         private void BtnEnregistrerAchatMatierePremiere_Click(object sender, EventArgs e)
         {
-            if (VerifierSoldeCompteTresorerie() && float.Parse(txtQuantite.Text) > 0 && int.Parse(txtMontant.Text) > 0)
+            if (float.Parse(txtQuantite.Text) > 0 && int.Parse(txtMontant.Text) > 0)
             {
-                try
+                if (Conversion.IlYaAssezDeFondsDansLeCompte(cbxComptePaiement, txtMontant))
                 {
-                    var recep = AjouterNouvelleAchatMatierePremiere();
-                    AjouterDecaissementTransportMatierePremiere(recep);
-                    AjouterPaiementFournisseur(recep);
-                    MessageBox.Show("Un nouvel achat de matière première a été enregistré avec succès");
-                    AfficherSoldeCompte();
-                    txtQuantite.Text = "0";
-                    txtMontant.Text = "0";
-                    txtMontantPaye.Text = "0";
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
+                    try
+                    {
+                        var recep = AjouterNouvelleAchatMatierePremiere();
+                        AjouterDecaissementTransportMatierePremiere(recep);
+                        AjouterPaiementFournisseur(recep);
+                        MessageBox.Show("Un nouvel achat de matière première a été enregistré avec succès");
+                        Conversion.AfficherSoldeTresorerie(cbxComptePaiement, txtSoldeCompte);
+                        txtQuantite.Text = "0";
+                        txtMontant.Text = "0";
+                        txtMontantPaye.Text = "0";
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }              
             }
             else
             {
@@ -165,32 +166,7 @@ namespace CasaEcologieSysInfo
 
         private void CbxComptePaiement_SelectedIndexChanged(object sender, EventArgs e)
         {
-            AfficherSoldeCompte();
-        }
-
-        private decimal SoldeDuCompteSelectionne()
-        {
-            var compte = cbxComptePaiement.GetItemText(cbxComptePaiement.SelectedItem);
-            return Conversion.SoldeDisponibleDuCompteDeTresorerie(compte);
-        }
-        private void AfficherSoldeCompte()
-        {
-            txtSoldeCompte.Text = SoldeDuCompteSelectionne().ToString("c0");
-        }
-
-        private bool VerifierSoldeCompteTresorerie()
-        {
-            try
-            {
-                bool verif = decimal.Parse(txtMontantPaye.Text) < SoldeDuCompteSelectionne();
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Il n'y a pas assez de fonds dans le compte séléctionné pour effectuer ce paiement. Veuillez changer de compte ou diminuer le montant.");
-                return false;
-            }
-
-            return true;
+            Conversion.AfficherSoldeTresorerie(cbxComptePaiement, txtSoldeCompte);
         }
 
         private void BtnNouveauFournisseur_Click(object sender, EventArgs e)
