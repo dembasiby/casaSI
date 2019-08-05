@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CasaEcologieSysInfo.Classes;
+using System;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
@@ -142,6 +143,11 @@ namespace CasaEcologieSysInfo
                 row["PU"] = pu;
                 row["Valeur"] = Convert.ToSingle(row["Solde"].ToString()) * pu;
             }
+        }
+
+        private void BtnImprimerFicheStock_Click(object sender, EventArgs e)
+        {
+            Impression.ImprimerFicheDeStock(listBox1, dgvJournalStocksMatieresPremieres);
         }
     }
 }

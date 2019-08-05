@@ -111,6 +111,7 @@ namespace CasaEcologieSysInfo
                             CodeEmploye = tresoriere.CodeEmploye,
                             CodeCompte = cpte.CodeCompte,
                             Montant = int.Parse(txtMontantPayeServFourn.Text),
+                            CodeFournisseurService = fsf.CodeFournisseurServiceFourniture,
                         };
 
                         db.EveDecaissements.Add(decaiss);

@@ -47,6 +47,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.txtSolde = new System.Windows.Forms.TextBox();
             this.dgvJournalTresorerieDetails = new System.Windows.Forms.DataGridView();
+            this.btnImprimerJournal = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.resComptesTresorerieBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvJournalTresorerieDetails)).BeginInit();
             this.SuspendLayout();
@@ -232,10 +233,26 @@
             this.dgvJournalTresorerieDetails.Size = new System.Drawing.Size(759, 457);
             this.dgvJournalTresorerieDetails.TabIndex = 20;
             // 
+            // btnImprimerJournal
+            // 
+            this.btnImprimerJournal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
+            this.btnImprimerJournal.FlatAppearance.BorderSize = 0;
+            this.btnImprimerJournal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImprimerJournal.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimerJournal.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnImprimerJournal.Location = new System.Drawing.Point(743, 11);
+            this.btnImprimerJournal.Name = "btnImprimerJournal";
+            this.btnImprimerJournal.Size = new System.Drawing.Size(223, 30);
+            this.btnImprimerJournal.TabIndex = 57;
+            this.btnImprimerJournal.Text = "Imprimer le journal";
+            this.btnImprimerJournal.UseVisualStyleBackColor = false;
+            this.btnImprimerJournal.Click += new System.EventHandler(this.BtnImprimerJournal_Click);
+            // 
             // UC_JournalTresorerie
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnImprimerJournal);
             this.Controls.Add(this.dgvJournalTresorerieDetails);
             this.Controls.Add(this.txtSolde);
             this.Controls.Add(this.txtTotalDecaissements);
@@ -285,5 +302,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtSolde;
         private System.Windows.Forms.DataGridView dgvJournalTresorerieDetails;
+        private System.Windows.Forms.Button btnImprimerJournal;
     }
 }

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using CasaEcologieSysInfo.Classes;
 
 namespace CasaEcologieSysInfo.Pages
 {
@@ -163,9 +164,12 @@ namespace CasaEcologieSysInfo.Pages
             txtTotalDecaissements.Text = totalDecaissements.ToString("c0");
             
 
-            txtSolde.Text = fondsDisponibleEnCaissesEtEnBanques.ToString("c0");
+            txtSolde.Text = fondsDisponibleEnCaissesEtEnBanques.ToString("c0");       
+        }
 
-            
+        private void BtnImprimerJournal_Click(object sender, EventArgs e)
+        {
+            Impression.ImprimerJournalTresorerie(listBox1, dgvJournalTresorerieDetails);
         }
     }
 }

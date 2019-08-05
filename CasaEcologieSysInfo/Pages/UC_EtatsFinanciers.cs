@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Documents;
 using System.Windows.Forms;
@@ -294,6 +295,21 @@ namespace CasaEcologieSysInfo.Pages
         private void TxtCOGS_TextChanged(object sender, EventArgs e)
         {
             AfficherEtatsFinanciers();
+        }
+
+        private void btnImprimerCpteResultat_Click(object sender, EventArgs e)
+        {
+            Impression.ImprimerTableau("Compte de résultats", dgvCpteResultats);
+        }
+
+        private void btnImprimerTablTresorerie_Click(object sender, EventArgs e)
+        {
+            Impression.ImprimerTableau("Tableau de trésorerie", dgvTableauTresorerie);
+        }
+
+        private void btnImprimerBilan_Click(object sender, EventArgs e)
+        {
+            Impression.ImprimerTableau("Bilan", dgvBilan);
         }
     }
 }

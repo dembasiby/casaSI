@@ -124,45 +124,43 @@ namespace CasaEcologieSysInfo
         {
             using (CasaDBEntities db = new CasaDBEntities())
             {
-                 var fournisseursMP = (from fmp in db.AgeFournisseursMatieresPremieres
-                                    select new
-                                    {
-                                        Solde = ((decimal?)fmp.SoldeDette ?? 0m)
-                                        + ((decimal?)fmp.EveReceptionMatieresPremieres.Sum(s => s.Montant) ?? 0m)
-                                        - ((decimal?)fmp.EveDecaissements.Sum(m => m.Montant) ?? 0m)
-                                    }
-                                 ).Sum(d => (decimal?)d.Solde) ?? 0m;
+                var soldeInitial = (from fmp in db.AgeFournisseursMatieresPremieres
+                                    select fmp.SoldeDette).Sum();
 
-                var achatEquip = (from ei in db.ResEquipementsInfrastructures
-                                  join rei in db.EveReceptionEquipementsInfrastructures on ei.CodeEquipementInfrastructure equals rei.CodeEquipementInfrastructure
-                                  select (decimal?)ei.Montant).Sum() ?? 0m;
+                var totalAchats = (from f in db.AgeFournisseursMatieresPremieres
+                                   join rmp in db.EveReceptionMatieresPremieres on f.CodeFournisseurMatierePremiere equals rmp.CodeFournisseurMatierePremiere
+                                   select (decimal?)rmp.Montant).Sum() ?? 0m;
 
-                var soldeInitialFournisseurEquip = (from af in db.AgeAutreFournisseurs
-                                                    select (decimal?)af.SoldeInitialDetteFournisseur).Sum() ?? 0m;
+                var totalPaiements = (from fmp in db.AgeFournisseursMatieresPremieres
+                                      join d in db.EveDecaissements on fmp.CodeFournisseurMatierePremiere equals d.CodeFournisseurMatierePremiere
+                                      select (decimal?)d.Montant).Sum() ?? 0m;
 
-                var decaissementEquip = (from rei in db.EveReceptionEquipementsInfrastructures
-                                         from d in db.EveDecaissements
-                                         where d.CodeReceptionEquipementInfrastructure == rei.CodeReceptionEquipementInfrastructure
-                                         select (decimal?)d.Montant).Sum() ?? 0m;
+                var soldeInitialFE = (from f in db.AgeAutreFournisseurs
+                                      select f.SoldeInitialDetteFournisseur).Sum();
 
-             
+                var totalAchatsFE = (from f in db.AgeAutreFournisseurs
+                                     join rmp in db.EveReceptionEquipementsInfrastructures on f.CodeAutreFournisseur equals rmp.CodeAutreFournisseur
+                                     join ei in db.ResEquipementsInfrastructures on rmp.CodeEquipementInfrastructure equals ei.CodeEquipementInfrastructure
+                                     select (decimal?)ei.Montant).Sum() ?? 0m;
 
-                var fournisseurFS = (from f in db.AgeFournisseursServicesFournitures
-                                 select new
-                                 {
-                                     Solde = (decimal?)f.SoldeDette ?? 0m + (decimal?)f.EveAcquisitionServicesFournitures.Select(d => d.Montant).Sum() ?? 0m
-                                     - (decimal?)f.EveDecaissements.Sum(m => m.Montant) ?? 0m
-                                 }).Sum(s => (decimal?)s.Solde) ?? 0m;
+                var totalPaiementsFE = (from f in db.AgeAutreFournisseurs
+                                        join d in db.EveDecaissements on f.CodeAutreFournisseur equals d.CodeAutreFournisseur
+                                        select (decimal?)d.Montant).Sum() ?? 0m;
 
-                var totalDettesFournisseurs = fournisseursMP + achatEquip + soldeInitialFournisseurEquip - decaissementEquip + fournisseurFS;
-                /*
-                MessageBox.Show($"Solde fournisseurs matieres premieres: {fournisseursMP}");
-                MessageBox.Show($"Achat equipement: {achatEquip}.");
-                MessageBox.Show($"Solde initial fournisseurs equipements: {soldeInitialFournisseurEquip}.");
-                MessageBox.Show($"Decaissement equipements: {decaissementEquip}.");
-                MessageBox.Show($"Fournisseurs FS: {fournisseurFS}.");
-                */
-                return totalDettesFournisseurs;
+                var soldeInitialFS = (from f in db.AgeFournisseursServicesFournitures
+                                      select f.SoldeDette).Sum();
+
+                var totalAchatsFS = (from f in db.AgeFournisseursServicesFournitures
+                                     join rmp in db.EveAcquisitionServicesFournitures on f.CodeFournisseurServiceFourniture equals rmp.CodeFournisseurServiceFourniture
+                                     select (decimal?)rmp.Montant).Sum() ?? 0m;
+
+                var totalPaiementsFS = (from f in db.EveAcquisitionServicesFournitures
+                                        join d in db.EveDecaissements on f.CodeAcquisitionServiceFourniture equals d.CodeAcquisitionServiceFourniture
+                                        select (decimal?)d.Montant).Sum() ?? 0m;
+
+                return soldeInitial + soldeInitialFE + soldeInitialFS
+                    + totalAchats + totalAchatsFE + totalPaiementsFS
+                    - totalPaiements - totalPaiementsFE - totalPaiementsFS;  
             }
         }
 

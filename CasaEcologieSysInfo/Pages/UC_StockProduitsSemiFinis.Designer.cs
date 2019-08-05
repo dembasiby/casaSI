@@ -36,6 +36,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.resStockProduitsSemiFiniBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dgvJournalStocksProduitsSemiFinis = new System.Windows.Forms.DataGridView();
+            this.btnImprimerFicheStock = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.resStockProduitsSemiFiniBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvJournalStocksProduitsSemiFinis)).BeginInit();
             this.SuspendLayout();
@@ -117,10 +118,26 @@
             this.dgvJournalStocksProduitsSemiFinis.Size = new System.Drawing.Size(788, 493);
             this.dgvJournalStocksProduitsSemiFinis.TabIndex = 18;
             // 
+            // btnImprimerFicheStock
+            // 
+            this.btnImprimerFicheStock.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
+            this.btnImprimerFicheStock.FlatAppearance.BorderSize = 0;
+            this.btnImprimerFicheStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImprimerFicheStock.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimerFicheStock.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnImprimerFicheStock.Location = new System.Drawing.Point(744, 28);
+            this.btnImprimerFicheStock.Name = "btnImprimerFicheStock";
+            this.btnImprimerFicheStock.Size = new System.Drawing.Size(223, 30);
+            this.btnImprimerFicheStock.TabIndex = 53;
+            this.btnImprimerFicheStock.Text = "Imprimer la fiche de stock";
+            this.btnImprimerFicheStock.UseVisualStyleBackColor = false;
+            this.btnImprimerFicheStock.Click += new System.EventHandler(this.BtnImprimerFicheStock_Click);
+            // 
             // UC_StockProduitsSemiFinis
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnImprimerFicheStock);
             this.Controls.Add(this.dgvJournalStocksProduitsSemiFinis);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -147,5 +164,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridView dgvJournalStocksProduitsSemiFinis;
+        private System.Windows.Forms.Button btnImprimerFicheStock;
     }
 }

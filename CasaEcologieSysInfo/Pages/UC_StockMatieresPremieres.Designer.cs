@@ -35,6 +35,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dgvJournalStocksMatieresPremieres = new System.Windows.Forms.DataGridView();
+            this.btnImprimerFicheStock = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.resStockMatieresPremiereBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvJournalStocksMatieresPremieres)).BeginInit();
             this.SuspendLayout();
@@ -106,10 +107,26 @@
             this.dgvJournalStocksMatieresPremieres.Size = new System.Drawing.Size(771, 476);
             this.dgvJournalStocksMatieresPremieres.TabIndex = 20;
             // 
+            // btnImprimerFicheStock
+            // 
+            this.btnImprimerFicheStock.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
+            this.btnImprimerFicheStock.FlatAppearance.BorderSize = 0;
+            this.btnImprimerFicheStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImprimerFicheStock.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimerFicheStock.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnImprimerFicheStock.Location = new System.Drawing.Point(746, 39);
+            this.btnImprimerFicheStock.Name = "btnImprimerFicheStock";
+            this.btnImprimerFicheStock.Size = new System.Drawing.Size(223, 30);
+            this.btnImprimerFicheStock.TabIndex = 54;
+            this.btnImprimerFicheStock.Text = "Imprimer la fiche de stock";
+            this.btnImprimerFicheStock.UseVisualStyleBackColor = false;
+            this.btnImprimerFicheStock.Click += new System.EventHandler(this.BtnImprimerFicheStock_Click);
+            // 
             // UC_StockMatieresPremieres
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnImprimerFicheStock);
             this.Controls.Add(this.dgvJournalStocksMatieresPremieres);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);
@@ -134,5 +151,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dgvJournalStocksMatieresPremieres;
+        private System.Windows.Forms.Button btnImprimerFicheStock;
     }
 }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CasaEcologieSysInfo.Classes;
 
 namespace CasaEcologieSysInfo
 {
@@ -88,6 +89,11 @@ namespace CasaEcologieSysInfo
         {
             var myDataGrid = sender as ADGV.AdvancedDataGridView;
             (myDataGrid.DataSource as DataTable).DefaultView.Sort = myDataGrid.SortString;
+        }
+
+        private void btnImprimerFicheStock_Click(object sender, EventArgs e)
+        {
+            Impression.ImprimerTableau("Journal des dépenses", adgvJournalDepenses);
         }
     }
 }

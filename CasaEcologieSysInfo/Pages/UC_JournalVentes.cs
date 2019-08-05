@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using CasaEcologieSysInfo.Classes;
 
 namespace CasaEcologieSysInfo
 {
@@ -129,6 +130,11 @@ namespace CasaEcologieSysInfo
         private void CbxClients_TextChanged(object sender, EventArgs e)
         {
             AfficherResultatsFiltre();
+        }
+
+        private void BtnImprimerJournal_Click(object sender, EventArgs e)
+        {
+            Impression.ImprimerTableau("Journal des ventes", dgvJournalVentes);
         }
     }
 }

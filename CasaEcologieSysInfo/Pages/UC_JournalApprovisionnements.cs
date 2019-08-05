@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CasaEcologieSysInfo.Classes;
 
 namespace CasaEcologieSysInfo.Pages
 {
@@ -82,7 +83,7 @@ namespace CasaEcologieSysInfo.Pages
             AppliquerFiltreAuTableau();
         }
 
-        private void cbxMatieresPremieres_TextChanged(object sender, EventArgs e)
+        private void CbxMatieresPremieres_TextChanged(object sender, EventArgs e)
         {
             AppliquerFiltreAuTableau();
         }
@@ -109,6 +110,11 @@ namespace CasaEcologieSysInfo.Pages
         private void CbxLocaliteFournisseur_TextChanged(object sender, EventArgs e)
         {
             AppliquerFiltreAuTableau();
+        }
+
+        private void btnImprimerJournal_Click(object sender, EventArgs e)
+        {
+            Impression.ImprimerTableau("Journal des approvisionnements", dgvJournalApprovisionnements);
         }
     }
 }

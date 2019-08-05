@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using CasaEcologieSysInfo.Classes;
 
 namespace CasaEcologieSysInfo.Pages
 {
@@ -21,9 +17,9 @@ namespace CasaEcologieSysInfo.Pages
 
         private void UC_CreancesClients_Load(object sender, EventArgs e)
         {
-            listBox1.DataSource = db.AgeClients.OrderBy(c => c.NomClient).ToList();
-            listBox1.DisplayMember = "NomClient";
-            listBox1.ValueMember = "CodeClient";
+            lbxListeClients.DataSource = db.AgeClients.OrderBy(c => c.NomClient).ToList();
+            lbxListeClients.DisplayMember = "NomClient";
+            lbxListeClients.ValueMember = "CodeClient";
 
             txtTotalCreances.Text = Conversion.CalculerTotalCreancesClients().ToString("c0");
         }
@@ -81,30 +77,33 @@ namespace CasaEcologieSysInfo.Pages
            dt.Rows.InsertAt(dr, 0);
            dr["Montant"] = 0;
            dr["Encaissement"] = 0;
-            dataGridView1.DataSource = dt;
+            dgvDetailsClient.DataSource = dt;
 
-            dataGridView1.Columns["Montant"].DefaultCellStyle.Format = "c0";
-            dataGridView1.Columns["Encaissement"].DefaultCellStyle.Format = "c0";
-            dataGridView1.Columns["Solde"].DefaultCellStyle.Format = "c0";
+            dgvDetailsClient.Columns["Montant"].DefaultCellStyle.Format = "n0";
+            dgvDetailsClient.Columns["Encaissement"].DefaultCellStyle.Format = "n0";
+            dgvDetailsClient.Columns["Solde"].DefaultCellStyle.Format = "n0";
+            dgvDetailsClient.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvDetailsClient.Columns["Date"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgvDetailsClient.Columns["Description"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
 
 
             var creanceInitialClient = (from c in db.AgeClients
                                         where c.CodeClient == codeClient
                                         select c.SoldeInitialeCreance).FirstOrDefault();
 
-            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            for (int i = 0; i < dgvDetailsClient.Rows.Count; i++)
             {
 
                 if (i > 0)
                 {
-                    dataGridView1.Rows[i].Cells[4].Value = Convert.ToInt32(dataGridView1.Rows[i - 1].Cells[4].Value)
-                    + Convert.ToInt32(dataGridView1.Rows[i].Cells[2].Value)
-                    - Convert.ToInt32(dataGridView1.Rows[i].Cells[3].Value);
+                    dgvDetailsClient.Rows[i].Cells[4].Value = Convert.ToInt32(dgvDetailsClient.Rows[i - 1].Cells[4].Value)
+                    + Convert.ToInt32(dgvDetailsClient.Rows[i].Cells[2].Value)
+                    - Convert.ToInt32(dgvDetailsClient.Rows[i].Cells[3].Value);
                 }
                 else
                 {
-                    dataGridView1.Rows[i].Cells[4].Value = creanceInitialClient + Convert.ToInt32(dataGridView1.Rows[i].Cells[2].Value)
-                    - Convert.ToInt32(dataGridView1.Rows[i].Cells[3].Value);
+                    dgvDetailsClient.Rows[i].Cells[4].Value = creanceInitialClient + Convert.ToInt32(dgvDetailsClient.Rows[i].Cells[2].Value)
+                    - Convert.ToInt32(dgvDetailsClient.Rows[i].Cells[3].Value);
                 }
 
             }
@@ -113,9 +112,14 @@ namespace CasaEcologieSysInfo.Pages
 
         private void ListBox1_SelectedValueChanged(object sender, EventArgs e)
         {
-            listBox1.ValueMember = "CodeClient";
-            int codeClient = Convert.ToInt32(listBox1.SelectedValue.ToString());
+            lbxListeClients.ValueMember = "CodeClient";
+            int codeClient = Convert.ToInt32(lbxListeClients.SelectedValue.ToString());
             MontrerDetailsCreances(codeClient);
+        }
+
+        private void BtnImprimerTableau_Click(object sender, EventArgs e)
+        {
+            Impression.ImprimerDetailsTransactionsClient(lbxListeClients, dgvDetailsClient);
         }
     }
 }

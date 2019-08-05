@@ -40,6 +40,7 @@
             this.resStockMatieresPremieresRowBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.adgvJournalDepenses = new ADGV.AdvancedDataGridView();
             this.eveDecaissementBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.btnImprimerFicheStock = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.casaDBDataSetAll)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.eveReceptionMatieresPremieresBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.eveReceptionMatieresPremieresBindingSource1)).BeginInit();
@@ -123,10 +124,26 @@
             // 
             this.eveDecaissementBindingSource.DataSource = typeof(CasaEcologieSysInfo.EveDecaissement);
             // 
+            // btnImprimerFicheStock
+            // 
+            this.btnImprimerFicheStock.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
+            this.btnImprimerFicheStock.FlatAppearance.BorderSize = 0;
+            this.btnImprimerFicheStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImprimerFicheStock.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimerFicheStock.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnImprimerFicheStock.Location = new System.Drawing.Point(744, 6);
+            this.btnImprimerFicheStock.Name = "btnImprimerFicheStock";
+            this.btnImprimerFicheStock.Size = new System.Drawing.Size(223, 30);
+            this.btnImprimerFicheStock.TabIndex = 55;
+            this.btnImprimerFicheStock.Text = "Imprimer le journal";
+            this.btnImprimerFicheStock.UseVisualStyleBackColor = false;
+            this.btnImprimerFicheStock.Click += new System.EventHandler(this.btnImprimerFicheStock_Click);
+            // 
             // UC_JournalDepenses
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnImprimerFicheStock);
             this.Controls.Add(this.adgvJournalDepenses);
             this.Controls.Add(this.label4);
             this.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -159,5 +176,6 @@
         private CasaDBDataSetAllTableAdapters.ResStockMatieresPremieresTableAdapter resStockMatieresPremieresTableAdapter;
         private System.Windows.Forms.BindingSource eveReceptionMatieresPremieresBindingSource1;
         private ADGV.AdvancedDataGridView adgvJournalDepenses;
+        private System.Windows.Forms.Button btnImprimerFicheStock;
     }
 }

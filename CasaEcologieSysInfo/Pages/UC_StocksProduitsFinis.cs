@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using CasaEcologieSysInfo.Classes;
 
 namespace CasaEcologieSysInfo
 {
@@ -147,6 +143,11 @@ namespace CasaEcologieSysInfo
         private void LbxListeProduitsFinis_SelectedIndexChanged(object sender, EventArgs e)
         {
             AfficherJournal();
+        }
+
+        private void BtnImprimerFicheStock_Click(object sender, EventArgs e)
+        {
+            Impression.ImprimerFicheDeStock(lbxListeProduitsFinis, dgvJournalStocksProduitsFinis);
         }
     }
 }

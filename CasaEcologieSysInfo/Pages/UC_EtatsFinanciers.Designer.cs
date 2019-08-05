@@ -28,15 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dtpDebut = new System.Windows.Forms.DateTimePicker();
             this.label26 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -56,6 +56,9 @@
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.txtCOGS = new System.Windows.Forms.TextBox();
+            this.btnImprimerCpteResultat = new System.Windows.Forms.Button();
+            this.btnImprimerTablTresorerie = new System.Windows.Forms.Button();
+            this.btnImprimerBilan = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCpteResultats)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -92,7 +95,7 @@
             this.groupBox1.Controls.Add(this.dgvCpteResultats);
             this.groupBox1.Location = new System.Drawing.Point(7, 128);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(314, 494);
+            this.groupBox1.Size = new System.Drawing.Size(314, 460);
             this.groupBox1.TabIndex = 29;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Compte de résultats";
@@ -101,8 +104,8 @@
             // 
             this.dgvCpteResultats.AllowUserToAddRows = false;
             this.dgvCpteResultats.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.dgvCpteResultats.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle28.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.dgvCpteResultats.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle28;
             this.dgvCpteResultats.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvCpteResultats.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvCpteResultats.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -114,15 +117,15 @@
             this.dgvCpteResultats.Name = "dgvCpteResultats";
             this.dgvCpteResultats.ReadOnly = true;
             this.dgvCpteResultats.RowHeadersVisible = false;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCpteResultats.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvCpteResultats.Size = new System.Drawing.Size(305, 466);
+            dataGridViewCellStyle31.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCpteResultats.RowsDefaultCellStyle = dataGridViewCellStyle31;
+            this.dgvCpteResultats.Size = new System.Drawing.Size(305, 438);
             this.dgvCpteResultats.TabIndex = 31;
             // 
             // Column1
             // 
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle29.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle29;
             this.Column1.FillWeight = 70F;
             this.Column1.HeaderText = "Description";
             this.Column1.Name = "Column1";
@@ -131,9 +134,9 @@
             // 
             // Column2
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Column2.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle30.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Column2.DefaultCellStyle = dataGridViewCellStyle30;
             this.Column2.FillWeight = 30F;
             this.Column2.HeaderText = "Montant";
             this.Column2.Name = "Column2";
@@ -175,7 +178,7 @@
             this.groupBox2.Controls.Add(this.dgvTableauTresorerie);
             this.groupBox2.Location = new System.Drawing.Point(329, 128);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(315, 494);
+            this.groupBox2.Size = new System.Drawing.Size(315, 460);
             this.groupBox2.TabIndex = 29;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Tableau de trésorerie";
@@ -184,8 +187,8 @@
             // 
             this.dgvTableauTresorerie.AllowUserToAddRows = false;
             this.dgvTableauTresorerie.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.dgvTableauTresorerie.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle32.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.dgvTableauTresorerie.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle32;
             this.dgvTableauTresorerie.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvTableauTresorerie.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvTableauTresorerie.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -197,9 +200,9 @@
             this.dgvTableauTresorerie.Name = "dgvTableauTresorerie";
             this.dgvTableauTresorerie.ReadOnly = true;
             this.dgvTableauTresorerie.RowHeadersVisible = false;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvTableauTresorerie.RowsDefaultCellStyle = dataGridViewCellStyle7;
-            this.dgvTableauTresorerie.Size = new System.Drawing.Size(305, 466);
+            dataGridViewCellStyle34.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvTableauTresorerie.RowsDefaultCellStyle = dataGridViewCellStyle34;
+            this.dgvTableauTresorerie.Size = new System.Drawing.Size(305, 438);
             this.dgvTableauTresorerie.TabIndex = 31;
             // 
             // dataGridViewTextBoxColumn1
@@ -211,9 +214,9 @@
             // 
             // dataGridViewTextBoxColumn2
             // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle33.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle33;
             this.dataGridViewTextBoxColumn2.FillWeight = 30F;
             this.dataGridViewTextBoxColumn2.HeaderText = "Montant";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
@@ -224,7 +227,7 @@
             this.groupBox3.Controls.Add(this.dgvBilan);
             this.groupBox3.Location = new System.Drawing.Point(650, 128);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(328, 494);
+            this.groupBox3.Size = new System.Drawing.Size(328, 460);
             this.groupBox3.TabIndex = 29;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Bilan";
@@ -233,8 +236,8 @@
             // 
             this.dgvBilan.AllowUserToAddRows = false;
             this.dgvBilan.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.dgvBilan.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle35.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.dgvBilan.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle35;
             this.dgvBilan.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvBilan.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvBilan.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -246,9 +249,9 @@
             this.dgvBilan.Name = "dgvBilan";
             this.dgvBilan.ReadOnly = true;
             this.dgvBilan.RowHeadersVisible = false;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvBilan.RowsDefaultCellStyle = dataGridViewCellStyle9;
-            this.dgvBilan.Size = new System.Drawing.Size(305, 466);
+            dataGridViewCellStyle36.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvBilan.RowsDefaultCellStyle = dataGridViewCellStyle36;
+            this.dgvBilan.Size = new System.Drawing.Size(305, 438);
             this.dgvBilan.TabIndex = 31;
             // 
             // dataGridViewTextBoxColumn3
@@ -284,10 +287,58 @@
             this.txtCOGS.Text = "0";
             this.txtCOGS.TextChanged += new System.EventHandler(this.TxtCOGS_TextChanged);
             // 
+            // btnImprimerCpteResultat
+            // 
+            this.btnImprimerCpteResultat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
+            this.btnImprimerCpteResultat.FlatAppearance.BorderSize = 0;
+            this.btnImprimerCpteResultat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImprimerCpteResultat.Font = new System.Drawing.Font("Century Gothic", 10F);
+            this.btnImprimerCpteResultat.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnImprimerCpteResultat.Location = new System.Drawing.Point(23, 594);
+            this.btnImprimerCpteResultat.Name = "btnImprimerCpteResultat";
+            this.btnImprimerCpteResultat.Size = new System.Drawing.Size(243, 25);
+            this.btnImprimerCpteResultat.TabIndex = 61;
+            this.btnImprimerCpteResultat.Text = "Imprimer le compte de résultats";
+            this.btnImprimerCpteResultat.UseVisualStyleBackColor = false;
+            this.btnImprimerCpteResultat.Click += new System.EventHandler(this.btnImprimerCpteResultat_Click);
+            // 
+            // btnImprimerTablTresorerie
+            // 
+            this.btnImprimerTablTresorerie.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
+            this.btnImprimerTablTresorerie.FlatAppearance.BorderSize = 0;
+            this.btnImprimerTablTresorerie.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImprimerTablTresorerie.Font = new System.Drawing.Font("Century Gothic", 10F);
+            this.btnImprimerTablTresorerie.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnImprimerTablTresorerie.Location = new System.Drawing.Point(361, 594);
+            this.btnImprimerTablTresorerie.Name = "btnImprimerTablTresorerie";
+            this.btnImprimerTablTresorerie.Size = new System.Drawing.Size(262, 25);
+            this.btnImprimerTablTresorerie.TabIndex = 61;
+            this.btnImprimerTablTresorerie.Text = "Imprimer le tableau de trésorerie";
+            this.btnImprimerTablTresorerie.UseVisualStyleBackColor = false;
+            this.btnImprimerTablTresorerie.Click += new System.EventHandler(this.btnImprimerTablTresorerie_Click);
+            // 
+            // btnImprimerBilan
+            // 
+            this.btnImprimerBilan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
+            this.btnImprimerBilan.FlatAppearance.BorderSize = 0;
+            this.btnImprimerBilan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImprimerBilan.Font = new System.Drawing.Font("Century Gothic", 10F);
+            this.btnImprimerBilan.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnImprimerBilan.Location = new System.Drawing.Point(719, 594);
+            this.btnImprimerBilan.Name = "btnImprimerBilan";
+            this.btnImprimerBilan.Size = new System.Drawing.Size(214, 25);
+            this.btnImprimerBilan.TabIndex = 61;
+            this.btnImprimerBilan.Text = "Imprimer le bilan";
+            this.btnImprimerBilan.UseVisualStyleBackColor = false;
+            this.btnImprimerBilan.Click += new System.EventHandler(this.btnImprimerBilan_Click);
+            // 
             // UC_EtatsFinanciers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnImprimerBilan);
+            this.Controls.Add(this.btnImprimerTablTresorerie);
+            this.Controls.Add(this.btnImprimerCpteResultat);
             this.Controls.Add(this.txtCOGS);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label13);
@@ -334,5 +385,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.Button btnImprimerCpteResultat;
+        private System.Windows.Forms.Button btnImprimerTablTresorerie;
+        private System.Windows.Forms.Button btnImprimerBilan;
     }
 }

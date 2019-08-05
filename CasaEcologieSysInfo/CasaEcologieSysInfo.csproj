@@ -203,7 +203,9 @@
       <DependentUpon>Model3.tt</DependentUpon>
     </Compile>
     <Compile Include="Classes\CompteDeResultat.cs" />
+    <Compile Include="Classes\DGVPrinter.cs" />
     <Compile Include="Classes\Formattage.cs" />
+    <Compile Include="Classes\Impression.cs" />
     <Compile Include="Classes\Tresorerie.cs" />
     <Compile Include="EveAcquisitionServicesFourniture.cs">
       <DependentUpon>Model3.tt</DependentUpon>

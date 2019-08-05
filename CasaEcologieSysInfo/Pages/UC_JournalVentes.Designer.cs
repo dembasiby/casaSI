@@ -36,13 +36,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnImprimer = new System.Windows.Forms.Button();
             this.btnFiltrer = new System.Windows.Forms.Button();
             this.cbxProduits = new System.Windows.Forms.ComboBox();
             this.resStockProduitsFiniBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cbxClients = new System.Windows.Forms.ComboBox();
             this.ageClientBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label5 = new System.Windows.Forms.Label();
+            this.btnImprimerJournal = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvJournalVentes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.resStockProduitsFiniBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ageClientBindingSource)).BeginInit();
@@ -121,15 +121,6 @@
             this.label3.TabIndex = 16;
             this.label3.Text = "Produit fini";
             // 
-            // btnImprimer
-            // 
-            this.btnImprimer.Location = new System.Drawing.Point(836, 19);
-            this.btnImprimer.Name = "btnImprimer";
-            this.btnImprimer.Size = new System.Drawing.Size(133, 23);
-            this.btnImprimer.TabIndex = 18;
-            this.btnImprimer.Text = "Imprimer";
-            this.btnImprimer.UseVisualStyleBackColor = true;
-            // 
             // btnFiltrer
             // 
             this.btnFiltrer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
@@ -186,14 +177,29 @@
             this.label5.TabIndex = 16;
             this.label5.Text = "Début";
             // 
+            // btnImprimerJournal
+            // 
+            this.btnImprimerJournal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
+            this.btnImprimerJournal.FlatAppearance.BorderSize = 0;
+            this.btnImprimerJournal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImprimerJournal.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimerJournal.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnImprimerJournal.Location = new System.Drawing.Point(731, 14);
+            this.btnImprimerJournal.Name = "btnImprimerJournal";
+            this.btnImprimerJournal.Size = new System.Drawing.Size(223, 30);
+            this.btnImprimerJournal.TabIndex = 58;
+            this.btnImprimerJournal.Text = "Imprimer le journal";
+            this.btnImprimerJournal.UseVisualStyleBackColor = false;
+            this.btnImprimerJournal.Click += new System.EventHandler(this.BtnImprimerJournal_Click);
+            // 
             // UC_JournalVentes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnImprimerJournal);
             this.Controls.Add(this.cbxClients);
             this.Controls.Add(this.cbxProduits);
             this.Controls.Add(this.btnFiltrer);
-            this.Controls.Add(this.btnImprimer);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label2);
@@ -224,12 +230,12 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btnImprimer;
         private System.Windows.Forms.Button btnFiltrer;
         private System.Windows.Forms.ComboBox cbxProduits;
         private System.Windows.Forms.BindingSource resStockProduitsFiniBindingSource;
         private System.Windows.Forms.ComboBox cbxClients;
         private System.Windows.Forms.BindingSource ageClientBindingSource;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnImprimerJournal;
     }
 }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CasaEcologieSysInfo.Classes;
 
 namespace CasaEcologieSysInfo.Pages
 {
@@ -106,6 +107,11 @@ namespace CasaEcologieSysInfo.Pages
 
             var nomProduit = lbxListeProduitsSemiFinis.GetItemText(lbxListeProduitsSemiFinis.SelectedItem);
             AfficherJournalCorrespondant(nomProduit);
+        }
+
+        private void BtnImprimerFicheStock_Click(object sender, EventArgs e)
+        {
+            Impression.ImprimerFicheDeStock(lbxListeProduitsSemiFinis, dgvJournalStocksProduitsSemiFinis);
         }
     }
 }

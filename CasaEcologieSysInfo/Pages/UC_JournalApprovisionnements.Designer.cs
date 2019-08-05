@@ -44,6 +44,7 @@
             this.cbxLocaliteFournisseur = new System.Windows.Forms.ComboBox();
             this.ageFournisseursMatieresPremiereBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.label6 = new System.Windows.Forms.Label();
+            this.btnImprimerJournal = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ageFournisseursMatieresPremiereBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.resStockMatieresPremiereBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvJournalApprovisionnements)).BeginInit();
@@ -90,7 +91,7 @@
             this.cbxMatieresPremieres.TabIndex = 28;
             this.cbxMatieresPremieres.ValueMember = "CodeMatierePremiere";
             this.cbxMatieresPremieres.SelectedIndexChanged += new System.EventHandler(this.CbxMatieresPremieres_SelectedIndexChanged);
-            this.cbxMatieresPremieres.TextChanged += new System.EventHandler(this.cbxMatieresPremieres_TextChanged);
+            this.cbxMatieresPremieres.TextChanged += new System.EventHandler(this.CbxMatieresPremieres_TextChanged);
             // 
             // resStockMatieresPremiereBindingSource
             // 
@@ -191,10 +192,26 @@
             this.label6.TabIndex = 23;
             this.label6.Text = "Localité";
             // 
+            // btnImprimerJournal
+            // 
+            this.btnImprimerJournal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
+            this.btnImprimerJournal.FlatAppearance.BorderSize = 0;
+            this.btnImprimerJournal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImprimerJournal.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimerJournal.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnImprimerJournal.Location = new System.Drawing.Point(714, 19);
+            this.btnImprimerJournal.Name = "btnImprimerJournal";
+            this.btnImprimerJournal.Size = new System.Drawing.Size(223, 30);
+            this.btnImprimerJournal.TabIndex = 56;
+            this.btnImprimerJournal.Text = "Imprimer le journal";
+            this.btnImprimerJournal.UseVisualStyleBackColor = false;
+            this.btnImprimerJournal.Click += new System.EventHandler(this.btnImprimerJournal_Click);
+            // 
             // UC_JournalApprovisionnements
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnImprimerJournal);
             this.Controls.Add(this.cbxFournisseurs);
             this.Controls.Add(this.cbxLocaliteFournisseur);
             this.Controls.Add(this.cbxMatieresPremieres);
@@ -238,5 +255,6 @@
         private System.Windows.Forms.ComboBox cbxLocaliteFournisseur;
         private System.Windows.Forms.BindingSource ageFournisseursMatieresPremiereBindingSource1;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btnImprimerJournal;
     }
 }
