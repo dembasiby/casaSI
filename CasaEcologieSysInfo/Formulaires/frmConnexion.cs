@@ -10,31 +10,36 @@ namespace CasaEcologieSysInfo
     public partial class frmConnexion : Form
     {
         CasaDBEntities db = new CasaDBEntities();
+        private UpdateManager updateManager;
 
         public frmConnexion()
         {
             InitializeComponent();
 
-            
             Conversion.AjouterNumeroVersion(labelConn);
+            VerifierMiseAJour();
         }
 
         
-        private async Task VerifierMiseAJour()
+        private async void VerifierMiseAJour()
         {
             try
             {
-                using (var mgr = new UpdateManager("https://github.com/dembasiby/casaSI/releases/latest"))
+                using (var mgr = await UpdateManager.GitHubUpdateManager("https://github.com/dembasiby/casaSI"))
                 {
-                    await mgr.UpdateApp();
+                    updateManager = mgr;
+                    var release = await mgr.UpdateApp();
+                }
+            }
+            catch (Exception ex)
+            {
+                string message = ex.Message + Environment.NewLine;
+                if (ex.InnerException != null)
+                {
+                    message += ex.InnerException.Message;
                 }
 
-                MessageBox.Show("Une nouvelle mise à jour est disponible et sera installée au prochain démarrage.");
-            }
-            catch (Exception)
-            {
-
-                MessageBox.Show("Aucune mise à jour disponible pour le moment.");
+                MessageBox.Show(message);
             }
             
         }
