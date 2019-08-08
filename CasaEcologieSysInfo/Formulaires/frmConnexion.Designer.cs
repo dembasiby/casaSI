@@ -75,10 +75,10 @@
             // labelConn
             // 
             this.labelConn.AutoSize = true;
-            this.labelConn.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelConn.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelConn.Location = new System.Drawing.Point(88, 18);
             this.labelConn.Name = "labelConn";
-            this.labelConn.Size = new System.Drawing.Size(442, 19);
+            this.labelConn.Size = new System.Drawing.Size(334, 16);
             this.labelConn.TabIndex = 1;
             this.labelConn.Text = "Système d\'information du GIE Casa Ecologie de Bignona";
             // 
