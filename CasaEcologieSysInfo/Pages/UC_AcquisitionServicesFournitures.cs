@@ -106,7 +106,7 @@ namespace CasaEcologieSysInfo
                         EveDecaissement decaiss = new EveDecaissement
                         {
                             CodeAcquisitionServiceFourniture = asf.CodeAcquisitionServiceFourniture,
-                            Description = "Achat de " + sf.NomServiceFourniture,
+                            Description = sf.NomServiceFourniture,
                             DateDecaissement = asf.Date,
                             CodeEmploye = tresoriere.CodeEmploye,
                             CodeCompte = cpte.CodeCompte,

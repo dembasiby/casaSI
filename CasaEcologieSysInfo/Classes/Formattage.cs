@@ -24,6 +24,14 @@ namespace CasaEcologieSysInfo
             grid.Columns["Valeur"].DefaultCellStyle.Format = "n0";
         }
 
+        public static void ChangerTitreTableauDesStocks(DataGridView grid, string unite)
+        {
+            grid.Columns["Entree"].HeaderText = $"Entrée ({unite})";
+            grid.Columns["Sortie"].HeaderText = $"Sortie ({unite})";
+            grid.Columns["Solde"].HeaderText = $"Solde ({unite})";
+
+        }
+
         public static void RegistreImmobilisations(DataGridView grid)
         {
             grid.Columns["Quantite"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;

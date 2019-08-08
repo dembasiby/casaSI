@@ -103,6 +103,16 @@ namespace CasaEcologieSysInfo.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Factory_32px {
+            get {
+                object obj = ResourceManager.GetObject("Factory_32px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap General_Ledger_32px {
             get {
                 object obj = ResourceManager.GetObject("General Ledger_32px", resourceCulture);
@@ -156,6 +166,16 @@ namespace CasaEcologieSysInfo.Properties {
         internal static System.Drawing.Bitmap logo_Casa_ecologie_2 {
             get {
                 object obj = ResourceManager.GetObject("logo-Casa-ecologie-2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Maintenance_32px {
+            get {
+                object obj = ResourceManager.GetObject("Maintenance_32px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -246,6 +266,16 @@ namespace CasaEcologieSysInfo.Properties {
         internal static System.Drawing.Bitmap Warehouse_32px {
             get {
                 object obj = ResourceManager.GetObject("Warehouse_32px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Warehouse_32px1 {
+            get {
+                object obj = ResourceManager.GetObject("Warehouse_32px1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

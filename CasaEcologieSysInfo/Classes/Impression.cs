@@ -10,26 +10,32 @@ namespace CasaEcologieSysInfo.Classes
 {
     class Impression
     {
+
+        public static DGVPrinter PreparerImpression(string titre)
+        {
+            DGVPrinter imprimante = new DGVPrinter
+            {
+                Title = "Casa Ecologie de Bignona",
+                SubTitle = titre,
+                SubTitleFormatFlags = StringFormatFlags.LineLimit | StringFormatFlags.NoClip,
+                PageNumbers = true,
+                PageNumberInHeader = false,
+                PorportionalColumns = true,
+                HeaderCellAlignment = StringAlignment.Near,
+                Footer = DateTime.Today.ToShortDateString(),
+                FooterSpacing = 15
+            };
+
+            imprimante.printDocument.DefaultPageSettings.Landscape = true;
+
+            return imprimante;
+        }
+
         public static void ImprimerTableau(string titre, DataGridView tableau)
         {
             try
             {
-                DGVPrinter imprimante = new DGVPrinter
-                {
-                    Title = "Casa Ecologie de Bignona",
-                    SubTitle = titre,
-                    SubTitleFormatFlags = StringFormatFlags.LineLimit | StringFormatFlags.NoClip,
-                    PageNumbers = true,
-                    PageNumberInHeader = false,
-                    PorportionalColumns = true,
-                    HeaderCellAlignment = StringAlignment.Near,
-                    Footer = DateTime.Today.ToShortDateString(),
-                    FooterSpacing = 15
-                };
-
-                //imprimante.PrintPreviewNoDisplay(tableau);
-                imprimante.printDocument.DefaultPageSettings.Landscape = true;
-                imprimante.PrintDataGridView(tableau);             
+                PreparerImpression(titre).PrintDataGridView(tableau);
             }
             catch (Exception ex)
             {
@@ -37,32 +43,16 @@ namespace CasaEcologieSysInfo.Classes
             }
         }
 
-        public static void ImprimerTableau(string titre, AdvancedDataGridView tableau)
+        public static void ApercuAvantImpression(string titre, DataGridView tableau)
         {
             try
             {
-                DGVPrinter imprimante = new DGVPrinter
-                {
-                    Title = "GIE Casa Ecologie de Bignona",
-                    SubTitle = titre,
-                    SubTitleFormatFlags = StringFormatFlags.LineLimit | StringFormatFlags.NoClip,
-                    PageNumbers = true,
-                    PageNumberInHeader = false,
-                    PorportionalColumns = true,
-                    HeaderCellAlignment = StringAlignment.Near,
-                    Footer = DateTime.Today.ToShortDateString(),
-                    FooterSpacing = 15,
-                   
-                };
-
-                //imprimante.PrintPreviewNoDisplay(tableau);
-                imprimante.printDocument.DefaultPageSettings.Landscape = true;
-                imprimante.PrintDataGridView(tableau);
+                PreparerImpression(titre).PrintPreviewNoDisplay(tableau);
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Erreur d'impression: {ex.Message}");
-            }          
+            }
         }
 
         public static void ImprimerFicheDeStock(ListBox liste, DataGridView grid)

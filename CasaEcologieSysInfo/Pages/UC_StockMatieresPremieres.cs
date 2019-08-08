@@ -143,6 +143,8 @@ namespace CasaEcologieSysInfo
                 row["PU"] = pu;
                 row["Valeur"] = Convert.ToSingle(row["Solde"].ToString()) * pu;
             }
+
+            Formattage.ChangerTitreTableauDesStocks(dgvJournalStocksMatieresPremieres, "kg");
         }
 
         private void BtnImprimerFicheStock_Click(object sender, EventArgs e)

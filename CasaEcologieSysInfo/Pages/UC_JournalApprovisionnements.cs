@@ -53,6 +53,10 @@ namespace CasaEcologieSysInfo.Pages
             dgvJournalApprovisionnements.DataSource = dt;
 
             dt.Rows.Add(DateTime.Today, "Total", Conversion.CalculerTotal(dgvJournalApprovisionnements, "Quantite"), "", "");
+            dt.Columns[2].ColumnName = "Quantité (kg)";
+            dt.Columns[4].ColumnName = "Localité";
+            dgvJournalApprovisionnements.Columns["Quantité (kg)"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
         }
 
         private void UC_JournalApprovisionnements_Load(object sender, EventArgs e)

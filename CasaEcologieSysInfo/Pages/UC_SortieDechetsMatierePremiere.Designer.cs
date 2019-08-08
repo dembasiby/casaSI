@@ -98,9 +98,9 @@
             this.label5.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(306, 203);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(65, 17);
+            this.label5.Size = new System.Drawing.Size(94, 17);
             this.label5.TabIndex = 46;
-            this.label5.Text = "Quantité";
+            this.label5.Text = "Quantité (kg)";
             // 
             // label3
             // 

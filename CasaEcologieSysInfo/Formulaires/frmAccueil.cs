@@ -311,5 +311,11 @@ namespace CasaEcologieSysInfo
             Pages.UC_Transvasage trv = new Pages.UC_Transvasage();
             AddControlsToPanel(trv);
         }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            Pages.UC_RegistreImmobilisations imo = new Pages.UC_RegistreImmobilisations();
+            AddControlsToPanel(imo);
+        }
     }
 }

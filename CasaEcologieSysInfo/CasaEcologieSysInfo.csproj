@@ -883,6 +883,9 @@
       <DependentUpon>Model3.edmx</DependentUpon>
       <LastGenOutput>Model3.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\Warehouse_32px1.png" />
+    <None Include="Resources\Factory_32px.png" />
+    <None Include="Resources\Maintenance_32px.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

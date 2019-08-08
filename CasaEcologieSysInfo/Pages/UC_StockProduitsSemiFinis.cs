@@ -89,6 +89,8 @@ namespace CasaEcologieSysInfo.Pages
                 row["PU"] = pu;
                 row["Valeur"] = Convert.ToSingle(row["Solde"].ToString()) * pu;
             }
+
+            Formattage.ChangerTitreTableauDesStocks(dgvJournalStocksProduitsSemiFinis, "kg");
         }
 
         private void UC_StockProduitsSemiFinis_Load(object sender, EventArgs e)
