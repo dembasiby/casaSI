@@ -14,7 +14,7 @@ namespace CasaEcologieSysInfo
     {
         private bool isCollapsed = true;
         private string role;
-
+        /*
         public frmAccueil(string userRole)
         {
             SqlServerTypes.Utilities.LoadNativeAssemblies(AppDomain.CurrentDomain.BaseDirectory);
@@ -25,8 +25,20 @@ namespace CasaEcologieSysInfo
             Conversion.AjouterNumeroVersion(labelAccueil);
 
             
-        } 
- 
+        }
+        */
+        public frmAccueil()
+        {
+            SqlServerTypes.Utilities.LoadNativeAssemblies(AppDomain.CurrentDomain.BaseDirectory);
+            InitializeComponent();
+            //role = userRole;
+            UC_TableauDeBord tb = new UC_TableauDeBord();
+            AddControlsToPanel(tb);
+            Conversion.AjouterNumeroVersion(labelAccueil);
+
+
+        }
+
         private void AddControlsToPanel(Control c)
         {
             pnlPrincipal.Controls.Clear();
@@ -121,15 +133,15 @@ namespace CasaEcologieSysInfo
 
         private void BtnUtilisateurs_Click(object sender, EventArgs e)
         {            
-            if (SuperAdmin())
-            {
+            //if (SuperAdmin())
+            //{
                 Pages.UC_Utilisateurs user = new Pages.UC_Utilisateurs();
                 AddControlsToPanel(user);
-            }
-            else
-            {
-                MessageBox.Show("Vous n'avez pas accces à cette page.");
-            }         
+            //}
+            //else
+            //{
+                //MessageBox.Show("Vous n'avez pas accces à cette page.");
+            //}         
         }
 
         private void BtnEtatsFinanciers_Click(object sender, EventArgs e)

@@ -11,7 +11,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyCompany("Demba Siby")]
 [assembly: AssemblyProduct("CasaEcologieSysInfo")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyTrademark("")] 
 [assembly: AssemblyCulture("")]
 
 // L'affectation de la valeur false à ComVisible rend les types invisibles dans cet assembly
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // Vous pouvez spécifier toutes les valeurs ou indiquer les numéros de build et de révision par défaut
 // en utilisant '*', comme indiqué ci-dessous :
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.4")]
-[assembly: AssemblyFileVersion("1.0.4")]
+[assembly: AssemblyVersion("1.0.5")]
+[assembly: AssemblyFileVersion("1.0.5")]

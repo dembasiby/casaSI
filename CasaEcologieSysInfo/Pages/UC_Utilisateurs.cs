@@ -36,6 +36,26 @@ namespace CasaEcologieSysInfo.Pages
             dgvListeUtilisateurs.Columns[0].FillWeight = 200;
         }
 
+        private void LoadUserData()
+        {
+            try
+            {
+                var codeEmploye = cbxListeAChanger.SelectedValue.ToString();
+
+                var user = (from u in db.Utilisateurs
+                            where u.CodeEmploye.ToString() == codeEmploye
+                            select u).FirstOrDefault();
+
+                txtUserAModifier.Text = user.NomUtilisateur;
+                txtPasswordAChanger.Text = user.MotDePasse;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Pas de données utilisateurs disponibles: " + ex.Message);
+            }
+
+        }
+
         private void BtnNouvelUtilisateur_Click(object sender, EventArgs e)
         {
             try
@@ -83,6 +103,51 @@ namespace CasaEcologieSysInfo.Pages
             }
            
             
+        }
+
+        private void BtnChargerListe_Click(object sender, EventArgs e)
+        {
+            utilisateurBindingSource.DataSource = (from em in db.AgeEmployes
+                                                   join u in db.Utilisateurs on em.CodeEmploye equals u.CodeEmploye
+                                                   select em).ToList();
+
+            cbxListeAChanger.DisplayMember = "PrenomNom";
+            cbxListeAChanger.ValueMember = "CodeEmploye";
+            LoadUserData();
+
+        }
+
+        private void CbxListeAChanger_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadUserData();
+        }
+
+        private void BtnModifierUser_Click(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(cbxListeAChanger.SelectedValue);
+
+            Utilisateur user = db.Utilisateurs.Find(id);
+            user.NomUtilisateur = txtUserAModifier.Text;
+            user.MotDePasse = txtPasswordAChanger.Text;
+
+            db.SaveChanges();
+            LoadData();
+            MessageBox.Show("Les données de l'utilisateur ont été modifiées.");
+        }
+
+        private void BtnSupprimerUser_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int id = Convert.ToInt32(cbxListeAChanger.SelectedValue);
+                Utilisateur user = db.Utilisateurs.Find(id);
+                db.Utilisateurs.Remove(user);
+                db.SaveChanges();
+            }
+            catch (Exception) 
+            {
+                MessageBox.Show("Impossible de terminer l'opération.");
+            }
         }
     }
 }

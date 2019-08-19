@@ -60,7 +60,14 @@ namespace CasaEcologieSysInfo
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            try
+
+            using (frmAccueil fn = new frmAccueil())
+            {
+                this.Hide();
+                fn.ShowDialog();
+            }
+            /*
+             * try
             {
                 var user = (from usr in db.Utilisateurs
                             where usr.NomUtilisateur == txtNomUtilisateur.Text
@@ -82,6 +89,7 @@ namespace CasaEcologieSysInfo
                 MessageBox.Show("Votre nom d'utilisateur et/ou mot de passe sont incorrects.");
                 return;
             }
+            */
         }
     }
 }

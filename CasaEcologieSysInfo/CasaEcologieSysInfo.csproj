@@ -819,6 +819,7 @@
     <None Include="Properties\DataSources\ResStockMatieresPremiere.datasource" />
     <None Include="Properties\DataSources\ResStockProduitsFini.datasource" />
     <None Include="Properties\DataSources\ResStockProduitsSemiFini.datasource" />
+    <None Include="Properties\DataSources\Utilisateur.datasource" />
     <None Include="Properties\DataSources\VentesMensuelles_Result.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

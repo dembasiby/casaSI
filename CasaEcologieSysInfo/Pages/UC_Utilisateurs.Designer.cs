@@ -43,10 +43,25 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.btnModifierUser = new System.Windows.Forms.Button();
+            this.btnChargerListe = new System.Windows.Forms.Button();
+            this.btnSupprimerUser = new System.Windows.Forms.Button();
+            this.txtPasswordAChanger = new System.Windows.Forms.TextBox();
+            this.txtUserAModifier = new System.Windows.Forms.TextBox();
+            this.cbxListeAChanger = new System.Windows.Forms.ComboBox();
+            this.utilisateurBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ageEmployeBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListeUtilisateurs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ageEmployeBindingSource)).BeginInit();
             this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.utilisateurBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ageEmployeBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // label4
@@ -119,21 +134,21 @@
             this.txtPasswordConfirm.Location = new System.Drawing.Point(214, 132);
             this.txtPasswordConfirm.Name = "txtPasswordConfirm";
             this.txtPasswordConfirm.Size = new System.Drawing.Size(274, 27);
-            this.txtPasswordConfirm.TabIndex = 34;
+            this.txtPasswordConfirm.TabIndex = 3;
             // 
             // txtPassword
             // 
             this.txtPassword.Location = new System.Drawing.Point(214, 98);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(274, 27);
-            this.txtPassword.TabIndex = 34;
+            this.txtPassword.TabIndex = 2;
             // 
             // txtUsername
             // 
             this.txtUsername.Location = new System.Drawing.Point(214, 65);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(274, 27);
-            this.txtUsername.TabIndex = 34;
+            this.txtUsername.TabIndex = 1;
             // 
             // btnNouvelUtilisateur
             // 
@@ -145,7 +160,7 @@
             this.btnNouvelUtilisateur.Location = new System.Drawing.Point(260, 165);
             this.btnNouvelUtilisateur.Name = "btnNouvelUtilisateur";
             this.btnNouvelUtilisateur.Size = new System.Drawing.Size(228, 31);
-            this.btnNouvelUtilisateur.TabIndex = 33;
+            this.btnNouvelUtilisateur.TabIndex = 4;
             this.btnNouvelUtilisateur.Text = "Enregistrer";
             this.btnNouvelUtilisateur.UseVisualStyleBackColor = false;
             this.btnNouvelUtilisateur.Click += new System.EventHandler(this.BtnNouvelUtilisateur_Click);
@@ -186,10 +201,135 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Employés";
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.label8);
+            this.groupBox3.Controls.Add(this.label7);
+            this.groupBox3.Controls.Add(this.label6);
+            this.groupBox3.Controls.Add(this.btnModifierUser);
+            this.groupBox3.Controls.Add(this.btnChargerListe);
+            this.groupBox3.Controls.Add(this.btnSupprimerUser);
+            this.groupBox3.Controls.Add(this.txtPasswordAChanger);
+            this.groupBox3.Controls.Add(this.txtUserAModifier);
+            this.groupBox3.Controls.Add(this.cbxListeAChanger);
+            this.groupBox3.Location = new System.Drawing.Point(37, 306);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(430, 240);
+            this.groupBox3.TabIndex = 29;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Gestion des utilisateurs";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(18, 149);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(115, 21);
+            this.label8.TabIndex = 37;
+            this.label8.Text = "Mot de passe";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(18, 112);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(140, 21);
+            this.label7.TabIndex = 37;
+            this.label7.Text = "Nom d\'utilisateur";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(18, 72);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(149, 21);
+            this.label6.TabIndex = 37;
+            this.label6.Text = "Nom de l\'employé";
+            // 
+            // btnModifierUser
+            // 
+            this.btnModifierUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(31)))), ((int)(((byte)(20)))));
+            this.btnModifierUser.FlatAppearance.BorderSize = 0;
+            this.btnModifierUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnModifierUser.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModifierUser.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnModifierUser.Location = new System.Drawing.Point(22, 196);
+            this.btnModifierUser.Name = "btnModifierUser";
+            this.btnModifierUser.Size = new System.Drawing.Size(149, 31);
+            this.btnModifierUser.TabIndex = 36;
+            this.btnModifierUser.Text = "Modifier";
+            this.btnModifierUser.UseVisualStyleBackColor = false;
+            this.btnModifierUser.Click += new System.EventHandler(this.BtnModifierUser_Click);
+            // 
+            // btnChargerListe
+            // 
+            this.btnChargerListe.BackColor = System.Drawing.Color.Silver;
+            this.btnChargerListe.FlatAppearance.BorderSize = 0;
+            this.btnChargerListe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnChargerListe.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnChargerListe.ForeColor = System.Drawing.Color.Black;
+            this.btnChargerListe.Location = new System.Drawing.Point(196, 26);
+            this.btnChargerListe.Name = "btnChargerListe";
+            this.btnChargerListe.Size = new System.Drawing.Size(228, 31);
+            this.btnChargerListe.TabIndex = 33;
+            this.btnChargerListe.Text = "Charger la liste";
+            this.btnChargerListe.UseVisualStyleBackColor = false;
+            this.btnChargerListe.Click += new System.EventHandler(this.BtnChargerListe_Click);
+            // 
+            // btnSupprimerUser
+            // 
+            this.btnSupprimerUser.BackColor = System.Drawing.Color.DarkRed;
+            this.btnSupprimerUser.FlatAppearance.BorderSize = 0;
+            this.btnSupprimerUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSupprimerUser.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSupprimerUser.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnSupprimerUser.Location = new System.Drawing.Point(196, 196);
+            this.btnSupprimerUser.Name = "btnSupprimerUser";
+            this.btnSupprimerUser.Size = new System.Drawing.Size(228, 31);
+            this.btnSupprimerUser.TabIndex = 36;
+            this.btnSupprimerUser.Text = "Supprimer l\'utilisateur";
+            this.btnSupprimerUser.UseVisualStyleBackColor = false;
+            this.btnSupprimerUser.Click += new System.EventHandler(this.BtnSupprimerUser_Click);
+            // 
+            // txtPasswordAChanger
+            // 
+            this.txtPasswordAChanger.Location = new System.Drawing.Point(181, 149);
+            this.txtPasswordAChanger.Name = "txtPasswordAChanger";
+            this.txtPasswordAChanger.Size = new System.Drawing.Size(243, 27);
+            this.txtPasswordAChanger.TabIndex = 1;
+            // 
+            // txtUserAModifier
+            // 
+            this.txtUserAModifier.Location = new System.Drawing.Point(181, 112);
+            this.txtUserAModifier.Name = "txtUserAModifier";
+            this.txtUserAModifier.Size = new System.Drawing.Size(243, 27);
+            this.txtUserAModifier.TabIndex = 1;
+            // 
+            // cbxListeAChanger
+            // 
+            this.cbxListeAChanger.DataSource = this.utilisateurBindingSource;
+            this.cbxListeAChanger.DisplayMember = "CodeEmploye";
+            this.cbxListeAChanger.FormattingEnabled = true;
+            this.cbxListeAChanger.Location = new System.Drawing.Point(181, 72);
+            this.cbxListeAChanger.Name = "cbxListeAChanger";
+            this.cbxListeAChanger.Size = new System.Drawing.Size(243, 29);
+            this.cbxListeAChanger.TabIndex = 0;
+            this.cbxListeAChanger.ValueMember = "CodeEmploye";
+            this.cbxListeAChanger.SelectedIndexChanged += new System.EventHandler(this.CbxListeAChanger_SelectedIndexChanged);
+            // 
+            // utilisateurBindingSource
+            // 
+            this.utilisateurBindingSource.DataSource = typeof(CasaEcologieSysInfo.Utilisateur);
+            // 
+            // ageEmployeBindingSource1
+            // 
+            this.ageEmployeBindingSource1.DataSource = typeof(CasaEcologieSysInfo.AgeEmploye);
+            // 
             // UC_Utilisateurs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label4);
@@ -203,6 +343,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.ageEmployeBindingSource)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.utilisateurBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ageEmployeBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -224,5 +368,17 @@
         private System.Windows.Forms.TextBox txtPasswordConfirm;
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.TextBox txtUsername;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btnModifierUser;
+        private System.Windows.Forms.Button btnChargerListe;
+        private System.Windows.Forms.Button btnSupprimerUser;
+        private System.Windows.Forms.TextBox txtPasswordAChanger;
+        private System.Windows.Forms.TextBox txtUserAModifier;
+        private System.Windows.Forms.ComboBox cbxListeAChanger;
+        private System.Windows.Forms.BindingSource ageEmployeBindingSource1;
+        private System.Windows.Forms.BindingSource utilisateurBindingSource;
     }
 }
