@@ -333,6 +333,7 @@
           <Property Name="CodeMatierePremiere" Type="int" Nullable="false" />
           <Property Name="Quantite" Type="int" Nullable="false" />
           <Property Name="Description" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CoutUnitaire" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -1778,6 +1779,7 @@
           <NavigationProperty Name="ResStockProduitsSemiFinis1" Relationship="Self.FK_ResStockProduitsSemiFinis_ResStockProduitsSemiFinis" FromRole="ResStockProduitsSemiFinis" ToRole="ResStockProduitsSemiFinis1" />
           <NavigationProperty Name="ResStockProduitsSemiFini1" Relationship="Self.FK_ResStockProduitsSemiFinis_ResStockProduitsSemiFinis" FromRole="ResStockProduitsSemiFinis1" ToRole="ResStockProduitsSemiFinis" />
           <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CoutUnitaire" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -3225,6 +3227,7 @@
           <EntitySetMapping Name="ResStockProduitsSemiFinis">
             <EntityTypeMapping TypeName="CasaDBModel.ResStockProduitsSemiFini">
               <MappingFragment StoreEntitySet="ResStockProduitsSemiFinis">
+                <ScalarProperty Name="CoutUnitaire" ColumnName="CoutUnitaire" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="CodeProduitSemiFini" ColumnName="CodeProduitSemiFini" />
                 <ScalarProperty Name="CodeMatierePremiere" ColumnName="CodeMatierePremiere" />

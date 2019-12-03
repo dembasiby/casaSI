@@ -8,35 +8,6 @@ namespace CasaEcologieSysInfo
 {
     class GestionStocks
     {
-        /*
-        private Single ValeurStockMatierePremiere(string nomMatiere)
-        {
-            //var listeMatieresPremieres = 
-            using (CasaDBEntities db = new CasaDBEntities())  
-            {
-                var coutMatierePremiere = (from mp in db.ResStockMatieresPremieres
-                                           join amp in db.EveReceptionMatieresPremieres on mp.CodeMatierePremiere equals amp.CodeMatierePremiere
-                                           where mp.NomMatiere == nomMatiere
-                                           select (decimal?)amp.Montant).Sum() ?? 0m;
-
-                var coutTransportMatierePremiere = (from mp in db.ResStockMatieresPremieres
-                                                    join amp in db.EveReceptionMatieresPremieres on mp.CodeMatierePremiere equals amp.CodeMatierePremiere
-                                                    where mp.NomMatiere == nomMatiere
-                                                    select (decimal?)amp.TransportMatierePremiere).Sum() ?? 0m;
-
-                var quantiteAchetee = (from mp in db.ResStockMatieresPremieres
-                                       join amp in db.EveReceptionMatieresPremieres on mp.CodeMatierePremiere equals amp.CodeMatierePremiere
-                                       where mp.NomMatiere == nomMatiere
-                                       select (float?)amp.Quantite).Sum() ?? 0f;
-
-                var coutTotal = coutMatierePremiere + coutTransportMatierePremiere;
-                var stockInitial = (from mp in db.ResStockMatieresPremieres select mp.StockMatiere).FirstOrDefault();
-
-                return 0f;
-            }
-        }
-        */
-
         public static Single CalculerSoldeStockMatierePremiere(string nomMatiere, DateTime debutPeriod)
         {
             using (CasaDBEntities db = new CasaDBEntities())
@@ -87,7 +58,31 @@ namespace CasaEcologieSysInfo
 
                 return stockInitial + entrees - sorties;
             }
+        }
 
+        public static int CalculerSoldeStockProduitSemiFini(string produitSemiFini, DateTime date)
+        {
+            using (CasaDBEntities db = new CasaDBEntities())
+            {
+                var stockInitial = (from psf in db.ResStockProduitsSemiFinis
+                                    where psf.Description == produitSemiFini
+                                    select psf.Quantite).FirstOrDefault();
+
+                var entrees = (from pro in db.EveProductionProduitsSemiFinis
+                               where pro.ResStockProduitsSemiFini.Description == produitSemiFini
+                               where pro.EveProduction.Date < date.Date
+                               select (int?)pro.QuantiteProduitSemiFini).Sum() ?? 0;
+
+                var sorties = (from upsf in db.EveUtilisationProduitsSemiFinis
+                               join ur in db.EveUtilisationRessources on upsf.CodeUtilisationRessource equals ur.CodeUtilisationRessources
+                               join p in db.EveProductions on ur.CodeUtilisationRessources equals p.CodeUtilisationRessources
+                               where upsf.ResStockProduitsSemiFini.Description == produitSemiFini
+                               where p.Date < date.Date
+                               select (int?)upsf.QuantiteProduitSemiFini).Sum() ?? 0;
+
+
+                return stockInitial + entrees - sorties;
+            }
         }
 
         public static Single CoutUnitaireParMatierePremiere(string nomMatiere)
@@ -160,6 +155,72 @@ namespace CasaEcologieSysInfo
                 }
 
                 return quantiteMoyenneParProduitFini; 
+            }
+        }
+
+        public static decimal QuantiteMatierePremiereParProduitSemiFini(string produitSemiFini, string matierePremiere)
+        {
+            // calculer la quantite moyenne de matiere premiere utilisee par unite de produit fini
+
+            using (CasaDBEntities db = new CasaDBEntities())
+            {
+                var quantiteDeMatierePremiereUtilisee = (from psf in db.ResStockProduitsSemiFinis
+                                                         join ppf in db.EveProductionProduitsSemiFinis on psf.CodeProduitSemiFini equals ppf.CodeProduitSemiFini
+                                                         join ur in db.EveUtilisationMatieresPremieres on ppf.EveProduction.CodeUtilisationRessources equals ur.CodeUtilisationRessource
+                                                         where ur.ResStockMatieresPremiere.NomMatiere == matierePremiere
+                                                         where psf.Description == produitSemiFini
+                                                         select new
+                                                         {
+                                                             MatierePremiere = ur.ResStockMatieresPremiere.NomMatiere,
+                                                             ur.QuantiteMatierePremiere,
+                                                             ppf.QuantiteProduitSemiFini
+                                                         });
+
+                var quantiteMatP = quantiteDeMatierePremiereUtilisee.Select(m => (float?)m.QuantiteMatierePremiere).Sum() ?? 0f;
+
+                var quantitePF = quantiteDeMatierePremiereUtilisee.Select(m => (float?)m.QuantiteProduitSemiFini).Sum() ?? 0f;
+
+                decimal quantiteMoyenneParProduitFini = 0m;
+
+                if (quantiteMatP > 0f && quantitePF > 0f)
+                {
+                    quantiteMoyenneParProduitFini = (decimal)quantiteMatP / (decimal)quantitePF;
+                }
+
+                return quantiteMoyenneParProduitFini;
+            }
+        }
+
+        public static decimal QuantiteMProduitSemiFiniParProduitFini(string nomProduit, string produitSemiFini)
+        {
+            // calculer la quantite moyenne de matiere premiere utilisee par unite de produit fini
+
+            using (CasaDBEntities db = new CasaDBEntities())
+            {
+                var quantiteProduitSemiFiniUtilisee = (from pf in db.ResStockProduitsFinis
+                                                         join ppf in db.EveProductionStockProduitsFinis on pf.CodeProduit equals ppf.CodeProduitFini
+                                                         join ur in db.EveUtilisationProduitsSemiFinis on ppf.EveProduction.CodeUtilisationRessources equals ur.CodeUtilisationRessource
+                                                         where ur.ResStockProduitsSemiFini.Description == produitSemiFini
+                                                         where pf.NomProduit == nomProduit
+                                                         select new
+                                                         {
+                                                             ProduitSemiFini = ur.ResStockProduitsSemiFini.Description,
+                                                             ur.QuantiteProduitSemiFini,
+                                                             ppf.QuantiteProduitFini
+                                                         });
+
+                var quantiteProduitSemiFini = quantiteProduitSemiFiniUtilisee.Select(m => (float?)m.QuantiteProduitSemiFini).Sum() ?? 0f;
+
+                var quantitePF = quantiteProduitSemiFiniUtilisee.Select(m => (float?)m.QuantiteProduitFini).Sum() ?? 0f;
+
+                decimal quantiteMoyenneParProduitFini = 0m;
+
+                if (quantiteProduitSemiFini > 0f && quantitePF > 0f)
+                {
+                    quantiteMoyenneParProduitFini = (decimal)quantiteProduitSemiFini / (decimal)quantitePF;
+                }
+
+                return quantiteMoyenneParProduitFini;
             }
         }
 

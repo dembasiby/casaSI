@@ -68,5 +68,39 @@ namespace CasaEcologieSysInfo.Classes.CalculDesCouts
                 return coutMatieresPremieresParProduit;
             }
         }
+
+        public static Single CoutUnitaireProduitSemiFini(string produitSemiFini)
+        {
+            using (CasaDBEntities db = new CasaDBEntities())
+            {
+                var listeMatieres = (from psf in db.ResStockProduitsSemiFinis
+                                     join ppf in db.EveProductionProduitsSemiFinis on psf.CodeProduitSemiFini equals ppf.CodeProduitSemiFini
+                                     join p in db.EveProductions on ppf.CodeProduction equals p.CodeProduction
+                                     join ur in db.EveUtilisationMatieresPremieres on p.CodeUtilisationRessources equals ur.CodeUtilisationRessource
+                                     where psf.Description == produitSemiFini
+
+                                     select new
+                                     {
+                                         Matiere = ur.ResStockMatieresPremiere.NomMatiere
+                                     }).ToList();
+
+                Single coutMatieresPremieresParProduitSemiFini = 0;
+
+                foreach (var mat in listeMatieres)
+                {
+                    Single coutMatiere = (float)GestionStocks.QuantiteMatierePremiereParProduitSemiFini(produitSemiFini, mat.Matiere) * CoutDAchatDesMatierePremieres.CoutDAchat(mat.Matiere);
+                    coutMatieresPremieresParProduitSemiFini += coutMatiere;
+                }
+
+                if (coutMatieresPremieresParProduitSemiFini == 0)
+                {
+                    coutMatieresPremieresParProduitSemiFini = (from psf in db.ResStockProduitsSemiFinis
+                                                               where psf.Description == produitSemiFini
+                                                               select psf.CoutUnitaire).FirstOrDefault();
+                }
+
+                return coutMatieresPremieresParProduitSemiFini;
+            }
+        }
     }
 }
