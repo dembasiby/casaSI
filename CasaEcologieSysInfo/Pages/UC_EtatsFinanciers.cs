@@ -1,10 +1,8 @@
 ﻿using CasaEcologieSysInfo.Classes;
+using CasaEcologieSysInfo.Classes.CalculDesCouts;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Windows.Documents;
 using System.Windows.Forms;
 
 namespace CasaEcologieSysInfo.Pages
@@ -22,6 +20,22 @@ namespace CasaEcologieSysInfo.Pages
         private void UC_EtatsFinMensuels_Load(object sender, EventArgs e)
         {
             AfficherEtatsFinanciers();
+
+            txtCoutAchat.Text = CoutDAchatDesMatierePremieres.CoutDAchat("Pain de singe").ToString();
+
+            txtQuantiteMatieresConsommees.Text = InventaireStocksMatieresPremiere
+                .QuantiteDeMatieresConsommees(dtpDebut.Value.Date, dtpFin.Value.Date, "Pain de singe")
+                .ToString();
+
+            txtCoutMatieresConsommees.Text = InventaireStocksMatieresPremiere
+                .CoutDesMatieresConsommees(dtpDebut.Value.Date, dtpFin.Value.Date, "Pain de singe")
+                .ToString();
+
+            txtCoutProductionSachetPainDeSinge.Text = CoutDeProduction
+                .CoutProduction(dtpDebut.Value.Date, dtpFin.Value.Date, "Sachet pain de singe")
+                .ToString();
+
+            //txtMilleSachets.Text = (CoutDeProduction.CoutProduction("Sachet pain de singe") * 1000).ToString();
 
             /*
             var date = dtpDebut.Value.Date;
@@ -48,23 +62,60 @@ namespace CasaEcologieSysInfo.Pages
                 var cogs = (cogsProduit * stockProduitFiniDeLaPeriode).ToString("n0");
                listeProdFinis.Add($"{produit} - {cogs}");
             }
-
     */
         }
 
+        private float CostOfGoodsSold(DateTime debut, DateTime fin)
+        {
+            
+
+            // Starting Finished Goods Inventory
+            var startingFinishedGoodsInventory = ValeurStocksDeProduitsFinis(debut);
+
+            // Cost of Goods Manufactured
+            var cogm = CostsOfGoodsManufactured();
+
+            // Ending Finished Goods Inventory
+            var endingFinishedGoodsInventory = ValeurStocksDeProduitsFinis(fin);
+
+            // Cost of Goods Sold
+            var cogs = startingFinishedGoodsInventory + cogm - endingFinishedGoodsInventory;
+
+            return cogs;
+        }
+
+        private float ValeurStocksDeProduitsFinis(DateTime date)
+        {
+            float coutDesProduitsVendus = 0f;
+
+            // Dresser la liste des produits
+            var listeDesProduits = (from pf in db.ResStockProduitsFinis
+                                    select new { Produit = pf.NomProduit })
+                                                         .Distinct().OrderBy(p => p.Produit)
+                                                         .Select(p => p.Produit).ToList();
 
 
-      
+            // Calculer le stock de depart et le stock final pour chaque produit fini vendu
+            foreach (var produit in listeDesProduits)
+            {
+                var cogsProduit = Convert.ToSingle(CalculerCoutDesProduitsVendusParProduit(produit));
+                var stockProduitFiniDeLaPeriode = GestionStocks.CalculerSoldeStockProduitFini(produit, date);
+                var cogs = cogsProduit * stockProduitFiniDeLaPeriode;
+
+                coutDesProduitsVendus += cogs;
+            }
+
+            return coutDesProduitsVendus;
+        }
 
         // VALUE OF RAW MATERIALS USED
         // Raw materials used = Beginning raw materials inventory + Purchase - Ending raw materials inventory
-        private float MatieresPremiereUtilisees(int numMois)
+        private float MatieresPremiereUtilisees()
         {
             var valeurMatieresPremieresUtilisees = 0f;
 
-            var date = dtpDebut.Value.Date;
-            DateTime debut = new DateTime(date.Year, numMois, 1);
-            DateTime fin = new DateTime(date.Year, numMois, DateTime.DaysInMonth(date.Year, numMois));
+            DateTime debut = dtpDebut.Value.Date;
+            DateTime fin = dtpFin.Value.Date;
 
             var matieresPremieres = (from mp in db.ResStockMatieresPremieres
                                      select mp.NomMatiere)
@@ -81,21 +132,21 @@ namespace CasaEcologieSysInfo.Pages
             }
 
             return valeurMatieresPremieresUtilisees;
-
         }
 
         // TOTAL MANUFACTURING COSTS
-        private float TotalManufacturingCosts(int numMois)
+        private float TotalManufacturingCosts()
         {
             // TMC = Raw materials used + Direct labor + Manufacturing overhead
 
-            var date = dtpDebut.Value.Date;
+            DateTime debut = dtpDebut.Value.Date;
+            DateTime fin = dtpFin.Value.Date;
 
             // Valeur des matières premières utilisées
-            var rawMaterialsUsed = MatieresPremiereUtilisees(numMois);
+            var rawMaterialsUsed = MatieresPremiereUtilisees();
 
             // Coût direct de main-d'oeuvre
-            var directLabor = CompteDeResultat.CoutDirectMainDOeuvre(numMois, date);
+            var directLabor = CompteDeResultat.CoutDirectMainDOeuvre(debut, fin);
 
             // Frais généraux liés à la production
             //var manufacturingOverhead = (float)CompteDeResultat.AmortissementsMensuels(date, numMois);
@@ -110,7 +161,7 @@ namespace CasaEcologieSysInfo.Pages
         // COSTS OF GOODS MANUFACTURED (COGM)
         // COGM = Beginning WIP + Total Manufacturing Cost(TMC) - Ending WIP
 
-        private float CostsOfGoodsManufactured(int numMois)
+        private float CostsOfGoodsManufactured()
         {
             // COGM = Beginning WIP + Total Manufacturing Cost(TMC) - Ending WIP
 
@@ -120,115 +171,15 @@ namespace CasaEcologieSysInfo.Pages
             // Ending Work in Progress
             var endingWIP = 0f;
  
-            // Total Manufacturing Costs(TMC) du mois
-            var TMC = TotalManufacturingCosts(numMois);
+            // Total Manufacturing Costs(TMC) 
+            var TMC = TotalManufacturingCosts();
 
             return beginningWIP + TMC - endingWIP;
         }
 
-        private float ValeurStocksDeProduitsFinis(int numMois, DateTime date)
-        {
-            float coutDesProduitsVendus = 0f;
+        
 
-
-            // Dresser la liste des produits
-            var listeDesProduits = (from pf in db.ResStockProduitsFinis
-                                    select new { Produit = pf.NomProduit })
-                                                         .Distinct().OrderBy(p => p.Produit)
-                                                         .Select(p => p.Produit).ToList();
-
-
-            // Calculer le stock de depart et le stock final pour chaque produit fini vendu
-            foreach (var produit in listeDesProduits)
-            {
-                var cogsProduit = Convert.ToSingle(CalculerCoutDesProduitsVendusParProduit(produit));
-                var stockProduitFiniDeLaPeriode = Conversion.CalculerSoldeStockProduitFiniParPeriod(produit, date);
-                var cogs = cogsProduit * stockProduitFiniDeLaPeriode;
-
-                coutDesProduitsVendus += cogs;
-            }
-
-            return coutDesProduitsVendus;
-        }
-
-        private float CostOfGoodsSold(int numMois)
-        {
-            var date = dtpDebut.Value.Date;
-            DateTime debut = new DateTime(date.Year, numMois, 1);
-            DateTime fin = new DateTime(date.Year, numMois, DateTime.DaysInMonth(date.Year, numMois));
-
-            // Starting Finished Goods Inventory
-            var startingFinishedGoodsInventory = ValeurStocksDeProduitsFinis(numMois, debut);
-
-            // Cost of Goods Manufactured
-            var cogm = CostsOfGoodsManufactured(numMois);
-
-            // Ending Finished Goods Inventory
-            var endingFinishedGoodsInventory = ValeurStocksDeProduitsFinis(numMois, fin);
-
-            // Cost of Goods Sold
-            var cogs = startingFinishedGoodsInventory + cogm - endingFinishedGoodsInventory;
-
-            return cogs;
-        }
-
-
-
-
-
-
-        /// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// 
-
-
-
-
-
-        private decimal CalculerCoutMatieresPremieres(string nomProduit)
-        {
-            var matieresPremieres = (from pf in db.ResStockProduitsFinis
-                                     join ppf in db.EveProductionStockProduitsFinis on pf.CodeProduit equals ppf.CodeProduction
-                                     join p in db.EveProductions on ppf.CodeProduction equals p.CodeProduction
-                                     join ur in db.EveUtilisationMatieresPremieres on p.CodeUtilisationRessources equals ur.CodeUtilisationRessource
-                                     where ur.ResStockMatieresPremiere.TypeMatiere == "fruit"
-                                     where pf.NomProduit == nomProduit
-                                     
-                                     select new
-                                     {
-                                         Matiere = ur.ResStockMatieresPremiere.NomMatiere
-                                     }).ToList();
-
-            decimal coutMatieresPremieres = 0m;
-
-            foreach (var matierePremiere in matieresPremieres)
-            {
-                var coutMatierePremiere = (from mp in db.ResStockMatieresPremieres
-                                           join amp in db.EveReceptionMatieresPremieres on mp.CodeMatierePremiere equals amp.CodeMatierePremiere
-                                           where mp.NomMatiere == matierePremiere.Matiere
-                                           select (decimal?)amp.Montant).Sum() ?? 0m;
-
-                var coutTransportMatierePremiere = (from mp in db.ResStockMatieresPremieres
-                                                    join amp in db.EveReceptionMatieresPremieres on mp.CodeMatierePremiere equals amp.CodeMatierePremiere
-                                                    where mp.NomMatiere == matierePremiere.Matiere
-                                                    select (decimal?)amp.TransportMatierePremiere).Sum() ?? 0m;
-
-                var quantiteAchetee = (from mp in db.ResStockMatieresPremieres
-                                       join amp in db.EveReceptionMatieresPremieres on mp.CodeMatierePremiere equals amp.CodeMatierePremiere
-                                       where mp.NomMatiere == matierePremiere.Matiere
-                                       select (float?)amp.Quantite).Sum() ?? 0f;
-
-                var coutTotal = coutMatierePremiere + coutTransportMatierePremiere;
-                if (Convert.ToInt32(quantiteAchetee) > 0)
-                {
-                    var coutUnitaire = (decimal)coutTotal / (decimal)quantiteAchetee;
-                    var coutMatiere = coutUnitaire * GestionStocks.QuantiteMatierePremierePrincipaleParProduitFini(nomProduit, matierePremiere.Matiere);
-                    coutMatieresPremieres += coutMatiere;
-                }
-            }
-
-            return coutMatieresPremieres;
-
-        }
+       
 
         /// <summary>
         /// //
@@ -238,11 +189,13 @@ namespace CasaEcologieSysInfo.Pages
 
         private decimal? CalculerCoutDesProduitsVendusParProduit(string nomProduit)
         {
-            return CalculerCoutMatieresPremieres(nomProduit);
+            return 0m;
         }
 
+
+
         /// <summary>
-        /// ETATS FINANCIERS
+        /// // Helpers: Affichage des états financiers
         /// </summary>
         /// 
 
@@ -275,8 +228,6 @@ namespace CasaEcologieSysInfo.Pages
             Tresorerie.AfficherTresorerie(dgvTableauTresorerie, debut, fin);       
         }
 
-
-        // Helpers
         private void ReInitialiserTableau(DataGridView tableau)
         {
             tableau.Rows.Clear();
@@ -297,17 +248,17 @@ namespace CasaEcologieSysInfo.Pages
             AfficherEtatsFinanciers();
         }
 
-        private void btnImprimerCpteResultat_Click(object sender, EventArgs e)
+        private void BtnImprimerCpteResultat_Click(object sender, EventArgs e)
         {
             Impression.ImprimerTableau("Compte de résultats", dgvCpteResultats);
         }
 
-        private void btnImprimerTablTresorerie_Click(object sender, EventArgs e)
+        private void BtnImprimerTablTresorerie_Click(object sender, EventArgs e)
         {
             Impression.ImprimerTableau("Tableau de trésorerie", dgvTableauTresorerie);
         }
 
-        private void btnImprimerBilan_Click(object sender, EventArgs e)
+        private void BtnImprimerBilan_Click(object sender, EventArgs e)
         {
             Impression.ImprimerTableau("Bilan", dgvBilan);
         }

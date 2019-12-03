@@ -31,6 +31,7 @@ namespace CasaEcologieSysInfo
         public string NomMatiere { get; set; }
         public float StockMatiere { get; set; }
         public string TypeMatiere { get; set; }
+        public Nullable<decimal> CoutUnitaire { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EveReceptionMatieresPremiere> EveReceptionMatieresPremieres { get; set; }

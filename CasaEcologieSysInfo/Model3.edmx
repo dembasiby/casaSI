@@ -312,6 +312,7 @@
           <Property Name="NomMatiere" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="StockMatiere" Type="float" Nullable="false" />
           <Property Name="TypeMatiere" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CoutUnitaire" Type="money" />
         </EntityType>
         <EntityType Name="ResStockProduitsFinis">
           <Key>
@@ -322,6 +323,7 @@
           <Property Name="StockProduit" Type="int" Nullable="false" />
           <Property Name="PrixDeVenteStandard" Type="int" Nullable="false" />
           <Property Name="CodeEmballage" Type="int" />
+          <Property Name="CoutUnitaire" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="ResStockProduitsSemiFinis">
           <Key>
@@ -1743,6 +1745,7 @@
           <NavigationProperty Name="ResStockProduitsFinis" Relationship="CasaDBModel.FK_ResStockProduitsFinis_ResStockMatieresPremieresEmballages" FromRole="ResStockMatieresPremiere" ToRole="ResStockProduitsFini" />
           <NavigationProperty Name="EveTransvasements" Relationship="CasaDBModel.FK_EveTransvasements_ResStockMatieresPremieres_Final" FromRole="ResStockMatieresPremiere" ToRole="EveTransvasement" />
           <NavigationProperty Name="EveTransvasements1" Relationship="CasaDBModel.FK_EveTransvasements_ResStockMatieresPremieres_Initial" FromRole="ResStockMatieresPremiere" ToRole="EveTransvasement" />
+          <Property Name="CoutUnitaire" Type="Decimal" Precision="19" Scale="4" />
         </EntityType>
         <EntityType Name="ResStockProduitsFini">
           <Key>
@@ -1760,6 +1763,7 @@
           <NavigationProperty Name="ResStockProduitsFini1" Relationship="CasaDBModel.FK_ResStockProduitsFinis_ResStockProduitsFinis" FromRole="ResStockProduitsFini1" ToRole="ResStockProduitsFini" />
           <NavigationProperty Name="EveTransvasements" Relationship="CasaDBModel.FK_EveTransvasements_ResStockProduitsFinis_Final" FromRole="ResStockProduitsFini" ToRole="EveTransvasement" />
           <NavigationProperty Name="EveTransvasements1" Relationship="CasaDBModel.FK_EveTransvasements_ResStockProduitsFinis_Initial" FromRole="ResStockProduitsFini" ToRole="EveTransvasement" />
+          <Property Name="CoutUnitaire" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="ResStockProduitsSemiFini">
           <Key>
@@ -3198,6 +3202,7 @@
           <EntitySetMapping Name="ResStockMatieresPremieres">
             <EntityTypeMapping TypeName="CasaDBModel.ResStockMatieresPremiere">
               <MappingFragment StoreEntitySet="ResStockMatieresPremieres">
+                <ScalarProperty Name="CoutUnitaire" ColumnName="CoutUnitaire" />
                 <ScalarProperty Name="TypeMatiere" ColumnName="TypeMatiere" />
                 <ScalarProperty Name="CodeMatierePremiere" ColumnName="CodeMatierePremiere" />
                 <ScalarProperty Name="NomMatiere" ColumnName="NomMatiere" />
@@ -3208,6 +3213,7 @@
           <EntitySetMapping Name="ResStockProduitsFinis">
             <EntityTypeMapping TypeName="CasaDBModel.ResStockProduitsFini">
               <MappingFragment StoreEntitySet="ResStockProduitsFinis">
+                <ScalarProperty Name="CoutUnitaire" ColumnName="CoutUnitaire" />
                 <ScalarProperty Name="CodeEmballage" ColumnName="CodeEmballage" />
                 <ScalarProperty Name="CodeProduit" ColumnName="CodeProduit" />
                 <ScalarProperty Name="NomProduit" ColumnName="NomProduit" />

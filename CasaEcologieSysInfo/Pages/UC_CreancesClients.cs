@@ -113,8 +113,17 @@ namespace CasaEcologieSysInfo.Pages
         private void ListBox1_SelectedValueChanged(object sender, EventArgs e)
         {
             lbxListeClients.ValueMember = "CodeClient";
-            int codeClient = Convert.ToInt32(lbxListeClients.SelectedValue.ToString());
-            MontrerDetailsCreances(codeClient);
+            int codeClient = 0;
+
+            if (lbxListeClients.Items.Count > 0)
+            {
+                codeClient = Convert.ToInt32(lbxListeClients.SelectedValue.ToString());
+                MontrerDetailsCreances(codeClient);
+            }
+            else
+            {
+                MessageBox.Show("Il n'y a pas encore de clients dans la base de données.");
+            }     
         }
 
         private void BtnImprimerTableau_Click(object sender, EventArgs e)

@@ -65,6 +65,31 @@ namespace CasaEcologieSysInfo
             }
 
         }
+
+        public static int CalculerSoldeStockProduitFini(string produitFini, DateTime date)
+        {
+            using (CasaDBEntities db = new CasaDBEntities())
+            {
+                var stockInitial = (from pf in db.ResStockProduitsFinis
+                                    where pf.NomProduit == produitFini
+                                    select pf.StockProduit).FirstOrDefault();
+
+                var entrees = (from pro in db.EveProductionStockProduitsFinis
+                               where pro.ResStockProduitsFini.NomProduit == produitFini
+                               where pro.EveProduction.Date < date.Date
+                               select (int?)pro.QuantiteProduitFini).Sum() ?? 0;
+
+                var sorties = (from pf in db.EveVenteStockProduitsFinis
+                               where pf.ResStockProduitsFini.NomProduit == produitFini
+                               where pf.EveVente.DateVente < date.Date
+                               select (int?)pf.QuantiteProduitFini).Sum() ?? 0;
+
+
+                return stockInitial + entrees - sorties;
+            }
+
+        }
+
         public static Single CoutUnitaireParMatierePremiere(string nomMatiere)
         {
             using (CasaDBEntities db = new CasaDBEntities())
@@ -105,7 +130,7 @@ namespace CasaEcologieSysInfo
             }
         }
 
-        public static decimal QuantiteMatierePremierePrincipaleParProduitFini(string nomProduit, string matierePremiere)
+        public static decimal QuantiteMatierePremiereParProduitFini(string nomProduit, string matierePremiere)
         {
             // calculer la quantite moyenne de matiere premiere utilisee par unite de produit fini
 
@@ -115,7 +140,6 @@ namespace CasaEcologieSysInfo
                                                          join ppf in db.EveProductionStockProduitsFinis on pf.CodeProduit equals ppf.CodeProduitFini
                                                          join ur in db.EveUtilisationMatieresPremieres on ppf.EveProduction.CodeUtilisationRessources equals ur.CodeUtilisationRessource
                                                          where ur.ResStockMatieresPremiere.NomMatiere == matierePremiere
-                                                         where ur.ResStockMatieresPremiere.TypeMatiere != "emballage"
                                                          where pf.NomProduit == nomProduit
                                                          select new
                                                          {

@@ -28,6 +28,7 @@ namespace CasaEcologieSysInfo
         public int StockProduit { get; set; }
         public int PrixDeVenteStandard { get; set; }
         public Nullable<int> CodeEmballage { get; set; }
+        public int CoutUnitaire { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EveProductionStockProduitsFini> EveProductionStockProduitsFinis { get; set; }

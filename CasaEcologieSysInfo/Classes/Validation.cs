@@ -50,5 +50,15 @@ namespace CasaEcologieSysInfo
             }
 
         }
+
+        public static bool QuantiteSuperieurAZero(string quantite)
+        {
+            if (MontantEstValide(quantite) && int.Parse(quantite) > 0)
+            {
+                return true;
+            }
+
+            return false;
+        }
     }
 }

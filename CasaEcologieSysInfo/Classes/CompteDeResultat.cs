@@ -134,13 +134,10 @@ namespace CasaEcologieSysInfo
             */
         }
 
-        public static float CoutDirectMainDOeuvre(int numMois, DateTime date)
+        public static float CoutDirectMainDOeuvre(DateTime debut, DateTime fin)
         {
             using (CasaDBEntities db = new CasaDBEntities())
             {
-                DateTime debut = new DateTime(date.Year, numMois, 1);
-                DateTime fin = new DateTime(date.Year, numMois, DateTime.DaysInMonth(date.Year, numMois));
-
                 return (from rem in db.EvePresenceEmployes
                         where rem.Date >= debut.Date
                         where rem.Date <= fin.Date

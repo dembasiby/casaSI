@@ -49,7 +49,8 @@ namespace CasaEcologieSysInfo
         private void MettreAJourStockProduitFini()
         {
             var produitFini = cbxNomProduit.GetItemText(cbxNomProduit.SelectedItem);
-            txtSoldeStockProduit.Text = Conversion.CalculerSoldeStockProduitFini(produitFini).ToString();
+            DateTime date = DateTime.Today.AddDays(1);
+            txtSoldeStockProduit.Text = GestionStocks.CalculerSoldeStockProduitFini(produitFini, date).ToString();
         }
 
         private void BtnNouveauClient_Click(object sender, EventArgs e)
@@ -95,7 +96,8 @@ namespace CasaEcologieSysInfo
 
                 lblTotalFacture.Text = TotalFacture().ToString();
                 var produitFini = cbxNomProduit.GetItemText(cbxNomProduit.SelectedItem);
-                txtSoldeStockProduit.Text = (Conversion.CalculerSoldeStockProduitFini(produitFini) - int.Parse(txtQuantite.Text)).ToString();
+                DateTime date = DateTime.Today.AddDays(1);
+                txtSoldeStockProduit.Text = (GestionStocks.CalculerSoldeStockProduitFini(produitFini, date) - int.Parse(txtQuantite.Text)).ToString();
                 txtQuantite.Clear();
             }           
         }

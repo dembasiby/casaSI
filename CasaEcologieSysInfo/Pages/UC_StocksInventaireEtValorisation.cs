@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Documents;
 using System.Text.RegularExpressions;
+using CasaEcologieSysInfo.Classes;
+using CasaEcologieSysInfo.Classes.CalculDesCouts;
 
 namespace CasaEcologieSysInfo.Pages
 {
@@ -46,16 +48,14 @@ namespace CasaEcologieSysInfo.Pages
             foreach (var matiere in matieresPremieres)
             {
                 var stock = GestionStocks.CalculerSoldeStockMatierePremiere(matiere, date);
-                var coutU = GestionStocks.CalculerCoutUnitaireMatierePremiere(matiere);
-
-                string pattern = @"\d";
+                var coutU = CoutDAchatDesMatierePremieres.CoutDAchat(matiere);
 
                 DataRow dr = dt.NewRow();
                 dt.Rows.InsertAt(dr, dt.Rows.Count);
                 dr["Description"] = matiere;
                 dr["Stock"] = stock;
-                dr["PU"] = Regex.IsMatch(coutU.ToString(), pattern) ? coutU : 0f;
-                dr["Valeur"] = stock * (Regex.IsMatch(coutU.ToString(), pattern) ? coutU : 0f);
+                dr["PU"] = coutU;
+                dr["Valeur"] = stock * coutU;
             }
 
             dgvMatieresPremieres.DataSource = dt;
@@ -100,9 +100,8 @@ namespace CasaEcologieSysInfo.Pages
 
             foreach (var pf in produitsFinis)
             {
-                var stock = Conversion.CalculerSoldeStockProduitFiniParPeriod(pf, date);
-                var pu = CoutEmballageParProduitFini(pf);
-                // string pattern = @"\d";
+                var stock = GestionStocks.CalculerSoldeStockProduitFini(pf, date);
+                var pu = CoutDeProduction.CoutUnitaireProduction(pf);
 
                 DataRow dr = dt.NewRow();
                 dt.Rows.InsertAt(dr, dt.Rows.Count);
