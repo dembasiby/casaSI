@@ -2,6 +2,7 @@
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
+using CasaEcologieSysInfo.Classes;
 using CasaEcologieSysInfo.Classes.CalculDesCouts;
 
 namespace CasaEcologieSysInfo.Pages
@@ -143,16 +144,28 @@ namespace CasaEcologieSysInfo.Pages
         {
             if (rbtnMatieresPremieres.Checked)
             {
-                AfficherTableauStockMatieresPremieres(dateTimePicker1.Value.Date);
+                AfficherTableauStockMatieresPremieres(dtpDate.Value.Date);
             }
             else if (rbtnProduitsSemiFinis.Checked)
             {
-                AfficherTableauProduitsSemiFinis(dateTimePicker1.Value.Date);
+                AfficherTableauProduitsSemiFinis(dtpDate.Value.Date);
             }
             else
             {
-                AfficherTableauProduitsFinis(dateTimePicker1.Value.Date);
+                AfficherTableauProduitsFinis(dtpDate.Value.Date);
             }
+
+            AfficherLaValeurTotalDesStocks();
+        }
+
+        private void AfficherLaValeurTotalDesStocks()
+        {
+            DateTime date = dtpDate.Value.Date;
+
+            txtStockMatieresPremieres.Text = InventaireStocksMatieresPremiere.ValeurStockMatieresPremieres(date).ToString("n0") + " FCFA";
+            txtStockProduitsSemiFinis.Text = InventaireStockProduitsSemiFinis.ValeurStockProduitsSemiFinis(date).ToString("n0") + " FCFA";
+            txtStocksProduitsFinis.Text = InventaireStocksProduitsFinis.ValeurStockProduitsFinis(date).ToString("n0") + " FCFA";
+            txtValeurTotaleStocks.Text = GestionStocks.ValeurTotalDesStocks(date).ToString("n0") + " FCFA";
         }
 
 
@@ -161,24 +174,35 @@ namespace CasaEcologieSysInfo.Pages
         **********************************************************************************************************/
 
 
-        private decimal CoutDeLaMainDOeuvreParProduit(string produit)
-        {
-            return 0m;
-        }
-
         private void RbtnMatieresPremieres_CheckedChanged(object sender, EventArgs e)
         {           
-            AfficherTableauStockMatieresPremieres(dateTimePicker1.Value.Date);
+            AfficherTableauStockMatieresPremieres(dtpDate.Value.Date);
         }
 
         private void RbtnProduitsSemiFinis_CheckedChanged(object sender, EventArgs e)
         {
-            AfficherTableauProduitsSemiFinis(dateTimePicker1.Value.Date);
+            AfficherTableauProduitsSemiFinis(dtpDate.Value.Date);
         }
 
         private void RbtnProduitsFinis_CheckedChanged(object sender, EventArgs e)
         {
-            AfficherTableauProduitsFinis(dateTimePicker1.Value.Date);
+            AfficherTableauProduitsFinis(dtpDate.Value.Date);
+        }
+
+        private void BtnImprimerTablStocks_Click(object sender, EventArgs e)
+        {
+            if (rbtnMatieresPremieres.Checked)
+            {
+                Impression.ImprimerTableau("Stock de matières premières", dgvTableauAffichageStocks);
+            }
+            else if (rbtnProduitsSemiFinis.Checked)
+            {
+                Impression.ImprimerTableau("Stock de produits semi finis", dgvTableauAffichageStocks);
+            }
+            else
+            {
+                Impression.ImprimerTableau("Stock de produits finis", dgvTableauAffichageStocks);
+            }
         }
     }
 }

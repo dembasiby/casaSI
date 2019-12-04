@@ -56,5 +56,25 @@ namespace CasaEcologieSysInfo.Classes.CalculDesCouts
             }
             
         }
+
+        public static Single ValeurStockMatieresPremieres(DateTime date)
+        {
+            using (CasaDBEntities db = new CasaDBEntities())
+            {
+                Single valeurStockMatieresPremieres = 0;
+                date = date.AddDays(1);
+
+                var listeMatieresPremieres = (from mp in db.ResStockMatieresPremieres
+                                          select mp.NomMatiere).ToList();
+
+                foreach (var matPrem in listeMatieresPremieres)
+                {
+                    valeurStockMatieresPremieres += GestionStocks.CalculerSoldeStockMatierePremiere(matPrem, date) * CoutDAchatDesMatierePremieres.CoutDAchat(matPrem);
+                }
+
+                return valeurStockMatieresPremieres;
+
+            }
+        }
     }
 }

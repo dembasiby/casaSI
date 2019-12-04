@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CasaEcologieSysInfo.Classes.CalculDesCouts;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -245,17 +246,13 @@ namespace CasaEcologieSysInfo
                 return coutUnitaire; 
             }
         }
-        /*
-        public static Single MatieresPremieresUtilisees(string nomProduit, DateTime beginning, DateTime ending)
-        {
-            // Raw materials used = Beginning raw materials inventory + Purchase - Ending raw materials inventory
 
-            using (CasaDBEntities2 db = new CasaDBEntities2())
-            {
-                var stockInitial = Conversion.
-                var quantiteDisponibleDebutPeriod = 0;
-            }
+        public static Single ValeurTotalDesStocks(DateTime date)
+        {
+            return InventaireStocksProduitsFinis.ValeurStockProduitsFinis(date)
+                + InventaireStockProduitsSemiFinis.ValeurStockProduitsSemiFinis(date)
+                + InventaireStocksMatieresPremiere.ValeurStockMatieresPremieres(date);
         }
-        */
-        }
+     
     }
+}
