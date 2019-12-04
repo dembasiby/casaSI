@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CasaEcologieSysInfo.Classes.CalculDesCouts;
+using System;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -17,12 +18,16 @@ namespace CasaEcologieSysInfo
             }
         }
 
-        public static void AfficherCompteDeResultats(DataGridView grid, string cogs, DateTimePicker debut, DateTimePicker fin)
+        public static void AfficherCompteDeResultats(DataGridView grid, DateTimePicker debut, DateTimePicker fin)
         {
-            grid.Rows.Add("Chiffre d'affaires",
-                CalculerVentesPeriode(debut.Value.Date, fin.Value.Date));
+            DateTime deb = debut.Value.Date;
+            DateTime fn = fin.Value.Date;
 
-            grid.Rows.Add("Cout des produits vendus", cogs);
+
+            grid.Rows.Add("Chiffre d'affaires",
+                CalculerVentesPeriode(deb, fn));
+
+            grid.Rows.Add("Cout des produits vendus", InventaireStocksProduitsFinis.CoutDesProduitsVendus(deb, fn));
 
             grid.Rows.Add("Marge brute", CalculerMargeBrute(grid));
 
@@ -30,16 +35,16 @@ namespace CasaEcologieSysInfo
             grid.Rows.Add("Frais afférents aux autres revenus", 0);
 
             grid.Rows.Add("Frais généraux et autes charges", 
-                FraisGenerauxDeLaPeriode(debut.Value.Date, fin.Value.Date));
+                FraisGenerauxDeLaPeriode(deb, fn));
 
             grid.Rows.Add("Résultats avant impôts et  amortissements", 
                 ResultatAvantImpotsEtAmortissements(grid));
 
             grid.Rows.Add("Amortissements de la période", 
-                AmortissementsDeLaPeriode(debut.Value.Date, fin.Value.Date));
+                AmortissementsDeLaPeriode(deb, fn));
 
             grid.Rows.Add("Impôts et taxes", 
-                ImpotsEtTaxesDeLaPeriode(debut.Value.Date, fin.Value.Date));
+                ImpotsEtTaxesDeLaPeriode(deb, fn));
 
             grid.Rows.Add("Résultat net", ResultatApresImpots(grid));
 
@@ -51,8 +56,6 @@ namespace CasaEcologieSysInfo
 
             // Ligne du résultat net
             Formattage.FormatterLigneEnGras(grid, 9);
-
-
         }
 
         private static string CalculerMargeBrute(DataGridView grid)

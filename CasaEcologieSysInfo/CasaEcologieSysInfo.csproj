@@ -198,6 +198,7 @@
     <Compile Include="AgeFournisseursServicesFourniture.cs">
       <DependentUpon>Model3.tt</DependentUpon>
     </Compile>
+    <Compile Include="Classes\Bilan.cs" />
     <Compile Include="Classes\CalculDesCouts\CoutDAchatDesMatierePremieres.cs" />
     <Compile Include="Classes\CalculDesCouts\CoutDeProduction.cs" />
     <Compile Include="Classes\CalculDesCouts\InventaireStockProduitsSemiFinis.cs" />

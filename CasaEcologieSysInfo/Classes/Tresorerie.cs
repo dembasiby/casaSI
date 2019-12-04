@@ -6,7 +6,7 @@ namespace CasaEcologieSysInfo.Classes
 {
     class Tresorerie
     {
-        private static string CalculerSoldeInitialTresorerie(DateTime debutPeriode)
+        public static string CalculerSoldeInitialTresorerie(DateTime debutPeriode)
         {
             using (CasaDBEntities db = new CasaDBEntities())
             {

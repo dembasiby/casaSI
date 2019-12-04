@@ -37,7 +37,27 @@ namespace CasaEcologieSysInfo.Classes.CalculDesCouts
             coutDesProduitsVendusParProduit = quantiteDeProduitsVendus * valeurUnitaire;
 
             return coutDesProduitsVendusParProduit;
+        }
 
+        public static Single CoutDesProduitsVendus(DateTime debut, DateTime fin)
+        {
+            using (CasaDBEntities db = new CasaDBEntities())
+            {
+                Single cogs = 0;
+                var listeProduitsVendus = (from pf in db.ResStockProduitsFinis
+                                           join vpf in db.EveVenteStockProduitsFinis on pf.CodeProduit equals vpf.CodeProduitFini
+                                           join v in db.EveVentes on vpf.CodeVente equals v.CodeVente
+                                           where v.DateVente >= debut
+                                           where v.DateVente <= fin
+                                           select pf.NomProduit).ToList();
+
+                foreach (var produit in listeProduitsVendus)
+                {
+                    cogs += CoutDesProduitsVendusParProduitFini(produit, debut, fin);
+                }
+
+                return cogs;
+            }
         }
 
         public static Single ValeurStockProduitsFinis(DateTime date)

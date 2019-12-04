@@ -120,6 +120,36 @@ namespace CasaEcologieSysInfo
             }         
         }
 
+        public static Single CalculerTotalCreancesClientsALaDateDu(DateTime date)
+        {
+            using (CasaDBEntities db = new CasaDBEntities())
+            {
+                var ventesClients = (from c in db.AgeClients
+                                     from vf in db.EveVenteStockProduitsFinis
+                                     from v in db.EveVentes
+                                     where v.CodeClient == c.CodeClient
+                                     where vf.CodeVente == v.CodeVente
+                                     where v.DateVente <= date
+                                     select (Single?)vf.Montant).Sum() ?? 0f;
+
+                var totalPaiementClient = (from c in db.AgeClients
+                                           from ev in db.EveEncaissementsVentes
+                                           where c.CodeClient == ev.CodeClient
+                                           where ev.DateEncaissement <= date
+                                           select (Single?)ev.MontantEncaisse).Sum() ?? 0f;
+                var encaissementCreances = (from c in db.AgeClients
+                                            from ec in db.EveEncaissementsCreances
+                                            where c.CodeClient == ec.CodeClient
+                                            where ec.DateEncaissement <= date
+                                            select (Single?)ec.MontantEncaisse).Sum() ?? 0f;
+
+                var creanceInitialClient = (from c in db.AgeClients
+                                            select (Single?)c.SoldeInitialeCreance).Sum() ?? 0f;
+
+                return creanceInitialClient + ventesClients - totalPaiementClient - encaissementCreances;
+            }
+        }
+
         public static decimal CalculerTotalDettesFournisseurs()
         {
             using (CasaDBEntities db = new CasaDBEntities())
@@ -163,6 +193,58 @@ namespace CasaEcologieSysInfo
                     - totalPaiements - totalPaiementsFE - totalPaiementsFS;  
             }
         }
+
+        public static decimal CalculerTotalDettesFournisseursALaDateDu(DateTime date)
+        {
+            using (CasaDBEntities db = new CasaDBEntities())
+            {
+                var soldeInitial = (from fmp in db.AgeFournisseursMatieresPremieres
+                                    select fmp.SoldeDette).Sum();
+
+                var totalAchats = (from f in db.AgeFournisseursMatieresPremieres
+                                   join rmp in db.EveReceptionMatieresPremieres on f.CodeFournisseurMatierePremiere equals rmp.CodeFournisseurMatierePremiere
+                                   where rmp.DateReception <= date
+                                   select (decimal?)rmp.Montant).Sum() ?? 0m;
+
+                var totalPaiements = (from fmp in db.AgeFournisseursMatieresPremieres
+                                      join d in db.EveDecaissements on fmp.CodeFournisseurMatierePremiere equals d.CodeFournisseurMatierePremiere
+                                      where d.DateDecaissement <= date
+                                      select (decimal?)d.Montant).Sum() ?? 0m;
+
+                var soldeInitialFE = (from f in db.AgeAutreFournisseurs
+                                      select f.SoldeInitialDetteFournisseur).Sum();
+
+                var totalAchatsFE = (from f in db.AgeAutreFournisseurs
+                                     join rmp in db.EveReceptionEquipementsInfrastructures on f.CodeAutreFournisseur equals rmp.CodeAutreFournisseur
+                                     join ei in db.ResEquipementsInfrastructures on rmp.CodeEquipementInfrastructure equals ei.CodeEquipementInfrastructure
+                                     where ei.DateAcquisition <= date
+                                     select (decimal?)ei.Montant).Sum() ?? 0m;
+
+                var totalPaiementsFE = (from f in db.AgeAutreFournisseurs
+                                        join d in db.EveDecaissements on f.CodeAutreFournisseur equals d.CodeAutreFournisseur
+                                        where d.DateDecaissement <= date
+                                        select (decimal?)d.Montant).Sum() ?? 0m;
+
+                var soldeInitialFS = (from f in db.AgeFournisseursServicesFournitures
+                                      select f.SoldeDette).Sum();
+
+                var totalAchatsFS = (from f in db.AgeFournisseursServicesFournitures
+                                     join rmp in db.EveAcquisitionServicesFournitures on f.CodeFournisseurServiceFourniture equals rmp.CodeFournisseurServiceFourniture
+                                     where rmp.Date <= date
+                                     select (decimal?)rmp.Montant).Sum() ?? 0m;
+
+                var totalPaiementsFS = (from f in db.EveAcquisitionServicesFournitures
+                                        join d in db.EveDecaissements on f.CodeAcquisitionServiceFourniture equals d.CodeAcquisitionServiceFourniture
+                                        where d.DateDecaissement <= date
+                                        select (decimal?)d.Montant).Sum() ?? 0m;
+
+                return soldeInitial + soldeInitialFE + soldeInitialFS
+                    + totalAchats + totalAchatsFE + totalPaiementsFS
+                    - totalPaiements - totalPaiementsFE - totalPaiementsFS;
+            }
+        }
+
+
 
         public static void CalculerSoldeStocksDeFaconProgressive(AdvancedDataGridView grid, float stockInitial)
         {
