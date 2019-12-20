@@ -102,6 +102,7 @@
             // btnNewServFourniture
             // 
             this.btnNewServFourniture.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(31)))), ((int)(((byte)(20)))));
+            this.btnNewServFourniture.Enabled = false;
             this.btnNewServFourniture.FlatAppearance.BorderSize = 0;
             this.btnNewServFourniture.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNewServFourniture.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -116,6 +117,7 @@
             // 
             // txtNomServFourniture
             // 
+            this.txtNomServFourniture.Enabled = false;
             this.txtNomServFourniture.Location = new System.Drawing.Point(0, 89);
             this.txtNomServFourniture.Name = "txtNomServFourniture";
             this.txtNomServFourniture.Size = new System.Drawing.Size(383, 27);
