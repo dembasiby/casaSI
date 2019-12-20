@@ -21,7 +21,7 @@ namespace CasaEcologieSysInfo.Pages
             lbxListeClients.DisplayMember = "NomClient";
             lbxListeClients.ValueMember = "CodeClient";
 
-            txtTotalCreances.Text = Conversion.CalculerTotalCreancesClients().ToString("c0");
+            txtTotalCreances.Text = Tresorerie.CalculerTotalCreancesClients().ToString("c0");
         }
 
 

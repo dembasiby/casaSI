@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CasaEcologieSysInfo.Classes;
 
 namespace CasaEcologieSysInfo.Pages
 {
@@ -28,7 +29,7 @@ namespace CasaEcologieSysInfo.Pages
                                                     .OrderBy(em => em.PrenomNom)
                                                     .ToList();
 
-            Conversion.AfficherSoldeTresorerie(cbxCompteDebit, txtSoldeCompte);
+            Tresorerie.AfficherSoldeTresorerie(cbxCompteDebit, txtSoldeCompte);
         }
 
         private bool ComptesDifferents(string cpte1, string cpte2)
@@ -57,7 +58,7 @@ namespace CasaEcologieSysInfo.Pages
             {
                 if (ComptesDifferents(cpteDebiteur, cpteCrediteur))
                 {
-                    if (Conversion.IlYaAssezDeFondsDansLeCompte(cbxCompteDebit, txtMontant))
+                    if (Tresorerie.IlYaAssezDeFondsDansLeCompte(cbxCompteDebit, txtMontant))
                     {
                         if (txtDescription.Text.Trim().Length > 0)
                         {
@@ -99,7 +100,7 @@ namespace CasaEcologieSysInfo.Pages
                             MessageBox.Show($"Le transfert de fonds du compte {cpteDebiteur} au compte {cpteCrediteur} a été enregistré avec succès.");
                             txtDescription.Clear();
                             txtMontant.Clear();
-                            Conversion.AfficherSoldeTresorerie(cbxCompteDebit, txtSoldeCompte);
+                            Tresorerie.AfficherSoldeTresorerie(cbxCompteDebit, txtSoldeCompte);
                         }
                         else
                         {
@@ -113,7 +114,7 @@ namespace CasaEcologieSysInfo.Pages
 
         private void CbxCompteDebit_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Conversion.AfficherSoldeTresorerie(cbxCompteDebit, txtSoldeCompte);
+            Tresorerie.AfficherSoldeTresorerie(cbxCompteDebit, txtSoldeCompte);
         }
     }
 }

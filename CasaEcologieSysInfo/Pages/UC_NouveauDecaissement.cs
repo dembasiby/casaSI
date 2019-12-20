@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CasaEcologieSysInfo.Classes;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -122,7 +123,7 @@ namespace CasaEcologieSysInfo
         private void AfficherDetteDuFournisseurSelectionne()
         {
             var nomFournisseur = cbxNomFournisseur.GetItemText(cbxNomFournisseur.SelectedItem);
-            txtDetteFournisseur.Text = Conversion.CalculerSoldeDetteParFournisseur(nomFournisseur).ToString("c0"); 
+            txtDetteFournisseur.Text = Tresorerie.CalculerSoldeDetteParFournisseur(nomFournisseur).ToString("c0"); 
         }
 
 
@@ -142,7 +143,7 @@ namespace CasaEcologieSysInfo
 
             resComptesTresorerieBindingSource.DataSource = db.ResComptesTresoreries.ToList();
 
-            Conversion.AfficherSoldeTresorerie(cbxCompte, txtSoldeCompte);
+            Tresorerie.AfficherSoldeTresorerie(cbxCompte, txtSoldeCompte);
 
             AfficherDetteDuFournisseurSelectionne();
         }
@@ -154,7 +155,7 @@ namespace CasaEcologieSysInfo
 
         private void BtnEnregistrerDecaissement_Click(object sender, EventArgs e)
         {
-            if (Conversion.IlYaAssezDeFondsDansLeCompte(cbxCompte, txtMontantPaye))
+            if (Tresorerie.IlYaAssezDeFondsDansLeCompte(cbxCompte, txtMontantPaye))
             {
                 ResComptesTresorerie cpte = db.ResComptesTresoreries.FirstOrDefault(c => c.NomCompte == cbxCompte.Text);
 
@@ -220,7 +221,7 @@ namespace CasaEcologieSysInfo
 
         private void CbxCompte_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Conversion.AfficherSoldeTresorerie(cbxCompte, txtSoldeCompte);
+            Tresorerie.AfficherSoldeTresorerie(cbxCompte, txtSoldeCompte);
         }
     }
 }

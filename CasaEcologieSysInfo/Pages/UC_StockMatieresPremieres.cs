@@ -132,7 +132,7 @@ namespace CasaEcologieSysInfo
             dgvJournalStocksMatieresPremieres.DataSource = dt;
 
             Formattage.TableauDesStock(dgvJournalStocksMatieresPremieres);
-            Conversion.CalculerSoldeStocksDeFaconProgressive(dgvJournalStocksMatieresPremieres, stockInitial);
+            GestionStocks.CalculerSoldeStocksDeFaconProgressive(dgvJournalStocksMatieresPremieres, stockInitial);
 
             //float number;
             bool isNumeric = float.TryParse(coutUnitaire.ToString(), out float number);

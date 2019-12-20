@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CasaEcologieSysInfo.Classes;
+using System;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
@@ -29,7 +30,7 @@ namespace CasaEcologieSysInfo
                                                     .ToList();
             resComptesTresorerieBindingSource.DataSource = db.ResComptesTresoreries.ToList();
             cbxTypesMatieres.DataSource = (from mp in db.ResStockMatieresPremieres select mp.TypeMatiere).Distinct().ToList();
-            Conversion.AfficherSoldeTresorerie(cbxComptePaiement, txtSoldeCompte);
+            Tresorerie.AfficherSoldeTresorerie(cbxComptePaiement, txtSoldeCompte);
         }
 
         private void UC_AchatMatierePremiere_Load(object sender, EventArgs e)
@@ -92,7 +93,7 @@ namespace CasaEcologieSysInfo
             AgeEmploye tresoriere = db.AgeEmployes.FirstOrDefault(em => em.PrenomNom == cbxTresoriere.Text);
             ResComptesTresorerie tres = db.ResComptesTresoreries.FirstOrDefault(tr => tr.NomCompte == cbxComptePaiement.Text);
 
-            if (int.Parse(txtTransportMatierePremiere.Text) > 0 && Conversion.IlYaAssezDeFondsDansLeCompte(cbxComptePaiement, txtTransportMatierePremiere))
+            if (int.Parse(txtTransportMatierePremiere.Text) > 0 && Tresorerie.IlYaAssezDeFondsDansLeCompte(cbxComptePaiement, txtTransportMatierePremiere))
             {
                 EveDecaissement decaiss = new EveDecaissement
                 {
@@ -116,7 +117,7 @@ namespace CasaEcologieSysInfo
             AgeEmploye tresoriere = db.AgeEmployes.FirstOrDefault(em => em.PrenomNom == cbxTresoriere.Text);
             ResComptesTresorerie tres = db.ResComptesTresoreries.FirstOrDefault(tr => tr.NomCompte == cbxComptePaiement.Text);
 
-           if (int.Parse(txtMontantPaye.Text) > 0 && Conversion.IlYaAssezDeFondsDansLeCompte(cbxComptePaiement, txtMontantPaye))
+           if (int.Parse(txtMontantPaye.Text) > 0 && Tresorerie.IlYaAssezDeFondsDansLeCompte(cbxComptePaiement, txtMontantPaye))
             {
                 EveDecaissement decaiss = new EveDecaissement
                 {
@@ -138,7 +139,7 @@ namespace CasaEcologieSysInfo
         {
             if (float.Parse(txtQuantite.Text) > 0 && int.Parse(txtMontant.Text) > 0)
             {
-                if (Conversion.IlYaAssezDeFondsDansLeCompte(cbxComptePaiement, txtMontant))
+                if (Tresorerie.IlYaAssezDeFondsDansLeCompte(cbxComptePaiement, txtMontant))
                 {
                     try
                     {
@@ -146,7 +147,7 @@ namespace CasaEcologieSysInfo
                         AjouterDecaissementTransportMatierePremiere(recep);
                         AjouterPaiementFournisseur(recep);
                         MessageBox.Show("Un nouvel achat de matière première a été enregistré avec succès");
-                        Conversion.AfficherSoldeTresorerie(cbxComptePaiement, txtSoldeCompte);
+                        Tresorerie.AfficherSoldeTresorerie(cbxComptePaiement, txtSoldeCompte);
                         txtQuantite.Text = "0";
                         txtMontant.Text = "0";
                         txtMontantPaye.Text = "0";
@@ -166,7 +167,7 @@ namespace CasaEcologieSysInfo
 
         private void CbxComptePaiement_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Conversion.AfficherSoldeTresorerie(cbxComptePaiement, txtSoldeCompte);
+            Tresorerie.AfficherSoldeTresorerie(cbxComptePaiement, txtSoldeCompte);
         }
 
         private void BtnNouveauFournisseur_Click(object sender, EventArgs e)

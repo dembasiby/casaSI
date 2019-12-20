@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CasaEcologieSysInfo.Classes;
 
 namespace CasaEcologieSysInfo
 {
@@ -32,7 +33,7 @@ namespace CasaEcologieSysInfo
                                                     .ToList();
             resComptesTresorerieBindingSource.DataSource = db.ResComptesTresoreries.ToList();
 
-            Conversion.AfficherSoldeTresorerie(cbxComptePaiement, txtSoldeCompte);
+            Tresorerie.AfficherSoldeTresorerie(cbxComptePaiement, txtSoldeCompte);
         }
 
         private void UC_AchatEquipementInfrastructure_Load(object sender, EventArgs e)
@@ -126,7 +127,7 @@ namespace CasaEcologieSysInfo
 
                 if (int.Parse(txtMontantPaye.Text) > 0)
                 {
-                    if (Conversion.IlYaAssezDeFondsDansLeCompte(cbxComptePaiement, txtMontantPaye))
+                    if (Tresorerie.IlYaAssezDeFondsDansLeCompte(cbxComptePaiement, txtMontantPaye))
                     {
                         EveDecaissement decaiss = new EveDecaissement
                         {
@@ -155,7 +156,7 @@ namespace CasaEcologieSysInfo
 
         private void CbxComptePaiement_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Conversion.AfficherSoldeTresorerie(cbxComptePaiement, txtSoldeCompte);
+            Tresorerie.AfficherSoldeTresorerie(cbxComptePaiement, txtSoldeCompte);
         }
     }
 }

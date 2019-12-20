@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CasaEcologieSysInfo.Classes;
 
 namespace CasaEcologieSysInfo
 {
@@ -34,7 +35,7 @@ namespace CasaEcologieSysInfo
                                                     .OrderBy(em => em.PrenomNom)
                                                     .ToList();
 
-            Conversion.AfficherSoldeTresorerie(cbxComptePaiement, txtSoldeCompte);
+            Tresorerie.AfficherSoldeTresorerie(cbxComptePaiement, txtSoldeCompte);
         }
 
         private void BtnNewServFourniture_Click(object sender, EventArgs e)
@@ -101,7 +102,7 @@ namespace CasaEcologieSysInfo
 
                 if (int.Parse(txtMontantPayeServFourn.Text) > 0 && Validation.VerifierChampsMontant(txtMontantPayeServFourn.Text))
                 {
-                    if (Conversion.IlYaAssezDeFondsDansLeCompte(cbxComptePaiement, txtMontantPayeServFourn))
+                    if (Tresorerie.IlYaAssezDeFondsDansLeCompte(cbxComptePaiement, txtMontantPayeServFourn))
                     {
                         EveDecaissement decaiss = new EveDecaissement
                         {
@@ -129,7 +130,7 @@ namespace CasaEcologieSysInfo
 
         private void CbxComptePaiement_SelectedIndexChanged_1(object sender, EventArgs e)
         {
-            Conversion.AfficherSoldeTresorerie(cbxComptePaiement, txtSoldeCompte);
+            Tresorerie.AfficherSoldeTresorerie(cbxComptePaiement, txtSoldeCompte);
         }
     }
 }

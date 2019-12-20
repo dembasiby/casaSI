@@ -1,5 +1,6 @@
 ﻿using CasaEcologieSysInfo.Classes.CalculDesCouts;
 using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -7,17 +8,6 @@ namespace CasaEcologieSysInfo
 {
     class CompteDeResultat
     {
-        private static string CalculerVentesPeriode(DateTime debut, DateTime fin)
-        {
-            using (CasaDBEntities db = new CasaDBEntities())
-            {
-                return ((from v in db.EveVentes
-                         join vp in db.EveVenteStockProduitsFinis on v.CodeVente equals vp.CodeVente
-                         where v.DateVente >= debut && v.DateVente <= fin
-                         select (decimal?)vp.Montant).Sum() ?? 0m).ToString("n0");
-            }
-        }
-
         public static void AfficherCompteDeResultats(DataGridView grid, DateTimePicker debut, DateTimePicker fin)
         {
             DateTime deb = debut.Value.Date;
@@ -34,19 +24,19 @@ namespace CasaEcologieSysInfo
             grid.Rows.Add("Autres revenus", 0);
             grid.Rows.Add("Frais afférents aux autres revenus", 0);
 
-            grid.Rows.Add("Frais généraux et autes charges", 
+            grid.Rows.Add("Frais généraux et autres charges",
                 FraisGenerauxDeLaPeriode(deb, fn));
 
-            grid.Rows.Add("Résultats avant impôts et  amortissements", 
+            grid.Rows.Add("Résultats avant impôts et  amortissements",
                 ResultatAvantImpotsEtAmortissements(grid));
 
-            grid.Rows.Add("Amortissements de la période", 
+            grid.Rows.Add("Amortissements de la période",
                 AmortissementsDeLaPeriode(deb, fn));
 
-            grid.Rows.Add("Impôts et taxes", 
+            grid.Rows.Add("Impôts et taxes",
                 ImpotsEtTaxesDeLaPeriode(deb, fn));
 
-            grid.Rows.Add("Résultat net", ResultatApresImpots(grid));
+            grid.Rows.Add("Résultat net", ResultatNet(grid));
 
             // Ligne de la marge brute
             Formattage.FormatterLigneEnGras(grid, 2);
@@ -56,6 +46,28 @@ namespace CasaEcologieSysInfo
 
             // Ligne du résultat net
             Formattage.FormatterLigneEnGras(grid, 9);
+        }
+
+        private static string CalculerVentesPeriode(DateTime debut, DateTime fin)
+        {
+            using (CasaDBEntities db = new CasaDBEntities())
+            {
+                return ((from v in db.EveVentes
+                         join vp in db.EveVenteStockProduitsFinis on v.CodeVente equals vp.CodeVente
+                         where v.DateVente >= debut && v.DateVente <= fin
+                         select (decimal?)vp.Montant).Sum() ?? 0m).ToString("n0");
+            }
+        }
+
+        public static Single CumulVentes(DateTime date)
+        {
+            using (CasaDBEntities db = new CasaDBEntities())
+            {
+                return (from v in db.EveVentes
+                         join vp in db.EveVenteStockProduitsFinis on v.CodeVente equals vp.CodeVente
+                         where v.DateVente <= date
+                         select (Single?)vp.Montant).Sum() ?? 0;
+            }
         }
 
         private static string CalculerMargeBrute(DataGridView grid)
@@ -96,7 +108,7 @@ namespace CasaEcologieSysInfo
             return (autreRevNumber + margeBruteNumber - fraisAutresRevNumber - fraisGenerauxNumber).ToString("n0");
         }
 
-        private static string ResultatApresImpots(DataGridView grid)
+        private static string ResultatNet(DataGridView grid)
         {
             string resultatAvantImpot = grid.Rows[6].Cells[1].Value.ToString();
             string amortissements = grid.Rows[7].Cells[1].Value.ToString();
@@ -117,27 +129,7 @@ namespace CasaEcologieSysInfo
             return (resultatAvantImpotNumber - amortissementsNumber - impotsNumber).ToString("n0");
         }
 
-        public static void AfficherMargeBrute(DataGridView grid)
-        {
-            /*
-            grid.Rows.Add("Marge brute",
-                (Convert.ToSingle(grid.Rows[0].Cells[1].Value.ToString()) - Convert.ToSingle(grid.Rows[1].Cells[1].Value.ToString())).ToString("n0"),
-                (Convert.ToSingle(grid.Rows[0].Cells[2].Value.ToString()) - Convert.ToSingle(grid.Rows[1].Cells[2].Value.ToString())).ToString("n0"),
-                (Convert.ToSingle(grid.Rows[0].Cells[3].Value.ToString()) - Convert.ToSingle(grid.Rows[1].Cells[3].Value.ToString())).ToString("n0"),
-                (Convert.ToSingle(grid.Rows[0].Cells[4].Value.ToString()) - Convert.ToSingle(grid.Rows[1].Cells[4].Value.ToString())).ToString("n0"),
-                (Convert.ToSingle(grid.Rows[0].Cells[5].Value.ToString()) - Convert.ToSingle(grid.Rows[1].Cells[5].Value.ToString())).ToString("n0"),
-                (Convert.ToSingle(grid.Rows[0].Cells[6].Value.ToString()) - Convert.ToSingle(grid.Rows[1].Cells[6].Value.ToString())).ToString("n0"),
-                (Convert.ToSingle(grid.Rows[0].Cells[7].Value.ToString()) - Convert.ToSingle(grid.Rows[1].Cells[7].Value.ToString())).ToString("n0"),
-                (Convert.ToSingle(grid.Rows[0].Cells[8].Value.ToString()) - Convert.ToSingle(grid.Rows[1].Cells[8].Value.ToString())).ToString("n0"),
-                (Convert.ToSingle(grid.Rows[0].Cells[9].Value.ToString()) - Convert.ToSingle(grid.Rows[1].Cells[9].Value.ToString())).ToString("n0"),
-                (Convert.ToSingle(grid.Rows[0].Cells[10].Value.ToString())- Convert.ToSingle(grid.Rows[1].Cells[10].Value.ToString())).ToString("n0"),
-                (Convert.ToSingle(grid.Rows[0].Cells[11].Value.ToString())- Convert.ToSingle(grid.Rows[1].Cells[11].Value.ToString())).ToString("n0"),
-                (Convert.ToSingle(grid.Rows[0].Cells[12].Value.ToString())- Convert.ToSingle(grid.Rows[1].Cells[12].Value.ToString())).ToString("n0")
-                );
-            */
-        }
-
-        public static float CoutDirectMainDOeuvre(DateTime debut, DateTime fin)
+        public static float MainDOeuvre(DateTime debut, DateTime fin)
         {
             using (CasaDBEntities db = new CasaDBEntities())
             {
@@ -152,12 +144,14 @@ namespace CasaEcologieSysInfo
         {
             using (CasaDBEntities db = new CasaDBEntities())
             {
-                return ((from asf in db.EveAcquisitionServicesFournitures
-                        where asf.Date >= debut.Date
-                        where asf.Date <= fin.Date
-                        where asf.ResServicesFourniture.NomServiceFourniture != "Taxes"
-                        where asf.ResServicesFourniture.NomServiceFourniture != "Retrait des propriétaires"
-                        select (decimal?)asf.Montant).Sum() ?? 0m).ToString("n0");
+                var fraisGeneraux = ((from asf in db.EveAcquisitionServicesFournitures
+                                      where asf.Date >= debut.Date
+                                      where asf.Date <= fin.Date
+                                      where asf.ResServicesFourniture.NomServiceFourniture != "Taxes"
+                                      where asf.ResServicesFourniture.NomServiceFourniture != "Retrait des propriétaires"
+                                      select (float?)asf.Montant).Sum() ?? 0f);
+
+                return (fraisGeneraux + MainDOeuvre(debut, fin)).ToString("n0");
             }
         }
 
@@ -177,10 +171,8 @@ namespace CasaEcologieSysInfo
         {
             using (CasaDBEntities db = new CasaDBEntities())
             {
-                int nombreJoursPeriode = (fin.Date - debut.Date).Days + 1;
-
                 float amortissementsJournaliers = (from inE in db.ResEquipementsInfrastructures
-                        where (inE.DateAcquisition.Year + inE.DureeDeVie) >= debut.Year
+                        where (inE.DateAcquisition.Year + inE.DureeDeVie) > debut.Year
                         select new
                         {
                             Immobilisation = inE.Nom,
@@ -188,10 +180,12 @@ namespace CasaEcologieSysInfo
                             ValeurDOrigine = inE.Montant,
                             inE.DateAcquisition,
                             inE.DureeDeVie,
+                            nombreJoursPeriode = DbFunctions.DiffDays(debut, fin),
                             AmortissementAnnuel = inE.Montant / (inE.DureeDeVie),
                         })
-                        .Select(a => (float?)(a.AmortissementAnnuel/365) * nombreJoursPeriode)
+                        .Select(a => (float?)(a.AmortissementAnnuel/365) * a.nombreJoursPeriode)
                         .Sum() ?? 0f;
+
                 return amortissementsJournaliers.ToString("n0");
             }
         }

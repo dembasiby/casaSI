@@ -31,29 +31,20 @@ namespace CasaEcologieSysInfo.Pages
 
         private void AfficherCompteDeResultat()
         {
-            var debut = dtpDebut;
-            var fin = dtpFin;
-
             ReInitialiserTableau(dgvCpteResultats);
-            CompteDeResultat.AfficherCompteDeResultats(dgvCpteResultats, debut, fin);           
+            CompteDeResultat.AfficherCompteDeResultats(dgvCpteResultats, dtpDebut, dtpFin);           
         }
 
         private void AfficherTableauDeTresorerie()
         {
-            var debut = dtpDebut;
-            var fin = dtpFin;
-
             ReInitialiserTableau(dgvTableauTresorerie);
-            Tresorerie.AfficherTresorerie(dgvTableauTresorerie, debut, fin);       
+            Tresorerie.AfficherTresorerie(dgvTableauTresorerie, dtpDebut, dtpFin);       
         }
 
         private void AfficherTableauBilan()
         {
-            var debut = dtpDebut;
-            var fin = dtpFin;
-
             ReInitialiserTableau(dgvBilan);
-            Bilan.AfficherBilan(dgvBilan, debut, fin);
+            Bilan.AfficherBilan(dgvBilan, dtpDebut, dtpFin);
         }
 
 
@@ -62,10 +53,8 @@ namespace CasaEcologieSysInfo.Pages
             tableau.Rows.Clear();
         }
 
-        /// <summary>
-        /// EVENT HANDLING
-        /// </summary>
-
+    
+        // GESTION DES EVENEMENTS
         private void DtpDebut_ValueChanged(object sender, EventArgs e)
         {
             AfficherEtatsFinanciers();
@@ -76,7 +65,7 @@ namespace CasaEcologieSysInfo.Pages
             AfficherEtatsFinanciers();
         }
 
-        //  Impression des tableaux
+        //  IMPRESSION DES TABLEAUX
         private void BtnImprimerCpteResultat_Click(object sender, EventArgs e)
         {
             Impression.ImprimerTableau("Compte de résultats", dgvCpteResultats);

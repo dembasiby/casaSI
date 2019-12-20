@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CasaEcologieSysInfo.Classes;
+using System;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
@@ -71,7 +72,7 @@ namespace CasaEcologieSysInfo.Pages
 
 
             AfficherPresenceEtRemunerationEmploye(dtpFin.Value.Date);
-            Conversion.AfficherSoldeTresorerie(cbxComptePaiement, txtSoldeCompte);
+            Tresorerie.AfficherSoldeTresorerie(cbxComptePaiement, txtSoldeCompte);
         }
 
         private void AfficherPresenceEtRemunerationEmploye(DateTime fin, DateTime debut = default(DateTime))
@@ -232,7 +233,7 @@ namespace CasaEcologieSysInfo.Pages
             {
                 if (RemunerationPasEncorePayePourLaPeriod(codeEmploye))
                 {
-                    if (Conversion.IlYaAssezDeFondsDansLeCompte(cptePaiement, montant))
+                    if (Tresorerie.IlYaAssezDeFondsDansLeCompte(cptePaiement, montant))
                     {
                         EvePaiementEmploye paiement = new EvePaiementEmploye
                         {
@@ -276,7 +277,7 @@ namespace CasaEcologieSysInfo.Pages
 
         private void CbxComptePaiement_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Conversion.AfficherSoldeTresorerie(cbxComptePaiement, txtSoldeCompte);
+            Tresorerie.AfficherSoldeTresorerie(cbxComptePaiement, txtSoldeCompte);
         }
     }
 }

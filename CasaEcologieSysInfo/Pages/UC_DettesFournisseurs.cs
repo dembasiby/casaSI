@@ -21,7 +21,7 @@ namespace CasaEcologieSysInfo.Pages
         private void UC_DettesFournisseurs_Load(object sender, EventArgs e)
         {
             ListerFournisseurDettesFournisseurs();
-            txtTotalDettesFournisseurs.Text = Conversion.CalculerTotalDettesFournisseurs().ToString("c0");
+            txtTotalDettesFournisseurs.Text = Tresorerie.CalculerTotalDettesFournisseurs().ToString("c0");
         }
 
 

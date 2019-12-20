@@ -112,7 +112,7 @@ namespace CasaEcologieSysInfo
             dgvJournalStocksProduitsFinis.DataSource = dt;
 
             Formattage.TableauDesStock(dgvJournalStocksProduitsFinis);
-            Conversion.CalculerSoldeStocksDeFaconProgressive(dgvJournalStocksProduitsFinis, stockInitial);
+            GestionStocks.CalculerSoldeStocksDeFaconProgressive(dgvJournalStocksProduitsFinis, stockInitial);
 
             
             //float number;

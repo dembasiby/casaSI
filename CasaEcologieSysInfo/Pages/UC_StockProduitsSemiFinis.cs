@@ -78,7 +78,7 @@ namespace CasaEcologieSysInfo.Pages
             dgvJournalStocksProduitsSemiFinis.DataSource = dt;
 
             Formattage.TableauDesStock(dgvJournalStocksProduitsSemiFinis);
-            Conversion.CalculerSoldeStocksDeFaconProgressive(dgvJournalStocksProduitsSemiFinis, stockInitial);
+            GestionStocks.CalculerSoldeStocksDeFaconProgressive(dgvJournalStocksProduitsSemiFinis, stockInitial);
 
             //float number;
             bool isNumeric = float.TryParse(coutUnitaire.ToString(), out float number);
