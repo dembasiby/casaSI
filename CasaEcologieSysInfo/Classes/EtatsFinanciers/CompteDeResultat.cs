@@ -133,10 +133,11 @@ namespace CasaEcologieSysInfo
         {
             using (CasaDBEntities db = new CasaDBEntities())
             {
-                return (from rem in db.EvePresenceEmployes
-                        where rem.Date >= debut.Date
-                        where rem.Date <= fin.Date
-                        select (float?)rem.RemunerationJournaliere).Sum() ?? 0f; 
+                return (from mo in db.EveDecaissements
+                            where mo.CodePaiementEmploye != null
+                            where mo.DateDecaissement >= debut.Date
+                            where mo.DateDecaissement <= fin.Date
+                            select (float?)mo.Montant).Sum() ?? 0f;
             }
         }
 
@@ -145,11 +146,13 @@ namespace CasaEcologieSysInfo
             using (CasaDBEntities db = new CasaDBEntities())
             {
                 var fraisGeneraux = ((from asf in db.EveAcquisitionServicesFournitures
-                                      where asf.Date >= debut.Date
-                                      where asf.Date <= fin.Date
+                                      from d in db.EveDecaissements 
+                                      where d.DateDecaissement >= debut.Date
+                                      where d.DateDecaissement <= fin.Date
+                                      where d.CodeFournisseurService != null
                                       where asf.ResServicesFourniture.NomServiceFourniture != "Taxes"
                                       where asf.ResServicesFourniture.NomServiceFourniture != "Retrait des propriétaires"
-                                      select (float?)asf.Montant).Sum() ?? 0f);
+                                      select (float?)d.Montant).Sum() ?? 0f);
 
                 return (fraisGeneraux + MainDOeuvre(debut, fin)).ToString("n0");
             }

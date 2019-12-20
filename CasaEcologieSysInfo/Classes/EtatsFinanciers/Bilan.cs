@@ -154,9 +154,9 @@ namespace CasaEcologieSysInfo.Classes
             DateTime debut = new DateTime(2019, 1, 1);
             Single ventes = CompteDeResultat.CumulVentes(date);
             Single coutDesProduitsVendus = InventaireStocksProduitsFinis.CoutDesProduitsVendus(debut, date);
-            Single fraisGeneraux = int.Parse(CompteDeResultat.FraisGenerauxDeLaPeriode(debut, date));
+            Single fraisGeneraux = float.Parse(CompteDeResultat.FraisGenerauxDeLaPeriode(debut, date));
             Single amortissements = AmortissementsCumules(date);
-            Single impotsEtTaxes = int.Parse(CompteDeResultat.ImpotsEtTaxesDeLaPeriode(debut, date));
+            Single impotsEtTaxes = float.Parse(CompteDeResultat.ImpotsEtTaxesDeLaPeriode(debut, date));
 
             return ventes - coutDesProduitsVendus - fraisGeneraux - amortissements - impotsEtTaxes;
         }
