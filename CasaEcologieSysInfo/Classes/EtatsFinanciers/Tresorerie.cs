@@ -6,7 +6,7 @@ namespace CasaEcologieSysInfo.Classes
 {
     class Tresorerie
     {
-        public static string CalculerSoldeInitialTresorerie(DateTime debutPeriode)
+        public static string CalculerSoldeTresorerie(DateTime debutPeriode)
         {
             using (CasaDBEntities db = new CasaDBEntities())
             {
@@ -46,7 +46,7 @@ namespace CasaEcologieSysInfo.Classes
         public static void AfficherTresorerie(DataGridView grid, DateTimePicker debut, DateTimePicker fin)
         {
             // ligne 0
-            grid.Rows.Add("Fonds disponible en début de période", CalculerSoldeInitialTresorerie(debut.Value.Date));
+            grid.Rows.Add("Fonds disponible en début de période", CalculerSoldeTresorerie(debut.Value.Date));
             // ligne 1
             grid.Rows.Add("");
 

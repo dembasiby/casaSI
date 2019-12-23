@@ -21,7 +21,7 @@ namespace CasaEcologieSysInfo.Classes.CalculDesCouts
                                where pf.NomProduit == produitFini
                                where p.Date >= debut
                                where p.Date < fin
-                               select ppf.QuantiteProduitFini).Sum();
+                               select (int?)ppf.QuantiteProduitFini).Sum() ?? 0;
 
                 return stockInitial + entrees - stockFinal;
             }

@@ -17,7 +17,7 @@ namespace CasaEcologieSysInfo
             grid.Rows.Add("Chiffre d'affaires",
                 CalculerVentesPeriode(deb, fn));
 
-            grid.Rows.Add("Cout des produits vendus", InventaireStocksProduitsFinis.CoutDesProduitsVendus(deb, fn));
+            grid.Rows.Add("Cout des produits vendus", InventaireStocksProduitsFinis.CoutDesProduitsVendus(deb, fn).ToString("n0"));
 
             grid.Rows.Add("Marge brute", CalculerMargeBrute(grid));
 

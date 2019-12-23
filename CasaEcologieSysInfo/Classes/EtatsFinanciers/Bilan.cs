@@ -13,7 +13,7 @@ namespace CasaEcologieSysInfo.Classes
         {
             DateTime deb = debut.Value.Date;
             DateTime fn = fin.Value.Date;
-            Single totalActifCirculant = float.Parse(Tresorerie.CalculerSoldeInitialTresorerie(fn.AddDays(1)))
+            Single totalActifCirculant = float.Parse(Tresorerie.CalculerSoldeTresorerie(fn.AddDays(1)))
                 + Tresorerie.CalculerTotalCreancesClientsALaDateDu(fn)
                 + GestionStocks.ValeurTotalDesStocks(fn);
             Single totalDettesACourtTerme = (Single)Tresorerie.CalculerTotalDettesFournisseursALaDateDu(fn) + 0 /* autres dettes à court terme */;
@@ -27,8 +27,8 @@ namespace CasaEcologieSysInfo.Classes
             Single totalCapitauxPropres = CapitauxPropres(fn) + BeneficesRepartis(fn) + BeneficesNonRepartis(fn);
             Single totalPassif = totalCapitauxPropres + totalDettes;
 
-            grid.Rows.Add("Trésorerie disponible en fin de période", Tresorerie.CalculerSoldeInitialTresorerie(fn.AddDays(1))); // 0
-            grid.Rows.Add("Débiteurs divers", Tresorerie.CalculerTotalCreancesClientsALaDateDu(fn)); // 1
+            grid.Rows.Add("Trésorerie disponible en fin de période", Tresorerie.CalculerSoldeTresorerie(fn.AddDays(1))); // 0
+            grid.Rows.Add("Débiteurs divers", Tresorerie.CalculerTotalCreancesClientsALaDateDu(fn).ToString("n0")); // 1
             grid.Rows.Add("Stocks", GestionStocks.ValeurTotalDesStocks(fn).ToString("n0")); // 2
             grid.Rows.Add("Total Actif Circulant", FormatNumber(totalActifCirculant)); // 3
             grid.Rows.Add("Immobilisations brutes", FormatNumber(immobilisationsBrutes)); // 4
@@ -85,6 +85,7 @@ namespace CasaEcologieSysInfo.Classes
         {
             using (CasaDBEntities db = new CasaDBEntities())
             {
+                date = date.AddDays(1);
                 Single amortissementsCumulesImmoNonAmortis = (from inE in db.ResEquipementsInfrastructures
                                                    where (inE.DateAcquisition.Year + inE.DureeDeVie) > date.Year
                                                    where inE.DateAcquisition < date
@@ -125,7 +126,7 @@ namespace CasaEcologieSysInfo.Classes
 
                 Single dettesFournisseurs = (Single)Tresorerie.CalculerTotalDettesFournisseursALaDateDu(date);
 
-                Single tresorerie = float.Parse(Tresorerie.CalculerSoldeInitialTresorerie(date.AddDays(1)));
+                Single tresorerie = float.Parse(Tresorerie.CalculerSoldeTresorerie(date.AddDays(1)));
 
                 Single stocks = GestionStocks.ValeurTotalDesStocks(date);
 
@@ -155,7 +156,11 @@ namespace CasaEcologieSysInfo.Classes
             Single amortissements = AmortissementsCumules(date);
             Single impotsEtTaxes = float.Parse(CompteDeResultat.ImpotsEtTaxesDeLaPeriode(debut, date));
 
-            return ventes - coutDesProduitsVendus - fraisGeneraux - amortissements - impotsEtTaxes;
+            Single margeBrute = ventes - coutDesProduitsVendus;
+            Single resultatAvantImpotEtAmort = margeBrute - fraisGeneraux;
+            Single beneficeNet = resultatAvantImpotEtAmort - amortissements - impotsEtTaxes;
+
+            return beneficeNet;
         }
 
         public static Single BeneficesNonRepartis(DateTime date)
