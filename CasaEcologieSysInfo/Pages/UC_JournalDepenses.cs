@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using CasaEcologieSysInfo.Classes;
 
@@ -67,7 +62,20 @@ namespace CasaEcologieSysInfo
                             Personnel = 0m
                         });
 
-            var resultat = matP.Union(sF).Union(eInf)
+            var perso = (from d in db.EveDecaissements
+                         where d.CodePaiementEmploye != null
+
+                         select new
+                         {
+                             Date = d.DateDecaissement,
+                             d.Description,
+                             Matiere_Premiere = 0m,
+                             Services_et_fournitures = 0m,
+                             Infrastructures_et_equipements = 0m,
+                             Personnel = d.Montant
+                         });
+
+            var resultat = matP.Union(sF).Union(eInf).Union(perso)
                 .OrderByDescending(d => d.Date)
                 .ToList();
 

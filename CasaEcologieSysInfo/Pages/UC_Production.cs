@@ -272,8 +272,6 @@ namespace CasaEcologieSysInfo
             
         }
         
-        
-
         private void BtnAjouterMatierePProduction_Click(object sender, EventArgs e)
         {
             try
@@ -345,7 +343,6 @@ namespace CasaEcologieSysInfo
                 MessageBox.Show("Merci de choisir un emballage");
                 return false;
             }
-
             return true;
         }
 
@@ -354,7 +351,6 @@ namespace CasaEcologieSysInfo
             AgeEmploye respProd = db.AgeEmployes.FirstOrDefault(rp => rp.PrenomNom == cbxResponsableProduction.Text);
             AgeEmploye respStockMatPrem = db.AgeEmployes.FirstOrDefault(rsmp => rsmp.PrenomNom == cbxRespMatPrem.Text);
             AgeEmploye respStockProduitsFinis = db.AgeEmployes.FirstOrDefault(rspf => rspf.PrenomNom == cbxResponsableStockProduitFinis.Text);
-
 
             if (VerifierInfoIntrantsEtExtrantsProduction() && ProductionRealiseeParAuMoinsUnEmploye())
             {
@@ -378,7 +374,6 @@ namespace CasaEcologieSysInfo
                 var creerProduction = CreerProduction(codeUtilisationRessources, respStockProduitsFinis.CodeEmploye);
                 var codeProduction = creerProduction.CodeProduction;
                 string nomProduit = cbxProduitsProduits.GetItemText(cbxProduitsProduits.SelectedItem);
-
 
                 if (rbtnProduitsFinis.Checked)
                 {
@@ -503,6 +498,92 @@ namespace CasaEcologieSysInfo
         private void BtnMettreAJourListeProduits_Click(object sender, EventArgs e)
         {
             ChargerDonneesInitiales();
+        }
+
+        private void BtnDiminuerQuantiteMP_Click(object sender, EventArgs e)
+        {
+            DiminuerQuantite(lvwListeMatieresP);
+        }
+
+        private void BtnAugmenterQuantiteMP_Click(object sender, EventArgs e)
+        {
+            DateTime aujourdhui = DateTime.Today;
+            string matiere = lvwListeMatieresP.FocusedItem.SubItems[0].Text;
+            float stockMatierePremiere = GestionStocks.CalculerSoldeStockMatierePremiere(matiere, aujourdhui);
+
+            AugmenterQuantite(lvwListeMatieresP, stockMatierePremiere);
+        }
+
+        private void BtnRetirerMP_Click(object sender, EventArgs e)
+        {
+            lvwListeMatieresP.FocusedItem.Remove();
+        }
+
+        private void BtnDecrementQuantitePSF_Click(object sender, EventArgs e)
+        {
+            DiminuerQuantite(lvwListProduitsSemiFinisUtilises);
+        }
+
+        private void BtnIncrementQuantitePSF_Click(object sender, EventArgs e)
+        {
+            DateTime aujourdhui = DateTime.Today;
+            string produit = lvwListeMatieresP.FocusedItem.SubItems[0].Text;
+            float stockProduitSFinis = GestionStocks.CalculerSoldeStockProduitSemiFini(produit, aujourdhui);
+
+            AugmenterQuantite(lvwListProduitsSemiFinisUtilises, stockProduitSFinis);
+        }
+
+        private void BtnRetirerPSF_Click(object sender, EventArgs e)
+        {
+            lvwListProduitsSemiFinisUtilises.FocusedItem.Remove();
+        }
+
+        private void DiminuerQuantite(ListView listView)
+        {
+            try
+            {
+                var checkNumber = int.TryParse(listView.FocusedItem.SubItems[1].Text, out int result);
+                var total = Convert.ToInt32(listView.FocusedItem.SubItems[1].Text);
+           
+                total -= 1;
+                listView.FocusedItem.SubItems[1].Text = total.ToString();
+
+                if (total == 0)
+                {
+                    listView.FocusedItem.Remove();
+                    return;
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Veuillez selectionner un élément dans la liste.", "Erreur de choix d'un produit");
+                return;
+            }
+        }
+
+        private void AugmenterQuantite(ListView listView, float stock)
+        {
+            try
+            {
+                var checkNumber = int.TryParse(listView.FocusedItem.SubItems[1].Text, out int result);
+                var total = Convert.ToInt32(listView.FocusedItem.SubItems[1].Text);
+
+                if (total < stock)
+                {
+                    total += 1;
+                    listView.FocusedItem.SubItems[1].Text = total.ToString();
+                }
+                else
+                {
+                    MessageBox.Show("Vous ne pouvez plus augmenter cette quantité. Il n'y a pas assez de produits en stocks.");
+                    return;
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Veuillez selectionner un élément dans la liste.");
+                return;
+            }
         }
     }
 }
