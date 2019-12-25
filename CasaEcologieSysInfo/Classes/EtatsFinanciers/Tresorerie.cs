@@ -138,7 +138,7 @@ namespace CasaEcologieSysInfo.Classes
             using (CasaDBEntities db = new CasaDBEntities())
             {
                 var autresFondsRecus = (from aenc in db.EveEncaissementsAutres
-                                        where aenc.FondsExternes == true
+                                        //where aenc.FondsExternes == true
                                         where aenc.DateEncaissement >= debut.Value.Date
                                         where aenc.DateEncaissement <= fin.Value.Date
                                         select (decimal?)aenc.MontantEncaisse).Sum() ?? 0m;

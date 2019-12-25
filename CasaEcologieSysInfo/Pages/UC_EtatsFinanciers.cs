@@ -68,17 +68,19 @@ namespace CasaEcologieSysInfo.Pages
         //  IMPRESSION DES TABLEAUX
         private void BtnImprimerCpteResultat_Click(object sender, EventArgs e)
         {
-            Impression.ImprimerTableau("Compte de résultats", dgvCpteResultats);
+            string titre = "Compte de résultats du " + dtpDebut.Value.ToShortDateString() + " au " + dtpFin.Value.ToShortDateString();
+            Impression.ImprimerTableau(titre, dgvCpteResultats);
         }
 
         private void BtnImprimerTablTresorerie_Click(object sender, EventArgs e)
         {
-            Impression.ImprimerTableau("Tableau de trésorerie", dgvTableauTresorerie);
+            string titre = "Tableau de trésorerie du " + dtpDebut.Value.ToShortDateString() + " au " + dtpFin.Value.ToShortDateString();
+            Impression.ImprimerTableau(titre, dgvTableauTresorerie);
         }
 
         private void BtnImprimerBilan_Click(object sender, EventArgs e)
         {
-            Impression.ImprimerTableau("Bilan", dgvBilan);
+            Impression.ImprimerTableau("Bilan au " + dtpFin.Value.ToShortDateString(), dgvBilan);
         }
     }
 }

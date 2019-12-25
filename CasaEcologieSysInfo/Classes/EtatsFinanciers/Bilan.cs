@@ -113,16 +113,17 @@ namespace CasaEcologieSysInfo.Classes
         public static Single CapitauxPropres(DateTime date)
         {
             using (CasaDBEntities db = new CasaDBEntities())
-            {              
+            {
+                DateTime debut = new DateTime(2019, 1, 1);
                 Single investissements = (from inE in db.ResEquipementsInfrastructures
                                                 where (inE.DateAcquisition.Year + inE.DureeDeVie) >= date.Year
                                                 where inE.DateAcquisition <= date
                                                 select (Single?)inE.Montant).Sum() ?? 0f;
 
                 // Single valeurResiduelle = investissements - AmortissementsCumules(date);
-                Single subventionsEtAutresFonds = (from af in db.EveEncaissementsAutres
-                                                   where af.DateEncaissement <= date
-                                                   select (Single?)af.MontantEncaisse).Sum() ?? 0;
+                //Single subventionsEtAutresFonds = (from af in db.EveEncaissementsAutres
+                                                  // where af.DateEncaissement <= date
+                                                  // select (Single?)af.MontantEncaisse).Sum() ?? 0;
 
                 Single dettesFournisseurs = (Single)Tresorerie.CalculerTotalDettesFournisseursALaDateDu(date);
 
@@ -132,7 +133,11 @@ namespace CasaEcologieSysInfo.Classes
 
                 Single creances = Tresorerie.CalculerTotalCreancesClientsALaDateDu(date);
 
-                return investissements + subventionsEtAutresFonds + tresorerie + creances + stocks - dettesFournisseurs;
+                Single impotsEtTaxes = float.Parse(CompteDeResultat.ImpotsEtTaxesDeLaPeriode(debut, date));
+
+                return investissements //subventionsEtAutresFonds
+                    + tresorerie + creances + stocks - dettesFournisseurs 
+                    - ResultatAvantImpotsEtTaxes(date) + impotsEtTaxes;
             }        
         }
 
@@ -147,20 +152,23 @@ namespace CasaEcologieSysInfo.Classes
             }
         }
 
-        public static Single BeneficeNet(DateTime date)
+        public static Single ResultatAvantImpotsEtTaxes(DateTime date)
         {
             DateTime debut = new DateTime(2019, 1, 1);
             Single ventes = CompteDeResultat.CumulVentes(date);
             Single coutDesProduitsVendus = InventaireStocksProduitsFinis.CoutDesProduitsVendus(debut, date);
             Single fraisGeneraux = float.Parse(CompteDeResultat.FraisGenerauxDeLaPeriode(debut, date));
+
+            return ventes - coutDesProduitsVendus - fraisGeneraux;
+        }
+
+        public static Single BeneficeNet(DateTime date)
+        {
+            DateTime debut = new DateTime(2019, 1, 1);       
             Single amortissements = AmortissementsCumules(date);
             Single impotsEtTaxes = float.Parse(CompteDeResultat.ImpotsEtTaxesDeLaPeriode(debut, date));
 
-            Single margeBrute = ventes - coutDesProduitsVendus;
-            Single resultatAvantImpotEtAmort = margeBrute - fraisGeneraux;
-            Single beneficeNet = resultatAvantImpotEtAmort - amortissements - impotsEtTaxes;
-
-            return beneficeNet;
+            return ResultatAvantImpotsEtTaxes(date) - amortissements - impotsEtTaxes;
         }
 
         public static Single BeneficesNonRepartis(DateTime date)
