@@ -198,21 +198,21 @@ namespace CasaEcologieSysInfo.Classes
         private static string SousTotalDepenses(DataGridView grid)
         {
             // Total ligne 10 à ligne 22 
-            double matieresPremieres  = Double.Parse(grid.Rows[10].Cells[1].Value.ToString());
-            double emballages         = Double.Parse(grid.Rows[11].Cells[1].Value.ToString());
-            double salaires           = Double.Parse(grid.Rows[12].Cells[1].Value.ToString());
-            double servicesExterieurs = Double.Parse(grid.Rows[13].Cells[1].Value.ToString());
-            double fournitures        = Double.Parse(grid.Rows[14].Cells[1].Value.ToString());
-            double reparations        = Double.Parse(grid.Rows[15].Cells[1].Value.ToString());
-            double location           = Double.Parse(grid.Rows[16].Cells[1].Value.ToString());
-            double telephone          = Double.Parse(grid.Rows[17].Cells[1].Value.ToString());
-            double electricite        = Double.Parse(grid.Rows[18].Cells[1].Value.ToString());
-            double taxes              = Double.Parse(grid.Rows[19].Cells[1].Value.ToString());
-            double interets           = Double.Parse(grid.Rows[20].Cells[1].Value.ToString());
-            double fraisBancaires     = Double.Parse(grid.Rows[21].Cells[1].Value.ToString());
-            double transport          = Double.Parse(grid.Rows[22].Cells[1].Value.ToString());
-
-            double total = matieresPremieres + emballages + salaires + servicesExterieurs +
+            float matieresPremieres  = float.Parse(grid.Rows[10].Cells[1].Value.ToString());
+            float emballages         = float.Parse(grid.Rows[11].Cells[1].Value.ToString());
+            float salaires           = float.Parse(grid.Rows[12].Cells[1].Value.ToString());
+            float servicesExterieurs = float.Parse(grid.Rows[13].Cells[1].Value.ToString());
+            float fournitures        = float.Parse(grid.Rows[14].Cells[1].Value.ToString());
+            float reparations        = float.Parse(grid.Rows[15].Cells[1].Value.ToString());
+            float location           = float.Parse(grid.Rows[16].Cells[1].Value.ToString());
+            float telephone          = float.Parse(grid.Rows[17].Cells[1].Value.ToString());
+            float electricite        = float.Parse(grid.Rows[18].Cells[1].Value.ToString());
+            float taxes              = float.Parse(grid.Rows[19].Cells[1].Value.ToString());
+            float interets           = float.Parse(grid.Rows[20].Cells[1].Value.ToString());
+            float fraisBancaires     = float.Parse(grid.Rows[21].Cells[1].Value.ToString());
+            float transport          = float.Parse(grid.Rows[22].Cells[1].Value.ToString());
+            
+            float total = matieresPremieres + emballages + salaires + servicesExterieurs +
                            fournitures + reparations + location + telephone + electricite + 
                            taxes + interets + fraisBancaires + transport;
 
@@ -260,14 +260,14 @@ namespace CasaEcologieSysInfo.Classes
             using (CasaDBEntities db = new CasaDBEntities())
             {
                 // Salaires liés à la production
-                var paiementSalaires = (from ps in db.EvePaiementEmployes
+                float paiementSalaires = (from ps in db.EvePaiementEmployes
                                               join d in db.EveDecaissements on ps.CodePaiementEmploye equals d.CodePaiementEmploye
                                               where d.DateDecaissement >= debut.Value.Date
                                               where d.DateDecaissement <= fin.Value.Date
-                                              select (decimal?)d.Montant).Sum() ?? 0m;
+                                              select (float?)d.Montant).Sum() ?? 0;
 
                 // Les salaires indirects non liés à la production
-                var autresSalaires = Decimal.Parse(DepenseServiceFourniture(debut, fin, "Autres Salaires"));
+                float autresSalaires = float.Parse(DepenseServiceFourniture(debut, fin, "Autres Salaires"));
 
                 return (paiementSalaires + autresSalaires).ToString("n0");
             }
@@ -277,13 +277,13 @@ namespace CasaEcologieSysInfo.Classes
         {
             using (CasaDBEntities db = new CasaDBEntities())
             {
-                var achatEmballages = (from amp in db.EveReceptionMatieresPremieres
+                float achatEmballages = (from amp in db.EveReceptionMatieresPremieres
                                               join d in db.EveDecaissements on amp.CodeReceptionMatierePremiere equals d.CodeReceptionMatierePremiere
                                               join mp in db.ResStockMatieresPremieres on amp.CodeMatierePremiere equals mp.CodeMatierePremiere
                                               where mp.TypeMatiere == "emballage"
                                               where d.DateDecaissement >= debut.Value.Date
                                               where d.DateDecaissement <= fin.Value.Date
-                                              select (decimal?)d.Montant).Sum() ?? 0m;
+                                              select (float?)d.Montant).Sum() ?? 0;
 
                 return achatEmballages.ToString("n0");
             }
@@ -293,24 +293,24 @@ namespace CasaEcologieSysInfo.Classes
         {
             using (CasaDBEntities db = new CasaDBEntities())
             {
-                var achatMatieresPremieres = (from amp in db.EveReceptionMatieresPremieres
+                float achatMatieresPremieres = (from amp in db.EveReceptionMatieresPremieres
                                               join d in db.EveDecaissements on amp.CodeReceptionMatierePremiere equals d.CodeReceptionMatierePremiere
                                               join mp in db.ResStockMatieresPremieres on amp.CodeMatierePremiere equals mp.CodeMatierePremiere
                                               where mp.TypeMatiere != "emballage"
                                               where d.DateDecaissement >= debut.Value.Date
                                               where d.DateDecaissement <= fin.Value.Date
-                                              select (decimal?)d.Montant).Sum() ?? 0m;
+                                              select (float?)d.Montant).Sum() ?? 0;
 
-                var remboursementDettesFournisseurs = (from d in db.EveDecaissements
+                float remboursementDettesFournisseurs = (from d in db.EveDecaissements
                                                        where d.CodeFournisseurMatierePremiere != null
                                                        where d.CodeReceptionMatierePremiere == null
                                                        where d.DateDecaissement >= debut.Value.Date
                                                        where d.DateDecaissement <= fin.Value.Date
-                                                       select (decimal?)d.Montant).Sum() ?? 0m;
+                                                       select (float?)d.Montant).Sum() ?? 0;
 
                 // Le coût du gaz utilisé dans la production. Pour faciliter l'exploitation des données,
                 // les dépenses de gaz ont été ajoutées à la table ResServicesFournitures.
-                var gaz = Decimal.Parse(DepenseServiceFourniture(debut, fin, "Gaz"));
+                float gaz = float.Parse(DepenseServiceFourniture(debut, fin, "Gaz"));
 
                 return (achatMatieresPremieres + remboursementDettesFournisseurs + gaz).ToString("n0");
             }
@@ -320,10 +320,10 @@ namespace CasaEcologieSysInfo.Classes
         {
             using (CasaDBEntities db = new CasaDBEntities())
             {
-                var remboursements = (from r in db.EveEncaissementsCreances
+                float remboursements = (from r in db.EveEncaissementsCreances
                                   where r.DateEncaissement >= debut.Value.Date
                                   where r.DateEncaissement <= fin.Value.Date
-                                  select (decimal?)r.MontantEncaisse).Sum() ?? 0m;
+                                  select (float?)r.MontantEncaisse).Sum() ?? 0;
 
                 return remboursements.ToString("n0");
             }

@@ -14,7 +14,7 @@ namespace CasaEcologieSysInfo
     {
         private bool isCollapsed = true;
         private string role;
-        /*
+        
         public frmAccueil(string userRole)
         {
             SqlServerTypes.Utilities.LoadNativeAssemblies(AppDomain.CurrentDomain.BaseDirectory);
@@ -22,11 +22,10 @@ namespace CasaEcologieSysInfo
             role = userRole;
             UC_TableauDeBord tb = new UC_TableauDeBord();
             AddControlsToPanel(tb);
-            Conversion.AjouterNumeroVersion(labelAccueil);
-
-            
+            Conversion.AjouterNumeroVersion(labelAccueil);        
         }
-        */
+        
+        /*
         public frmAccueil()
         {
             SqlServerTypes.Utilities.LoadNativeAssemblies(AppDomain.CurrentDomain.BaseDirectory);
@@ -38,7 +37,7 @@ namespace CasaEcologieSysInfo
 
 
         }
-
+        */
         private void AddControlsToPanel(Control c)
         {
             pnlPrincipal.Controls.Clear();
@@ -133,15 +132,15 @@ namespace CasaEcologieSysInfo
 
         private void BtnUtilisateurs_Click(object sender, EventArgs e)
         {            
-            //if (SuperAdmin())
-            //{
+            if (SuperAdmin())
+            {
                 Pages.UC_Utilisateurs user = new Pages.UC_Utilisateurs();
                 AddControlsToPanel(user);
-            //}
-            //else
-            //{
-                //MessageBox.Show("Vous n'avez pas accces à cette page.");
-            //}         
+            }
+            else
+            {
+                MessageBox.Show("Vous n'avez pas accces à cette page.");
+            }         
         }
 
         private void BtnEtatsFinanciers_Click(object sender, EventArgs e)
@@ -324,7 +323,7 @@ namespace CasaEcologieSysInfo
             AddControlsToPanel(trv);
         }
 
-        private void button8_Click(object sender, EventArgs e)
+        private void Button8_Click(object sender, EventArgs e)
         {
             Pages.UC_RegistreImmobilisations imo = new Pages.UC_RegistreImmobilisations();
             AddControlsToPanel(imo);

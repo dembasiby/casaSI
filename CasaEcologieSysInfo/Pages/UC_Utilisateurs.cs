@@ -47,13 +47,36 @@ namespace CasaEcologieSysInfo.Pages
                             select u).FirstOrDefault();
 
                 txtUserAModifier.Text = user.NomUtilisateur;
-                txtPasswordAChanger.Text = user.MotDePasse;
+                //txtNouveauMotDePasse.Text = user.MotDePasse;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Pas de données utilisateurs disponibles: " + ex.Message);
             }
 
+        }
+
+        private bool ValidateUserInfo()
+        {
+            if (txtUsername.Text.Trim().Length < 4)
+            {
+                MessageBox.Show("Le nom d'utilisateur doit avoir au moins quatre (4) caractères.");
+                return false;
+            }
+            else if (txtPassword.Text.Trim().Length < 6)
+            {
+                MessageBox.Show("Le mot de passe doit avoir au moins six (6) caractères.");
+                return false;
+            }
+            else if (txtPassword.Text != txtPasswordConfirm.Text)
+            {
+                MessageBox.Show("Le mot de passe n'est pas identique dans les deux champs 'mot de passe' et 'confirmation mot de passe'.");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
 
         private void BtnNouvelUtilisateur_Click(object sender, EventArgs e)
@@ -63,23 +86,8 @@ namespace CasaEcologieSysInfo.Pages
                 int userCode = Convert.ToInt32(cbxListeEmployes.SelectedValue.ToString());
                 bool usernameNotEmpty = txtUsername.Text.Trim().Length > 0;
                 bool passwordAdequateLength = txtPassword.Text.Trim().Length > 0;
-
-                if (txtUsername.Text.Trim().Length < 4)
-                {
-                    MessageBox.Show("Le nom d'utilisateur doit avoir au moins quatre (4) caractères.");
-                    return;
-                }
-                else if (txtPassword.Text.Trim().Length < 6)
-                {
-                    MessageBox.Show("Le mot de passe doit avoir au moins six (6) caractères.");
-                    return;
-                }
-                else if (txtPassword.Text != txtPasswordConfirm.Text)
-                {
-                    MessageBox.Show("Le mot de passe n'est pas identique dans les deux champs 'mot de passe' et 'confirmation mot de passe'.");
-                    return;
-                }
-                else
+               
+                if (ValidateUserInfo())
                 {
                     Utilisateur user = new Utilisateur
                     {
@@ -93,7 +101,7 @@ namespace CasaEcologieSysInfo.Pages
                     db.SaveChanges();
 
                     MessageBox.Show("Le nouvel utilisateur a été enregistré.");
-
+                    LoadUserData();
                     LoadData();
                 }
             }
@@ -125,14 +133,21 @@ namespace CasaEcologieSysInfo.Pages
         private void BtnModifierUser_Click(object sender, EventArgs e)
         {
             int id = Convert.ToInt32(cbxListeAChanger.SelectedValue);
-
             Utilisateur user = db.Utilisateurs.Find(id);
-            user.NomUtilisateur = txtUserAModifier.Text;
-            user.MotDePasse = txtPasswordAChanger.Text;
 
-            db.SaveChanges();
-            LoadData();
-            MessageBox.Show("Les données de l'utilisateur ont été modifiées.");
+            if (user.MotDePasse == txtAncienMotDePasse.Text)
+            {
+                user.NomUtilisateur = txtUserAModifier.Text;
+                user.MotDePasse = txtNouveauMotDePasse.Text;
+
+                db.SaveChanges();
+                LoadData();
+                MessageBox.Show("Les données de l'utilisateur ont été modifiées.");
+            }
+            else
+            {
+                MessageBox.Show("Merci de fournir d'abord le mot de passe actuel avant d'en proposer un nouveau.");
+            }
         }
 
         private void BtnSupprimerUser_Click(object sender, EventArgs e)
@@ -141,8 +156,16 @@ namespace CasaEcologieSysInfo.Pages
             {
                 int id = Convert.ToInt32(cbxListeAChanger.SelectedValue);
                 Utilisateur user = db.Utilisateurs.Find(id);
-                db.Utilisateurs.Remove(user);
-                db.SaveChanges();
+
+                if (user.Role != "admin")
+                {
+                    db.Utilisateurs.Remove(user);
+                    db.SaveChanges();
+                }
+                else
+                {
+                    MessageBox.Show("Vous ne pouvez supprimer cet utilisateur.");
+                }
             }
             catch (Exception) 
             {

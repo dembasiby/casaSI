@@ -1044,7 +1044,7 @@
             this.button8.TabIndex = 5;
             this.button8.Text = "Registre des immobilisations";
             this.button8.UseVisualStyleBackColor = false;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
+            this.button8.Click += new System.EventHandler(this.Button8_Click);
             // 
             // pictureBox11
             // 

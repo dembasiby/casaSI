@@ -50,11 +50,13 @@
             this.btnModifierUser = new System.Windows.Forms.Button();
             this.btnChargerListe = new System.Windows.Forms.Button();
             this.btnSupprimerUser = new System.Windows.Forms.Button();
-            this.txtPasswordAChanger = new System.Windows.Forms.TextBox();
+            this.txtNouveauMotDePasse = new System.Windows.Forms.TextBox();
             this.txtUserAModifier = new System.Windows.Forms.TextBox();
             this.cbxListeAChanger = new System.Windows.Forms.ComboBox();
             this.utilisateurBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ageEmployeBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.txtAncienMotDePasse = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListeUtilisateurs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ageEmployeBindingSource)).BeginInit();
@@ -133,6 +135,7 @@
             // 
             this.txtPasswordConfirm.Location = new System.Drawing.Point(214, 132);
             this.txtPasswordConfirm.Name = "txtPasswordConfirm";
+            this.txtPasswordConfirm.PasswordChar = '*';
             this.txtPasswordConfirm.Size = new System.Drawing.Size(274, 27);
             this.txtPasswordConfirm.TabIndex = 3;
             // 
@@ -140,6 +143,7 @@
             // 
             this.txtPassword.Location = new System.Drawing.Point(214, 98);
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(274, 27);
             this.txtPassword.TabIndex = 2;
             // 
@@ -203,18 +207,20 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Controls.Add(this.label8);
             this.groupBox3.Controls.Add(this.label7);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.btnModifierUser);
             this.groupBox3.Controls.Add(this.btnChargerListe);
             this.groupBox3.Controls.Add(this.btnSupprimerUser);
-            this.groupBox3.Controls.Add(this.txtPasswordAChanger);
+            this.groupBox3.Controls.Add(this.txtAncienMotDePasse);
+            this.groupBox3.Controls.Add(this.txtNouveauMotDePasse);
             this.groupBox3.Controls.Add(this.txtUserAModifier);
             this.groupBox3.Controls.Add(this.cbxListeAChanger);
             this.groupBox3.Location = new System.Drawing.Point(37, 306);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(430, 240);
+            this.groupBox3.Size = new System.Drawing.Size(465, 271);
             this.groupBox3.TabIndex = 29;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Gestion des utilisateurs";
@@ -222,11 +228,11 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(18, 149);
+            this.label8.Location = new System.Drawing.Point(18, 184);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(115, 21);
+            this.label8.Size = new System.Drawing.Size(192, 21);
             this.label8.TabIndex = 37;
-            this.label8.Text = "Mot de passe";
+            this.label8.Text = "Nouveau mot de passe";
             // 
             // label7
             // 
@@ -253,9 +259,9 @@
             this.btnModifierUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnModifierUser.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnModifierUser.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnModifierUser.Location = new System.Drawing.Point(22, 196);
+            this.btnModifierUser.Location = new System.Drawing.Point(22, 228);
             this.btnModifierUser.Name = "btnModifierUser";
-            this.btnModifierUser.Size = new System.Drawing.Size(149, 31);
+            this.btnModifierUser.Size = new System.Drawing.Size(188, 31);
             this.btnModifierUser.TabIndex = 36;
             this.btnModifierUser.Text = "Modifier";
             this.btnModifierUser.UseVisualStyleBackColor = false;
@@ -268,9 +274,9 @@
             this.btnChargerListe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnChargerListe.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnChargerListe.ForeColor = System.Drawing.Color.Black;
-            this.btnChargerListe.Location = new System.Drawing.Point(196, 26);
+            this.btnChargerListe.Location = new System.Drawing.Point(216, 26);
             this.btnChargerListe.Name = "btnChargerListe";
-            this.btnChargerListe.Size = new System.Drawing.Size(228, 31);
+            this.btnChargerListe.Size = new System.Drawing.Size(243, 31);
             this.btnChargerListe.TabIndex = 33;
             this.btnChargerListe.Text = "Charger la liste";
             this.btnChargerListe.UseVisualStyleBackColor = false;
@@ -283,7 +289,7 @@
             this.btnSupprimerUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSupprimerUser.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSupprimerUser.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnSupprimerUser.Location = new System.Drawing.Point(196, 196);
+            this.btnSupprimerUser.Location = new System.Drawing.Point(231, 228);
             this.btnSupprimerUser.Name = "btnSupprimerUser";
             this.btnSupprimerUser.Size = new System.Drawing.Size(228, 31);
             this.btnSupprimerUser.TabIndex = 36;
@@ -291,16 +297,17 @@
             this.btnSupprimerUser.UseVisualStyleBackColor = false;
             this.btnSupprimerUser.Click += new System.EventHandler(this.BtnSupprimerUser_Click);
             // 
-            // txtPasswordAChanger
+            // txtNouveauMotDePasse
             // 
-            this.txtPasswordAChanger.Location = new System.Drawing.Point(181, 149);
-            this.txtPasswordAChanger.Name = "txtPasswordAChanger";
-            this.txtPasswordAChanger.Size = new System.Drawing.Size(243, 27);
-            this.txtPasswordAChanger.TabIndex = 1;
+            this.txtNouveauMotDePasse.Location = new System.Drawing.Point(216, 184);
+            this.txtNouveauMotDePasse.Name = "txtNouveauMotDePasse";
+            this.txtNouveauMotDePasse.PasswordChar = '*';
+            this.txtNouveauMotDePasse.Size = new System.Drawing.Size(243, 27);
+            this.txtNouveauMotDePasse.TabIndex = 1;
             // 
             // txtUserAModifier
             // 
-            this.txtUserAModifier.Location = new System.Drawing.Point(181, 112);
+            this.txtUserAModifier.Location = new System.Drawing.Point(216, 112);
             this.txtUserAModifier.Name = "txtUserAModifier";
             this.txtUserAModifier.Size = new System.Drawing.Size(243, 27);
             this.txtUserAModifier.TabIndex = 1;
@@ -310,7 +317,7 @@
             this.cbxListeAChanger.DataSource = this.utilisateurBindingSource;
             this.cbxListeAChanger.DisplayMember = "CodeEmploye";
             this.cbxListeAChanger.FormattingEnabled = true;
-            this.cbxListeAChanger.Location = new System.Drawing.Point(181, 72);
+            this.cbxListeAChanger.Location = new System.Drawing.Point(216, 72);
             this.cbxListeAChanger.Name = "cbxListeAChanger";
             this.cbxListeAChanger.Size = new System.Drawing.Size(243, 29);
             this.cbxListeAChanger.TabIndex = 0;
@@ -324,6 +331,23 @@
             // ageEmployeBindingSource1
             // 
             this.ageEmployeBindingSource1.DataSource = typeof(CasaEcologieSysInfo.AgeEmploye);
+            // 
+            // txtAncienMotDePasse
+            // 
+            this.txtAncienMotDePasse.Location = new System.Drawing.Point(216, 145);
+            this.txtAncienMotDePasse.Name = "txtAncienMotDePasse";
+            this.txtAncienMotDePasse.PasswordChar = '*';
+            this.txtAncienMotDePasse.Size = new System.Drawing.Size(243, 27);
+            this.txtAncienMotDePasse.TabIndex = 1;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(18, 145);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(175, 21);
+            this.label9.TabIndex = 37;
+            this.label9.Text = "Ancien mot de passe";
             // 
             // UC_Utilisateurs
             // 
@@ -375,10 +399,12 @@
         private System.Windows.Forms.Button btnModifierUser;
         private System.Windows.Forms.Button btnChargerListe;
         private System.Windows.Forms.Button btnSupprimerUser;
-        private System.Windows.Forms.TextBox txtPasswordAChanger;
+        private System.Windows.Forms.TextBox txtNouveauMotDePasse;
         private System.Windows.Forms.TextBox txtUserAModifier;
         private System.Windows.Forms.ComboBox cbxListeAChanger;
         private System.Windows.Forms.BindingSource ageEmployeBindingSource1;
         private System.Windows.Forms.BindingSource utilisateurBindingSource;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtAncienMotDePasse;
     }
 }
