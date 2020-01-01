@@ -18,19 +18,6 @@ namespace CasaEcologieSysInfo
             Conversion.AjouterNumeroVersion(labelAccueil);        
         }
         
-        /*
-        public frmAccueil()
-        {
-            SqlServerTypes.Utilities.LoadNativeAssemblies(AppDomain.CurrentDomain.BaseDirectory);
-            InitializeComponent();
-            //role = userRole;
-            UC_TableauDeBord tb = new UC_TableauDeBord();
-            AddControlsToPanel(tb);
-            Conversion.AjouterNumeroVersion(labelAccueil);
-
-
-        }
-        */
         private void AddControlsToPanel(Control c)
         {
             pnlPrincipal.Controls.Clear();
@@ -63,8 +50,6 @@ namespace CasaEcologieSysInfo
                 }
             }
         }
-
-        
 
         private void Timer1_Tick(object sender, EventArgs e)
         {

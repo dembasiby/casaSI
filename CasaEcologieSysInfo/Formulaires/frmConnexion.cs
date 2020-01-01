@@ -1,10 +1,7 @@
 ﻿using Squirrel;
 using System;
-using System.Diagnostics;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Linq;
-using CasaEcologieSysInfo.Classes;
 
 namespace CasaEcologieSysInfo
 {
@@ -20,8 +17,7 @@ namespace CasaEcologieSysInfo
             Conversion.AjouterNumeroVersion(labelConn);
             VerifierMiseAJour();
         }
-
-        
+       
         private async void VerifierMiseAJour()
         {
             try
@@ -41,17 +37,12 @@ namespace CasaEcologieSysInfo
                 }
 
                 MessageBox.Show(message);
-            }
-            
+            }          
         }
         
         private void PictureBox2_Click(object sender, EventArgs e)
         {
             Application.Exit();
-        }
-
-        private void Connexion_MouseDown(object sender, MouseEventArgs e)
-        {
         }
 
         private void Button2_Click(object sender, EventArgs e)
@@ -61,14 +52,6 @@ namespace CasaEcologieSysInfo
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            /*
-            using (frmAccueil fn = new frmAccueil())
-            {
-                this.Hide();
-                fn.ShowDialog();
-            }
-            */
-            
              try
             {
                 var user = (from usr in db.Utilisateurs

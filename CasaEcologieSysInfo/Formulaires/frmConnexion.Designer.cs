@@ -208,7 +208,6 @@
             this.Name = "frmConnexion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Page de connexion";
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Connexion_MouseDown);
             this.pnlTopConnexion.ResumeLayout(false);
             this.pnlTopConnexion.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
