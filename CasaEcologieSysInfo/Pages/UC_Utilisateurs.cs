@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CasaEcologieSysInfo.Classes;
+using System;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
@@ -56,7 +57,7 @@ namespace CasaEcologieSysInfo.Pages
 
         }
 
-        private bool ValidateUserInfo()
+        private bool ValidateNewUserInfo()
         {
             if (txtUsername.Text.Trim().Length < 4)
             {
@@ -73,10 +74,8 @@ namespace CasaEcologieSysInfo.Pages
                 MessageBox.Show("Le mot de passe n'est pas identique dans les deux champs 'mot de passe' et 'confirmation mot de passe'.");
                 return false;
             }
-            else
-            {
-                return true;
-            }
+           
+            return true;
         }
 
         private void BtnNouvelUtilisateur_Click(object sender, EventArgs e)
@@ -86,14 +85,17 @@ namespace CasaEcologieSysInfo.Pages
                 int userCode = Convert.ToInt32(cbxListeEmployes.SelectedValue.ToString());
                 bool usernameNotEmpty = txtUsername.Text.Trim().Length > 0;
                 bool passwordAdequateLength = txtPassword.Text.Trim().Length > 0;
+                string password = "";
                
-                if (ValidateUserInfo())
+                if (ValidateNewUserInfo())
                 {
+                    password = Hashing.HashPassword(txtPassword.Text);
+                    MessageBox.Show(password);
                     Utilisateur user = new Utilisateur
                     {
                         CodeEmploye = userCode,
                         NomUtilisateur = txtUsername.Text,
-                        MotDePasse = txtPassword.Text,
+                        MotDePasse = password,
                         Role = "utilisateur"
                     };
 
@@ -134,11 +136,12 @@ namespace CasaEcologieSysInfo.Pages
         {
             int id = Convert.ToInt32(cbxListeAChanger.SelectedValue);
             Utilisateur user = db.Utilisateurs.Find(id);
+            string password = Hashing.HashPassword(txtNouveauMotDePasse.Text);
 
             if (user.MotDePasse == txtAncienMotDePasse.Text)
             {
                 user.NomUtilisateur = txtUserAModifier.Text;
-                user.MotDePasse = txtNouveauMotDePasse.Text;
+                user.MotDePasse = password;
 
                 db.SaveChanges();
                 LoadData();

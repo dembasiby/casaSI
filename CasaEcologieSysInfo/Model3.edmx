@@ -351,7 +351,7 @@
           </Key>
           <Property Name="CodeEmploye" Type="int" Nullable="false" />
           <Property Name="NomUtilisateur" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="MotDePasse" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MotDePasse" Type="varchar" MaxLength="70" Nullable="false" />
           <Property Name="Role" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <Association Name="FK_EveAcquisitionServicesFournitures_AgeEmployes">
@@ -2656,7 +2656,7 @@
           </Key>
           <Property Name="CodeEmploye" Type="Int32" Nullable="false" />
           <Property Name="NomUtilisateur" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="MotDePasse" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MotDePasse" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="false" />
           <Property Name="Role" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="AgeEmploye" Relationship="CasaDBModel.FK_Utilisateurs_AgeEmployes" FromRole="Utilisateur" ToRole="AgeEmploye" />
         </EntityType>

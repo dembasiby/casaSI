@@ -44,19 +44,19 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.btnModifierUser = new System.Windows.Forms.Button();
             this.btnChargerListe = new System.Windows.Forms.Button();
             this.btnSupprimerUser = new System.Windows.Forms.Button();
+            this.txtAncienMotDePasse = new System.Windows.Forms.TextBox();
             this.txtNouveauMotDePasse = new System.Windows.Forms.TextBox();
             this.txtUserAModifier = new System.Windows.Forms.TextBox();
             this.cbxListeAChanger = new System.Windows.Forms.ComboBox();
             this.utilisateurBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ageEmployeBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.txtAncienMotDePasse = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListeUtilisateurs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ageEmployeBindingSource)).BeginInit();
@@ -135,7 +135,6 @@
             // 
             this.txtPasswordConfirm.Location = new System.Drawing.Point(214, 132);
             this.txtPasswordConfirm.Name = "txtPasswordConfirm";
-            this.txtPasswordConfirm.PasswordChar = '*';
             this.txtPasswordConfirm.Size = new System.Drawing.Size(274, 27);
             this.txtPasswordConfirm.TabIndex = 3;
             // 
@@ -143,7 +142,6 @@
             // 
             this.txtPassword.Location = new System.Drawing.Point(214, 98);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(274, 27);
             this.txtPassword.TabIndex = 2;
             // 
@@ -225,6 +223,15 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Gestion des utilisateurs";
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(18, 145);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(175, 21);
+            this.label9.TabIndex = 37;
+            this.label9.Text = "Ancien mot de passe";
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -297,6 +304,14 @@
             this.btnSupprimerUser.UseVisualStyleBackColor = false;
             this.btnSupprimerUser.Click += new System.EventHandler(this.BtnSupprimerUser_Click);
             // 
+            // txtAncienMotDePasse
+            // 
+            this.txtAncienMotDePasse.Location = new System.Drawing.Point(216, 145);
+            this.txtAncienMotDePasse.Name = "txtAncienMotDePasse";
+            this.txtAncienMotDePasse.PasswordChar = '*';
+            this.txtAncienMotDePasse.Size = new System.Drawing.Size(243, 27);
+            this.txtAncienMotDePasse.TabIndex = 1;
+            // 
             // txtNouveauMotDePasse
             // 
             this.txtNouveauMotDePasse.Location = new System.Drawing.Point(216, 184);
@@ -331,23 +346,6 @@
             // ageEmployeBindingSource1
             // 
             this.ageEmployeBindingSource1.DataSource = typeof(CasaEcologieSysInfo.AgeEmploye);
-            // 
-            // txtAncienMotDePasse
-            // 
-            this.txtAncienMotDePasse.Location = new System.Drawing.Point(216, 145);
-            this.txtAncienMotDePasse.Name = "txtAncienMotDePasse";
-            this.txtAncienMotDePasse.PasswordChar = '*';
-            this.txtAncienMotDePasse.Size = new System.Drawing.Size(243, 27);
-            this.txtAncienMotDePasse.TabIndex = 1;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(18, 145);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(175, 21);
-            this.label9.TabIndex = 37;
-            this.label9.Text = "Ancien mot de passe";
             // 
             // UC_Utilisateurs
             // 

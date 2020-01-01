@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Linq;
+using CasaEcologieSysInfo.Classes;
 
 namespace CasaEcologieSysInfo
 {
@@ -73,12 +74,18 @@ namespace CasaEcologieSysInfo
                 var user = (from usr in db.Utilisateurs
                             where usr.NomUtilisateur == txtNomUtilisateur.Text
                             where usr.AgeEmploye.Actif == true
-                            where usr.MotDePasse == txtMotDePasse.Text
-                            select usr.Role).FirstOrDefault();
+                            select usr).FirstOrDefault();
 
-                if (!user.Equals(null))
+                string utilisateur = null;
+
+                if (Hashing.ValidatePassword(txtMotDePasse.Text, user.MotDePasse))
                 {
-                    using (frmAccueil fn = new frmAccueil(user))
+                    utilisateur = user.Role;
+                }
+
+                if (!utilisateur.Equals(null))
+                {
+                    using (frmAccueil fn = new frmAccueil(utilisateur))
                     {
                         this.Hide();
                         fn.ShowDialog();
