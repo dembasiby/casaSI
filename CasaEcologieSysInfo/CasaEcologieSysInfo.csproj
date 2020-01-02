@@ -359,6 +359,18 @@
     <Compile Include="Formulaires\frmNouveauProduitFiniOuSemiFini.Designer.cs">
       <DependentUpon>frmNouveauProduitFiniOuSemiFini.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Corrections\UC_UpdateProduction.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\Corrections\UC_UpdateProduction.Designer.cs">
+      <DependentUpon>UC_UpdateProduction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Corrections\UC_UpdateVentes.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\Corrections\UC_UpdateVentes.Designer.cs">
+      <DependentUpon>UC_UpdateVentes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pages\UC_AutreEncaissementDeFonds.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -581,6 +593,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formulaires\frmNouveauProduitFiniOuSemiFini.resx">
       <DependentUpon>frmNouveauProduitFiniOuSemiFini.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Corrections\UC_UpdateProduction.resx">
+      <DependentUpon>UC_UpdateProduction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Corrections\UC_UpdateVentes.resx">
+      <DependentUpon>UC_UpdateVentes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\UC_AutreEncaissementDeFonds.resx">
       <DependentUpon>UC_AutreEncaissementDeFonds.cs</DependentUpon>

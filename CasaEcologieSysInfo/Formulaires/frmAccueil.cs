@@ -101,7 +101,20 @@ namespace CasaEcologieSysInfo
             tmrTresorerie.Start();
         }
 
-  
+        private void TmrProduction_Tick(object sender, EventArgs e)
+        {
+            SetTimer(pnlProduction, tmrProduction);
+        }
+
+        private void BtnProduction_Click(object sender, EventArgs e)
+        {
+            tmrProduction.Start();
+        }
+
+        private void TmrCorrections_Tick(object sender, EventArgs e)
+        {
+            SetTimer(pnlCorrections, tmrCorrections);
+        }
 
         private bool SuperAdmin()
         {
@@ -117,7 +130,7 @@ namespace CasaEcologieSysInfo
             }
             else
             {
-                MessageBox.Show("Vous n'avez pas accces à cette page.");
+                MessageBox.Show("Vous n'avez pas accès à cette page.");
             }         
         }
 
@@ -126,16 +139,6 @@ namespace CasaEcologieSysInfo
             Pages.UC_EtatsFinanciers efm = new Pages.UC_EtatsFinanciers();
             AddControlsToPanel(efm);
 
-        }
-
-        private void TmrProduction_Tick(object sender, EventArgs e)
-        {
-            SetTimer(pnlProduction, tmrProduction);
-        }
-
-        private void BtnProduction_Click(object sender, EventArgs e)
-        {
-            tmrProduction.Start();
         }
 
         private void BtnNouvelleVente_Click(object sender, EventArgs e)
@@ -306,5 +309,45 @@ namespace CasaEcologieSysInfo
             Pages.UC_RegistreImmobilisations imo = new Pages.UC_RegistreImmobilisations();
             AddControlsToPanel(imo);
         }
+
+        private void BtnUpdates_Click(object sender, EventArgs e)
+        {
+            if (SuperAdmin())
+            {
+                tmrCorrections.Start();
+            }
+            else
+            {
+                MessageBox.Show("Vous n'avez pas accès à cette page.");
+            }
+        }
+
+        private void BtnUpdateVentes_Click(object sender, EventArgs e)
+        {
+            Pages.Corrections.UC_UpdateVentes uVtes = new Pages.Corrections.UC_UpdateVentes();
+            AddControlsToPanel(uVtes);
+        }
+
+        private void BtnUpdateProduction_Click(object sender, EventArgs e)
+        {
+            Pages.Corrections.UC_UpdateProduction uProd = new Pages.Corrections.UC_UpdateProduction();
+            AddControlsToPanel(uProd);
+        }
+
+        private void BtnUpdateAchatMatPrem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnUpdateAchatServiceFourniture_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnUpdateAchatEquipInfrastructure_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

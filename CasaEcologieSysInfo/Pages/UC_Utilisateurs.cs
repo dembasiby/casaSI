@@ -90,7 +90,7 @@ namespace CasaEcologieSysInfo.Pages
                 if (ValidateNewUserInfo())
                 {
                     password = Hashing.HashPassword(txtPassword.Text);
-                    MessageBox.Show(password);
+
                     Utilisateur user = new Utilisateur
                     {
                         CodeEmploye = userCode,
@@ -103,6 +103,9 @@ namespace CasaEcologieSysInfo.Pages
                     db.SaveChanges();
 
                     MessageBox.Show("Le nouvel utilisateur a été enregistré.");
+                    txtUsername.Clear();
+                    txtPassword.Clear();
+                    txtPasswordConfirm.Clear();
                     LoadUserData();
                     LoadData();
                 }
@@ -115,7 +118,7 @@ namespace CasaEcologieSysInfo.Pages
             
         }
 
-        private void BtnChargerListe_Click(object sender, EventArgs e)
+        private void ChargerLaListe()
         {
             utilisateurBindingSource.DataSource = (from em in db.AgeEmployes
                                                    join u in db.Utilisateurs on em.CodeEmploye equals u.CodeEmploye
@@ -124,7 +127,11 @@ namespace CasaEcologieSysInfo.Pages
             cbxListeAChanger.DisplayMember = "PrenomNom";
             cbxListeAChanger.ValueMember = "CodeEmploye";
             LoadUserData();
+        }
 
+        private void BtnChargerListe_Click(object sender, EventArgs e)
+        {
+            ChargerLaListe();
         }
 
         private void CbxListeAChanger_SelectedIndexChanged(object sender, EventArgs e)
@@ -160,14 +167,18 @@ namespace CasaEcologieSysInfo.Pages
                 int id = Convert.ToInt32(cbxListeAChanger.SelectedValue);
                 Utilisateur user = db.Utilisateurs.Find(id);
 
-                if (user.Role != "admin")
+                if (user.Role != "super admin")
                 {
-                    db.Utilisateurs.Remove(user);
-                    db.SaveChanges();
+                    if (MessageBox.Show("Voulez-vous vraiment supprimer cet utilisateur?", "Message", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        db.Utilisateurs.Remove(user);
+                        db.SaveChanges();
+                        ChargerLaListe();
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Vous ne pouvez supprimer cet utilisateur.");
+                    MessageBox.Show("Vous ne pouvez supprimer l'administrateur.");
                 }
             }
             catch (Exception) 

@@ -26,6 +26,16 @@ namespace CasaEcologieSysInfo
             return true;
         }
 
+        public static bool EstUnChiffre(string nombre)
+        {
+            return int.TryParse(nombre, out int n);
+        }
+
+        public static bool ChampsVide(string s)
+        {
+            return string.IsNullOrEmpty(s);
+        }
+
         public static bool MontantEstValide(string montant)
         {
             var estUnChiffre = int.TryParse(montant, out int n);
