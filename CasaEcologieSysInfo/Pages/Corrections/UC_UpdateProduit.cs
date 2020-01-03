@@ -1,18 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CasaEcologieSysInfo.Pages.Corrections
 {
-    public partial class UC_UpdateVentes : UserControl
+    public partial class UC_UpdateProduit : UserControl
     {
-        public UC_UpdateVentes()
+        public UC_UpdateProduit()
         {
             InitializeComponent();
         }
@@ -39,7 +34,6 @@ namespace CasaEcologieSysInfo.Pages.Corrections
             }
             catch (Exception)
             {
-
                 MessageBox.Show("Code produit non trouvé.");
                 return 0;
             }         

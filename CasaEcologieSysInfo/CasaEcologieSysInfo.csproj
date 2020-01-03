@@ -359,17 +359,41 @@
     <Compile Include="Formulaires\frmNouveauProduitFiniOuSemiFini.Designer.cs">
       <DependentUpon>frmNouveauProduitFiniOuSemiFini.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Corrections\UC_UpdateAchatEquipInfrastructure.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\Corrections\UC_UpdateAchatEquipInfrastructure.Designer.cs">
+      <DependentUpon>UC_UpdateAchatEquipInfrastructure.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Corrections\UC_UpdateAchatFournService.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\Corrections\UC_UpdateAchatFournService.Designer.cs">
+      <DependentUpon>UC_UpdateAchatFournService.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Corrections\UC_UpdateAchatMatPremiere.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\Corrections\UC_UpdateAchatMatPremiere.Designer.cs">
+      <DependentUpon>UC_UpdateAchatMatPremiere.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Corrections\UC_UpdateProduction.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Pages\Corrections\UC_UpdateProduction.Designer.cs">
       <DependentUpon>UC_UpdateProduction.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Corrections\UC_UpdateVentes.cs">
+    <Compile Include="Pages\Corrections\UC_UpdateProduit.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Pages\Corrections\UC_UpdateVentes.Designer.cs">
-      <DependentUpon>UC_UpdateVentes.cs</DependentUpon>
+    <Compile Include="Pages\Corrections\UC_UpdateProduit.Designer.cs">
+      <DependentUpon>UC_UpdateProduit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Corrections\UC_UpdateVente.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\Corrections\UC_UpdateVente.Designer.cs">
+      <DependentUpon>UC_UpdateVente.cs</DependentUpon>
     </Compile>
     <Compile Include="Pages\UC_AutreEncaissementDeFonds.cs">
       <SubType>UserControl</SubType>
@@ -597,8 +621,11 @@
     <EmbeddedResource Include="Pages\Corrections\UC_UpdateProduction.resx">
       <DependentUpon>UC_UpdateProduction.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pages\Corrections\UC_UpdateVentes.resx">
-      <DependentUpon>UC_UpdateVentes.cs</DependentUpon>
+    <EmbeddedResource Include="Pages\Corrections\UC_UpdateProduit.resx">
+      <DependentUpon>UC_UpdateProduit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Corrections\UC_UpdateVente.resx">
+      <DependentUpon>UC_UpdateVente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\UC_AutreEncaissementDeFonds.resx">
       <DependentUpon>UC_AutreEncaissementDeFonds.cs</DependentUpon>

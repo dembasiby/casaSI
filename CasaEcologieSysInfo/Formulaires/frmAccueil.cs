@@ -322,10 +322,17 @@ namespace CasaEcologieSysInfo
             }
         }
 
-        private void BtnUpdateVentes_Click(object sender, EventArgs e)
+        private void BtnUpdateProduit_Click(object sender, EventArgs e)
         {
-            Pages.Corrections.UC_UpdateVentes uVtes = new Pages.Corrections.UC_UpdateVentes();
-            AddControlsToPanel(uVtes);
+            Pages.Corrections.UC_UpdateProduit uPrdt = new Pages.Corrections.UC_UpdateProduit();
+            AddControlsToPanel(uPrdt);
+        }
+
+
+        private void BtnUpdateVente_Click(object sender, EventArgs e)
+        {
+            Pages.Corrections.UC_UpdateVente uVte = new Pages.Corrections.UC_UpdateVente();
+            AddControlsToPanel(uVte);
         }
 
         private void BtnUpdateProduction_Click(object sender, EventArgs e)
@@ -336,17 +343,20 @@ namespace CasaEcologieSysInfo
 
         private void BtnUpdateAchatMatPrem_Click(object sender, EventArgs e)
         {
-
+            Pages.Corrections.UC_UpdateAchatMatPremiere uAMP = new Pages.Corrections.UC_UpdateAchatMatPremiere();
+            AddControlsToPanel(uAMP);
         }
 
         private void BtnUpdateAchatServiceFourniture_Click(object sender, EventArgs e)
         {
-
+            Pages.Corrections.UC_UpdateAchatFournService uAFS = new Pages.Corrections.UC_UpdateAchatFournService();
+            AddControlsToPanel(uAFS);
         }
 
         private void BtnUpdateAchatEquipInfrastructure_Click(object sender, EventArgs e)
         {
-
+            Pages.Corrections.UC_UpdateAchatEquipInfrastructure uAEI = new Pages.Corrections.UC_UpdateAchatEquipInfrastructure();
+            AddControlsToPanel(uAEI);
         }
 
     }
