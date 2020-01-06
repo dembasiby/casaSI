@@ -143,16 +143,31 @@ namespace CasaEcologieSysInfo.Pages
         {
             int id = Convert.ToInt32(cbxListeAChanger.SelectedValue);
             Utilisateur user = db.Utilisateurs.Find(id);
-            string password = Hashing.HashPassword(txtNouveauMotDePasse.Text);
 
-            if (user.MotDePasse == txtAncienMotDePasse.Text)
+            if (Hashing.ValidatePassword(txtAncienMotDePasse.Text, user.MotDePasse))
             {
-                user.NomUtilisateur = txtUserAModifier.Text;
-                user.MotDePasse = password;
+                if (txtUserAModifier.Text.Trim().Length >= 4)
+                {
+                    user.NomUtilisateur = txtUserAModifier.Text;
 
-                db.SaveChanges();
-                LoadData();
-                MessageBox.Show("Les données de l'utilisateur ont été modifiées.");
+                    if (!string.IsNullOrEmpty(txtNouveauMotDePasse.Text) && txtNouveauMotDePasse.Text.Length >= 6)
+                    {
+                        string password = Hashing.HashPassword(txtNouveauMotDePasse.Text);
+                        user.MotDePasse = password;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Le nouveau mot de passe n'est pas valide.");
+                    }
+
+                    db.SaveChanges();
+                    LoadData();
+                    MessageBox.Show("Les données de l'utilisateur ont été modifiées.");
+                }
+                else
+                {
+                    MessageBox.Show("Merci de fournir un nom d'utilisateur valide (au moins 4 charactères).");
+                }
             }
             else
             {
