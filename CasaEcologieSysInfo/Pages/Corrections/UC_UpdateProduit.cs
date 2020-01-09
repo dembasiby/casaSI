@@ -91,6 +91,7 @@ namespace CasaEcologieSysInfo.Pages.Corrections
                         produit.StockProduit = int.Parse(txtStockInitial.Text);
                         produit.CoutUnitaire = int.Parse(txtCoutUnitaire.Text);
                         produit.PrixDeVenteStandard = int.Parse(txtPrixDeVente.Text);
+
                         db.SaveChanges();
                         MessageBox.Show("Le produit a été mis à jour.");
                         LoadData();

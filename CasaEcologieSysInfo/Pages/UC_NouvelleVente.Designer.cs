@@ -554,7 +554,7 @@
             this.btnVente.TabIndex = 4;
             this.btnVente.Text = "Ajouter à la facture";
             this.btnVente.UseVisualStyleBackColor = false;
-            this.btnVente.Click += new System.EventHandler(this.BtnVente_Click);
+            this.btnVente.Click += new System.EventHandler(this.BtnAjouterProduitAuPanier_Click);
             // 
             // label5
             // 

@@ -1,11 +1,6 @@
-﻿ using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
+﻿using System;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CasaEcologieSysInfo
@@ -72,7 +67,7 @@ namespace CasaEcologieSysInfo
            
         }
 
-        private void BtnVente_Click(object sender, EventArgs e)
+        private void BtnAjouterProduitAuPanier_Click(object sender, EventArgs e)
         {
             if (Validation.VerifierChampsMontant(txtQuantite.Text) && Validation.VerifierChampsMontant(cbxPUProduit.Text))
             {
@@ -114,7 +109,7 @@ namespace CasaEcologieSysInfo
             return total;
         }
 
-        private void SaveSale(EveVente vente, ListViewItem li)
+        private void EnregistrerVenteDUnProduit(EveVente vente, ListViewItem li)
         {
             if (int.Parse(li.SubItems[1].Text) >= 1 && int.Parse(li.SubItems[3].Text) >= 1)
             {
@@ -157,7 +152,7 @@ namespace CasaEcologieSysInfo
 
                 for (int i = 0; i < listView1.Items.Count; i++)
                 {
-                    SaveSale(vente, listView1.Items[i]);
+                    EnregistrerVenteDUnProduit(vente, listView1.Items[i]);
                 }
 
 
@@ -270,12 +265,12 @@ namespace CasaEcologieSysInfo
             {
                 var checkNumber = int.TryParse(listView1.FocusedItem.SubItems[1].Text, out int result);
 
-                var total = Convert.ToInt32(listView1.FocusedItem.SubItems[1].Text);
+                var quantite = Convert.ToInt32(listView1.FocusedItem.SubItems[1].Text);
                 var stock = int.Parse(txtSoldeStockProduit.Text);
 
                 listView1.FocusedItem.Remove();
 
-                stock += total;
+                stock += quantite;
                 txtSoldeStockProduit.Text = stock.ToString();
                 lblTotalFacture.Text = TotalFacture().ToString("c0");
             }
