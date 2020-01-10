@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CasaEcologieSysInfo.Classes;
+using System;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
@@ -108,27 +109,7 @@ namespace CasaEcologieSysInfo
 
             return total;
         }
-
-        private void EnregistrerVenteDUnProduit(EveVente vente, ListViewItem li)
-        {
-            if (int.Parse(li.SubItems[1].Text) >= 1 && int.Parse(li.SubItems[3].Text) >= 1)
-            {
-                ResStockProduitsFini produit = db.ResStockProduitsFinis.FirstOrDefault(p => p.NomProduit == li.Text);
-
-
-                var venteProduit = new EveVenteStockProduitsFini
-                {
-                    CodeVente = vente.CodeVente,
-                    CodeProduitFini = produit.CodeProduit,
-                    QuantiteProduitFini = int.Parse(li.SubItems[1].Text),
-                    Montant = int.Parse(li.SubItems[3].Text),
-                };
-
-                db.EveVenteStockProduitsFinis.Add(venteProduit);
-                db.SaveChanges();
-            }
-        }
-
+    
         private void BtnEnregistrerVente_Click(object sender, EventArgs e)
         {           
             AgeClient client = db.AgeClients.FirstOrDefault(c => c.NomClient == cbxNomClient.Text);
@@ -152,7 +133,11 @@ namespace CasaEcologieSysInfo
 
                 for (int i = 0; i < listView1.Items.Count; i++)
                 {
-                    EnregistrerVenteDUnProduit(vente, listView1.Items[i]);
+                   
+                    //EnregistrerVenteDUnProduit(vente, listView1.Items[i]);
+                    GestionVentes.EnregistrerNouvelleVenteDUnProduit(vente.CodeVente, listView1.Items[i].SubItems[0].Text, 
+                                                            listView1.Items[i].SubItems[1].Text, 
+                                                            listView1.Items[i].SubItems[3].Text);
                 }
 
 

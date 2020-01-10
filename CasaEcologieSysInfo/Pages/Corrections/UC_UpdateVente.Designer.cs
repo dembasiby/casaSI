@@ -29,18 +29,33 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label4 = new System.Windows.Forms.Label();
             this.dtpDebut = new System.Windows.Forms.DateTimePicker();
             this.dtpFin = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnAjouterProduitAuPanier = new System.Windows.Forms.Button();
+            this.txtQuantite = new System.Windows.Forms.TextBox();
+            this.txtPU = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.cbxListeProduits = new System.Windows.Forms.ComboBox();
             this.dgvListeVentes = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.txtPrixAMettreAJour = new System.Windows.Forms.TextBox();
+            this.btnMettrePUAJour = new System.Windows.Forms.Button();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnAugmenterQuantite = new System.Windows.Forms.Button();
+            this.btnDiminuerQuantite = new System.Windows.Forms.Button();
             this.lvwPanier = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnEnleverProduitDuPanier = new System.Windows.Forms.Button();
             this.btnSupprimerVente = new System.Windows.Forms.Button();
             this.btnAnnulerCorrection = new System.Windows.Forms.Button();
             this.btnMettreVenteAJour = new System.Windows.Forms.Button();
@@ -58,30 +73,21 @@
             this.cbxListeClients = new System.Windows.Forms.ComboBox();
             this.ageClientBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dtpDateVente = new System.Windows.Forms.DateTimePicker();
-            this.btnEnleverProduitDuPanier = new System.Windows.Forms.Button();
-            this.btnAugmenterQuantite = new System.Windows.Forms.Button();
-            this.btnDiminuerQuantite = new System.Windows.Forms.Button();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.btnAjouterAuPanier = new System.Windows.Forms.Button();
-            this.txtQuantite = new System.Windows.Forms.TextBox();
-            this.txtPU = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.cbxListeProduits = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListeVentes)).BeginInit();
             this.groupBox2.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.resComptesTresorerieBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ageClientBindingSource)).BeginInit();
-            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(340, 17);
+            this.label4.Location = new System.Drawing.Point(340, 14);
             this.label4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(254, 25);
@@ -109,13 +115,99 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Controls.Add(this.dgvListeVentes);
-            this.groupBox1.Location = new System.Drawing.Point(3, 110);
+            this.groupBox1.Location = new System.Drawing.Point(3, 44);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(244, 473);
+            this.groupBox1.Size = new System.Drawing.Size(244, 549);
             this.groupBox1.TabIndex = 34;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Liste des ventes de la période";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.btnAjouterProduitAuPanier);
+            this.groupBox3.Controls.Add(this.txtQuantite);
+            this.groupBox3.Controls.Add(this.txtPU);
+            this.groupBox3.Controls.Add(this.label8);
+            this.groupBox3.Controls.Add(this.label10);
+            this.groupBox3.Controls.Add(this.label9);
+            this.groupBox3.Controls.Add(this.cbxListeProduits);
+            this.groupBox3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.Location = new System.Drawing.Point(23, 336);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(201, 218);
+            this.groupBox3.TabIndex = 40;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Ajouter un autre produit au panier";
+            // 
+            // btnAjouterProduitAuPanier
+            // 
+            this.btnAjouterProduitAuPanier.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
+            this.btnAjouterProduitAuPanier.FlatAppearance.BorderSize = 0;
+            this.btnAjouterProduitAuPanier.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAjouterProduitAuPanier.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAjouterProduitAuPanier.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnAjouterProduitAuPanier.Location = new System.Drawing.Point(5, 177);
+            this.btnAjouterProduitAuPanier.Name = "btnAjouterProduitAuPanier";
+            this.btnAjouterProduitAuPanier.Size = new System.Drawing.Size(181, 31);
+            this.btnAjouterProduitAuPanier.TabIndex = 45;
+            this.btnAjouterProduitAuPanier.Text = "Ajouter au panier";
+            this.btnAjouterProduitAuPanier.UseVisualStyleBackColor = false;
+            this.btnAjouterProduitAuPanier.Click += new System.EventHandler(this.BtnAjouterProduitAuPanier_Click);
+            // 
+            // txtQuantite
+            // 
+            this.txtQuantite.Location = new System.Drawing.Point(5, 150);
+            this.txtQuantite.Name = "txtQuantite";
+            this.txtQuantite.Size = new System.Drawing.Size(181, 23);
+            this.txtQuantite.TabIndex = 43;
+            // 
+            // txtPU
+            // 
+            this.txtPU.Location = new System.Drawing.Point(5, 104);
+            this.txtPU.Name = "txtPU";
+            this.txtPU.Size = new System.Drawing.Size(181, 23);
+            this.txtPU.TabIndex = 44;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(16, 36);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(117, 17);
+            this.label8.TabIndex = 40;
+            this.label8.Text = "Liste des produits";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(19, 130);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(65, 17);
+            this.label10.TabIndex = 41;
+            this.label10.Text = "Quantité";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(19, 84);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(81, 17);
+            this.label9.TabIndex = 42;
+            this.label9.Text = "Prix unitaire";
+            // 
+            // cbxListeProduits
+            // 
+            this.cbxListeProduits.DisplayMember = "NomClient";
+            this.cbxListeProduits.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxListeProduits.FormattingEnabled = true;
+            this.cbxListeProduits.Location = new System.Drawing.Point(5, 55);
+            this.cbxListeProduits.Name = "cbxListeProduits";
+            this.cbxListeProduits.Size = new System.Drawing.Size(183, 25);
+            this.cbxListeProduits.TabIndex = 39;
+            this.cbxListeProduits.ValueMember = "CodeClient";
+            this.cbxListeProduits.SelectedIndexChanged += new System.EventHandler(this.CbxListeProduits_SelectedIndexChanged);
             // 
             // dgvListeVentes
             // 
@@ -129,18 +221,17 @@
             this.dgvListeVentes.Name = "dgvListeVentes";
             this.dgvListeVentes.ReadOnly = true;
             this.dgvListeVentes.RowHeadersVisible = false;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvListeVentes.RowsDefaultCellStyle = dataGridViewCellStyle6;
-            this.dgvListeVentes.Size = new System.Drawing.Size(232, 403);
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvListeVentes.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvListeVentes.Size = new System.Drawing.Size(232, 279);
             this.dgvListeVentes.TabIndex = 0;
             this.dgvListeVentes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListeVentes_CellContentClick);
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.groupBox3);
+            this.groupBox2.Controls.Add(this.groupBox5);
+            this.groupBox2.Controls.Add(this.groupBox4);
             this.groupBox2.Controls.Add(this.lvwPanier);
-            this.groupBox2.Controls.Add(this.btnDiminuerQuantite);
-            this.groupBox2.Controls.Add(this.btnAugmenterQuantite);
             this.groupBox2.Controls.Add(this.btnEnleverProduitDuPanier);
             this.groupBox2.Controls.Add(this.btnSupprimerVente);
             this.groupBox2.Controls.Add(this.btnAnnulerCorrection);
@@ -157,12 +248,89 @@
             this.groupBox2.Controls.Add(this.cbxListeComptes);
             this.groupBox2.Controls.Add(this.cbxListeClients);
             this.groupBox2.Controls.Add(this.dtpDateVente);
-            this.groupBox2.Location = new System.Drawing.Point(253, 110);
+            this.groupBox2.Location = new System.Drawing.Point(253, 94);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(710, 473);
+            this.groupBox2.Size = new System.Drawing.Size(710, 499);
             this.groupBox2.TabIndex = 35;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "groupBox2";
+            this.groupBox2.Text = "Détails de la vente";
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.txtPrixAMettreAJour);
+            this.groupBox5.Controls.Add(this.btnMettrePUAJour);
+            this.groupBox5.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox5.Location = new System.Drawing.Point(441, 342);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(257, 121);
+            this.groupBox5.TabIndex = 40;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Mettre les prix unitaires à jour";
+            // 
+            // txtPrixAMettreAJour
+            // 
+            this.txtPrixAMettreAJour.Location = new System.Drawing.Point(33, 32);
+            this.txtPrixAMettreAJour.Name = "txtPrixAMettreAJour";
+            this.txtPrixAMettreAJour.Size = new System.Drawing.Size(181, 23);
+            this.txtPrixAMettreAJour.TabIndex = 44;
+            // 
+            // btnMettrePUAJour
+            // 
+            this.btnMettrePUAJour.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
+            this.btnMettrePUAJour.FlatAppearance.BorderSize = 0;
+            this.btnMettrePUAJour.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMettrePUAJour.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMettrePUAJour.ForeColor = System.Drawing.Color.Black;
+            this.btnMettrePUAJour.Location = new System.Drawing.Point(10, 67);
+            this.btnMettrePUAJour.Name = "btnMettrePUAJour";
+            this.btnMettrePUAJour.Size = new System.Drawing.Size(225, 31);
+            this.btnMettrePUAJour.TabIndex = 38;
+            this.btnMettrePUAJour.Text = "Mettre le prix à jour";
+            this.btnMettrePUAJour.UseVisualStyleBackColor = false;
+            this.btnMettrePUAJour.Click += new System.EventHandler(this.BtnMettrePUAJour_Click);
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.groupBox4.Controls.Add(this.btnAugmenterQuantite);
+            this.groupBox4.Controls.Add(this.btnDiminuerQuantite);
+            this.groupBox4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox4.Location = new System.Drawing.Point(441, 270);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(257, 61);
+            this.groupBox4.TabIndex = 40;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Mettre les quantités à jour";
+            // 
+            // btnAugmenterQuantite
+            // 
+            this.btnAugmenterQuantite.BackColor = System.Drawing.Color.DarkGreen;
+            this.btnAugmenterQuantite.FlatAppearance.BorderSize = 0;
+            this.btnAugmenterQuantite.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnAugmenterQuantite.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAugmenterQuantite.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnAugmenterQuantite.Location = new System.Drawing.Point(53, 22);
+            this.btnAugmenterQuantite.Name = "btnAugmenterQuantite";
+            this.btnAugmenterQuantite.Size = new System.Drawing.Size(37, 31);
+            this.btnAugmenterQuantite.TabIndex = 38;
+            this.btnAugmenterQuantite.Text = "+";
+            this.btnAugmenterQuantite.UseVisualStyleBackColor = false;
+            this.btnAugmenterQuantite.Click += new System.EventHandler(this.BtnAugmenterQuantite_Click);
+            // 
+            // btnDiminuerQuantite
+            // 
+            this.btnDiminuerQuantite.BackColor = System.Drawing.Color.Maroon;
+            this.btnDiminuerQuantite.FlatAppearance.BorderSize = 0;
+            this.btnDiminuerQuantite.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnDiminuerQuantite.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDiminuerQuantite.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnDiminuerQuantite.Location = new System.Drawing.Point(104, 22);
+            this.btnDiminuerQuantite.Name = "btnDiminuerQuantite";
+            this.btnDiminuerQuantite.Size = new System.Drawing.Size(37, 31);
+            this.btnDiminuerQuantite.TabIndex = 38;
+            this.btnDiminuerQuantite.Text = "-";
+            this.btnDiminuerQuantite.UseVisualStyleBackColor = false;
+            this.btnDiminuerQuantite.Click += new System.EventHandler(this.BtnDiminuerQuantite_Click);
             // 
             // lvwPanier
             // 
@@ -176,7 +344,7 @@
             this.lvwPanier.GridLines = true;
             this.lvwPanier.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.lvwPanier.HideSelection = false;
-            this.lvwPanier.Location = new System.Drawing.Point(6, 169);
+            this.lvwPanier.Location = new System.Drawing.Point(6, 195);
             this.lvwPanier.MultiSelect = false;
             this.lvwPanier.Name = "lvwPanier";
             this.lvwPanier.Size = new System.Drawing.Size(416, 257);
@@ -205,6 +373,21 @@
             this.columnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.columnHeader4.Width = 110;
             // 
+            // btnEnleverProduitDuPanier
+            // 
+            this.btnEnleverProduitDuPanier.BackColor = System.Drawing.Color.Maroon;
+            this.btnEnleverProduitDuPanier.FlatAppearance.BorderSize = 0;
+            this.btnEnleverProduitDuPanier.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEnleverProduitDuPanier.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEnleverProduitDuPanier.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnEnleverProduitDuPanier.Location = new System.Drawing.Point(441, 197);
+            this.btnEnleverProduitDuPanier.Name = "btnEnleverProduitDuPanier";
+            this.btnEnleverProduitDuPanier.Size = new System.Drawing.Size(235, 47);
+            this.btnEnleverProduitDuPanier.TabIndex = 38;
+            this.btnEnleverProduitDuPanier.Text = "Sélectionner la ligne et enlever le produit du panier";
+            this.btnEnleverProduitDuPanier.UseVisualStyleBackColor = false;
+            this.btnEnleverProduitDuPanier.Click += new System.EventHandler(this.BtnEnleverProduitDuPanier_Click);
+            // 
             // btnSupprimerVente
             // 
             this.btnSupprimerVente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -212,7 +395,7 @@
             this.btnSupprimerVente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSupprimerVente.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSupprimerVente.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnSupprimerVente.Location = new System.Drawing.Point(11, 437);
+            this.btnSupprimerVente.Location = new System.Drawing.Point(11, 463);
             this.btnSupprimerVente.Name = "btnSupprimerVente";
             this.btnSupprimerVente.Size = new System.Drawing.Size(102, 31);
             this.btnSupprimerVente.TabIndex = 38;
@@ -227,7 +410,7 @@
             this.btnAnnulerCorrection.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAnnulerCorrection.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAnnulerCorrection.ForeColor = System.Drawing.Color.Black;
-            this.btnAnnulerCorrection.Location = new System.Drawing.Point(119, 437);
+            this.btnAnnulerCorrection.Location = new System.Drawing.Point(119, 463);
             this.btnAnnulerCorrection.Name = "btnAnnulerCorrection";
             this.btnAnnulerCorrection.Size = new System.Drawing.Size(87, 31);
             this.btnAnnulerCorrection.TabIndex = 38;
@@ -242,7 +425,7 @@
             this.btnMettreVenteAJour.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMettreVenteAJour.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMettreVenteAJour.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnMettreVenteAJour.Location = new System.Drawing.Point(212, 437);
+            this.btnMettreVenteAJour.Location = new System.Drawing.Point(212, 463);
             this.btnMettreVenteAJour.Name = "btnMettreVenteAJour";
             this.btnMettreVenteAJour.Size = new System.Drawing.Size(210, 31);
             this.btnMettreVenteAJour.TabIndex = 38;
@@ -367,134 +550,6 @@
             this.dtpDateVente.Size = new System.Drawing.Size(224, 27);
             this.dtpDateVente.TabIndex = 33;
             // 
-            // btnEnleverProduitDuPanier
-            // 
-            this.btnEnleverProduitDuPanier.BackColor = System.Drawing.Color.Maroon;
-            this.btnEnleverProduitDuPanier.FlatAppearance.BorderSize = 0;
-            this.btnEnleverProduitDuPanier.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEnleverProduitDuPanier.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEnleverProduitDuPanier.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnEnleverProduitDuPanier.Location = new System.Drawing.Point(428, 179);
-            this.btnEnleverProduitDuPanier.Name = "btnEnleverProduitDuPanier";
-            this.btnEnleverProduitDuPanier.Size = new System.Drawing.Size(67, 31);
-            this.btnEnleverProduitDuPanier.TabIndex = 38;
-            this.btnEnleverProduitDuPanier.Text = "Enlever";
-            this.btnEnleverProduitDuPanier.UseVisualStyleBackColor = false;
-            this.btnEnleverProduitDuPanier.Click += new System.EventHandler(this.BtnEnleverProduitDuPanier_Click);
-            // 
-            // btnAugmenterQuantite
-            // 
-            this.btnAugmenterQuantite.BackColor = System.Drawing.Color.DarkGreen;
-            this.btnAugmenterQuantite.FlatAppearance.BorderSize = 0;
-            this.btnAugmenterQuantite.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAugmenterQuantite.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAugmenterQuantite.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnAugmenterQuantite.Location = new System.Drawing.Point(447, 216);
-            this.btnAugmenterQuantite.Name = "btnAugmenterQuantite";
-            this.btnAugmenterQuantite.Size = new System.Drawing.Size(37, 31);
-            this.btnAugmenterQuantite.TabIndex = 38;
-            this.btnAugmenterQuantite.Text = "+";
-            this.btnAugmenterQuantite.UseVisualStyleBackColor = false;
-            this.btnAugmenterQuantite.Click += new System.EventHandler(this.BtnAugmenterQuantite_Click);
-            // 
-            // btnDiminuerQuantite
-            // 
-            this.btnDiminuerQuantite.BackColor = System.Drawing.Color.Maroon;
-            this.btnDiminuerQuantite.FlatAppearance.BorderSize = 0;
-            this.btnDiminuerQuantite.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDiminuerQuantite.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDiminuerQuantite.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnDiminuerQuantite.Location = new System.Drawing.Point(447, 253);
-            this.btnDiminuerQuantite.Name = "btnDiminuerQuantite";
-            this.btnDiminuerQuantite.Size = new System.Drawing.Size(37, 31);
-            this.btnDiminuerQuantite.TabIndex = 38;
-            this.btnDiminuerQuantite.Text = "-";
-            this.btnDiminuerQuantite.UseVisualStyleBackColor = false;
-            this.btnDiminuerQuantite.Click += new System.EventHandler(this.BtnDiminuerQuantite_Click);
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.btnAjouterAuPanier);
-            this.groupBox3.Controls.Add(this.txtQuantite);
-            this.groupBox3.Controls.Add(this.txtPU);
-            this.groupBox3.Controls.Add(this.label8);
-            this.groupBox3.Controls.Add(this.label10);
-            this.groupBox3.Controls.Add(this.label9);
-            this.groupBox3.Controls.Add(this.cbxListeProduits);
-            this.groupBox3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(503, 208);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(201, 260);
-            this.groupBox3.TabIndex = 40;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Ajouter un autre produit au panier";
-            // 
-            // btnAjouterAuPanier
-            // 
-            this.btnAjouterAuPanier.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.btnAjouterAuPanier.FlatAppearance.BorderSize = 0;
-            this.btnAjouterAuPanier.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAjouterAuPanier.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAjouterAuPanier.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnAjouterAuPanier.Location = new System.Drawing.Point(5, 221);
-            this.btnAjouterAuPanier.Name = "btnAjouterAuPanier";
-            this.btnAjouterAuPanier.Size = new System.Drawing.Size(181, 31);
-            this.btnAjouterAuPanier.TabIndex = 45;
-            this.btnAjouterAuPanier.Text = "Ajouter";
-            this.btnAjouterAuPanier.UseVisualStyleBackColor = false;
-            // 
-            // txtQuantite
-            // 
-            this.txtQuantite.Location = new System.Drawing.Point(5, 186);
-            this.txtQuantite.Name = "txtQuantite";
-            this.txtQuantite.Size = new System.Drawing.Size(181, 23);
-            this.txtQuantite.TabIndex = 43;
-            // 
-            // txtPU
-            // 
-            this.txtPU.Location = new System.Drawing.Point(5, 128);
-            this.txtPU.Name = "txtPU";
-            this.txtPU.Size = new System.Drawing.Size(181, 23);
-            this.txtPU.TabIndex = 44;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(16, 45);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(117, 17);
-            this.label8.TabIndex = 40;
-            this.label8.Text = "Liste des produits";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(19, 166);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(65, 17);
-            this.label10.TabIndex = 41;
-            this.label10.Text = "Quantité";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(19, 108);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(81, 17);
-            this.label9.TabIndex = 42;
-            this.label9.Text = "Prix unitaire";
-            // 
-            // cbxListeProduits
-            // 
-            this.cbxListeProduits.DisplayMember = "NomClient";
-            this.cbxListeProduits.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxListeProduits.FormattingEnabled = true;
-            this.cbxListeProduits.Location = new System.Drawing.Point(5, 64);
-            this.cbxListeProduits.Name = "cbxListeProduits";
-            this.cbxListeProduits.Size = new System.Drawing.Size(183, 25);
-            this.cbxListeProduits.TabIndex = 39;
-            this.cbxListeProduits.ValueMember = "CodeClient";
-            // 
             // UC_UpdateVente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
@@ -510,13 +565,16 @@
             this.Size = new System.Drawing.Size(983, 596);
             this.Load += new System.EventHandler(this.UC_UpdateVente_Load);
             this.groupBox1.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListeVentes)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.resComptesTresorerieBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ageClientBindingSource)).EndInit();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -556,12 +614,16 @@
         private System.Windows.Forms.Button btnAugmenterQuantite;
         private System.Windows.Forms.Button btnEnleverProduitDuPanier;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button btnAjouterAuPanier;
+        private System.Windows.Forms.Button btnAjouterProduitAuPanier;
         private System.Windows.Forms.TextBox txtQuantite;
         private System.Windows.Forms.TextBox txtPU;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox cbxListeProduits;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.TextBox txtPrixAMettreAJour;
+        private System.Windows.Forms.Button btnMettrePUAJour;
+        private System.Windows.Forms.GroupBox groupBox4;
     }
 }
