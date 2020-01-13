@@ -93,5 +93,10 @@ namespace CasaEcologieSysInfo
             return Tot;
         }
 
+        public static String EnleverEspaces(String str)
+        {
+            str = str.Replace(" ", "");
+            return str;
+        }
     }
 }
