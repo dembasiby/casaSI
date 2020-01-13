@@ -1,6 +1,5 @@
 ﻿using CasaEcologieSysInfo.Classes;
 using System;
-using System.Collections;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
@@ -36,6 +35,7 @@ namespace CasaEcologieSysInfo.Pages.Corrections
         {
             DataGridViewRow row = this.dgvListeVentes.Rows[e.RowIndex];
             int codeVente = int.Parse(row.Cells["Code"].Value.ToString());
+            ReloadAll();
             LoadDetailsVentes(codeVente);
         }
 
@@ -51,23 +51,22 @@ namespace CasaEcologieSysInfo.Pages.Corrections
             {
                 try
                 {
-
                     int index = this.dgvListeVentes.CurrentCell.RowIndex;
                     int codeVente = int.Parse(dgvListeVentes.Rows[index].Cells["Code"].Value.ToString());
-                    // A completer
+                    
                     for (int i = 0; i < lvwPanier.Items.Count; i++)
                     {
-                        if (ProduitDansLePanierInitial(codeVente, lvwPanier.Items[i].SubItems[0].Text))
+                        string produit = lvwPanier.Items[i].SubItems[0].Text;
+                        string quantite = lvwPanier.Items[i].SubItems[1].Text;
+                        string montant = Conversion.EnleverEspaces(lvwPanier.Items[i].SubItems[3].Text);
+
+                        if (ProduitDansLePanierInitial(codeVente, produit))
                         {
-                            GestionVentes.MettreAJourVenteDUnProduit(codeVente, lvwPanier.Items[i].SubItems[0].Text,
-                                                                lvwPanier.Items[i].SubItems[1].Text,
-                                                                lvwPanier.Items[i].SubItems[3].Text);
+                            GestionVentes.MettreAJourVenteDUnProduit(codeVente, produit, quantite,montant);
                         }
                         else
                         {
-                            GestionVentes.EnregistrerNouvelleVenteDUnProduit(codeVente, lvwPanier.Items[i].SubItems[0].Text,
-                                                                lvwPanier.Items[i].SubItems[1].Text,
-                                                                lvwPanier.Items[i].SubItems[3].Text);
+                            GestionVentes.EnregistrerNouvelleVenteDUnProduit(codeVente, produit, quantite,montant);
                         }
                     }
 
@@ -101,9 +100,9 @@ namespace CasaEcologieSysInfo.Pages.Corrections
                     int codeVente = int.Parse(dgvListeVentes.Rows[index].Cells["Code"].Value.ToString());
 
                     SupprimerVente(codeVente);
+                    ReloadAll();
 
                     MessageBox.Show("La transaction a été supprimée.");
-                    ReloadAll();
                 }
             }
             catch (Exception)
@@ -192,9 +191,12 @@ namespace CasaEcologieSysInfo.Pages.Corrections
                 bool prixValide = float.Parse(txtPrixAMettreAJour.Text) > 0;
 
                 string nouveauPrix = txtPrixAMettreAJour.Text;
+
                 lvwPanier.FocusedItem.SubItems[2].Text = nouveauPrix;
                 lvwPanier.FocusedItem.SubItems[3].Text = (float.Parse(lvwPanier.FocusedItem.SubItems[1].Text)
                     * float.Parse(lvwPanier.FocusedItem.SubItems[2].Text)).ToString();
+
+                txtPrixAMettreAJour.Clear();
             }
             catch (Exception)
             {
@@ -374,8 +376,8 @@ namespace CasaEcologieSysInfo.Pages.Corrections
 
         private void ReloadAll()
         {
-            LoadListeVentes();
             ClearData();
+            LoadListeVentes();
         }
 
 
@@ -455,9 +457,7 @@ namespace CasaEcologieSysInfo.Pages.Corrections
             using (CasaDBEntities db = new CasaDBEntities())
             {
                 int codeProduit = db.ResStockProduitsFinis.Where(p => p.NomProduit == produit).Select(p => p.CodeProduit).First();
-                bool reponse = db.EveVenteStockProduitsFinis.Where(vpf => vpf.CodeVente == codeVente).Select(p => p.CodeProduitFini == codeProduit).FirstOrDefault();
-                MessageBox.Show(reponse.ToString());
-                return reponse;
+                return db.EveVenteStockProduitsFinis.Any(vpf => vpf.CodeVente == codeVente && vpf.CodeProduitFini == codeProduit);
             }
         }
 
@@ -487,5 +487,7 @@ namespace CasaEcologieSysInfo.Pages.Corrections
                 return db.EveEncaissementsVentes.Where(ev => ev.CodeVente == codeVente).Select(ev => ev.MontantEncaisse).First();
             }
         }
+
+
     }
 }

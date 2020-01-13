@@ -7,7 +7,6 @@ using System.Web.UI.WebControls;
 using System.Windows;
 using System.Windows.Controls;
 using ListViewItem = System.Web.UI.WebControls.ListViewItem;
-//using ListViewItem = System.Windows.Controls.ListViewItem;
 
 namespace CasaEcologieSysInfo.Classes
 {
