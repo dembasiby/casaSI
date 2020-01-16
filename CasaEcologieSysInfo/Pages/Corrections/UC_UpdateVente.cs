@@ -115,8 +115,16 @@ namespace CasaEcologieSysInfo.Pages.Corrections
 
         private void BtnEnleverProduitDuPanier_Click(object sender, EventArgs e)
         {
-            lvwPanier.FocusedItem.Remove();
-            SupprimerVenteProduit();
+            try
+            {
+                lvwPanier.FocusedItem.Remove();
+                SupprimerVenteProduit();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Veuillez selectionner un produit dans la liste.");
+                return;
+            }
         }
 
         private void BtnAugmenterQuantite_Click(object sender, EventArgs e)

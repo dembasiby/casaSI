@@ -214,6 +214,7 @@
     <Compile Include="Classes\Impression.cs" />
     <Compile Include="Classes\EtatsFinanciers\Tresorerie.cs" />
     <Compile Include="Classes\GestionVentes.cs" />
+    <Compile Include="Classes\Production.cs" />
     <Compile Include="EveAcquisitionServicesFourniture.cs">
       <DependentUpon>Model3.tt</DependentUpon>
     </Compile>

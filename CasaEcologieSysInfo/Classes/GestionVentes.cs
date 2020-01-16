@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.UI.WebControls;
-using System.Windows;
-using System.Windows.Controls;
-using ListViewItem = System.Web.UI.WebControls.ListViewItem;
+﻿using System.Linq;
 
 namespace CasaEcologieSysInfo.Classes
 {
@@ -19,7 +11,6 @@ namespace CasaEcologieSysInfo.Classes
                 if (int.Parse(quantite) >= 1 && int.Parse(montant) >= 1)
                 {
                     ResStockProduitsFini produit = db.ResStockProduitsFinis.FirstOrDefault(p => p.NomProduit == nomProduit);
-
 
                     var venteProduit = new EveVenteStockProduitsFini
                     {

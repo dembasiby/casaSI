@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CasaEcologieSysInfo.Classes;
+using System;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
@@ -45,25 +46,6 @@ namespace CasaEcologieSysInfo.Pages
                 MessageBox.Show("Merci de cliquer sur la colonne des codes de production", "Erreur de choix de colonne:");
             }
         }
-
-
-        private void AfficherDatesProduction()
-        {
-            var listeProduction = (from prod in db.EveProductions
-                                   where prod.Date >= dateTimePicker1.Value.Date
-                                   where prod.Date <= dateTimePicker2.Value.Date
-                                   select new
-                                   {
-                                       prod.Date,
-                                       Code = prod.CodeProduction
-                                   })
-                                   .OrderBy(d => d.Date)
-                                   .ToList();
-
-            DataTable dt = Conversion.ConvertirEnTableDeDonnees(listeProduction);
-            dgvJoursEtCodeProduction.DataSource = dt;
-        }
-
 
         private void AfficherListeMatieresPremieresUtilisees(int codeProduction)
         {
@@ -176,6 +158,13 @@ namespace CasaEcologieSysInfo.Pages
         private void DateTimePicker2_ValueChanged(object sender, EventArgs e)
         {
             AfficherDatesProduction();
+        }
+
+        private void AfficherDatesProduction()
+        {
+            Production.AfficherDatesProduction(dateTimePicker1, 
+                                               dateTimePicker2, 
+                                               dgvJoursEtCodeProduction);
         }
     }
 }
