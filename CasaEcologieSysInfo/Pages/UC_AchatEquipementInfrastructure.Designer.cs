@@ -33,11 +33,11 @@
             this.txtSoldeInitialeDetteFournisseurImmo = new System.Windows.Forms.TextBox();
             this.txtLocaliteFournisseurImmo = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.txtNomFournisseurImmo = new System.Windows.Forms.TextBox();
+            this.txtNouveauFournisseurImmo = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.lblNomNouveauClient = new System.Windows.Forms.Label();
-            this.dtpAchatEqInfr1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpAchatNouveauEqInf = new System.Windows.Forms.DateTimePicker();
             this.cbxComptePaiement = new System.Windows.Forms.ComboBox();
             this.resComptesTresorerieBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.casaDBDataSetAllBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -78,7 +78,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.txtDuree2 = new System.Windows.Forms.TextBox();
-            this.dtpAchatEqInfr2 = new System.Windows.Forms.DateTimePicker();
+            this.dtpEquInfrExistant = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.txtMontant2 = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
@@ -151,12 +151,12 @@
             this.label12.TabIndex = 5;
             this.label12.Text = "Solde initiale dette";
             // 
-            // txtNomFournisseurImmo
+            // txtNouveauFournisseurImmo
             // 
-            this.txtNomFournisseurImmo.Location = new System.Drawing.Point(18, 74);
-            this.txtNomFournisseurImmo.Name = "txtNomFournisseurImmo";
-            this.txtNomFournisseurImmo.Size = new System.Drawing.Size(384, 23);
-            this.txtNomFournisseurImmo.TabIndex = 17;
+            this.txtNouveauFournisseurImmo.Location = new System.Drawing.Point(18, 74);
+            this.txtNouveauFournisseurImmo.Name = "txtNouveauFournisseurImmo";
+            this.txtNouveauFournisseurImmo.Size = new System.Drawing.Size(384, 23);
+            this.txtNouveauFournisseurImmo.TabIndex = 17;
             // 
             // label13
             // 
@@ -187,16 +187,16 @@
             this.lblNomNouveauClient.TabIndex = 7;
             this.lblNomNouveauClient.Text = "Nom du Fournisseur";
             // 
-            // dtpAchatEqInfr1
+            // dtpAchatNouveauEqInf
             // 
-            this.dtpAchatEqInfr1.Checked = false;
-            this.dtpAchatEqInfr1.CustomFormat = "dd / MM / yyyy";
-            this.dtpAchatEqInfr1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpAchatEqInfr1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpAchatEqInfr1.Location = new System.Drawing.Point(244, 290);
-            this.dtpAchatEqInfr1.Name = "dtpAchatEqInfr1";
-            this.dtpAchatEqInfr1.Size = new System.Drawing.Size(286, 27);
-            this.dtpAchatEqInfr1.TabIndex = 42;
+            this.dtpAchatNouveauEqInf.Checked = false;
+            this.dtpAchatNouveauEqInf.CustomFormat = "dd / MM / yyyy";
+            this.dtpAchatNouveauEqInf.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpAchatNouveauEqInf.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpAchatNouveauEqInf.Location = new System.Drawing.Point(244, 290);
+            this.dtpAchatNouveauEqInf.Name = "dtpAchatNouveauEqInf";
+            this.dtpAchatNouveauEqInf.Size = new System.Drawing.Size(286, 27);
+            this.dtpAchatNouveauEqInf.TabIndex = 42;
             // 
             // cbxComptePaiement
             // 
@@ -569,13 +569,13 @@
             this.txtDuree2.Size = new System.Drawing.Size(193, 23);
             this.txtDuree2.TabIndex = 13;
             // 
-            // dtpAchatEqInfr2
+            // dtpEquInfrExistant
             // 
-            this.dtpAchatEqInfr2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpAchatEqInfr2.Location = new System.Drawing.Point(20, 170);
-            this.dtpAchatEqInfr2.Name = "dtpAchatEqInfr2";
-            this.dtpAchatEqInfr2.Size = new System.Drawing.Size(174, 23);
-            this.dtpAchatEqInfr2.TabIndex = 12;
+            this.dtpEquInfrExistant.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpEquInfrExistant.Location = new System.Drawing.Point(20, 170);
+            this.dtpEquInfrExistant.Name = "dtpEquInfrExistant";
+            this.dtpEquInfrExistant.Size = new System.Drawing.Size(174, 23);
+            this.dtpEquInfrExistant.TabIndex = 12;
             // 
             // label3
             // 
@@ -612,7 +612,7 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.cbxUtilisePourProduction);
-            this.panel1.Controls.Add(this.dtpAchatEqInfr2);
+            this.panel1.Controls.Add(this.dtpEquInfrExistant);
             this.panel1.Controls.Add(this.btnEqInfrExistant);
             this.panel1.Controls.Add(this.panel5);
             this.panel1.Controls.Add(this.txtQuantiteExistant);
@@ -713,7 +713,7 @@
             this.panel6.Controls.Add(this.panel8);
             this.panel6.Controls.Add(this.label12);
             this.panel6.Controls.Add(this.panel9);
-            this.panel6.Controls.Add(this.txtNomFournisseurImmo);
+            this.panel6.Controls.Add(this.txtNouveauFournisseurImmo);
             this.panel6.Controls.Add(this.panel10);
             this.panel6.Controls.Add(this.label13);
             this.panel6.Controls.Add(this.label8);
@@ -817,7 +817,7 @@
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lbxLocaliteFournisseurImmo);
-            this.Controls.Add(this.dtpAchatEqInfr1);
+            this.Controls.Add(this.dtpAchatNouveauEqInf);
             this.Controls.Add(this.cbxComptePaiement);
             this.Controls.Add(this.cbxTresoriere);
             this.Controls.Add(this.label9);
@@ -870,11 +870,11 @@
         private System.Windows.Forms.TextBox txtSoldeInitialeDetteFournisseurImmo;
         private System.Windows.Forms.TextBox txtLocaliteFournisseurImmo;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox txtNomFournisseurImmo;
+        private System.Windows.Forms.TextBox txtNouveauFournisseurImmo;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label lblNomNouveauClient;
-        private System.Windows.Forms.DateTimePicker dtpAchatEqInfr1;
+        private System.Windows.Forms.DateTimePicker dtpAchatNouveauEqInf;
         private System.Windows.Forms.ComboBox cbxComptePaiement;
         private System.Windows.Forms.ComboBox cbxTresoriere;
         private System.Windows.Forms.ComboBox cbxFournisseurImmo;
@@ -903,7 +903,7 @@
         private CasaDBDataSetAll casaDBDataSetAll;
         private CasaDBDataSetAllTableAdapters.AgeAutreFournisseursTableAdapter ageAutreFournisseursTableAdapter;
         private System.Windows.Forms.ListBox lbxLocaliteFournisseurImmo;
-        private System.Windows.Forms.DateTimePicker dtpAchatEqInfr2;
+        private System.Windows.Forms.DateTimePicker dtpEquInfrExistant;
         private System.Windows.Forms.Button btnEqInfrExistant;
         private System.Windows.Forms.TextBox txtQuantiteExistant;
         private System.Windows.Forms.TextBox txtMontant2;

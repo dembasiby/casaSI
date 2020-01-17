@@ -21,16 +21,16 @@ namespace CasaEcologieSysInfo.Pages
 
         private void UC_ReceptionDonMatierePremiere_Load(object sender, EventArgs e)
         {
-            ageEmployeBindingSource.DataSource = db.AgeEmployes.Where(em => em.Actif == true).OrderBy(em => em.PrenomNom).ToList();
+            ageEmployeBindingSource.DataSource = Conversion.ListeEmployesPresents(dtpDateReception).OrderBy(em => em.PrenomNom).ToList();
             ageFournisseursMatieresPremiereBindingSource.DataSource = db.AgeFournisseursMatieresPremieres.OrderBy(f => f.Nom).ToList();
             resStockMatieresPremiereBindingSource.DataSource = db.ResStockMatieresPremieres.OrderBy(m => m.NomMatiere).ToList();
         }
 
         private EveReceptionDonsMatieresPremiere ReceptionDonMatierePremiere()
         {
-            var codeEmploye = int.Parse(cbxEmploye.GetItemText(cbxEmploye.SelectedValue));
-            var codeFournisseur = int.Parse(cbxFournisseur.GetItemText(cbxFournisseur.SelectedValue));
-            var codeMatierePremiere = int.Parse(cbxMatierePremiere.GetItemText(cbxMatierePremiere.SelectedValue));
+            var codeEmploye = int.Parse(cbxEmploye.SelectedValue.ToString());
+            var codeFournisseur = int.Parse(cbxFournisseur.SelectedValue.ToString());
+            var codeMatierePremiere = int.Parse(cbxMatierePremiere.SelectedValue.ToString());
 
             EveReceptionDonsMatieresPremiere don = new EveReceptionDonsMatieresPremiere
             {

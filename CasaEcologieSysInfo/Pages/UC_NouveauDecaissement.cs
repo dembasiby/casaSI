@@ -16,26 +16,10 @@ namespace CasaEcologieSysInfo
             InitializeComponent();
         }
 
-        private List<string> ListeDesFournisseursDeMatierePremiereAPayer()
+        private decimal CalculerSoldeDetteFournisseurMatierePremiere(int codeFournisseur)
         {
             return (from fmp in db.AgeFournisseursMatieresPremieres
-                    select new
-                    {
-                        NomFournisseur = fmp.Nom,
-                        Solde = ((decimal?)fmp.SoldeDette ?? 0m) 
-                        + ((decimal?)fmp.EveReceptionMatieresPremieres.Sum(s => s.Montant) ?? 0m) 
-                        - ((decimal?)fmp.EveDecaissements.Sum(m => m.Montant) ?? 0m)
-                    })
-                    .OrderByDescending(s => s.Solde)
-                    .Where(s => s.Solde > 0)
-                    .Select(f => f.NomFournisseur)
-                    .ToList();
-        }
-
-        private decimal CalculerSoldeDetteFournisseurMatierePremiere(string nomFournisseur)
-        {
-            return (from fmp in db.AgeFournisseursMatieresPremieres
-                    where fmp.Nom == nomFournisseur
+                    where fmp.CodeFournisseurMatierePremiere == codeFournisseur
                     select new
                     {
                         NomFournisseur = fmp.Nom,
@@ -44,21 +28,6 @@ namespace CasaEcologieSysInfo
                         Paiements = fmp.EveDecaissements.Select(m => (decimal?)m.Montant).Sum() ?? 0m
                     })
                      .Sum(f => f.SoldeInitial + f.Achat - f.Paiements);
-        }
-
-        private List<string> ListeDesFournisseursDEquipementEtInfrastructuresAPayer()
-        {
-            return (from af in db.AgeAutreFournisseurs
-                    select new
-                    {
-                        NomFournisseur = af.NomAutreFournisseur,
-                        Solde = (decimal?)af.EveReceptionEquipementsInfrastructures.Select(d => d.ResEquipementsInfrastructure.Montant).Sum() ?? 0m + (decimal?)af.SoldeInitialDetteFournisseur ?? 0m
-                        - (decimal?)af.EveDecaissements.Select(d => d.Montant).Sum() ?? 0m
-                    })
-                    .OrderByDescending(s => s.Solde)
-                    .Where(s => s.Solde > 0)
-                    .Select(f => f.NomFournisseur)
-                    .ToList();
         }
 
         private decimal CalculerSoldeDetteFournisseurEquipementsEtInfrastructure(string nomFournisseur)
@@ -73,26 +42,11 @@ namespace CasaEcologieSysInfo
                     .Select(f => f.Solde)
                     .FirstOrDefault();
         }
-
-        private List<string> ListeDesFournisseursDeServicesEtFournituresAPayer()
+ 
+        private decimal CalculerSoldeDetteFournisseurServicesEtFournitures(int codeFournisseur)
         {
             return (from f in db.AgeFournisseursServicesFournitures
-                    select new
-                    {
-                        NomFournisseur = f.NomFournisseurServiceFourniture,
-                        Solde = (decimal?)f.SoldeDette ?? 0m + (decimal?)f.EveAcquisitionServicesFournitures.Select(d => d.Montant).Sum() ?? 0m
-                        - (decimal?)f.EveDecaissements.Select(d => d.Montant).Sum() ?? 0m
-                    })
-                    .OrderByDescending(s => s.Solde)
-                    .Where(s => s.Solde > 0)
-                    .Select(f => f.NomFournisseur)
-                    .ToList();
-        }
-
-        private decimal CalculerSoldeDetteFournisseurServicesEtFournitures(string nomFournisseur)
-        {
-            return (from f in db.AgeFournisseursServicesFournitures
-                    where f.NomFournisseurServiceFourniture == nomFournisseur
+                    where f.CodeFournisseurServiceFourniture == codeFournisseur
                     select new
                     {
                         Solde = (decimal?)f.SoldeDette ?? 0m + (decimal?)f.EveAcquisitionServicesFournitures.Select(d => d.Montant).Sum() ?? 0m
@@ -101,29 +55,65 @@ namespace CasaEcologieSysInfo
                     .Select(f => f.Solde)
                     .FirstOrDefault();
         }
-
-       
+  
         private void DefinirListeDesFournisseursAAfficher()
         {
             if (cbxTypeFournisseur.Text == "Fournisseur de matière première")
             {
-                cbxNomFournisseur.DataSource = ListeDesFournisseursDeMatierePremiereAPayer();
-                
+                cbxNomFournisseur.DataSource = (from fmp in db.AgeFournisseursMatieresPremieres
+                                                select new
+                                                {
+                                                    CodeFournisseur = fmp.CodeFournisseurMatierePremiere,
+                                                    NomFournisseur = fmp.Nom,
+                                                    Solde = ((decimal?)fmp.SoldeDette ?? 0m)
+                                                    + ((decimal?)fmp.EveReceptionMatieresPremieres.Sum(s => s.Montant) ?? 0m)
+                                                    - ((decimal?)fmp.EveDecaissements.Sum(m => m.Montant) ?? 0m)
+                                                })
+                                                .Where(s => s.Solde > 0)
+                                                .OrderByDescending(s => s.Solde)
+                                                .ToList();
+
+                cbxNomFournisseur.DisplayMember = "NomFournisseur";
+                cbxNomFournisseur.ValueMember = "CodeFournisseur";               
             }
             else if (cbxTypeFournisseur.Text == "Fournisseur d'équipement ou entrepreneur")
             {
-                cbxNomFournisseur.DataSource = ListeDesFournisseursDEquipementEtInfrastructuresAPayer();             
+                cbxNomFournisseur.DataSource = (from af in db.AgeAutreFournisseurs
+                                                select new
+                                                {
+                                                    NomFournisseur = af.NomAutreFournisseur,
+                                                    Solde = (decimal?)af.EveReceptionEquipementsInfrastructures.Select(d => d.ResEquipementsInfrastructure.Montant).Sum() ?? 0m + (decimal?)af.SoldeInitialDetteFournisseur ?? 0m
+                                                    - (decimal?)af.EveDecaissements.Select(d => d.Montant).Sum() ?? 0m
+                                                })
+                                                .OrderByDescending(s => s.Solde)
+                                                .Where(s => s.Solde > 0)
+                                                .ToList();
+
+                cbxNomFournisseur.DisplayMember = "NomFournisseur";
+                cbxNomFournisseur.ValueMember = "CodeFournisseur";
             }
             else if (cbxTypeFournisseur.Text == "Fournisseur de services ou fournitures")
             {
-                cbxNomFournisseur.DataSource = ListeDesFournisseursDeServicesEtFournituresAPayer();                
+                cbxNomFournisseur.DataSource = (from f in db.AgeFournisseursServicesFournitures
+                                                select new
+                                                {
+                                                    NomFournisseur = f.NomFournisseurServiceFourniture,
+                                                    Solde = (decimal?)f.SoldeDette ?? 0m + (decimal?)f.EveAcquisitionServicesFournitures.Select(d => d.Montant).Sum() ?? 0m
+                                                    - (decimal?)f.EveDecaissements.Select(d => d.Montant).Sum() ?? 0m
+                                                })
+                                                .OrderByDescending(s => s.Solde)
+                                                .Where(s => s.Solde > 0)
+                                                .ToList();
+
+                cbxNomFournisseur.DisplayMember = "NomFournisseur";
+                cbxNomFournisseur.ValueMember = "CodeFournisseur";
             }            
         }
 
         private void AfficherDetteDuFournisseurSelectionne()
         {
-            var nomFournisseur = cbxNomFournisseur.GetItemText(cbxNomFournisseur.SelectedItem);
-            txtDetteFournisseur.Text = Tresorerie.CalculerSoldeDetteParFournisseur(nomFournisseur).ToString("c0"); 
+            int codeFournisseur = int.Parse(cbxNomFournisseur.SelectedValue.ToString());
+            txtDetteFournisseur.Text = Tresorerie.CalculerSoldeDetteParFournisseur(codeFournisseur).ToString("c0"); 
         }
 
 
@@ -136,9 +126,9 @@ namespace CasaEcologieSysInfo
         private void UC_NouveauDecaissement_Load(object sender, EventArgs e)
         {
             DefinirListeDesFournisseursAAfficher();
-            ageEmployeBindingSource.DataSource = db.AgeEmployes
-                                                    .Where(em => em.Actif == true)
+            ageEmployeBindingSource.DataSource = Conversion.ListeEmployesPresents(dtpDateDecaissement)
                                                     .OrderBy(em => em.PrenomNom)
+                                                    .Select(em => em.PrenomNom)
                                                     .ToList();
 
             resComptesTresorerieBindingSource.DataSource = db.ResComptesTresoreries.ToList();

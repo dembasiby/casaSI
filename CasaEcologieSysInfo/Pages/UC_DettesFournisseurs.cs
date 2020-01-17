@@ -31,6 +31,7 @@ namespace CasaEcologieSysInfo.Pages
             var fournisseursMP = (from fmp in db.AgeFournisseursMatieresPremieres
                                     select new
                                     {
+                                        CodeFournisseur = fmp.CodeFournisseurMatierePremiere,
                                         NomFournisseur = fmp.Nom,
                                         DetteInitial = (decimal?)fmp.SoldeDette ?? 0m,
                                         MontantAchat = (decimal?)fmp.EveReceptionMatieresPremieres.Sum(s => s.Montant) ?? 0m,
@@ -43,6 +44,7 @@ namespace CasaEcologieSysInfo.Pages
             var fournisseursEI = (from af in db.AgeAutreFournisseurs
                                   select new
                                   {
+                                      CodeFournisseur = af.CodeAutreFournisseur,
                                       NomFournisseur = af.NomAutreFournisseur,
                                       DetteInitial = (decimal?)af.SoldeInitialDetteFournisseur ?? 0m,
                                       MontantAchat = (decimal?)af.EveReceptionEquipementsInfrastructures.Select(d => d.ResEquipementsInfrastructure.Montant).Sum() ?? 0m,
@@ -55,6 +57,7 @@ namespace CasaEcologieSysInfo.Pages
             var fournisseurFS = (from f in db.AgeFournisseursServicesFournitures
                                  select new
                                  {
+                                     CodeFournisseur = f.CodeFournisseurServiceFourniture,
                                      NomFournisseur = f.NomFournisseurServiceFourniture,
                                      DetteInitial = (decimal?)f.SoldeDette ?? 0m,
                                      MontantAchat = (decimal?)f.EveAcquisitionServicesFournitures.Select(d => d.Montant).Sum() ?? 0m,
@@ -64,24 +67,25 @@ namespace CasaEcologieSysInfo.Pages
                                            - ((decimal?)f.EveDecaissements.Select(d => d.Montant).Sum() ?? 0m)
                                  }).ToList();
 
-            var listFournisseurs = fournisseursMP.Where(f => f.Solde > 0)
-                .Union(fournisseursEI.Where(f => f.Solde > 0))
-                .Union(fournisseurFS.Where(f => f.Solde > 0))
-                
-                .OrderByDescending(s => s.Solde)
-                .Select(f => f.NomFournisseur)
-                .ToList();
+            var listFournisseurs = fournisseursMP
+                                    .Union(fournisseursEI)
+                                    .Union(fournisseurFS)
+                                    .Where(f => f.Solde > 0)
+                                    .OrderByDescending(s => s.Solde)
+                                    .ToList();
 
             lbxListeFournisseursDettes.DataSource = listFournisseurs;
+            lbxListeFournisseursDettes.DisplayMember = "NomFournisseur";
+            lbxListeFournisseursDettes.ValueMember = "CodeFournisseur";
             //lbxListeFournisseursDettes.Sorted = true;
         }
 
-        private void MontrerDetailsDettesFournisseurs(string nomFournisseur)
+        private void MontrerDetailsDettesFournisseurs(int codeFournisseur)
         {
             var achatMatierePrem = (from fmp in db.AgeFournisseursMatieresPremieres
                                     from rmp in db.EveReceptionMatieresPremieres
                                     where rmp.CodeFournisseurMatierePremiere == fmp.CodeFournisseurMatierePremiere
-                                    where fmp.Nom == nomFournisseur
+                                    where fmp.CodeFournisseurMatierePremiere == codeFournisseur
                                     select new
                                     {
                                         Date = rmp.DateReception,
@@ -93,7 +97,7 @@ namespace CasaEcologieSysInfo.Pages
                                  );
 
             var achatEquipementInfr = (from af in db.AgeAutreFournisseurs
-                                       where af.NomAutreFournisseur == nomFournisseur
+                                       where af.CodeAutreFournisseur == codeFournisseur
                                        select new
                                        {
                                            Date = af.EveReceptionEquipementsInfrastructures.Select(d => d.ResEquipementsInfrastructure.DateAcquisition).FirstOrDefault(),
@@ -105,7 +109,7 @@ namespace CasaEcologieSysInfo.Pages
                                  );
 
             var achatServFournitures = (from fs in db.AgeFournisseursServicesFournitures
-                                        where fs.NomFournisseurServiceFourniture == nomFournisseur
+                                        where fs.CodeFournisseurServiceFourniture == codeFournisseur
                                         select new
                                         {
                                             Date = fs.EveAcquisitionServicesFournitures.Select(d => d.Date).FirstOrDefault(),
@@ -119,7 +123,7 @@ namespace CasaEcologieSysInfo.Pages
             var decaissementMP = (from fmp in db.AgeFournisseursMatieresPremieres
                                   from d in db.EveDecaissements
                                   where d.CodeFournisseurMatierePremiere == fmp.CodeFournisseurMatierePremiere
-                                  where fmp.Nom == nomFournisseur
+                                  where fmp.CodeFournisseurMatierePremiere == codeFournisseur
                                   select new
                                   {
                                       Date = d.DateDecaissement,
@@ -131,7 +135,7 @@ namespace CasaEcologieSysInfo.Pages
                                  );
 
             var decaisementEquip = (from af in db.AgeAutreFournisseurs
-                                where af.NomAutreFournisseur == nomFournisseur
+                                where af.CodeAutreFournisseur == codeFournisseur
                                 select new
                                 {
                                     Date = af.EveDecaissements.Select(d => d.DateDecaissement).FirstOrDefault(),
@@ -143,7 +147,7 @@ namespace CasaEcologieSysInfo.Pages
                                  );
 
             var decaissementServFourn = (from fs in db.AgeFournisseursServicesFournitures
-                                        where fs.NomFournisseurServiceFourniture == nomFournisseur
+                                        where fs.CodeFournisseurServiceFourniture == codeFournisseur
                                         select new
                                         {
                                             Date = fs.EveDecaissements.Select(d => d.DateDecaissement).FirstOrDefault(),
@@ -176,15 +180,15 @@ namespace CasaEcologieSysInfo.Pages
             dataGridView1.Columns["Description"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
 
             var detteFournisseurInitialMP = (from fmp in db.AgeFournisseursMatieresPremieres
-                                             where fmp.Nom == nomFournisseur
+                                             where fmp.CodeFournisseurMatierePremiere == codeFournisseur
                                              select (decimal?)fmp.SoldeDette).Sum() ?? 0m;
                      
             var detteFournisseurInitialAF = (from af in db.AgeAutreFournisseurs
-                                             where af.NomAutreFournisseur == nomFournisseur
+                                             where af.CodeAutreFournisseur == codeFournisseur
                                              select (decimal?)af.SoldeInitialDetteFournisseur).Sum() ?? 0m;
 
             var detteFournisseurInitialFS = (from fs in db.AgeFournisseursServicesFournitures
-                                             where fs.NomFournisseurServiceFourniture == nomFournisseur
+                                             where fs.CodeFournisseurServiceFourniture == codeFournisseur
                                              select (decimal?)fs.SoldeDette).Sum() ?? 0m;
 
             var soldeInitial = detteFournisseurInitialMP + detteFournisseurInitialAF + detteFournisseurInitialFS;
@@ -207,8 +211,8 @@ namespace CasaEcologieSysInfo.Pages
 
         private void LbxListeFournisseursDettes_SelectedValueChanged(object sender, EventArgs e)
         {
-            var nomFournisseur = lbxListeFournisseursDettes.GetItemText(lbxListeFournisseursDettes.SelectedItem);
-            MontrerDetailsDettesFournisseurs(nomFournisseur); 
+            int codeFournisseur = int.Parse(lbxListeFournisseursDettes.SelectedValue.ToString());
+            MontrerDetailsDettesFournisseurs(codeFournisseur); 
         }
 
         private void BtnImprimerTableau_Click(object sender, EventArgs e)

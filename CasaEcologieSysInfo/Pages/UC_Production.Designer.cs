@@ -82,7 +82,7 @@
             this.lvwListeMatieresP = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpDateProduction = new System.Windows.Forms.DateTimePicker();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.cbxNomProduitSemiFini = new System.Windows.Forms.ComboBox();
             this.label24 = new System.Windows.Forms.Label();
@@ -340,7 +340,7 @@
             this.cbxResponsableProduction.Name = "cbxResponsableProduction";
             this.cbxResponsableProduction.Size = new System.Drawing.Size(298, 25);
             this.cbxResponsableProduction.TabIndex = 27;
-            this.cbxResponsableProduction.ValueMember = "CodeMatierePremiere";
+            this.cbxResponsableProduction.ValueMember = "CodeEmploye";
             // 
             // ageEmployeBindingSource1
             // 
@@ -366,7 +366,7 @@
             this.cbxRespMatPrem.Name = "cbxRespMatPrem";
             this.cbxRespMatPrem.Size = new System.Drawing.Size(298, 25);
             this.cbxRespMatPrem.TabIndex = 27;
-            this.cbxRespMatPrem.ValueMember = "CodeMatierePremiere";
+            this.cbxRespMatPrem.ValueMember = "CodeEmploye";
             // 
             // ageEmployeBindingSource2
             // 
@@ -392,7 +392,7 @@
             this.cbxResponsableStockProduitFinis.Name = "cbxResponsableStockProduitFinis";
             this.cbxResponsableStockProduitFinis.Size = new System.Drawing.Size(298, 25);
             this.cbxResponsableStockProduitFinis.TabIndex = 27;
-            this.cbxResponsableStockProduitFinis.ValueMember = "CodeMatierePremiere";
+            this.cbxResponsableStockProduitFinis.ValueMember = "CodeEmploye";
             // 
             // ageEmployeBindingSource3
             // 
@@ -569,7 +569,7 @@
             this.panel1.Controls.Add(this.btnDecrementQuantitePSF);
             this.panel1.Controls.Add(this.lvwListProduitsSemiFinisUtilises);
             this.panel1.Controls.Add(this.lvwListeMatieresP);
-            this.panel1.Controls.Add(this.dateTimePicker1);
+            this.panel1.Controls.Add(this.dtpDateProduction);
             this.panel1.Controls.Add(this.groupBox5);
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Controls.Add(this.label1);
@@ -742,15 +742,15 @@
             this.columnHeader2.Text = "Quantité";
             this.columnHeader2.Width = 90;
             // 
-            // dateTimePicker1
+            // dtpDateProduction
             // 
-            this.dateTimePicker1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(172, 38);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(230, 23);
-            this.dateTimePicker1.TabIndex = 33;
-            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.DateTimePicker1_ValueChanged);
+            this.dtpDateProduction.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpDateProduction.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDateProduction.Location = new System.Drawing.Point(172, 38);
+            this.dtpDateProduction.Name = "dtpDateProduction";
+            this.dtpDateProduction.Size = new System.Drawing.Size(230, 23);
+            this.dtpDateProduction.TabIndex = 33;
+            this.dtpDateProduction.ValueChanged += new System.EventHandler(this.DateTimePicker1_ValueChanged);
             // 
             // groupBox5
             // 
@@ -1135,7 +1135,7 @@
         private System.Windows.Forms.ComboBox cbxResponsableStockProduitFinis;
         private System.Windows.Forms.BindingSource ageEmployeBindingSource3;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpDateProduction;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Panel panel12;
         private System.Windows.Forms.Panel panel11;

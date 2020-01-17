@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace CasaEcologieSysInfo
@@ -94,6 +95,23 @@ namespace CasaEcologieSysInfo
         {
             str = str.Replace(" ", "");
             return str;
+        }
+
+        public static List<AgeEmploye> ListeEmployesPresents(DateTimePicker dtpDate)
+        {
+            using (CasaDBEntities db = new CasaDBEntities())
+            {
+                List<AgeEmploye> listeEmployes = (from pe in db.EvePresenceEmployes
+                                     where pe.Date == dtpDate.Value.Date
+                                     select pe.AgeEmploye).ToList();
+
+                return listeEmployes;
+            }
+        }
+
+        public static List<string>ListEmployesString(DateTimePicker dtpDate)
+        {
+            return ListeEmployesPresents(dtpDate).OrderBy(em => em.PrenomNom).Select(em => em.PrenomNom).ToList();
         }
     }
 }

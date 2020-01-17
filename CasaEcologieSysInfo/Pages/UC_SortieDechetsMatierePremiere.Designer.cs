@@ -69,7 +69,7 @@
             this.cbxResponsableStock.Name = "cbxResponsableStock";
             this.cbxResponsableStock.Size = new System.Drawing.Size(234, 25);
             this.cbxResponsableStock.TabIndex = 41;
-            this.cbxResponsableStock.ValueMember = "CodeMatierePremiere";
+            this.cbxResponsableStock.ValueMember = "CodeEmploye";
             // 
             // ageEmployeBindingSource1
             // 

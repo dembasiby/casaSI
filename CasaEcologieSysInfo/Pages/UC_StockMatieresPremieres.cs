@@ -125,15 +125,15 @@ namespace CasaEcologieSysInfo
             dr["Entree"] = 0;
             dr["Sortie"] = 0;
             dr["Description"] = "Stock Initial";
-
+            /*
             dt.Columns.Add("PU", typeof(float));
             dt.Columns.Add("Valeur", typeof(float));
-            
+            */
             dgvJournalStocksMatieresPremieres.DataSource = dt;
 
             Formattage.TableauDesStock(dgvJournalStocksMatieresPremieres);
             GestionStocks.CalculerSoldeStocksDeFaconProgressive(dgvJournalStocksMatieresPremieres, stockInitial);
-
+            /*
             //float number;
             bool isNumeric = float.TryParse(coutUnitaire.ToString(), out float number);
             float pu = (isNumeric ? coutUnitaire : 0f);
@@ -143,7 +143,7 @@ namespace CasaEcologieSysInfo
                 row["PU"] = pu;
                 row["Valeur"] = Convert.ToSingle(row["Solde"].ToString()) * pu;
             }
-
+            */
             Formattage.ChangerTitreTableauDesStocks(dgvJournalStocksMatieresPremieres, "kg");
         }
 

@@ -594,51 +594,51 @@ namespace CasaEcologieSysInfo.Classes
 
         }
 
-        public static decimal CalculerSoldeDetteParFournisseur(string nomFournisseur)
+        public static decimal CalculerSoldeDetteParFournisseur(int codeFournisseur)
         {
             using (CasaDBEntities db = new CasaDBEntities())
             {
 
                 var soldeInitial = (from fmp in db.AgeFournisseursMatieresPremieres
-                                    where fmp.Nom == nomFournisseur
+                                    where fmp.CodeFournisseurMatierePremiere == codeFournisseur
                                     select fmp.SoldeDette).FirstOrDefault();
 
                 var totalAchats = (from f in db.AgeFournisseursMatieresPremieres
-                                   where f.Nom == nomFournisseur
+                                   where f.CodeFournisseurMatierePremiere == codeFournisseur
                                    join rmp in db.EveReceptionMatieresPremieres on f.CodeFournisseurMatierePremiere equals rmp.CodeFournisseurMatierePremiere
                                    select (decimal?)rmp.Montant).Sum() ?? 0m;
 
                 var totalPaiements = (from fmp in db.AgeFournisseursMatieresPremieres
-                                      where fmp.Nom == nomFournisseur
+                                      where fmp.CodeFournisseurMatierePremiere == codeFournisseur
                                       join d in db.EveDecaissements on fmp.CodeFournisseurMatierePremiere equals d.CodeFournisseurMatierePremiere
                                       select (decimal?)d.Montant).Sum() ?? 0m;
 
                 var soldeInitialFE = (from f in db.AgeAutreFournisseurs
-                                      where f.NomAutreFournisseur == nomFournisseur
+                                      where f.CodeAutreFournisseur == codeFournisseur
                                       select f.SoldeInitialDetteFournisseur).FirstOrDefault();
 
                 var totalAchatsFE = (from f in db.AgeAutreFournisseurs
-                                     where f.NomAutreFournisseur == nomFournisseur
+                                     where f.CodeAutreFournisseur == codeFournisseur
                                      join rmp in db.EveReceptionEquipementsInfrastructures on f.CodeAutreFournisseur equals rmp.CodeAutreFournisseur
                                      join ei in db.ResEquipementsInfrastructures on rmp.CodeEquipementInfrastructure equals ei.CodeEquipementInfrastructure
                                      select (decimal?)ei.Montant).Sum() ?? 0m;
 
                 var totalPaiementsFE = (from f in db.AgeAutreFournisseurs
-                                        where f.NomAutreFournisseur == nomFournisseur
+                                        where f.CodeAutreFournisseur == codeFournisseur
                                         join d in db.EveDecaissements on f.CodeAutreFournisseur equals d.CodeAutreFournisseur
                                         select (decimal?)d.Montant).Sum() ?? 0m;
 
                 var soldeInitialFS = (from f in db.AgeFournisseursServicesFournitures
-                                      where f.NomFournisseurServiceFourniture == nomFournisseur
+                                      where f.CodeFournisseurServiceFourniture == codeFournisseur
                                       select f.SoldeDette).FirstOrDefault();
 
                 var totalAchatsFS = (from f in db.AgeFournisseursServicesFournitures
-                                     where f.NomFournisseurServiceFourniture == nomFournisseur
+                                     where f.CodeFournisseurServiceFourniture == codeFournisseur
                                      join rmp in db.EveAcquisitionServicesFournitures on f.CodeFournisseurServiceFourniture equals rmp.CodeFournisseurServiceFourniture
                                      select (decimal?)rmp.Montant).Sum() ?? 0m;
 
                 var totalPaiementsFS = (from f in db.AgeFournisseursServicesFournitures
-                                        where f.NomFournisseurServiceFourniture == nomFournisseur
+                                        where f.CodeFournisseurServiceFourniture == codeFournisseur
                                         join d in db.EveDecaissements on f.CodeFournisseurServiceFourniture equals d.CodeFournisseurService
                                         select (decimal?)d.Montant).Sum() ?? 0m;
 

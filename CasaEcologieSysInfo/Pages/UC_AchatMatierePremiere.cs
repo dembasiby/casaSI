@@ -20,13 +20,13 @@ namespace CasaEcologieSysInfo
 
             ageFournisseursMatieresPremieresBindingSource.DataSource = db.AgeFournisseursMatieresPremieres.OrderBy(f => f.Nom).ToList();
             resStockMatieresPremieresBindingSource.DataSource = db.ResStockMatieresPremieres.OrderBy(m => m.NomMatiere).ToList();
-            ageEmployesBindingSource.DataSource = db.AgeEmployes
-                                                    .Where(em => em.Actif == true)
+            ageEmployesBindingSource.DataSource = Conversion.ListeEmployesPresents(dtpDateApprovisionnement)
                                                     .OrderBy(em => em.PrenomNom)
+                                                    .Select(em => em.PrenomNom)
                                                     .ToList();
-            ageEmployesBindingSource1.DataSource = db.AgeEmployes
-                                                    .Where(em => em.Actif == true)
+            ageEmployesBindingSource1.DataSource = Conversion.ListeEmployesPresents(dtpDateApprovisionnement)
                                                     .OrderBy(em => em.PrenomNom)
+                                                    .Select(em => em.PrenomNom)
                                                     .ToList();
             resComptesTresorerieBindingSource.DataSource = db.ResComptesTresoreries.ToList();
             cbxTypesMatieres.DataSource = (from mp in db.ResStockMatieresPremieres select mp.TypeMatiere).Distinct().ToList();
@@ -44,20 +44,32 @@ namespace CasaEcologieSysInfo
 
         private void BtnAjouterNouvelleMatierePremiere_Click(object sender, EventArgs e)
         {
-           
-            ResStockMatieresPremiere matierePremiere = new ResStockMatieresPremiere
-            {
-                NomMatiere = txtNomMatierePremiere.Text,
-                TypeMatiere = cbxTypesMatieres.GetItemText(cbxTypesMatieres.SelectedItem),
-                StockMatiere = float.Parse(txtStockInitial.Text)
-            };
 
-            db.ResStockMatieresPremieres.Add(matierePremiere);
-            db.SaveChanges();
-            txtNomMatierePremiere.Text = "";
-            txtStockInitial.Text = "0";
-            MessageBox.Show("Une nouvelle matière première a été ajoutée avec succès");
-            LoadData();
+            try
+            {
+                bool nomValide = Validation.ChampsVide(txtNomMatierePremiere.Text);
+                bool stockValide = Validation.EstUnChiffre(txtStockInitial.Text);
+
+                ResStockMatieresPremiere matierePremiere = new ResStockMatieresPremiere
+                {
+                    NomMatiere = txtNomMatierePremiere.Text,
+                    TypeMatiere = cbxTypesMatieres.GetItemText(cbxTypesMatieres.SelectedItem),
+                    StockMatiere = float.Parse(txtStockInitial.Text)
+                };
+
+                db.ResStockMatieresPremieres.Add(matierePremiere);
+                db.SaveChanges();
+                txtNomMatierePremiere.Clear();
+                txtStockInitial.Text = "0";
+                MessageBox.Show("Une nouvelle matière première a été ajoutée avec succès");
+                LoadData();
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Merci de renseigner les champs vides");
+                return;
+            }
             
         }
 

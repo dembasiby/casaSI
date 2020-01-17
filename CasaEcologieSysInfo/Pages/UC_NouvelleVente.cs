@@ -24,13 +24,13 @@ namespace CasaEcologieSysInfo
 
         private void LoadData()
         {
-            ageEmployesBindingSource.DataSource = db.AgeEmployes
-                                                    .Where(em => em.Actif == true)
+            ageEmployesBindingSource.DataSource = Conversion.ListeEmployesPresents(dtpDateVente)
                                                     .OrderBy(em => em.PrenomNom)
+                                                    .Select(em => em.PrenomNom)
                                                     .ToList();
-            ageEmployeBindingSource.DataSource = db.AgeEmployes
-                                                    .Where(em => em.Actif == true)
+            ageEmployeBindingSource.DataSource = Conversion.ListeEmployesPresents(dtpDateVente)
                                                     .OrderBy(em => em.PrenomNom)
+                                                    .Select(em => em.PrenomNom)
                                                     .ToList();
 
             ageClientBindingSource.DataSource = db.AgeClients
@@ -50,22 +50,45 @@ namespace CasaEcologieSysInfo
         }
 
         private void BtnNouveauClient_Click(object sender, EventArgs e)
-        {            
-            AgeClient client = new AgeClient
-            {
-                NomClient = txtNomClient.Text,
-                Localite = txtLocalite.Text,
-                SoldeInitialeCreance = int.Parse(txtSoldeInitialeCreance.Text)
-            };
+        {
+            string nomClient = txtNomClient.Text;
+            string localite = txtLocalite.Text;
+            int soldeInitialeCreance = int.Parse(txtSoldeInitialeCreance.Text);
 
-            db.AgeClients.Add(client);
-            db.SaveChanges();
-            txtNomClient.Text = "";
-            txtLocalite.Text = "";
-            txtSoldeInitialeCreance.Text = "00";
-            MessageBox.Show("Le nouveau client a été ajouté avec succès");
-            LoadData();
-           
+            bool clientExiste = db.AgeClients.Any(c => c.NomClient == nomClient && c.Localite == localite);
+            bool nomClientInvalide = Validation.ChampsVide(txtNomClient.Text);
+            bool nomLocaliteInvalide = Validation.ChampsVide(txtLocalite.Text);
+
+            if (nomClientInvalide || nomLocaliteInvalide)
+            {
+                MessageBox.Show("Veuillez renseigner les champs 'Nom Client' et 'Localité'.");
+                return;
+            }
+            else
+            {
+                if (clientExiste)
+                {
+                    MessageBox.Show("Cette combinaison de nom et de localité existe déjà dans la base de donnée. Si c'est une personne différente, veuillez ajouter un élément différenciateur.");
+                    return;
+                }
+                else
+                {
+                    AgeClient client = new AgeClient
+                    {
+                        NomClient = nomClient,
+                        Localite = localite,
+                        SoldeInitialeCreance = soldeInitialeCreance
+                    };
+
+                    db.AgeClients.Add(client);
+                    db.SaveChanges();
+                    txtNomClient.Text = "";
+                    txtLocalite.Text = "";
+                    txtSoldeInitialeCreance.Text = "00";
+                    MessageBox.Show("Le nouveau client a été ajouté avec succès");
+                    LoadData();
+                }            
+            }       
         }
 
         private void BtnAjouterProduitAuPanier_Click(object sender, EventArgs e)
@@ -111,8 +134,9 @@ namespace CasaEcologieSysInfo
         }
     
         private void BtnEnregistrerVente_Click(object sender, EventArgs e)
-        {           
-            AgeClient client = db.AgeClients.FirstOrDefault(c => c.NomClient == cbxNomClient.Text);
+        {
+            int codeClient = int.Parse(cbxNomClient.SelectedValue.ToString());
+            AgeClient client = db.AgeClients.FirstOrDefault(c => c.CodeClient == codeClient);
             AgeEmploye resStock = db.AgeEmployes.FirstOrDefault(rs => rs.PrenomNom == cbxResponsableStockPrdtsFinis.Text);
             AgeEmploye tres = db.AgeEmployes.FirstOrDefault(rv => rv.PrenomNom == cbxTres.Text);
             ResComptesTresorerie cpte = db.ResComptesTresoreries.FirstOrDefault(cte => cte.NomCompte == cbxCompte.Text);
@@ -133,11 +157,14 @@ namespace CasaEcologieSysInfo
 
                 for (int i = 0; i < listView1.Items.Count; i++)
                 {
-                   
+
                     //EnregistrerVenteDUnProduit(vente, listView1.Items[i]);
-                    GestionVentes.EnregistrerNouvelleVenteDUnProduit(vente.CodeVente, listView1.Items[i].SubItems[0].Text, 
-                                                            listView1.Items[i].SubItems[1].Text, 
-                                                            listView1.Items[i].SubItems[3].Text);
+                    int codeVente = vente.CodeVente;
+                    string produit = listView1.Items[i].SubItems[0].Text;
+                    string quantite = listView1.Items[i].SubItems[1].Text;
+                    string montant = listView1.Items[i].SubItems[3].Text;
+
+                    GestionVentes.EnregistrerNouvelleVenteDUnProduit(codeVente, produit, quantite, montant);
                 }
 
 

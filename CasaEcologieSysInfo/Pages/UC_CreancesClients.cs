@@ -68,9 +68,12 @@ namespace CasaEcologieSysInfo.Pages
                                             Solde = 0m
                                         });
 
-            var combinedQuery = ventesClients.Union(totalPaiementClient).Union(encaissementCreances)
-                .OrderByDescending(c => c.Solde)
-                .ToList();
+            var combinedQuery = ventesClients
+                                .Union(totalPaiementClient)
+                                .Union(encaissementCreances)
+                                .OrderByDescending(c => c.Solde)
+                                .Where(c => c.Solde > 0)
+                                .ToList();
             DataTable dt = Conversion.ConvertirEnTableDeDonnees(combinedQuery);
 
             DataRow dr = dt.NewRow();

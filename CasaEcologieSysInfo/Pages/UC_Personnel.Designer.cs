@@ -308,7 +308,7 @@
             this.dtpDebut.Name = "dtpDebut";
             this.dtpDebut.Size = new System.Drawing.Size(123, 23);
             this.dtpDebut.TabIndex = 38;
-            this.dtpDebut.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            this.dtpDebut.ValueChanged += new System.EventHandler(this.DateTimePicker1_ValueChanged);
             // 
             // dtpFin
             // 

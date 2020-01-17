@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using CasaEcologieSysInfo.Classes;
+
 
 namespace CasaEcologieSysInfo
 {
@@ -23,13 +19,13 @@ namespace CasaEcologieSysInfo
         private void LoadData()
         {          
             ageAutreFournisseursBindingSource.DataSource = db.AgeAutreFournisseurs.ToList();
-            ageEmployesBindingSource.DataSource = db.AgeEmployes
-                                                    .Where(em => em.Actif == true)
+            ageEmployesBindingSource.DataSource = Conversion.ListeEmployesPresents(dtpAchatNouveauEqInf)
                                                     .OrderBy(em => em.PrenomNom)
+                                                    .Select(em => em.PrenomNom)
                                                     .ToList();
-            ageEmployesBindingSource1.DataSource = db.AgeEmployes
-                                                    .Where(em => em.Actif == true)
+            ageEmployesBindingSource1.DataSource = Conversion.ListeEmployesPresents(dtpAchatNouveauEqInf)
                                                     .OrderBy(em => em.PrenomNom)
+                                                    .Select(em => em.PrenomNom)
                                                     .ToList();
             resComptesTresorerieBindingSource.DataSource = db.ResComptesTresoreries.ToList();
 
@@ -43,21 +39,36 @@ namespace CasaEcologieSysInfo
 
         private void BtnNouveauFournisseurImmo_Click(object sender, EventArgs e)
         {
-         
-            AgeAutreFournisseur af = new AgeAutreFournisseur
+            try
             {
-                NomAutreFournisseur = txtNomFournisseurImmo.Text,
-                Localite = txtLocaliteFournisseurImmo.Text,
-                SoldeInitialDetteFournisseur = int.Parse(txtSoldeInitialeDetteFournisseurImmo.Text)
-            };
+                bool fournisseurExiste = !db.AgeFournisseursServicesFournitures
+                    .Any(serf => serf.NomFournisseurServiceFourniture == txtNouveauFournisseurImmo.Text
+                    && serf.Localite == txtLocaliteFournisseurImmo.Text);
 
-            db.AgeAutreFournisseurs.Add(af);
-            db.SaveChanges();
-            txtNomFournisseurImmo.Text = "";
-            txtLocaliteFournisseurImmo.Text = "";
-            txtSoldeInitialeDetteFournisseurImmo.Text = "00";
-            MessageBox.Show("Une nouveau fournisseur d'équipement ou d'infrastructure a été ajoutée avec succès");
-            LoadData();
+                bool nomValide = Validation.ChampsVide(txtNouveauFournisseurImmo.Text);
+                bool localiteValide = Validation.ChampsVide(txtLocaliteFournisseurImmo.Text);
+                bool soldeValide = Validation.EstUnChiffre(txtSoldeInitialeDetteFournisseurImmo.Text);
+
+                AgeAutreFournisseur af = new AgeAutreFournisseur
+                {
+                    NomAutreFournisseur = txtNouveauFournisseurImmo.Text,
+                    Localite = txtLocaliteFournisseurImmo.Text,
+                    SoldeInitialDetteFournisseur = int.Parse(txtSoldeInitialeDetteFournisseurImmo.Text)
+                };
+
+                db.AgeAutreFournisseurs.Add(af);
+                db.SaveChanges();
+                txtNouveauFournisseurImmo.Text = "";
+                txtLocaliteFournisseurImmo.Text = "";
+                txtSoldeInitialeDetteFournisseurImmo.Text = "00";
+
+                MessageBox.Show("Une nouveau fournisseur d'équipement ou d'infrastructure a été ajoutée avec succès");
+                LoadData();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Veuillez vérifier les données à enregistrer.");
+            }
              
         }
 
@@ -71,7 +82,7 @@ namespace CasaEcologieSysInfo
                 ResEquipementsInfrastructure einfr = new ResEquipementsInfrastructure()
                 {
                     Nom = txtNomEqInfr2.Text,
-                    DateAcquisition = DateTime.Parse(dtpAchatEqInfr2.Text),
+                    DateAcquisition = DateTime.Parse(dtpEquInfrExistant.Text),
                     DureeDeVie = int.Parse(txtDuree2.Text),
                     Quantite = int.Parse(txtQuantiteExistant.Text),
                     MaterielDeProduction = checkboxValue,
@@ -101,7 +112,7 @@ namespace CasaEcologieSysInfo
                 ResEquipementsInfrastructure einfr = new ResEquipementsInfrastructure()
                 {
                     Nom = txtNomEqInfr1.Text,
-                    DateAcquisition = DateTime.Parse(dtpAchatEqInfr1.Text),
+                    DateAcquisition = DateTime.Parse(dtpAchatNouveauEqInf.Text),
                     DureeDeVie = int.Parse(txtDuree1.Text),
                     MaterielDeProduction = cbxImmobilisationLieeAProduction.Checked,
                     Montant = int.Parse(txtMontant1.Text),
@@ -151,7 +162,6 @@ namespace CasaEcologieSysInfo
                 txtQuantite.Text = "1";
                 txtMontantPaye.Text = "";
             }
-
         }
 
         private void CbxComptePaiement_SelectedIndexChanged(object sender, EventArgs e)

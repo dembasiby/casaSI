@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CasaEcologieSysInfo
@@ -22,7 +17,7 @@ namespace CasaEcologieSysInfo
 
         private void BtnAjouterNouveauProduitFiniOuSFini_Click(object sender, EventArgs e)
         {
-            prod.VerifierChampsQuantite(txtStockInitialProduitFini.Text);
+            prod.VerifierChampsQuantite(txtStockInitial.Text);
            
 
             if ((txtNomProduitFini.Text != "" && txtNomProduitSemiFini.Text != "") ||
@@ -35,29 +30,32 @@ namespace CasaEcologieSysInfo
 
             if (txtNomProduitFini.Text != "")
             {
-                CreerNouveauProduitFini(txtNomProduitFini.Text, txtStockInitialProduitFini.Text);
+                CreerNouveauProduitFini();
             }
             else
             {
-                CreerNouveauProduitSemiFini(txtNomProduitSemiFini.Text, txtStockInitialProduitFini.Text);
+                CreerNouveauProduitSemiFini();
             }
 
             prod.ChargerDonneesInitiales();
         }
 
-        private void CreerNouveauProduitSemiFini(string text1, string text2)
+        private void CreerNouveauProduitSemiFini()
         {
             var nomMatierPremiere = cbxNomMatiereP.GetItemText(cbxNomMatiereP.SelectedItem);
-            ResStockMatieresPremiere mp = db.ResStockMatieresPremieres.FirstOrDefault(n => n.NomMatiere == nomMatierPremiere);
-            prod.VerifierChampsQuantite(txtStockInitialProduitFini.Text);
+            ResStockMatieresPremiere mp = db.ResStockMatieresPremieres.FirstOrDefault(n => n.NomMatiere == nomMatierPremiere); 
 
             try
             {
+                bool stockValide = prod.VerifierChampsQuantite(txtStockInitial.Text);
+                bool coutUValide = prod.VerifierChampsQuantite(txtCoutUnitaire.Text);
+
                 ResStockProduitsSemiFini semiF = new ResStockProduitsSemiFini
                 {
                     Description = txtNomProduitSemiFini.Text,
-                    Quantite = int.Parse(txtStockInitialProduitFini.Text),
+                    Quantite = int.Parse(txtStockInitial.Text),
                     CodeMatierePremiere = mp.CodeMatierePremiere,
+                    CoutUnitaire = int.Parse(txtCoutUnitaire.Text)
                 };
 
                 ;
@@ -65,7 +63,8 @@ namespace CasaEcologieSysInfo
                 db.SaveChanges();
 
                 MessageBox.Show("Le nouveau produit a été enregistré avec succès.");
-                txtStockInitialProduitFini.Text = "00";
+                txtStockInitial.Text = "00";
+                txtCoutUnitaire.Text = "00";
                 txtNomProduitSemiFini.Clear();
             }
             catch (Exception ex)
@@ -74,17 +73,22 @@ namespace CasaEcologieSysInfo
             }
         }
 
-        private void CreerNouveauProduitFini(string nomProduit, string quantite)
+        private void CreerNouveauProduitFini()
         {
             try
             {
-                prod.VerifierChampsQuantite(txtPrixDeVente.Text);
+                bool prixValide = prod.VerifierChampsQuantite(txtPrixDeVente.Text);
+                bool stockValide = prod.VerifierChampsQuantite(txtStockInitial.Text);
+                bool coutUValide = prod.VerifierChampsQuantite(txtCoutUnitaire.Text);
+                bool nomvalide = Validation.ChampsVide(txtNomProduitFini.Text);
 
                 ResStockProduitsFini pf = new ResStockProduitsFini
                 {
-                    NomProduit = nomProduit,
-                    StockProduit = int.Parse(txtStockInitialProduitFini.Text),
-                    PrixDeVenteStandard = int.Parse(txtPrixDeVente.Text)
+                    NomProduit = txtNomProduitFini.Text,
+                    StockProduit = int.Parse(txtStockInitial.Text),
+                    PrixDeVenteStandard = int.Parse(txtPrixDeVente.Text),
+                    CoutUnitaire = int.Parse(txtCoutUnitaire.Text)
+                    
                 };
 
                 db.ResStockProduitsFinis.Add(pf);
@@ -92,7 +96,8 @@ namespace CasaEcologieSysInfo
 
                 MessageBox.Show("Le nouveau produit fini a été enregistré avec succès.");
                 txtPrixDeVente.Text = "00";
-                txtStockInitialProduitFini.Text = "00";
+                txtStockInitial.Text = "00";
+                txtCoutUnitaire.Text = "00";
                 txtNomProduitFini.Clear();
             }
             catch (Exception ex)
@@ -101,9 +106,9 @@ namespace CasaEcologieSysInfo
             }
         }
 
-        private void frmNouveauProduitFiniOuSemiFini_Load(object sender, EventArgs e)
+        private void FrmNouveauProduitFiniOuSemiFini_Load(object sender, EventArgs e)
         {
-            resStockMatieresPremiereBindingSource.DataSource = db.ResStockMatieresPremieres.ToList();
+            resStockMatieresPremiereBindingSource.DataSource = db.ResStockMatieresPremieres.OrderBy(mp => mp.NomMatiere).ToList();
         }
     }
 }

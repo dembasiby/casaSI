@@ -24,9 +24,9 @@ namespace CasaEcologieSysInfo.Pages
         {
             resComptesTresorerieBindingSource.DataSource = db.ResComptesTresoreries.ToList();
             resComptesTresorerieBindingSource1.DataSource = db.ResComptesTresoreries.ToList();
-            ageEmployeBindingSource.DataSource = db.AgeEmployes
-                                                    .Where(em => em.Actif == true)
+            ageEmployeBindingSource.DataSource = Conversion.ListeEmployesPresents(dtpDateOperation)
                                                     .OrderBy(em => em.PrenomNom)
+                                                    .Select(em => em.PrenomNom)
                                                     .ToList();
 
             Tresorerie.AfficherSoldeTresorerie(cbxCompteDebit, txtSoldeCompte);

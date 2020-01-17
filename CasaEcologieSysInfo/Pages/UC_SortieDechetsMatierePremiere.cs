@@ -24,15 +24,9 @@ namespace CasaEcologieSysInfo.Pages
             resStockMatieresPremiereBindingSource.DataSource = db.ResStockMatieresPremieres
                                                                  .OrderBy(n => n.NomMatiere)
                                                                  .ToList();
-            ageEmployeBindingSource.DataSource = db.AgeEmployes
-                                                   .Where(em => em.Actif == true)
-                                                   .OrderBy(em => em.PrenomNom)
-                                                   .ToList();
 
-            ageEmployeBindingSource1.DataSource = db.AgeEmployes
-                                                    .Where(em => em.Actif == true)
-                                                    .OrderBy(em => em.PrenomNom)
-                                                    .ToList();
+            ageEmployeBindingSource.DataSource = Conversion.ListeEmployesPresents(dtpDateSortieDechets).OrderBy(em => em.PrenomNom).ToList();
+            ageEmployeBindingSource1.DataSource = Conversion.ListeEmployesPresents(dtpDateSortieDechets).OrderBy(em => em.PrenomNom).ToList();
         }
 
         private void BtnEnregistrerSortie_Click(object sender, EventArgs e)

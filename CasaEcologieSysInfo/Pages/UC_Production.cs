@@ -21,9 +21,9 @@ namespace CasaEcologieSysInfo
             resStockProduitsSemiFiniBindingSource2.DataSource = db.ResStockProduitsSemiFinis.ToList();
             MontrerListeProduitsFinis();
 
-            ageEmployeBindingSource1.DataSource = db.AgeEmployes.Where(em => em.Actif == true).OrderBy(em => em.PrenomNom).ToList();
-            ageEmployeBindingSource2.DataSource = db.AgeEmployes.Where(em => em.Actif == true).OrderBy(em => em.PrenomNom).ToList();
-            ageEmployeBindingSource3.DataSource = db.AgeEmployes.Where(em => em.Actif == true).OrderBy(em => em.PrenomNom).ToList();
+            ageEmployeBindingSource1.DataSource = Conversion.ListeEmployesPresents(dtpDateProduction).OrderBy(em => em.PrenomNom).Select(em => em.PrenomNom).ToList();
+            ageEmployeBindingSource2.DataSource = Conversion.ListeEmployesPresents(dtpDateProduction).OrderBy(em => em.PrenomNom).Select(em => em.PrenomNom).ToList();
+            ageEmployeBindingSource3.DataSource = Conversion.ListeEmployesPresents(dtpDateProduction).OrderBy(em => em.PrenomNom).Select(em => em.PrenomNom).ToList();
 
             var nomMatierePrem = cbxNomMatiereP.GetItemText(cbxNomMatiereP.SelectedItem);
             txtStockMatierePremiereDispo.Text = ChargerStockMatierePremiere(nomMatierePrem).ToString();
@@ -57,9 +57,10 @@ namespace CasaEcologieSysInfo
 
             clbEmployes.Items.Clear();
 
-            var listeEmployes = (from pe in db.EvePresenceEmployes
-                             where pe.Date == dateTimePicker1.Value.Date
-                             select pe.AgeEmploye.PrenomNom).ToList();
+            var listeEmployes = Conversion
+                                .ListeEmployesPresents(dtpDateProduction)
+                                .Select(em => em.PrenomNom)
+                                .ToList();
 
             clbEmployes.Items.AddRange(listeEmployes.ToArray());
         }
@@ -83,12 +84,12 @@ namespace CasaEcologieSysInfo
             AfficherSoldeStocksProduitsSemiFinis();
         }
 
-        public void VerifierChampsQuantite (string quantite)
+        public bool VerifierChampsQuantite (string quantite)
         {
             if (string.IsNullOrEmpty(quantite))
             {
                 MessageBox.Show("Le champs 'Quantité' ne peut être vide.");
-                return;
+                return false;
             }
 
             try
@@ -98,8 +99,10 @@ namespace CasaEcologieSysInfo
             catch (Exception)
             {
                 MessageBox.Show("Le champs 'Quantité' doit contenir des nombres.");
-                return;
+                return false;
             }
+
+            return true;
         }
 
         private void UtiliserEmballage(int codeURes, string emballage, int quantite)
@@ -191,7 +194,7 @@ namespace CasaEcologieSysInfo
 
             (from preE in db.EvePresenceEmployes
              where preE.CodeEmploye == travailleur.CodeEmploye
-             where preE.Date == dateTimePicker1.Value.Date
+             where preE.Date == dtpDateProduction.Value.Date
              select preE)
              .ToList()
              .ForEach(em => em.CodeUtilisationDesRessources = codeURessources);
@@ -228,7 +231,7 @@ namespace CasaEcologieSysInfo
             {
                 CodeUtilisationRessources = codeRessource,
                 CodeEmploye_Resp_stock_produits_finis = codeResProduitsFinis,
-                Date = DateTime.Parse(dateTimePicker1.Text)
+                Date = DateTime.Parse(dtpDateProduction.Text)
             };
 
             db.EveProductions.Add(prod);

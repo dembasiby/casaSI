@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.gBxNouvelleMatierePremiere = new System.Windows.Forms.GroupBox();
             this.btnNewServFourniture = new System.Windows.Forms.Button();
-            this.txtNomServFourniture = new System.Windows.Forms.TextBox();
+            this.txtNomNewServFourniture = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -87,7 +87,7 @@
             // gBxNouvelleMatierePremiere
             // 
             this.gBxNouvelleMatierePremiere.Controls.Add(this.btnNewServFourniture);
-            this.gBxNouvelleMatierePremiere.Controls.Add(this.txtNomServFourniture);
+            this.gBxNouvelleMatierePremiere.Controls.Add(this.txtNomNewServFourniture);
             this.gBxNouvelleMatierePremiere.Controls.Add(this.label2);
             this.gBxNouvelleMatierePremiere.Controls.Add(this.label3);
             this.gBxNouvelleMatierePremiere.Controls.Add(this.label7);
@@ -115,13 +115,13 @@
             this.btnNewServFourniture.UseVisualStyleBackColor = false;
             this.btnNewServFourniture.Click += new System.EventHandler(this.BtnNewServFourniture_Click);
             // 
-            // txtNomServFourniture
+            // txtNomNewServFourniture
             // 
-            this.txtNomServFourniture.Enabled = false;
-            this.txtNomServFourniture.Location = new System.Drawing.Point(0, 89);
-            this.txtNomServFourniture.Name = "txtNomServFourniture";
-            this.txtNomServFourniture.Size = new System.Drawing.Size(383, 27);
-            this.txtNomServFourniture.TabIndex = 9;
+            this.txtNomNewServFourniture.Enabled = false;
+            this.txtNomNewServFourniture.Location = new System.Drawing.Point(0, 89);
+            this.txtNomNewServFourniture.Name = "txtNomNewServFourniture";
+            this.txtNomNewServFourniture.Size = new System.Drawing.Size(383, 27);
+            this.txtNomNewServFourniture.TabIndex = 9;
             // 
             // label2
             // 
@@ -554,7 +554,7 @@
 
         private System.Windows.Forms.GroupBox gBxNouvelleMatierePremiere;
         private System.Windows.Forms.Button btnNewServFourniture;
-        private System.Windows.Forms.TextBox txtNomServFourniture;
+        private System.Windows.Forms.TextBox txtNomNewServFourniture;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label7;

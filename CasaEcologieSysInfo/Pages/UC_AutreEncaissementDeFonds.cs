@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CasaEcologieSysInfo.Pages
@@ -56,18 +51,22 @@ namespace CasaEcologieSysInfo.Pages
 
                 db.EveEncaissementsAutres.Add(autreEnc);
                 db.SaveChanges();
-                MessageBox.Show("L'encaissement de fonds à été enregistré avec succès.");
+                MessageBox.Show("L'encaissement de fonds a été enregistré avec succès.");
                 txtDescription.Clear();
                 txtMontantEncaisse.Clear();
+            }
+            else
+            {
+                MessageBox.Show("L'encaissement n'a pas été enregistré.");
             }
         }
 
         private void UC_AutreEncaissementDeFonds_Load(object sender, EventArgs e)
         {
             resComptesTresorerieBindingSource.DataSource = db.ResComptesTresoreries.ToList();
-            ageEmployeBindingSource.DataSource = db.AgeEmployes
-                                                    .Where(em => em.Actif == true)
+            ageEmployeBindingSource.DataSource = Conversion.ListeEmployesPresents(dtpDateEncaissement)
                                                     .OrderBy(em => em.PrenomNom)
+                                                    .Select(em => em.PrenomNom)
                                                     .ToList();
         }
 

@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using CasaEcologieSysInfo.Classes;
 
@@ -25,49 +20,76 @@ namespace CasaEcologieSysInfo
             resServicesFournituresBindingSource.DataSource = db.ResServicesFournitures.ToList();
             resComptesTresorerieBindingSource.DataSource = db.ResComptesTresoreries.ToList();
             ageFournisseursServicesFournituresBindingSource.DataSource = db.AgeFournisseursServicesFournitures.ToList();
-            ageEmployesBindingSource.DataSource = db.AgeEmployes
-                                                    .Where(em => em.Actif == true)
+            ageEmployesBindingSource.DataSource = Conversion.ListeEmployesPresents(dtpDateAchatServFourn)
                                                     .OrderBy(em => em.PrenomNom)
+                                                    .Select(em => em.PrenomNom)
                                                     .ToList();
 
-            ageEmployesBindingSource1.DataSource = db.AgeEmployes
-                                                    .Where(em => em.Actif == true)
+            ageEmployesBindingSource1.DataSource = Conversion.ListeEmployesPresents(dtpDateAchatServFourn)
                                                     .OrderBy(em => em.PrenomNom)
+                                                    .Select(em => em.PrenomNom)
                                                     .ToList();
 
             Tresorerie.AfficherSoldeTresorerie(cbxComptePaiement, txtSoldeCompte);
         }
 
+        // CE BOUTON A ETE FINALEMENT DESACTIVE.
         private void BtnNewServFourniture_Click(object sender, EventArgs e)
         {
-            ResServicesFourniture sf = new ResServicesFourniture
+            try
             {
-                NomServiceFourniture = txtNomServFourniture.Text,
-            };
+                bool nomValide = Validation.ChampsVide(txtNomNewServFourniture.Text);
+                bool serviceExiste = !db.ResServicesFournitures.Any(serf => serf.NomServiceFourniture == txtNomNewServFourniture.Text);
 
-            db.ResServicesFournitures.Add(sf);
-            db.SaveChanges();
-            MessageBox.Show("Un nouveau service ou de fourniture a été ajouté avec succès");
-            txtNomServFourniture.Text = "";
-            LoadData();                  
-       }
+                ResServicesFourniture sf = new ResServicesFourniture
+                {
+                    NomServiceFourniture = txtNomNewServFourniture.Text,
+                };
+
+                db.ResServicesFournitures.Add(sf);
+                db.SaveChanges();
+                MessageBox.Show("Un nouveau service ou de fourniture a été ajouté avec succès");
+                txtNomNewServFourniture.Clear();
+                LoadData();
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Ce service existe déjà.");
+            }                
+        }
 
         private void BtnNouveauFournisseurServ_Click(object sender, EventArgs e)
         {
-            AgeFournisseursServicesFourniture fsf = new AgeFournisseursServicesFourniture
+            try
             {
-                NomFournisseurServiceFourniture = txtNomFournServ.Text,
-                Localite = txtLocaliteFournServ.Text,
-                SoldeDette = int.Parse(txtSoldeInitialeDetteFournServ.Text)
-            };
+                bool fournisseurExiste = !db.AgeFournisseursServicesFournitures
+                    .Any(serf => serf.NomFournisseurServiceFourniture == txtNomFournServ.Text
+                    && serf.Localite == txtLocaliteFournServ.Text);
 
-            db.AgeFournisseursServicesFournitures.Add(fsf);
-            db.SaveChanges();
-            MessageBox.Show("Une nouveau fournisseur de services ou de fournitures a été ajouté avec succès");
-            txtNomFournServ.Text = "";
-            txtLocaliteFournServ.Text = "";
-            txtSoldeInitialeDetteFournServ.Text = "00";
-            LoadData();           
+                bool nomValide = Validation.ChampsVide(txtNomFournServ.Text);
+                bool localiteValide = Validation.ChampsVide(txtLocaliteFournServ.Text);
+                bool soldeValide = Validation.EstUnChiffre(txtSoldeInitialeDetteFournServ.Text);
+
+                AgeFournisseursServicesFourniture fsf = new AgeFournisseursServicesFourniture
+                {
+                    NomFournisseurServiceFourniture = txtNomFournServ.Text,
+                    Localite = txtLocaliteFournServ.Text,
+                    SoldeDette = int.Parse(txtSoldeInitialeDetteFournServ.Text)
+                };
+
+                db.AgeFournisseursServicesFournitures.Add(fsf);
+                db.SaveChanges();
+                MessageBox.Show("Une nouveau fournisseur de services ou de fournitures a été ajouté avec succès");
+                txtNomFournServ.Text = "";
+                txtLocaliteFournServ.Text = "";
+                txtSoldeInitialeDetteFournServ.Text = "00";
+                LoadData();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Veuillez vérifier les données à enregistrer.");
+            }   
         }
 
         private void UC_AcquisitionServicesFournitures_Load(object sender, EventArgs e)
@@ -123,9 +145,7 @@ namespace CasaEcologieSysInfo
                 MessageBox.Show("Le nouvel achat de service ou de fourniture a été enregistré avec succès!");
                 txtMontantServFourn.Text = "";
                 txtMontantPayeServFourn.Text = "";
-            }
-
-                     
+            }                 
         }
 
         private void CbxComptePaiement_SelectedIndexChanged_1(object sender, EventArgs e)
