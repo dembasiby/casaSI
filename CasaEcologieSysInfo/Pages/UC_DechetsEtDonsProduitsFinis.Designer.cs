@@ -32,19 +32,21 @@
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.txtQuantite = new System.Windows.Forms.TextBox();
             this.cbxResponsableStock = new System.Windows.Forms.ComboBox();
+            this.ageEmployeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.cbxProduitsFinis = new System.Windows.Forms.ComboBox();
+            this.resStockProduitsFiniBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.lblDescription = new System.Windows.Forms.Label();
             this.dtpDateSortieDechetsOuDons = new System.Windows.Forms.DateTimePicker();
             this.label21 = new System.Windows.Forms.Label();
             this.btnEnregistrerSortie = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.resStockProduitsFiniBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.ageEmployeBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.resStockProduitsFiniBindingSource)).BeginInit();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtStockDisponible = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.ageEmployeBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.resStockProduitsFiniBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // txtDescription
@@ -68,17 +70,21 @@
             this.cbxResponsableStock.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxResponsableStock.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxResponsableStock.FormattingEnabled = true;
-            this.cbxResponsableStock.Location = new System.Drawing.Point(467, 218);
+            this.cbxResponsableStock.Location = new System.Drawing.Point(467, 259);
             this.cbxResponsableStock.Name = "cbxResponsableStock";
             this.cbxResponsableStock.Size = new System.Drawing.Size(234, 25);
             this.cbxResponsableStock.TabIndex = 55;
             this.cbxResponsableStock.ValueMember = "CodeEmploye";
             // 
+            // ageEmployeBindingSource
+            // 
+            this.ageEmployeBindingSource.DataSource = typeof(CasaEcologieSysInfo.AgeEmploye);
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(316, 194);
+            this.label5.Location = new System.Drawing.Point(302, 194);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(110, 17);
             this.label5.TabIndex = 59;
@@ -88,7 +94,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(316, 224);
+            this.label3.Location = new System.Drawing.Point(302, 265);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(148, 17);
             this.label3.TabIndex = 60;
@@ -101,17 +107,22 @@
             this.cbxProduitsFinis.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxProduitsFinis.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxProduitsFinis.FormattingEnabled = true;
-            this.cbxProduitsFinis.Location = new System.Drawing.Point(467, 156);
+            this.cbxProduitsFinis.Location = new System.Drawing.Point(467, 158);
             this.cbxProduitsFinis.Name = "cbxProduitsFinis";
             this.cbxProduitsFinis.Size = new System.Drawing.Size(234, 25);
             this.cbxProduitsFinis.TabIndex = 57;
             this.cbxProduitsFinis.ValueMember = "CodeProduit";
+            this.cbxProduitsFinis.SelectedIndexChanged += new System.EventHandler(this.CbxProduitsFinis_SelectedIndexChanged);
+            // 
+            // resStockProduitsFiniBindingSource
+            // 
+            this.resStockProduitsFiniBindingSource.DataSource = typeof(CasaEcologieSysInfo.ResStockProduitsFini);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(316, 159);
+            this.label1.Location = new System.Drawing.Point(302, 159);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(78, 17);
             this.label1.TabIndex = 62;
@@ -121,7 +132,7 @@
             // 
             this.lblDescription.AutoSize = true;
             this.lblDescription.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDescription.Location = new System.Drawing.Point(316, 127);
+            this.lblDescription.Location = new System.Drawing.Point(302, 127);
             this.lblDescription.Name = "lblDescription";
             this.lblDescription.Size = new System.Drawing.Size(80, 17);
             this.lblDescription.TabIndex = 63;
@@ -139,7 +150,7 @@
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(306, 96);
+            this.label21.Location = new System.Drawing.Point(292, 96);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(119, 18);
             this.label21.TabIndex = 58;
@@ -152,7 +163,7 @@
             this.btnEnregistrerSortie.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEnregistrerSortie.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEnregistrerSortie.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnEnregistrerSortie.Location = new System.Drawing.Point(467, 259);
+            this.btnEnregistrerSortie.Location = new System.Drawing.Point(467, 295);
             this.btnEnregistrerSortie.Name = "btnEnregistrerSortie";
             this.btnEnregistrerSortie.Size = new System.Drawing.Size(234, 31);
             this.btnEnregistrerSortie.TabIndex = 54;
@@ -171,21 +182,32 @@
             this.label4.Text = "Sortie de déchets ou dons de produits finis";
             this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // resStockProduitsFiniBindingSource
+            // label2
             // 
-            this.resStockProduitsFiniBindingSource.DataSource = typeof(CasaEcologieSysInfo.ResStockProduitsFini);
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(302, 228);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(159, 17);
+            this.label2.TabIndex = 59;
+            this.label2.Text = "Stock Disponible (unité)";
             // 
-            // ageEmployeBindingSource
+            // txtStockDisponible
             // 
-            this.ageEmployeBindingSource.DataSource = typeof(CasaEcologieSysInfo.AgeEmploye);
+            this.txtStockDisponible.Location = new System.Drawing.Point(467, 223);
+            this.txtStockDisponible.Name = "txtStockDisponible";
+            this.txtStockDisponible.Size = new System.Drawing.Size(234, 30);
+            this.txtStockDisponible.TabIndex = 66;
             // 
             // UC_DechetsEtDonsProduitsFinis
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.txtDescription);
+            this.Controls.Add(this.txtStockDisponible);
             this.Controls.Add(this.txtQuantite);
             this.Controls.Add(this.cbxResponsableStock);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cbxProduitsFinis);
@@ -196,12 +218,12 @@
             this.Controls.Add(this.btnEnregistrerSortie);
             this.Controls.Add(this.label4);
             this.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "UC_DechetsEtDonsProduitsFinis";
             this.Size = new System.Drawing.Size(983, 635);
             this.Load += new System.EventHandler(this.UC_DechetsEtDonsProduitsFinis_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.resStockProduitsFiniBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ageEmployeBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.resStockProduitsFiniBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -223,5 +245,7 @@
         private System.Windows.Forms.Button btnEnregistrerSortie;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.BindingSource ageEmployeBindingSource;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtStockDisponible;
     }
 }

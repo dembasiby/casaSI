@@ -23,7 +23,27 @@ namespace CasaEcologieSysInfo.Classes.CalculDesCouts
                                where p.Date < fin
                                select (int?)ppf.QuantiteProduitFini).Sum() ?? 0;
 
-                return stockInitial + entrees - stockFinal;
+                var autresSorties = (from asort in db.EveSortieDonsOuDechetsProduitsFinis
+                                     where asort.ResStockProduitsFini.NomProduit == produitFini
+                                     where asort.DateSortie >= debut
+                                     where asort.DateSortie < fin
+                                     select (int?)asort.QuantiteProduitFini).Sum() ?? 0;
+
+                return stockInitial + entrees - autresSorties - stockFinal;
+            }
+        }
+
+        public static int QuantiteDeProduitsSortisPourDonsOuDechets(string produitFini, DateTime debut, DateTime fin)
+        {
+            using (CasaDBEntities db = new CasaDBEntities())
+            {
+                fin = fin.AddDays(1);
+                
+                return (from asort in db.EveSortieDonsOuDechetsProduitsFinis
+                                     where asort.ResStockProduitsFini.NomProduit == produitFini
+                                     where asort.DateSortie >= debut
+                                     where asort.DateSortie < fin
+                                     select (int?)asort.QuantiteProduitFini).Sum() ?? 0;
             }
         }
 

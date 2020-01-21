@@ -57,8 +57,13 @@ namespace CasaEcologieSysInfo
                                where pf.EveVente.DateVente < date.Date
                                select (int?)pf.QuantiteProduitFini).Sum() ?? 0;
 
+                var autresSorties = (from asort in db.EveSortieDonsOuDechetsProduitsFinis
+                                     where asort.ResStockProduitsFini.NomProduit == produitFini
+                                     where asort.DateSortie < date.Date
+                                     select (int?)asort.QuantiteProduitFini).Sum() ?? 0;
 
-                return stockInitial + entrees - sorties;
+
+                return stockInitial + entrees - (sorties + autresSorties);
             }
         }
 

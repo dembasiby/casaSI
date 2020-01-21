@@ -23,6 +23,8 @@ namespace CasaEcologieSysInfo.Pages
             {
                 resStockProduitsFiniBindingSource.DataSource = db.ResStockProduitsFinis.OrderBy(pf => pf.NomProduit).ToList();
                 ageEmployeBindingSource.DataSource = Conversion.ListeEmployesPresents(dtpDateSortieDechetsOuDons).OrderBy(em => em.PrenomNom).ToList();
+
+                AfficherStockDisponible();              
             }
         }
 
@@ -57,6 +59,26 @@ namespace CasaEcologieSysInfo.Pages
                     MessageBox.Show("Merci de vérifier vos données. L'enregistrement n'a pas été effectué.");
                 }
             }
+        }
+
+        private void AfficherStockDisponible()
+        {
+            try
+            {
+                DateTime date = dtpDateSortieDechetsOuDons.Value.Date;
+                string prdtFini = cbxProduitsFinis.GetItemText(cbxProduitsFinis.SelectedItem);
+                MessageBox.Show("Produit finis: " + prdtFini);
+                txtStockDisponible.Text = GestionStocks.CalculerSoldeStockProduitFini(prdtFini, date).ToString();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Erreur affichage stock produit fini.");
+            }
+        }
+
+        private void CbxProduitsFinis_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            AfficherStockDisponible();
         }
     }
 }
