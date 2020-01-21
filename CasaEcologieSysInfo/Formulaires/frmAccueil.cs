@@ -3,12 +3,12 @@ using System.Windows.Forms;
 
 namespace CasaEcologieSysInfo
 {
-    public partial class frmAccueil : Form
+    public partial class FrmAccueil : Form
     {
         private bool isCollapsed = true;
         private string role;
         
-        public frmAccueil(string userRole)
+        public FrmAccueil(string userRole)
         {
             SqlServerTypes.Utilities.LoadNativeAssemblies(AppDomain.CurrentDomain.BaseDirectory);
             InitializeComponent();
@@ -359,5 +359,10 @@ namespace CasaEcologieSysInfo
             AddControlsToPanel(uAEI);
         }
 
+        private void BtnSortieDonDechetsPFinis_Click(object sender, EventArgs e)
+        {
+            Pages.UC_DechetsEtDonsProduitsFinis ddpf = new Pages.UC_DechetsEtDonsProduitsFinis();
+            AddControlsToPanel(ddpf);
+        }
     }
 }

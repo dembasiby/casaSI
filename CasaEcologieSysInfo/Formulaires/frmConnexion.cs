@@ -68,7 +68,7 @@ namespace CasaEcologieSysInfo
 
                 if (!utilisateur.Equals(null))
                 {
-                    using (frmAccueil fn = new frmAccueil(utilisateur))
+                    using (FrmAccueil fn = new FrmAccueil(utilisateur))
                     {
                         this.Hide();
                         fn.ShowDialog();

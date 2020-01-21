@@ -260,6 +260,9 @@
     <Compile Include="EveSortieDechetsMatieresPremiere.cs">
       <DependentUpon>Model3.tt</DependentUpon>
     </Compile>
+    <Compile Include="EveSortieDonsOuDechetsProduitsFini.cs">
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
     <Compile Include="EveTransvasement.cs">
       <DependentUpon>Model3.tt</DependentUpon>
     </Compile>
@@ -402,6 +405,12 @@
     </Compile>
     <Compile Include="Pages\UC_AutreEncaissementDeFonds.Designer.cs">
       <DependentUpon>UC_AutreEncaissementDeFonds.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\UC_DechetsEtDonsProduitsFinis.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\UC_DechetsEtDonsProduitsFinis.Designer.cs">
+      <DependentUpon>UC_DechetsEtDonsProduitsFinis.cs</DependentUpon>
     </Compile>
     <Compile Include="Pages\UC_DettesFournisseurs.cs">
       <SubType>UserControl</SubType>
@@ -634,6 +643,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\UC_CreancesClients.resx">
       <DependentUpon>UC_CreancesClients.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\UC_DechetsEtDonsProduitsFinis.resx">
+      <DependentUpon>UC_DechetsEtDonsProduitsFinis.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\UC_DettesFournisseurs.resx">
       <DependentUpon>UC_DettesFournisseurs.cs</DependentUpon>
