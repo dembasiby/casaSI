@@ -280,7 +280,7 @@ namespace CasaEcologieSysInfo.Classes
                 float achatEmballages = (from amp in db.EveReceptionMatieresPremieres
                                               join d in db.EveDecaissements on amp.CodeReceptionMatierePremiere equals d.CodeReceptionMatierePremiere
                                               join mp in db.ResStockMatieresPremieres on amp.CodeMatierePremiere equals mp.CodeMatierePremiere
-                                              where mp.TypeMatiere == "emballage"
+                                              where mp.TypeMatiere.ToLower() == "emballage"
                                               where d.DateDecaissement >= debut.Value.Date
                                               where d.DateDecaissement <= fin.Value.Date
                                               select (float?)d.Montant).Sum() ?? 0;
@@ -296,7 +296,7 @@ namespace CasaEcologieSysInfo.Classes
                 float achatMatieresPremieres = (from amp in db.EveReceptionMatieresPremieres
                                               join d in db.EveDecaissements on amp.CodeReceptionMatierePremiere equals d.CodeReceptionMatierePremiere
                                               join mp in db.ResStockMatieresPremieres on amp.CodeMatierePremiere equals mp.CodeMatierePremiere
-                                              where mp.TypeMatiere != "emballage"
+                                              where mp.TypeMatiere.ToLower() != "emballage"
                                               where d.DateDecaissement >= debut.Value.Date
                                               where d.DateDecaissement <= fin.Value.Date
                                               select (float?)d.Montant).Sum() ?? 0;
@@ -440,7 +440,7 @@ namespace CasaEcologieSysInfo.Classes
             using (CasaDBEntities db = new CasaDBEntities())
             {
                 var soldeInitial = (from fmp in db.AgeFournisseursMatieresPremieres
-                                    select fmp.SoldeDette).Sum();
+                                    select (decimal?)fmp.SoldeDette).Sum() ?? 0m;
 
                 var totalAchats = (from f in db.AgeFournisseursMatieresPremieres
                                    join rmp in db.EveReceptionMatieresPremieres on f.CodeFournisseurMatierePremiere equals rmp.CodeFournisseurMatierePremiere
@@ -451,7 +451,7 @@ namespace CasaEcologieSysInfo.Classes
                                       select (decimal?)d.Montant).Sum() ?? 0m;
 
                 var soldeInitialFE = (from f in db.AgeAutreFournisseurs
-                                      select f.SoldeInitialDetteFournisseur).Sum();
+                                      select (decimal?)f.SoldeInitialDetteFournisseur).Sum() ?? 0m;
 
                 var totalAchatsFE = (from f in db.AgeAutreFournisseurs
                                      join rmp in db.EveReceptionEquipementsInfrastructures on f.CodeAutreFournisseur equals rmp.CodeAutreFournisseur
@@ -463,7 +463,7 @@ namespace CasaEcologieSysInfo.Classes
                                         select (decimal?)d.Montant).Sum() ?? 0m;
 
                 var soldeInitialFS = (from f in db.AgeFournisseursServicesFournitures
-                                      select f.SoldeDette).Sum();
+                                      select (decimal?)f.SoldeDette).Sum() ?? 0m;
 
                 var totalAchatsFS = (from f in db.AgeFournisseursServicesFournitures
                                      join rmp in db.EveAcquisitionServicesFournitures on f.CodeFournisseurServiceFourniture equals rmp.CodeFournisseurServiceFourniture
@@ -484,7 +484,7 @@ namespace CasaEcologieSysInfo.Classes
             using (CasaDBEntities db = new CasaDBEntities())
             {
                 var soldeInitial = (from fmp in db.AgeFournisseursMatieresPremieres
-                                    select fmp.SoldeDette).Sum();
+                                    select (decimal?)fmp.SoldeDette).Sum() ?? 0m;
 
                 var totalAchats = (from f in db.AgeFournisseursMatieresPremieres
                                    join rmp in db.EveReceptionMatieresPremieres on f.CodeFournisseurMatierePremiere equals rmp.CodeFournisseurMatierePremiere
@@ -497,7 +497,7 @@ namespace CasaEcologieSysInfo.Classes
                                       select (decimal?)d.Montant).Sum() ?? 0m;
 
                 var soldeInitialFE = (from f in db.AgeAutreFournisseurs
-                                      select f.SoldeInitialDetteFournisseur).Sum();
+                                      select (decimal?)f.SoldeInitialDetteFournisseur).Sum() ?? 0m;
 
                 var totalAchatsFE = (from f in db.AgeAutreFournisseurs
                                      join rmp in db.EveReceptionEquipementsInfrastructures on f.CodeAutreFournisseur equals rmp.CodeAutreFournisseur
@@ -511,7 +511,7 @@ namespace CasaEcologieSysInfo.Classes
                                         select (decimal?)d.Montant).Sum() ?? 0m;
 
                 var soldeInitialFS = (from f in db.AgeFournisseursServicesFournitures
-                                      select f.SoldeDette).Sum();
+                                      select (decimal?)f.SoldeDette).Sum() ?? 0m;
 
                 var totalAchatsFS = (from f in db.AgeFournisseursServicesFournitures
                                      join rmp in db.EveAcquisitionServicesFournitures on f.CodeFournisseurServiceFourniture equals rmp.CodeFournisseurServiceFourniture
@@ -657,7 +657,6 @@ namespace CasaEcologieSysInfo.Classes
             Formattage.FormatterLigneEnGras(grid, 23);
             Formattage.FormatterLigneEnGras(grid, 27);
             Formattage.FormatterLigneEnGras(grid, 29);
-        }
-    
+        }    
     }
 }
