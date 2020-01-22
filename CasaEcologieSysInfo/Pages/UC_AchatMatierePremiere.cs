@@ -44,7 +44,6 @@ namespace CasaEcologieSysInfo
 
         private void BtnAjouterNouvelleMatierePremiere_Click(object sender, EventArgs e)
         {
-
             try
             {
                 bool nomValide = Validation.ChampsVide(txtNomMatierePremiere.Text);
