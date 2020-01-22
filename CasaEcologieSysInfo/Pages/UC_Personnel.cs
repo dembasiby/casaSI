@@ -44,8 +44,7 @@ namespace CasaEcologieSysInfo.Pages
             cbxTimeSheetNomEmploye.DisplayMember = "PrenomNom";
             cbxTimeSheetNomEmploye.ValueMember = "CodeEmploye";
 
-            cbxTresoriere.DataSource = db.AgeEmployes
-                                         .Where(em => em.Actif == true)
+            cbxTresoriere.DataSource = Conversion.ListeEmployesPresents(dtpDatePaiement)
                                          .Where(em => !em.Poste.StartsWith("Stagiaire"))
                                          .OrderBy(c => c.PrenomNom)
                                          .ToList();

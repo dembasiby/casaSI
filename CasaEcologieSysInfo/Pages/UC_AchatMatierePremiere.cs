@@ -29,7 +29,7 @@ namespace CasaEcologieSysInfo
                                                     .Select(em => em.PrenomNom)
                                                     .ToList();
             resComptesTresorerieBindingSource.DataSource = db.ResComptesTresoreries.ToList();
-            cbxTypesMatieres.DataSource = (from mp in db.ResStockMatieresPremieres select mp.TypeMatiere).Distinct().ToList();
+            //cbxTypesMatieres.DataSource = (from mp in db.ResStockMatieresPremieres select mp.TypeMatiere).Distinct().ToList();
             Tresorerie.AfficherSoldeTresorerie(cbxComptePaiement, txtSoldeCompte);
         }
 
@@ -48,12 +48,14 @@ namespace CasaEcologieSysInfo
             try
             {
                 bool nomValide = Validation.ChampsVide(txtNomMatierePremiere.Text);
+                bool coutValide = Validation.EstUnChiffre(txtCoutUnitaire.Text);
                 bool stockValide = Validation.EstUnChiffre(txtStockInitial.Text);
 
                 ResStockMatieresPremiere matierePremiere = new ResStockMatieresPremiere
                 {
                     NomMatiere = txtNomMatierePremiere.Text,
                     TypeMatiere = cbxTypesMatieres.GetItemText(cbxTypesMatieres.SelectedItem),
+                    CoutUnitaire = int.Parse(txtCoutUnitaire.Text),
                     StockMatiere = float.Parse(txtStockInitial.Text)
                 };
 
@@ -61,6 +63,7 @@ namespace CasaEcologieSysInfo
                 db.SaveChanges();
                 txtNomMatierePremiere.Clear();
                 txtStockInitial.Text = "0";
+                txtCoutUnitaire.Text = "0";
                 MessageBox.Show("Une nouvelle matière première a été ajoutée avec succès");
                 LoadData();
             }

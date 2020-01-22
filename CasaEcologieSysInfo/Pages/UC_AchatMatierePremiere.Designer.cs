@@ -86,6 +86,8 @@
             this.label9 = new System.Windows.Forms.Label();
             this.txtTransportMatierePremiere = new System.Windows.Forms.TextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtCoutUnitaire = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.resStockMatieresPremieresBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.casaDBDataSetAll)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ageFournisseursMatieresPremieresBindingSource)).BeginInit();
@@ -337,7 +339,9 @@
             // gBxNouvelleMatierePremiere
             // 
             this.gBxNouvelleMatierePremiere.Controls.Add(this.btnAjouterNouvelleMatierePremiere);
+            this.gBxNouvelleMatierePremiere.Controls.Add(this.txtCoutUnitaire);
             this.gBxNouvelleMatierePremiere.Controls.Add(this.txtStockInitial);
+            this.gBxNouvelleMatierePremiere.Controls.Add(this.label11);
             this.gBxNouvelleMatierePremiere.Controls.Add(this.label10);
             this.gBxNouvelleMatierePremiere.Controls.Add(this.label1);
             this.gBxNouvelleMatierePremiere.Controls.Add(this.txtNomMatierePremiere);
@@ -370,7 +374,7 @@
             // 
             // txtStockInitial
             // 
-            this.txtStockInitial.Location = new System.Drawing.Point(123, 167);
+            this.txtStockInitial.Location = new System.Drawing.Point(123, 133);
             this.txtStockInitial.Name = "txtStockInitial";
             this.txtStockInitial.Size = new System.Drawing.Size(247, 23);
             this.txtStockInitial.TabIndex = 8;
@@ -379,7 +383,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(9, 135);
+            this.label10.Location = new System.Drawing.Point(9, 103);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(111, 17);
             this.label10.TabIndex = 5;
@@ -388,7 +392,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 172);
+            this.label1.Location = new System.Drawing.Point(9, 138);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(81, 17);
             this.label1.TabIndex = 5;
@@ -396,7 +400,7 @@
             // 
             // txtNomMatierePremiere
             // 
-            this.txtNomMatierePremiere.Location = new System.Drawing.Point(123, 95);
+            this.txtNomMatierePremiere.Location = new System.Drawing.Point(123, 63);
             this.txtNomMatierePremiere.Name = "txtNomMatierePremiere";
             this.txtNomMatierePremiere.Size = new System.Drawing.Size(247, 23);
             this.txtNomMatierePremiere.TabIndex = 9;
@@ -424,8 +428,13 @@
             // cbxTypesMatieres
             // 
             this.cbxTypesMatieres.DisplayMember = "PrenomNom";
+            this.cbxTypesMatieres.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxTypesMatieres.FormattingEnabled = true;
-            this.cbxTypesMatieres.Location = new System.Drawing.Point(123, 130);
+            this.cbxTypesMatieres.Items.AddRange(new object[] {
+            "Fruit",
+            "Emballage",
+            "Autres matières"});
+            this.cbxTypesMatieres.Location = new System.Drawing.Point(123, 98);
             this.cbxTypesMatieres.Margin = new System.Windows.Forms.Padding(5);
             this.cbxTypesMatieres.Name = "cbxTypesMatieres";
             this.cbxTypesMatieres.Size = new System.Drawing.Size(247, 25);
@@ -433,7 +442,7 @@
             // 
             // label7
             // 
-            this.label7.Location = new System.Drawing.Point(5, 101);
+            this.label7.Location = new System.Drawing.Point(5, 69);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(131, 22);
             this.label7.TabIndex = 7;
@@ -622,6 +631,23 @@
             this.comboBox1.Size = new System.Drawing.Size(286, 29);
             this.comboBox1.TabIndex = 2;
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(9, 169);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(93, 17);
+            this.label11.TabIndex = 5;
+            this.label11.Text = "Coût unitaire";
+            // 
+            // txtCoutUnitaire
+            // 
+            this.txtCoutUnitaire.Location = new System.Drawing.Point(123, 164);
+            this.txtCoutUnitaire.Name = "txtCoutUnitaire";
+            this.txtCoutUnitaire.Size = new System.Drawing.Size(247, 23);
+            this.txtCoutUnitaire.TabIndex = 8;
+            this.txtCoutUnitaire.Text = "00";
+            // 
             // UC_AchatMatierePremiere
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
@@ -735,5 +761,7 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox cbxTypesMatieres;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox txtCoutUnitaire;
+        private System.Windows.Forms.Label label11;
     }
 }

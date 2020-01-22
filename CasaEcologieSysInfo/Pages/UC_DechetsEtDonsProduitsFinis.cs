@@ -67,7 +67,6 @@ namespace CasaEcologieSysInfo.Pages
             {
                 DateTime date = dtpDateSortieDechetsOuDons.Value.Date;
                 string prdtFini = cbxProduitsFinis.GetItemText(cbxProduitsFinis.SelectedItem);
-                MessageBox.Show("Produit finis: " + prdtFini);
                 txtStockDisponible.Text = GestionStocks.CalculerSoldeStockProduitFini(prdtFini, date).ToString();
             }
             catch (Exception)
