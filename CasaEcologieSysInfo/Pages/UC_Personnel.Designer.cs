@@ -93,6 +93,7 @@
             this.panel13 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.txtSoldeCompte = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListePersonnel)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ageEmployeBindingSource)).BeginInit();
@@ -102,6 +103,7 @@
             this.panel5.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel11.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label4
@@ -174,7 +176,7 @@
             this.btnPresenceEmploye.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPresenceEmploye.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPresenceEmploye.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnPresenceEmploye.Location = new System.Drawing.Point(13, 355);
+            this.btnPresenceEmploye.Location = new System.Drawing.Point(14, 126);
             this.btnPresenceEmploye.Name = "btnPresenceEmploye";
             this.btnPresenceEmploye.Size = new System.Drawing.Size(292, 31);
             this.btnPresenceEmploye.TabIndex = 30;
@@ -204,18 +206,18 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(72, 229);
+            this.label1.Location = new System.Drawing.Point(73, 4);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(88, 19);
+            this.label1.Size = new System.Drawing.Size(160, 19);
             this.label1.TabIndex = 31;
-            this.label1.Text = "TimeSheet";
+            this.label1.Text = "Feuille de présence";
             // 
             // cbxTimeSheetNomEmploye
             // 
             this.cbxTimeSheetNomEmploye.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxTimeSheetNomEmploye.FormattingEnabled = true;
-            this.cbxTimeSheetNomEmploye.Location = new System.Drawing.Point(65, 247);
+            this.cbxTimeSheetNomEmploye.Location = new System.Drawing.Point(66, 23);
             this.cbxTimeSheetNomEmploye.Name = "cbxTimeSheetNomEmploye";
             this.cbxTimeSheetNomEmploye.Size = new System.Drawing.Size(240, 25);
             this.cbxTimeSheetNomEmploye.TabIndex = 32;
@@ -258,7 +260,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(2, 308);
+            this.label8.Location = new System.Drawing.Point(3, 81);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(170, 17);
@@ -287,7 +289,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(2, 278);
+            this.label10.Location = new System.Drawing.Point(3, 54);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(40, 17);
@@ -296,7 +298,7 @@
             // 
             // dtpDate
             // 
-            this.dtpDate.Location = new System.Drawing.Point(65, 278);
+            this.dtpDate.Location = new System.Drawing.Point(66, 54);
             this.dtpDate.Name = "dtpDate";
             this.dtpDate.Size = new System.Drawing.Size(240, 23);
             this.dtpDate.TabIndex = 37;
@@ -341,7 +343,7 @@
             // 
             // txtRemunerationJournaliere
             // 
-            this.txtRemunerationJournaliere.Location = new System.Drawing.Point(13, 326);
+            this.txtRemunerationJournaliere.Location = new System.Drawing.Point(14, 99);
             this.txtRemunerationJournaliere.Name = "txtRemunerationJournaliere";
             this.txtRemunerationJournaliere.Size = new System.Drawing.Size(292, 23);
             this.txtRemunerationJournaliere.TabIndex = 42;
@@ -711,14 +713,30 @@
             this.txtSoldeCompte.Size = new System.Drawing.Size(223, 23);
             this.txtSoldeCompte.TabIndex = 42;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.btnPresenceEmploye);
+            this.groupBox1.Controls.Add(this.cbxTimeSheetNomEmploye);
+            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.txtRemunerationJournaliere);
+            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.dtpDate);
+            this.groupBox1.Location = new System.Drawing.Point(2, 224);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(312, 173);
+            this.groupBox1.TabIndex = 43;
+            this.groupBox1.TabStop = false;
+            // 
             // UC_Personnel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.txtSoldeCompte);
             this.Controls.Add(this.txtRemunerationPeriod);
             this.Controls.Add(this.txtMontantIndemnite);
-            this.Controls.Add(this.txtRemunerationJournaliere);
             this.Controls.Add(this.cbxTempsEtRemun);
             this.Controls.Add(this.dgvTempsEtRemun);
             this.Controls.Add(this.dtpFin);
@@ -727,20 +745,17 @@
             this.Controls.Add(this.dtpAStagiaire);
             this.Controls.Add(this.dtpDeStagiaire);
             this.Controls.Add(this.dtpDatePaiementIndemStagiaires);
-            this.Controls.Add(this.dtpDate);
             this.Controls.Add(this.panel11);
             this.Controls.Add(this.panel8);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label13);
-            this.Controls.Add(this.label8);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.label16);
-            this.Controls.Add(this.label10);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.cbxTresoriere);
             this.Controls.Add(this.label23);
@@ -751,14 +766,11 @@
             this.Controls.Add(this.cbxComptePaiement);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.cbxStagiaires);
-            this.Controls.Add(this.cbxTimeSheetNomEmploye);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label15);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnPayerEmploye);
             this.Controls.Add(this.btnPayerIndemnite);
             this.Controls.Add(this.btnNouvelEmploye);
-            this.Controls.Add(this.btnPresenceEmploye);
             this.Controls.Add(this.txtPosteEmploye);
             this.Controls.Add(this.txtPrenomNom);
             this.Controls.Add(this.label6);
@@ -781,6 +793,8 @@
             this.panel5.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
             this.panel11.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -852,5 +866,6 @@
         private System.Windows.Forms.Panel panel13;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtSoldeCompte;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

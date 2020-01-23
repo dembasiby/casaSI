@@ -61,6 +61,7 @@
             this.dtpDateEncaissement.Name = "dtpDateEncaissement";
             this.dtpDateEncaissement.Size = new System.Drawing.Size(264, 23);
             this.dtpDateEncaissement.TabIndex = 20;
+            this.dtpDateEncaissement.ValueChanged += new System.EventHandler(this.DtpDateEncaissement_ValueChanged);
             // 
             // cbxCompte
             // 

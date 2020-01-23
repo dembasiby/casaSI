@@ -22,8 +22,7 @@ namespace CasaEcologieSysInfo.Pages
             using (CasaDBEntities db = new CasaDBEntities())
             {
                 resStockProduitsFiniBindingSource.DataSource = db.ResStockProduitsFinis.OrderBy(pf => pf.NomProduit).ToList();
-                ageEmployeBindingSource.DataSource = Conversion.ListeEmployesPresents(dtpDateSortieDechetsOuDons).OrderBy(em => em.PrenomNom).ToList();
-
+                ChargerListeEmployes();
                 AfficherStockDisponible();              
             }
         }
@@ -78,6 +77,17 @@ namespace CasaEcologieSysInfo.Pages
         private void CbxProduitsFinis_SelectedIndexChanged(object sender, EventArgs e)
         {
             AfficherStockDisponible();
+        }
+
+        private void DtpDateSortieDechetsOuDons_ValueChanged(object sender, EventArgs e)
+        {
+            ChargerListeEmployes();
+        }
+
+        private void ChargerListeEmployes()
+        {
+            ageEmployeBindingSource.DataSource = Conversion.ListeEmployesPresents(dtpDateSortieDechetsOuDons).OrderBy(em => em.PrenomNom).ToList();
+
         }
     }
 }

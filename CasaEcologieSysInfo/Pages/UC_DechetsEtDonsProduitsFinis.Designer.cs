@@ -145,6 +145,7 @@
             this.dtpDateSortieDechetsOuDons.Name = "dtpDateSortieDechetsOuDons";
             this.dtpDateSortieDechetsOuDons.Size = new System.Drawing.Size(234, 23);
             this.dtpDateSortieDechetsOuDons.TabIndex = 64;
+            this.dtpDateSortieDechetsOuDons.ValueChanged += new System.EventHandler(this.DtpDateSortieDechetsOuDons_ValueChanged);
             // 
             // label21
             // 

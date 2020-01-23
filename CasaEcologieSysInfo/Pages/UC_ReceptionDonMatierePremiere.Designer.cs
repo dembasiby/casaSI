@@ -218,6 +218,7 @@
             this.dtpDateReception.Name = "dtpDateReception";
             this.dtpDateReception.Size = new System.Drawing.Size(306, 27);
             this.dtpDateReception.TabIndex = 0;
+            this.dtpDateReception.ValueChanged += new System.EventHandler(this.DtpDateReception_ValueChanged);
             // 
             // groupBox1
             // 

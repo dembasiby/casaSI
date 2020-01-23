@@ -81,6 +81,7 @@
             this.dtpDateDecaissement.Name = "dtpDateDecaissement";
             this.dtpDateDecaissement.Size = new System.Drawing.Size(264, 23);
             this.dtpDateDecaissement.TabIndex = 35;
+            this.dtpDateDecaissement.ValueChanged += new System.EventHandler(this.DtpDateDecaissement_ValueChanged);
             // 
             // cbxCompte
             // 

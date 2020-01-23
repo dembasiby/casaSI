@@ -19,6 +19,14 @@ namespace CasaEcologieSysInfo
         private void LoadData()
         {          
             ageAutreFournisseursBindingSource.DataSource = db.AgeAutreFournisseurs.ToList();
+            ChargerListeEmployes();
+            resComptesTresorerieBindingSource.DataSource = db.ResComptesTresoreries.ToList();
+
+            Tresorerie.AfficherSoldeTresorerie(cbxComptePaiement, txtSoldeCompte);
+        }
+
+        private void ChargerListeEmployes()
+        {
             ageEmployesBindingSource.DataSource = Conversion.ListeEmployesPresents(dtpAchatNouveauEqInf)
                                                     .OrderBy(em => em.PrenomNom)
                                                     .Select(em => em.PrenomNom)
@@ -27,9 +35,6 @@ namespace CasaEcologieSysInfo
                                                     .OrderBy(em => em.PrenomNom)
                                                     .Select(em => em.PrenomNom)
                                                     .ToList();
-            resComptesTresorerieBindingSource.DataSource = db.ResComptesTresoreries.ToList();
-
-            Tresorerie.AfficherSoldeTresorerie(cbxComptePaiement, txtSoldeCompte);
         }
 
         private void UC_AchatEquipementInfrastructure_Load(object sender, EventArgs e)
@@ -167,6 +172,11 @@ namespace CasaEcologieSysInfo
         private void CbxComptePaiement_SelectedIndexChanged(object sender, EventArgs e)
         {
             Tresorerie.AfficherSoldeTresorerie(cbxComptePaiement, txtSoldeCompte);
+        }
+
+        private void DtpAchatNouveauEqInf_ValueChanged(object sender, EventArgs e)
+        {
+            ChargerListeEmployes();
         }
     }
 }

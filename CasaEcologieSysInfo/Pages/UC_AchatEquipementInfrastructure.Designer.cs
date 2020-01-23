@@ -197,6 +197,7 @@
             this.dtpAchatNouveauEqInf.Name = "dtpAchatNouveauEqInf";
             this.dtpAchatNouveauEqInf.Size = new System.Drawing.Size(286, 27);
             this.dtpAchatNouveauEqInf.TabIndex = 42;
+            this.dtpAchatNouveauEqInf.ValueChanged += new System.EventHandler(this.DtpAchatNouveauEqInf_ValueChanged);
             // 
             // cbxComptePaiement
             // 

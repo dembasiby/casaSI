@@ -55,7 +55,9 @@
             this.lblNomNouveauClient = new System.Windows.Forms.Label();
             this.gBxNouvelleMatierePremiere = new System.Windows.Forms.GroupBox();
             this.btnAjouterNouvelleMatierePremiere = new System.Windows.Forms.Button();
+            this.txtCoutUnitaire = new System.Windows.Forms.TextBox();
             this.txtStockInitial = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtNomMatierePremiere = new System.Windows.Forms.TextBox();
@@ -86,8 +88,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.txtTransportMatierePremiere = new System.Windows.Forms.TextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.txtCoutUnitaire = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.resStockMatieresPremieresBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.casaDBDataSetAll)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ageFournisseursMatieresPremieresBindingSource)).BeginInit();
@@ -216,6 +216,7 @@
             this.dtpDateApprovisionnement.Name = "dtpDateApprovisionnement";
             this.dtpDateApprovisionnement.Size = new System.Drawing.Size(286, 27);
             this.dtpDateApprovisionnement.TabIndex = 19;
+            this.dtpDateApprovisionnement.ValueChanged += new System.EventHandler(this.DtpDateApprovisionnement_ValueChanged);
             // 
             // lblNomFournisseur
             // 
@@ -372,6 +373,14 @@
             this.btnAjouterNouvelleMatierePremiere.UseVisualStyleBackColor = false;
             this.btnAjouterNouvelleMatierePremiere.Click += new System.EventHandler(this.BtnAjouterNouvelleMatierePremiere_Click);
             // 
+            // txtCoutUnitaire
+            // 
+            this.txtCoutUnitaire.Location = new System.Drawing.Point(123, 164);
+            this.txtCoutUnitaire.Name = "txtCoutUnitaire";
+            this.txtCoutUnitaire.Size = new System.Drawing.Size(247, 23);
+            this.txtCoutUnitaire.TabIndex = 8;
+            this.txtCoutUnitaire.Text = "00";
+            // 
             // txtStockInitial
             // 
             this.txtStockInitial.Location = new System.Drawing.Point(123, 133);
@@ -379,6 +388,15 @@
             this.txtStockInitial.Size = new System.Drawing.Size(247, 23);
             this.txtStockInitial.TabIndex = 8;
             this.txtStockInitial.Text = "00";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(9, 169);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(93, 17);
+            this.label11.TabIndex = 5;
+            this.label11.Text = "Coût unitaire";
             // 
             // label10
             // 
@@ -630,23 +648,6 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(286, 29);
             this.comboBox1.TabIndex = 2;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(9, 169);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(93, 17);
-            this.label11.TabIndex = 5;
-            this.label11.Text = "Coût unitaire";
-            // 
-            // txtCoutUnitaire
-            // 
-            this.txtCoutUnitaire.Location = new System.Drawing.Point(123, 164);
-            this.txtCoutUnitaire.Name = "txtCoutUnitaire";
-            this.txtCoutUnitaire.Size = new System.Drawing.Size(247, 23);
-            this.txtCoutUnitaire.TabIndex = 8;
-            this.txtCoutUnitaire.Text = "00";
             // 
             // UC_AchatMatierePremiere
             // 

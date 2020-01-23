@@ -20,6 +20,13 @@ namespace CasaEcologieSysInfo
             resServicesFournituresBindingSource.DataSource = db.ResServicesFournitures.ToList();
             resComptesTresorerieBindingSource.DataSource = db.ResComptesTresoreries.ToList();
             ageFournisseursServicesFournituresBindingSource.DataSource = db.AgeFournisseursServicesFournitures.ToList();
+            ChargerListeEmployes();
+
+            Tresorerie.AfficherSoldeTresorerie(cbxComptePaiement, txtSoldeCompte);
+        }
+
+        private void ChargerListeEmployes()
+        {
             ageEmployesBindingSource.DataSource = Conversion.ListeEmployesPresents(dtpDateAchatServFourn)
                                                     .OrderBy(em => em.PrenomNom)
                                                     .Select(em => em.PrenomNom)
@@ -29,8 +36,6 @@ namespace CasaEcologieSysInfo
                                                     .OrderBy(em => em.PrenomNom)
                                                     .Select(em => em.PrenomNom)
                                                     .ToList();
-
-            Tresorerie.AfficherSoldeTresorerie(cbxComptePaiement, txtSoldeCompte);
         }
 
         // CE BOUTON A ETE FINALEMENT DESACTIVE.
@@ -151,6 +156,11 @@ namespace CasaEcologieSysInfo
         private void CbxComptePaiement_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             Tresorerie.AfficherSoldeTresorerie(cbxComptePaiement, txtSoldeCompte);
+        }
+
+        private void DtpDateAchatServFourn_ValueChanged(object sender, EventArgs e)
+        {
+            ChargerListeEmployes();
         }
     }
 }

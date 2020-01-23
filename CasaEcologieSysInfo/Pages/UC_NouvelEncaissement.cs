@@ -16,10 +16,6 @@ namespace CasaEcologieSysInfo
 
         private void LoadData()
         {
-            ageEmployeBindingSource.DataSource = Conversion.ListeEmployesPresents(dtpDateEncaissement)
-                                                    .OrderBy(em => em.PrenomNom)
-                                                    .Select(em => em.PrenomNom)
-                                                    .ToList();
             ageClientBindingSource.DataSource = db.AgeClients.ToList();
             resComptesTresorerieBindingSource.DataSource = db.ResComptesTresoreries.ToList();
         }
@@ -100,6 +96,19 @@ namespace CasaEcologieSysInfo
         private void CbxNomClient_SelectedValueChanged(object sender, EventArgs e)
         {
             MettreCreanceAJour();
+        }
+
+        private void DtpDateEncaissement_ValueChanged(object sender, EventArgs e)
+        {
+            ChargerListeEmployes();
+        }
+
+        private void ChargerListeEmployes()
+        {
+            ageEmployeBindingSource.DataSource = Conversion.ListeEmployesPresents(dtpDateEncaissement)
+                                                    .OrderBy(em => em.PrenomNom)
+                                                    .Select(em => em.PrenomNom)
+                                                    .ToList();
         }
     }
 }

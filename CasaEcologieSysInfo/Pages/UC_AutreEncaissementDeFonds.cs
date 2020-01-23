@@ -64,10 +64,7 @@ namespace CasaEcologieSysInfo.Pages
         private void UC_AutreEncaissementDeFonds_Load(object sender, EventArgs e)
         {
             resComptesTresorerieBindingSource.DataSource = db.ResComptesTresoreries.ToList();
-            ageEmployeBindingSource.DataSource = Conversion.ListeEmployesPresents(dtpDateEncaissement)
-                                                    .OrderBy(em => em.PrenomNom)
-                                                    .Select(em => em.PrenomNom)
-                                                    .ToList();
+            ChargerListeEmployes();
         }
 
         private void BtnEnregistrer_Click(object sender, EventArgs e)
@@ -75,5 +72,17 @@ namespace CasaEcologieSysInfo.Pages
             EnregistrerEncaissement();
         }
 
+        private void DtpDateEncaissement_ValueChanged(object sender, EventArgs e)
+        {
+            ChargerListeEmployes();
+        }
+
+        private void ChargerListeEmployes()
+        {
+            ageEmployeBindingSource.DataSource = Conversion.ListeEmployesPresents(dtpDateEncaissement)
+                                                    .OrderBy(em => em.PrenomNom)
+                                                    .Select(em => em.PrenomNom)
+                                                    .ToList();
+        }
     }
 }

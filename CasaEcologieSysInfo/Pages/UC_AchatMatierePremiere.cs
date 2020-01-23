@@ -20,6 +20,14 @@ namespace CasaEcologieSysInfo
 
             ageFournisseursMatieresPremieresBindingSource.DataSource = db.AgeFournisseursMatieresPremieres.OrderBy(f => f.Nom).ToList();
             resStockMatieresPremieresBindingSource.DataSource = db.ResStockMatieresPremieres.OrderBy(m => m.NomMatiere).ToList();
+            ChargerListeEmployes();
+            resComptesTresorerieBindingSource.DataSource = db.ResComptesTresoreries.ToList();
+            //cbxTypesMatieres.DataSource = (from mp in db.ResStockMatieresPremieres select mp.TypeMatiere).Distinct().ToList();
+            Tresorerie.AfficherSoldeTresorerie(cbxComptePaiement, txtSoldeCompte);
+        }
+
+        private void ChargerListeEmployes()
+        {
             ageEmployesBindingSource.DataSource = Conversion.ListeEmployesPresents(dtpDateApprovisionnement)
                                                     .OrderBy(em => em.PrenomNom)
                                                     .Select(em => em.PrenomNom)
@@ -28,9 +36,6 @@ namespace CasaEcologieSysInfo
                                                     .OrderBy(em => em.PrenomNom)
                                                     .Select(em => em.PrenomNom)
                                                     .ToList();
-            resComptesTresorerieBindingSource.DataSource = db.ResComptesTresoreries.ToList();
-            //cbxTypesMatieres.DataSource = (from mp in db.ResStockMatieresPremieres select mp.TypeMatiere).Distinct().ToList();
-            Tresorerie.AfficherSoldeTresorerie(cbxComptePaiement, txtSoldeCompte);
         }
 
         private void UC_AchatMatierePremiere_Load(object sender, EventArgs e)
@@ -227,6 +232,11 @@ namespace CasaEcologieSysInfo
                 return false;
             }
             
+        }
+
+        private void DtpDateApprovisionnement_ValueChanged(object sender, EventArgs e)
+        {
+            ChargerListeEmployes();
         }
     }
 }

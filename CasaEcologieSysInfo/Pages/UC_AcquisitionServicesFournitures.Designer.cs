@@ -253,6 +253,7 @@
             this.dtpDateAchatServFourn.Name = "dtpDateAchatServFourn";
             this.dtpDateAchatServFourn.Size = new System.Drawing.Size(272, 27);
             this.dtpDateAchatServFourn.TabIndex = 34;
+            this.dtpDateAchatServFourn.ValueChanged += new System.EventHandler(this.DtpDateAchatServFourn_ValueChanged);
             // 
             // cbxNomFournServFourn
             // 

@@ -19,11 +19,9 @@ namespace CasaEcologieSysInfo
             resStockMatieresPremiereBindingSource.DataSource = db.ResStockMatieresPremieres.Where(mp => mp.TypeMatiere != "emballage").ToList();
             resStockProduitsFiniBindingSource.DataSource = db.ResStockProduitsFinis.ToList().OrderBy(p => p.NomProduit);
             resStockProduitsSemiFiniBindingSource2.DataSource = db.ResStockProduitsSemiFinis.ToList();
-            MontrerListeProduitsFinis();
 
-            ageEmployeBindingSource1.DataSource = Conversion.ListeEmployesPresents(dtpDateProduction).OrderBy(em => em.PrenomNom).Select(em => em.PrenomNom).ToList();
-            ageEmployeBindingSource2.DataSource = Conversion.ListeEmployesPresents(dtpDateProduction).OrderBy(em => em.PrenomNom).Select(em => em.PrenomNom).ToList();
-            ageEmployeBindingSource3.DataSource = Conversion.ListeEmployesPresents(dtpDateProduction).OrderBy(em => em.PrenomNom).Select(em => em.PrenomNom).ToList();
+            MontrerListeProduitsFinis();
+            ChargerListeEmployes();
 
             var nomMatierePrem = cbxNomMatiereP.GetItemText(cbxNomMatiereP.SelectedItem);
             txtStockMatierePremiereDispo.Text = ChargerStockMatierePremiere(nomMatierePrem).ToString();
@@ -32,23 +30,24 @@ namespace CasaEcologieSysInfo
             cbxEmballage.DisplayMember = "NomMatiere";
             cbxEmballage.ValueMember = "CodeMatierePremiere";
             cbxEmballage.SelectedIndex = -1;
-        }
 
+            cbxEtiquettes.DataSource = db.ResStockMatieresPremieres.Where(mp => mp.TypeMatiere == "emballage" && mp.NomMatiere.ToLower().StartsWith("etiquette")).ToList();
+            cbxEtiquettes.DisplayMember = "NomMatiere";
+            cbxEtiquettes.ValueMember = "CodeMatierePremiere";
+            cbxEtiquettes.SelectedIndex = -1;
+        }
+        
         private float ChargerStockMatierePremiere(string nomMatierePrem)
         {
-            var stockInitial = (from mp in db.ResStockMatieresPremieres
-                                where mp.NomMatiere == nomMatierePrem
-                                select mp.StockMatiere).FirstOrDefault();
+            return GestionStocks.CalculerSoldeStockMatierePremiere(nomMatierePrem, dtpDateProduction.Value.Date);
+        }
+        
+        private void ChargerListeEmployes()
+        {
+            ageEmployeBindingSource1.DataSource = Conversion.ListeEmployesPresents(dtpDateProduction).OrderBy(em => em.PrenomNom).Select(em => em.PrenomNom).ToList();
+            ageEmployeBindingSource2.DataSource = Conversion.ListeEmployesPresents(dtpDateProduction).OrderBy(em => em.PrenomNom).Select(em => em.PrenomNom).ToList();
+            ageEmployeBindingSource3.DataSource = Conversion.ListeEmployesPresents(dtpDateProduction).OrderBy(em => em.PrenomNom).Select(em => em.PrenomNom).ToList();
 
-            var entrees = (from rmp in db.EveReceptionMatieresPremieres
-                           where rmp.ResStockMatieresPremiere.NomMatiere == nomMatierePrem
-                           select (float?)rmp.Quantite).Sum() ?? 0f;
-
-            var sorties = (from ump in db.EveUtilisationMatieresPremieres
-                           where ump.ResStockMatieresPremiere.NomMatiere == nomMatierePrem
-                           select (float?)ump.QuantiteMatierePremiere).Sum() ?? 0f;
-
-            return stockInitial + entrees - sorties;
         }
 
         // Affiche la liste des travailleurs présent le jour de la production
@@ -69,6 +68,7 @@ namespace CasaEcologieSysInfo
         {
             ChargerDonneesInitiales();
             ChargerListeTravailleurs();
+            ChargerListeEmployes();
 
             var listProduitsSemiFinis = from em in db.ResStockProduitsSemiFinis
                                         select em.Description;
@@ -382,7 +382,9 @@ namespace CasaEcologieSysInfo
                 {
                     ResStockProduitsFini npf = db.ResStockProduitsFinis.FirstOrDefault(n => n.NomProduit == nomProduit);
                     string emballage = cbxEmballage.GetItemText(cbxEmballage.SelectedItem);
+                    string etiquette = cbxEtiquettes.GetItemText(cbxEtiquettes.SelectedItem);
                     UtiliserEmballage(codeUtilisationRessources, emballage, int.Parse(txtQuantiteProduitProduit.Text));
+                    UtiliserEmballage(codeUtilisationRessources, etiquette, int.Parse(txtQuantiteProduitProduit.Text));
 
                     EveProductionStockProduitsFini prodPFini = new EveProductionStockProduitsFini
                     {
@@ -466,6 +468,7 @@ namespace CasaEcologieSysInfo
         private void DateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
             ChargerListeTravailleurs();
+            ChargerListeEmployes();
         }
 
         private void CbxNomMatiereP_SelectedIndexChanged(object sender, EventArgs e)
@@ -587,6 +590,33 @@ namespace CasaEcologieSysInfo
                 MessageBox.Show("Veuillez selectionner un élément dans la liste.");
                 return;
             }
+        }
+
+        private void CbxRespMatPrem_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ChargerListeEmployes();
+        }
+
+        private void CbxResponsableStockProduitFinis_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ChargerListeEmployes();
+        }
+
+        private void CbxResponsableProduction_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ChargerListeEmployes();
+        }
+
+        private void CbxEmballage_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var nomMatierePrem = cbxEmballage.GetItemText(cbxEmballage.SelectedItem);
+            txtEmballagesDisponibles.Text = ChargerStockMatierePremiere(nomMatierePrem).ToString();
+        }
+
+        private void cbxEtiquettes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var nomMatierePrem = cbxEtiquettes.GetItemText(cbxEtiquettes.SelectedItem);
+            txtEtiquettesDisponibles.Text = ChargerStockMatierePremiere(nomMatierePrem).ToString();
         }
     }
 }

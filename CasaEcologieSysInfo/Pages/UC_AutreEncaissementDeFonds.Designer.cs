@@ -40,11 +40,11 @@
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.txtMontantEncaisse = new System.Windows.Forms.TextBox();
             this.cbxCompteCrediteur = new System.Windows.Forms.ComboBox();
+            this.resComptesTresorerieBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cbxResponsableTransaction = new System.Windows.Forms.ComboBox();
+            this.ageEmployeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnEnregistrer = new System.Windows.Forms.Button();
             this.btnAnnuler = new System.Windows.Forms.Button();
-            this.resComptesTresorerieBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.ageEmployeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.resComptesTresorerieBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ageEmployeBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -120,6 +120,7 @@
             this.dtpDateEncaissement.Name = "dtpDateEncaissement";
             this.dtpDateEncaissement.Size = new System.Drawing.Size(382, 27);
             this.dtpDateEncaissement.TabIndex = 29;
+            this.dtpDateEncaissement.ValueChanged += new System.EventHandler(this.DtpDateEncaissement_ValueChanged);
             // 
             // txtDescription
             // 
@@ -146,6 +147,10 @@
             this.cbxCompteCrediteur.Size = new System.Drawing.Size(382, 29);
             this.cbxCompteCrediteur.TabIndex = 31;
             // 
+            // resComptesTresorerieBindingSource
+            // 
+            this.resComptesTresorerieBindingSource.DataSource = typeof(CasaEcologieSysInfo.ResComptesTresorerie);
+            // 
             // cbxResponsableTransaction
             // 
             this.cbxResponsableTransaction.DataSource = this.ageEmployeBindingSource;
@@ -156,6 +161,10 @@
             this.cbxResponsableTransaction.Name = "cbxResponsableTransaction";
             this.cbxResponsableTransaction.Size = new System.Drawing.Size(382, 29);
             this.cbxResponsableTransaction.TabIndex = 31;
+            // 
+            // ageEmployeBindingSource
+            // 
+            this.ageEmployeBindingSource.DataSource = typeof(CasaEcologieSysInfo.AgeEmploye);
             // 
             // btnEnregistrer
             // 
@@ -176,14 +185,6 @@
             this.btnAnnuler.Text = "Annuler";
             this.btnAnnuler.UseVisualStyleBackColor = true;
             // 
-            // resComptesTresorerieBindingSource
-            // 
-            this.resComptesTresorerieBindingSource.DataSource = typeof(CasaEcologieSysInfo.ResComptesTresorerie);
-            // 
-            // ageEmployeBindingSource
-            // 
-            this.ageEmployeBindingSource.DataSource = typeof(CasaEcologieSysInfo.AgeEmploye);
-            // 
             // UC_AutreEncaissementDeFonds
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
@@ -203,7 +204,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label4);
             this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "UC_AutreEncaissementDeFonds";
             this.Size = new System.Drawing.Size(983, 635);
             this.Load += new System.EventHandler(this.UC_AutreEncaissementDeFonds_Load);

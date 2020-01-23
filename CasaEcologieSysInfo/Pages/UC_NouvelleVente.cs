@@ -24,15 +24,7 @@ namespace CasaEcologieSysInfo
 
         private void LoadData()
         {
-            ageEmployesBindingSource.DataSource = Conversion.ListeEmployesPresents(dtpDateVente)
-                                                    .OrderBy(em => em.PrenomNom)
-                                                    .Select(em => em.PrenomNom)
-                                                    .ToList();
-            ageEmployeBindingSource.DataSource = Conversion.ListeEmployesPresents(dtpDateVente)
-                                                    .OrderBy(em => em.PrenomNom)
-                                                    .Select(em => em.PrenomNom)
-                                                    .ToList();
-
+            ChargerListeEmployes();
             ageClientBindingSource.DataSource = db.AgeClients
                 .OrderBy(c => c.NomClient)
                 .ToList();
@@ -291,6 +283,24 @@ namespace CasaEcologieSysInfo
                 MessageBox.Show("Veuillez selectionner un produit dans la liste.");
                 return;
             }
+        }
+
+        private void DtpDateVente_ValueChanged(object sender, EventArgs e)
+        {
+            ChargerListeEmployes();
+        }
+
+        private void ChargerListeEmployes()
+        {
+            ageEmployesBindingSource.DataSource = Conversion.ListeEmployesPresents(dtpDateVente)
+                                                    .OrderBy(em => em.PrenomNom)
+                                                    .Select(em => em.PrenomNom)
+                                                    .ToList();
+            ageEmployeBindingSource.DataSource = Conversion.ListeEmployesPresents(dtpDateVente)
+                                                    .OrderBy(em => em.PrenomNom)
+                                                    .Select(em => em.PrenomNom)
+                                                    .ToList();
+
         }
     }
 }

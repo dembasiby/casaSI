@@ -24,10 +24,7 @@ namespace CasaEcologieSysInfo.Pages
         {
             resComptesTresorerieBindingSource.DataSource = db.ResComptesTresoreries.ToList();
             resComptesTresorerieBindingSource1.DataSource = db.ResComptesTresoreries.ToList();
-            ageEmployeBindingSource.DataSource = Conversion.ListeEmployesPresents(dtpDateOperation)
-                                                    .OrderBy(em => em.PrenomNom)
-                                                    .Select(em => em.PrenomNom)
-                                                    .ToList();
+            ChargerListeEmployes();
 
             Tresorerie.AfficherSoldeTresorerie(cbxCompteDebit, txtSoldeCompte);
         }
@@ -115,6 +112,16 @@ namespace CasaEcologieSysInfo.Pages
         private void CbxCompteDebit_SelectedIndexChanged(object sender, EventArgs e)
         {
             Tresorerie.AfficherSoldeTresorerie(cbxCompteDebit, txtSoldeCompte);
+        }
+
+        private void DtpDateOperation_ValueChanged(object sender, EventArgs e)
+        {
+            ChargerListeEmployes();
+        }
+
+        private void ChargerListeEmployes()
+        {
+            ChargerListeEmployes();
         }
     }
 }

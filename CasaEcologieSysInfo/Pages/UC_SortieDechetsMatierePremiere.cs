@@ -24,9 +24,7 @@ namespace CasaEcologieSysInfo.Pages
             resStockMatieresPremiereBindingSource.DataSource = db.ResStockMatieresPremieres
                                                                  .OrderBy(n => n.NomMatiere)
                                                                  .ToList();
-
-            ageEmployeBindingSource.DataSource = Conversion.ListeEmployesPresents(dtpDateSortieDechets).OrderBy(em => em.PrenomNom).ToList();
-            ageEmployeBindingSource1.DataSource = Conversion.ListeEmployesPresents(dtpDateSortieDechets).OrderBy(em => em.PrenomNom).ToList();
+            ChargerListeEmployes();
         }
 
         private void BtnEnregistrerSortie_Click(object sender, EventArgs e)
@@ -56,6 +54,17 @@ namespace CasaEcologieSysInfo.Pages
             {
                 MessageBox.Show("Echec de l'enregistrement. L'opération n'a pas pu être effectuée.");
             }
+        }
+
+        private void dtpDateSortieDechets_ValueChanged(object sender, EventArgs e)
+        {
+            ChargerListeEmployes();
+        }
+
+        private void ChargerListeEmployes()
+        {
+            ageEmployeBindingSource.DataSource = Conversion.ListeEmployesPresents(dtpDateSortieDechets).OrderBy(em => em.PrenomNom).ToList();
+            ageEmployeBindingSource1.DataSource = Conversion.ListeEmployesPresents(dtpDateSortieDechets).OrderBy(em => em.PrenomNom).ToList();
         }
     }
 }

@@ -97,6 +97,7 @@
             this.dtpDateOperation.Name = "dtpDateOperation";
             this.dtpDateOperation.Size = new System.Drawing.Size(277, 27);
             this.dtpDateOperation.TabIndex = 29;
+            this.dtpDateOperation.ValueChanged += new System.EventHandler(this.DtpDateOperation_ValueChanged);
             // 
             // cbxCompteDebit
             // 

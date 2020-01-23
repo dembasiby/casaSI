@@ -34,6 +34,9 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnMettreAJourListeProduits = new System.Windows.Forms.Button();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.txtEtiquettesDisponibles = new System.Windows.Forms.TextBox();
+            this.txtEmballagesDisponibles = new System.Windows.Forms.TextBox();
+            this.cbxEtiquettes = new System.Windows.Forms.ComboBox();
             this.cbxEmballage = new System.Windows.Forms.ComboBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.rbtnProduitsSemiFinis = new System.Windows.Forms.RadioButton();
@@ -201,24 +204,57 @@
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.txtEtiquettesDisponibles);
+            this.groupBox7.Controls.Add(this.txtEmballagesDisponibles);
+            this.groupBox7.Controls.Add(this.cbxEtiquettes);
             this.groupBox7.Controls.Add(this.cbxEmballage);
             this.groupBox7.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox7.Location = new System.Drawing.Point(309, 300);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(243, 93);
+            this.groupBox7.Size = new System.Drawing.Size(243, 106);
             this.groupBox7.TabIndex = 36;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Choisir l\'emballage";
+            // 
+            // txtEtiquettesDisponibles
+            // 
+            this.txtEtiquettesDisponibles.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEtiquettesDisponibles.Location = new System.Drawing.Point(192, 63);
+            this.txtEtiquettesDisponibles.Name = "txtEtiquettesDisponibles";
+            this.txtEtiquettesDisponibles.ReadOnly = true;
+            this.txtEtiquettesDisponibles.Size = new System.Drawing.Size(51, 22);
+            this.txtEtiquettesDisponibles.TabIndex = 28;
+            // 
+            // txtEmballagesDisponibles
+            // 
+            this.txtEmballagesDisponibles.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmballagesDisponibles.Location = new System.Drawing.Point(192, 28);
+            this.txtEmballagesDisponibles.Name = "txtEmballagesDisponibles";
+            this.txtEmballagesDisponibles.ReadOnly = true;
+            this.txtEmballagesDisponibles.Size = new System.Drawing.Size(51, 22);
+            this.txtEmballagesDisponibles.TabIndex = 28;
+            // 
+            // cbxEtiquettes
+            // 
+            this.cbxEtiquettes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxEtiquettes.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxEtiquettes.FormattingEnabled = true;
+            this.cbxEtiquettes.Location = new System.Drawing.Point(3, 63);
+            this.cbxEtiquettes.Name = "cbxEtiquettes";
+            this.cbxEtiquettes.Size = new System.Drawing.Size(182, 25);
+            this.cbxEtiquettes.TabIndex = 27;
+            this.cbxEtiquettes.SelectedIndexChanged += new System.EventHandler(this.cbxEtiquettes_SelectedIndexChanged);
             // 
             // cbxEmballage
             // 
             this.cbxEmballage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxEmballage.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxEmballage.FormattingEnabled = true;
-            this.cbxEmballage.Location = new System.Drawing.Point(3, 44);
+            this.cbxEmballage.Location = new System.Drawing.Point(3, 29);
             this.cbxEmballage.Name = "cbxEmballage";
-            this.cbxEmballage.Size = new System.Drawing.Size(236, 25);
+            this.cbxEmballage.Size = new System.Drawing.Size(182, 25);
             this.cbxEmballage.TabIndex = 27;
+            this.cbxEmballage.SelectedIndexChanged += new System.EventHandler(this.CbxEmballage_SelectedIndexChanged);
             // 
             // groupBox4
             // 
@@ -227,7 +263,7 @@
             this.groupBox4.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.Location = new System.Drawing.Point(23, 300);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(276, 93);
+            this.groupBox4.Size = new System.Drawing.Size(280, 110);
             this.groupBox4.TabIndex = 36;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Choisir le résultat de la production";
@@ -341,6 +377,7 @@
             this.cbxResponsableProduction.Size = new System.Drawing.Size(298, 25);
             this.cbxResponsableProduction.TabIndex = 27;
             this.cbxResponsableProduction.ValueMember = "CodeEmploye";
+            this.cbxResponsableProduction.SelectedIndexChanged += new System.EventHandler(this.CbxResponsableProduction_SelectedIndexChanged);
             // 
             // ageEmployeBindingSource1
             // 
@@ -367,6 +404,7 @@
             this.cbxRespMatPrem.Size = new System.Drawing.Size(298, 25);
             this.cbxRespMatPrem.TabIndex = 27;
             this.cbxRespMatPrem.ValueMember = "CodeEmploye";
+            this.cbxRespMatPrem.SelectedIndexChanged += new System.EventHandler(this.CbxRespMatPrem_SelectedIndexChanged);
             // 
             // ageEmployeBindingSource2
             // 
@@ -393,6 +431,7 @@
             this.cbxResponsableStockProduitFinis.Size = new System.Drawing.Size(298, 25);
             this.cbxResponsableStockProduitFinis.TabIndex = 27;
             this.cbxResponsableStockProduitFinis.ValueMember = "CodeEmploye";
+            this.cbxResponsableStockProduitFinis.SelectedIndexChanged += new System.EventHandler(this.CbxResponsableStockProduitFinis_SelectedIndexChanged);
             // 
             // ageEmployeBindingSource3
             // 
@@ -1063,6 +1102,7 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox6.ResumeLayout(false);
@@ -1178,5 +1218,8 @@
         private System.Windows.Forms.Button btnRetirerPSF;
         private System.Windows.Forms.Button btnAugmenterQuantiteMP;
         private System.Windows.Forms.Button btnDiminuerQuantiteMP;
+        private System.Windows.Forms.ComboBox cbxEtiquettes;
+        private System.Windows.Forms.TextBox txtEtiquettesDisponibles;
+        private System.Windows.Forms.TextBox txtEmballagesDisponibles;
     }
 }
