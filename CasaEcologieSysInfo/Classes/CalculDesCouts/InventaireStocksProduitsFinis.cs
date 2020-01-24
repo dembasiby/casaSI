@@ -13,20 +13,19 @@ namespace CasaEcologieSysInfo.Classes.CalculDesCouts
             using (CasaDBEntities db = new CasaDBEntities())
             {
                 int stockInitial = GestionStocks.CalculerSoldeStockProduitFini(produitFini, debut);
-                fin = fin.AddDays(1);
                 int stockFinal = GestionStocks.CalculerSoldeStockProduitFini(produitFini, fin);
                 int entrees = (from ppf in db.EveProductionStockProduitsFinis
                                join pf in db.ResStockProduitsFinis on ppf.CodeProduitFini equals pf.CodeProduit
                                join p in db.EveProductions on ppf.CodeProduction equals p.CodeProduction
                                where pf.NomProduit == produitFini
                                where p.Date >= debut
-                               where p.Date < fin
+                               where p.Date <= fin
                                select (int?)ppf.QuantiteProduitFini).Sum() ?? 0;
 
                 var autresSorties = (from asort in db.EveSortieDonsOuDechetsProduitsFinis
                                      where asort.ResStockProduitsFini.NomProduit == produitFini
                                      where asort.DateSortie >= debut
-                                     where asort.DateSortie < fin
+                                     where asort.DateSortie <= fin
                                      select (int?)asort.QuantiteProduitFini).Sum() ?? 0;
 
                 return stockInitial + entrees - autresSorties - stockFinal;
@@ -37,12 +36,10 @@ namespace CasaEcologieSysInfo.Classes.CalculDesCouts
         {
             using (CasaDBEntities db = new CasaDBEntities())
             {
-                fin = fin.AddDays(1);
-                
                 return (from asort in db.EveSortieDonsOuDechetsProduitsFinis
                                      where asort.ResStockProduitsFini.NomProduit == produitFini
                                      where asort.DateSortie >= debut
-                                     where asort.DateSortie < fin
+                                     where asort.DateSortie <= fin
                                      select (int?)asort.QuantiteProduitFini).Sum() ?? 0;
             }
         }
@@ -85,8 +82,6 @@ namespace CasaEcologieSysInfo.Classes.CalculDesCouts
             using (CasaDBEntities db = new CasaDBEntities())
             {
                 Single valeurStockProduitsFinis = 0;
-                date = date.AddDays(1);
-
                 var listeProduitsFinis = (from pf in db.ResStockProduitsFinis
                                           select pf.NomProduit).ToList();
 

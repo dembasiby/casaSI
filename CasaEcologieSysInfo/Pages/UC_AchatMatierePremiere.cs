@@ -49,27 +49,32 @@ namespace CasaEcologieSysInfo
 
         private void BtnAjouterNouvelleMatierePremiere_Click(object sender, EventArgs e)
         {
+            bool produitExisteDeja = db.ResStockMatieresPremieres.Any(mp => mp.NomMatiere.ToLower() == txtNomMatierePremiere.Text.ToLower());
+
             try
             {
                 bool nomValide = Validation.ChampsVide(txtNomMatierePremiere.Text);
                 bool coutValide = Validation.EstUnChiffre(txtCoutUnitaire.Text);
                 bool stockValide = Validation.EstUnChiffre(txtStockInitial.Text);
 
-                ResStockMatieresPremiere matierePremiere = new ResStockMatieresPremiere
+                if (!produitExisteDeja)
                 {
-                    NomMatiere = txtNomMatierePremiere.Text,
-                    TypeMatiere = cbxTypesMatieres.GetItemText(cbxTypesMatieres.SelectedItem),
-                    CoutUnitaire = int.Parse(txtCoutUnitaire.Text),
-                    StockMatiere = float.Parse(txtStockInitial.Text)
-                };
+                    ResStockMatieresPremiere matierePremiere = new ResStockMatieresPremiere
+                    {
+                        NomMatiere = txtNomMatierePremiere.Text,
+                        TypeMatiere = cbxTypesMatieres.GetItemText(cbxTypesMatieres.SelectedItem),
+                        CoutUnitaire = int.Parse(txtCoutUnitaire.Text),
+                        StockMatiere = float.Parse(txtStockInitial.Text)
+                    };
 
-                db.ResStockMatieresPremieres.Add(matierePremiere);
-                db.SaveChanges();
-                txtNomMatierePremiere.Clear();
-                txtStockInitial.Text = "0";
-                txtCoutUnitaire.Text = "0";
-                MessageBox.Show("Une nouvelle matière première a été ajoutée avec succès");
-                LoadData();
+                    db.ResStockMatieresPremieres.Add(matierePremiere);
+                    db.SaveChanges();
+                    txtNomMatierePremiere.Clear();
+                    txtStockInitial.Text = "0";
+                    txtCoutUnitaire.Text = "0";
+                    MessageBox.Show("Une nouvelle matière première a été ajoutée avec succès");
+                    LoadData();
+                }
             }
             catch (Exception)
             {

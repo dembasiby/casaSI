@@ -108,21 +108,31 @@ namespace CasaEcologieSysInfo.Pages
 
         private void BtnNouvelEmploye_Click(object sender, EventArgs e)
         {
+            bool employeEnregistre = db.AgeEmployes.Any(em => em.PrenomNom.ToLower() == txtPrenomNom.Text.ToLower());
+
             if (txtPosteEmploye.Text.Trim().Length > 0 && txtPrenomNom.Text.Trim().Length > 0)
             {
-                AgeEmploye emp = new AgeEmploye()
+                if (!employeEnregistre)
                 {
-                    PrenomNom = txtPrenomNom.Text,
-                    Poste = txtPosteEmploye.Text,
-                    Actif = true
-                };
+                    AgeEmploye emp = new AgeEmploye()
+                    {
+                        PrenomNom = txtPrenomNom.Text,
+                        Poste = txtPosteEmploye.Text,
+                        Actif = true
+                    };
 
-                db.AgeEmployes.Add(emp);
-                db.SaveChanges();
-                MessageBox.Show("Le nouvel employé a été ajouté avec succès à la base de données.");
-                LoadData();
-                txtPrenomNom.Clear();
-                txtPosteEmploye.Clear();
+                    db.AgeEmployes.Add(emp);
+                    db.SaveChanges();
+                    MessageBox.Show("Le nouvel employé a été ajouté avec succès à la base de données.");
+                    LoadData();
+                    txtPrenomNom.Clear();
+                    txtPosteEmploye.Clear();
+                }
+                else
+                {
+                    MessageBox.Show("Cet employé a déjà été enregistré.");
+                    return;
+                }
             }
             else
             {

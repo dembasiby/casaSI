@@ -225,9 +225,9 @@
             // 
             // txtCreancesClient
             // 
-            this.txtCreancesClient.Enabled = false;
             this.txtCreancesClient.Location = new System.Drawing.Point(600, 117);
             this.txtCreancesClient.Name = "txtCreancesClient";
+            this.txtCreancesClient.ReadOnly = true;
             this.txtCreancesClient.Size = new System.Drawing.Size(283, 27);
             this.txtCreancesClient.TabIndex = 25;
             // 

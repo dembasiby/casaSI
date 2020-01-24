@@ -13,8 +13,8 @@ namespace CasaEcologieSysInfo
             SqlServerTypes.Utilities.LoadNativeAssemblies(AppDomain.CurrentDomain.BaseDirectory);
             InitializeComponent();
             role = userRole;
-            UC_TableauDeBord tb = new UC_TableauDeBord();
-            AddControlsToPanel(tb);
+            Pages.UC_Personnel pn = new Pages.UC_Personnel();
+            AddControlsToPanel(pn);
             Conversion.AjouterNumeroVersion(labelAccueil);        
         }
         

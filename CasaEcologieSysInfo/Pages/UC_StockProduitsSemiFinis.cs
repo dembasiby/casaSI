@@ -86,7 +86,7 @@ namespace CasaEcologieSysInfo.Pages
             AfficherJournalCorrespondant(description);
         }
 
-        private void lbxListeProduitsSemiFinis_SelectedIndexChanged(object sender, EventArgs e)
+        private void LbxListeProduitsSemiFinis_SelectedIndexChanged(object sender, EventArgs e)
         {
 
             var nomProduit = lbxListeProduitsSemiFinis.GetItemText(lbxListeProduitsSemiFinis.SelectedItem);

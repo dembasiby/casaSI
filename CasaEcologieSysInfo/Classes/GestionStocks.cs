@@ -10,7 +10,7 @@ namespace CasaEcologieSysInfo
 {
     class GestionStocks
     {
-        public static Single CalculerSoldeStockMatierePremiere(string nomMatiere, DateTime debutPeriod)
+        public static Single CalculerSoldeStockMatierePremiere(string nomMatiere, DateTime date)
         {
             using (CasaDBEntities db = new CasaDBEntities())
             {
@@ -20,18 +20,18 @@ namespace CasaEcologieSysInfo
 
                 var entrees = (from rmp in db.EveReceptionMatieresPremieres
                                where rmp.ResStockMatieresPremiere.NomMatiere == nomMatiere
-                               where rmp.DateReception < debutPeriod
+                               where rmp.DateReception <= date
                                select (float?)rmp.Quantite).Sum() ?? 0;
 
                 var sorties = (from ur in db.EveUtilisationMatieresPremieres
                                where ur.ResStockMatieresPremiere.NomMatiere == nomMatiere
                                join p in db.EveProductions on ur.CodeUtilisationRessource equals p.CodeUtilisationRessources
-                               where p.Date < debutPeriod
+                               where p.Date <= date
                                select (float?)ur.QuantiteMatierePremiere).Sum() ?? 0;
 
                 var autresSorties = (from asort in db.EveSortieDechetsMatieresPremieres
                                      where asort.ResStockMatieresPremiere.NomMatiere == nomMatiere
-                                     where asort.DateSortie < debutPeriod
+                                     where asort.DateSortie <= date
                                      select (float?)asort.QuantiteMatierePremiere).Sum() ?? 0;
 
                 return (stockInitial + entrees) - (sorties + autresSorties);
@@ -49,17 +49,17 @@ namespace CasaEcologieSysInfo
 
                 var entrees = (from pro in db.EveProductionStockProduitsFinis
                                where pro.ResStockProduitsFini.NomProduit == produitFini
-                               where pro.EveProduction.Date < date.Date
+                               where pro.EveProduction.Date <= date.Date
                                select (int?)pro.QuantiteProduitFini).Sum() ?? 0;
 
                 var sorties = (from pf in db.EveVenteStockProduitsFinis
                                where pf.ResStockProduitsFini.NomProduit == produitFini
-                               where pf.EveVente.DateVente < date.Date
+                               where pf.EveVente.DateVente <= date.Date
                                select (int?)pf.QuantiteProduitFini).Sum() ?? 0;
 
                 var autresSorties = (from asort in db.EveSortieDonsOuDechetsProduitsFinis
                                      where asort.ResStockProduitsFini.NomProduit == produitFini
-                                     where asort.DateSortie < date.Date
+                                     where asort.DateSortie <= date.Date
                                      select (int?)asort.QuantiteProduitFini).Sum() ?? 0;
 
 
@@ -77,14 +77,14 @@ namespace CasaEcologieSysInfo
 
                 var entrees = (from pro in db.EveProductionProduitsSemiFinis
                                where pro.ResStockProduitsSemiFini.Description == produitSemiFini
-                               where pro.EveProduction.Date < date.Date
+                               where pro.EveProduction.Date <= date.Date
                                select (int?)pro.QuantiteProduitSemiFini).Sum() ?? 0;
 
                 var sorties = (from upsf in db.EveUtilisationProduitsSemiFinis
                                join ur in db.EveUtilisationRessources on upsf.CodeUtilisationRessource equals ur.CodeUtilisationRessources
                                join p in db.EveProductions on ur.CodeUtilisationRessources equals p.CodeUtilisationRessources
                                where upsf.ResStockProduitsSemiFini.Description == produitSemiFini
-                               where p.Date < date.Date
+                               where p.Date <= date.Date
                                select (int?)upsf.QuantiteProduitSemiFini).Sum() ?? 0;
 
 

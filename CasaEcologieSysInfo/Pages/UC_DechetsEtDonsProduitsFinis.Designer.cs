@@ -197,6 +197,7 @@
             // 
             this.txtStockDisponible.Location = new System.Drawing.Point(467, 223);
             this.txtStockDisponible.Name = "txtStockDisponible";
+            this.txtStockDisponible.ReadOnly = true;
             this.txtStockDisponible.Size = new System.Drawing.Size(234, 30);
             this.txtStockDisponible.TabIndex = 66;
             // 

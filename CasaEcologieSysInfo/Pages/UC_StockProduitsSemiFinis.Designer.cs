@@ -63,7 +63,7 @@
             this.lbxListeProduitsSemiFinis.Name = "lbxListeProduitsSemiFinis";
             this.lbxListeProduitsSemiFinis.Size = new System.Drawing.Size(168, 493);
             this.lbxListeProduitsSemiFinis.TabIndex = 16;
-            this.lbxListeProduitsSemiFinis.SelectedIndexChanged += new System.EventHandler(this.lbxListeProduitsSemiFinis_SelectedIndexChanged);
+            this.lbxListeProduitsSemiFinis.SelectedIndexChanged += new System.EventHandler(this.LbxListeProduitsSemiFinis_SelectedIndexChanged);
             // 
             // label1
             // 

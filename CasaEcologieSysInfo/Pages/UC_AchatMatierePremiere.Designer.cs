@@ -526,6 +526,7 @@
             // 
             this.cbxRespStocks.DataSource = this.ageEmployesBindingSource1;
             this.cbxRespStocks.DisplayMember = "PrenomNom";
+            this.cbxRespStocks.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxRespStocks.FormattingEnabled = true;
             this.cbxRespStocks.Location = new System.Drawing.Point(249, 393);
             this.cbxRespStocks.Margin = new System.Windows.Forms.Padding(5);
@@ -547,6 +548,7 @@
             // 
             this.cbxTresoriere.DataSource = this.ageEmployesBindingSource;
             this.cbxTresoriere.DisplayMember = "PrenomNom";
+            this.cbxTresoriere.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxTresoriere.FormattingEnabled = true;
             this.cbxTresoriere.Location = new System.Drawing.Point(249, 432);
             this.cbxTresoriere.Margin = new System.Windows.Forms.Padding(5);
@@ -572,6 +574,7 @@
             // 
             this.cbxComptePaiement.DataSource = this.resComptesTresorerieBindingSource;
             this.cbxComptePaiement.DisplayMember = "NomCompte";
+            this.cbxComptePaiement.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxComptePaiement.FormattingEnabled = true;
             this.cbxComptePaiement.Location = new System.Drawing.Point(249, 471);
             this.cbxComptePaiement.Margin = new System.Windows.Forms.Padding(5);
@@ -615,6 +618,7 @@
             this.txtSoldeCompte.Location = new System.Drawing.Point(249, 512);
             this.txtSoldeCompte.Margin = new System.Windows.Forms.Padding(5);
             this.txtSoldeCompte.Name = "txtSoldeCompte";
+            this.txtSoldeCompte.ReadOnly = true;
             this.txtSoldeCompte.Size = new System.Drawing.Size(286, 27);
             this.txtSoldeCompte.TabIndex = 13;
             // 

@@ -26,7 +26,7 @@ namespace CasaEcologieSysInfo
             var nomMatierePrem = cbxNomMatiereP.GetItemText(cbxNomMatiereP.SelectedItem);
             txtStockMatierePremiereDispo.Text = ChargerStockMatierePremiere(nomMatierePrem).ToString();
 
-            cbxEmballage.DataSource = db.ResStockMatieresPremieres.Where(mp => mp.TypeMatiere == "emballage").ToList();
+            cbxEmballage.DataSource = db.ResStockMatieresPremieres.Where(mp => mp.TypeMatiere == "emballage" && !mp.NomMatiere.ToLower().StartsWith("etiquette")).ToList();
             cbxEmballage.DisplayMember = "NomMatiere";
             cbxEmballage.ValueMember = "CodeMatierePremiere";
             cbxEmballage.SelectedIndex = -1;
@@ -380,21 +380,33 @@ namespace CasaEcologieSysInfo
 
                 if (rbtnProduitsFinis.Checked)
                 {
-                    ResStockProduitsFini npf = db.ResStockProduitsFinis.FirstOrDefault(n => n.NomProduit == nomProduit);
                     string emballage = cbxEmballage.GetItemText(cbxEmballage.SelectedItem);
                     string etiquette = cbxEtiquettes.GetItemText(cbxEtiquettes.SelectedItem);
-                    UtiliserEmballage(codeUtilisationRessources, emballage, int.Parse(txtQuantiteProduitProduit.Text));
-                    UtiliserEmballage(codeUtilisationRessources, etiquette, int.Parse(txtQuantiteProduitProduit.Text));
 
-                    EveProductionStockProduitsFini prodPFini = new EveProductionStockProduitsFini
+                    if (!string.IsNullOrEmpty(emballage))
                     {
-                        CodeProduction = codeProduction,
-                        CodeProduitFini = npf.CodeProduit,
-                        QuantiteProduitFini = int.Parse(txtQuantiteProduitProduit.Text)
-                    };
+                        ResStockProduitsFini npf = db.ResStockProduitsFinis.FirstOrDefault(n => n.NomProduit == nomProduit);
+                        
+                        UtiliserEmballage(codeUtilisationRessources, emballage, int.Parse(txtQuantiteProduitProduit.Text));
+                        if (!nomProduit.ToLower().StartsWith("sachet") || !nomProduit.ToLower().StartsWith("pastille") && !string.IsNullOrEmpty(etiquette))
+                        {
+                            UtiliserEmballage(codeUtilisationRessources, etiquette, int.Parse(txtQuantiteProduitProduit.Text));
+                        }
 
-                    db.EveProductionStockProduitsFinis.Add(prodPFini);
-                    db.SaveChanges();                       
+                        EveProductionStockProduitsFini prodPFini = new EveProductionStockProduitsFini
+                        {
+                            CodeProduction = codeProduction,
+                            CodeProduitFini = npf.CodeProduit,
+                            QuantiteProduitFini = int.Parse(txtQuantiteProduitProduit.Text)
+                        };
+
+                        db.EveProductionStockProduitsFinis.Add(prodPFini);
+                        db.SaveChanges();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Veuillez choisir un emballage et une etiquette.");
+                    }                     
                 }
                 else
                 {                    

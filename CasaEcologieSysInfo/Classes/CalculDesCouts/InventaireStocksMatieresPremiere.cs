@@ -13,7 +13,6 @@ namespace CasaEcologieSysInfo.Classes.CalculDesCouts
             using (CasaDBEntities db = new CasaDBEntities())
             {
                 Single stockInitial = GestionStocks.CalculerSoldeStockMatierePremiere(matiere, debutPeriode);
-                finPeriode = finPeriode.AddDays(1);
                 Single stockFinal = GestionStocks.CalculerSoldeStockMatierePremiere(matiere, finPeriode);
 
                 Single achatsMatierePremiere = (from rmp in db.EveReceptionMatieresPremieres
@@ -62,8 +61,6 @@ namespace CasaEcologieSysInfo.Classes.CalculDesCouts
             using (CasaDBEntities db = new CasaDBEntities())
             {
                 Single valeurStockMatieresPremieres = 0;
-                date = date.AddDays(1);
-
                 var listeMatieresPremieres = (from mp in db.ResStockMatieresPremieres
                                           select mp.NomMatiere).ToList();
 

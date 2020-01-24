@@ -232,6 +232,7 @@
             // 
             this.txtSoldeCompte.Location = new System.Drawing.Point(521, 262);
             this.txtSoldeCompte.Name = "txtSoldeCompte";
+            this.txtSoldeCompte.ReadOnly = true;
             this.txtSoldeCompte.Size = new System.Drawing.Size(277, 27);
             this.txtSoldeCompte.TabIndex = 32;
             // 

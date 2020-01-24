@@ -13,7 +13,6 @@ namespace CasaEcologieSysInfo.Classes.CalculDesCouts
             using (CasaDBEntities db = new CasaDBEntities())
             {
                 Single stockInitial = GestionStocks.CalculerSoldeStockProduitSemiFini(produitSF, debut);
-                fin = fin.AddDays(1);
                 Single stockFinal = GestionStocks.CalculerSoldeStockProduitSemiFini(produitSF, fin);
 
                 Single entrees = (from pro in db.EveProductionProduitsSemiFinis
@@ -32,8 +31,6 @@ namespace CasaEcologieSysInfo.Classes.CalculDesCouts
             using (CasaDBEntities db = new CasaDBEntities())
             {
                 Single valeurStockProduitsFinis = 0;
-                date = date.AddDays(1);
-
                 var listeProduitsSemiFinis = (from psf in db.ResStockProduitsSemiFinis
                                           select psf.Description).ToList();
 
