@@ -181,9 +181,9 @@
             this.label4.Location = new System.Drawing.Point(68, 47);
             this.label4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(430, 25);
+            this.label4.Size = new System.Drawing.Size(722, 25);
             this.label4.TabIndex = 11;
-            this.label4.Text = "Enregistrer un achat de matière première";
+            this.label4.Text = "Enregistrer un achat de matière première, d\'emballage ou d\"étiquette";
             this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // lblNomMatierePremiere
@@ -628,9 +628,9 @@
             this.label9.Location = new System.Drawing.Point(29, 328);
             this.label9.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(221, 21);
+            this.label9.Size = new System.Drawing.Size(83, 21);
             this.label9.TabIndex = 9;
-            this.label9.Text = "Transport matière première";
+            this.label9.Text = "Transport";
             // 
             // txtTransportMatierePremiere
             // 

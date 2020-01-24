@@ -175,6 +175,7 @@ namespace CasaEcologieSysInfo
                         txtQuantite.Text = "0";
                         txtMontant.Text = "0";
                         txtMontantPaye.Text = "0";
+                        txtTransportMatierePremiere.Text = "0";
                     }
                     catch (Exception ex)
                     {
