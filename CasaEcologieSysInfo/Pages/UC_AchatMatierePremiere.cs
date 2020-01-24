@@ -53,7 +53,7 @@ namespace CasaEcologieSysInfo
 
             try
             {
-                bool nomValide = Validation.ChampsVide(txtNomMatierePremiere.Text);
+                bool nomValide = !Validation.ChampsVide(txtNomMatierePremiere.Text);
                 bool coutValide = Validation.EstUnChiffre(txtCoutUnitaire.Text);
                 bool stockValide = Validation.EstUnChiffre(txtStockInitial.Text);
 
