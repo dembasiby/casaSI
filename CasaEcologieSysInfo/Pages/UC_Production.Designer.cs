@@ -117,6 +117,8 @@
             this.resStockProduitsSemiFiniBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.eveUtilisationEquipementInfrastructuresTableAdapter1 = new CasaEcologieSysInfo.CasaDBDataSetAllTableAdapters.EveUtilisationEquipementInfrastructuresTableAdapter();
             this.resStockMatieresPremiereBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.label12 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.pnlCorpsPageProduction.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -205,33 +207,35 @@
             // groupBox7
             // 
             this.groupBox7.Controls.Add(this.txtEtiquettesDisponibles);
+            this.groupBox7.Controls.Add(this.label14);
+            this.groupBox7.Controls.Add(this.label12);
             this.groupBox7.Controls.Add(this.txtEmballagesDisponibles);
             this.groupBox7.Controls.Add(this.cbxEtiquettes);
             this.groupBox7.Controls.Add(this.cbxEmballage);
             this.groupBox7.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox7.Location = new System.Drawing.Point(309, 300);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(243, 106);
+            this.groupBox7.Size = new System.Drawing.Size(243, 110);
             this.groupBox7.TabIndex = 36;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Choisir l\'emballage";
             // 
             // txtEtiquettesDisponibles
             // 
-            this.txtEtiquettesDisponibles.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEtiquettesDisponibles.Location = new System.Drawing.Point(192, 63);
+            this.txtEtiquettesDisponibles.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEtiquettesDisponibles.Location = new System.Drawing.Point(205, 86);
             this.txtEtiquettesDisponibles.Name = "txtEtiquettesDisponibles";
             this.txtEtiquettesDisponibles.ReadOnly = true;
-            this.txtEtiquettesDisponibles.Size = new System.Drawing.Size(51, 22);
+            this.txtEtiquettesDisponibles.Size = new System.Drawing.Size(38, 21);
             this.txtEtiquettesDisponibles.TabIndex = 28;
             // 
             // txtEmballagesDisponibles
             // 
-            this.txtEmballagesDisponibles.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmballagesDisponibles.Location = new System.Drawing.Point(192, 28);
+            this.txtEmballagesDisponibles.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmballagesDisponibles.Location = new System.Drawing.Point(205, 38);
             this.txtEmballagesDisponibles.Name = "txtEmballagesDisponibles";
             this.txtEmballagesDisponibles.ReadOnly = true;
-            this.txtEmballagesDisponibles.Size = new System.Drawing.Size(51, 22);
+            this.txtEmballagesDisponibles.Size = new System.Drawing.Size(38, 21);
             this.txtEmballagesDisponibles.TabIndex = 28;
             // 
             // cbxEtiquettes
@@ -239,9 +243,9 @@
             this.cbxEtiquettes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxEtiquettes.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxEtiquettes.FormattingEnabled = true;
-            this.cbxEtiquettes.Location = new System.Drawing.Point(3, 63);
+            this.cbxEtiquettes.Location = new System.Drawing.Point(3, 86);
             this.cbxEtiquettes.Name = "cbxEtiquettes";
-            this.cbxEtiquettes.Size = new System.Drawing.Size(182, 25);
+            this.cbxEtiquettes.Size = new System.Drawing.Size(196, 25);
             this.cbxEtiquettes.TabIndex = 27;
             this.cbxEtiquettes.SelectedIndexChanged += new System.EventHandler(this.CbxEtiquettes_SelectedIndexChanged);
             // 
@@ -250,9 +254,9 @@
             this.cbxEmballage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxEmballage.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxEmballage.FormattingEnabled = true;
-            this.cbxEmballage.Location = new System.Drawing.Point(3, 29);
+            this.cbxEmballage.Location = new System.Drawing.Point(3, 39);
             this.cbxEmballage.Name = "cbxEmballage";
-            this.cbxEmballage.Size = new System.Drawing.Size(182, 25);
+            this.cbxEmballage.Size = new System.Drawing.Size(196, 25);
             this.cbxEmballage.TabIndex = 27;
             this.cbxEmballage.SelectedIndexChanged += new System.EventHandler(this.CbxEmballage_SelectedIndexChanged);
             // 
@@ -1084,6 +1088,26 @@
             // 
             this.resStockMatieresPremiereBindingSource1.DataSource = typeof(CasaEcologieSysInfo.ResStockMatieresPremiere);
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(6, 21);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(78, 17);
+            this.label12.TabIndex = 30;
+            this.label12.Text = "Emballage";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(6, 67);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(66, 17);
+            this.label14.TabIndex = 30;
+            this.label14.Text = "Etiquette";
+            // 
             // UC_Production
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
@@ -1218,5 +1242,7 @@
         private System.Windows.Forms.ComboBox cbxEtiquettes;
         private System.Windows.Forms.TextBox txtEtiquettesDisponibles;
         private System.Windows.Forms.TextBox txtEmballagesDisponibles;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label12;
     }
 }
