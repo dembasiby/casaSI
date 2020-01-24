@@ -603,21 +603,7 @@ namespace CasaEcologieSysInfo
                 return;
             }
         }
-
-        private void CbxRespMatPrem_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ChargerListeEmployes();
-        }
-
-        private void CbxResponsableStockProduitFinis_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ChargerListeEmployes();
-        }
-
-        private void CbxResponsableProduction_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ChargerListeEmployes();
-        }
+      
 
         private void CbxEmballage_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -625,7 +611,7 @@ namespace CasaEcologieSysInfo
             txtEmballagesDisponibles.Text = ChargerStockMatierePremiere(nomMatierePrem).ToString();
         }
 
-        private void cbxEtiquettes_SelectedIndexChanged(object sender, EventArgs e)
+        private void CbxEtiquettes_SelectedIndexChanged(object sender, EventArgs e)
         {
             var nomMatierePrem = cbxEtiquettes.GetItemText(cbxEtiquettes.SelectedItem);
             txtEtiquettesDisponibles.Text = ChargerStockMatierePremiere(nomMatierePrem).ToString();

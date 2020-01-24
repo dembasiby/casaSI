@@ -243,7 +243,7 @@
             this.cbxEtiquettes.Name = "cbxEtiquettes";
             this.cbxEtiquettes.Size = new System.Drawing.Size(182, 25);
             this.cbxEtiquettes.TabIndex = 27;
-            this.cbxEtiquettes.SelectedIndexChanged += new System.EventHandler(this.cbxEtiquettes_SelectedIndexChanged);
+            this.cbxEtiquettes.SelectedIndexChanged += new System.EventHandler(this.CbxEtiquettes_SelectedIndexChanged);
             // 
             // cbxEmballage
             // 
@@ -377,7 +377,6 @@
             this.cbxResponsableProduction.Size = new System.Drawing.Size(298, 25);
             this.cbxResponsableProduction.TabIndex = 27;
             this.cbxResponsableProduction.ValueMember = "CodeEmploye";
-            this.cbxResponsableProduction.SelectedIndexChanged += new System.EventHandler(this.CbxResponsableProduction_SelectedIndexChanged);
             // 
             // ageEmployeBindingSource1
             // 
@@ -404,7 +403,6 @@
             this.cbxRespMatPrem.Size = new System.Drawing.Size(298, 25);
             this.cbxRespMatPrem.TabIndex = 27;
             this.cbxRespMatPrem.ValueMember = "CodeEmploye";
-            this.cbxRespMatPrem.SelectedIndexChanged += new System.EventHandler(this.CbxRespMatPrem_SelectedIndexChanged);
             // 
             // ageEmployeBindingSource2
             // 
@@ -431,7 +429,6 @@
             this.cbxResponsableStockProduitFinis.Size = new System.Drawing.Size(298, 25);
             this.cbxResponsableStockProduitFinis.TabIndex = 27;
             this.cbxResponsableStockProduitFinis.ValueMember = "CodeEmploye";
-            this.cbxResponsableStockProduitFinis.SelectedIndexChanged += new System.EventHandler(this.CbxResponsableStockProduitFinis_SelectedIndexChanged);
             // 
             // ageEmployeBindingSource3
             // 
