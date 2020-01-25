@@ -11,7 +11,6 @@ namespace CasaEcologieSysInfo
     {
 
         CasaDBEntities db = new CasaDBEntities();
-        CasaDBDataSet6 db2 = new CasaDBDataSet6();
 
         public UC_TableauDeBord()
         {
@@ -47,15 +46,7 @@ namespace CasaEcologieSysInfo
 
 
             DataTable dt = Conversion.ConvertirEnTableDeDonnees(liste);
-            /*
-            crtQuantiteMatierePremiereAchetee.Series["QuantiteMatP"].XValueMember = "Matiere";
-            crtQuantiteMatierePremiereAchetee.Series["QuantiteMatP"].YValueMembers = "Quantite";
-            crtQuantiteMatierePremiereAchetee.DataSource = dt;
-
-           
-            crtQuantiteMatierePremiereAchetee.DataBind();
-            */
-
+            
             dataGridView2.DataSource = dt;
 
             FormatterDonneesTableau(dataGridView2);
