@@ -71,7 +71,7 @@ namespace CasaEcologieSysInfo
 
             dataGridView1.DataSource = dt;
 
-            var startingYear = 2019;
+            var startingYear = 2020;
             var Annees = new List<int>();
 
             for (int i = 0; i < dataGridView1.Rows.Count; i++)
