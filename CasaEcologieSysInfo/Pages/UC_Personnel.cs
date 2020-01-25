@@ -61,11 +61,10 @@ namespace CasaEcologieSysInfo.Pages
 
             cbxComptePaiementStagiare.DataSource = db.ResComptesTresoreries.ToList();
             cbxComptePaiementStagiare.ValueMember = "CodeCompte";
-            cbxPaiementFaitPar.DataSource = db.AgeEmployes
-                                              .Where(em => em.Actif == true)
-                                              .Where(em => !em.Poste.StartsWith("Stagiaire"))
-                                              .OrderBy(c => c.PrenomNom)
-                                              .ToList();
+            cbxPaiementFaitPar.DataSource = Conversion.ListeEmployesPresents(dtpDatePaiement)
+                                             .Where(em => !em.Poste.StartsWith("Stagiaire"))
+                                             .OrderBy(c => c.PrenomNom)
+                                             .ToList();
             cbxPaiementFaitPar.DisplayMember = "PrenomNom";
             cbxPaiementFaitPar.ValueMember = "CodeEmploye";
 
