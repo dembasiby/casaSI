@@ -405,6 +405,37 @@ namespace CasaEcologieSysInfo.Classes
             }
         }
 
+        public static decimal CalculerSoldeCreanceClient(int codeClient)
+        {
+            using (CasaDBEntities db = new CasaDBEntities())
+            {
+                var ventesClients = (from c in db.AgeClients
+                                     from vf in db.EveVenteStockProduitsFinis
+                                     from v in db.EveVentes
+                                     where v.CodeClient == c.CodeClient
+                                     where vf.CodeVente == v.CodeVente
+                                     where c.CodeClient == codeClient
+                                     select (decimal?)vf.Montant).Sum() ?? 0m;
+
+                var totalPaiementClient = (from c in db.AgeClients
+                                           from ev in db.EveEncaissementsVentes
+                                           where c.CodeClient == ev.CodeClient
+                                           where c.CodeClient == codeClient
+                                           select (decimal?)ev.MontantEncaisse).Sum() ?? 0m;
+                var encaissementCreances = (from c in db.AgeClients
+                                            from ec in db.EveEncaissementsCreances
+                                            where c.CodeClient == ec.CodeClient
+                                            where c.CodeClient == codeClient
+                                            select (decimal?)ec.MontantEncaisse).Sum() ?? 0m;
+
+                var creanceInitialClient = (from c in db.AgeClients
+                                            where c.CodeClient == codeClient
+                                            select (decimal?)c.SoldeInitialeCreance).Sum() ?? 0m;
+
+                return creanceInitialClient + ventesClients - totalPaiementClient - encaissementCreances;
+            }
+        }
+
         public static Single CalculerTotalCreancesClientsALaDateDu(DateTime date)
         {
             using (CasaDBEntities db = new CasaDBEntities())

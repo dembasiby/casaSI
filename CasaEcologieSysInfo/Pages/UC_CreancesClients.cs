@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
@@ -17,7 +18,18 @@ namespace CasaEcologieSysInfo.Pages
 
         private void UC_CreancesClients_Load(object sender, EventArgs e)
         {
-            lbxListeClients.DataSource = db.AgeClients.OrderBy(c => c.NomClient).ToList();
+            var listeClients = new List<AgeClient>();        
+            var newListe = db.AgeClients.OrderBy(c => c.NomClient);
+
+            foreach (var item in newListe)
+            {
+                if (Tresorerie.CalculerSoldeCreanceClient(item.CodeClient) > 0)
+                {
+                    listeClients.Add(item);
+                }
+            }
+
+            lbxListeClients.DataSource = listeClients.OrderBy(c => c.NomClient).ToList();
             lbxListeClients.DisplayMember = "NomClient";
             lbxListeClients.ValueMember = "CodeClient";
 
@@ -115,7 +127,6 @@ namespace CasaEcologieSysInfo.Pages
 
         private void ListBox1_SelectedValueChanged(object sender, EventArgs e)
         {
-            lbxListeClients.ValueMember = "CodeClient";
             int codeClient = 0;
 
             if (lbxListeClients.Items.Count > 0)
@@ -125,7 +136,7 @@ namespace CasaEcologieSysInfo.Pages
             }
             else
             {
-                MessageBox.Show("Il n'y a pas encore de clients dans la base de données.");
+                MessageBox.Show("Il n'y a pas de clients avec créances en ce moment.");
             }     
         }
 

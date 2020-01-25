@@ -211,8 +211,17 @@ namespace CasaEcologieSysInfo.Pages
 
         private void LbxListeFournisseursDettes_SelectedValueChanged(object sender, EventArgs e)
         {
-            int codeFournisseur = int.Parse(lbxListeFournisseursDettes.SelectedValue.ToString());
-            MontrerDetailsDettesFournisseurs(codeFournisseur); 
+            int codeFournisseur = 0;
+
+            if (lbxListeFournisseursDettes.Items.Count > 0)
+            {
+                codeFournisseur = Convert.ToInt32(lbxListeFournisseursDettes.SelectedValue.ToString());
+                MontrerDetailsDettesFournisseurs(codeFournisseur);
+            }
+            else
+            {
+                MessageBox.Show("Le GIE n'a pas de dettes fournisseurs en ce moment.");
+            }
         }
 
         private void BtnImprimerTableau_Click(object sender, EventArgs e)
