@@ -899,6 +899,7 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.BackColor = System.Drawing.Color.Coral;
             this.groupBox5.Controls.Add(this.cbxNomProduitSemiFini);
             this.groupBox5.Controls.Add(this.label24);
             this.groupBox5.Controls.Add(this.label25);
@@ -992,6 +993,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.CornflowerBlue;
             this.groupBox1.Controls.Add(this.cbxNomMatiereP);
             this.groupBox1.Controls.Add(this.p);
             this.groupBox1.Controls.Add(this.label7);

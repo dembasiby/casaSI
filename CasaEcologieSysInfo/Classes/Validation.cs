@@ -42,12 +42,12 @@ namespace CasaEcologieSysInfo
 
             if (string.IsNullOrEmpty(montant))
             {
-                MessageBox.Show("Le champ 'Montant reçu' doit être renseigné.");
+                MessageBox.Show("Ce champ doit être renseigné.");
                 return false;
             }
             else if (!estUnChiffre)
             {
-                MessageBox.Show("Le champ 'Montant reçu' doit contenir uniquement des chiffres.");
+                MessageBox.Show("Ce champ doit contenir uniquement des chiffres.");
                 return false;
             }
             else

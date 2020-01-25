@@ -70,13 +70,13 @@ namespace CasaEcologieSysInfo.Classes
         public static void ImprimerTableauTransactions(ListBox liste, DataGridView grid)
         {
             var fournisseur = liste.GetItemText(liste.SelectedItem);
-            ImprimerTableau($"Tableau des transactions avec {fournisseur}", grid);
+            ImprimerTableau($"Dettes fournisseur - {fournisseur}", grid);
         }
 
         public static void ImprimerDetailsTransactionsClient(ListBox liste, DataGridView grid)
         {
             var client = liste.GetItemText(liste.SelectedItem);
-            ImprimerTableau($"Tableau des transactions client avec {client}", grid);
+            ImprimerTableau($"Fiche client - {client}", grid);
         }
     }
 }

@@ -31,15 +31,16 @@
             this.components = new System.ComponentModel.Container();
             this.label4 = new System.Windows.Forms.Label();
             this.lbxListeClients = new System.Windows.Forms.ListBox();
-            this.ageClientBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dgvDetailsClient = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.txtTotalCreances = new System.Windows.Forms.TextBox();
             this.btnImprimerTableau = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.ageClientBindingSource)).BeginInit();
+            this.lblNomClient = new System.Windows.Forms.Label();
+            this.ageClientBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetailsClient)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ageClientBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label4
@@ -66,21 +67,17 @@
             this.lbxListeClients.TabIndex = 26;
             this.lbxListeClients.SelectedValueChanged += new System.EventHandler(this.ListBox1_SelectedValueChanged);
             // 
-            // ageClientBindingSource
-            // 
-            this.ageClientBindingSource.DataSource = typeof(CasaEcologieSysInfo.AgeClient);
-            // 
             // dgvDetailsClient
             // 
             this.dgvDetailsClient.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvDetailsClient.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dgvDetailsClient.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvDetailsClient.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDetailsClient.Location = new System.Drawing.Point(256, 77);
+            this.dgvDetailsClient.Location = new System.Drawing.Point(256, 86);
             this.dgvDetailsClient.Margin = new System.Windows.Forms.Padding(2);
             this.dgvDetailsClient.Name = "dgvDetailsClient";
             this.dgvDetailsClient.Size = new System.Drawing.Size(712, 440);
-            this.dgvDetailsClient.TabIndex = 27;
+            this.dgvDetailsClient.TabIndex = 2;
             // 
             // label1
             // 
@@ -89,9 +86,9 @@
             this.label1.Location = new System.Drawing.Point(354, 52);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(198, 23);
+            this.label1.Size = new System.Drawing.Size(216, 23);
             this.label1.TabIndex = 28;
-            this.label1.Text = "Fiche créance client";
+            this.label1.Text = "Fiche créance client - ";
             // 
             // label2
             // 
@@ -144,6 +141,20 @@
             this.btnImprimerTableau.UseVisualStyleBackColor = false;
             this.btnImprimerTableau.Click += new System.EventHandler(this.BtnImprimerTableau_Click);
             // 
+            // lblNomClient
+            // 
+            this.lblNomClient.AutoSize = true;
+            this.lblNomClient.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNomClient.Location = new System.Drawing.Point(564, 55);
+            this.lblNomClient.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblNomClient.Name = "lblNomClient";
+            this.lblNomClient.Size = new System.Drawing.Size(0, 19);
+            this.lblNomClient.TabIndex = 28;
+            // 
+            // ageClientBindingSource
+            // 
+            this.ageClientBindingSource.DataSource = typeof(CasaEcologieSysInfo.AgeClient);
+            // 
             // UC_CreancesClients
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -152,6 +163,7 @@
             this.Controls.Add(this.txtTotalCreances);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblNomClient);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvDetailsClient);
             this.Controls.Add(this.lbxListeClients);
@@ -161,8 +173,8 @@
             this.Name = "UC_CreancesClients";
             this.Size = new System.Drawing.Size(983, 635);
             this.Load += new System.EventHandler(this.UC_CreancesClients_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.ageClientBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetailsClient)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ageClientBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -179,5 +191,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtTotalCreances;
         private System.Windows.Forms.Button btnImprimerTableau;
+        private System.Windows.Forms.Label lblNomClient;
     }
 }

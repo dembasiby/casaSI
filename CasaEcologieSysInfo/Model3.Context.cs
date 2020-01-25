@@ -62,6 +62,7 @@ namespace CasaEcologieSysInfo
         public virtual DbSet<EveEncaissementsCreance> EveEncaissementsCreances { get; set; }
         public virtual DbSet<EveTransvasement> EveTransvasements { get; set; }
         public virtual DbSet<EveSortieDonsOuDechetsProduitsFini> EveSortieDonsOuDechetsProduitsFinis { get; set; }
+        public virtual DbSet<TypesMatiere> TypesMatieres { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

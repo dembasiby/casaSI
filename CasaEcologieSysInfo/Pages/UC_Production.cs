@@ -7,7 +7,7 @@ namespace CasaEcologieSysInfo
 {
     public partial class UC_Production : UserControl
     {
-        CasaDBEntities db = new CasaDBEntities();        
+        CasaDBEntities db = new CasaDBEntities();
 
         public UC_Production()
         {
@@ -16,7 +16,7 @@ namespace CasaEcologieSysInfo
 
         public void ChargerDonneesInitiales()
         {
-            resStockMatieresPremiereBindingSource.DataSource = db.ResStockMatieresPremieres.Where(mp => mp.TypeMatiere != "emballage").ToList();
+            resStockMatieresPremiereBindingSource.DataSource = db.ResStockMatieresPremieres.Where(mp => mp.TypesMatiere.nomType == "Fruit").ToList();
             resStockProduitsFiniBindingSource.DataSource = db.ResStockProduitsFinis.ToList().OrderBy(p => p.NomProduit);
             resStockProduitsSemiFiniBindingSource2.DataSource = db.ResStockProduitsSemiFinis.ToList();
 
@@ -26,12 +26,12 @@ namespace CasaEcologieSysInfo
             var nomMatierePrem = cbxNomMatiereP.GetItemText(cbxNomMatiereP.SelectedItem);
             txtStockMatierePremiereDispo.Text = ChargerStockMatierePremiere(nomMatierePrem).ToString();
 
-            cbxEmballage.DataSource = db.ResStockMatieresPremieres.Where(mp => mp.TypeMatiere == "emballage" && !mp.NomMatiere.ToLower().StartsWith("etiquette")).ToList();
+            cbxEmballage.DataSource = db.ResStockMatieresPremieres.Where(mp => mp.TypesMatiere.nomType == "Emballage" || mp.TypesMatiere.nomType == "Sachet").ToList();
             cbxEmballage.DisplayMember = "NomMatiere";
             cbxEmballage.ValueMember = "CodeMatierePremiere";
             cbxEmballage.SelectedIndex = -1;
 
-            cbxEtiquettes.DataSource = db.ResStockMatieresPremieres.Where(mp => mp.TypeMatiere == "emballage" && mp.NomMatiere.ToLower().StartsWith("etiquette")).ToList();
+            cbxEtiquettes.DataSource = db.ResStockMatieresPremieres.Where(mp => mp.TypesMatiere.nomType == "Etiquette").ToList();
             cbxEtiquettes.DisplayMember = "NomMatiere";
             cbxEtiquettes.ValueMember = "CodeMatierePremiere";
             cbxEtiquettes.SelectedIndex = -1;

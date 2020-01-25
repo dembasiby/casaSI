@@ -32,6 +32,7 @@ namespace CasaEcologieSysInfo
         public float StockMatiere { get; set; }
         public string TypeMatiere { get; set; }
         public Nullable<decimal> CoutUnitaire { get; set; }
+        public int CodeTypeMatiere { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EveReceptionMatieresPremiere> EveReceptionMatieresPremieres { get; set; }
@@ -49,5 +50,6 @@ namespace CasaEcologieSysInfo
         public virtual ICollection<EveTransvasement> EveTransvasements { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EveTransvasement> EveTransvasements1 { get; set; }
+        public virtual TypesMatiere TypesMatiere { get; set; }
     }
 }

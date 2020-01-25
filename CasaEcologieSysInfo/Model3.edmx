@@ -324,6 +324,7 @@
           <Property Name="StockMatiere" Type="float" Nullable="false" />
           <Property Name="TypeMatiere" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="CoutUnitaire" Type="money" />
+          <Property Name="CodeTypeMatiere" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="ResStockProduitsFinis">
           <Key>
@@ -355,6 +356,13 @@
           <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TypesMatieres">
+          <Key>
+            <PropertyRef Name="codeTypeMatiere" />
+          </Key>
+          <Property Name="codeTypeMatiere" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nomType" Type="nchar" MaxLength="10" Nullable="false" />
         </EntityType>
         <EntityType Name="Utilisateurs">
           <Key>
@@ -1073,6 +1081,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ResStockMatieresPremieres_TypesMatieres">
+          <End Role="TypesMatieres" Type="Self.TypesMatieres" Multiplicity="1" />
+          <End Role="ResStockMatieresPremieres" Type="Self.ResStockMatieresPremieres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypesMatieres">
+              <PropertyRef Name="codeTypeMatiere" />
+            </Principal>
+            <Dependent Role="ResStockMatieresPremieres">
+              <PropertyRef Name="CodeTypeMatiere" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ResStockProduitsFinis_ResStockMatieresPremieresEmballages">
           <End Role="ResStockMatieresPremieres" Type="Self.ResStockMatieresPremieres" Multiplicity="0..1" />
           <End Role="ResStockProduitsFinis" Type="Self.ResStockProduitsFinis" Multiplicity="*" />
@@ -1201,6 +1221,7 @@
           <EntitySet Name="ResStockProduitsFinis" EntityType="Self.ResStockProduitsFinis" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ResStockProduitsSemiFinis" EntityType="Self.ResStockProduitsSemiFinis" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypesMatieres" EntityType="Self.TypesMatieres" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Utilisateurs" EntityType="Self.Utilisateurs" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_EveAcquisitionServicesFournitures_AgeEmployes" Association="Self.FK_EveAcquisitionServicesFournitures_AgeEmployes">
             <End Role="AgeEmployes" EntitySet="AgeEmployes" />
@@ -1437,6 +1458,10 @@
           <AssociationSet Name="FK_EveVenteStockProduitsFinis_ResStockProduitsFinis" Association="Self.FK_EveVenteStockProduitsFinis_ResStockProduitsFinis">
             <End Role="ResStockProduitsFinis" EntitySet="ResStockProduitsFinis" />
             <End Role="EveVenteStockProduitsFinis" EntitySet="EveVenteStockProduitsFinis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResStockMatieresPremieres_TypesMatieres" Association="Self.FK_ResStockMatieresPremieres_TypesMatieres">
+            <End Role="TypesMatieres" EntitySet="TypesMatieres" />
+            <End Role="ResStockMatieresPremieres" EntitySet="ResStockMatieresPremieres" />
           </AssociationSet>
           <AssociationSet Name="FK_ResStockProduitsFinis_ResStockMatieresPremieresEmballages" Association="Self.FK_ResStockProduitsFinis_ResStockMatieresPremieresEmballages">
             <End Role="ResStockMatieresPremieres" EntitySet="ResStockMatieresPremieres" />
@@ -1792,6 +1817,8 @@
           <NavigationProperty Name="EveTransvasements" Relationship="CasaDBModel.FK_EveTransvasements_ResStockMatieresPremieres_Final" FromRole="ResStockMatieresPremiere" ToRole="EveTransvasement" />
           <NavigationProperty Name="EveTransvasements1" Relationship="CasaDBModel.FK_EveTransvasements_ResStockMatieresPremieres_Initial" FromRole="ResStockMatieresPremiere" ToRole="EveTransvasement" />
           <Property Name="CoutUnitaire" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="CodeTypeMatiere" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TypesMatiere" Relationship="CasaDBModel.FK_ResStockMatieresPremieres_TypesMatieres" FromRole="ResStockMatieresPremiere" ToRole="TypesMatiere" />
         </EntityType>
         <EntityType Name="ResStockProduitsFini">
           <Key>
@@ -2644,6 +2671,11 @@
             <End Role="ResStockProduitsFini" EntitySet="ResStockProduitsFinis" />
             <End Role="EveSortieDonsOuDechetsProduitsFini" EntitySet="EveSortieDonsOuDechetsProduitsFinis" />
           </AssociationSet>
+          <EntitySet Name="TypesMatieres" EntityType="CasaDBModel.TypesMatiere" />
+          <AssociationSet Name="FK_ResStockMatieresPremieres_TypesMatieres" Association="CasaDBModel.FK_ResStockMatieresPremieres_TypesMatieres">
+            <End Role="TypesMatiere" EntitySet="TypesMatieres" />
+            <End Role="ResStockMatieresPremiere" EntitySet="ResStockMatieresPremieres" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -3044,6 +3076,26 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="TypesMatiere">
+          <Key>
+            <PropertyRef Name="codeTypeMatiere" />
+          </Key>
+          <Property Name="codeTypeMatiere" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nomType" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="ResStockMatieresPremieres" Relationship="CasaDBModel.FK_ResStockMatieresPremieres_TypesMatieres" FromRole="TypesMatiere" ToRole="ResStockMatieresPremiere" />
+        </EntityType>
+        <Association Name="FK_ResStockMatieresPremieres_TypesMatieres">
+          <End Type="CasaDBModel.TypesMatiere" Role="TypesMatiere" Multiplicity="1" />
+          <End Type="CasaDBModel.ResStockMatieresPremiere" Role="ResStockMatieresPremiere" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypesMatiere">
+              <PropertyRef Name="codeTypeMatiere" />
+            </Principal>
+            <Dependent Role="ResStockMatieresPremiere">
+              <PropertyRef Name="CodeTypeMatiere" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3296,6 +3348,7 @@
           <EntitySetMapping Name="ResStockMatieresPremieres">
             <EntityTypeMapping TypeName="CasaDBModel.ResStockMatieresPremiere">
               <MappingFragment StoreEntitySet="ResStockMatieresPremieres">
+                <ScalarProperty Name="CodeTypeMatiere" ColumnName="CodeTypeMatiere" />
                 <ScalarProperty Name="CoutUnitaire" ColumnName="CoutUnitaire" />
                 <ScalarProperty Name="TypeMatiere" ColumnName="TypeMatiere" />
                 <ScalarProperty Name="CodeMatierePremiere" ColumnName="CodeMatierePremiere" />
@@ -3478,6 +3531,14 @@
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="DateSortie" ColumnName="DateSortie" />
                 <ScalarProperty Name="CodeSortieDonsDechetsPrdtFini" ColumnName="CodeSortieDonsDechetsPrdtFini" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypesMatieres">
+            <EntityTypeMapping TypeName="CasaDBModel.TypesMatiere">
+              <MappingFragment StoreEntitySet="TypesMatieres">
+                <ScalarProperty Name="nomType" ColumnName="nomType" />
+                <ScalarProperty Name="codeTypeMatiere" ColumnName="codeTypeMatiere" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

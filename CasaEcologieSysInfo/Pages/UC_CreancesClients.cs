@@ -122,22 +122,26 @@ namespace CasaEcologieSysInfo.Pages
                 }
 
             }
-
         }
 
         private void ListBox1_SelectedValueChanged(object sender, EventArgs e)
         {
-            int codeClient = 0;
-
-            if (lbxListeClients.Items.Count > 0)
+            try
             {
-                codeClient = Convert.ToInt32(lbxListeClients.SelectedValue.ToString());
+                bool listeValide = lbxListeClients.Items.Count > 0;
+                int.TryParse(lbxListeClients.SelectedValue.ToString(), out int codeClient);
                 MontrerDetailsCreances(codeClient);
+
+                lblNomClient.Text = db.AgeClients
+                                .Where(c => c.CodeClient == codeClient)
+                                .Select(c => c.NomClient)
+                                .FirstOrDefault();
             }
-            else
+            catch (Exception)
             {
                 MessageBox.Show("Il n'y a pas de clients avec créances en ce moment.");
-            }     
+            }
+
         }
 
         private void BtnImprimerTableau_Click(object sender, EventArgs e)
