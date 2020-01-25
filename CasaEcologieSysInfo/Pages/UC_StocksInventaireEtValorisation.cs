@@ -47,7 +47,7 @@ namespace CasaEcologieSysInfo.Pages
                 dt.Rows.InsertAt(dr, dt.Rows.Count);
                 dr["Description"] = matiere;
                 dr["Stock"] = stock;
-                dr["PU"] = coutU;
+                dr["Coût unitaire"] = coutU;
                 dr["Valeur"] = stock * coutU;
             }
 
@@ -76,7 +76,7 @@ namespace CasaEcologieSysInfo.Pages
                 dt.Rows.InsertAt(dr, dt.Rows.Count);
                 dr["Description"] = psf;
                 dr["Stock"] = stock;
-                dr["PU"] = pu;
+                dr["Coût unitaire"] = pu;
                 dr["Valeur"] = stock * pu;
             }
 
@@ -102,7 +102,7 @@ namespace CasaEcologieSysInfo.Pages
                 dt.Rows.InsertAt(dr, dt.Rows.Count);
                 dr["Description"] = pf;
                 dr["Stock"] = stock;
-                dr["PU"] = pu;
+                dr["Coût unitaire"] = pu;
                 dr["Valeur"] = stock * pu;
             }
 
@@ -122,7 +122,7 @@ namespace CasaEcologieSysInfo.Pages
             DataTable dt = new DataTable();
             dt.Columns.Add("Description", typeof(String));
             dt.Columns.Add("Stock", typeof(float));
-            dt.Columns.Add("PU", typeof(float));
+            dt.Columns.Add("Coût unitaire", typeof(float));
             dt.Columns.Add("Valeur", typeof(float));
 
             return dt;
@@ -131,11 +131,11 @@ namespace CasaEcologieSysInfo.Pages
         private static void FormatterTableau(DataGridView grid)
         {
             grid.Columns["Stock"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            grid.Columns["PU"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            grid.Columns["Coût unitaire"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             grid.Columns["Valeur"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
             grid.Columns["Stock"].DefaultCellStyle.Format = "n1";
-            grid.Columns["PU"].DefaultCellStyle.Format = "n0";
+            grid.Columns["Coût unitaire"].DefaultCellStyle.Format = "n0";
             grid.Columns["Valeur"].DefaultCellStyle.Format = "n0";
         }
 
@@ -193,7 +193,7 @@ namespace CasaEcologieSysInfo.Pages
         {
             if (rbtnMatieresPremieres.Checked)
             {
-                Impression.ImprimerTableau("Stock de matières premières", dgvTableauAffichageStocks);
+                Impression.ImprimerTableau("Stock de matières premières et emballages", dgvTableauAffichageStocks);
             }
             else if (rbtnProduitsSemiFinis.Checked)
             {
