@@ -309,7 +309,7 @@ namespace CasaEcologieSysInfo.Classes
                                                        select (float?)d.Montant).Sum() ?? 0;
 
                 // Le coût du gaz utilisé dans la production. Pour faciliter l'exploitation des données,
-                // les dépenses de gaz ont été ajoutées à la table ResServicesFournitures.
+                // les dépenses de gaz avaient été ajoutées à la table ResServicesFournitures.
                 float gaz = float.Parse(DepenseServiceFourniture(debut, fin, "Gaz"));
 
                 return (achatMatieresPremieres + remboursementDettesFournisseurs + gaz).ToString("n0");
