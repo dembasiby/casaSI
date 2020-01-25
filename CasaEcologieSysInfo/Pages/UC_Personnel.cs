@@ -70,11 +70,11 @@ namespace CasaEcologieSysInfo.Pages
             cbxPaiementFaitPar.ValueMember = "CodeEmploye";
 
 
-            AfficherPresenceEtRemunerationEmploye(dtpFin.Value.Date);
+            AfficherPresenceEtRemunerationEmploye(dtpDebut.Value.Date,dtpFin.Value.Date);
             Tresorerie.AfficherSoldeTresorerie(cbxComptePaiement, txtSoldeCompte);
         }
 
-        private void AfficherPresenceEtRemunerationEmploye(DateTime fin, DateTime debut = default(DateTime))
+        private void AfficherPresenceEtRemunerationEmploye(DateTime debut, DateTime fin)
         {
             var employe = cbxTempsEtRemun.GetItemText(cbxTempsEtRemun.SelectedItem);
             var codeEmploye = Convert.ToInt32(cbxTempsEtRemun.SelectedValue.ToString());
@@ -189,12 +189,12 @@ namespace CasaEcologieSysInfo.Pages
 
         private void CbxTempsEtRemun_SelectedIndexChanged(object sender, EventArgs e)
         {
-            AfficherPresenceEtRemunerationEmploye(dtpFin.Value.Date, dtpDebut.Value.Date);
+            AfficherPresenceEtRemunerationEmploye(dtpDebut.Value.Date, dtpFin.Value.Date);
         }
 
         private void DateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-            AfficherPresenceEtRemunerationEmploye(dtpFin.Value.Date, dtpDebut.Value.Date);
+            AfficherPresenceEtRemunerationEmploye(dtpDebut.Value.Date, dtpFin.Value.Date);
         }
 
         private void DateTimePicker2_ValueChanged(object sender, EventArgs e)
@@ -287,6 +287,14 @@ namespace CasaEcologieSysInfo.Pages
         private void CbxComptePaiement_SelectedIndexChanged(object sender, EventArgs e)
         {
             Tresorerie.AfficherSoldeTresorerie(cbxComptePaiement, txtSoldeCompte);
+        }
+
+        private void DtpDatePaiement_ValueChanged(object sender, EventArgs e)
+        {
+            cbxTresoriere.DataSource = Conversion.ListeEmployesPresents(dtpDatePaiement)
+                                         .Where(em => !em.Poste.StartsWith("Stagiaire"))
+                                         .OrderBy(c => c.PrenomNom)
+                                         .ToList();
         }
     }
 }

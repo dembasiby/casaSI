@@ -390,6 +390,7 @@
             this.dtpDatePaiement.Name = "dtpDatePaiement";
             this.dtpDatePaiement.Size = new System.Drawing.Size(225, 23);
             this.dtpDatePaiement.TabIndex = 37;
+            this.dtpDatePaiement.ValueChanged += new System.EventHandler(this.DtpDatePaiement_ValueChanged);
             // 
             // txtRemunerationPeriod
             // 
