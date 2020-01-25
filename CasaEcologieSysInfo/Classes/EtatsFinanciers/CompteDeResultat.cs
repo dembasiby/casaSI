@@ -145,14 +145,11 @@ namespace CasaEcologieSysInfo
         {
             using (CasaDBEntities db = new CasaDBEntities())
             {
-                var fraisGeneraux = ((from asf in db.EveAcquisitionServicesFournitures
-                                      from d in db.EveDecaissements 
-                                      where d.DateDecaissement >= debut.Date
-                                      where d.DateDecaissement <= fin.Date
-                                      where d.CodeFournisseurService != null
-                                      where asf.ResServicesFourniture.NomServiceFourniture != "Taxes"
-                                      where asf.ResServicesFourniture.NomServiceFourniture != "Retrait des propriétaires"
-                                      select (float?)d.Montant).Sum() ?? 0f);
+                var fraisGeneraux = db.EveDecaissements
+                    .Where(d => d.CodeAcquisitionServiceFourniture != null)
+                    .Where(d => d.EveAcquisitionServicesFourniture.ResServicesFourniture.NomServiceFourniture != "Taxes")
+                    .Where(d => d.EveAcquisitionServicesFourniture.ResServicesFourniture.NomServiceFourniture != "Retrait des propriétaires")
+                    .Select(d => (float?)d.Montant).Sum() ?? 0f;
 
                 return (fraisGeneraux + MainDOeuvre(debut, fin)).ToString("n0");
             }
