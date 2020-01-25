@@ -121,6 +121,23 @@ namespace CasaEcologieSysInfo
             db.SaveChanges();
         }
 
+        private void UtiliserSucre(int codeURes)
+        {
+            ResStockMatieresPremiere matP = db.ResStockMatieresPremieres.FirstOrDefault(
+                    mp => mp.NomMatiere == "Sucre en poudre");
+
+            EveUtilisationMatieresPremiere uMatP = new EveUtilisationMatieresPremiere
+            {
+                CodeUtilisationRessource = codeURes,
+                CodeMatierePremiere = matP.CodeMatierePremiere,
+                QuantiteMatierePremiere = float.Parse(txtQuantiteSucre.Text),
+            };
+
+            db.EveUtilisationMatieresPremieres.Add(uMatP);
+            db.SaveChanges();
+            ChargerStockMatierePremiere(matP.NomMatiere);
+        }
+
         private void UtiliserMatierePremiere(int codeURes, ListViewItem li)
         {
             ResStockMatieresPremiere matP = db.ResStockMatieresPremieres.FirstOrDefault(
@@ -346,6 +363,13 @@ namespace CasaEcologieSysInfo
                 MessageBox.Show("Merci de choisir un emballage");
                 return false;
             }
+
+
+            if (rbtnAvecSucre.Checked && !Validation.QuantiteSuperieurAZero(txtQuantiteSucre.Text))
+            {
+                MessageBox.Show("Merci d'indiquer la quantité de sucre à utiliser.");
+                return false;
+            }
             return true;
         }
 
@@ -391,6 +415,11 @@ namespace CasaEcologieSysInfo
                         if (!nomProduit.ToLower().StartsWith("sachet") || !nomProduit.ToLower().StartsWith("pastille") && !string.IsNullOrEmpty(etiquette))
                         {
                             UtiliserEmballage(codeUtilisationRessources, etiquette, int.Parse(txtQuantiteProduitProduit.Text));
+                        }
+
+                        if (rbtnAvecSucre.Checked)
+                        {
+                            UtiliserSucre(codeUtilisationRessources);
                         }
 
                         EveProductionStockProduitsFini prodPFini = new EveProductionStockProduitsFini

@@ -32,9 +32,17 @@
             this.label4 = new System.Windows.Forms.Label();
             this.pnlCorpsPageProduction = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.rbtnSansSucre = new System.Windows.Forms.RadioButton();
+            this.rbtnAvecSucre = new System.Windows.Forms.RadioButton();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txtQuantiteSucre = new System.Windows.Forms.TextBox();
+            this.panel14 = new System.Windows.Forms.Panel();
             this.btnMettreAJourListeProduits = new System.Windows.Forms.Button();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.txtEtiquettesDisponibles = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.txtEmballagesDisponibles = new System.Windows.Forms.TextBox();
             this.cbxEtiquettes = new System.Windows.Forms.ComboBox();
             this.cbxEmballage = new System.Windows.Forms.ComboBox();
@@ -67,6 +75,7 @@
             this.btnNouvelleProduction = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.panel13 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel11 = new System.Windows.Forms.Panel();
@@ -117,10 +126,10 @@
             this.resStockProduitsSemiFiniBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.eveUtilisationEquipementInfrastructuresTableAdapter1 = new CasaEcologieSysInfo.CasaDBDataSetAllTableAdapters.EveUtilisationEquipementInfrastructuresTableAdapter();
             this.resStockMatieresPremiereBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.label12 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.pnlCorpsPageProduction.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.groupBox8.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -130,6 +139,7 @@
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ageEmployeBindingSource)).BeginInit();
             this.groupBox3.SuspendLayout();
+            this.panel7.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -165,6 +175,8 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.groupBox8);
+            this.panel2.Controls.Add(this.panel14);
             this.panel2.Controls.Add(this.btnMettreAJourListeProduits);
             this.panel2.Controls.Add(this.groupBox7);
             this.panel2.Controls.Add(this.groupBox4);
@@ -187,6 +199,69 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(575, 583);
             this.panel2.TabIndex = 0;
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.BackColor = System.Drawing.Color.DarkOrange;
+            this.groupBox8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.groupBox8.Controls.Add(this.rbtnSansSucre);
+            this.groupBox8.Controls.Add(this.rbtnAvecSucre);
+            this.groupBox8.Controls.Add(this.label15);
+            this.groupBox8.Controls.Add(this.txtQuantiteSucre);
+            this.groupBox8.Location = new System.Drawing.Point(443, 10);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(122, 164);
+            this.groupBox8.TabIndex = 39;
+            this.groupBox8.TabStop = false;
+            // 
+            // rbtnSansSucre
+            // 
+            this.rbtnSansSucre.AutoSize = true;
+            this.rbtnSansSucre.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbtnSansSucre.Location = new System.Drawing.Point(11, 46);
+            this.rbtnSansSucre.Name = "rbtnSansSucre";
+            this.rbtnSansSucre.Size = new System.Drawing.Size(95, 20);
+            this.rbtnSansSucre.TabIndex = 35;
+            this.rbtnSansSucre.Text = "Sans sucre";
+            this.rbtnSansSucre.UseVisualStyleBackColor = true;
+            // 
+            // rbtnAvecSucre
+            // 
+            this.rbtnAvecSucre.AutoSize = true;
+            this.rbtnAvecSucre.Checked = true;
+            this.rbtnAvecSucre.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbtnAvecSucre.Location = new System.Drawing.Point(11, 16);
+            this.rbtnAvecSucre.Name = "rbtnAvecSucre";
+            this.rbtnAvecSucre.Size = new System.Drawing.Size(98, 20);
+            this.rbtnAvecSucre.TabIndex = 35;
+            this.rbtnAvecSucre.TabStop = true;
+            this.rbtnAvecSucre.Text = "Avec sucre";
+            this.rbtnAvecSucre.UseVisualStyleBackColor = true;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(12, 89);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(102, 17);
+            this.label15.TabIndex = 30;
+            this.label15.Text = "Quantité sucre";
+            // 
+            // txtQuantiteSucre
+            // 
+            this.txtQuantiteSucre.Location = new System.Drawing.Point(11, 109);
+            this.txtQuantiteSucre.Name = "txtQuantiteSucre";
+            this.txtQuantiteSucre.Size = new System.Drawing.Size(100, 27);
+            this.txtQuantiteSucre.TabIndex = 39;
+            // 
+            // panel14
+            // 
+            this.panel14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(31)))), ((int)(((byte)(20)))));
+            this.panel14.Location = new System.Drawing.Point(433, 0);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(11, 175);
+            this.panel14.TabIndex = 38;
             // 
             // btnMettreAJourListeProduits
             // 
@@ -215,7 +290,7 @@
             this.groupBox7.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox7.Location = new System.Drawing.Point(309, 300);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(243, 110);
+            this.groupBox7.Size = new System.Drawing.Size(243, 126);
             this.groupBox7.TabIndex = 36;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Choisir l\'emballage";
@@ -228,6 +303,26 @@
             this.txtEtiquettesDisponibles.ReadOnly = true;
             this.txtEtiquettesDisponibles.Size = new System.Drawing.Size(38, 21);
             this.txtEtiquettesDisponibles.TabIndex = 28;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(6, 67);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(66, 17);
+            this.label14.TabIndex = 30;
+            this.label14.Text = "Etiquette";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(6, 21);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(78, 17);
+            this.label12.TabIndex = 30;
+            this.label12.Text = "Emballage";
             // 
             // txtEmballagesDisponibles
             // 
@@ -265,7 +360,7 @@
             this.groupBox4.Controls.Add(this.rbtnProduitsSemiFinis);
             this.groupBox4.Controls.Add(this.rbtnProduitsFinis);
             this.groupBox4.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(23, 300);
+            this.groupBox4.Location = new System.Drawing.Point(23, 311);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(280, 110);
             this.groupBox4.TabIndex = 36;
@@ -326,7 +421,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Century Gothic", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(74, 270);
+            this.label6.Location = new System.Drawing.Point(82, 274);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(470, 16);
             this.label6.TabIndex = 29;
@@ -338,7 +433,7 @@
             this.label3.BackColor = System.Drawing.Color.Red;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label3.Location = new System.Drawing.Point(95, 270);
+            this.label3.Location = new System.Drawing.Point(42, 274);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(34, 16);
             this.label3.TabIndex = 29;
@@ -355,7 +450,7 @@
             this.groupBox6.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox6.Location = new System.Drawing.Point(233, 11);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(322, 164);
+            this.groupBox6.Size = new System.Drawing.Size(194, 164);
             this.groupBox6.TabIndex = 34;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Responsables";
@@ -363,11 +458,11 @@
             // label9
             // 
             this.label9.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(32, 112);
+            this.label9.Location = new System.Drawing.Point(14, 112);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(247, 22);
+            this.label9.Size = new System.Drawing.Size(180, 22);
             this.label9.TabIndex = 30;
-            this.label9.Text = "Responsable de la production";
+            this.label9.Text = "Resp. production";
             // 
             // cbxResponsableProduction
             // 
@@ -378,7 +473,7 @@
             this.cbxResponsableProduction.FormattingEnabled = true;
             this.cbxResponsableProduction.Location = new System.Drawing.Point(11, 135);
             this.cbxResponsableProduction.Name = "cbxResponsableProduction";
-            this.cbxResponsableProduction.Size = new System.Drawing.Size(298, 25);
+            this.cbxResponsableProduction.Size = new System.Drawing.Size(183, 25);
             this.cbxResponsableProduction.TabIndex = 27;
             this.cbxResponsableProduction.ValueMember = "CodeEmploye";
             // 
@@ -389,11 +484,11 @@
             // label10
             // 
             this.label10.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(30, 15);
+            this.label10.Location = new System.Drawing.Point(8, 15);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(321, 18);
+            this.label10.Size = new System.Drawing.Size(182, 18);
             this.label10.TabIndex = 30;
-            this.label10.Text = "Responsable du stock de matières premieres";
+            this.label10.Text = "Resp. stock mat. premieres";
             // 
             // cbxRespMatPrem
             // 
@@ -404,7 +499,7 @@
             this.cbxRespMatPrem.FormattingEnabled = true;
             this.cbxRespMatPrem.Location = new System.Drawing.Point(11, 36);
             this.cbxRespMatPrem.Name = "cbxRespMatPrem";
-            this.cbxRespMatPrem.Size = new System.Drawing.Size(298, 25);
+            this.cbxRespMatPrem.Size = new System.Drawing.Size(183, 25);
             this.cbxRespMatPrem.TabIndex = 27;
             this.cbxRespMatPrem.ValueMember = "CodeEmploye";
             // 
@@ -415,11 +510,11 @@
             // label11
             // 
             this.label11.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(30, 64);
+            this.label11.Location = new System.Drawing.Point(12, 64);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(301, 19);
+            this.label11.Size = new System.Drawing.Size(182, 19);
             this.label11.TabIndex = 30;
-            this.label11.Text = "Responsable du stock de produits finis";
+            this.label11.Text = "Resp. stock de prdts finis";
             // 
             // cbxResponsableStockProduitFinis
             // 
@@ -430,7 +525,7 @@
             this.cbxResponsableStockProduitFinis.FormattingEnabled = true;
             this.cbxResponsableStockProduitFinis.Location = new System.Drawing.Point(11, 86);
             this.cbxResponsableStockProduitFinis.Name = "cbxResponsableStockProduitFinis";
-            this.cbxResponsableStockProduitFinis.Size = new System.Drawing.Size(298, 25);
+            this.cbxResponsableStockProduitFinis.Size = new System.Drawing.Size(183, 25);
             this.cbxResponsableStockProduitFinis.TabIndex = 27;
             this.cbxResponsableStockProduitFinis.ValueMember = "CodeEmploye";
             // 
@@ -483,7 +578,7 @@
             this.groupBox3.Controls.Add(this.txtQuantiteProduitProduit);
             this.groupBox3.Controls.Add(this.label13);
             this.groupBox3.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(23, 412);
+            this.groupBox3.Location = new System.Drawing.Point(23, 419);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(532, 97);
             this.groupBox3.TabIndex = 26;
@@ -557,11 +652,21 @@
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(31)))), ((int)(((byte)(20)))));
+            this.panel7.Controls.Add(this.panel13);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel7.Location = new System.Drawing.Point(565, 10);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(10, 562);
             this.panel7.TabIndex = 0;
+            // 
+            // panel13
+            // 
+            this.panel13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(31)))), ((int)(((byte)(20)))));
+            this.panel13.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel13.Location = new System.Drawing.Point(0, 0);
+            this.panel13.Name = "panel13";
+            this.panel13.Size = new System.Drawing.Size(10, 562);
+            this.panel13.TabIndex = 1;
             // 
             // panel6
             // 
@@ -1088,26 +1193,6 @@
             // 
             this.resStockMatieresPremiereBindingSource1.DataSource = typeof(CasaEcologieSysInfo.ResStockMatieresPremiere);
             // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(6, 21);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(78, 17);
-            this.label12.TabIndex = 30;
-            this.label12.Text = "Emballage";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(6, 67);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(66, 17);
-            this.label14.TabIndex = 30;
-            this.label14.Text = "Etiquette";
-            // 
             // UC_Production
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
@@ -1122,6 +1207,8 @@
             this.pnlCorpsPageProduction.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
             this.groupBox4.ResumeLayout(false);
@@ -1134,6 +1221,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ageEmployeBindingSource)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.panel7.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -1244,5 +1332,13 @@
         private System.Windows.Forms.TextBox txtEmballagesDisponibles;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.RadioButton rbtnSansSucre;
+        private System.Windows.Forms.RadioButton rbtnAvecSucre;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox txtQuantiteSucre;
+        private System.Windows.Forms.Panel panel14;
+        private System.Windows.Forms.Panel panel13;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
