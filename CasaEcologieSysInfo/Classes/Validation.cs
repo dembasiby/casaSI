@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Windows;
+using System.Windows.Forms;
+using MessageBox = System.Windows.Forms.MessageBox;
+
 
 namespace CasaEcologieSysInfo
 {
@@ -60,6 +63,21 @@ namespace CasaEcologieSysInfo
         public static bool QuantiteSuperieurAZero(string quantite)
         {
             if (MontantEstValide(quantite) && int.Parse(quantite) > 0)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public static bool ListeContient(ListView liste, string element)
+        {
+            ListViewItem resultats = new ListViewItem(element)
+            {
+                Name = element
+            };
+
+            if (liste.Items.ContainsKey(resultats.Name))
             {
                 return true;
             }
