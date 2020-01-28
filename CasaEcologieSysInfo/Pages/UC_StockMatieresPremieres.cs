@@ -106,11 +106,11 @@ namespace CasaEcologieSysInfo
                                 });
 
             var resultats = entreesAchat
-                .Union(entreesDon)
-                .Union(entreesTransvasage)
-                .Union(sortiesProduction)
-                .Union(sortiesTransvasage)
-                .Union(sortiesAutre)
+                .Concat(entreesDon)
+                .Concat(entreesTransvasage)
+                .Concat(sortiesProduction)
+                .Concat(sortiesTransvasage)
+                .Concat(sortiesAutre)
                 .OrderByDescending(d => d.Date)
                 .ToList();
 

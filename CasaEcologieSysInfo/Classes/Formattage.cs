@@ -8,7 +8,7 @@ namespace CasaEcologieSysInfo
         public static void TableauDesStock(DataGridView grid)
         {
             grid.Columns["Date"].Width = 100;
-            grid.Columns["Description"].Width = 100;
+            grid.Columns["Description"].Width = 200;
             grid.Columns["Entree"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             grid.Columns["Sortie"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             grid.Columns["Solde"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
