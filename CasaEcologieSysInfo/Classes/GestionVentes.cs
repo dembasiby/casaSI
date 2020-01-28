@@ -35,7 +35,10 @@ namespace CasaEcologieSysInfo.Classes
                     ResStockProduitsFini produit = db.ResStockProduitsFinis.FirstOrDefault(p => p.NomProduit == nomProduit);
 
 
-                    var venteProduit = db.EveVenteStockProduitsFinis.Where(vp => vp.CodeVente == codeVente).FirstOrDefault(vp => vp.CodeProduitFini == produit.CodeProduit);
+                    var venteProduit = db.EveVenteStockProduitsFinis
+                        .Where(vp => vp.CodeVente == codeVente)
+                        .FirstOrDefault(vp => vp.CodeProduitFini == produit.CodeProduit);
+
                     venteProduit.QuantiteProduitFini = int.Parse(quantite);
                     venteProduit.Montant = int.Parse(montant);
                     

@@ -19,13 +19,15 @@ namespace CasaEcologieSysInfo.Pages
         private void UC_CreancesClients_Load(object sender, EventArgs e)
         {
             var listeClients = new List<AgeClient>();        
-            var newListe = db.AgeClients.OrderBy(c => c.NomClient);
+            var newListe = db.AgeClients.ToList();
 
-            foreach (var item in newListe)
+            foreach (var client in newListe)
             {
-                if (Tresorerie.CalculerSoldeCreanceClient(item.CodeClient) > 0)
+                var soldeCreanceClient = Tresorerie.CalculerSoldeCreanceClient(client.CodeClient);
+
+                if (soldeCreanceClient > 0)
                 {
-                    listeClients.Add(item);
+                    listeClients.Add(client);
                 }
             }
 
@@ -40,58 +42,55 @@ namespace CasaEcologieSysInfo.Pages
         private void MontrerDetailsCreances(int codeClient)
         {
             var ventesClients = (from c in db.AgeClients
-                                 from vf in db.EveVenteStockProduitsFinis
-                                 from v in db.EveVentes
-                                 where v.CodeClient == c.CodeClient
-                                 where vf.CodeVente == v.CodeVente
+                                 join v in db.EveVentes on c.CodeClient equals v.CodeClient
+                                 join vpf in db.EveVenteStockProduitsFinis on v.CodeVente equals vpf.CodeVente
                                  where c.CodeClient == codeClient
                                  select new
                                  {
                                      Date = v.DateVente,
-                                     Description = vf.ResStockProduitsFini.NomProduit,
-                                     vf.Montant,
+                                     Description = vpf.ResStockProduitsFini.NomProduit,
+                                     vpf.Montant,
                                      Encaissement = 0m,
                                      Solde = 0m
                                  });
 
             var totalPaiementClient = (from c in db.AgeClients
-                                       from e in db.EveEncaissementsVentes
-                                       where c.CodeClient == e.CodeClient
-                                       where c.CodeClient == codeClient
-                                       select new
+                                      join ev in db.EveEncaissementsVentes on c.CodeClient equals ev.CodeClient
+                                      where c.CodeClient == codeClient
+                                      select new
                                        {
-                                           Date = e.DateEncaissement,
+                                           Date = ev.DateEncaissement,
                                            Description = "Encaissement vente",
                                            Montant = 0m,
-                                           Encaissement = e.MontantEncaisse,
+                                           Encaissement = ev.MontantEncaisse,
                                            Solde = 0m
                                        });
 
             var encaissementCreances = (from c in db.AgeClients
-                                        from ec in db.EveEncaissementsCreances
-                                        where c.CodeClient == ec.CodeClient
+                                        join ecc in db.EveEncaissementsCreances on c.CodeClient equals ecc.CodeClient
                                         where c.CodeClient == codeClient
                                         select new
                                         {
-                                            Date = ec.DateEncaissement,
+                                            Date = ecc.DateEncaissement,
                                             Description = "Encaissement créance",
                                             Montant = 0m,
-                                            Encaissement = ec.MontantEncaisse,
+                                            Encaissement = ecc.MontantEncaisse,
                                             Solde = 0m
                                         });
 
             var combinedQuery = ventesClients
-                                .Union(totalPaiementClient)
-                                .Union(encaissementCreances)
-                                .OrderByDescending(c => c.Solde)
-                                .Where(c => c.Solde > 0)
+                                .Concat(totalPaiementClient)
+                                .Concat(encaissementCreances)
+                                .OrderByDescending(c => c.Date)
+                                //.Where(c => c.Solde > 0)
                                 .ToList();
             DataTable dt = Conversion.ConvertirEnTableDeDonnees(combinedQuery);
 
             DataRow dr = dt.NewRow();
-           dt.Rows.InsertAt(dr, 0);
-           dr["Montant"] = 0;
-           dr["Encaissement"] = 0;
+            dt.Rows.InsertAt(dr, 0);
+            dr["Montant"] = 0;
+            dr["Encaissement"] = 0;
+            dr["Description"] = "Montant créance initiale";
             dgvDetailsClient.DataSource = dt;
 
             dgvDetailsClient.Columns["Montant"].DefaultCellStyle.Format = "n0";
@@ -100,6 +99,7 @@ namespace CasaEcologieSysInfo.Pages
             dgvDetailsClient.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgvDetailsClient.Columns["Date"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dgvDetailsClient.Columns["Description"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgvDetailsClient.Columns["Description"].FillWeight = 250;
 
 
             var creanceInitialClient = (from c in db.AgeClients

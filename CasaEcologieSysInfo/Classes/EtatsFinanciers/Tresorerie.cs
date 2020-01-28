@@ -410,23 +410,20 @@ namespace CasaEcologieSysInfo.Classes
             using (CasaDBEntities db = new CasaDBEntities())
             {
                 var ventesClients = (from c in db.AgeClients
-                                     from vf in db.EveVenteStockProduitsFinis
-                                     from v in db.EveVentes
-                                     where v.CodeClient == c.CodeClient
-                                     where vf.CodeVente == v.CodeVente
+                                     join v in db.EveVentes on c.CodeClient equals v.CodeClient
+                                     join vpf in db.EveVenteStockProduitsFinis on v.CodeVente equals vpf.CodeVente
                                      where c.CodeClient == codeClient
-                                     select (decimal?)vf.Montant).Sum() ?? 0m;
+                                     select (decimal?)vpf.Montant).Sum() ?? 0m;
 
                 var totalPaiementClient = (from c in db.AgeClients
-                                           from ev in db.EveEncaissementsVentes
-                                           where c.CodeClient == ev.CodeClient
+                                           join ev in db.EveEncaissementsVentes on c.CodeClient equals ev.CodeClient
                                            where c.CodeClient == codeClient
                                            select (decimal?)ev.MontantEncaisse).Sum() ?? 0m;
+
                 var encaissementCreances = (from c in db.AgeClients
-                                            from ec in db.EveEncaissementsCreances
-                                            where c.CodeClient == ec.CodeClient
+                                            join ecc in db.EveEncaissementsCreances on c.CodeClient equals ecc.CodeClient
                                             where c.CodeClient == codeClient
-                                            select (decimal?)ec.MontantEncaisse).Sum() ?? 0m;
+                                            select (decimal?)ecc.MontantEncaisse).Sum() ?? 0m;
 
                 var creanceInitialClient = (from c in db.AgeClients
                                             where c.CodeClient == codeClient
