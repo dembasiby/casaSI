@@ -322,7 +322,6 @@
           <Property Name="CodeMatierePremiere" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NomMatiere" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="StockMatiere" Type="float" Nullable="false" />
-          <Property Name="TypeMatiere" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="CoutUnitaire" Type="money" />
           <Property Name="CodeTypeMatiere" Type="int" Nullable="false" />
         </EntityType>
@@ -1812,8 +1811,6 @@
           <NavigationProperty Name="ResStockProduitsSemiFinis" Relationship="Self.FK_ResStockProduitsSemiFinis_ResStockMatieresPremieres" FromRole="ResStockMatieresPremieres" ToRole="ResStockProduitsSemiFinis" />
           <NavigationProperty Name="EveReceptionDonsMatieresPremieres" Relationship="CasaDBModel.FK_EveReceptionDonsMatieresPremieres_ResStockMatieresPremieres" FromRole="ResStockMatieresPremiere" ToRole="EveReceptionDonsMatieresPremiere" />
           <NavigationProperty Name="EveSortieDechetsMatieresPremieres" Relationship="CasaDBModel.FK_EveSortieDechetsMatieresPremieres_ResStockMatieresPremieres" FromRole="ResStockMatieresPremiere" ToRole="EveSortieDechetsMatieresPremiere" />
-          <Property Name="TypeMatiere" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="ResStockProduitsFinis" Relationship="CasaDBModel.FK_ResStockProduitsFinis_ResStockMatieresPremieresEmballages" FromRole="ResStockMatieresPremiere" ToRole="ResStockProduitsFini" />
           <NavigationProperty Name="EveTransvasements" Relationship="CasaDBModel.FK_EveTransvasements_ResStockMatieresPremieres_Final" FromRole="ResStockMatieresPremiere" ToRole="EveTransvasement" />
           <NavigationProperty Name="EveTransvasements1" Relationship="CasaDBModel.FK_EveTransvasements_ResStockMatieresPremieres_Initial" FromRole="ResStockMatieresPremiere" ToRole="EveTransvasement" />
           <Property Name="CoutUnitaire" Type="Decimal" Precision="19" Scale="4" />
@@ -3350,7 +3347,6 @@
               <MappingFragment StoreEntitySet="ResStockMatieresPremieres">
                 <ScalarProperty Name="CodeTypeMatiere" ColumnName="CodeTypeMatiere" />
                 <ScalarProperty Name="CoutUnitaire" ColumnName="CoutUnitaire" />
-                <ScalarProperty Name="TypeMatiere" ColumnName="TypeMatiere" />
                 <ScalarProperty Name="CodeMatierePremiere" ColumnName="CodeMatierePremiere" />
                 <ScalarProperty Name="NomMatiere" ColumnName="NomMatiere" />
                 <ScalarProperty Name="StockMatiere" ColumnName="StockMatiere" />

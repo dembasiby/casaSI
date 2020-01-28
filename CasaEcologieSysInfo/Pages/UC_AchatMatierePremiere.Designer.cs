@@ -445,13 +445,8 @@
             // 
             // cbxTypesMatieres
             // 
-            this.cbxTypesMatieres.DisplayMember = "PrenomNom";
             this.cbxTypesMatieres.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxTypesMatieres.FormattingEnabled = true;
-            this.cbxTypesMatieres.Items.AddRange(new object[] {
-            "Fruit",
-            "Emballage",
-            "Autres matières"});
             this.cbxTypesMatieres.Location = new System.Drawing.Point(123, 98);
             this.cbxTypesMatieres.Margin = new System.Windows.Forms.Padding(5);
             this.cbxTypesMatieres.Name = "cbxTypesMatieres";

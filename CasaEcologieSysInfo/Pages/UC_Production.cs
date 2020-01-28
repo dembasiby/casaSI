@@ -16,9 +16,12 @@ namespace CasaEcologieSysInfo
 
         public void ChargerDonneesInitiales()
         {
-            resStockMatieresPremiereBindingSource.DataSource = db.ResStockMatieresPremieres.Where(mp => mp.TypesMatiere.nomType == "Fruit").ToList();
-            resStockProduitsFiniBindingSource.DataSource = db.ResStockProduitsFinis.ToList().OrderBy(p => p.NomProduit);
-            resStockProduitsSemiFiniBindingSource2.DataSource = db.ResStockProduitsSemiFinis.ToList();
+            resStockMatieresPremiereBindingSource.DataSource = db.ResStockMatieresPremieres
+                                                                 .Where(mp => mp.TypesMatiere.nomType == "Fruit")
+                                                                 .OrderBy(mp => mp.NomMatiere)
+                                                                 .ToList();
+            resStockProduitsFiniBindingSource.DataSource = db.ResStockProduitsFinis.OrderBy(p => p.NomProduit).ToList();
+            resStockProduitsSemiFiniBindingSource2.DataSource = db.ResStockProduitsSemiFinis.OrderBy(psf => psf.Description).ToList();
 
             MontrerListeProduitsFinis();
             ChargerListeEmployes();
@@ -412,6 +415,7 @@ namespace CasaEcologieSysInfo
                         ResStockProduitsFini npf = db.ResStockProduitsFinis.FirstOrDefault(n => n.NomProduit == nomProduit);
                         
                         UtiliserEmballage(codeUtilisationRessources, emballage, int.Parse(txtQuantiteProduitProduit.Text));
+
                         if (!nomProduit.ToLower().StartsWith("sachet") || !nomProduit.ToLower().StartsWith("pastille") && !string.IsNullOrEmpty(etiquette))
                         {
                             UtiliserEmballage(codeUtilisationRessources, etiquette, int.Parse(txtQuantiteProduitProduit.Text));

@@ -22,6 +22,9 @@ namespace CasaEcologieSysInfo
             resStockMatieresPremieresBindingSource.DataSource = db.ResStockMatieresPremieres.OrderBy(m => m.NomMatiere).ToList();
             ChargerListeEmployes();
             resComptesTresorerieBindingSource.DataSource = db.ResComptesTresoreries.ToList();
+            cbxTypesMatieres.DataSource = db.TypesMatieres.OrderBy(tm => tm.nomType).ToList();
+            cbxTypesMatieres.DisplayMember = "nomType";
+            cbxTypesMatieres.ValueMember = "codeTypeMatiere";
             //cbxTypesMatieres.DataSource = (from mp in db.ResStockMatieresPremieres select mp.TypeMatiere).Distinct().ToList();
             Tresorerie.AfficherSoldeTresorerie(cbxComptePaiement, txtSoldeCompte);
         }
@@ -62,7 +65,8 @@ namespace CasaEcologieSysInfo
                     ResStockMatieresPremiere matierePremiere = new ResStockMatieresPremiere
                     {
                         NomMatiere = txtNomMatierePremiere.Text,
-                        TypeMatiere = cbxTypesMatieres.GetItemText(cbxTypesMatieres.SelectedItem),
+                        //TypeMatiere = cbxTypesMatieres.GetItemText(cbxTypesMatieres.SelectedItem),
+                        CodeTypeMatiere = int.Parse(cbxTypesMatieres.SelectedValue.ToString()),
                         CoutUnitaire = int.Parse(txtCoutUnitaire.Text),
                         StockMatiere = float.Parse(txtStockInitial.Text)
                     };

@@ -29,12 +29,12 @@ namespace CasaEcologieSysInfo.Pages
         private void LoadData()
         {
             cbxEmballageInitial.DataSource = db.ResStockMatieresPremieres
-                .Where(mp => mp.TypeMatiere == "emballage")
+                .Where(mp => mp.TypesMatiere.nomType == "Emballage")
                 .OrderBy(n => n.NomMatiere)
                 .ToList();
 
             cbxEmballageFinal.DataSource = db.ResStockMatieresPremieres
-                .Where(mp => mp.TypeMatiere == "emballage")
+                .Where(mp => mp.TypesMatiere.nomType == "Emballage")
                 .OrderBy(n => n.NomMatiere)
                 .ToList();
 
