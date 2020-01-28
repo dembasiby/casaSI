@@ -34,7 +34,7 @@ namespace CasaEcologieSysInfo
 
         private void AfficherJournalCorrespondant(string nomProduit)
         {
-            var coutUnitaire = 0f;
+            //var coutUnitaire = 0f;
 
             var stockInitial = (from pf in db.ResStockProduitsFinis
                                 where pf.NomProduit == nomProduit

@@ -66,7 +66,7 @@ namespace CasaEcologieSysInfo.Classes.CalculDesCouts
                                            join v in db.EveVentes on vpf.CodeVente equals v.CodeVente
                                            where v.DateVente >= debut
                                            where v.DateVente <= fin
-                                           select pf.NomProduit).ToList();
+                                           select pf.NomProduit).Distinct().ToList();
 
                 foreach (var produit in listeProduitsVendus)
                 {

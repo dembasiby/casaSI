@@ -19,7 +19,7 @@ namespace CasaEcologieSysInfo.Pages
         private void AfficherJournalCorrespondant(string description)
         {
 
-            var coutUnitaire = 0f;
+            //var coutUnitaire = 0f;
 
             var entrees = (from psf in db.ResStockProduitsSemiFinis
                            where psf.Description == description
