@@ -57,9 +57,9 @@
             // dtpDateEncaissement
             // 
             this.dtpDateEncaissement.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpDateEncaissement.Location = new System.Drawing.Point(243, 279);
+            this.dtpDateEncaissement.Location = new System.Drawing.Point(201, 90);
             this.dtpDateEncaissement.Name = "dtpDateEncaissement";
-            this.dtpDateEncaissement.Size = new System.Drawing.Size(264, 23);
+            this.dtpDateEncaissement.Size = new System.Drawing.Size(308, 23);
             this.dtpDateEncaissement.TabIndex = 20;
             this.dtpDateEncaissement.ValueChanged += new System.EventHandler(this.DtpDateEncaissement_ValueChanged);
             // 
@@ -69,7 +69,7 @@
             this.cbxCompte.DisplayMember = "NomCompte";
             this.cbxCompte.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxCompte.FormattingEnabled = true;
-            this.cbxCompte.Location = new System.Drawing.Point(290, 201);
+            this.cbxCompte.Location = new System.Drawing.Point(290, 228);
             this.cbxCompte.Name = "cbxCompte";
             this.cbxCompte.Size = new System.Drawing.Size(218, 29);
             this.cbxCompte.TabIndex = 22;
@@ -85,7 +85,7 @@
             this.cbxTres.DisplayMember = "PrenomNom";
             this.cbxTres.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxTres.FormattingEnabled = true;
-            this.cbxTres.Location = new System.Drawing.Point(245, 239);
+            this.cbxTres.Location = new System.Drawing.Point(245, 266);
             this.cbxTres.Name = "cbxTres";
             this.cbxTres.Size = new System.Drawing.Size(264, 29);
             this.cbxTres.TabIndex = 23;
@@ -101,7 +101,7 @@
             // 
             // txtMontantEncaisse
             // 
-            this.txtMontantEncaisse.Location = new System.Drawing.Point(290, 166);
+            this.txtMontantEncaisse.Location = new System.Drawing.Point(290, 193);
             this.txtMontantEncaisse.Name = "txtMontantEncaisse";
             this.txtMontantEncaisse.Size = new System.Drawing.Size(218, 27);
             this.txtMontantEncaisse.TabIndex = 19;
@@ -109,11 +109,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(37, 277);
+            this.label1.Location = new System.Drawing.Point(39, 88);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(50, 21);
+            this.label1.Size = new System.Drawing.Size(156, 21);
             this.label1.TabIndex = 11;
-            this.label1.Text = "Date";
+            this.label1.Text = "Date de paiement";
             // 
             // btnEnregistrerEncaissement
             // 
@@ -134,7 +134,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(35, 242);
+            this.label10.Location = new System.Drawing.Point(35, 269);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(182, 21);
             this.label10.TabIndex = 13;
@@ -144,7 +144,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(35, 207);
+            this.label9.Location = new System.Drawing.Point(35, 234);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(211, 21);
             this.label9.TabIndex = 14;
@@ -154,7 +154,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(34, 96);
+            this.label7.Location = new System.Drawing.Point(34, 123);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(123, 21);
             this.label7.TabIndex = 15;
@@ -164,7 +164,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(34, 167);
+            this.label3.Location = new System.Drawing.Point(34, 194);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(224, 21);
             this.label3.TabIndex = 16;
@@ -174,7 +174,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(34, 135);
+            this.label2.Location = new System.Drawing.Point(34, 162);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(147, 21);
             this.label2.TabIndex = 15;
@@ -186,9 +186,9 @@
             this.comboBox1.DisplayMember = "Localite";
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(183, 131);
+            this.comboBox1.Location = new System.Drawing.Point(201, 158);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(325, 29);
+            this.comboBox1.Size = new System.Drawing.Size(307, 29);
             this.comboBox1.TabIndex = 21;
             this.comboBox1.ValueMember = "CodeClient";
             // 
@@ -237,9 +237,9 @@
             this.cbxNomClient.DisplayMember = "NomClient";
             this.cbxNomClient.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxNomClient.FormattingEnabled = true;
-            this.cbxNomClient.Location = new System.Drawing.Point(183, 92);
+            this.cbxNomClient.Location = new System.Drawing.Point(201, 119);
             this.cbxNomClient.Name = "cbxNomClient";
-            this.cbxNomClient.Size = new System.Drawing.Size(326, 29);
+            this.cbxNomClient.Size = new System.Drawing.Size(308, 29);
             this.cbxNomClient.TabIndex = 21;
             this.cbxNomClient.ValueMember = "CodeClient";
             this.cbxNomClient.SelectedValueChanged += new System.EventHandler(this.CbxNomClient_SelectedValueChanged);

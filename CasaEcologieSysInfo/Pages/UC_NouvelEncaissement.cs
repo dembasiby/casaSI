@@ -16,7 +16,7 @@ namespace CasaEcologieSysInfo
 
         private void LoadData()
         {
-            ageClientBindingSource.DataSource = db.AgeClients.ToList();
+            ageClientBindingSource.DataSource = Conversion.ListeClientsAvecCreances().OrderBy(c => c.NomClient).ToList();
             resComptesTresorerieBindingSource.DataSource = db.ResComptesTresoreries.ToList();
         }
 

@@ -118,10 +118,11 @@ namespace CasaEcologieSysInfo.Pages
         {
             ChargerListeEmployes();
         }
-
+        
         private void ChargerListeEmployes()
         {
-            ChargerListeEmployes();
+            cbxEmploye.DataSource = Conversion.ListeEmployesPresents(dtpDateOperation).OrderBy(em => em.PrenomNom).Select(em => em.PrenomNom).ToList();
         }
+        
     }
 }

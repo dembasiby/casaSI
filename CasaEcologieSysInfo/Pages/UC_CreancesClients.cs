@@ -18,20 +18,7 @@ namespace CasaEcologieSysInfo.Pages
 
         private void UC_CreancesClients_Load(object sender, EventArgs e)
         {
-            var listeClients = new List<AgeClient>();        
-            var newListe = db.AgeClients.ToList();
-
-            foreach (var client in newListe)
-            {
-                var soldeCreanceClient = Tresorerie.CalculerSoldeCreanceClient(client.CodeClient);
-
-                if (soldeCreanceClient > 0)
-                {
-                    listeClients.Add(client);
-                }
-            }
-
-            lbxListeClients.DataSource = listeClients.OrderBy(c => c.NomClient).ToList();
+            lbxListeClients.DataSource = Conversion.ListeClientsAvecCreances().OrderBy(c => c.NomClient).ToList();
             lbxListeClients.DisplayMember = "NomClient";
             lbxListeClients.ValueMember = "CodeClient";
 
@@ -82,7 +69,6 @@ namespace CasaEcologieSysInfo.Pages
                                 .Concat(totalPaiementClient)
                                 .Concat(encaissementCreances)
                                 .OrderByDescending(c => c.Date)
-                                //.Where(c => c.Solde > 0)
                                 .ToList();
             DataTable dt = Conversion.ConvertirEnTableDeDonnees(combinedQuery);
 
