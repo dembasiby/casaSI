@@ -35,7 +35,7 @@ namespace CasaEcologieSysInfo.Pages.Corrections
         {
             DataGridViewRow row = this.dgvListeVentes.Rows[e.RowIndex];
             int codeVente = int.Parse(row.Cells["Code"].Value.ToString());
-            ReloadAll();
+            ClearData();
             LoadDetailsVentes(codeVente);
         }
 
@@ -49,42 +49,68 @@ namespace CasaEcologieSysInfo.Pages.Corrections
             if (MessageBox.Show("Voulez-vous effectivement mettre à jour cette transaction?...",
                 "Message", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                try
+                using (CasaDBEntities db = new CasaDBEntities())
                 {
-                    int index = this.dgvListeVentes.CurrentCell.RowIndex;
-                    int codeVente = int.Parse(dgvListeVentes.Rows[index].Cells["Code"].Value.ToString());
-                    
-                    for (int i = 0; i < lvwPanier.Items.Count; i++)
+                    try
                     {
-                        string produit = lvwPanier.Items[i].SubItems[0].Text;
-                        string quantite = lvwPanier.Items[i].SubItems[1].Text;
-                        string montant = Conversion.EnleverEspaces(lvwPanier.Items[i].SubItems[3].Text);
+                        int index = this.dgvListeVentes.CurrentCell.RowIndex;
+                        int codeVente = int.Parse(dgvListeVentes.Rows[index].Cells["Code"].Value.ToString());
+                        EveEncaissementsVente encaissementVente = db.EveEncaissementsVentes.Where(v => v.CodeVente == codeVente).FirstOrDefault();
 
-                        if (ProduitDansLePanierInitial(codeVente, produit))
-                        {
-                            GestionVentes.MettreAJourVenteDUnProduit(codeVente, produit, quantite,montant);
-                        }
-                        else
-                        {
-                            GestionVentes.EnregistrerNouvelleVenteDUnProduit(codeVente, produit, quantite,montant);
-                        }
-                    }
 
-                    // Mettre a jour l'encaissement le cas échéant
-                    if (Validation.VerifierChampsMontant(txtMontantPaye.Text) && float.Parse(txtMontantPaye.Text) > 0)
-                    {
-                        if (IlYaEuEncaissementDeVente(codeVente) && MontantPaye(codeVente) != decimal.Parse(txtMontantPaye.Text))
+                        for (int i = 0; i < lvwPanier.Items.Count; i++)
+                        {
+                            string produit = lvwPanier.Items[i].SubItems[0].Text;
+                            string quantite = lvwPanier.Items[i].SubItems[1].Text;
+                            string montantText = lvwPanier.Items[i].SubItems[3].Text;
+                            int montant = int.Parse(Conversion.EnleverEspaces(montantText));
+
+                            if (ProduitDansLePanierInitial(codeVente, produit))
+                            {
+                                GestionVentes.MettreAJourVenteDUnProduit(codeVente, produit, quantite, montant.ToString());
+                            }
+                            else
+                            {
+                                GestionVentes.EnregistrerNouvelleVenteDUnProduit(codeVente, produit, quantite, montant.ToString());
+                            }
+                        }
+
+                        if (true)
+                        {
+
+                        }
+
+                        if (IlYaEuEncaissementDeVente(codeVente))
                         {
                             int codeCompte = int.Parse(cbxListeComptes.SelectedValue.ToString());
-                            GestionVentes.MettreEncaissementVenteAJour(codeVente, decimal.Parse(txtMontantPaye.Text), codeCompte);
-                        }
-                    }
 
-                    MessageBox.Show("Transaction mise à jour.");
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Erreur! La transaction n'a pas été mise à jour.");
+                            if (encaissementVente.EveEncaissement.CodeCompte != codeCompte)
+                            {
+                                var encaissement = encaissementVente.EveEncaissement;
+                                encaissement.CodeCompte = codeCompte;
+                                db.SaveChanges();                              
+                            }
+
+                            var montantPaye = Conversion.EnleverEspaces(txtMontantPaye.Text);
+
+                            if (Validation.VerifierChampsMontant(montantPaye) && float.Parse(montantPaye) > 0)
+                            {
+                                if (MontantPaye(codeVente) != decimal.Parse(montantPaye))
+                                {
+                                    GestionVentes.MettreEncaissementVenteAJour(codeVente, decimal.Parse(montantPaye), codeCompte);
+                                }
+                            }                     
+                        }
+
+                        // Mettre a jour l'encaissement le cas échéant
+                        
+
+                        MessageBox.Show("Transaction mise à jour.");
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Erreur! La transaction n'a pas été mise à jour.");
+                    }
                 }
             }
         }
@@ -465,7 +491,8 @@ namespace CasaEcologieSysInfo.Pages.Corrections
             using (CasaDBEntities db = new CasaDBEntities())
             {
                 int codeProduit = db.ResStockProduitsFinis.Where(p => p.NomProduit == produit).Select(p => p.CodeProduit).First();
-                return db.EveVenteStockProduitsFinis.Any(vpf => vpf.CodeVente == codeVente && vpf.CodeProduitFini == codeProduit);
+                bool result = db.EveVenteStockProduitsFinis.Any(vpf => vpf.CodeVente == codeVente && vpf.CodeProduitFini == codeProduit);
+                return result;
             }
         }
 

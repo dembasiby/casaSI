@@ -26,23 +26,33 @@ namespace CasaEcologieSysInfo.Classes
             }
         }
 
-        public static void MettreAJourVenteDUnProduit(int codeVente, string nomProduit, string quantite, string montant)
+        public static void MettreAJourVenteDUnProduit(int codeVente, string nomProduit, string quantiteString, string montantString)
         {
             using (CasaDBEntities db = new CasaDBEntities())
             {
-                if (int.Parse(quantite) >= 1 && int.Parse(montant) >= 1)
+                try
                 {
-                    ResStockProduitsFini produit = db.ResStockProduitsFinis.FirstOrDefault(p => p.NomProduit == nomProduit);
+                    int.TryParse(quantiteString, out int quantite);
+                    int.TryParse(montantString, out int montant);
+                    bool qteValide = quantite >= 1;
+                    bool mtValide = montant >= 1;
 
+               
+                    ResStockProduitsFini produit = db.ResStockProduitsFinis.FirstOrDefault(p => p.NomProduit == nomProduit);
 
                     var venteProduit = db.EveVenteStockProduitsFinis
                         .Where(vp => vp.CodeVente == codeVente)
                         .FirstOrDefault(vp => vp.CodeProduitFini == produit.CodeProduit);
 
-                    venteProduit.QuantiteProduitFini = int.Parse(quantite);
-                    venteProduit.Montant = int.Parse(montant);
-                    
+                    venteProduit.QuantiteProduitFini = quantite;
+                    venteProduit.Montant = montant;
+
                     db.SaveChanges();
+                   
+                }
+                catch (System.Exception)
+                {
+                    throw;
                 }
             }
         }

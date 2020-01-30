@@ -1,10 +1,12 @@
 ﻿using ADGV;
+using CasaEcologieSysInfo.Classes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace CasaEcologieSysInfo
@@ -93,8 +95,7 @@ namespace CasaEcologieSysInfo
 
         public static String EnleverEspaces(String str)
         {
-            str = str.Replace(" ", "");
-            return str;
+            return Regex.Replace(str, @"\s+", "");
         }
 
         public static List<AgeEmploye> ListeEmployesPresents(DateTimePicker dtpDate)
@@ -112,6 +113,27 @@ namespace CasaEcologieSysInfo
         public static List<string>ListEmployesString(DateTimePicker dtpDate)
         {
             return ListeEmployesPresents(dtpDate).OrderBy(em => em.PrenomNom).Select(em => em.PrenomNom).ToList();
+        }
+
+        public static List<AgeClient> ListeClientsAvecCreances()
+        {
+            using (CasaDBEntities db = new CasaDBEntities())
+            {
+                var listeClients = new List<AgeClient>();
+                var newListe = db.AgeClients.ToList();
+
+                foreach (var client in newListe)
+                {
+                    var soldeCreanceClient = Tresorerie.CalculerSoldeCreanceClient(client.CodeClient);
+
+                    if (soldeCreanceClient > 0)
+                    {
+                        listeClients.Add(client);
+                    }
+                }
+
+                return listeClients;
+            }
         }
     }
 }
