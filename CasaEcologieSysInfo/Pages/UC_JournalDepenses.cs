@@ -99,7 +99,7 @@ namespace CasaEcologieSysInfo
             (myDataGrid.DataSource as DataTable).DefaultView.Sort = myDataGrid.SortString;
         }
 
-        private void btnImprimerFicheStock_Click(object sender, EventArgs e)
+        private void BtnImprimerFicheStock_Click(object sender, EventArgs e)
         {
             Impression.ImprimerTableau("Journal des dépenses", adgvJournalDepenses);
         }

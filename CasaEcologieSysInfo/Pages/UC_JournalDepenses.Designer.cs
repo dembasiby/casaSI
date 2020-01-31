@@ -137,7 +137,7 @@
             this.btnImprimerFicheStock.TabIndex = 55;
             this.btnImprimerFicheStock.Text = "Imprimer le journal";
             this.btnImprimerFicheStock.UseVisualStyleBackColor = false;
-            this.btnImprimerFicheStock.Click += new System.EventHandler(this.btnImprimerFicheStock_Click);
+            this.btnImprimerFicheStock.Click += new System.EventHandler(this.BtnImprimerFicheStock_Click);
             // 
             // UC_JournalDepenses
             // 

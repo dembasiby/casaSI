@@ -57,6 +57,11 @@ namespace CasaEcologieSysInfo.Pages.Corrections
                         AjouterSucre(production);
                         MessageBox.Show("La production a été mise à jour.");
                     }
+                    else
+                    {
+                        MettreQuantiteSucreAJour(production);
+                        MessageBox.Show("La quantité de sucre a été mise à jour.");
+                    }
                 }
                 catch (Exception)
                 {
@@ -304,6 +309,32 @@ namespace CasaEcologieSysInfo.Pages.Corrections
                 catch (Exception)
                 {
                     MessageBox.Show("Veuillez mettre un nombre valide dans le champ 'Quantité de sucre");
+                    return;
+                }
+            }
+        }
+
+        private void MettreQuantiteSucreAJour(EveProduction production)
+        {
+            using (CasaDBEntities db = new CasaDBEntities())
+            {
+                try
+                {
+                    float.TryParse(txtQuantiteSucre.Text, out float quantiteSucre);
+
+                    EveUtilisationMatieresPremiere utilisationSucre = production
+                        .EveUtilisationRessource
+                        .EveUtilisationMatieresPremieres
+                        .Where(mp => mp.ResStockMatieresPremiere.TypesMatiere.nomType == "Sucre")
+                        .FirstOrDefault();
+
+                    utilisationSucre.QuantiteMatierePremiere = quantiteSucre;
+                    
+                    db.SaveChanges();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("La quantité de sucre n'a pas été mise à jour.");
                     return;
                 }
             }
