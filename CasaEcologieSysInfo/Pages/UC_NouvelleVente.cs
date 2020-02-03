@@ -29,7 +29,7 @@ namespace CasaEcologieSysInfo
                 .OrderBy(c => c.NomClient)
                 .ToList();
             resStockProduitsFiniBindingSource.DataSource = db.ResStockProduitsFinis.ToList().OrderBy(p => p.NomProduit);
-            resComptesTresorerieBindingSource.DataSource = db.ResComptesTresoreries.ToList();
+            resComptesTresorerieBindingSource.DataSource = db.ResComptesTresoreries.OrderBy(ct => ct.NomCompte).ToList();
 
             MettreAJourStockProduitFini();
         }

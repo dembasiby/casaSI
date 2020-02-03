@@ -185,14 +185,12 @@
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panel6.Controls.Add(this.dtpDateVente);
             this.panel6.Controls.Add(this.cbxResponsableStockPrdtsFinis);
             this.panel6.Controls.Add(this.cbxCompte);
             this.panel6.Controls.Add(this.cbxTres);
             this.panel6.Controls.Add(this.cbxNomClient);
             this.panel6.Controls.Add(this.txtMontantEncaisse);
             this.panel6.Controls.Add(this.panel7);
-            this.panel6.Controls.Add(this.label1);
             this.panel6.Controls.Add(this.flowLayoutPanel1);
             this.panel6.Controls.Add(this.btnEnregistrerVente);
             this.panel6.Controls.Add(this.lblTotalFacture);
@@ -213,9 +211,9 @@
             // dtpDateVente
             // 
             this.dtpDateVente.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpDateVente.Location = new System.Drawing.Point(232, 263);
+            this.dtpDateVente.Location = new System.Drawing.Point(176, 67);
             this.dtpDateVente.Name = "dtpDateVente";
-            this.dtpDateVente.Size = new System.Drawing.Size(264, 23);
+            this.dtpDateVente.Size = new System.Drawing.Size(228, 23);
             this.dtpDateVente.TabIndex = 8;
             this.dtpDateVente.ValueChanged += new System.EventHandler(this.DtpDateVente_ValueChanged);
             // 
@@ -308,7 +306,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(26, 261);
+            this.label1.Location = new System.Drawing.Point(12, 65);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(50, 21);
             this.label1.TabIndex = 2;
@@ -523,7 +521,7 @@
             // p
             // 
             this.p.AutoSize = true;
-            this.p.Location = new System.Drawing.Point(11, 66);
+            this.p.Location = new System.Drawing.Point(12, 111);
             this.p.Name = "p";
             this.p.Size = new System.Drawing.Size(133, 21);
             this.p.TabIndex = 2;
@@ -550,7 +548,7 @@
             this.btnVente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVente.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVente.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnVente.Location = new System.Drawing.Point(63, 206);
+            this.btnVente.Location = new System.Drawing.Point(64, 251);
             this.btnVente.Name = "btnVente";
             this.btnVente.Size = new System.Drawing.Size(338, 31);
             this.btnVente.TabIndex = 4;
@@ -561,7 +559,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(11, 99);
+            this.label5.Location = new System.Drawing.Point(12, 144);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(82, 21);
             this.label5.TabIndex = 2;
@@ -570,7 +568,7 @@
             // txtSoldeStockProduit
             // 
             this.txtSoldeStockProduit.Enabled = false;
-            this.txtSoldeStockProduit.Location = new System.Drawing.Point(176, 131);
+            this.txtSoldeStockProduit.Location = new System.Drawing.Point(177, 176);
             this.txtSoldeStockProduit.Name = "txtSoldeStockProduit";
             this.txtSoldeStockProduit.Size = new System.Drawing.Size(225, 27);
             this.txtSoldeStockProduit.TabIndex = 2;
@@ -578,7 +576,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(11, 161);
+            this.label6.Location = new System.Drawing.Point(12, 206);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(98, 21);
             this.label6.TabIndex = 2;
@@ -606,7 +604,7 @@
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.lblNomClient);
             this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(15, 246);
+            this.groupBox1.Location = new System.Drawing.Point(15, 304);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(397, 264);
             this.groupBox1.TabIndex = 5;
@@ -709,7 +707,7 @@
             this.cbxNomProduit.DisplayMember = "NomProduit";
             this.cbxNomProduit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxNomProduit.FormattingEnabled = true;
-            this.cbxNomProduit.Location = new System.Drawing.Point(176, 66);
+            this.cbxNomProduit.Location = new System.Drawing.Point(176, 103);
             this.cbxNomProduit.Name = "cbxNomProduit";
             this.cbxNomProduit.Size = new System.Drawing.Size(225, 29);
             this.cbxNomProduit.TabIndex = 1;
@@ -767,7 +765,7 @@
             this.cbxPUProduit.DataSource = this.resStockProduitsFiniBindingSource;
             this.cbxPUProduit.DisplayMember = "PrixDeVenteStandard";
             this.cbxPUProduit.FormattingEnabled = true;
-            this.cbxPUProduit.Location = new System.Drawing.Point(176, 161);
+            this.cbxPUProduit.Location = new System.Drawing.Point(177, 206);
             this.cbxPUProduit.Name = "cbxPUProduit";
             this.cbxPUProduit.Size = new System.Drawing.Size(225, 29);
             this.cbxPUProduit.TabIndex = 9;
@@ -775,7 +773,7 @@
             // 
             // txtQuantite
             // 
-            this.txtQuantite.Location = new System.Drawing.Point(176, 99);
+            this.txtQuantite.Location = new System.Drawing.Point(177, 144);
             this.txtQuantite.Name = "txtQuantite";
             this.txtQuantite.Size = new System.Drawing.Size(225, 27);
             this.txtQuantite.TabIndex = 2;
@@ -783,7 +781,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 131);
+            this.label2.Location = new System.Drawing.Point(13, 176);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(135, 21);
             this.label2.TabIndex = 2;
@@ -793,6 +791,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.dtpDateVente);
             this.Controls.Add(this.cbxNomProduit);
             this.Controls.Add(this.splitter2);
             this.Controls.Add(this.cbxPUProduit);
@@ -800,6 +799,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnVente);
             this.Controls.Add(this.txtQuantite);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.txtSoldeStockProduit);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label2);
