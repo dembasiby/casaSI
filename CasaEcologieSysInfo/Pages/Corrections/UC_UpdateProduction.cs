@@ -322,14 +322,14 @@ namespace CasaEcologieSysInfo.Pages.Corrections
                 {
                     float.TryParse(txtQuantiteSucre.Text, out float quantiteSucre);
 
-                    EveUtilisationMatieresPremiere utilisationSucre = production
-                        .EveUtilisationRessource
-                        .EveUtilisationMatieresPremieres
-                        .Where(mp => mp.ResStockMatieresPremiere.TypesMatiere.nomType == "Sucre")
-                        .FirstOrDefault();
+                    EveUtilisationMatieresPremiere utilisationSucre = (from p in db.EveProductions
+                                                                       where p.CodeProduction == production.CodeProduction
+                                                                       join ur in db.EveUtilisationRessources on p.CodeUtilisationRessources equals ur.CodeUtilisationRessources
+                                                                       join ump in db.EveUtilisationMatieresPremieres on ur.CodeUtilisationRessources equals ump.CodeUtilisationRessource
+                                                                       where ump.ResStockMatieresPremiere.NomMatiere == "Sucre en poudre"
+                                                                       select ump).FirstOrDefault();
 
                     utilisationSucre.QuantiteMatierePremiere = quantiteSucre;
-                    
                     db.SaveChanges();
                 }
                 catch (Exception)
@@ -366,7 +366,13 @@ namespace CasaEcologieSysInfo.Pages.Corrections
         {
             using (CasaDBEntities db = new CasaDBEntities())
             {
-                return false;
+                var production = db.EveProductions.Where(p => p.CodeProduction == codeProduction).FirstOrDefault();
+                bool prodAvecSucre = production
+                    .EveUtilisationRessource
+                    .EveUtilisationMatieresPremieres
+                    .Any(mp => mp.ResStockMatieresPremiere.TypesMatiere.nomType == "Sucre");
+                return prodAvecSucre;
+
             }
         }
 
