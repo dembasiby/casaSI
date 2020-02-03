@@ -23,7 +23,7 @@ namespace CasaEcologieSysInfo
                 cbxTypeFournisseur.SelectedIndex = 0;
                 DefinirListeDesFournisseursAAfficher();
                 ChargerListeEmployes();
-                resComptesTresorerieBindingSource.DataSource = db.ResComptesTresoreries.ToList();
+                resComptesTresorerieBindingSource.DataSource = db.ResComptesTresoreries.OrderBy(ct => ct.NomCompte).ToList();
 
                 Tresorerie.AfficherSoldeTresorerie(cbxCompte, txtSoldeCompte);
 

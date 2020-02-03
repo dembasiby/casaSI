@@ -18,9 +18,9 @@ namespace CasaEcologieSysInfo
 
         private void LoadData()
         {          
-            ageAutreFournisseursBindingSource.DataSource = db.AgeAutreFournisseurs.ToList();
+            ageAutreFournisseursBindingSource.DataSource = db.AgeAutreFournisseurs.OrderBy(af => af.NomAutreFournisseur).ToList();
             ChargerListeEmployes();
-            resComptesTresorerieBindingSource.DataSource = db.ResComptesTresoreries.ToList();
+            resComptesTresorerieBindingSource.DataSource = db.ResComptesTresoreries.OrderBy(ct => ct.NomCompte).ToList();
 
             Tresorerie.AfficherSoldeTresorerie(cbxComptePaiement, txtSoldeCompte);
         }

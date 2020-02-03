@@ -22,8 +22,8 @@ namespace CasaEcologieSysInfo.Pages
 
         private void UC_MouvementCompteACompte_Load(object sender, EventArgs e)
         {
-            resComptesTresorerieBindingSource.DataSource = db.ResComptesTresoreries.ToList();
-            resComptesTresorerieBindingSource1.DataSource = db.ResComptesTresoreries.ToList();
+            resComptesTresorerieBindingSource.DataSource = db.ResComptesTresoreries.OrderBy(ct => ct.NomCompte).ToList();
+            resComptesTresorerieBindingSource1.DataSource = db.ResComptesTresoreries.OrderBy(ct => ct.NomCompte).ToList();
             ChargerListeEmployes();
 
             Tresorerie.AfficherSoldeTresorerie(cbxCompteDebit, txtSoldeCompte);

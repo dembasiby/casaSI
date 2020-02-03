@@ -63,7 +63,7 @@ namespace CasaEcologieSysInfo.Pages
 
         private void UC_AutreEncaissementDeFonds_Load(object sender, EventArgs e)
         {
-            resComptesTresorerieBindingSource.DataSource = db.ResComptesTresoreries.ToList();
+            resComptesTresorerieBindingSource.DataSource = db.ResComptesTresoreries.OrderBy(ct => ct.NomCompte).ToList();
             ChargerListeEmployes();
         }
 

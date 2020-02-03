@@ -35,7 +35,7 @@ namespace CasaEcologieSysInfo.Pages
                                                     .Where(em => em.Actif == true)
                                                     .OrderBy(em => em.PrenomNom)
                                                     .ToList();
-            resComptesTresorerieBindingSource.DataSource = db.ResComptesTresoreries.ToList();
+            resComptesTresorerieBindingSource.DataSource = db.ResComptesTresoreries.OrderBy(ct => ct.NomCompte).ToList();
             cbxTimeSheetNomEmploye.DataSource = db.AgeEmployes
                                                   .Where(em => em.Actif == true)
                                                   .Where(em => !em.Poste.StartsWith("Stagiaire"))
@@ -59,7 +59,7 @@ namespace CasaEcologieSysInfo.Pages
                                          .OrderBy(c => c.PrenomNom)
                                          .ToList();
 
-            cbxComptePaiementStagiare.DataSource = db.ResComptesTresoreries.ToList();
+            cbxComptePaiementStagiare.DataSource = db.ResComptesTresoreries.OrderBy(ct => ct.NomCompte).ToList();
             cbxComptePaiementStagiare.ValueMember = "CodeCompte";
             cbxPaiementFaitPar.DataSource = Conversion.ListeEmployesPresents(dtpDatePaiement)
                                              .Where(em => !em.Poste.StartsWith("Stagiaire"))
