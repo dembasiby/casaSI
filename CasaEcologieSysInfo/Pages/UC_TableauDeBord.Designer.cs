@@ -41,10 +41,12 @@
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.dgvProduitsLesPlusVendus = new System.Windows.Forms.DataGridView();
+            this.label6 = new System.Windows.Forms.Label();
+            this.dgvCadeaux = new System.Windows.Forms.DataGridView();
+            this.label7 = new System.Windows.Forms.Label();
             this.janvierDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.févrierDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.marsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -62,6 +64,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.casaDBDataSet6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProduitsLesPlusVendus)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCadeaux)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ventesMensuellesResultBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -143,7 +147,7 @@
             // dtpDebut
             // 
             this.dtpDebut.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDebut.Location = new System.Drawing.Point(369, 340);
+            this.dtpDebut.Location = new System.Drawing.Point(323, 241);
             this.dtpDebut.Name = "dtpDebut";
             this.dtpDebut.Size = new System.Drawing.Size(88, 23);
             this.dtpDebut.TabIndex = 31;
@@ -153,7 +157,7 @@
             // dtpFin
             // 
             this.dtpFin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFin.Location = new System.Drawing.Point(369, 369);
+            this.dtpFin.Location = new System.Drawing.Point(446, 241);
             this.dtpFin.Name = "dtpFin";
             this.dtpFin.Size = new System.Drawing.Size(88, 23);
             this.dtpFin.TabIndex = 31;
@@ -171,22 +175,20 @@
             this.dataGridView2.AllowUserToResizeColumns = false;
             this.dataGridView2.AllowUserToResizeRows = false;
             this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.dataGridView2.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dataGridView2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(16, 244);
+            this.dataGridView2.Location = new System.Drawing.Point(16, 323);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersVisible = false;
-            this.dataGridView2.Size = new System.Drawing.Size(347, 158);
+            this.dataGridView2.Size = new System.Drawing.Size(297, 279);
             this.dataGridView2.TabIndex = 32;
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(12, 222);
+            this.label3.Location = new System.Drawing.Point(6, 276);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(404, 19);
+            this.label3.Size = new System.Drawing.Size(294, 44);
             this.label3.TabIndex = 33;
             this.label3.Text = "Quantité de matière première achetée par période";
             // 
@@ -197,22 +199,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(988, 10);
             this.panel1.TabIndex = 34;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.panel3.Location = new System.Drawing.Point(472, 215);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(10, 423);
-            this.panel3.TabIndex = 35;
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.panel4.Location = new System.Drawing.Point(-2, 408);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(986, 10);
-            this.panel4.TabIndex = 35;
             // 
             // listBox1
             // 
@@ -228,11 +214,61 @@
             // label5
             // 
             this.label5.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(369, 259);
+            this.label5.Location = new System.Drawing.Point(320, 219);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(88, 78);
+            this.label5.Size = new System.Drawing.Size(306, 19);
             this.label5.TabIndex = 37;
             this.label5.Text = "Choisir l\'intervalle de temps ci-dessous";
+            // 
+            // dgvProduitsLesPlusVendus
+            // 
+            this.dgvProduitsLesPlusVendus.AllowUserToAddRows = false;
+            this.dgvProduitsLesPlusVendus.AllowUserToDeleteRows = false;
+            this.dgvProduitsLesPlusVendus.AllowUserToOrderColumns = true;
+            this.dgvProduitsLesPlusVendus.AllowUserToResizeColumns = false;
+            this.dgvProduitsLesPlusVendus.AllowUserToResizeRows = false;
+            this.dgvProduitsLesPlusVendus.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dgvProduitsLesPlusVendus.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvProduitsLesPlusVendus.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProduitsLesPlusVendus.Location = new System.Drawing.Point(325, 323);
+            this.dgvProduitsLesPlusVendus.Name = "dgvProduitsLesPlusVendus";
+            this.dgvProduitsLesPlusVendus.RowHeadersVisible = false;
+            this.dgvProduitsLesPlusVendus.Size = new System.Drawing.Size(333, 279);
+            this.dgvProduitsLesPlusVendus.TabIndex = 32;
+            // 
+            // label6
+            // 
+            this.label6.Font = new System.Drawing.Font("Century Gothic", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(306, 276);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(370, 44);
+            this.label6.TabIndex = 33;
+            this.label6.Text = "Top 10 des produits les plus vendus (Chiffre d\'affaires)";
+            // 
+            // dgvCadeaux
+            // 
+            this.dgvCadeaux.AllowUserToAddRows = false;
+            this.dgvCadeaux.AllowUserToDeleteRows = false;
+            this.dgvCadeaux.AllowUserToOrderColumns = true;
+            this.dgvCadeaux.AllowUserToResizeColumns = false;
+            this.dgvCadeaux.AllowUserToResizeRows = false;
+            this.dgvCadeaux.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dgvCadeaux.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvCadeaux.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCadeaux.Location = new System.Drawing.Point(664, 323);
+            this.dgvCadeaux.Name = "dgvCadeaux";
+            this.dgvCadeaux.RowHeadersVisible = false;
+            this.dgvCadeaux.Size = new System.Drawing.Size(305, 279);
+            this.dgvCadeaux.TabIndex = 32;
+            // 
+            // label7
+            // 
+            this.label7.Font = new System.Drawing.Font("Century Gothic", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(688, 276);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(281, 44);
+            this.label7.TabIndex = 33;
+            this.label7.Text = "Cadeaux et manque à gagner correspondants";
             // 
             // janvierDataGridViewTextBoxColumn
             // 
@@ -340,10 +376,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.label5);
             this.Controls.Add(this.listBox1);
-            this.Controls.Add(this.panel4);
-            this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.label3);
+            this.Controls.Add(this.dgvCadeaux);
+            this.Controls.Add(this.dgvProduitsLesPlusVendus);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.dtpFin);
             this.Controls.Add(this.dtpDebut);
@@ -360,6 +398,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.casaDBDataSet6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProduitsLesPlusVendus)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCadeaux)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ventesMensuellesResultBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -381,8 +421,6 @@
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridViewTextBoxColumn janvierDataGridViewTextBoxColumn;
@@ -397,5 +435,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn octobreDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn novembreDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn décembreDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridView dgvProduitsLesPlusVendus;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.DataGridView dgvCadeaux;
+        private System.Windows.Forms.Label label7;
     }
 }

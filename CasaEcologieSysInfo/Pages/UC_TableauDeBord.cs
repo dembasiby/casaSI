@@ -20,7 +20,14 @@ namespace CasaEcologieSysInfo
         private void UC_TableauDeBord_Load(object sender, EventArgs e)
         {
             AfficherTableauVentesMensuelles();
+            AfficherTableaux();
+        }
+
+        private void AfficherTableaux()
+        {
             AfficherDonneesGraphiqueQuantiteAcheteeParMatierePremiere();
+            AfficherTop10DesProduitsVendus();
+            AfficherCadeauxEtValeur();
         }
 
         private void AfficherDonneesGraphiqueQuantiteAcheteeParMatierePremiere()
@@ -42,6 +49,7 @@ namespace CasaEcologieSysInfo
                                         select rm.Quantite).Sum()
                          })
                          .DistinctBy(r => r.Matiere)
+                         .OrderByDescending(m => m.Quantite)
                          .ToList();
 
 
@@ -49,7 +57,10 @@ namespace CasaEcologieSysInfo
             
             dataGridView2.DataSource = dt;
 
+
             FormatterDonneesTableau(dataGridView2);
+            dataGridView2.Columns["Quantite"].HeaderText = $"Quantité (kg)";
+            
 
         }
 
@@ -75,23 +86,101 @@ namespace CasaEcologieSysInfo
             FormatterDonneesTableau(dataGridView1);
         }
 
+        private void AfficherTop10DesProduitsVendus()
+        {
+            var liste = (from pf in db.ResStockProduitsFinis
+                         join vpf in db.EveVenteStockProduitsFinis on pf.CodeProduit equals vpf.CodeProduitFini
+                         join v in db.EveVentes on vpf.CodeVente equals v.CodeVente
+                         where v.DateVente >= dtpDebut.Value.Date
+                         where v.DateVente <= dtpFin.Value.Date
+
+                         select new
+                         {
+                             Produit = pf.NomProduit,
+                             Ventes = (from vp in db.EveVenteStockProduitsFinis
+                                         join pfin in db.ResStockProduitsFinis on vp.CodeProduitFini equals pfin.CodeProduit
+                                         where vp.EveVente.DateVente >= dtpDebut.Value.Date
+                                         where vp.EveVente.DateVente <= dtpFin.Value.Date
+                                         where pfin.NomProduit == pf.NomProduit
+                                         select vp.Montant).Sum(),
+                             Quantite = (from vp in db.EveVenteStockProduitsFinis
+                                            join pfin in db.ResStockProduitsFinis on vp.CodeProduitFini equals pfin.CodeProduit
+                                            where vp.EveVente.DateVente >= dtpDebut.Value.Date
+                                            where vp.EveVente.DateVente <= dtpFin.Value.Date
+                                            where pfin.NomProduit == pf.NomProduit
+                                            select vp.QuantiteProduitFini).Sum()
+                         })
+                        .DistinctBy(r => r.Produit)
+                        .OrderByDescending(p => p.Ventes)
+                        .Take(10)
+                        .ToList();
+
+
+            DataTable dt = Conversion.ConvertirEnTableDeDonnees(liste);
+
+            dgvProduitsLesPlusVendus.DataSource = dt;
+
+            FormatterDonneesTableau(dgvProduitsLesPlusVendus);
+            //dgvProduitsLesPlusVendus.Columns["Ventes"].HeaderText = $"Chiffre d'affaires (FCFA)";
+            dgvProduitsLesPlusVendus.Columns["Quantite"].HeaderText = $"Unités";
+            //dgvProduitsLesPlusVendus.Columns["Ventes"].FillWeight = 100;
+            //dgvProduitsLesPlusVendus.Columns["Quantite"].Width = 60;
+
+        }
+
+        private void AfficherCadeauxEtValeur()
+        {
+            var liste = (from pf in db.ResStockProduitsFinis
+                         join don in db.EveSortieDonsOuDechetsProduitsFinis on pf.CodeProduit equals don.CodeProduitFini
+                         where don.DateSortie >= dtpDebut.Value.Date
+                         where don.DateSortie <= dtpFin.Value.Date
+
+                         select new
+                         {
+                             Produit = pf.NomProduit,
+                             Quantite = (from pf in db.ResStockProduitsFinis
+                                         join d in db.EveSortieDonsOuDechetsProduitsFinis on pf.CodeProduit equals d.CodeProduitFini
+                                         where d.DateSortie >= dtpDebut.Value.Date
+                                         where d.DateSortie <= dtpFin.Value.Date
+                                         select d.QuantiteProduitFini).Sum(),
+                             Valeur = ((from pf in db.ResStockProduitsFinis
+                                       join d in db.EveSortieDonsOuDechetsProduitsFinis on pf.CodeProduit equals d.CodeProduitFini
+                                       where d.DateSortie >= dtpDebut.Value.Date
+                                       where d.DateSortie <= dtpFin.Value.Date
+                                       select d.QuantiteProduitFini).Sum()) * pf.PrixDeVenteStandard
+                         })
+                       .DistinctBy(r => r.Produit)
+                       .OrderByDescending(p => p.Quantite)
+                       .ToList();
+
+
+            DataTable dt = Conversion.ConvertirEnTableDeDonnees(liste);
+
+            dgvCadeaux.DataSource = dt;
+            FormatterDonneesTableau(dgvCadeaux);
+            dgvCadeaux.Columns["Quantite"].HeaderText = $"Unités";
+        }
+
         private void FormatterDonneesTableau(DataGridView grid)
         {
             for (int i = 0; i < grid.Columns.Count; i++)
             {
                 grid.Columns[i].DefaultCellStyle.Format = "n0";
-                grid.Columns[i].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                if (i > 0)
+                {
+                    grid.Columns[i].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                }
             }
         }
 
         private void DtpDebut_ValueChanged(object sender, EventArgs e)
         {
-            AfficherDonneesGraphiqueQuantiteAcheteeParMatierePremiere();
+            AfficherTableaux();
         }
 
         private void DtpFin_ValueChanged(object sender, EventArgs e)
         {
-            AfficherDonneesGraphiqueQuantiteAcheteeParMatierePremiere();
+            AfficherTableaux();
         }
     }
 }
