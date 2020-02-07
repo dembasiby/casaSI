@@ -9,7 +9,6 @@ namespace CasaEcologieSysInfo
 {
     public partial class UC_TableauDeBord : UserControl
     {
-
         CasaDBEntities db = new CasaDBEntities();
 
         public UC_TableauDeBord()
@@ -28,11 +27,11 @@ namespace CasaEcologieSysInfo
             AfficherDonneesGraphiqueQuantiteAcheteeParMatierePremiere();
             AfficherTop10DesProduitsVendus();
             AfficherCadeauxEtValeur();
+            AfficherTop10DesClients();
         }
 
         private void AfficherDonneesGraphiqueQuantiteAcheteeParMatierePremiere()
         {
-
             var liste = (from mp in db.ResStockMatieresPremieres
                          join rmp in db.EveReceptionMatieresPremieres on mp.CodeMatierePremiere equals rmp.CodeMatierePremiere
                          where rmp.DateReception >= dtpDebut.Value.Date
@@ -52,16 +51,12 @@ namespace CasaEcologieSysInfo
                          .OrderByDescending(m => m.Quantite)
                          .ToList();
 
-
             DataTable dt = Conversion.ConvertirEnTableDeDonnees(liste);
             
             dataGridView2.DataSource = dt;
 
-
             FormatterDonneesTableau(dataGridView2);
             dataGridView2.Columns["Quantite"].HeaderText = $"Quantité (kg)";
-            
-
         }
 
         private void AfficherTableauVentesMensuelles()
@@ -115,17 +110,43 @@ namespace CasaEcologieSysInfo
                         .Take(10)
                         .ToList();
 
-
             DataTable dt = Conversion.ConvertirEnTableDeDonnees(liste);
 
             dgvProduitsLesPlusVendus.DataSource = dt;
 
             FormatterDonneesTableau(dgvProduitsLesPlusVendus);
-            //dgvProduitsLesPlusVendus.Columns["Ventes"].HeaderText = $"Chiffre d'affaires (FCFA)";
             dgvProduitsLesPlusVendus.Columns["Quantite"].HeaderText = $"Unités";
-            //dgvProduitsLesPlusVendus.Columns["Ventes"].FillWeight = 100;
-            //dgvProduitsLesPlusVendus.Columns["Quantite"].Width = 60;
+        }
 
+        private void AfficherTop10DesClients()
+        {
+            var liste = (from c in db.AgeClients
+                         join v in db.EveVentes on c.CodeClient equals v.CodeClient
+                         where v.DateVente >= dtpDebut.Value.Date
+                         where v.DateVente <= dtpFin.Value.Date
+
+                         select new
+                         {
+                             Clients = c.NomClient + ", " + c.Localite,
+                             Ventes = (from v in db.EveVentes
+                                       join cl in db.AgeClients on v.CodeClient equals cl.CodeClient
+                                       join vp in db.EveVenteStockProduitsFinis on v.CodeVente equals vp.CodeVente
+                                       where v.DateVente >= dtpDebut.Value.Date
+                                       where v.DateVente <= dtpFin.Value.Date
+                                       where cl.NomClient == c.NomClient
+                                       select vp.Montant).Sum(),
+                         })
+                        .DistinctBy(c => c.Clients)
+                        .OrderByDescending(p => p.Ventes)
+                        .Take(10)
+                        .ToList();
+
+            DataTable dt = Conversion.ConvertirEnTableDeDonnees(liste);
+
+            dgvTop10Clients.DataSource = dt;
+
+            FormatterDonneesTableau(dgvTop10Clients);
+            //dgvProduitsLesPlusVendus.Columns["Quantite"].HeaderText = $"Unités";
         }
 
         private void AfficherCadeauxEtValeur()
@@ -152,7 +173,6 @@ namespace CasaEcologieSysInfo
                        .DistinctBy(r => r.Produit)
                        .OrderByDescending(p => p.Quantite)
                        .ToList();
-
 
             DataTable dt = Conversion.ConvertirEnTableDeDonnees(liste);
 
