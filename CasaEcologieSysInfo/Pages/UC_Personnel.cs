@@ -19,7 +19,7 @@ namespace CasaEcologieSysInfo.Pages
         {
             var listePersonnel = (from p in db.AgeEmployes
                                   where p.Actif == true
-                                  select new { Nom = p.PrenomNom, p.Poste }).ToList();
+                                  select new { Nom = p.PrenomNom, p.Poste }).OrderBy(e => e.Nom).ToList();
 
             dgvListePersonnel.DataSource = listePersonnel;
 
