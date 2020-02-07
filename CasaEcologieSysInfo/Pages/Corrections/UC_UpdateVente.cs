@@ -351,10 +351,8 @@ namespace CasaEcologieSysInfo.Pages.Corrections
             LoadListeVentes();
         }
 
-
         // METHODES DE MISE A JOUR DES VENTES
         //
-
         private void MettreVenteAJour(int codeVente)
         {
             using (CasaDBEntities db = new CasaDBEntities())
@@ -401,7 +399,6 @@ namespace CasaEcologieSysInfo.Pages.Corrections
                             }
                         }
                     }
-
                     MessageBox.Show("Transaction mise à jour.");
                 }
                 catch (Exception)
@@ -421,8 +418,6 @@ namespace CasaEcologieSysInfo.Pages.Corrections
                 var venteProduits = db.EveVenteStockProduitsFinis.Where(vp => vp.CodeVente == codeVente).ToList();
 
                 // si encaissement:
-                // encaissement
-                // encaissement vente
                 if (IlYaEuEncaissementDeVente(codeVente))
                 {
                     var encaissementVente = db.EveEncaissementsVentes.Where(ev => ev.CodeVente == codeVente).First();
@@ -465,7 +460,6 @@ namespace CasaEcologieSysInfo.Pages.Corrections
             }
             catch (Exception)
             {
-
                 return;
             }
         }
