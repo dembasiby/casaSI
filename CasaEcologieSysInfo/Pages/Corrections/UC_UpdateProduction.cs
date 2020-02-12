@@ -51,17 +51,44 @@ namespace CasaEcologieSysInfo.Pages.Corrections
                 try
                 {
                     var production = db.EveProductions.Where(prod => prod.CodeProduction == _codeProduction).First();
+                    bool cestUnFruit = CEstUnQuiEstFruitUtilise(_codeProduction);
 
-                    if (!IlYAvaitDuSucre(_codeProduction))
+                    // Vérifier intrants
+                    if (cestUnFruit)
                     {
-                        AjouterSucre(production);
-                        MessageBox.Show("La production a été mise à jour.");
+                        MettreIntrantFruitAJour(_codeProduction);
                     }
                     else
                     {
-                        MettreQuantiteSucreAJour(production);
-                        MessageBox.Show("La quantité de sucre a été mise à jour.");
+                        MettreIntrantProduitSemiFiniAJour(_codeProduction);
                     }
+
+                    if (CEstUnProduitFini(_codeProduction))
+                    {
+                        if (!IlYAvaitDuSucre(_codeProduction))
+                        {
+                            AjouterSucre(production);
+                            MessageBox.Show("La production a été mise à jour.");
+                        }
+                        else if (float.Parse(txtQuantiteSucre.Text) != production.EveUtilisationRessource.EveUtilisationMatieresPremieres
+                            .Where(mp => mp.ResStockMatieresPremiere.TypesMatiere.nomType == "Sucre")
+                            .Select(ump => ump.QuantiteMatierePremiere).FirstOrDefault())
+                        {
+                            MettreQuantiteSucreAJour(production);
+                            MessageBox.Show("La quantité de sucre a été mise à jour.");
+                        }
+
+                        MettreProduitFiniAJour(_codeProduction);
+                        MettreEmballageAJour(_codeProduction);
+                        MettreEtiquetteAJour(_codeProduction);
+
+                    }
+                    else
+                    {
+                        MettreProduitSemiFiniAJour(_codeProduction);
+                    }
+
+                    MessageBox.Show("La production a pas été mise à jour.");
                 }
                 catch (Exception)
                 {
@@ -69,6 +96,7 @@ namespace CasaEcologieSysInfo.Pages.Corrections
                 }
             }
         }
+
 
         /***************************************************************
             FONCTIONS D'AFFICHAGE DES DONNEES
@@ -314,6 +342,8 @@ namespace CasaEcologieSysInfo.Pages.Corrections
             }
         }
 
+
+
         private void MettreQuantiteSucreAJour(EveProduction production)
         {
             using (CasaDBEntities db = new CasaDBEntities())
@@ -372,11 +402,242 @@ namespace CasaEcologieSysInfo.Pages.Corrections
                     .EveUtilisationMatieresPremieres
                     .Any(mp => mp.ResStockMatieresPremiere.TypesMatiere.nomType == "Sucre");
                 return prodAvecSucre;
-
             }
         }
 
-        
+        private void MettreProduitFiniAJour(int codeProduction)
+        {
+            using (CasaDBEntities db = new CasaDBEntities())
+            {
+                try
+                {
+                    EveProductionStockProduitsFini productionProduitFini = (from p in db.EveProductions
+                                                 where p.CodeProduction == _codeProduction
+                                                 join ppf in db.EveProductionStockProduitsFinis on p.CodeProduction equals ppf.CodeProduction
+                                                 select ppf).FirstOrDefault();
 
+                    string produitFini = productionProduitFini.ResStockProduitsFini.NomProduit;
+                    int.TryParse(txtNombreProduitsFinis.Text, out int quantite);
+
+                    if (produitFini != cbxProduitFini.Text)
+                    {
+                        int.TryParse(cbxProduitFini.SelectedValue.ToString(), out int codeProduitFini);
+                        db.EveProductionStockProduitsFinis.Remove(productionProduitFini);
+                        db.SaveChanges();
+
+                        EveProductionStockProduitsFini newProdProduitFini = new EveProductionStockProduitsFini
+                        {
+                            CodeProduitFini = codeProduitFini,
+                            CodeProduction = codeProduction,
+                            QuantiteProduitFini = quantite
+                        };
+
+                        db.EveProductionStockProduitsFinis.Add(newProdProduitFini);
+                        db.SaveChanges();
+                    }
+
+                    if (productionProduitFini.QuantiteProduitFini != quantite)
+                    {                     
+                        productionProduitFini.QuantiteProduitFini = quantite;
+                        db.SaveChanges();
+                    }
+                }
+                catch (Exception)
+                {
+
+                    MessageBox.Show("Erreur de correction. Verifier la quantité de produits finis.");
+                }              
+            }
+        }
+
+        private void MettreProduitSemiFiniAJour(int codeProduction)
+        {
+            using (CasaDBEntities db = new CasaDBEntities())
+            {
+                try
+                {
+                    EveProductionProduitsSemiFini productionProduitSemiFini = (from p in db.EveProductions
+                                                                            where p.CodeProduction == _codeProduction
+                                                                            join ppsf in db.EveProductionProduitsSemiFinis on p.CodeProduction equals ppsf.CodeProduction
+                                                                            select ppsf).FirstOrDefault();
+
+                    string produitFini = productionProduitSemiFini.ResStockProduitsSemiFini.Description;
+                    int.TryParse(txtNombreProduitsFinis.Text, out int quantite);
+
+                    if (produitFini != cbxProduitFini.Text)
+                    {
+                        int.TryParse(cbxProduitFini.SelectedValue.ToString(), out int codeProduitSemiFini);
+                        db.EveProductionProduitsSemiFinis.Remove(productionProduitSemiFini);
+                        db.SaveChanges();
+
+                        EveProductionProduitsSemiFini newProdProduitSemiFini = new EveProductionProduitsSemiFini
+                        {
+                            CodeProduitSemiFini = codeProduitSemiFini,
+                            CodeProduction = codeProduction,
+                            QuantiteProduitSemiFini = quantite
+                        };
+
+                        db.EveProductionProduitsSemiFinis.Add(newProdProduitSemiFini);
+                        db.SaveChanges();
+                    }
+
+                    if (productionProduitSemiFini.QuantiteProduitSemiFini != quantite)
+                    {
+                        productionProduitSemiFini.QuantiteProduitSemiFini = quantite;
+                        db.SaveChanges();
+                    }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Erreur de correction. Verifier la quantité de produits semi finis.");
+                }
+            }
+        }
+
+        private void MettreIntrantFruitAJour(int codeProduction)
+        {
+            using (CasaDBEntities db = new CasaDBEntities())
+            {
+                try
+                {
+                    var production = db.EveProductions.Where(p => p.CodeProduction == codeProduction).FirstOrDefault();
+                    var fruitUtilise = production.EveUtilisationRessource
+                        .EveUtilisationMatieresPremieres
+                        .Where(mp => mp.ResStockMatieresPremiere.TypesMatiere.nomType == "Fruit")
+                        .FirstOrDefault();
+
+                    var fruit = fruitUtilise.ResStockMatieresPremiere.NomMatiere;
+
+                    if (fruit != cbxFruitUtilise.Text)
+                    {
+                        fruitUtilise.CodeMatierePremiere = int.Parse(cbxFruitUtilise.SelectedValue.ToString());
+                        db.SaveChanges();
+                    }
+
+                    if (fruitUtilise.QuantiteMatierePremiere != float.Parse(txtQuantiteFruit.Text))
+                    {
+                        float.TryParse(txtNombreProduitsFinis.Text, out float quantite);
+                        fruitUtilise.QuantiteMatierePremiere = quantite;
+                        db.SaveChanges();
+                    }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Erreur de correction. Verifier la quantité de matière première.");
+                }
+            }
+        }
+
+
+        private void MettreIntrantProduitSemiFiniAJour(int codeProduction)
+        {
+            using (CasaDBEntities db = new CasaDBEntities())
+            {
+                try
+                {
+                    var production = db.EveProductions.Where(p => p.CodeProduction == codeProduction).FirstOrDefault();
+                    var produitSemiFiniUtilise = production.EveUtilisationRessource
+                        .EveUtilisationProduitsSemiFinis
+                        .FirstOrDefault();
+
+                    var produitSemiFini = produitSemiFiniUtilise.ResStockProduitsSemiFini.Description;
+
+                    if (produitSemiFini != cbxFruitUtilise.Text)
+                    {
+                        produitSemiFiniUtilise.CodeProduitSemiFini = int.Parse(cbxFruitUtilise.SelectedValue.ToString());
+                        db.SaveChanges();
+                    }
+
+                    if (produitSemiFiniUtilise.QuantiteProduitSemiFini != float.Parse(txtQuantiteFruit.Text))
+                    {
+                        float.TryParse(txtNombreProduitsFinis.Text, out float quantite);
+                        produitSemiFiniUtilise.QuantiteProduitSemiFini = quantite;
+                        db.SaveChanges();
+                    }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Erreur de correction. Verifier la quantité de produit semi fini.");
+                }
+            }
+        }
+
+        private void MettreEmballageAJour(int codeProduction)
+        {
+            using (CasaDBEntities db = new CasaDBEntities())
+            {
+                try
+                {
+                    var production = db.EveProductions.Where(p => p.CodeProduction == codeProduction).FirstOrDefault();
+                    var emballageUtilise = production.EveUtilisationRessource
+                        .EveUtilisationMatieresPremieres
+                        .Where(mp => mp.ResStockMatieresPremiere.TypesMatiere.nomType == "Emballage")
+                        .FirstOrDefault();
+
+                    var emballage = emballageUtilise.ResStockMatieresPremiere.NomMatiere;
+                    int.TryParse(txtNombreProduitsFinis.Text, out int quantite);
+
+                    if (emballage != cbxEmballage.Text)
+                    {
+                        db.EveUtilisationMatieresPremieres.Remove(emballageUtilise);
+                        db.SaveChanges();
+
+                        EveUtilisationMatieresPremiere utilisationEmballage = new EveUtilisationMatieresPremiere
+                        {
+                            CodeUtilisationRessource = production.CodeUtilisationRessources,
+                            CodeMatierePremiere = int.Parse(cbxEmballage.SelectedValue.ToString()),
+                            QuantiteMatierePremiere = quantite
+                        };
+
+                        db.EveUtilisationMatieresPremieres.Add(utilisationEmballage);
+                        db.SaveChanges();
+                    }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Erreur de correction. L'emballage n'a pas été mis à jour.");
+                }
+            }
+        }
+
+
+        private void MettreEtiquetteAJour(int codeProduction)
+        {
+            using (CasaDBEntities db = new CasaDBEntities())
+            {
+                try
+                {
+                    var production = db.EveProductions.Where(p => p.CodeProduction == codeProduction).FirstOrDefault();
+                    var etiquetteUtilise = production.EveUtilisationRessource
+                        .EveUtilisationMatieresPremieres
+                        .Where(mp => mp.ResStockMatieresPremiere.TypesMatiere.nomType == "Etiquette")
+                        .FirstOrDefault();
+
+                    var etiquette = etiquetteUtilise.ResStockMatieresPremiere.NomMatiere;
+                    int.TryParse(txtNombreProduitsFinis.Text, out int quantite);
+
+
+                    if (etiquette != cbxEmballage.Text)
+                    {
+                        db.EveUtilisationMatieresPremieres.Remove(etiquetteUtilise);
+                        db.SaveChanges();
+
+                        EveUtilisationMatieresPremiere utilisationEtiquette = new EveUtilisationMatieresPremiere
+                        {
+                            CodeUtilisationRessource = production.CodeUtilisationRessources,
+                            CodeMatierePremiere = int.Parse(cbxEtiquette.SelectedValue.ToString()),
+                            QuantiteMatierePremiere = quantite
+                        };
+
+                        db.EveUtilisationMatieresPremieres.Add(utilisationEtiquette);
+                        db.SaveChanges();
+                    }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Erreur de correction. L'etiquette n'a pas été mise à jour.");
+                }
+            }
+        }
     }
 }

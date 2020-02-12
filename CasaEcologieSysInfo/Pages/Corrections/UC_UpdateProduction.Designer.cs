@@ -141,11 +141,11 @@
             this.btnMettreProductionAJour.FlatAppearance.BorderSize = 2;
             this.btnMettreProductionAJour.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMettreProductionAJour.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMettreProductionAJour.Location = new System.Drawing.Point(138, 371);
+            this.btnMettreProductionAJour.Location = new System.Drawing.Point(200, 371);
             this.btnMettreProductionAJour.Name = "btnMettreProductionAJour";
-            this.btnMettreProductionAJour.Size = new System.Drawing.Size(402, 39);
+            this.btnMettreProductionAJour.Size = new System.Drawing.Size(290, 39);
             this.btnMettreProductionAJour.TabIndex = 39;
-            this.btnMettreProductionAJour.Text = "Ajouter du sucre à cette production";
+            this.btnMettreProductionAJour.Text = "Mettre la production à jour";
             this.btnMettreProductionAJour.UseVisualStyleBackColor = false;
             this.btnMettreProductionAJour.Click += new System.EventHandler(this.BtnMettreProductionAJour_Click);
             // 
