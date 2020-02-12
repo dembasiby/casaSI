@@ -41,7 +41,7 @@ namespace CasaEcologieSysInfo
 
         public static bool MontantEstValide(string montant)
         {
-            var estUnChiffre = int.TryParse(montant, out int n);
+            var estUnChiffre = float.TryParse(montant, out float n);
 
             if (string.IsNullOrEmpty(montant))
             {
@@ -62,7 +62,7 @@ namespace CasaEcologieSysInfo
 
         public static bool QuantiteSuperieurAZero(string quantite)
         {
-            if (MontantEstValide(quantite) && int.Parse(quantite) > 0)
+            if (MontantEstValide(quantite) && float.Parse(quantite) > 0)
             {
                 return true;
             }
