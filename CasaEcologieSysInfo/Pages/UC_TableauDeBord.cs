@@ -202,14 +202,14 @@ namespace CasaEcologieSysInfo
             }
         }
 
-        private void DtpDebut_ValueChanged(object sender, EventArgs e)
+        private async void DtpDebut_ValueChangedAsync(object sender, EventArgs e)
         {
-            AfficherTableauxASync();
+            await AfficherTableauxASync();
         }
 
-        private void DtpFin_ValueChanged(object sender, EventArgs e)
+        private async void DtpFin_ValueChangedAsync(object sender, EventArgs e)
         {
-            AfficherTableauxASync();
+            await AfficherTableauxASync();
         }
 
         // ASYNC METHODS
@@ -234,6 +234,8 @@ namespace CasaEcologieSysInfo
                          .DistinctBy(r => r.Matiere)
                          .OrderByDescending(m => m.Quantite)
                          .ToList();
+
+            //var results = await Task.Run(liste);
 
             DataTable dt = Conversion.ConvertirEnTableDeDonnees(liste);
 
