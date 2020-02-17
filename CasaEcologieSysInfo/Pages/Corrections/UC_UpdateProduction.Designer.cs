@@ -52,6 +52,7 @@
             this.cbxFruitUtilise = new System.Windows.Forms.ComboBox();
             this.txtQuantiteSucre = new System.Windows.Forms.TextBox();
             this.txtQuantiteFruit = new System.Windows.Forms.TextBox();
+            this.BtnSupprimerProduction = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListeProductions)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -123,6 +124,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.groupBox1.Controls.Add(this.BtnSupprimerProduction);
             this.groupBox1.Controls.Add(this.btnMettreProductionAJour);
             this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Controls.Add(this.groupBox2);
@@ -141,9 +143,9 @@
             this.btnMettreProductionAJour.FlatAppearance.BorderSize = 2;
             this.btnMettreProductionAJour.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMettreProductionAJour.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMettreProductionAJour.Location = new System.Drawing.Point(200, 371);
+            this.btnMettreProductionAJour.Location = new System.Drawing.Point(6, 371);
             this.btnMettreProductionAJour.Name = "btnMettreProductionAJour";
-            this.btnMettreProductionAJour.Size = new System.Drawing.Size(290, 39);
+            this.btnMettreProductionAJour.Size = new System.Drawing.Size(355, 39);
             this.btnMettreProductionAJour.TabIndex = 39;
             this.btnMettreProductionAJour.Text = "Mettre la production à jour";
             this.btnMettreProductionAJour.UseVisualStyleBackColor = false;
@@ -303,6 +305,23 @@
             this.txtQuantiteFruit.Size = new System.Drawing.Size(86, 27);
             this.txtQuantiteFruit.TabIndex = 2;
             // 
+            // BtnSupprimerProduction
+            // 
+            this.BtnSupprimerProduction.BackColor = System.Drawing.Color.DarkRed;
+            this.BtnSupprimerProduction.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnSupprimerProduction.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.BtnSupprimerProduction.FlatAppearance.BorderSize = 2;
+            this.BtnSupprimerProduction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnSupprimerProduction.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnSupprimerProduction.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.BtnSupprimerProduction.Location = new System.Drawing.Point(413, 371);
+            this.BtnSupprimerProduction.Name = "BtnSupprimerProduction";
+            this.BtnSupprimerProduction.Size = new System.Drawing.Size(229, 39);
+            this.BtnSupprimerProduction.TabIndex = 39;
+            this.BtnSupprimerProduction.Text = "Supprimer la production";
+            this.BtnSupprimerProduction.UseVisualStyleBackColor = false;
+            this.BtnSupprimerProduction.Click += new System.EventHandler(this.BtnSupprimerProduction_Click);
+            // 
             // UC_UpdateProduction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
@@ -356,5 +375,6 @@
         private System.Windows.Forms.TextBox txtQuantiteSucre;
         private System.Windows.Forms.TextBox txtQuantiteFruit;
         private System.Windows.Forms.Button btnMettreProductionAJour;
+        private System.Windows.Forms.Button BtnSupprimerProduction;
     }
 }

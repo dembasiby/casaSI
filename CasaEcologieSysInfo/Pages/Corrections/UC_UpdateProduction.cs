@@ -639,5 +639,68 @@ namespace CasaEcologieSysInfo.Pages.Corrections
                 }
             }
         }
+
+        private void BtnSupprimerProduction_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Etes-vous sûr de vouloir supprimer cette production?", "Message", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                SupprimerProduction(_codeProduction);
+                ReloadAll();
+            }
+        }
+
+        private void SupprimerProduction(int codeProduction)
+        {
+            using (CasaDBEntities db = new CasaDBEntities())
+            {
+                try
+                {
+                    // production
+                    var production = db.EveProductions.Where(p => p.CodeProduction == codeProduction).First();
+                    var utilisationRessources = production.EveUtilisationRessource;
+ 
+                    // production produit fini
+                    var productionProduitFini = production.EveProductionStockProduitsFinis.FirstOrDefault();
+                    if (productionProduitFini != null)
+                    {
+                        db.EveProductionStockProduitsFinis.Remove(productionProduitFini);
+                    }
+                    // production produit semi fini
+                    var productionProduitSemiFini = production.EveProductionProduitsSemiFinis.FirstOrDefault();
+                    if (productionProduitSemiFini != null)
+                    {
+                        db.EveProductionProduitsSemiFinis.Remove(productionProduitSemiFini);
+                    }
+                    // utilisation ressources
+                    // utilisation mat premiere
+                    var useMatPr = utilisationRessources.EveUtilisationMatieresPremieres.ToList();
+                    if (useMatPr.Count > 0)
+                    {
+                        foreach (var item in useMatPr)
+                        {
+                            db.EveUtilisationMatieresPremieres.Remove(item);
+                        }
+                    }
+                    //utilisation produit semi fini
+                    var usePrdtSFini = utilisationRessources.EveUtilisationProduitsSemiFinis.ToList();
+                    if (usePrdtSFini.Count > 0)
+                    {
+                        foreach (var item in usePrdtSFini)
+                        {
+                            db.EveUtilisationProduitsSemiFinis.Remove(item);
+                        }
+                    }
+
+                    db.EveProductions.Remove(production);
+                    db.EveUtilisationRessources.Remove(utilisationRessources);
+                    db.SaveChanges();
+                    MessageBox.Show("La production a été supprimée.");
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Erreur: la production n'a pas été supprimée.");
+                }
+            }            
+        }
     }
 }
