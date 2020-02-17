@@ -151,7 +151,7 @@ namespace CasaEcologieSysInfo
                     .Where(d => d.EveAcquisitionServicesFourniture.ResServicesFourniture.NomServiceFourniture != "Retrait des propriétaires")
                     .Select(d => (float?)d.Montant).Sum() ?? 0f;
 
-                return (fraisGeneraux + MainDOeuvre(debut, fin)).ToString("n0");
+                return (fraisGeneraux /*+ MainDOeuvre(debut, fin)*/).ToString("n0");
             }
         }
 

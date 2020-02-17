@@ -121,9 +121,9 @@ namespace CasaEcologieSysInfo.Classes
                                                 select (Single?)inE.Montant).Sum() ?? 0f;
 
                 // Single valeurResiduelle = investissements - AmortissementsCumules(date);
-                //Single subventionsEtAutresFonds = (from af in db.EveEncaissementsAutres
-                                                  // where af.DateEncaissement <= date
-                                                  // select (Single?)af.MontantEncaisse).Sum() ?? 0;
+                Single subventionsEtAutresFonds = (from af in db.EveEncaissementsAutres
+                                                  where af.DateEncaissement <= date
+                                                  select (Single?)af.MontantEncaisse).Sum() ?? 0;
 
                 Single dettesFournisseurs = (Single)Tresorerie.CalculerTotalDettesFournisseursALaDateDu(date);
 
@@ -135,7 +135,7 @@ namespace CasaEcologieSysInfo.Classes
 
                 Single impotsEtTaxes = float.Parse(CompteDeResultat.ImpotsEtTaxesDeLaPeriode(debut, date));
 
-                return investissements //subventionsEtAutresFonds
+                return investissements // subventionsEtAutresFonds
                     + tresorerie + creances + stocks - dettesFournisseurs 
                     - ResultatAvantImpotsEtTaxes(date) + impotsEtTaxes;
             }        

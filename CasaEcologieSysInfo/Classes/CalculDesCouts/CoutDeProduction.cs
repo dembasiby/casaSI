@@ -48,7 +48,7 @@ namespace CasaEcologieSysInfo.Classes.CalculDesCouts
                                      select new
                                      {
                                          Matiere = ur.ResStockMatieresPremiere.NomMatiere
-                                     }).ToList();
+                                     }).Distinct().ToList();
 
                 Single coutMatieresPremieresParProduit = 0;
 
