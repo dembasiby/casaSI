@@ -303,6 +303,7 @@
             this.txtEtiquettesDisponibles.ReadOnly = true;
             this.txtEtiquettesDisponibles.Size = new System.Drawing.Size(38, 21);
             this.txtEtiquettesDisponibles.TabIndex = 28;
+            this.txtEtiquettesDisponibles.TextChanged += new System.EventHandler(this.TxtEtiquettesDisponibles_TextChanged);
             // 
             // label14
             // 
@@ -332,6 +333,7 @@
             this.txtEmballagesDisponibles.ReadOnly = true;
             this.txtEmballagesDisponibles.Size = new System.Drawing.Size(38, 21);
             this.txtEmballagesDisponibles.TabIndex = 28;
+            this.txtEmballagesDisponibles.TextChanged += new System.EventHandler(this.TxtEmballagesDisponibles_TextChanged);
             // 
             // cbxEtiquettes
             // 
@@ -594,6 +596,7 @@
             this.cbxProduitsProduits.Name = "cbxProduitsProduits";
             this.cbxProduitsProduits.Size = new System.Drawing.Size(292, 25);
             this.cbxProduitsProduits.TabIndex = 27;
+            this.cbxProduitsProduits.SelectedIndexChanged += new System.EventHandler(this.CbxProduitsProduits_SelectedIndexChanged);
             // 
             // label16
             // 

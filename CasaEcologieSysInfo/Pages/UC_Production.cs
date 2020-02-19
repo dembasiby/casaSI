@@ -17,7 +17,7 @@ namespace CasaEcologieSysInfo
         public void ChargerDonneesInitiales()
         {
             resStockMatieresPremiereBindingSource.DataSource = db.ResStockMatieresPremieres
-                                                                 .Where(mp => mp.TypesMatiere.nomType == "Fruit")
+                                                                 .Where(mp => mp.TypesMatiere.NomType == "Fruit")
                                                                  .OrderBy(mp => mp.NomMatiere)
                                                                  .ToList();
             resStockProduitsFiniBindingSource.DataSource = db.ResStockProduitsFinis.OrderBy(p => p.NomProduit).ToList();
@@ -29,12 +29,12 @@ namespace CasaEcologieSysInfo
             var nomMatierePrem = cbxNomMatiereP.GetItemText(cbxNomMatiereP.SelectedItem);
             txtStockMatierePremiereDispo.Text = ChargerStockMatierePremiere(nomMatierePrem).ToString();
 
-            cbxEmballage.DataSource = db.ResStockMatieresPremieres.Where(mp => mp.TypesMatiere.nomType == "Emballage" || mp.TypesMatiere.nomType == "Sachet").ToList();
+            cbxEmballage.DataSource = db.ResStockMatieresPremieres.Where(mp => mp.TypesMatiere.NomType == "Emballage" || mp.TypesMatiere.NomType == "Sachet").ToList();
             cbxEmballage.DisplayMember = "NomMatiere";
             cbxEmballage.ValueMember = "CodeMatierePremiere";
             cbxEmballage.SelectedIndex = -1;
 
-            cbxEtiquettes.DataSource = db.ResStockMatieresPremieres.Where(mp => mp.TypesMatiere.nomType == "Etiquette").ToList();
+            cbxEtiquettes.DataSource = db.ResStockMatieresPremieres.Where(mp => mp.TypesMatiere.NomType == "Etiquette").ToList();
             cbxEtiquettes.DisplayMember = "NomMatiere";
             cbxEtiquettes.ValueMember = "CodeMatierePremiere";
             cbxEtiquettes.SelectedIndex = -1;
@@ -416,7 +416,7 @@ namespace CasaEcologieSysInfo
                         
                         UtiliserEmballage(codeUtilisationRessources, emballage, int.Parse(txtQuantiteProduitProduit.Text));
 
-                        if (!nomProduit.ToLower().StartsWith("sachet") || !nomProduit.ToLower().StartsWith("pastille") && !string.IsNullOrEmpty(etiquette))
+                        if (cbxEtiquettes.Enabled)
                         {
                             UtiliserEmballage(codeUtilisationRessources, etiquette, int.Parse(txtQuantiteProduitProduit.Text));
                         }
@@ -648,6 +648,73 @@ namespace CasaEcologieSysInfo
         {
             var nomMatierePrem = cbxEtiquettes.GetItemText(cbxEtiquettes.SelectedItem);
             txtEtiquettesDisponibles.Text = ChargerStockMatierePremiere(nomMatierePrem).ToString();
+        }
+
+        private void CbxProduitsProduits_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string nomProduit = cbxProduitsProduits.GetItemText(cbxProduitsProduits.SelectedItem);
+
+            if (nomProduit.ToLower().StartsWith("sachet") || nomProduit.ToLower().StartsWith("pastille"))
+            {
+                cbxEtiquettes.Enabled = false;
+            }
+            else
+            {
+                cbxEtiquettes.Enabled = true;
+            }
+        }
+
+        private void TxtEmballagesDisponibles_TextChanged(object sender, EventArgs e)
+        {
+            if (rbtnProduitsFinis.Checked)
+            {
+                try
+                {
+                    string emballage = cbxEmballage.GetItemText(cbxEmballage.SelectedItem);
+                    int.TryParse(txtQuantiteProduitProduit.Text, out int quantiteProduits);
+                    int.TryParse(txtEmballagesDisponibles.Text, out int emballagesDisponibles);
+
+                    if (quantiteProduits > emballagesDisponibles)
+                    {
+                        btnNouvelleProduction.Enabled = false;
+                    }
+                    else
+                    {
+                        btnNouvelleProduction.Enabled = true;
+                    }
+                }
+                catch (Exception)
+                {
+                    btnNouvelleProduction.Enabled = false;
+                }          
+            }          
+        }
+
+        private void TxtEtiquettesDisponibles_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                string etiquette = cbxEtiquettes.GetItemText(cbxEtiquettes.SelectedItem);
+                int.TryParse(txtQuantiteProduitProduit.Text, out int quantiteProduits);
+                int.TryParse(txtEtiquettesDisponibles.Text, out int etiquettesDisponibles);
+
+                if (cbxEtiquettes.Enabled)
+                {
+                    if (quantiteProduits > etiquettesDisponibles)
+                    {
+                        btnNouvelleProduction.Enabled = false;
+                    }
+                    else
+                    {
+                        btnNouvelleProduction.Enabled = true;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                btnNouvelleProduction.Enabled = false;
+            }
+            
         }
     }
 }
