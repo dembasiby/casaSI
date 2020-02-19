@@ -286,6 +286,18 @@ namespace CasaEcologieSysInfo.Pages.Corrections
 
                                             }).OrderBy(p => p.Produit).ToList();
 
+                /*
+                detailProduitsVendus.ForEach(prdt =>
+                {
+                    ListViewItem element = new ListViewItem(prdt.Produit);
+                    element.SubItems.Add(prdt.Quantite.ToString("n0"));
+                    element.SubItems.Add(prdt.PU.ToString("n0"));
+                    element.SubItems.Add(prdt.Montant.ToString("n0"));
+
+                    lvwPanier.Items.Add(element);
+
+                });
+                */
                 foreach (var produit in detailProduitsVendus)
                 {
                     ListViewItem element = new ListViewItem(produit.Produit);

@@ -20,10 +20,12 @@ namespace CasaEcologieSysInfo
             this.ResStockMatieresPremieres = new HashSet<ResStockMatieresPremiere>();
         }
     
-        public int codeTypeMatiere { get; set; }
-        public string nomType { get; set; }
+        public int CodeTypeMatiere { get; set; }
+        public string NomType { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ResStockMatieresPremiere> ResStockMatieresPremieres { get; set; }
+        public virtual TypesMatiere TypesMatieres1 { get; set; }
+        public virtual TypesMatiere TypesMatiere1 { get; set; }
     }
 }

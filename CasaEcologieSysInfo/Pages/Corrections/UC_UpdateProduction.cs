@@ -71,7 +71,7 @@ namespace CasaEcologieSysInfo.Pages.Corrections
                             MessageBox.Show("La production a été mise à jour.");
                         }
                         else if (float.Parse(txtQuantiteSucre.Text) != production.EveUtilisationRessource.EveUtilisationMatieresPremieres
-                            .Where(mp => mp.ResStockMatieresPremiere.TypesMatiere.nomType == "Sucre")
+                            .Where(mp => mp.ResStockMatieresPremiere.TypesMatiere.NomType == "Sucre")
                             .Select(ump => ump.QuantiteMatierePremiere).FirstOrDefault())
                         {
                             MettreQuantiteSucreAJour(production);
@@ -172,14 +172,14 @@ namespace CasaEcologieSysInfo.Pages.Corrections
             using (CasaDBEntities db = new CasaDBEntities())
             {
                 cbxEmballage.DataSource = db.ResStockMatieresPremieres
-                    .Where(mp => mp.TypesMatiere.nomType == "Emballage" || mp.TypesMatiere.nomType == "Sachet")
+                    .Where(mp => mp.TypesMatiere.NomType == "Emballage" || mp.TypesMatiere.NomType == "Sachet")
                     .OrderBy(mp => mp.NomMatiere)
                     .ToList();
 
                 cbxEmballage.DisplayMember = "NomMatiere";
                 cbxEmballage.ValueMember = "CodeMatierePremiere";
                 cbxEmballage.SelectedValue = production.EveUtilisationRessource.EveUtilisationMatieresPremieres
-                    .Where(mp => mp.ResStockMatieresPremiere.TypesMatiere.nomType == "Emballage" || mp.ResStockMatieresPremiere.TypesMatiere.nomType == "Sachet")
+                    .Where(mp => mp.ResStockMatieresPremiere.TypesMatiere.NomType == "Emballage" || mp.ResStockMatieresPremiere.TypesMatiere.NomType == "Sachet")
                     .Select(mp => mp.ResStockMatieresPremiere.CodeMatierePremiere)
                     .FirstOrDefault();
             }
@@ -190,14 +190,14 @@ namespace CasaEcologieSysInfo.Pages.Corrections
             using (CasaDBEntities db = new CasaDBEntities())
             {
                 cbxEtiquette.DataSource = db.ResStockMatieresPremieres
-                    .Where(mp => mp.TypesMatiere.nomType == "Etiquette")
+                    .Where(mp => mp.TypesMatiere.NomType == "Etiquette")
                     .OrderBy(mp => mp.NomMatiere)
                     .ToList();
 
                 cbxEtiquette.DisplayMember = "NomMatiere";
                 cbxEtiquette.ValueMember = "CodeMatierePremiere";
                 cbxEtiquette.SelectedValue = production.EveUtilisationRessource.EveUtilisationMatieresPremieres
-                    .Where(mp => mp.ResStockMatieresPremiere.TypesMatiere.nomType == "Etiquette")
+                    .Where(mp => mp.ResStockMatieresPremiere.TypesMatiere.NomType == "Etiquette")
                     .Select(mp => mp.ResStockMatieresPremiere.CodeMatierePremiere)
                     .FirstOrDefault();
             }
@@ -210,7 +210,7 @@ namespace CasaEcologieSysInfo.Pages.Corrections
                 var production = db.EveProductions.Where(prod => prod.CodeProduction == codeProduction).First();
 
                 cbxFruitUtilise.DataSource = db.ResStockMatieresPremieres
-                        .Where(mp => mp.TypesMatiere.nomType == "Fruit")
+                        .Where(mp => mp.TypesMatiere.NomType == "Fruit")
                         .OrderBy(pf => pf.NomMatiere)
                         .ToList();
 
@@ -218,12 +218,12 @@ namespace CasaEcologieSysInfo.Pages.Corrections
                 cbxFruitUtilise.ValueMember = "CodeMatierePremiere";
 
                 cbxFruitUtilise.SelectedValue = production.EveUtilisationRessource.EveUtilisationMatieresPremieres
-                    .Where(mp => mp.ResStockMatieresPremiere.TypesMatiere.nomType == "Fruit")
+                    .Where(mp => mp.ResStockMatieresPremiere.TypesMatiere.NomType == "Fruit")
                     .Select(mp => mp.ResStockMatieresPremiere.CodeMatierePremiere)
                     .FirstOrDefault();
 
                 txtQuantiteFruit.Text = production.EveUtilisationRessource.EveUtilisationMatieresPremieres
-                    .Where(mp => mp.ResStockMatieresPremiere.TypesMatiere.nomType == "Fruit")
+                    .Where(mp => mp.ResStockMatieresPremiere.TypesMatiere.NomType == "Fruit")
                     .Select(mp => mp.QuantiteMatierePremiere)
                     .FirstOrDefault().ToString();
             }
@@ -305,7 +305,7 @@ namespace CasaEcologieSysInfo.Pages.Corrections
                 var production = db.EveProductions.Where(prod => prod.CodeProduction == codeProduction).First();
 
                 return production.EveUtilisationRessource.EveUtilisationMatieresPremieres
-                        .Where(mp => mp.ResStockMatieresPremiere.TypesMatiere.nomType == "Sucre")
+                        .Where(mp => mp.ResStockMatieresPremiere.TypesMatiere.NomType == "Sucre")
                         .Select(mp => mp.QuantiteMatierePremiere)
                         .FirstOrDefault().ToString();
             }
@@ -320,7 +320,7 @@ namespace CasaEcologieSysInfo.Pages.Corrections
                     float.TryParse(txtQuantiteSucre.Text, out float quantiteSucre);
 
                     ResStockMatieresPremiere matP = db.ResStockMatieresPremieres.FirstOrDefault(
-                    mp => mp.TypesMatiere.nomType == "Sucre");
+                    mp => mp.TypesMatiere.NomType == "Sucre");
 
                     int codeURes = production.EveUtilisationRessource.CodeUtilisationRessources;
 
@@ -388,7 +388,7 @@ namespace CasaEcologieSysInfo.Pages.Corrections
                 var prodution = db.EveProductions.Where(prod => prod.CodeProduction == codeProduction).First();
 
                 return prodution.EveUtilisationRessource.EveUtilisationMatieresPremieres
-                        .Any(mp => mp.ResStockMatieresPremiere.TypesMatiere.nomType == "Fruit");
+                        .Any(mp => mp.ResStockMatieresPremiere.TypesMatiere.NomType == "Fruit");
             }
         }
 
@@ -400,7 +400,7 @@ namespace CasaEcologieSysInfo.Pages.Corrections
                 bool prodAvecSucre = production
                     .EveUtilisationRessource
                     .EveUtilisationMatieresPremieres
-                    .Any(mp => mp.ResStockMatieresPremiere.TypesMatiere.nomType == "Sucre");
+                    .Any(mp => mp.ResStockMatieresPremiere.TypesMatiere.NomType == "Sucre");
                 return prodAvecSucre;
             }
         }
@@ -503,7 +503,7 @@ namespace CasaEcologieSysInfo.Pages.Corrections
                     var production = db.EveProductions.Where(p => p.CodeProduction == codeProduction).FirstOrDefault();
                     var fruitUtilise = production.EveUtilisationRessource
                         .EveUtilisationMatieresPremieres
-                        .Where(mp => mp.ResStockMatieresPremiere.TypesMatiere.nomType == "Fruit")
+                        .Where(mp => mp.ResStockMatieresPremiere.TypesMatiere.NomType == "Fruit")
                         .FirstOrDefault();
 
                     var fruit = fruitUtilise.ResStockMatieresPremiere.NomMatiere;
@@ -571,7 +571,7 @@ namespace CasaEcologieSysInfo.Pages.Corrections
                     var production = db.EveProductions.Where(p => p.CodeProduction == codeProduction).FirstOrDefault();
                     var emballageUtilise = production.EveUtilisationRessource
                         .EveUtilisationMatieresPremieres
-                        .Where(mp => mp.ResStockMatieresPremiere.TypesMatiere.nomType == "Emballage")
+                        .Where(mp => mp.ResStockMatieresPremiere.TypesMatiere.NomType == "Emballage")
                         .FirstOrDefault();
 
                     var emballage = emballageUtilise.ResStockMatieresPremiere.NomMatiere;
@@ -610,7 +610,7 @@ namespace CasaEcologieSysInfo.Pages.Corrections
                     var production = db.EveProductions.Where(p => p.CodeProduction == codeProduction).FirstOrDefault();
                     var etiquetteUtilise = production.EveUtilisationRessource
                         .EveUtilisationMatieresPremieres
-                        .Where(mp => mp.ResStockMatieresPremiere.TypesMatiere.nomType == "Etiquette")
+                        .Where(mp => mp.ResStockMatieresPremiere.TypesMatiere.NomType == "Etiquette")
                         .FirstOrDefault();
 
                     var etiquette = etiquetteUtilise.ResStockMatieresPremiere.NomMatiere;

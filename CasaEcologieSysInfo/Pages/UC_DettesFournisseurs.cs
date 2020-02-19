@@ -20,11 +20,16 @@ namespace CasaEcologieSysInfo.Pages
 
         private void UC_DettesFournisseurs_Load(object sender, EventArgs e)
         {
-            ListerFournisseurDettesFournisseurs();
+            AfficherDetailsFournisseur();
             txtTotalDettesFournisseurs.Text = Tresorerie.CalculerTotalDettesFournisseurs().ToString("c0");
         }
 
-
+        private void AfficherDetailsFournisseur()
+        {
+            lbxListeFournisseursDettes.DisplayMember = "NomFournisseur";
+            lbxListeFournisseursDettes.ValueMember = "CodeFournisseur";
+            ListerFournisseurDettesFournisseurs();
+        }
 
         private void ListerFournisseurDettesFournisseurs()
         {
@@ -68,8 +73,8 @@ namespace CasaEcologieSysInfo.Pages
                                  }).ToList();
 
             var listFournisseurs = fournisseursMP
-                                    .Union(fournisseursEI)
-                                    .Union(fournisseurFS)
+                                    .Concat(fournisseursEI)
+                                    .Concat(fournisseurFS)
                                     .Where(f => f.Solde > 0)
                                     .OrderByDescending(s => s.Solde)
                                     .ToList();
@@ -77,6 +82,10 @@ namespace CasaEcologieSysInfo.Pages
             lbxListeFournisseursDettes.DataSource = listFournisseurs;
             lbxListeFournisseursDettes.DisplayMember = "NomFournisseur";
             lbxListeFournisseursDettes.ValueMember = "CodeFournisseur";
+
+            //string codeText = lbxListeFournisseursDettes.SelectedValue.ToString();
+            //int codeFournisseur = int.Parse(codeText);
+            //(codeFournisseur);
             //lbxListeFournisseursDettes.Sorted = true;
         }
 
@@ -157,11 +166,11 @@ namespace CasaEcologieSysInfo.Pages
                                             Solde = 0m
                                         }
                                  );
-            var totalOperations = achatMatierePrem.Union(achatEquipementInfr)
-               .Union(achatServFournitures)
-               .Union(decaissementMP)
-               .Union(decaisementEquip)
-               .Union(decaissementServFourn)
+            var totalOperations = achatMatierePrem.Concat(achatEquipementInfr)
+               .Concat(achatServFournitures)
+               .Concat(decaissementMP)
+               .Concat(decaisementEquip)
+               .Concat(decaissementServFourn)
                .ToList();
 
             DataTable dt = Conversion.ConvertirEnTableDeDonnees(totalOperations);
@@ -211,17 +220,15 @@ namespace CasaEcologieSysInfo.Pages
 
         private void LbxListeFournisseursDettes_SelectedValueChanged(object sender, EventArgs e)
         {
-            int codeFournisseur = 0;
-
             if (lbxListeFournisseursDettes.Items.Count > 0)
             {
-                codeFournisseur = Convert.ToInt32(lbxListeFournisseursDettes.SelectedValue.ToString());
-                MontrerDetailsDettesFournisseurs(codeFournisseur);
+                AfficherDetailsFournisseur();
             }
             else
             {
                 MessageBox.Show("Le GIE n'a pas de dettes fournisseurs en ce moment.");
             }
+            
         }
 
         private void BtnImprimerTableau_Click(object sender, EventArgs e)

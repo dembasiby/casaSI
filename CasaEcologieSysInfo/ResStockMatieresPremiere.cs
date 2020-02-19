@@ -29,7 +29,7 @@ namespace CasaEcologieSysInfo
         public int CodeMatierePremiere { get; set; }
         public string NomMatiere { get; set; }
         public float StockMatiere { get; set; }
-        public Nullable<decimal> CoutUnitaire { get; set; }
+        public decimal CoutUnitaire { get; set; }
         public int CodeTypeMatiere { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -138,7 +138,7 @@ namespace CasaEcologieSysInfo.Classes
             using (CasaDBEntities db = new CasaDBEntities())
             {
                 var autresFondsRecus = (from aenc in db.EveEncaissementsAutres
-                                        //where aenc.FondsExternes == true
+                                        where aenc.FondsExternes == true
                                         where aenc.DateEncaissement >= debut.Value.Date
                                         where aenc.DateEncaissement <= fin.Value.Date
                                         select (decimal?)aenc.MontantEncaisse).Sum() ?? 0m;
@@ -280,7 +280,7 @@ namespace CasaEcologieSysInfo.Classes
                 float achatEmballages = (from amp in db.EveReceptionMatieresPremieres
                                          join d in db.EveDecaissements on amp.CodeReceptionMatierePremiere equals d.CodeReceptionMatierePremiere
                                          join mp in db.ResStockMatieresPremieres on amp.CodeMatierePremiere equals mp.CodeMatierePremiere
-                                         where (mp.TypesMatiere.nomType == "Emballage" || mp.TypesMatiere.nomType == "Sachet" || mp.TypesMatiere.nomType == "Etiquette")
+                                         where (mp.TypesMatiere.NomType == "Emballage" || mp.TypesMatiere.NomType == "Sachet" || mp.TypesMatiere.NomType == "Etiquette")
                                          where d.DateDecaissement >= debut.Value.Date
                                          where d.DateDecaissement <= fin.Value.Date
                                          select (float?)d.Montant).Sum() ?? 0;
@@ -296,7 +296,7 @@ namespace CasaEcologieSysInfo.Classes
                 float achatMatieresPremieres = (from amp in db.EveReceptionMatieresPremieres
                                               join d in db.EveDecaissements on amp.CodeReceptionMatierePremiere equals d.CodeReceptionMatierePremiere
                                               join mp in db.ResStockMatieresPremieres on amp.CodeMatierePremiere equals mp.CodeMatierePremiere
-                                              where (mp.TypesMatiere.nomType == "Fruit" || mp.TypesMatiere.nomType == "Sucre")
+                                              where (mp.TypesMatiere.NomType == "Fruit" || mp.TypesMatiere.NomType == "Sucre")
                                               where d.DateDecaissement >= debut.Value.Date
                                               where d.DateDecaissement <= fin.Value.Date
                                               select (float?)d.Montant).Sum() ?? 0;

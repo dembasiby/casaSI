@@ -22,8 +22,8 @@ namespace CasaEcologieSysInfo
             resStockMatieresPremieresBindingSource.DataSource = db.ResStockMatieresPremieres.OrderBy(m => m.NomMatiere).ToList();
             ChargerListeEmployes();
             resComptesTresorerieBindingSource.DataSource = db.ResComptesTresoreries.OrderBy(ct => ct.NomCompte).ToList();
-            cbxTypesMatieres.DataSource = db.TypesMatieres.OrderBy(tm => tm.nomType).ToList();
-            cbxTypesMatieres.DisplayMember = "nomType";
+            cbxTypesMatieres.DataSource = db.TypesMatieres.OrderBy(tm => tm.NomType).ToList();
+            cbxTypesMatieres.DisplayMember = "NomType";
             cbxTypesMatieres.ValueMember = "codeTypeMatiere";
             //cbxTypesMatieres.DataSource = (from mp in db.ResStockMatieresPremieres select mp.TypeMatiere).Distinct().ToList();
             Tresorerie.AfficherSoldeTresorerie(cbxComptePaiement, txtSoldeCompte);

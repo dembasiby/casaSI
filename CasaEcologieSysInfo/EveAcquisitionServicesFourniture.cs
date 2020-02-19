@@ -27,6 +27,7 @@ namespace CasaEcologieSysInfo
         public int CodeFournisseurServiceFourniture { get; set; }
         public Nullable<int> CodeEmploye { get; set; }
         public Nullable<decimal> TransportServiceFourniture { get; set; }
+        public string Description { get; set; }
     
         public virtual AgeEmploye AgeEmploye { get; set; }
         public virtual AgeFournisseursServicesFourniture AgeFournisseursServicesFourniture { get; set; }
