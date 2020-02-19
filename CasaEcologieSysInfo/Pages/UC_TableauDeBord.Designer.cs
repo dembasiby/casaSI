@@ -156,7 +156,7 @@
             this.dtpDebut.Size = new System.Drawing.Size(88, 23);
             this.dtpDebut.TabIndex = 31;
             this.dtpDebut.Value = new System.DateTime(2019, 1, 1, 0, 0, 0, 0);
-            this.dtpDebut.ValueChanged += new System.EventHandler(this.DtpDebut_ValueChangedAsync);
+            this.dtpDebut.ValueChanged += new System.EventHandler(this.DtpDebut_ValueChanged);
             // 
             // dtpFin
             // 
@@ -165,7 +165,7 @@
             this.dtpFin.Name = "dtpFin";
             this.dtpFin.Size = new System.Drawing.Size(88, 23);
             this.dtpFin.TabIndex = 31;
-            this.dtpFin.ValueChanged += new System.EventHandler(this.DtpFin_ValueChangedAsync);
+            this.dtpFin.ValueChanged += new System.EventHandler(this.DtpFin_ValueChanged);
             // 
             // quantiteDeMatierePremiereAcheteeParTableAdapter
             // 
