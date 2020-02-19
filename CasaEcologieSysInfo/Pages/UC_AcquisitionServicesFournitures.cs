@@ -104,53 +104,75 @@ namespace CasaEcologieSysInfo
 
         private void BtnAchatServiceFourniture_Click(object sender, EventArgs e)
         {
-            AgeEmploye emp = db.AgeEmployes.FirstOrDefault(em => em.PrenomNom == cbxRespServFourn.Text);
-            AgeEmploye tresoriere = db.AgeEmployes.FirstOrDefault(em => em.PrenomNom == cbxTresoriere.Text);
-            AgeFournisseursServicesFourniture fsf = db.AgeFournisseursServicesFournitures.FirstOrDefault
-                (
-                fs => fs.NomFournisseurServiceFourniture == cbxNomFournServFourn.Text
-                );
-            ResComptesTresorerie cpte = db.ResComptesTresoreries.FirstOrDefault(c => c.NomCompte == cbxComptePaiement.Text);
-            ResServicesFourniture sf = db.ResServicesFournitures.FirstOrDefault(s => s.NomServiceFourniture == cbxNomServFourniture.Text);
-
-            if (Validation.VerifierChampsMontant(txtMontantServFourn.Text))
+            try
             {
-                EveAcquisitionServicesFourniture asf = new EveAcquisitionServicesFourniture
+                bool respAchatPresent = db.AgeEmployes.Any(em => em.PrenomNom == cbxRespServFourn.Text);
+                bool fournPresent = db.AgeFournisseursServicesFournitures
+                    .Any(fs => fs.NomFournisseurServiceFourniture == cbxNomFournServFourn.Text);
+                bool descriptionAjoutee = !string.IsNullOrEmpty(txtDescription.Text);
+
+                AgeEmploye tresoriere;
+
+                if (int.Parse(txtMontantPayeServFourn.Text) > 0)
                 {
-                    Date = DateTime.Parse(dtpDateAchatServFourn.Text),
-                    Montant = int.Parse(txtMontantServFourn.Text),
-                    CodeServiceFourniture = sf.CodeServiceFourniture,
-                    CodeFournisseurServiceFourniture = fsf.CodeFournisseurServiceFourniture,
-                    CodeEmploye = emp.CodeEmploye,
-                };
-
-                db.EveAcquisitionServicesFournitures.Add(asf);
-                db.SaveChanges();
-
-                if (int.Parse(txtMontantPayeServFourn.Text) > 0 && Validation.VerifierChampsMontant(txtMontantPayeServFourn.Text))
-                {
-                    if (Tresorerie.IlYaAssezDeFondsDansLeCompte(cbxComptePaiement, txtMontantPayeServFourn))
-                    {
-                        EveDecaissement decaiss = new EveDecaissement
-                        {
-                            CodeAcquisitionServiceFourniture = asf.CodeAcquisitionServiceFourniture,
-                            Description = sf.NomServiceFourniture,
-                            DateDecaissement = asf.Date,
-                            CodeEmploye = tresoriere.CodeEmploye,
-                            CodeCompte = cpte.CodeCompte,
-                            Montant = int.Parse(txtMontantPayeServFourn.Text),
-                            CodeFournisseurService = fsf.CodeFournisseurServiceFourniture,
-                        };
-
-                        db.EveDecaissements.Add(decaiss);
-                        db.SaveChanges();
-                    }
+                    bool montantValide = Validation.VerifierChampsMontant(txtMontantPayeServFourn.Text);
+                    bool tresorierePresente = db.AgeEmployes.Any(em => em.PrenomNom == cbxTresoriere.Text);
                 }
 
-                MessageBox.Show("Le nouvel achat de service ou de fourniture a été enregistré avec succès!");
-                txtMontantServFourn.Text = "";
-                txtMontantPayeServFourn.Text = "";
-            }                 
+                AgeEmploye emp = db.AgeEmployes.First(em => em.PrenomNom == cbxRespServFourn.Text);
+
+                AgeFournisseursServicesFourniture fsf = db.AgeFournisseursServicesFournitures.First
+                    (
+                    fs => fs.NomFournisseurServiceFourniture == cbxNomFournServFourn.Text
+                    );
+                ResComptesTresorerie cpte = db.ResComptesTresoreries.FirstOrDefault(c => c.NomCompte == cbxComptePaiement.Text);
+                ResServicesFourniture sf = db.ResServicesFournitures.FirstOrDefault(s => s.NomServiceFourniture == cbxNomServFourniture.Text);
+
+                if (Validation.VerifierChampsMontant(txtMontantServFourn.Text))
+                {
+                    EveAcquisitionServicesFourniture asf = new EveAcquisitionServicesFourniture
+                    {
+                        Date = DateTime.Parse(dtpDateAchatServFourn.Text),
+                        Description = txtDescription.Text,
+                        Montant = int.Parse(txtMontantServFourn.Text),
+                        CodeServiceFourniture = sf.CodeServiceFourniture,
+                        CodeFournisseurServiceFourniture = fsf.CodeFournisseurServiceFourniture,
+                        CodeEmploye = emp.CodeEmploye,
+                    };
+
+                    db.EveAcquisitionServicesFournitures.Add(asf);
+                    db.SaveChanges();
+
+                    if (int.Parse(txtMontantPayeServFourn.Text) > 0 && Validation.VerifierChampsMontant(txtMontantPayeServFourn.Text))
+                    {
+                        if (Tresorerie.IlYaAssezDeFondsDansLeCompte(cbxComptePaiement, txtMontantPayeServFourn))
+                        {
+                            tresoriere = db.AgeEmployes.First(em => em.PrenomNom == cbxTresoriere.Text);
+
+                            EveDecaissement decaiss = new EveDecaissement
+                            {
+                                CodeAcquisitionServiceFourniture = asf.CodeAcquisitionServiceFourniture,
+                                Description = sf.NomServiceFourniture,
+                                DateDecaissement = asf.Date,
+                                CodeEmploye = tresoriere.CodeEmploye,
+                                CodeCompte = cpte.CodeCompte,
+                                Montant = int.Parse(txtMontantPayeServFourn.Text),
+                                CodeFournisseurService = fsf.CodeFournisseurServiceFourniture,
+                            };
+                            db.EveDecaissements.Add(decaiss);
+                            db.SaveChanges();
+                        }
+                    }
+
+                    MessageBox.Show("Le nouvel achat de service ou de fourniture a été enregistré avec succès!");
+                    txtMontantServFourn.Text = "";
+                    txtMontantPayeServFourn.Text = "";
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Erreur: La transaction n'a pas été enregistré.");
+            }                
         }
 
         private void CbxComptePaiement_SelectedIndexChanged_1(object sender, EventArgs e)

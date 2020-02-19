@@ -74,6 +74,8 @@
             this.resComptesTresorerieTableAdapter = new CasaEcologieSysInfo.CasaDBDataSetAllTableAdapters.ResComptesTresorerieTableAdapter();
             this.label5 = new System.Windows.Forms.Label();
             this.txtSoldeCompte = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtDescription = new System.Windows.Forms.TextBox();
             this.gBxNouvelleMatierePremiere.SuspendLayout();
             this.grbNouveauFournisseur.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ageFournisseursServicesFournituresBindingSource)).BeginInit();
@@ -249,7 +251,7 @@
             this.dtpDateAchatServFourn.Checked = false;
             this.dtpDateAchatServFourn.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpDateAchatServFourn.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDateAchatServFourn.Location = new System.Drawing.Point(253, 135);
+            this.dtpDateAchatServFourn.Location = new System.Drawing.Point(253, 168);
             this.dtpDateAchatServFourn.Name = "dtpDateAchatServFourn";
             this.dtpDateAchatServFourn.Size = new System.Drawing.Size(272, 27);
             this.dtpDateAchatServFourn.TabIndex = 34;
@@ -261,7 +263,7 @@
             this.cbxNomFournServFourn.DisplayMember = "NomFournisseurServiceFourniture";
             this.cbxNomFournServFourn.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxNomFournServFourn.FormattingEnabled = true;
-            this.cbxNomFournServFourn.Location = new System.Drawing.Point(253, 92);
+            this.cbxNomFournServFourn.Location = new System.Drawing.Point(253, 125);
             this.cbxNomFournServFourn.Margin = new System.Windows.Forms.Padding(5);
             this.cbxNomFournServFourn.Name = "cbxNomFournServFourn";
             this.cbxNomFournServFourn.Size = new System.Drawing.Size(272, 29);
@@ -301,7 +303,7 @@
             this.btnAchatServiceFourniture.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAchatServiceFourniture.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAchatServiceFourniture.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnAchatServiceFourniture.Location = new System.Drawing.Point(39, 402);
+            this.btnAchatServiceFourniture.Location = new System.Drawing.Point(39, 435);
             this.btnAchatServiceFourniture.Margin = new System.Windows.Forms.Padding(5);
             this.btnAchatServiceFourniture.Name = "btnAchatServiceFourniture";
             this.btnAchatServiceFourniture.Size = new System.Drawing.Size(486, 34);
@@ -312,7 +314,7 @@
             // 
             // txtMontantPayeServFourn
             // 
-            this.txtMontantPayeServFourn.Location = new System.Drawing.Point(253, 208);
+            this.txtMontantPayeServFourn.Location = new System.Drawing.Point(253, 241);
             this.txtMontantPayeServFourn.Margin = new System.Windows.Forms.Padding(5);
             this.txtMontantPayeServFourn.Name = "txtMontantPayeServFourn";
             this.txtMontantPayeServFourn.Size = new System.Drawing.Size(272, 27);
@@ -320,7 +322,7 @@
             // 
             // txtMontantServFourn
             // 
-            this.txtMontantServFourn.Location = new System.Drawing.Point(253, 172);
+            this.txtMontantServFourn.Location = new System.Drawing.Point(253, 205);
             this.txtMontantServFourn.Margin = new System.Windows.Forms.Padding(5);
             this.txtMontantServFourn.Name = "txtMontantServFourn";
             this.txtMontantServFourn.Size = new System.Drawing.Size(272, 27);
@@ -329,7 +331,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(37, 214);
+            this.label9.Location = new System.Drawing.Point(37, 247);
             this.label9.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(122, 21);
@@ -339,7 +341,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(37, 178);
+            this.label6.Location = new System.Drawing.Point(37, 211);
             this.label6.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(80, 21);
@@ -349,7 +351,7 @@
             // lblDate
             // 
             this.lblDate.AutoSize = true;
-            this.lblDate.Location = new System.Drawing.Point(35, 141);
+            this.lblDate.Location = new System.Drawing.Point(35, 174);
             this.lblDate.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblDate.Name = "lblDate";
             this.lblDate.Size = new System.Drawing.Size(50, 21);
@@ -371,7 +373,7 @@
             // lblNomFournisseur
             // 
             this.lblNomFournisseur.AutoSize = true;
-            this.lblNomFournisseur.Location = new System.Drawing.Point(35, 100);
+            this.lblNomFournisseur.Location = new System.Drawing.Point(35, 133);
             this.lblNomFournisseur.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblNomFournisseur.Name = "lblNomFournisseur";
             this.lblNomFournisseur.Size = new System.Drawing.Size(131, 21);
@@ -391,7 +393,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(35, 254);
+            this.label1.Location = new System.Drawing.Point(35, 287);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(122, 21);
@@ -401,7 +403,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(35, 293);
+            this.label10.Location = new System.Drawing.Point(35, 326);
             this.label10.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(181, 21);
@@ -414,7 +416,7 @@
             this.cbxRespServFourn.DisplayMember = "PrenomNom";
             this.cbxRespServFourn.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxRespServFourn.FormattingEnabled = true;
-            this.cbxRespServFourn.Location = new System.Drawing.Point(253, 246);
+            this.cbxRespServFourn.Location = new System.Drawing.Point(253, 279);
             this.cbxRespServFourn.Margin = new System.Windows.Forms.Padding(5);
             this.cbxRespServFourn.Name = "cbxRespServFourn";
             this.cbxRespServFourn.Size = new System.Drawing.Size(272, 29);
@@ -431,7 +433,7 @@
             this.cbxTresoriere.DisplayMember = "PrenomNom";
             this.cbxTresoriere.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxTresoriere.FormattingEnabled = true;
-            this.cbxTresoriere.Location = new System.Drawing.Point(253, 285);
+            this.cbxTresoriere.Location = new System.Drawing.Point(253, 318);
             this.cbxTresoriere.Margin = new System.Windows.Forms.Padding(5);
             this.cbxTresoriere.Name = "cbxTresoriere";
             this.cbxTresoriere.Size = new System.Drawing.Size(272, 29);
@@ -445,7 +447,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(35, 332);
+            this.label11.Location = new System.Drawing.Point(35, 365);
             this.label11.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(182, 21);
@@ -458,7 +460,7 @@
             this.cbxComptePaiement.DisplayMember = "NomCompte";
             this.cbxComptePaiement.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxComptePaiement.FormattingEnabled = true;
-            this.cbxComptePaiement.Location = new System.Drawing.Point(253, 324);
+            this.cbxComptePaiement.Location = new System.Drawing.Point(253, 357);
             this.cbxComptePaiement.Margin = new System.Windows.Forms.Padding(5);
             this.cbxComptePaiement.Name = "cbxComptePaiement";
             this.cbxComptePaiement.Size = new System.Drawing.Size(272, 29);
@@ -489,7 +491,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(37, 366);
+            this.label5.Location = new System.Drawing.Point(37, 399);
             this.label5.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(122, 21);
@@ -498,12 +500,30 @@
             // 
             // txtSoldeCompte
             // 
-            this.txtSoldeCompte.Location = new System.Drawing.Point(253, 360);
+            this.txtSoldeCompte.Location = new System.Drawing.Point(253, 393);
             this.txtSoldeCompte.Margin = new System.Windows.Forms.Padding(5);
             this.txtSoldeCompte.Name = "txtSoldeCompte";
             this.txtSoldeCompte.ReadOnly = true;
             this.txtSoldeCompte.Size = new System.Drawing.Size(272, 27);
             this.txtSoldeCompte.TabIndex = 28;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(37, 96);
+            this.label14.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(97, 21);
+            this.label14.TabIndex = 21;
+            this.label14.Text = "Description";
+            // 
+            // txtDescription
+            // 
+            this.txtDescription.Location = new System.Drawing.Point(253, 90);
+            this.txtDescription.Margin = new System.Windows.Forms.Padding(5);
+            this.txtDescription.Name = "txtDescription";
+            this.txtDescription.Size = new System.Drawing.Size(272, 27);
+            this.txtDescription.TabIndex = 28;
             // 
             // UC_AcquisitionServicesFournitures
             // 
@@ -519,9 +539,11 @@
             this.Controls.Add(this.cbxNomServFourniture);
             this.Controls.Add(this.btnAchatServiceFourniture);
             this.Controls.Add(this.txtSoldeCompte);
+            this.Controls.Add(this.txtDescription);
             this.Controls.Add(this.txtMontantPayeServFourn);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtMontantServFourn);
+            this.Controls.Add(this.label14);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.lblDate);
@@ -598,5 +620,7 @@
         private System.Windows.Forms.DateTimePicker dtpDateAchatServFourn;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtSoldeCompte;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox txtDescription;
     }
 }
