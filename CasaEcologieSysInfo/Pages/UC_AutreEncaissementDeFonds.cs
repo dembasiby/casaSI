@@ -46,7 +46,8 @@ namespace CasaEcologieSysInfo.Pages
                     CodeEncaissement = enc.CodeEncaissement,
                     DateEncaissement = dtpDateEncaissement.Value.Date,
                     Description = txtDescription.Text,
-                    MontantEncaisse = int.Parse(txtMontantEncaisse.Text)
+                    MontantEncaisse = int.Parse(txtMontantEncaisse.Text),
+                    FondsExternes = true
                 };
 
                 db.EveEncaissementsAutres.Add(autreEnc);
