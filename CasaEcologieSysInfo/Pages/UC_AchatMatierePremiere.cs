@@ -65,7 +65,6 @@ namespace CasaEcologieSysInfo
                     ResStockMatieresPremiere matierePremiere = new ResStockMatieresPremiere
                     {
                         NomMatiere = txtNomMatierePremiere.Text,
-                        //TypeMatiere = cbxTypesMatieres.GetItemText(cbxTypesMatieres.SelectedItem),
                         CodeTypeMatiere = int.Parse(cbxTypesMatieres.SelectedValue.ToString()),
                         CoutUnitaire = int.Parse(txtCoutUnitaire.Text),
                         StockMatiere = float.Parse(txtStockInitial.Text)

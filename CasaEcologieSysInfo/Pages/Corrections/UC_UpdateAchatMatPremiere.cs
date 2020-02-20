@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CasaEcologieSysInfo.Pages.Corrections
@@ -42,27 +37,9 @@ namespace CasaEcologieSysInfo.Pages.Corrections
         {
             if (MessageBox.Show("Etes-vous sûr de vouloir supprimer cette transaction?", "Message de confirmation", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                try
-                {
-                    using (CasaDBEntities db = new CasaDBEntities())
-                    {
-                        var transaction = db.EveReceptionMatieresPremieres.Where(rmp => rmp.CodeReceptionMatierePremiere == _codeTransaction).FirstOrDefault();
-                        var decaissement = transaction.EveDecaissements.FirstOrDefault();
-
-                        if (decaissement != null)
-                        {
-                            db.EveDecaissements.Remove(decaissement);
-                        }
-
-                        db.EveReceptionMatieresPremieres.Remove(transaction);
-                        db.SaveChanges();
-                        MessageBox.Show("La transaction a été supprimée.");
-                    }
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("La transaction a été supprimée.");
-                }
+                SupprimerTransaction();
+                ClearData();
+                LoadListeTransactions();
             }
         }
 
@@ -166,6 +143,31 @@ namespace CasaEcologieSysInfo.Pages.Corrections
                 {
                     MessageBox.Show("Erreur: La transaction n'a pas été mise à jour.");
                 }
+            }
+        }
+
+        private void SupprimerTransaction()
+        {
+            try
+            {
+                using (CasaDBEntities db = new CasaDBEntities())
+                {
+                    var transaction = db.EveReceptionMatieresPremieres.Where(rmp => rmp.CodeReceptionMatierePremiere == _codeTransaction).FirstOrDefault();
+                    var decaissement = transaction.EveDecaissements.FirstOrDefault();
+
+                    if (decaissement != null)
+                    {
+                        db.EveDecaissements.Remove(decaissement);
+                    }
+
+                    db.EveReceptionMatieresPremieres.Remove(transaction);
+                    db.SaveChanges();
+                    MessageBox.Show("La transaction a été supprimée.");
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Erreur: La transaction n'a pas été supprimée.");
             }
         }
 

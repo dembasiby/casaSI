@@ -850,7 +850,7 @@
             this.btnUpdateVente.Name = "btnUpdateVente";
             this.btnUpdateVente.Size = new System.Drawing.Size(217, 39);
             this.btnUpdateVente.TabIndex = 8;
-            this.btnUpdateVente.Text = "Ventes";
+            this.btnUpdateVente.Text = "Vente";
             this.btnUpdateVente.UseVisualStyleBackColor = false;
             this.btnUpdateVente.Click += new System.EventHandler(this.BtnUpdateVente_Click);
             // 
@@ -878,7 +878,7 @@
             this.btnUpdateAchatServiceFourniture.Name = "btnUpdateAchatServiceFourniture";
             this.btnUpdateAchatServiceFourniture.Size = new System.Drawing.Size(217, 39);
             this.btnUpdateAchatServiceFourniture.TabIndex = 8;
-            this.btnUpdateAchatServiceFourniture.Text = "Services ou fournitures";
+            this.btnUpdateAchatServiceFourniture.Text = "Achat services, fournitures";
             this.btnUpdateAchatServiceFourniture.UseVisualStyleBackColor = false;
             this.btnUpdateAchatServiceFourniture.Click += new System.EventHandler(this.BtnUpdateAchatServiceFourniture_Click);
             // 
@@ -892,7 +892,7 @@
             this.btnUpdateAchatMatPrem.Name = "btnUpdateAchatMatPrem";
             this.btnUpdateAchatMatPrem.Size = new System.Drawing.Size(217, 39);
             this.btnUpdateAchatMatPrem.TabIndex = 8;
-            this.btnUpdateAchatMatPrem.Text = "Matières Premières";
+            this.btnUpdateAchatMatPrem.Text = "Achat matières premières";
             this.btnUpdateAchatMatPrem.UseVisualStyleBackColor = false;
             this.btnUpdateAchatMatPrem.Click += new System.EventHandler(this.BtnUpdateAchatMatPrem_Click);
             // 
@@ -920,7 +920,7 @@
             this.btnUpdateProduit.Name = "btnUpdateProduit";
             this.btnUpdateProduit.Size = new System.Drawing.Size(217, 39);
             this.btnUpdateProduit.TabIndex = 8;
-            this.btnUpdateProduit.Text = "Produit";
+            this.btnUpdateProduit.Text = "Produit et matières";
             this.btnUpdateProduit.UseVisualStyleBackColor = false;
             this.btnUpdateProduit.Click += new System.EventHandler(this.BtnUpdateProduit_Click);
             // 
@@ -1277,7 +1277,7 @@
             this.tmrCorrections.Interval = 15;
             this.tmrCorrections.Tick += new System.EventHandler(this.TmrCorrections_Tick);
             // 
-            // frmAccueil
+            // FrmAccueil
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoSize = true;
@@ -1290,7 +1290,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(5);
-            this.Name = "frmAccueil";
+            this.Name = "FrmAccueil";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Accueil";
             this.panel3.ResumeLayout(false);

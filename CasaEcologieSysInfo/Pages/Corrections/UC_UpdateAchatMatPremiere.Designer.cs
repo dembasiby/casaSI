@@ -346,9 +346,9 @@
             this.lblQuantite.Location = new System.Drawing.Point(39, 146);
             this.lblQuantite.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblQuantite.Name = "lblQuantite";
-            this.lblQuantite.Size = new System.Drawing.Size(82, 21);
+            this.lblQuantite.Size = new System.Drawing.Size(220, 21);
             this.lblQuantite.TabIndex = 50;
-            this.lblQuantite.Text = "Quantité";
+            this.lblQuantite.Text = "Quantité (kg pour les fruits)";
             // 
             // lblLocaliteFournisseur
             // 
