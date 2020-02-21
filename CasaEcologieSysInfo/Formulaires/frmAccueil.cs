@@ -355,7 +355,7 @@ namespace CasaEcologieSysInfo
 
         private void BtnUpdateAchatEquipInfrastructure_Click(object sender, EventArgs e)
         {
-            Pages.Corrections.UC_UpdateAchatEquipInfrastructure uAEI = new Pages.Corrections.UC_UpdateAchatEquipInfrastructure();
+            Pages.Corrections.UC_UpdatePersonnel uAEI = new Pages.Corrections.UC_UpdatePersonnel();
             AddControlsToPanel(uAEI);
         }
 

@@ -79,7 +79,7 @@
             this.btnCreancesClients = new System.Windows.Forms.Button();
             this.pnlCorrections = new System.Windows.Forms.Panel();
             this.btnUpdateVente = new System.Windows.Forms.Button();
-            this.btnUpdateAchatEquipInfrastructure = new System.Windows.Forms.Button();
+            this.btnUpdatePersonnel = new System.Windows.Forms.Button();
             this.btnUpdateAchatServiceFourniture = new System.Windows.Forms.Button();
             this.btnUpdateAchatMatPrem = new System.Windows.Forms.Button();
             this.btnUpdateProduction = new System.Windows.Forms.Button();
@@ -826,7 +826,7 @@
             // pnlCorrections
             // 
             this.pnlCorrections.Controls.Add(this.btnUpdateVente);
-            this.pnlCorrections.Controls.Add(this.btnUpdateAchatEquipInfrastructure);
+            this.pnlCorrections.Controls.Add(this.btnUpdatePersonnel);
             this.pnlCorrections.Controls.Add(this.btnUpdateAchatServiceFourniture);
             this.pnlCorrections.Controls.Add(this.btnUpdateAchatMatPrem);
             this.pnlCorrections.Controls.Add(this.btnUpdateProduction);
@@ -854,19 +854,19 @@
             this.btnUpdateVente.UseVisualStyleBackColor = false;
             this.btnUpdateVente.Click += new System.EventHandler(this.BtnUpdateVente_Click);
             // 
-            // btnUpdateAchatEquipInfrastructure
+            // btnUpdatePersonnel
             // 
-            this.btnUpdateAchatEquipInfrastructure.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
-            this.btnUpdateAchatEquipInfrastructure.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUpdateAchatEquipInfrastructure.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdateAchatEquipInfrastructure.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUpdateAchatEquipInfrastructure.Location = new System.Drawing.Point(0, 240);
-            this.btnUpdateAchatEquipInfrastructure.Name = "btnUpdateAchatEquipInfrastructure";
-            this.btnUpdateAchatEquipInfrastructure.Size = new System.Drawing.Size(217, 39);
-            this.btnUpdateAchatEquipInfrastructure.TabIndex = 8;
-            this.btnUpdateAchatEquipInfrastructure.Text = "Equipements et infrastructures";
-            this.btnUpdateAchatEquipInfrastructure.UseVisualStyleBackColor = false;
-            this.btnUpdateAchatEquipInfrastructure.Click += new System.EventHandler(this.BtnUpdateAchatEquipInfrastructure_Click);
+            this.btnUpdatePersonnel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(92)))), ((int)(((byte)(41)))));
+            this.btnUpdatePersonnel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUpdatePersonnel.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdatePersonnel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnUpdatePersonnel.Location = new System.Drawing.Point(0, 240);
+            this.btnUpdatePersonnel.Name = "btnUpdatePersonnel";
+            this.btnUpdatePersonnel.Size = new System.Drawing.Size(217, 39);
+            this.btnUpdatePersonnel.TabIndex = 8;
+            this.btnUpdatePersonnel.Text = "Personnel";
+            this.btnUpdatePersonnel.UseVisualStyleBackColor = false;
+            this.btnUpdatePersonnel.Click += new System.EventHandler(this.BtnUpdateAchatEquipInfrastructure_Click);
             // 
             // btnUpdateAchatServiceFourniture
             // 
@@ -1402,7 +1402,7 @@
         private System.Windows.Forms.Panel pnlCorrections;
         private System.Windows.Forms.PictureBox pictureBox10;
         private System.Windows.Forms.Button btnUpdates;
-        private System.Windows.Forms.Button btnUpdateAchatEquipInfrastructure;
+        private System.Windows.Forms.Button btnUpdatePersonnel;
         private System.Windows.Forms.Button btnUpdateAchatServiceFourniture;
         private System.Windows.Forms.Button btnUpdateAchatMatPrem;
         private System.Windows.Forms.Button btnUpdateProduction;

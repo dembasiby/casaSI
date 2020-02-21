@@ -364,11 +364,11 @@
     <Compile Include="Formulaires\frmNouveauProduitFiniOuSemiFini.Designer.cs">
       <DependentUpon>frmNouveauProduitFiniOuSemiFini.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Corrections\UC_UpdateAchatEquipInfrastructure.cs">
+    <Compile Include="Pages\Corrections\UC_UpdatePersonnel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Pages\Corrections\UC_UpdateAchatEquipInfrastructure.Designer.cs">
-      <DependentUpon>UC_UpdateAchatEquipInfrastructure.cs</DependentUpon>
+    <Compile Include="Pages\Corrections\UC_UpdatePersonnel.Designer.cs">
+      <DependentUpon>UC_UpdatePersonnel.cs</DependentUpon>
     </Compile>
     <Compile Include="Pages\Corrections\UC_UpdateAchatFournService.cs">
       <SubType>UserControl</SubType>
@@ -637,6 +637,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\Corrections\UC_UpdateAchatMatPremiere.resx">
       <DependentUpon>UC_UpdateAchatMatPremiere.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Corrections\UC_UpdatePersonnel.resx">
+      <DependentUpon>UC_UpdatePersonnel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\Corrections\UC_UpdateProduction.resx">
       <DependentUpon>UC_UpdateProduction.cs</DependentUpon>
@@ -1001,52 +1004,52 @@
   <ItemGroup>
     <PublishFile Include="Microsoft.VisualStudio.Shell.Interop.10.0">
       <Visible>False</Visible>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="Microsoft.VisualStudio.Shell.Interop.11.0">
       <Visible>False</Visible>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="Microsoft.VisualStudio.Shell.Interop.8.0">
       <Visible>False</Visible>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="Microsoft.VisualStudio.Shell.Interop.9.0">
       <Visible>False</Visible>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="stdole">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
   </ItemGroup>

@@ -21,6 +21,7 @@ namespace CasaEcologieSysInfo.Pages
                 MessageBox.Show("Le champ 'Description' doit être renseigné.");
                 return false;
             }
+
             return true;
         }
 
