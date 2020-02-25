@@ -81,6 +81,7 @@
           <Property Name="Description" Type="nvarchar(max)" />
           <Property Name="DateDecaissement" Type="date" Nullable="false" />
           <Property Name="Montant" Type="money" Nullable="false" />
+          <Property Name="DecaissementInterne" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="EveEncaissements">
           <Key>
@@ -1620,6 +1621,7 @@
           <NavigationProperty Name="EvePaiementEmploye" Relationship="CasaDBModel.FK_EveDecaissements_EvePaiementEmployes" FromRole="EveDecaissement" ToRole="EvePaiementEmploye" />
           <Property Name="CodeReceptionDonMatierePremiere" Type="Int32" />
           <NavigationProperty Name="EveReceptionDonsMatieresPremiere" Relationship="CasaDBModel.FK_EveDecaissements_EveReceptionDonsMatieresPremieres" FromRole="EveDecaissement" ToRole="EveReceptionDonsMatieresPremiere" />
+          <Property Name="DecaissementInterne" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="EveEncaissement">
           <Key>
@@ -3202,6 +3204,7 @@
           <EntitySetMapping Name="EveDecaissements">
             <EntityTypeMapping TypeName="CasaDBModel.EveDecaissement">
               <MappingFragment StoreEntitySet="EveDecaissements">
+                <ScalarProperty Name="DecaissementInterne" ColumnName="DecaissementInterne" />
                 <ScalarProperty Name="CodeReceptionDonMatierePremiere" ColumnName="CodeReceptionDonMatierePremiere" />
                 <ScalarProperty Name="CodePaiementEmploye" ColumnName="CodePaiementEmploye" />
                 <ScalarProperty Name="CodeDecaissement" ColumnName="CodeDecaissement" />

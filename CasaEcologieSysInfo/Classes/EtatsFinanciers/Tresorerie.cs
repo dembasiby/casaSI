@@ -27,12 +27,14 @@ namespace CasaEcologieSysInfo.Classes
 
                 var totalAutresEn = (from enc in db.EveEncaissements
                                      from aut in db.EveEncaissementsAutres
+                                     //where aut.FondsExternes == true
                                      where enc.CodeEncaissement == aut.CodeEncaissement
                                      where aut.DateEncaissement < debutPeriode.Date
                                      select (decimal?)aut.MontantEncaisse).Sum() ?? 0m;
 
                 var totalDecaissements = (from d in db.EveDecaissements
                                           where d.DateDecaissement < debutPeriode.Date
+                                          //where d.DecaissementInterne == false
                                           select (decimal?)d.Montant).Sum() ?? 0m;
 
                 var fondsDisponibleEnCaissesEtEnBanques = soldeInitiaux
@@ -595,7 +597,9 @@ namespace CasaEcologieSysInfo.Classes
 
                 var fondsDisponibles = soldeInitial + totalEncaissements + encaissementCreances + totalAutresEncaissement - totalDecaissements;
 
+               
                 return fondsDisponibles;
+
             }
         }
 

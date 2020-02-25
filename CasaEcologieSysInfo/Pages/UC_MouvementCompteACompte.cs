@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using CasaEcologieSysInfo.Classes;
 
@@ -29,7 +24,7 @@ namespace CasaEcologieSysInfo.Pages
             Tresorerie.AfficherSoldeTresorerie(cbxCompteDebit, txtSoldeCompte);
         }
 
-        private bool ComptesDifferents(string cpte1, string cpte2)
+        private bool ComptesDifferents(int cpte1, int cpte2)
         {
             if (cpte1 != cpte2)
             {
@@ -44,8 +39,9 @@ namespace CasaEcologieSysInfo.Pages
 
         private void BtnEnregistrerTransfert_Click(object sender, EventArgs e)
         {
-            var cpteDebiteur = cbxCompteDebit.GetItemText(cbxCompteDebit.SelectedItem);
-            var cpteCrediteur = cbxCompteCredit.GetItemText(cbxCompteCredit.SelectedItem);
+            var codeCpteDebiteur = int.Parse(cbxCompteDebit.SelectedValue.ToString());
+            var codeCpteCrediteur = int.Parse(cbxCompteCredit.SelectedValue.ToString());
+
             var employe = cbxEmploye.GetItemText(cbxEmploye.SelectedItem);
             var codeEmploye = (from em in db.AgeEmployes
                                where em.PrenomNom == employe
@@ -53,7 +49,7 @@ namespace CasaEcologieSysInfo.Pages
 
             if (Validation.MontantEstValide(txtMontant.Text))
             {
-                if (ComptesDifferents(cpteDebiteur, cpteCrediteur))
+                if (ComptesDifferents(codeCpteDebiteur, codeCpteCrediteur))
                 {
                     if (Tresorerie.IlYaAssezDeFondsDansLeCompte(cbxCompteDebit, txtMontant))
                     {
@@ -64,10 +60,9 @@ namespace CasaEcologieSysInfo.Pages
                                 DateDecaissement = dtpDateOperation.Value.Date,
                                 Description = txtDescription.Text,
                                 Montant = int.Parse(txtMontant.Text),
+                                DecaissementInterne = true,
                                 CodeEmploye = codeEmploye,
-                                CodeCompte = (from cpte in db.ResComptesTresoreries
-                                              where cpte.NomCompte == cpteDebiteur
-                                              select cpte.CodeCompte).FirstOrDefault(),
+                                CodeCompte = codeCpteDebiteur
                             };
 
                             db.EveDecaissements.Add(decaissement);
@@ -75,9 +70,7 @@ namespace CasaEcologieSysInfo.Pages
 
                             EveEncaissement encaissement = new EveEncaissement
                             {
-                                CodeCompte = (from cpte in db.ResComptesTresoreries
-                                              where cpte.NomCompte == cpteCrediteur
-                                              select cpte.CodeCompte).FirstOrDefault(),
+                                CodeCompte = codeCpteCrediteur,
                                 CodeEmploye = codeEmploye,
                             };
 
@@ -94,9 +87,14 @@ namespace CasaEcologieSysInfo.Pages
 
                             db.EveEncaissementsAutres.Add(autreEnc);
                             db.SaveChanges();
+
+                            var cpteDebiteur = cbxCompteDebit.GetItemText(cbxCompteDebit.SelectedText);
+                            var cpteCrediteur = cbxCompteCredit.GetItemText(cbxCompteCredit.SelectedText);
+
                             MessageBox.Show($"Le transfert de fonds du compte {cpteDebiteur} au compte {cpteCrediteur} a été enregistré avec succès.");
                             txtDescription.Clear();
                             txtMontant.Clear();
+
                             Tresorerie.AfficherSoldeTresorerie(cbxCompteDebit, txtSoldeCompte);
                         }
                         else

@@ -146,6 +146,7 @@ namespace CasaEcologieSysInfo
             using (CasaDBEntities db = new CasaDBEntities())
             {
                 var fraisGeneraux = db.EveDecaissements
+                    .Where(d => d.DateDecaissement >= debut.Date && d.DateDecaissement <= fin.Date)
                     .Where(d => d.CodeAcquisitionServiceFourniture != null)
                     .Where(d => d.EveAcquisitionServicesFourniture.ResServicesFourniture.NomServiceFourniture != "Taxes")
                     .Where(d => d.EveAcquisitionServicesFourniture.ResServicesFourniture.NomServiceFourniture != "Retrait des propriétaires")

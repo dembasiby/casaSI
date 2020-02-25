@@ -91,9 +91,9 @@ namespace CasaEcologieSysInfo
                                       });
 
             var resultat = entrees
-                .Union(entreesTransvasage)
-                .Union(sorties)
-                .Union(sortiesTransvasage)
+                .Concat(entreesTransvasage)
+                .Concat(sorties)
+                .Concat(sortiesTransvasage)
                 .OrderByDescending(d => d.Date)
                 .ToList();
 

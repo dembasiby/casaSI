@@ -109,6 +109,7 @@
             this.cbxCompteDebit.Name = "cbxCompteDebit";
             this.cbxCompteDebit.Size = new System.Drawing.Size(277, 29);
             this.cbxCompteDebit.TabIndex = 30;
+            this.cbxCompteDebit.ValueMember = "CodeCompte";
             this.cbxCompteDebit.SelectedIndexChanged += new System.EventHandler(this.CbxCompteDebit_SelectedIndexChanged);
             // 
             // resComptesTresorerieBindingSource1
@@ -190,6 +191,7 @@
             this.cbxCompteCredit.Name = "cbxCompteCredit";
             this.cbxCompteCredit.Size = new System.Drawing.Size(277, 29);
             this.cbxCompteCredit.TabIndex = 30;
+            this.cbxCompteCredit.ValueMember = "CodeCompte";
             // 
             // resComptesTresorerieBindingSource
             // 

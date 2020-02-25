@@ -16,7 +16,7 @@ namespace CasaEcologieSysInfo.Pages
         // GESTION DES EVENEMENTS
         private void UC_EtatsFinMensuels_Load(object sender, EventArgs e)
         {
-            AfficherEtatsFinanciers();
+            //AfficherEtatsFinanciers();
         }
 
         private void DtpDebut_ValueChanged(object sender, EventArgs e)

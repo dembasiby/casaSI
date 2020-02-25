@@ -28,6 +28,7 @@ namespace CasaEcologieSysInfo
         public decimal Montant { get; set; }
         public Nullable<int> CodePaiementEmploye { get; set; }
         public Nullable<int> CodeReceptionDonMatierePremiere { get; set; }
+        public bool DecaissementInterne { get; set; }
     
         public virtual AgeAutreFournisseur AgeAutreFournisseur { get; set; }
         public virtual AgeEmploye AgeEmploye { get; set; }

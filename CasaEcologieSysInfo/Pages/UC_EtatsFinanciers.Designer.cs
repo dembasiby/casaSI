@@ -73,7 +73,7 @@
             this.dtpDebut.Name = "dtpDebut";
             this.dtpDebut.Size = new System.Drawing.Size(115, 23);
             this.dtpDebut.TabIndex = 3;
-            this.dtpDebut.Value = new System.DateTime(2020, 1, 1, 0, 0, 0, 0);
+            this.dtpDebut.Value = new System.DateTime(2020, 2, 25, 12, 40, 0, 0);
             this.dtpDebut.ValueChanged += new System.EventHandler(this.DtpDebut_ValueChanged);
             // 
             // label26

@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
 using CasaEcologieSysInfo.Classes;
 
 namespace CasaEcologieSysInfo.Pages
@@ -89,9 +83,9 @@ namespace CasaEcologieSysInfo.Pages
                               Solde = 0m
                           });
             var combinedQuery = query1
-                .Union(query4)
-                .Union(query3)
-                .Union(query2)
+                .Concat(query4)
+                .Concat(query3)
+                .Concat(query2)
                 .OrderByDescending(o => o.Date)
                 .ToList();
 
@@ -139,7 +133,7 @@ namespace CasaEcologieSysInfo.Pages
             var soldeInitiaux = (from c in db.ResComptesTresoreries
                                  select (decimal?)c.SoldeCompte).Sum() ?? 0m;
 
-            var totalEncaissements = (from c in db.EveEncaissements
+            var totalEncaissementsVentes = (from c in db.EveEncaissements
                                       from env in db.EveEncaissementsVentes
                                       where c.CodeEncaissement == env.CodeEncaissement
                                       select (decimal?)env.MontantEncaisse).Sum() ?? 0m;
@@ -150,21 +144,22 @@ namespace CasaEcologieSysInfo.Pages
 
             var totalAutresEn = (from enc in db.EveEncaissements
                                  from aut in db.EveEncaissementsAutres
+                                 where aut.FondsExternes == true
                                  where enc.CodeEncaissement == aut.CodeEncaissement
                                  select (decimal?)aut.MontantEncaisse).Sum() ?? 0m;
 
             var totalDecaissements = (from d in db.EveDecaissements
+                                      where d.DecaissementInterne == false
                                       select (decimal?)d.Montant).Sum() ?? 0m;
             var fondsDisponibleEnCaissesEtEnBanques = soldeInitiaux
-                + totalEncaissements + totalAutresEn + encaissementCreance
+                + totalEncaissementsVentes + totalAutresEn + encaissementCreance
                 - totalDecaissements;
 
             txtSoldesInitiaux.Text = soldeInitiaux.ToString("c0");
-            txtTotalEncaissements.Text = (totalEncaissements + encaissementCreance + totalAutresEn).ToString("c0");
+            txtTotalEncaissements.Text = (totalEncaissementsVentes + encaissementCreance + totalAutresEn).ToString("c0");
             txtTotalDecaissements.Text = totalDecaissements.ToString("c0");
-            
 
-            txtSolde.Text = fondsDisponibleEnCaissesEtEnBanques.ToString("c0");       
+            txtSolde.Text = fondsDisponibleEnCaissesEtEnBanques.ToString("n0");
         }
 
         private void BtnImprimerJournal_Click(object sender, EventArgs e)

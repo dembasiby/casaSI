@@ -75,7 +75,7 @@ namespace CasaEcologieSysInfo
                              Personnel = d.Montant
                          });
 
-            var resultat = matP.Union(sF).Union(eInf).Union(perso)
+            var resultat = matP.Concat(sF).Concat(eInf).Concat(perso)
                 .OrderByDescending(d => d.Date)
                 .ToList();
 
