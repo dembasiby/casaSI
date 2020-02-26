@@ -83,8 +83,8 @@ namespace CasaEcologieSysInfo.Pages.Corrections
         {
             try
             {
-                lvwPanier.FocusedItem.Remove();
                 SupprimerVenteProduit();
+                lvwPanier.FocusedItem.Remove();
             }
             catch (Exception)
             {
@@ -464,7 +464,7 @@ namespace CasaEcologieSysInfo.Pages.Corrections
                     string produit = lvwPanier.FocusedItem.SubItems[0].Text;
                     int codeProduit = db.ResStockProduitsFinis.Where(p => p.NomProduit == produit).Select(p => p.CodeProduit).First();
                     bool produitDansLePanierInitial = ProduitDansLePanierInitial(codeVente, produit);
-                    var venteProduit = db.EveVenteStockProduitsFinis.Where(vpf => vpf.CodeVente == codeVente).Single(p => p.CodeProduitFini == codeProduit);
+                    var venteProduit = db.EveVenteStockProduitsFinis.Where(vpf => vpf.CodeVente == codeVente && vpf.CodeProduitFini == codeProduit).FirstOrDefault();
 
                     db.EveVenteStockProduitsFinis.Remove(venteProduit);
                     db.SaveChanges();

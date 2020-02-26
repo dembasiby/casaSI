@@ -134,9 +134,10 @@ namespace CasaEcologieSysInfo.Pages
                                  select (decimal?)c.SoldeCompte).Sum() ?? 0m;
 
             var totalEncaissementsVentes = (from c in db.EveEncaissements
-                                      from env in db.EveEncaissementsVentes
-                                      where c.CodeEncaissement == env.CodeEncaissement
-                                      select (decimal?)env.MontantEncaisse).Sum() ?? 0m;
+                                           from env in db.EveEncaissementsVentes
+                                           where c.CodeEncaissement == env.CodeEncaissement
+                                           select (decimal?)env.MontantEncaisse).Sum() ?? 0m;
+
             var encaissementCreance = (from c in db.EveEncaissements
                                       from env in db.EveEncaissementsCreances
                                       where c.CodeEncaissement == env.CodeEncaissement
@@ -151,6 +152,7 @@ namespace CasaEcologieSysInfo.Pages
             var totalDecaissements = (from d in db.EveDecaissements
                                       where d.DecaissementInterne == false
                                       select (decimal?)d.Montant).Sum() ?? 0m;
+
             var fondsDisponibleEnCaissesEtEnBanques = soldeInitiaux
                 + totalEncaissementsVentes + totalAutresEn + encaissementCreance
                 - totalDecaissements;
@@ -159,7 +161,7 @@ namespace CasaEcologieSysInfo.Pages
             txtTotalEncaissements.Text = (totalEncaissementsVentes + encaissementCreance + totalAutresEn).ToString("c0");
             txtTotalDecaissements.Text = totalDecaissements.ToString("c0");
 
-            txtSolde.Text = fondsDisponibleEnCaissesEtEnBanques.ToString("n0");
+            txtSolde.Text = Tresorerie.CalculerSoldeTresorerie(DateTime.Today);
         }
 
         private void BtnImprimerJournal_Click(object sender, EventArgs e)
