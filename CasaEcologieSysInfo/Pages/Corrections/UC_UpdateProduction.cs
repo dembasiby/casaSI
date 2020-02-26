@@ -65,6 +65,8 @@ namespace CasaEcologieSysInfo.Pages.Corrections
 
                     if (CEstUnProduitFini(_codeProduction))
                     {
+                        string nomProduit = cbxProduitFini.GetItemText(cbxProduitFini.SelectedItem);
+
                         if (!IlYAvaitDuSucre(_codeProduction))
                         {
                             AjouterSucre(production);
@@ -79,16 +81,23 @@ namespace CasaEcologieSysInfo.Pages.Corrections
                         }
 
                         MettreProduitFiniAJour(_codeProduction);
-                        MettreEmballageAJour(_codeProduction);
-                        MettreEtiquetteAJour(_codeProduction);
 
+                        if (nomProduit.ToLower().StartsWith("sachet") || nomProduit.ToLower().StartsWith("pastille"))
+                        {
+                            MettreEmballageAJour(_codeProduction, "sachet");
+                        }
+                        else
+                        {
+                            MettreEmballageAJour(_codeProduction, "emballage");
+                            MettreEtiquetteAJour(_codeProduction);
+                        }
                     }
                     else
                     {
                         MettreProduitSemiFiniAJour(_codeProduction);
                     }
 
-                    MessageBox.Show("La production a pas été mise à jour.");
+                    MessageBox.Show("La production a été mise à jour.");
                 }
                 catch (Exception)
                 {
@@ -439,6 +448,33 @@ namespace CasaEcologieSysInfo.Pages.Corrections
                     if (productionProduitFini.QuantiteProduitFini != quantite)
                     {                     
                         productionProduitFini.QuantiteProduitFini = quantite;
+                        int codeUtilisationRess = productionProduitFini.EveProduction.CodeUtilisationRessources;
+                        var utilisationRess = db.EveUtilisationRessources.Where(ur => ur.CodeUtilisationRessources == codeUtilisationRess).FirstOrDefault();
+
+                        EveUtilisationMatieresPremiere utilisationEmballage;
+
+                        if (!produitFini.ToLower().StartsWith("sachet") && !produitFini.ToLower().StartsWith("pastille"))
+                        {
+                            var utilisationEtiquette = utilisationRess.EveUtilisationMatieresPremieres
+                                                    .Where(ump => ump.ResStockMatieresPremiere.TypesMatiere.NomType.ToLower() == "etiquette")
+                                                    .FirstOrDefault();
+
+                            utilisationEmballage = utilisationRess.EveUtilisationMatieresPremieres
+                                                    .Where(ump => ump.ResStockMatieresPremiere.TypesMatiere.NomType.ToLower() == "emballage")
+                                                    .FirstOrDefault();
+
+                            utilisationEtiquette.QuantiteMatierePremiere = quantite;
+                            utilisationEmballage.QuantiteMatierePremiere = quantite;
+                        }
+                        else
+                        {
+                            utilisationEmballage = utilisationRess.EveUtilisationMatieresPremieres
+                                                    .Where(ump => ump.ResStockMatieresPremiere.TypesMatiere.NomType.ToLower() == "sachet")
+                                                    .FirstOrDefault();
+
+                            utilisationEmballage.QuantiteMatierePremiere = quantite;
+                        }
+
                         db.SaveChanges();
                     }
                 }
@@ -562,7 +598,7 @@ namespace CasaEcologieSysInfo.Pages.Corrections
             }
         }
 
-        private void MettreEmballageAJour(int codeProduction)
+        private void MettreEmballageAJour(int codeProduction, string typeEmballage)
         {
             using (CasaDBEntities db = new CasaDBEntities())
             {
@@ -571,13 +607,15 @@ namespace CasaEcologieSysInfo.Pages.Corrections
                     var production = db.EveProductions.Where(p => p.CodeProduction == codeProduction).FirstOrDefault();
                     var emballageUtilise = production.EveUtilisationRessource
                         .EveUtilisationMatieresPremieres
-                        .Where(mp => mp.ResStockMatieresPremiere.TypesMatiere.NomType == "Emballage")
+                        .Where(mp => mp.ResStockMatieresPremiere.TypesMatiere.NomType.ToLower() == typeEmballage)
                         .FirstOrDefault();
 
                     var emballage = emballageUtilise.ResStockMatieresPremiere.NomMatiere;
+                    var emballageSelectionne = cbxEmballage.GetItemText(cbxEmballage.SelectedItem);
+
                     int.TryParse(txtNombreProduitsFinis.Text, out int quantite);
 
-                    if (emballage != cbxEmballage.Text)
+                    if (emballage != emballageSelectionne)
                     {
                         db.EveUtilisationMatieresPremieres.Remove(emballageUtilise);
                         db.SaveChanges();
@@ -614,10 +652,12 @@ namespace CasaEcologieSysInfo.Pages.Corrections
                         .FirstOrDefault();
 
                     var etiquette = etiquetteUtilise.ResStockMatieresPremiere.NomMatiere;
+                    var etiquetteSelectionne = cbxEtiquette.GetItemText(cbxEtiquette.SelectedItem);
+
                     int.TryParse(txtNombreProduitsFinis.Text, out int quantite);
 
 
-                    if (etiquette != cbxEmballage.Text)
+                    if (etiquette != etiquetteSelectionne)
                     {
                         db.EveUtilisationMatieresPremieres.Remove(etiquetteUtilise);
                         db.SaveChanges();
@@ -701,6 +741,11 @@ namespace CasaEcologieSysInfo.Pages.Corrections
                     MessageBox.Show("Erreur: la production n'a pas été supprimée.");
                 }
             }            
+        }
+
+        private void CbxProduitFini_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Production.ActiverListeEtiquettes(cbxProduitFini, cbxEtiquette);
         }
     }
 }

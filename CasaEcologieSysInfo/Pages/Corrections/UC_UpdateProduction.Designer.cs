@@ -35,6 +35,7 @@
             this.dtpDebut = new System.Windows.Forms.DateTimePicker();
             this.dgvListeProductions = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.BtnSupprimerProduction = new System.Windows.Forms.Button();
             this.btnMettreProductionAJour = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -52,7 +53,6 @@
             this.cbxFruitUtilise = new System.Windows.Forms.ComboBox();
             this.txtQuantiteSucre = new System.Windows.Forms.TextBox();
             this.txtQuantiteFruit = new System.Windows.Forms.TextBox();
-            this.BtnSupprimerProduction = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListeProductions)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -135,6 +135,23 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Détails de la production";
             // 
+            // BtnSupprimerProduction
+            // 
+            this.BtnSupprimerProduction.BackColor = System.Drawing.Color.DarkRed;
+            this.BtnSupprimerProduction.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnSupprimerProduction.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.BtnSupprimerProduction.FlatAppearance.BorderSize = 2;
+            this.BtnSupprimerProduction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnSupprimerProduction.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnSupprimerProduction.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.BtnSupprimerProduction.Location = new System.Drawing.Point(413, 371);
+            this.BtnSupprimerProduction.Name = "BtnSupprimerProduction";
+            this.BtnSupprimerProduction.Size = new System.Drawing.Size(229, 39);
+            this.BtnSupprimerProduction.TabIndex = 39;
+            this.BtnSupprimerProduction.Text = "Supprimer la production";
+            this.BtnSupprimerProduction.UseVisualStyleBackColor = false;
+            this.BtnSupprimerProduction.Click += new System.EventHandler(this.BtnSupprimerProduction_Click);
+            // 
             // btnMettreProductionAJour
             // 
             this.btnMettreProductionAJour.BackColor = System.Drawing.Color.DarkGray;
@@ -191,6 +208,7 @@
             this.cbxProduitFini.Name = "cbxProduitFini";
             this.cbxProduitFini.Size = new System.Drawing.Size(224, 29);
             this.cbxProduitFini.TabIndex = 1;
+            this.cbxProduitFini.SelectedIndexChanged += new System.EventHandler(this.CbxProduitFini_SelectedIndexChanged);
             // 
             // txtNombreProduitsFinis
             // 
@@ -304,23 +322,6 @@
             this.txtQuantiteFruit.Name = "txtQuantiteFruit";
             this.txtQuantiteFruit.Size = new System.Drawing.Size(86, 27);
             this.txtQuantiteFruit.TabIndex = 2;
-            // 
-            // BtnSupprimerProduction
-            // 
-            this.BtnSupprimerProduction.BackColor = System.Drawing.Color.DarkRed;
-            this.BtnSupprimerProduction.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BtnSupprimerProduction.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.BtnSupprimerProduction.FlatAppearance.BorderSize = 2;
-            this.BtnSupprimerProduction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnSupprimerProduction.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnSupprimerProduction.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.BtnSupprimerProduction.Location = new System.Drawing.Point(413, 371);
-            this.BtnSupprimerProduction.Name = "BtnSupprimerProduction";
-            this.BtnSupprimerProduction.Size = new System.Drawing.Size(229, 39);
-            this.BtnSupprimerProduction.TabIndex = 39;
-            this.BtnSupprimerProduction.Text = "Supprimer la production";
-            this.BtnSupprimerProduction.UseVisualStyleBackColor = false;
-            this.BtnSupprimerProduction.Click += new System.EventHandler(this.BtnSupprimerProduction_Click);
             // 
             // UC_UpdateProduction
             // 

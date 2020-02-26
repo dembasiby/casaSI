@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CasaEcologieSysInfo.Classes;
+using System;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
@@ -652,16 +653,7 @@ namespace CasaEcologieSysInfo
 
         private void CbxProduitsProduits_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string nomProduit = cbxProduitsProduits.GetItemText(cbxProduitsProduits.SelectedItem);
-
-            if (nomProduit.ToLower().StartsWith("sachet") || nomProduit.ToLower().StartsWith("pastille"))
-            {
-                cbxEtiquettes.Enabled = false;
-            }
-            else
-            {
-                cbxEtiquettes.Enabled = true;
-            }
+            Production.ActiverListeEtiquettes(cbxProduitsProduits, cbxEtiquettes);
         }
 
         private void TxtEmballagesDisponibles_TextChanged(object sender, EventArgs e)
