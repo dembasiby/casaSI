@@ -29,5 +29,22 @@ namespace CasaEcologieSysInfo.Classes
                 grid.DataSource = dt;
             }
         }
+
+        public static void ActiverListeEtiquettes(ComboBox listeProduits, ComboBox listeEtiquettes)
+        {
+            using (CasaDBEntities db = new CasaDBEntities())
+            {
+                string nomProduit = listeProduits.GetItemText(listeProduits.SelectedItem);
+
+                if (nomProduit.ToLower().StartsWith("sachet") || nomProduit.ToLower().StartsWith("pastille"))
+                {
+                    listeEtiquettes.Enabled = false;
+                }
+                else
+                {
+                    listeEtiquettes.Enabled = true;
+                } 
+            }
+        }
     }
 }
