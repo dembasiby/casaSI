@@ -35,6 +35,9 @@
             this.txtTotalDettesFournisseurs = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnImprimerTableau = new System.Windows.Forms.Button();
+            this.rbtFMatieresPremieres = new System.Windows.Forms.RadioButton();
+            this.rbtAutresFournisseurs = new System.Windows.Forms.RadioButton();
+            this.rbtFEquipementsInfra = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -58,7 +61,7 @@
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(199, 70);
+            this.dataGridView1.Location = new System.Drawing.Point(199, 105);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -129,10 +132,49 @@
             this.btnImprimerTableau.UseVisualStyleBackColor = false;
             this.btnImprimerTableau.Click += new System.EventHandler(this.BtnImprimerTableau_Click);
             // 
+            // rbtFMatieresPremieres
+            // 
+            this.rbtFMatieresPremieres.AutoSize = true;
+            this.rbtFMatieresPremieres.Location = new System.Drawing.Point(229, 76);
+            this.rbtFMatieresPremieres.Name = "rbtFMatieresPremieres";
+            this.rbtFMatieresPremieres.Size = new System.Drawing.Size(224, 21);
+            this.rbtFMatieresPremieres.TabIndex = 61;
+            this.rbtFMatieresPremieres.TabStop = true;
+            this.rbtFMatieresPremieres.Text = "Fournisseurs matières premières";
+            this.rbtFMatieresPremieres.UseVisualStyleBackColor = true;
+            this.rbtFMatieresPremieres.CheckedChanged += new System.EventHandler(this.RbtFMatieresPremieres_CheckedChanged);
+            // 
+            // rbtAutresFournisseurs
+            // 
+            this.rbtAutresFournisseurs.AutoSize = true;
+            this.rbtAutresFournisseurs.Location = new System.Drawing.Point(743, 76);
+            this.rbtAutresFournisseurs.Name = "rbtAutresFournisseurs";
+            this.rbtAutresFournisseurs.Size = new System.Drawing.Size(140, 21);
+            this.rbtAutresFournisseurs.TabIndex = 61;
+            this.rbtAutresFournisseurs.TabStop = true;
+            this.rbtAutresFournisseurs.Text = "Autres fournisseurs";
+            this.rbtAutresFournisseurs.UseVisualStyleBackColor = true;
+            this.rbtAutresFournisseurs.CheckedChanged += new System.EventHandler(this.RbtAutresFournisseurs_CheckedChanged);
+            // 
+            // rbtFEquipementsInfra
+            // 
+            this.rbtFEquipementsInfra.AutoSize = true;
+            this.rbtFEquipementsInfra.Location = new System.Drawing.Point(460, 77);
+            this.rbtFEquipementsInfra.Name = "rbtFEquipementsInfra";
+            this.rbtFEquipementsInfra.Size = new System.Drawing.Size(276, 21);
+            this.rbtFEquipementsInfra.TabIndex = 61;
+            this.rbtFEquipementsInfra.TabStop = true;
+            this.rbtFEquipementsInfra.Text = "Fournisseurs équipement/infrastructures";
+            this.rbtFEquipementsInfra.UseVisualStyleBackColor = true;
+            this.rbtFEquipementsInfra.CheckedChanged += new System.EventHandler(this.RbtFEquipementsInfra_CheckedChanged);
+            // 
             // UC_DettesFournisseurs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.rbtFEquipementsInfra);
+            this.Controls.Add(this.rbtAutresFournisseurs);
+            this.Controls.Add(this.rbtFMatieresPremieres);
             this.Controls.Add(this.btnImprimerTableau);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtTotalDettesFournisseurs);
@@ -160,5 +202,8 @@
         private System.Windows.Forms.TextBox txtTotalDettesFournisseurs;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnImprimerTableau;
+        private System.Windows.Forms.RadioButton rbtFMatieresPremieres;
+        private System.Windows.Forms.RadioButton rbtAutresFournisseurs;
+        private System.Windows.Forms.RadioButton rbtFEquipementsInfra;
     }
 }
