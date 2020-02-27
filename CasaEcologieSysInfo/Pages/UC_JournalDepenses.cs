@@ -30,7 +30,7 @@ namespace CasaEcologieSysInfo
                         {
                             Date = rmp.DateReception,
                             Description = mp.NomMatiere,
-                            Matiere_Premiere = rmp.Montant,
+                            Matiere_Premiere = rmp.Montant + (decimal?)rmp.TransportMatierePremiere ?? 0m,
                             Services_et_fournitures = 0m,
                             Infrastructures_et_equipements = 0m,
                             Personnel = 0m
@@ -44,7 +44,7 @@ namespace CasaEcologieSysInfo
                           asf.Date,
                           Description = sf.NomServiceFourniture,
                           Matiere_Premiere = 0m,
-                          Services_et_fournitures = asf.Montant,
+                          Services_et_fournitures = asf.Montant + asf.TransportServiceFourniture ?? 0m,
                           Infrastructures_et_equipements = 0m,
                           Personnel = 0m
                       });
