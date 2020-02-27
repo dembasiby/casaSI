@@ -210,9 +210,9 @@ namespace CasaEcologieSysInfo.Pages
                                             MontantPaye = (decimal?)fs.EveDecaissements.Select(m => m.Montant).FirstOrDefault() ?? 0m,
                                             Solde = 0m
                                         });
-            var operationsAchatMP = achatMatierePrem.Concat(decaissementMP).OrderByDescending(op => op.Date).ToList();
-            var operationsAchatEquip = achatEquipementInfr.Concat(decaisementEquip).OrderByDescending(op => op.Date).ToList();
-            var operationsAchatFournServ = achatServFournitures.Concat(decaissementServFourn).OrderByDescending(op => op.Date).ToList();
+            var operationsAchatMP = achatMatierePrem.Concat(decaissementMP).OrderBy(op => op.Date).ToList();
+            var operationsAchatEquip = achatEquipementInfr.Concat(decaisementEquip).OrderBy(op => op.Date).ToList();
+            var operationsAchatFournServ = achatServFournitures.Concat(decaissementServFourn).OrderBy(op => op.Date).ToList();
 
             DataTable dt;
             var soldeInitial = 0m;
