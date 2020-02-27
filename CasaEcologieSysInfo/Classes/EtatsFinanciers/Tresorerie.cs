@@ -509,6 +509,8 @@ namespace CasaEcologieSysInfo.Classes
             }
         }
 
+
+
         public static decimal CalculerTotalDettesFournisseursALaDateDu(DateTime date)
         {
             using (CasaDBEntities db = new CasaDBEntities())
@@ -556,6 +558,73 @@ namespace CasaEcologieSysInfo.Classes
                 return soldeInitial + soldeInitialFE + soldeInitialFS
                     + totalAchats + totalAchatsFE + totalPaiementsFS
                     - totalPaiements - totalPaiementsFE - totalPaiementsFS;
+            }
+        }
+
+        public static decimal CalculerTotalDettesFournisseurMatierePremiere(int codeFournisseur)
+        {
+            using (CasaDBEntities db = new CasaDBEntities())
+            {
+                var soldeInitial = (from fmp in db.AgeFournisseursMatieresPremieres
+                                    where fmp.CodeFournisseurMatierePremiere == codeFournisseur
+                                    select (decimal?)fmp.SoldeDette).Sum() ?? 0m;
+
+                var totalAchats = (from fmp in db.AgeFournisseursMatieresPremieres
+                                   join rmp in db.EveReceptionMatieresPremieres on fmp.CodeFournisseurMatierePremiere equals rmp.CodeFournisseurMatierePremiere
+                                   where fmp.CodeFournisseurMatierePremiere == codeFournisseur
+                                   select (decimal?)rmp.Montant).Sum() ?? 0m;
+
+                var totalPaiements = (from fmp in db.AgeFournisseursMatieresPremieres
+                                      join d in db.EveDecaissements on fmp.CodeFournisseurMatierePremiere equals d.CodeFournisseurMatierePremiere
+                                      where fmp.CodeFournisseurMatierePremiere == codeFournisseur
+                                      select (decimal?)d.Montant).Sum() ?? 0m;
+
+                return soldeInitial + totalAchats - totalPaiements;    
+            }
+        }
+
+        public static decimal CalculerTotalDettesFournisseurEquipementsInfrastructures(int codeFournisseur)
+        {
+            using (CasaDBEntities db = new CasaDBEntities())
+            {
+                var soldeInitialFE = (from f in db.AgeAutreFournisseurs
+                                      where f.CodeAutreFournisseur == codeFournisseur
+                                      select (decimal?)f.SoldeInitialDetteFournisseur).Sum() ?? 0m;
+
+                var totalAchatsFE = (from f in db.AgeAutreFournisseurs
+                                     join rmp in db.EveReceptionEquipementsInfrastructures on f.CodeAutreFournisseur equals rmp.CodeAutreFournisseur
+                                     join ei in db.ResEquipementsInfrastructures on rmp.CodeEquipementInfrastructure equals ei.CodeEquipementInfrastructure
+                                     where f.CodeAutreFournisseur == codeFournisseur
+                                     select (decimal?)ei.Montant).Sum() ?? 0m;
+
+                var totalPaiementsFE = (from f in db.AgeAutreFournisseurs
+                                        join d in db.EveDecaissements on f.CodeAutreFournisseur equals d.CodeAutreFournisseur
+                                        where f.CodeAutreFournisseur == codeFournisseur
+                                        select (decimal?)d.Montant).Sum() ?? 0m;
+
+                return soldeInitialFE + totalAchatsFE - totalPaiementsFE;  
+            }
+        }
+
+        public static decimal CalculerTotalDettesFournisseurServicesFournitures(int codeFournisseur)
+        {
+            using (CasaDBEntities db = new CasaDBEntities())
+            {
+                var soldeInitialFS = (from f in db.AgeFournisseursServicesFournitures
+                                      where f.CodeFournisseurServiceFourniture == codeFournisseur
+                                      select (decimal?)f.SoldeDette).Sum() ?? 0m;
+
+                var totalAchatsFS = (from f in db.AgeFournisseursServicesFournitures
+                                     join rmp in db.EveAcquisitionServicesFournitures on f.CodeFournisseurServiceFourniture equals rmp.CodeFournisseurServiceFourniture
+                                     where f.CodeFournisseurServiceFourniture == codeFournisseur
+                                     select (decimal?)rmp.Montant).Sum() ?? 0m;
+
+                var totalPaiementsFS = (from f in db.EveAcquisitionServicesFournitures
+                                        join d in db.EveDecaissements on f.CodeAcquisitionServiceFourniture equals d.CodeAcquisitionServiceFourniture
+                                        where f.CodeFournisseurServiceFourniture == codeFournisseur
+                                        select (decimal?)d.Montant).Sum() ?? 0m;
+
+                return soldeInitialFS + totalPaiementsFS - totalPaiementsFS;        
             }
         }
 
