@@ -41,45 +41,47 @@ namespace CasaEcologieSysInfo.Pages
             ListerFournisseurAvecDettesFournisseurs();
         }
 
+        private int ExtraireCodeFournisseur()
+        {
+            string fournisseur = lbxListeFournisseursDettes.GetItemText(lbxListeFournisseursDettes.SelectedItem);
+            int codeFournisseur;
 
+            if (rbtFMatieresPremieres.Checked)
+            {
+                codeFournisseur = db.AgeFournisseursMatieresPremieres
+                                  .Where(f => f.Nom == fournisseur)
+                                  .Select(f => f.CodeFournisseurMatierePremiere)
+                                  .FirstOrDefault();
+
+            }
+            else if (rbtFEquipementsInfra.Checked)
+            {
+                codeFournisseur = db.AgeAutreFournisseurs
+                                .Where(f => f.NomAutreFournisseur == fournisseur)
+                                .Select(f => f.CodeAutreFournisseur)
+                                .FirstOrDefault();
+            }
+            else
+            {
+                codeFournisseur = db.AgeFournisseursServicesFournitures
+                                .Where(f => f.NomFournisseurServiceFourniture == fournisseur)
+                                .Select(f => f.CodeFournisseurServiceFourniture)
+                                .FirstOrDefault();
+            }
+
+            return codeFournisseur;
+        }
 
         private void LbxListeFournisseursDettes_SelectedValueChanged(object sender, EventArgs e)
         {
             if (lbxListeFournisseursDettes.Items.Count > 0)
             {
-                string fournisseur = lbxListeFournisseursDettes.GetItemText(lbxListeFournisseursDettes.SelectedItem);
-                int codeFournisseur;
-
-                if (rbtFMatieresPremieres.Checked)
-                {
-                    codeFournisseur = db.AgeFournisseursMatieresPremieres
-                                      .Where(f => f.Nom == fournisseur)
-                                      .Select(f => f.CodeFournisseurMatierePremiere)
-                                      .FirstOrDefault();
-
-                }
-                else if (rbtFEquipementsInfra.Checked)
-                {
-                    codeFournisseur = db.AgeAutreFournisseurs
-                                    .Where(f => f.NomAutreFournisseur == fournisseur)
-                                    .Select(f => f.CodeAutreFournisseur)
-                                    .FirstOrDefault();
-                }
-                else
-                {
-                    codeFournisseur = db.AgeFournisseursServicesFournitures
-                                    .Where(f => f.NomFournisseurServiceFourniture == fournisseur)
-                                    .Select(f => f.CodeFournisseurServiceFourniture)
-                                    .FirstOrDefault();
-                }
-
-                MontrerDetailsDettesFournisseur(codeFournisseur);
+                MontrerDetailsDettesFournisseur(ExtraireCodeFournisseur());
             }
             else
             {
                 MessageBox.Show($"Le GIE n'a pas de dettes fournisseurs en ce moment pour cette catégorie.");
             }
-
         }
 
         private void BtnImprimerTableau_Click(object sender, EventArgs e)
@@ -88,7 +90,9 @@ namespace CasaEcologieSysInfo.Pages
         }
 
 
-
+         /************************************************************
+         *                         HELPERS
+         ************************************************************/
         private List<AgeFournisseursMatieresPremiere> ListeFournisseurMatieresPremieres ()
         {
             var listeFournisseurs = db.AgeFournisseursMatieresPremieres.ToList();
@@ -118,14 +122,20 @@ namespace CasaEcologieSysInfo.Pages
             if (rbtFMatieresPremieres.Checked)
             {
                 lbxListeFournisseursDettes.DataSource = ListeFournisseurMatieresPremieres();
+                lbxListeFournisseursDettes.DisplayMember = "Nom";
+                lbxListeFournisseursDettes.ValueMember = "CodeFournisseurMatierePremiere";
             }
             else if (rbtFEquipementsInfra.Checked)
             {
                 lbxListeFournisseursDettes.DataSource = ListeFournisseursEquipementsInfrastructures();
+                lbxListeFournisseursDettes.DisplayMember = "NomAutreFournisseur";
+                lbxListeFournisseursDettes.ValueMember = "CodeAutreFournisseur";
             }
             else if (rbtAutresFournisseurs.Checked)
             {
                 lbxListeFournisseursDettes.DataSource = ListeFournisseursServicesFournitures();
+                lbxListeFournisseursDettes.DisplayMember = "NomFournisseurServiceFourniture";
+                lbxListeFournisseursDettes.ValueMember = "CodeFournisseurServiceFourniture";
             }        
         }
 
@@ -142,8 +152,7 @@ namespace CasaEcologieSysInfo.Pages
                                         MontantAchat = (decimal?)rmp.Montant ?? 0m,
                                         MontantPaye = 0m,
                                         Solde = 0m
-                                    }
-                                 );
+                                    });
 
             var achatEquipementInfr = (from af in db.AgeAutreFournisseurs
                                        where af.CodeAutreFournisseur == codeFournisseur
@@ -154,8 +163,7 @@ namespace CasaEcologieSysInfo.Pages
                                            MontantAchat = (decimal?)af.EveReceptionEquipementsInfrastructures.Select(s => s.ResEquipementsInfrastructure.Montant).FirstOrDefault() ?? 0m,
                                            MontantPaye = 0m,
                                            Solde = 0m
-                                       }
-                                 );
+                                       });
 
             var achatServFournitures = (from fs in db.AgeFournisseursServicesFournitures
                                         where fs.CodeFournisseurServiceFourniture == codeFournisseur
@@ -166,8 +174,7 @@ namespace CasaEcologieSysInfo.Pages
                                             MontantAchat = (decimal?)fs.EveAcquisitionServicesFournitures.Select(s => s.Montant).FirstOrDefault() ?? 0m,
                                             MontantPaye = 0m,
                                             Solde = 0m
-                                        }
-                                 );
+                                        });
 
             var decaissementMP = (from fmp in db.AgeFournisseursMatieresPremieres
                                   from d in db.EveDecaissements
@@ -180,8 +187,7 @@ namespace CasaEcologieSysInfo.Pages
                                       MontantAchat = 0m,
                                       MontantPaye = (decimal?)d.Montant ?? 0m,
                                       Solde = 0m
-                                  }
-                                 );
+                                  });
 
             var decaisementEquip = (from af in db.AgeAutreFournisseurs
                                 where af.CodeAutreFournisseur == codeFournisseur
@@ -192,8 +198,7 @@ namespace CasaEcologieSysInfo.Pages
                                     MontantAchat = 0m,
                                     MontantPaye = (decimal?)af.EveDecaissements.Select(m => m.Montant).FirstOrDefault() ?? 0m,
                                     Solde = 0m
-                                }
-                                 );
+                                });
 
             var decaissementServFourn = (from fs in db.AgeFournisseursServicesFournitures
                                         where fs.CodeFournisseurServiceFourniture == codeFournisseur
@@ -204,11 +209,10 @@ namespace CasaEcologieSysInfo.Pages
                                             MontantAchat = 0m,
                                             MontantPaye = (decimal?)fs.EveDecaissements.Select(m => m.Montant).FirstOrDefault() ?? 0m,
                                             Solde = 0m
-                                        }
-                                 );
-            var operationsAchatMP = achatMatierePrem.Concat(decaissementMP).ToList();
-            var operationsAchatEquip = achatEquipementInfr.Concat(decaisementEquip).ToList();
-            var operationsAchatFournServ = achatServFournitures.Concat(decaissementServFourn).ToList();
+                                        });
+            var operationsAchatMP = achatMatierePrem.Concat(decaissementMP).OrderByDescending(op => op.Date).ToList();
+            var operationsAchatEquip = achatEquipementInfr.Concat(decaisementEquip).OrderByDescending(op => op.Date).ToList();
+            var operationsAchatFournServ = achatServFournitures.Concat(decaissementServFourn).OrderByDescending(op => op.Date).ToList();
 
             DataTable dt;
             var soldeInitial = 0m;
