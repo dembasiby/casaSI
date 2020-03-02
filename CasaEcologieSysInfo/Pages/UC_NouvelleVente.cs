@@ -145,6 +145,7 @@ namespace CasaEcologieSysInfo
                 };
 
                 db.EveVentes.Add(vente);
+                db.SaveChanges();
 
                 for (int i = 0; i < listView1.Items.Count; i++)
                 {
@@ -180,9 +181,9 @@ namespace CasaEcologieSysInfo
                     };
 
                     db.EveEncaissementsVentes.Add(encV);
+                    db.SaveChanges();
                 }
 
-                db.SaveChanges();
                 listView1.Items.Clear();
                 lblTotalFacture.Text = "";
                 txtMontantEncaisse.Text = "0";

@@ -21,7 +21,7 @@ namespace CasaEcologieSysInfo.Classes
                     };
 
                     db.EveVenteStockProduitsFinis.Add(venteProduit);
-                    //db.SaveChanges();
+                    db.SaveChanges();
                 }
             }
         }
