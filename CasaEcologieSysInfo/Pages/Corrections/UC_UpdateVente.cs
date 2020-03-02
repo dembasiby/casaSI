@@ -371,7 +371,9 @@ namespace CasaEcologieSysInfo.Pages.Corrections
             {
                 try
                 {
+                    EveVente vente = db.EveVentes.FirstOrDefault(v => v.CodeVente == codeVente);
                     EveEncaissementsVente encaissementVente = db.EveEncaissementsVentes.Where(v => v.CodeVente == codeVente).FirstOrDefault();
+
 
                     for (int i = 0; i < lvwPanier.Items.Count; i++)
                     {
@@ -390,6 +392,9 @@ namespace CasaEcologieSysInfo.Pages.Corrections
                         }
                     }
 
+                    var montantPaye = Conversion.EnleverEspaces(txtMontantPaye.Text);
+
+
                     if (IlYaEuEncaissementDeVente(codeVente))
                     {
                         int codeCompte = int.Parse(cbxListeComptes.SelectedValue.ToString());
@@ -401,14 +406,45 @@ namespace CasaEcologieSysInfo.Pages.Corrections
                             db.SaveChanges();
                         }
 
-                        var montantPaye = Conversion.EnleverEspaces(txtMontantPaye.Text);
+                        // Le client a changé
+                        if (int.Parse(cbxListeClients.SelectedValue.ToString()) != vente.CodeClient)
+                        {
+                            vente.CodeClient = int.Parse(cbxListeClients.SelectedValue.ToString());
+                            db.SaveChanges();
+                        }
 
-                        if (Validation.VerifierChampsMontant(montantPaye) && float.Parse(montantPaye) > 0)
+
+                        if (Validation.VerifierChampsMontant(montantPaye))
                         {
                             if (MontantPaye(codeVente) != decimal.Parse(montantPaye))
                             {
                                 GestionVentes.MettreEncaissementVenteAJour(codeVente, decimal.Parse(montantPaye), codeCompte);
                             }
+                        }
+                    }
+                    else
+                    {
+                        if (Validation.VerifierChampsMontant(montantPaye) && decimal.Parse(montantPaye) > 0)
+                        {
+                            EveEncaissement encaisement = new EveEncaissement
+                            {
+                                CodeCompte = int.Parse(cbxListeComptes.SelectedValue.ToString()),
+                                CodeEmploye = 6, // Maimouna par defaut
+                            };
+
+                            db.EveEncaissements.Add(encaisement);
+
+                            EveEncaissementsVente newEncaissement = new EveEncaissementsVente
+                            {
+                                DateEncaissement = dtpDateVente.Value.Date,
+                                CodeVente = vente.CodeVente,
+                                CodeEncaissement = encaisement.CodeEncaissement,
+                                CodeClient = int.Parse(cbxListeClients.SelectedValue.ToString()),
+                                MontantEncaisse = decimal.Parse(montantPaye)
+                            };
+
+                            db.EveEncaissementsVentes.Add(newEncaissement);
+                            db.SaveChanges();
                         }
                     }
                     MessageBox.Show("Transaction mise à jour.");

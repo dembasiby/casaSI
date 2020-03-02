@@ -29,8 +29,8 @@ namespace CasaEcologieSysInfo
                         select new
                         {
                             Date = rmp.DateReception,
-                            Description = mp.NomMatiere,
-                            Matiere_Premiere = rmp.Montant + (decimal?)rmp.TransportMatierePremiere ?? 0m,
+                            Description = "Achat et transport" + mp.NomMatiere,
+                            Matiere_Premiere = rmp.Montant + ((decimal?)rmp.TransportMatierePremiere ?? 0),
                             Services_et_fournitures = 0m,
                             Infrastructures_et_equipements = 0m,
                             Personnel = 0m
@@ -38,15 +38,30 @@ namespace CasaEcologieSysInfo
 
             var sF = (from asf in db.EveAcquisitionServicesFournitures
                       join sf in db.ResServicesFournitures on asf.CodeServiceFourniture equals sf.CodeServiceFourniture
+                      where sf.NomServiceFourniture.ToLower() != "autres salaires"
 
                       select new
                       {
                           asf.Date,
                           Description = sf.NomServiceFourniture,
                           Matiere_Premiere = 0m,
-                          Services_et_fournitures = asf.Montant + asf.TransportServiceFourniture ?? 0m,
+                          Services_et_fournitures = asf.Montant + (asf.TransportServiceFourniture ?? 0m),
                           Infrastructures_et_equipements = 0m,
                           Personnel = 0m
+                      });
+
+            var AutresSalaires = (from asf in db.EveAcquisitionServicesFournitures
+                      join sf in db.ResServicesFournitures on asf.CodeServiceFourniture equals sf.CodeServiceFourniture
+                      where sf.NomServiceFourniture.ToLower() == "autres salaires"
+
+                      select new
+                      {
+                          asf.Date,
+                          Description = sf.NomServiceFourniture,
+                          Matiere_Premiere = 0m,
+                          Services_et_fournitures = 0m,
+                          Infrastructures_et_equipements = 0m,
+                          Personnel = asf.Montant
                       });
 
             var eInf = (from rei in db.EveReceptionEquipementsInfrastructures
@@ -75,7 +90,7 @@ namespace CasaEcologieSysInfo
                              Personnel = d.Montant
                          });
 
-            var resultat = matP.Concat(sF).Concat(eInf).Concat(perso)
+            var resultat = matP.Concat(sF).Concat(eInf).Concat(perso).Concat(AutresSalaires)
                 .OrderByDescending(d => d.Date)
                 .ToList();
 

@@ -552,7 +552,7 @@ namespace CasaEcologieSysInfo.Pages.Corrections
 
                     if (fruitUtilise.QuantiteMatierePremiere != float.Parse(txtQuantiteFruit.Text))
                     {
-                        float.TryParse(txtNombreProduitsFinis.Text, out float quantite);
+                        float.TryParse(txtQuantiteFruit.Text, out float quantite);
                         fruitUtilise.QuantiteMatierePremiere = quantite;
                         db.SaveChanges();
                     }
