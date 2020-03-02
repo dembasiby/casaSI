@@ -37,7 +37,6 @@
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel6 = new System.Windows.Forms.Panel();
-            this.dtpDateVente = new System.Windows.Forms.DateTimePicker();
             this.cbxResponsableStockPrdtsFinis = new System.Windows.Forms.ComboBox();
             this.ageEmployesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.employesDataSet3 = new CasaEcologieSysInfo.EmployesDataSet3();
@@ -49,7 +48,6 @@
             this.ageClientBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txtMontantEncaisse = new System.Windows.Forms.TextBox();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnDecrementQuantite = new System.Windows.Forms.Button();
             this.btnIncrementQuantite = new System.Windows.Forms.Button();
@@ -68,6 +66,8 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.dtpDateVente = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
             this.p = new System.Windows.Forms.Label();
             this.casaDBDataSet = new CasaEcologieSysInfo.CasaDBDataSet();
             this.resStockProduitsFinisBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -208,15 +208,6 @@
             this.panel6.Size = new System.Drawing.Size(533, 330);
             this.panel6.TabIndex = 4;
             // 
-            // dtpDateVente
-            // 
-            this.dtpDateVente.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpDateVente.Location = new System.Drawing.Point(176, 67);
-            this.dtpDateVente.Name = "dtpDateVente";
-            this.dtpDateVente.Size = new System.Drawing.Size(228, 23);
-            this.dtpDateVente.TabIndex = 8;
-            this.dtpDateVente.ValueChanged += new System.EventHandler(this.DtpDateVente_ValueChanged);
-            // 
             // cbxResponsableStockPrdtsFinis
             // 
             this.cbxResponsableStockPrdtsFinis.DataSource = this.ageEmployesBindingSource;
@@ -293,6 +284,7 @@
             this.txtMontantEncaisse.Name = "txtMontantEncaisse";
             this.txtMontantEncaisse.Size = new System.Drawing.Size(218, 27);
             this.txtMontantEncaisse.TabIndex = 5;
+            this.txtMontantEncaisse.Text = "0";
             // 
             // panel7
             // 
@@ -302,15 +294,6 @@
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(533, 10);
             this.panel7.TabIndex = 7;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 65);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(50, 21);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Date";
             // 
             // flowLayoutPanel1
             // 
@@ -517,6 +500,24 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(10, 596);
             this.panel2.TabIndex = 0;
+            // 
+            // dtpDateVente
+            // 
+            this.dtpDateVente.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpDateVente.Location = new System.Drawing.Point(176, 67);
+            this.dtpDateVente.Name = "dtpDateVente";
+            this.dtpDateVente.Size = new System.Drawing.Size(228, 23);
+            this.dtpDateVente.TabIndex = 8;
+            this.dtpDateVente.ValueChanged += new System.EventHandler(this.DtpDateVente_ValueChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 65);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(50, 21);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Date";
             // 
             // p
             // 

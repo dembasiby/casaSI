@@ -145,7 +145,6 @@ namespace CasaEcologieSysInfo
                 };
 
                 db.EveVentes.Add(vente);
-                db.SaveChanges();
 
                 for (int i = 0; i < listView1.Items.Count; i++)
                 {
@@ -159,8 +158,9 @@ namespace CasaEcologieSysInfo
                     GestionVentes.EnregistrerNouvelleVenteDUnProduit(codeVente, produit, quantite, montant);
                 }
 
+                int.TryParse(txtMontantEncaisse.Text, out int montantEncaisse);
 
-                if (int.Parse(txtMontantEncaisse.Text) > 0)
+                if (montantEncaisse > 0)
                 {
                     EveEncaissement enc = new EveEncaissement
                     {
@@ -169,29 +169,28 @@ namespace CasaEcologieSysInfo
                     };
 
                     db.EveEncaissements.Add(enc);
-                    db.SaveChanges();
 
                     EveEncaissementsVente encV = new EveEncaissementsVente
                     {
                         CodeClient = client.CodeClient,
                         CodeEncaissement = enc.CodeEncaissement,
                         CodeVente = vente.CodeVente,
-                        MontantEncaisse = int.Parse(txtMontantEncaisse.Text),
+                        MontantEncaisse = montantEncaisse,
                         DateEncaissement = DateTime.Parse(dtpDateVente.Text)
                     };
 
                     db.EveEncaissementsVentes.Add(encV);
-                    db.SaveChanges();
                 }
 
+                db.SaveChanges();
                 listView1.Items.Clear();
                 lblTotalFacture.Text = "";
-                txtMontantEncaisse.Clear();
+                txtMontantEncaisse.Text = "0";
                 MessageBox.Show("La vente a été enregistrée avec succès.");
             }
             catch (Exception)
             {
-                MessageBox.Show("Le montant de la facture n'est pas valide.");
+                MessageBox.Show("La vente n'a pas été enregistrée.");
                 return;
             }
      
