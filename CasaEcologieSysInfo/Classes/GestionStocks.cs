@@ -23,6 +23,11 @@ namespace CasaEcologieSysInfo
                                where rmp.DateReception <= date
                                select (float?)rmp.Quantite).Sum() ?? 0;
 
+                var dons = (from dmp in db.EveReceptionDonsMatieresPremieres
+                               where dmp.ResStockMatieresPremiere.NomMatiere == nomMatiere
+                               where dmp.DateReception <= date
+                               select (float?)dmp.Quantite).Sum() ?? 0;
+
                 var sorties = (from ur in db.EveUtilisationMatieresPremieres
                                where ur.ResStockMatieresPremiere.NomMatiere == nomMatiere
                                join p in db.EveProductions on ur.CodeUtilisationRessource equals p.CodeUtilisationRessources
@@ -34,7 +39,7 @@ namespace CasaEcologieSysInfo
                                      where asort.DateSortie <= date
                                      select (float?)asort.QuantiteMatierePremiere).Sum() ?? 0;
 
-                return (stockInitial + entrees) - (sorties + autresSorties);
+                return (stockInitial + entrees + dons) - (sorties + autresSorties);
             }
 
         }
