@@ -83,13 +83,13 @@ namespace CasaEcologieSysInfo.Pages.Corrections
                     }
 
                     // Le montant de la transaction a changé
-                    if (int.Parse(transaction.Montant.ToString()) != int.Parse(Conversion.EnleverEspaces(txtMontantAchat.Text)))
+                    if (decimal.Parse(transaction.Montant.ToString()) != decimal.Parse(Conversion.EnleverEspaces(txtMontantAchat.Text)))
                     {
                         transaction.Montant = decimal.Parse(Conversion.EnleverEspaces(txtMontantAchat.Text));
                     }
 
                     // Le montant du transport a changé
-                    if (int.Parse(transaction.TransportMatierePremiere.ToString()) != int.Parse(Conversion.EnleverEspaces(txtTransportMatierePremiere.Text)))
+                    if (decimal.Parse(transaction.TransportMatierePremiere.ToString()) != decimal.Parse(Conversion.EnleverEspaces(txtTransportMatierePremiere.Text)))
                     {
                         transaction.TransportMatierePremiere = decimal.Parse(Conversion.EnleverEspaces(txtTransportMatierePremiere.Text));
                     }

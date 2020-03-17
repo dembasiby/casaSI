@@ -75,7 +75,7 @@ namespace CasaEcologieSysInfo.Pages.Corrections
 
                     txtNomProduit.Text = produit.NomProduit;
                     txtStockInitial.Text = produit.StockProduit.ToString();
-                    txtCoutUnitaire.Text = produit.CoutUnitaire.ToString();
+                    txtCoutUnitaire.Text = produit.CoutUnitaire.ToString("n0");
                     txtPrixDeVente.Text = produit.PrixDeVenteStandard.ToString();
                 }
                 catch (Exception)
@@ -99,7 +99,7 @@ namespace CasaEcologieSysInfo.Pages.Corrections
 
                     txtMatierePrem.Text = matiere.NomMatiere;
                     txtStockInitialMatiere.Text = matiere.StockMatiere.ToString();
-                    txtCoutAchatUnitaire.Text = matiere.CoutUnitaire.ToString();
+                    txtCoutAchatUnitaire.Text = matiere.CoutUnitaire.ToString("n0");
                 }
                 catch (Exception)
                 {
@@ -122,7 +122,7 @@ namespace CasaEcologieSysInfo.Pages.Corrections
 
                     txtProduitSemiFini.Text = produitSF.Description;
                     txtStockInitialProduitSemiFini.Text = produitSF.Quantite.ToString();
-                    txtCoutUnitaireProduitSemiFini.Text = produitSF.CoutUnitaire.ToString();
+                    txtCoutUnitaireProduitSemiFini.Text = produitSF.CoutUnitaire.ToString("n0");
                 }
                 catch (Exception)
                 {
@@ -169,15 +169,19 @@ namespace CasaEcologieSysInfo.Pages.Corrections
 
                     var produit = db.ResStockProduitsFinis.Single(p => p.CodeProduit == codeProduit);
 
-                    if (Validation.EstUnChiffre(txtStockInitial.Text)
-                        && Validation.EstUnChiffre(txtPrixDeVente.Text)
-                        && Validation.EstUnChiffre(txtCoutUnitaire.Text)
+                    string stockString = Conversion.EnleverEspaces(txtStockInitial.Text);
+                    string prixString = Conversion.EnleverEspaces(txtPrixDeVente.Text);
+                    string coutString = Conversion.EnleverEspaces(txtCoutUnitaire.Text);
+
+                    if (Validation.EstUnChiffre(stockString)
+                        && Validation.EstUnChiffre(prixString)
+                        && Validation.EstUnChiffre(coutString)
                         && !Validation.ChampsVide(txtNomProduit.Text))
                     {
                         produit.NomProduit = txtNomProduit.Text;
-                        produit.StockProduit = int.Parse(txtStockInitial.Text);
-                        produit.CoutUnitaire = int.Parse(txtCoutUnitaire.Text);
-                        produit.PrixDeVenteStandard = int.Parse(txtPrixDeVente.Text);
+                        produit.StockProduit = int.Parse(stockString);
+                        produit.CoutUnitaire = int.Parse(coutString);
+                        produit.PrixDeVenteStandard = int.Parse(prixString);
 
                         db.SaveChanges();
                         MessageBox.Show("Le produit a été mis à jour.");
@@ -205,14 +209,16 @@ namespace CasaEcologieSysInfo.Pages.Corrections
                     int codeMatiere = CodeProduitSelectionne(cbxListeMatieres);
 
                     var matiere = db.ResStockMatieresPremieres.Single(p => p.CodeMatierePremiere == codeMatiere);
+                    string stockString = Conversion.EnleverEspaces(txtStockInitialMatiere.Text);
+                    string coutString = Conversion.EnleverEspaces(txtCoutAchatUnitaire.Text);
 
-                    if (Validation.EstUnChiffre(txtStockInitialMatiere.Text)
-                        && Validation.EstUnChiffre(txtCoutAchatUnitaire.Text)
+                    if (Validation.EstUnChiffre(stockString)
+                        && Validation.EstUnChiffre(coutString)
                         && !Validation.ChampsVide(txtMatierePrem.Text))
                     {
                         matiere.NomMatiere = txtMatierePrem.Text;
-                        matiere.StockMatiere = int.Parse(txtStockInitialMatiere.Text);
-                        matiere.CoutUnitaire = int.Parse(txtCoutAchatUnitaire.Text);
+                        matiere.StockMatiere = int.Parse(stockString);
+                        matiere.CoutUnitaire = int.Parse(coutString);
 
                         db.SaveChanges();
                         MessageBox.Show("Le produit a été mis à jour.");
@@ -239,14 +245,16 @@ namespace CasaEcologieSysInfo.Pages.Corrections
                     int codeProduitSF = CodeProduitSelectionne(cbxListeProduitsSemiFini);
 
                     var produitSF = db.ResStockProduitsSemiFinis.Single(p => p.CodeProduitSemiFini == codeProduitSF);
+                    string stockString = Conversion.EnleverEspaces(txtStockInitialProduitSemiFini.Text);
+                    string coutString = Conversion.EnleverEspaces(txtCoutUnitaireProduitSemiFini.Text);
 
-                    if (Validation.EstUnChiffre(txtStockInitialProduitSemiFini.Text)
-                        && Validation.EstUnChiffre(txtCoutUnitaireProduitSemiFini.Text)
+                    if (Validation.EstUnChiffre(stockString)
+                        && Validation.EstUnChiffre(coutString)
                         && !Validation.ChampsVide(txtProduitSemiFini.Text))
                     {
                         produitSF.Description = txtProduitSemiFini.Text;
-                        produitSF.Quantite = int.Parse(txtStockInitialProduitSemiFini.Text);
-                        produitSF.CoutUnitaire = int.Parse(txtCoutUnitaire.Text);
+                        produitSF.Quantite = int.Parse(stockString);
+                        produitSF.CoutUnitaire = int.Parse(coutString);
 
                         db.SaveChanges();
                         MessageBox.Show("Le produit a été mis à jour.");
