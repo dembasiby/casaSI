@@ -417,9 +417,20 @@ namespace CasaEcologieSysInfo
                         
                         UtiliserEmballage(codeUtilisationRessources, emballage, int.Parse(txtQuantiteProduitProduit.Text));
 
-                        if (cbxEtiquettes.Enabled)
+                        if (cbxEtiquettes.Enabled && cbxUtiliserEtiquette.Checked)
                         {
-                            UtiliserEmballage(codeUtilisationRessources, etiquette, int.Parse(txtQuantiteProduitProduit.Text));
+                            try
+                            {
+                                bool etiquetteChoisie = cbxEtiquettes.SelectedIndex >= 0;
+                                UtiliserEmballage(codeUtilisationRessources, etiquette, int.Parse(txtQuantiteProduitProduit.Text));
+                            }
+                            catch (Exception)
+                            {
+
+                                MessageBox.Show("Vous devez choisir une etiquette!");
+                                return;
+                            }
+                            
                         }
 
                         if (rbtnAvecSucre.Checked)

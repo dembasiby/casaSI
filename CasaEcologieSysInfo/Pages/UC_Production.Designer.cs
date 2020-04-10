@@ -127,6 +127,7 @@
             this.eveUtilisationEquipementInfrastructuresTableAdapter1 = new CasaEcologieSysInfo.CasaDBDataSetAllTableAdapters.EveUtilisationEquipementInfrastructuresTableAdapter();
             this.resStockMatieresPremiereBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.cbxUtiliserEtiquette = new System.Windows.Forms.CheckBox();
             this.pnlCorpsPageProduction.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox8.SuspendLayout();
@@ -281,6 +282,7 @@
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.cbxUtiliserEtiquette);
             this.groupBox7.Controls.Add(this.txtEtiquettesDisponibles);
             this.groupBox7.Controls.Add(this.label14);
             this.groupBox7.Controls.Add(this.label12);
@@ -298,7 +300,7 @@
             // txtEtiquettesDisponibles
             // 
             this.txtEtiquettesDisponibles.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEtiquettesDisponibles.Location = new System.Drawing.Point(205, 86);
+            this.txtEtiquettesDisponibles.Location = new System.Drawing.Point(205, 97);
             this.txtEtiquettesDisponibles.Name = "txtEtiquettesDisponibles";
             this.txtEtiquettesDisponibles.ReadOnly = true;
             this.txtEtiquettesDisponibles.Size = new System.Drawing.Size(38, 21);
@@ -309,7 +311,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(6, 67);
+            this.label14.Location = new System.Drawing.Point(6, 80);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(66, 17);
             this.label14.TabIndex = 30;
@@ -319,7 +321,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(6, 21);
+            this.label12.Location = new System.Drawing.Point(6, 37);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(78, 17);
             this.label12.TabIndex = 30;
@@ -328,7 +330,7 @@
             // txtEmballagesDisponibles
             // 
             this.txtEmballagesDisponibles.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmballagesDisponibles.Location = new System.Drawing.Point(205, 38);
+            this.txtEmballagesDisponibles.Location = new System.Drawing.Point(205, 54);
             this.txtEmballagesDisponibles.Name = "txtEmballagesDisponibles";
             this.txtEmballagesDisponibles.ReadOnly = true;
             this.txtEmballagesDisponibles.Size = new System.Drawing.Size(38, 21);
@@ -340,7 +342,7 @@
             this.cbxEtiquettes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxEtiquettes.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxEtiquettes.FormattingEnabled = true;
-            this.cbxEtiquettes.Location = new System.Drawing.Point(3, 86);
+            this.cbxEtiquettes.Location = new System.Drawing.Point(3, 97);
             this.cbxEtiquettes.Name = "cbxEtiquettes";
             this.cbxEtiquettes.Size = new System.Drawing.Size(196, 25);
             this.cbxEtiquettes.TabIndex = 27;
@@ -351,7 +353,7 @@
             this.cbxEmballage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxEmballage.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxEmballage.FormattingEnabled = true;
-            this.cbxEmballage.Location = new System.Drawing.Point(3, 39);
+            this.cbxEmballage.Location = new System.Drawing.Point(3, 55);
             this.cbxEmballage.Name = "cbxEmballage";
             this.cbxEmballage.Size = new System.Drawing.Size(196, 25);
             this.cbxEmballage.TabIndex = 27;
@@ -1198,6 +1200,21 @@
             // 
             this.resStockMatieresPremiereBindingSource1.DataSource = typeof(CasaEcologieSysInfo.ResStockMatieresPremiere);
             // 
+            // cbxUtiliserEtiquette
+            // 
+            this.cbxUtiliserEtiquette.AutoSize = true;
+            this.cbxUtiliserEtiquette.BackColor = System.Drawing.Color.Red;
+            this.cbxUtiliserEtiquette.Checked = true;
+            this.cbxUtiliserEtiquette.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbxUtiliserEtiquette.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxUtiliserEtiquette.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.cbxUtiliserEtiquette.Location = new System.Drawing.Point(9, 18);
+            this.cbxUtiliserEtiquette.Name = "cbxUtiliserEtiquette";
+            this.cbxUtiliserEtiquette.Size = new System.Drawing.Size(175, 22);
+            this.cbxUtiliserEtiquette.TabIndex = 31;
+            this.cbxUtiliserEtiquette.Text = "Utiliser une étiquette";
+            this.cbxUtiliserEtiquette.UseVisualStyleBackColor = false;
+            // 
             // UC_Production
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
@@ -1345,5 +1362,6 @@
         private System.Windows.Forms.Panel panel14;
         private System.Windows.Forms.Panel panel13;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.CheckBox cbxUtiliserEtiquette;
     }
 }
