@@ -90,10 +90,23 @@ namespace CasaEcologieSysInfo
                                           Solde = 0
                                       });
 
+            var sortiesDonsDechets = (from sdd in db.EveSortieDonsOuDechetsProduitsFinis
+                                      join pf in db.ResStockProduitsFinis on sdd.CodeProduitFini equals pf.CodeProduit
+                                      where pf.NomProduit == nomProduit
+                                      select new
+                                      {
+                                          Date = sdd.DateSortie,
+                                          sdd.Description,
+                                          Entree = 0,
+                                          Sortie = (int)sdd.QuantiteProduitFini,
+                                          Solde = 0
+                                      });
+
             var resultat = entrees
                 .Concat(entreesTransvasage)
                 .Concat(sorties)
                 .Concat(sortiesTransvasage)
+                .Concat(sortiesDonsDechets)
                 .OrderByDescending(d => d.Date)
                 .ToList();
 
