@@ -40,6 +40,7 @@
             this.panel14 = new System.Windows.Forms.Panel();
             this.btnMettreAJourListeProduits = new System.Windows.Forms.Button();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.cbxUtiliserEtiquette = new System.Windows.Forms.CheckBox();
             this.txtEtiquettesDisponibles = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -127,7 +128,7 @@
             this.eveUtilisationEquipementInfrastructuresTableAdapter1 = new CasaEcologieSysInfo.CasaDBDataSetAllTableAdapters.EveUtilisationEquipementInfrastructuresTableAdapter();
             this.resStockMatieresPremiereBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.cbxUtiliserEtiquette = new System.Windows.Forms.CheckBox();
+            this.cbxProdSansFruits = new System.Windows.Forms.CheckBox();
             this.pnlCorpsPageProduction.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox8.SuspendLayout();
@@ -296,6 +297,22 @@
             this.groupBox7.TabIndex = 36;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Choisir l\'emballage";
+            // 
+            // cbxUtiliserEtiquette
+            // 
+            this.cbxUtiliserEtiquette.AutoSize = true;
+            this.cbxUtiliserEtiquette.BackColor = System.Drawing.Color.Red;
+            this.cbxUtiliserEtiquette.Checked = true;
+            this.cbxUtiliserEtiquette.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbxUtiliserEtiquette.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxUtiliserEtiquette.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.cbxUtiliserEtiquette.Location = new System.Drawing.Point(9, 18);
+            this.cbxUtiliserEtiquette.Name = "cbxUtiliserEtiquette";
+            this.cbxUtiliserEtiquette.Size = new System.Drawing.Size(175, 22);
+            this.cbxUtiliserEtiquette.TabIndex = 31;
+            this.cbxUtiliserEtiquette.Text = "Utiliser une étiquette";
+            this.cbxUtiliserEtiquette.UseVisualStyleBackColor = false;
+            this.cbxUtiliserEtiquette.CheckedChanged += new System.EventHandler(this.CbxUtiliserEtiquette_CheckedChanged);
             // 
             // txtEtiquettesDisponibles
             // 
@@ -710,6 +727,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.cbxProdSansFruits);
             this.panel1.Controls.Add(this.btnRetirerMP);
             this.panel1.Controls.Add(this.btnRetirerPSF);
             this.panel1.Controls.Add(this.btnAugmenterQuantiteMP);
@@ -773,9 +791,10 @@
             this.btnAugmenterQuantiteMP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAugmenterQuantiteMP.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAugmenterQuantiteMP.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnAugmenterQuantiteMP.Location = new System.Drawing.Point(351, 324);
+            this.btnAugmenterQuantiteMP.Location = new System.Drawing.Point(351, 345);
+            this.btnAugmenterQuantiteMP.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.btnAugmenterQuantiteMP.Name = "btnAugmenterQuantiteMP";
-            this.btnAugmenterQuantiteMP.Size = new System.Drawing.Size(32, 32);
+            this.btnAugmenterQuantiteMP.Size = new System.Drawing.Size(32, 25);
             this.btnAugmenterQuantiteMP.TabIndex = 36;
             this.btnAugmenterQuantiteMP.Text = "+";
             this.btnAugmenterQuantiteMP.UseVisualStyleBackColor = false;
@@ -817,9 +836,10 @@
             this.btnDiminuerQuantiteMP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDiminuerQuantiteMP.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDiminuerQuantiteMP.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnDiminuerQuantiteMP.Location = new System.Drawing.Point(351, 363);
+            this.btnDiminuerQuantiteMP.Location = new System.Drawing.Point(351, 373);
+            this.btnDiminuerQuantiteMP.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.btnDiminuerQuantiteMP.Name = "btnDiminuerQuantiteMP";
-            this.btnDiminuerQuantiteMP.Size = new System.Drawing.Size(32, 35);
+            this.btnDiminuerQuantiteMP.Size = new System.Drawing.Size(32, 28);
             this.btnDiminuerQuantiteMP.TabIndex = 34;
             this.btnDiminuerQuantiteMP.Text = "-";
             this.btnDiminuerQuantiteMP.UseVisualStyleBackColor = false;
@@ -875,9 +895,9 @@
             this.lvwListeMatieresP.FullRowSelect = true;
             this.lvwListeMatieresP.GridLines = true;
             this.lvwListeMatieresP.HideSelection = false;
-            this.lvwListeMatieresP.Location = new System.Drawing.Point(23, 321);
+            this.lvwListeMatieresP.Location = new System.Drawing.Point(22, 338);
             this.lvwListeMatieresP.Name = "lvwListeMatieresP";
-            this.lvwListeMatieresP.Size = new System.Drawing.Size(304, 113);
+            this.lvwListeMatieresP.Size = new System.Drawing.Size(304, 97);
             this.lvwListeMatieresP.TabIndex = 27;
             this.lvwListeMatieresP.UseCompatibleStateImageBehavior = false;
             this.lvwListeMatieresP.View = System.Windows.Forms.View.Details;
@@ -913,7 +933,7 @@
             this.groupBox5.Controls.Add(this.txtStockProduitSFini);
             this.groupBox5.Controls.Add(this.txtQuantiteProduitSemiFiniUtilise);
             this.groupBox5.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox5.Location = new System.Drawing.Point(22, 181);
+            this.groupBox5.Location = new System.Drawing.Point(22, 199);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(380, 115);
             this.groupBox5.TabIndex = 33;
@@ -1007,7 +1027,7 @@
             this.groupBox1.Controls.Add(this.txtStockMatierePremiereDispo);
             this.groupBox1.Controls.Add(this.txtQuantiteMatiereP);
             this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(22, 68);
+            this.groupBox1.Location = new System.Drawing.Point(22, 86);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(380, 114);
             this.groupBox1.TabIndex = 33;
@@ -1132,7 +1152,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.label8.Location = new System.Drawing.Point(25, 299);
+            this.label8.Location = new System.Drawing.Point(25, 315);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(284, 19);
             this.label8.TabIndex = 25;
@@ -1200,20 +1220,19 @@
             // 
             this.resStockMatieresPremiereBindingSource1.DataSource = typeof(CasaEcologieSysInfo.ResStockMatieresPremiere);
             // 
-            // cbxUtiliserEtiquette
+            // cbxProdSansFruits
             // 
-            this.cbxUtiliserEtiquette.AutoSize = true;
-            this.cbxUtiliserEtiquette.BackColor = System.Drawing.Color.Red;
-            this.cbxUtiliserEtiquette.Checked = true;
-            this.cbxUtiliserEtiquette.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbxUtiliserEtiquette.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxUtiliserEtiquette.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.cbxUtiliserEtiquette.Location = new System.Drawing.Point(9, 18);
-            this.cbxUtiliserEtiquette.Name = "cbxUtiliserEtiquette";
-            this.cbxUtiliserEtiquette.Size = new System.Drawing.Size(175, 22);
-            this.cbxUtiliserEtiquette.TabIndex = 31;
-            this.cbxUtiliserEtiquette.Text = "Utiliser une étiquette";
-            this.cbxUtiliserEtiquette.UseVisualStyleBackColor = false;
+            this.cbxProdSansFruits.AutoSize = true;
+            this.cbxProdSansFruits.BackColor = System.Drawing.Color.Firebrick;
+            this.cbxProdSansFruits.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxProdSansFruits.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.cbxProdSansFruits.Location = new System.Drawing.Point(32, 60);
+            this.cbxProdSansFruits.Margin = new System.Windows.Forms.Padding(0);
+            this.cbxProdSansFruits.Name = "cbxProdSansFruits";
+            this.cbxProdSansFruits.Size = new System.Drawing.Size(313, 20);
+            this.cbxProdSansFruits.TabIndex = 38;
+            this.cbxProdSansFruits.Text = "Cochez si production sans fruits ni produit semi fini";
+            this.cbxProdSansFruits.UseVisualStyleBackColor = false;
             // 
             // UC_Production
             // 
@@ -1363,5 +1382,6 @@
         private System.Windows.Forms.Panel panel13;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.CheckBox cbxUtiliserEtiquette;
+        private System.Windows.Forms.CheckBox cbxProdSansFruits;
     }
 }

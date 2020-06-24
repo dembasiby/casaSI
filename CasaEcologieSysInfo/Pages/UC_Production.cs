@@ -351,7 +351,7 @@ namespace CasaEcologieSysInfo
 
         private bool VerifierInfoIntrantsEtExtrantsProduction()
         {
-            if (lvwListeMatieresP.Items.Count == 0 && lvwListProduitsSemiFinisUtilises.Items.Count == 0)
+            if (!cbxProdSansFruits.Checked && lvwListeMatieresP.Items.Count == 0 && lvwListProduitsSemiFinisUtilises.Items.Count == 0)
             {
                 MessageBox.Show("Il est impératif d'utiliser une matière première ou un produit semi-fini pour réaliser une production.");
                 return false;
@@ -718,6 +718,18 @@ namespace CasaEcologieSysInfo
                 btnNouvelleProduction.Enabled = false;
             }
             
+        }
+
+        private void CbxUtiliserEtiquette_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!cbxUtiliserEtiquette.Checked)
+            {
+                cbxEtiquettes.Enabled = false;
+            }
+            else
+            {
+                cbxEtiquettes.Enabled = true;
+            }
         }
     }
 }

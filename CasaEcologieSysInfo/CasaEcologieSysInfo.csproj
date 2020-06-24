@@ -66,13 +66,16 @@
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
     <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>CasaEcologieSysInfo.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AdvancedDataGridView, Version=0.1.0.10, Culture=neutral, processorArchitecture=MSIL">
@@ -466,6 +469,12 @@
     <Compile Include="Pages\UC_Personnel.Designer.cs">
       <DependentUpon>UC_Personnel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pages\UC_PersonnelVendeurs.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\UC_PersonnelVendeurs.Designer.cs">
+      <DependentUpon>UC_PersonnelVendeurs.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pages\UC_ReceptionDonMatierePremiere.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -682,6 +691,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\UC_Personnel.resx">
       <DependentUpon>UC_Personnel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\UC_PersonnelVendeurs.resx">
+      <DependentUpon>UC_PersonnelVendeurs.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\UC_ReceptionDonMatierePremiere.resx">
       <DependentUpon>UC_ReceptionDonMatierePremiere.cs</DependentUpon>

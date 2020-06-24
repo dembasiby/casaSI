@@ -467,9 +467,9 @@
             this.lblMontantPaye.Location = new System.Drawing.Point(29, 364);
             this.lblMontantPaye.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblMontantPaye.Name = "lblMontantPaye";
-            this.lblMontantPaye.Size = new System.Drawing.Size(122, 21);
+            this.lblMontantPaye.Size = new System.Drawing.Size(231, 21);
             this.lblMontantPaye.TabIndex = 9;
-            this.lblMontantPaye.Text = "Montant Payé";
+            this.lblMontantPaye.Text = "Montant Payé au fournisseur";
             // 
             // txtMontantPaye
             // 
