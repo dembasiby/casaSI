@@ -94,7 +94,8 @@ namespace CasaEcologieSysInfo.Pages.Corrections
                         transaction.TransportMatierePremiere = decimal.Parse(Conversion.EnleverEspaces(txtTransportMatierePremiere.Text));
                     }
 
-                    var decaissement = transaction.EveDecaissements.FirstOrDefault();
+                    int codeFournisseur = transaction.AgeFournisseursMatieresPremiere.CodeFournisseurMatierePremiere;
+                    var decaissement = transaction.EveDecaissements.Where(f => f.CodeFournisseurMatierePremiere == codeFournisseur).FirstOrDefault();
 
                     // S'Il y'avait un décaissement au moment de l'enregistrement de la transaction
                     if (decaissement != null)
@@ -153,11 +154,15 @@ namespace CasaEcologieSysInfo.Pages.Corrections
                 using (CasaDBEntities db = new CasaDBEntities())
                 {
                     var transaction = db.EveReceptionMatieresPremieres.Where(rmp => rmp.CodeReceptionMatierePremiere == _codeTransaction).FirstOrDefault();
-                    var decaissement = transaction.EveDecaissements.FirstOrDefault();
+                    //int codeFournisseur = transaction.AgeFournisseursMatieresPremiere.CodeFournisseurMatierePremiere;
+                    var decaissements = transaction.EveDecaissements.ToList();
 
-                    if (decaissement != null)
+                    if (decaissements != null)
                     {
-                        db.EveDecaissements.Remove(decaissement);
+                        foreach (var decaissement in decaissements)
+                        {
+                            db.EveDecaissements.Remove(decaissement);
+                        }
                     }
 
                     db.EveReceptionMatieresPremieres.Remove(transaction);
@@ -219,7 +224,8 @@ namespace CasaEcologieSysInfo.Pages.Corrections
 
 
                 txtMontantAchat.Text = transaction.Montant.ToString("n0");
-                var decaissement = transaction.EveDecaissements.FirstOrDefault();
+                int codeFournisseur = transaction.AgeFournisseursMatieresPremiere.CodeFournisseurMatierePremiere;
+                var decaissement = transaction.EveDecaissements.Where(f => f.CodeFournisseurMatierePremiere == codeFournisseur).FirstOrDefault();
 
                 if (decaissement != null)
                 {

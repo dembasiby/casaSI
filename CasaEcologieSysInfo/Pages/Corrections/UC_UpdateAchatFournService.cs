@@ -93,7 +93,8 @@ namespace CasaEcologieSysInfo.Pages.Corrections
                         transaction.Montant = decimal.Parse(Conversion.EnleverEspaces(txtMontantServFourn.Text));
                     }
 
-                    var decaissement = transaction.EveDecaissements.FirstOrDefault();
+                    int codeFournisseur = transaction.AgeFournisseursServicesFourniture.CodeFournisseurServiceFourniture;
+                    var decaissement = transaction.EveDecaissements.Where(f => f.CodeFournisseurService == codeFournisseur).FirstOrDefault();
 
                     // S'Il y'avait un décaissement au moment de l'enregistrement de la transaction
                     if (decaissement != null)
@@ -155,12 +156,15 @@ namespace CasaEcologieSysInfo.Pages.Corrections
                     {
                         var transaction = db.EveAcquisitionServicesFournitures.Where(afs => afs.CodeAcquisitionServiceFourniture == _codeTransaction).FirstOrDefault();
 
-                        var decaissement = transaction.EveDecaissements.FirstOrDefault();
+                        var decaissements = transaction.EveDecaissements.ToList();
 
                         // S'Il y'avait un décaissement au moment de l'enregistrement de la transaction
-                        if (decaissement != null)
+                        if (decaissements != null)
                         {
-                            db.EveDecaissements.Remove(decaissement);
+                            foreach (var decaissement in decaissements)
+                            {
+                                db.EveDecaissements.Remove(decaissement);
+                            }
                         }
 
                         db.EveAcquisitionServicesFournitures.Remove(transaction);
