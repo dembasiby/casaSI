@@ -190,16 +190,16 @@ namespace CasaEcologieSysInfo
 
                 var quantiteMatP = quantiteDeMatierePremiereUtilisee.Select(m => (float?)m.QuantiteMatierePremiere).Sum() ?? 0f;
 
-                var quantitePF = quantiteDeMatierePremiereUtilisee.Select(m => (float?)m.QuantiteProduitSemiFini).Sum() ?? 0f;
+                var quantitePSF = quantiteDeMatierePremiereUtilisee.Select(m => (float?)m.QuantiteProduitSemiFini).Sum() ?? 0f;
 
-                decimal quantiteMoyenneParProduitFini = 0m;
+                decimal quantiteMoyenneParProduitSemiFini = 0m;
 
-                if (quantiteMatP > 0f && quantitePF > 0f)
+                if (quantiteMatP > 0f && quantitePSF > 0f)
                 {
-                    quantiteMoyenneParProduitFini = (decimal)quantiteMatP / (decimal)quantitePF;
+                    quantiteMoyenneParProduitSemiFini = (decimal)quantiteMatP / (decimal)quantitePSF;
                 }
 
-                return quantiteMoyenneParProduitFini;
+                return quantiteMoyenneParProduitSemiFini;
             }
         }
 

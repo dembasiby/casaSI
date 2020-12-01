@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CasaEcologieSysInfo.Classes.CalculDesCouts
 {
@@ -21,7 +18,7 @@ namespace CasaEcologieSysInfo.Classes.CalculDesCouts
                                               select new
                                               {
                                                   Matiere = ur.ResStockMatieresPremiere.NomMatiere
-                                              }).ToList();
+                                              }).Distinct().ToList();
 
                 Single coutMatieresPremieres = 0;
 
@@ -82,7 +79,7 @@ namespace CasaEcologieSysInfo.Classes.CalculDesCouts
                                      select new
                                      {
                                          Matiere = ur.ResStockMatieresPremiere.NomMatiere
-                                     }).ToList();
+                                     }).Distinct().ToList();
 
                 Single coutMatieresPremieresParProduitSemiFini = 0;
 
