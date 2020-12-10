@@ -152,35 +152,59 @@ namespace CasaEcologieSysInfo
 
         private void AfficherCadeauxEtValeur()
         {
-            var liste = (from pf in db.ResStockProduitsFinis
-                         join don in db.EveSortieDonsOuDechetsProduitsFinis on pf.CodeProduit equals don.CodeProduitFini
+
+            var liste = (from don in db.EveSortieDonsOuDechetsProduitsFinis
+                         join pf in db.ResStockProduitsFinis on don.CodeProduitFini equals pf.CodeProduit
                          where don.DateSortie >= dtpDebut.Value.Date
                          where don.DateSortie <= dtpFin.Value.Date
+                         select pf.NomProduit).Distinct().ToList();
 
-                         select new
-                         {
-                             Produit = pf.NomProduit,
-                             Quantite = (from pf in db.ResStockProduitsFinis
-                                         join d in db.EveSortieDonsOuDechetsProduitsFinis on pf.CodeProduit equals d.CodeProduitFini
-                                         where d.DateSortie >= dtpDebut.Value.Date
-                                         where d.DateSortie <= dtpFin.Value.Date
-                                         select d.QuantiteProduitFini).Sum(),
-                             Valeur = ((from pf in db.ResStockProduitsFinis
-                                       join d in db.EveSortieDonsOuDechetsProduitsFinis on pf.CodeProduit equals d.CodeProduitFini
-                                       where d.DateSortie >= dtpDebut.Value.Date
-                                       where d.DateSortie <= dtpFin.Value.Date
-                                       select d.QuantiteProduitFini).Sum()) * pf.PrixDeVenteStandard
-                         })
-                       .DistinctBy(r => r.Produit)
-                       .OrderByDescending(p => p.Quantite)
-                       .ToList();
+            List<dynamic> listes = new List<object>();
 
-            DataTable dt = Conversion.ConvertirEnTableDeDonnees(liste);
+            foreach (var item in liste)
+            {
+                var obj = (from don in db.EveSortieDonsOuDechetsProduitsFinis
+                            join pf in db.ResStockProduitsFinis on don.CodeProduitFini equals pf.CodeProduit
+                            where don.DateSortie >= dtpDebut.Value.Date
+                            where don.DateSortie <= dtpFin.Value.Date
+                            where pf.NomProduit == item
+                            select new
+                            {
+                                Produit = pf.NomProduit,
+                                Quantite = (from don in db.EveSortieDonsOuDechetsProduitsFinis
+                                            join pf in db.ResStockProduitsFinis on don.CodeProduitFini equals pf.CodeProduit
+                                            where don.DateSortie >= dtpDebut.Value.Date
+                                            where don.DateSortie <= dtpFin.Value.Date
+                                            where pf.NomProduit == item
+                                            select don.QuantiteProduitFini).Sum(),
+                                Valeur = (from don in db.EveSortieDonsOuDechetsProduitsFinis
+                                            join pf in db.ResStockProduitsFinis on don.CodeProduitFini equals pf.CodeProduit
+                                            where don.DateSortie >= dtpDebut.Value.Date
+                                            where don.DateSortie <= dtpFin.Value.Date
+                                            where pf.NomProduit == item
+                                            select don.QuantiteProduitFini).Sum() * pf.PrixDeVenteStandard,
+                            }).FirstOrDefault();
+                listes.Add(obj);
+            }
 
-            dgvCadeaux.DataSource = dt;
-            FormatterDonneesTableau(dgvCadeaux);
-            dgvCadeaux.Columns["Quantite"].HeaderText = $"Unités";
+            if (listes.Count() > 0)
+            {
+
+                dgvCadeaux.DataSource = listes.OrderByDescending(p => p.Quantite).ToList();
+                FormatterDonneesTableau(dgvCadeaux);
+                dgvCadeaux.Columns["Quantite"].HeaderText = $"Unités";
+            }
+            else
+            {
+                dgvCadeaux.DataSource = null;
+            }
+
+
+
         }
+
+
+        // ****************************************************
 
         private void FormatterDonneesTableau(DataGridView grid)
         {
