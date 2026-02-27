@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dotnet new:*)",
+      "Bash(dotnet --list-sdks:*)",
+      "Bash(dotnet:*)",
+      "Bash(del:*)",
+      "Bash(ls:*)",
+      "Bash(powershell -Command \"Remove-Item ''C:\\\\Users\\\\demba\\\\workspace\\\\github.com\\\\dembasiby\\\\casaSI\\\\src\\\\CasaEcologie.WinForms\\\\Form1.cs'',''C:\\\\Users\\\\demba\\\\workspace\\\\github.com\\\\dembasiby\\\\casaSI\\\\src\\\\CasaEcologie.WinForms\\\\Form1.Designer.cs'' -Force\")",
+      "Bash(powershell -Command \"New-Item -ItemType Directory -Path ''C:\\\\Users\\\\demba\\\\workspace\\\\github.com\\\\dembasiby\\\\casaSI\\\\src\\\\CasaEcologie.WinForms\\\\Formulaires'' -Force\")",
+      "Bash(cd:*)"
+    ]
+  }
+}
