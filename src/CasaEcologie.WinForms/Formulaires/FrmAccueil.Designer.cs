@@ -81,12 +81,29 @@ partial class FrmAccueil
         btnAchatMatierePremiere = CreateSidebarButton("Achat matière première", BtnAchatMatierePremiere_Click);
         btnNouvelleVente = CreateSidebarButton("Nouvelle Vente", BtnNouvelleVente_Click);
         btnPersonnel = CreateSidebarButton("Personnel", BtnPersonnel_Click);
+        btnProduction = CreateSidebarButton("Production", BtnProduction_Click);
+        btnCreancesClients = CreateSidebarButton("Créances clients", BtnCreancesClients_Click);
+        btnDettesFournisseurs = CreateSidebarButton("Dettes fournisseurs", BtnDettesFournisseurs_Click);
+        btnStockMatieresPremieres = CreateSidebarButton("Stock mat. premières", BtnStockMatieresPremieres_Click);
+        btnStocksProduitsFinis = CreateSidebarButton("Stock produits finis", BtnStocksProduitsFinis_Click);
+        btnStockProduitsSemiFinis = CreateSidebarButton("Stock prod. semi-finis", BtnStockProduitsSemiFinis_Click);
+        btnStocksInventaire = CreateSidebarButton("Inventaire stocks", BtnStocksInventaire_Click);
+        btnRegistreImmobilisations = CreateSidebarButton("Immobilisations", BtnRegistreImmobilisations_Click);
+        btnTableauDeBord = CreateSidebarButton("Tableau de bord", BtnTableauDeBord_Click);
         //
         // Add controls to sidebar (reverse order for Dock=Top)
         //
         pnlSidebar.Controls.Add(btnQuitter);
         pnlSidebar.Controls.Add(btnUtilisateurs);
+        pnlSidebar.Controls.Add(btnTableauDeBord);
         pnlSidebar.Controls.Add(btnEtatsFinanciers);
+        pnlSidebar.Controls.Add(btnRegistreImmobilisations);
+        pnlSidebar.Controls.Add(btnStocksInventaire);
+        pnlSidebar.Controls.Add(btnStockProduitsSemiFinis);
+        pnlSidebar.Controls.Add(btnStocksProduitsFinis);
+        pnlSidebar.Controls.Add(btnStockMatieresPremieres);
+        pnlSidebar.Controls.Add(btnDettesFournisseurs);
+        pnlSidebar.Controls.Add(btnCreancesClients);
         pnlSidebar.Controls.Add(btnJournalTresorerie);
         pnlSidebar.Controls.Add(btnJournalProduction);
         pnlSidebar.Controls.Add(btnJournalApprovisionnements);
@@ -105,6 +122,7 @@ partial class FrmAccueil
         pnlSidebar.Controls.Add(btnAcquisitionServicesFournitures);
         pnlSidebar.Controls.Add(btnAchatMatierePremiere);
         pnlSidebar.Controls.Add(btnNouvelleVente);
+        pnlSidebar.Controls.Add(btnProduction);
         pnlSidebar.Controls.Add(btnPersonnel);
         pnlSidebar.Controls.Add(lblTitre);
         //
@@ -155,4 +173,13 @@ partial class FrmAccueil
     private Button btnEtatsFinanciers;
     private Button btnUtilisateurs;
     private Button btnQuitter;
+    private Button btnProduction;
+    private Button btnCreancesClients;
+    private Button btnDettesFournisseurs;
+    private Button btnStockMatieresPremieres;
+    private Button btnStocksProduitsFinis;
+    private Button btnStockProduitsSemiFinis;
+    private Button btnStocksInventaire;
+    private Button btnRegistreImmobilisations;
+    private Button btnTableauDeBord;
 }

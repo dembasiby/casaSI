@@ -36,7 +36,7 @@ public partial class FrmAccueil : Form
 
     private void BtnEtatsFinanciers_Click(object sender, EventArgs e)
     {
-        // TODO: AddControlsToPanel(new Pages.UC_EtatsFinanciers(_services));
+        AddControlsToPanel(new Pages.UC_EtatsFinanciers(_services));
     }
 
     private void BtnAchatMatierePremiere_Click(object sender, EventArgs e)
@@ -132,6 +132,51 @@ public partial class FrmAccueil : Form
             return;
         }
         AddControlsToPanel(new Pages.UC_Utilisateurs(_services));
+    }
+
+    private void BtnProduction_Click(object sender, EventArgs e)
+    {
+        AddControlsToPanel(new Pages.UC_Production(_services));
+    }
+
+    private void BtnCreancesClients_Click(object sender, EventArgs e)
+    {
+        AddControlsToPanel(new Pages.UC_CreancesClients(_services));
+    }
+
+    private void BtnDettesFournisseurs_Click(object sender, EventArgs e)
+    {
+        AddControlsToPanel(new Pages.UC_DettesFournisseurs(_services));
+    }
+
+    private void BtnStockMatieresPremieres_Click(object sender, EventArgs e)
+    {
+        AddControlsToPanel(new Pages.UC_StockMatieresPremieres(_services));
+    }
+
+    private void BtnStocksProduitsFinis_Click(object sender, EventArgs e)
+    {
+        AddControlsToPanel(new Pages.UC_StocksProduitsFinis(_services));
+    }
+
+    private void BtnStockProduitsSemiFinis_Click(object sender, EventArgs e)
+    {
+        AddControlsToPanel(new Pages.UC_StockProduitsSemiFinis(_services));
+    }
+
+    private void BtnStocksInventaire_Click(object sender, EventArgs e)
+    {
+        AddControlsToPanel(new Pages.UC_StocksInventaireEtValorisation(_services));
+    }
+
+    private void BtnRegistreImmobilisations_Click(object sender, EventArgs e)
+    {
+        AddControlsToPanel(new Pages.UC_RegistreImmobilisations(_services));
+    }
+
+    private void BtnTableauDeBord_Click(object sender, EventArgs e)
+    {
+        AddControlsToPanel(new Pages.UC_TableauDeBord(_services));
     }
 
     private void BtnQuitter_Click(object sender, EventArgs e)
